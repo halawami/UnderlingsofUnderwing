@@ -34,7 +34,7 @@ The definition of done is created by examining and applying BVA on the rules.
 
 - [ ] Play with 2 players, 15 rounds
 - [ ] Play with 3 players, 13 rounds
-- [ ] Play with 4- [ ]6 players, 12 rounds
+- [ ] Play with 4-6 players, 12 rounds
 - [ ] Reach round 0 and add another round
 - [ ] Reach round 0 and end game
 
@@ -289,7 +289,7 @@ The definition of done is created by examining and applying BVA on the rules.
       - [ ] Water Drake
       - [ ] Blood Drake
       - [ ] Sky Drake
-      - [ ] - [ ] Collect 1 ~color~ Element
+- [ ] Collect 1 ~color~ Element
    - [ ] BVA
       - [ ] Follows BVA of Element Collection
    - [ ] Dragons
@@ -556,7 +556,7 @@ The definition of done is created by examining and applying BVA on the rules.
 - [ ] Destroy ALL ~temperature~ Elements on ALL adjacent Eggs
    - [ ] BVA
       - [ ] Follows BVA of Destroying Elements
-      - [ ]    - [ ] Dragons
+   - [ ] Dragons
       - [ ] Flamewreathed Whelp
       - [ ] Iceshard Whelp
 - [ ] Destroy ALL ~color~ and ~color~ Elements on Eggs in play
