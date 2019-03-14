@@ -1,0 +1,91 @@
+@startuml
+
+class Player {
+
+List<Element> elements
+List<Dragon> dragons
+List<Modifier> modifiers
+List<Handler> handlers
+
++ addDragon()
+
+}
+
+class Element {
+
+    - ElementColor color
+    - ElementColor identity
+
+    + Element(ElementColor color)
+    + getColor() : ElementColor
+    + getIdentity() : ElementColor
+    + setIdentity(ElementColor identity)
+
+}
+
+class ElementBag <<Singleton>> {
+- final PRIMARY_MAX
+- final SECONDARY_MAX
+- final NEUTRAL_MAX
+- ElementBag instance
+- Map<Color, Integer> elementCount
+
++ getInstance() : ElementBag
++ replaceElements(List<Element> elements)
++ drawCoolElement() : Element
++ drawWarmElement() : Element
++ drawPrimaryElement() : Element
++ drawSecondaryElement() : Element
++ drawElementFromList(ElementColor... colors) : Element
++ getRandomElement() : Element
++ getSpecifiedColor(ElementColor color) : Element
++ getNumberRemaining(ElementColor color) : int
+
+
+}
+
+enum ElementColor {
+BLACK
+BLUE
+GREEN
+ORANGE
+PURPLE
+RED
+WHITE
+YELLOW
+}
+
+class ColorSpace {
+
+    - int x
+    - int y
+
+}
+
+abstract class Dragon {
+    
+    - List<Space>
+    - Effect positive, negative
+    - int pointValue
+    
+    + getPointValue()
+
+}
+
+abstract class Effect {
+
++ activate()
+
+}
+
+
+
+class Hander {
+
+}
+
+interface Modifier {
+
+}
+
+@enduml
