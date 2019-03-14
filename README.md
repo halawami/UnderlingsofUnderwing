@@ -1,6 +1,6 @@
 # Underlings of Underwing
 
-CSSE376 Spring 18- [ ]19 Term Project
+CSSE376 Spring 18-19 Term Project
 
 Hussein Alawami, Mohammad Baqer, George Main IV, Wesley Siebenthaler
 
