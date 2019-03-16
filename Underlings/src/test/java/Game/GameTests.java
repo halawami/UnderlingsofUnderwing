@@ -49,4 +49,11 @@ public class GameTests {
 		assertThrows(IllegalArgumentException.class, () -> this.game.setUp(7));
 	}
 	
+	@Test
+	public void testSetup2Players_HatchingGround() {
+		this.game.setUp(2);
+		
+		assertEquals(this.game.getHatchingGround().getWidth(), 3);
+		assertEquals(this.game.getHatchingGround().getHeight(), 2);
+	}
 }
