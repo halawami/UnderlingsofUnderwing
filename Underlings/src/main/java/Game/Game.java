@@ -1,5 +1,6 @@
 package Game;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -8,7 +9,7 @@ public class Game {
 	private final int ROUNDS_TWO_PLAYERS = 15, ROUNDS_THREE_PLAYERS = 13, ROUNDS_FOUR_SIX_PLAYERS = 12;
 	private final int HATCHING_TWO_WIDTH = 3, HATCHING_THREE_WIDTH = 4, HATCHING_FOUR_SIX_WIDTH = 4;
 	private final int HATCHING_TWO_HEIGHT = 2, HATCHING_THREE_HEIGHT = 3, HATCHING_FOUR_SIX_HEIGHT = 4;
-	private Deck deck = new Deck();
+	private Deck deck = new Deck(new ArrayList<>());
 
 	private int roundsLeft;
 	private HatchingGround hatchingGround;
