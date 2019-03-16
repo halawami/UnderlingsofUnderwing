@@ -13,12 +13,18 @@ public class GameTests {
 	
 	private Game game;
 	private CardFactory cardFactory;
+	private Stack<Card> cards;
 	
 	@Before
 	public void init() {
 		this.game = new Game();
+		this.cards = new Stack<Card>();
+		for(int i = 0; i < 50; i++){
+			cards.push(new Card());
+		}
 		cardFactory = EasyMock.mock(CardFactory.class);
-		EasyMock.expect(cardFactory.getCards()).andStubReturn(new Stack<Card>());
+		EasyMock.expect(cardFactory.getCards()).andStubReturn(cards);
+		EasyMock.replay(this.cardFactory);
 	}
 	
 	@Test 
@@ -115,7 +121,13 @@ public class GameTests {
 	
 	@Test
 	public void testSetupCardFactory(){
+		this.cardFactory = EasyMock.strictMock(CardFactory.class);
+		EasyMock.expect(this.cardFactory.getCards()).andReturn(this.cards);
+		EasyMock.replay(this.cardFactory);
 		
+		this.game.setUp(2, this.cardFactory);
+		
+		EasyMock.verify(this.cardFactory);
 	}
 	
 }

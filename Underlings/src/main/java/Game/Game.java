@@ -19,12 +19,7 @@ public class Game {
 
     public void setUp(int numberOfPlayers, CardFactory cardFactory) {
 
-        Stack<Card> cards = new Stack<>();
-        for (int i = 0; i < 16; i++) {
-            cards.push(new Card());
-        }
-        this.deck = new Deck(cards);
-
+        this.deck = new Deck(cardFactory.getCards());
 
         // Set Round Number and Hatching Ground
         switch (numberOfPlayers) {

@@ -9,7 +9,6 @@ public class Deck {
 
     public Deck(Stack<Card> cards) {
         this.cards = cards;
-
     }
 
     public Card draw() {
