@@ -30,4 +30,9 @@ public class Player {
 		
 	}
 
+	public int getMaxHandlers() {
+		// TODO Auto-generated method stub
+		return 4;
+	}
+
 }

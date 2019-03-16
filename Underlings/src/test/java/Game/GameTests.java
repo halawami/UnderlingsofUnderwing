@@ -142,4 +142,12 @@ public class GameTests {
 		EasyMock.verify(this.cardFactory);
 	}
 	
+	@Test
+	public void testSetup2Players_MaxHandlers() {
+		this.game.setUp(2, cardFactory);
+		for(Player player : this.game.getPlayers()){
+			assertEquals(4, player.getMaxHandlers());
+		}
+	}
+	
 }

@@ -43,7 +43,7 @@ public class Game {
 
         // Set Player List
         for (int i = 0; i < numberOfPlayers; i++) {
-            this.players.add(new Player());
+            this.players.add(new Player(4));
         }
 
     }
