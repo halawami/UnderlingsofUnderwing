@@ -24,6 +24,7 @@ public class GameTests {
 		}
 		cardFactory = EasyMock.mock(CardFactory.class);
 		EasyMock.expect(cardFactory.getCards()).andStubReturn(cards);
+		
 		EasyMock.replay(this.cardFactory);
 	}
 	
@@ -107,6 +108,16 @@ public class GameTests {
 		
 		for (Player player : game.getPlayers()) {
 			assertEquals(2, player.getHandlerCount());
+		}
+	}
+	
+	@Test
+	public void testSetupHandlerState(){
+		this.game.setUp(2, cardFactory);
+		for(Player player : this.game.getPlayers()){
+			for(Handler handler : player.getHandlers()){
+				assertEquals(HandlerState.READY_ROOM, handler.getState());
+			}
 		}
 	}
 	
