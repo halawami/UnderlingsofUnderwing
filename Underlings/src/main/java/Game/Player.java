@@ -5,7 +5,6 @@ import java.util.List;
 
 public class Player {
 
-	private int handlerCount = 2;
 	private List<Handler> handlers;
 	
 	public Player(){
@@ -15,7 +14,7 @@ public class Player {
 	}
 	
 	public int getHandlerCount() {
-		return handlerCount;
+		return this.handlers.size();
 	}
 
 	public List<Handler> getHandlers() {
@@ -23,7 +22,7 @@ public class Player {
 	}
 
 	public void addHandler() {
-		handlerCount++;
+		this.handlers.add(new Handler());
 	}
 
 }

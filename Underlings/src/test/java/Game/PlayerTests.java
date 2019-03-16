@@ -24,6 +24,7 @@ public class PlayerTests {
 	@Test
 	public void testGetHandlerListSize(){
 		Player player = new Player();
+		player.addHandler();
 		List<Handler> handlers = player.getHandlers();
 		assertEquals(handlers.size(), player.getHandlerCount());
 	}
