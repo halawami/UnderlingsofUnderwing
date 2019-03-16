@@ -52,8 +52,14 @@ public class GameTests {
 	@Test
 	public void testSetup2Players_HatchingGround() {
 		this.game.setUp(2);
-		
 		assertEquals(this.game.getHatchingGround().getWidth(), 3);
 		assertEquals(this.game.getHatchingGround().getHeight(), 2);
+	}
+	
+	@Test
+	public void testSetup3Players_HatchingGround() {
+		this.game.setUp(3);
+		assertEquals(this.game.getHatchingGround().getWidth(), 4);
+		assertEquals(this.game.getHatchingGround().getHeight(), 3);
 	}
 }

@@ -2,12 +2,19 @@ package Game;
 
 public class HatchingGround {
 
+	private int height, width;
+	
+	public HatchingGround(int width, int height) {
+		this.width = width;
+		this.height = height;
+	}
+
 	public int getWidth() {
-		return 3;
+		return this.width;
 	}
 	
 	public int getHeight() {
-		return 2;
+		return this.height;
 	}
 
 	
