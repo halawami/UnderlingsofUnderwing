@@ -1,7 +1,7 @@
 package Game;
 
 import static org.junit.Assert.assertEquals;
-
+import static org.junit.Assert.assertThrows;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -39,4 +39,9 @@ public class GameTests {
 		assertEquals(this.game.getRoundsLeft(), 12);
 	}
 
+	@Test
+	public void testSetup7Players() {
+		assertThrows(IllegalArgumentException.class, () -> this.game.setUp(7));
+	}
+	
 }

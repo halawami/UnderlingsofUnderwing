@@ -5,13 +5,20 @@ public class Game {
 	private int roundsLeft;
 	
 	public void setUp(int numberOfPlayers) {
-		if (numberOfPlayers == 2) {
+		switch(numberOfPlayers) {
+		case 2:
 			this.roundsLeft = 15;
-		} else if (numberOfPlayers == 3) {
+			break;
+		case 3:
 			this.roundsLeft = 13;
-		}
-		else {
+			break;
+		case 4:
+		case 5:
+		case 6:
 			this.roundsLeft = 12;
+			break;
+		default:
+			throw new IllegalArgumentException("Player count must be between 2 and 6, inclusive");
 		}
 		
 	}
