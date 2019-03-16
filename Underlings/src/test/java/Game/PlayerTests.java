@@ -30,7 +30,7 @@ public class PlayerTests {
 	}
 
 	@Test
-	public void testAddHandlerMaxSize() {
+	public void testAddHandlerMaxSize6() {
 		Player player = new Player(6);
 		player.addHandler();
 		player.addHandler();
@@ -39,5 +39,15 @@ public class PlayerTests {
 		assertEquals(6, player.getHandlerCount());
 		player.addHandler();
 		assertEquals(6, player.getHandlerCount());
+	}
+	
+	@Test
+	public void testAddHandlerMaxSize4(){
+		Player player = new Player(4);
+		player.addHandler();
+		player.addHandler();
+		assertEquals(4, player.getHandlerCount());
+		player.addHandler();
+		assertEquals(4, player.getHandlerCount());
 	}
 }
