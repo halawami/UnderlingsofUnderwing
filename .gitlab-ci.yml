@@ -1,0 +1,13 @@
+stages:
+  - build
+
+build:
+  stage: build
+  script:
+    - ./gradlew build
+  only:
+    - master          # Only build the master git branch
+    - feature_setup
+  tags:
+    - gradle      # Matches the tags you created for your runner
+
