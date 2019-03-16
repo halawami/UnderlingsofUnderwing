@@ -165,4 +165,12 @@ public class GameTests {
 			assertEquals(6, player.getMaxHandlers());
 		}
 	}
+	
+	@Test
+	public void testSetup6Players_MaxHandlers() {
+		this.game.setUp(6, cardFactory);
+		for(Player player : this.game.getPlayers()){
+			assertEquals(6, player.getMaxHandlers());
+		}
+	}
 }
