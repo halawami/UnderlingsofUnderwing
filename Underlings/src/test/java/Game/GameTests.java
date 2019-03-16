@@ -21,5 +21,13 @@ public class GameTests {
 		
 		assertEquals(game.getRoundsLeft(), 13);
 	}
+	
+	@Test
+	public void testSetup4Players12Rounds() {
+		Game game = new Game();
+		game.setUp(4);
+		
+		assertEquals(game.getRoundsLeft(), 12);
+	}
 
 }
