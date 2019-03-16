@@ -12,7 +12,10 @@ public class Deck {
 
     }
 
-    public Card draw(){
+    public Card draw() {
+        if (cards.isEmpty()) {
+            throw new IllegalStateException("Can't draw from an empty deck");
+        }
         return cards.pop();
     }
 
