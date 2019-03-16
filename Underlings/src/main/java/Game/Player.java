@@ -4,14 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
-	
+
+	private int handlerCount = 2;
+
 	public int getHandlerCount() {
-		return 2;
+		return handlerCount;
 	}
 
 	public List<Handler> getHandlers() {
-		// TODO Auto-generated method stub
 		return new ArrayList<Handler>();
+	}
+
+	public void addHandler() {
+		handlerCount++;
 	}
 
 }
