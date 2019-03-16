@@ -2,13 +2,19 @@ package Game;
 
 public class Game {
 
-	public void setUp(int i) {
-		// TODO Auto-generated method stub
+	private int roundsLeft;
+	
+	public void setUp(int numberOfPlayers) {
+		if (numberOfPlayers == 2) {
+			this.roundsLeft = 15;
+		} else {
+			this.roundsLeft = 13;
+		}
 		
 	}
 
 	public int getRoundsLeft() {
-		return 15;
+		return this.roundsLeft;
 	}
 
 	
