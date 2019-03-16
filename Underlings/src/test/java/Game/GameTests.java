@@ -84,6 +84,12 @@ public class GameTests {
 	}
 	
 	@Test
+	public void testSetup6Players_Players() {
+		this.game.setUp(6);
+		assertEquals(this.game.getPlayers().size(), 6);
+	}
+	
+	@Test
 	public void testSetup2Players_Handlers() {
 		this.game.setUp(2);
 		
