@@ -3,8 +3,8 @@ package Game;
 public class Game {
 
 	private final int ROUNDS_TWO_PLAYERS = 15, ROUNDS_THREE_PLAYERS = 13, ROUNDS_FOUR_SIX_PLAYERS = 12;
-	private final int HATCHING_TWO_WIDTH = 3, HATCHING_THREE_WIDTH = 4;
-	private final int HATCHING_TWO_HEIGHT = 2, HATCHING_THREE_HEIGHT = 3;
+	private final int HATCHING_TWO_WIDTH = 3, HATCHING_THREE_WIDTH = 4, HATCHING_FOUR_SIX_WIDTH = 4;
+	private final int HATCHING_TWO_HEIGHT = 2, HATCHING_THREE_HEIGHT = 3, HATCHING_FOUR_SIX_HEIGHT = 4;
 
 	private int roundsLeft;
 	private HatchingGround hatchingGround;
@@ -25,6 +25,7 @@ public class Game {
 		case 5:
 		case 6:
 			this.roundsLeft = ROUNDS_FOUR_SIX_PLAYERS;
+			this.hatchingGround = new HatchingGround(HATCHING_FOUR_SIX_WIDTH, HATCHING_FOUR_SIX_HEIGHT);
 			break;
 		default:
 			throw new IllegalArgumentException("Player count must be between 2 and 6, inclusive");
