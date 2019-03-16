@@ -159,6 +159,7 @@ public class GameTests {
 	}
 	
 	@Test
+
 	public void testSetup4Players_MaxHandlers() {
 		this.game.setUp(4, cardFactory);
 		for(Player player : this.game.getPlayers()){
@@ -173,4 +174,6 @@ public class GameTests {
 			assertEquals(6, player.getMaxHandlers());
 		}
 	}
+
+
 }
