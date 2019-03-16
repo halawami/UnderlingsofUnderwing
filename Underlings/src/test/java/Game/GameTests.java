@@ -97,4 +97,14 @@ public class GameTests {
 			assertEquals(player.getHandlerCount(), 2);
 		}
 	}
+	
+	@Test
+	public void testSetup6Players_Handlers() {
+		this.game.setUp(6);
+		
+		for (Player player : game.getPlayers()) {
+			assertEquals(player.getHandlerCount(), 2);
+		}
+	}
+	
 }
