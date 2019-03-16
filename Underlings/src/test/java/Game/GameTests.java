@@ -40,6 +40,11 @@ public class GameTests {
 	}
 
 	@Test
+	public void testSetup1Player() {
+		assertThrows(IllegalArgumentException.class, () -> this.game.setUp(1));
+	}
+	
+	@Test
 	public void testSetup7Players() {
 		assertThrows(IllegalArgumentException.class, () -> this.game.setUp(7));
 	}
