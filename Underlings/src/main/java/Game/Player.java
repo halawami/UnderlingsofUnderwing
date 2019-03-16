@@ -7,7 +7,7 @@ public class Player {
 
 	private List<Handler> handlers;
 	
-	public Player(){
+	public Player(int maxSize){
 		this.handlers = new ArrayList<Handler>();
 		this.handlers.add(new Handler());
 		this.handlers.add(new Handler());
@@ -22,7 +22,10 @@ public class Player {
 	}
 
 	public void addHandler() {
-		this.handlers.add(new Handler());
+		if(this.handlers.size() != 6){
+			this.handlers.add(new Handler());
+		}
+		
 	}
 
 }
