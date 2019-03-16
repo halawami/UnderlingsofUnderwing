@@ -2,32 +2,36 @@ package Game;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class GameTests {
 	
+	private Game game;
+	
+	@Before
+	public void init() {
+		this.game = new Game();
+	}
+	
 	@Test
 	public void testSetup2Players15Rounds() {
-		Game game = new Game();
-		game.setUp(2);
-		
-		assertEquals(game.getRoundsLeft(), 15);	
+		this.game.setUp(2);
+		assertEquals(this.game.getRoundsLeft(), 15);	
 	}
 	
 	@Test
 	public void testSetup3Players13Rounds() {
-		Game game = new Game();
-		game.setUp(3);
-		
-		assertEquals(game.getRoundsLeft(), 13);
+		this.game.setUp(3);
+		assertEquals(this.game.getRoundsLeft(), 13);
 	}
 	
 	@Test
 	public void testSetup4Players12Rounds() {
-		Game game = new Game();
-		game.setUp(4);
-		
-		assertEquals(game.getRoundsLeft(), 12);
+		this.game.setUp(4);
+		assertEquals(this.game.getRoundsLeft(), 12);
 	}
+	
+	
 
 }
