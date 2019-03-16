@@ -37,12 +37,4 @@ public class HatchingGroundTests {
         HatchingGround hatchingGround = new HatchingGround(4,4, deck);
         EasyMock.verify(deck);
     }
-
-
-
-
-
-
-
-
 }
