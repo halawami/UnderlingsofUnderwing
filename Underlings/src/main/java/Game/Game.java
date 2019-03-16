@@ -1,5 +1,8 @@
 package Game;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class Game {
 
 	private final int ROUNDS_TWO_PLAYERS = 15, ROUNDS_THREE_PLAYERS = 13, ROUNDS_FOUR_SIX_PLAYERS = 12;
@@ -40,6 +43,10 @@ public class Game {
 
 	public HatchingGround getHatchingGround() {
 		return this.hatchingGround;
+	}
+
+	public List<Player> getPlayers() {
+		return new LinkedList<Player>();
 	}
 
 }
