@@ -10,7 +10,7 @@ public class Game {
     private final int ROUNDS_TWO_PLAYERS = 15, ROUNDS_THREE_PLAYERS = 13, ROUNDS_FOUR_SIX_PLAYERS = 12;
     private final int HATCHING_TWO_WIDTH = 3, HATCHING_THREE_WIDTH = 4, HATCHING_FOUR_SIX_WIDTH = 4;
     private final int HATCHING_TWO_HEIGHT = 2, HATCHING_THREE_HEIGHT = 3, HATCHING_FOUR_SIX_HEIGHT = 4;
-    private final int MAX_HANDLERS_TWO = 4, MAX_HANDLERS_THREE = 5;
+    private final int MAX_HANDLERS_TWO = 4, MAX_HANDLERS_THREE = 5, MAX_HANDLERS_FOUR_SIX = 6; 
     private Deck deck;
     private int maxHandlers;
     
@@ -41,6 +41,7 @@ public class Game {
             case 6:
                 this.roundsLeft = ROUNDS_FOUR_SIX_PLAYERS;
                 this.hatchingGround = new HatchingGround(HATCHING_FOUR_SIX_WIDTH, HATCHING_FOUR_SIX_HEIGHT, deck);
+                this.maxHandlers = MAX_HANDLERS_FOUR_SIX;
                 break;
             default:
                 throw new IllegalArgumentException("Player count must be between 2 and 6, inclusive");
