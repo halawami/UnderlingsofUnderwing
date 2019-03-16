@@ -4,9 +4,7 @@ import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 import static org.junit.Assert.assertEquals;
 
@@ -17,9 +15,9 @@ public class DeckTests {
 
     @Before
     public void init(){
-        List<Card> cards = new ArrayList<Card>();
+        Stack<Card> cards = new Stack<Card>();
         for (int i = 0; i < DECK_SIZE; i++) {
-            cards.add(new Card());
+            cards.push(new Card());
         }
         this.deck = new Deck(cards);
     }
@@ -28,4 +26,16 @@ public class DeckTests {
     public void testDeckSetUp() {
         assertEquals(DECK_SIZE, deck.getSize());
     }
+
+
+    @Test
+    public void testDraw() {
+        Card first = new Card();
+        Stack<Card> cards = new Stack<>();
+        cards.push(first);
+        this.deck = new Deck(cards);
+        assertEquals(first, this.deck.draw());
+    }
+
+
 }

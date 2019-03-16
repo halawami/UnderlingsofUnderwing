@@ -1,16 +1,19 @@
 package Game;
 
 import java.util.List;
-import java.util.Random;
+import java.util.Stack;
 
 public class Deck {
 
-    public Deck(List<Card> cards) {
+    Stack<Card> cards;
+
+    public Deck(Stack<Card> cards) {
+        this.cards = cards;
 
     }
 
     public Card draw(){
-        return new Card();
+        return cards.pop();
     }
 
     public int getSize() {
