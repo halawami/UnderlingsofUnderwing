@@ -111,6 +111,7 @@ public class GameTests {
 		}
 	}
 	
+	
 	@Test
 	public void testSetupHandlerState(){
 		this.game.setUp(2, cardFactory);
