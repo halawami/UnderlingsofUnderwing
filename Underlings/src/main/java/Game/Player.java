@@ -26,13 +26,11 @@ public class Player {
 	public void addHandler() {
 		if(this.handlers.size() != this.maxHandlers){
 			this.handlers.add(new Handler());
-		}
-		
+		}		
 	}
 
 	public int getMaxHandlers() {
-		// TODO Auto-generated method stub
-		return 4;
+		return this.maxHandlers;
 	}
 
 }

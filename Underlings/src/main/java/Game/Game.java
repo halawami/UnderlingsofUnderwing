@@ -10,7 +10,10 @@ public class Game {
     private final int ROUNDS_TWO_PLAYERS = 15, ROUNDS_THREE_PLAYERS = 13, ROUNDS_FOUR_SIX_PLAYERS = 12;
     private final int HATCHING_TWO_WIDTH = 3, HATCHING_THREE_WIDTH = 4, HATCHING_FOUR_SIX_WIDTH = 4;
     private final int HATCHING_TWO_HEIGHT = 2, HATCHING_THREE_HEIGHT = 3, HATCHING_FOUR_SIX_HEIGHT = 4;
+    private final int MAX_HANDLERS_TWO = 4, MAX_HANDLERS_THREE = 5;
     private Deck deck;
+    private int maxHandlers;
+    
 
     private int roundsLeft;
     private HatchingGround hatchingGround;
@@ -26,10 +29,12 @@ public class Game {
             case 2:
                 this.roundsLeft = ROUNDS_TWO_PLAYERS;
                 this.hatchingGround = new HatchingGround(HATCHING_TWO_WIDTH, HATCHING_TWO_HEIGHT, deck);
+                this.maxHandlers = MAX_HANDLERS_TWO;
                 break;
             case 3:
                 this.roundsLeft = ROUNDS_THREE_PLAYERS;
                 this.hatchingGround = new HatchingGround(HATCHING_THREE_WIDTH, HATCHING_THREE_HEIGHT, deck);
+                this.maxHandlers = MAX_HANDLERS_THREE;
                 break;
             case 4:
             case 5:
@@ -43,7 +48,7 @@ public class Game {
 
         // Set Player List
         for (int i = 0; i < numberOfPlayers; i++) {
-            this.players.add(new Player(4));
+            this.players.add(new Player(maxHandlers));
         }
 
     }

@@ -150,4 +150,12 @@ public class GameTests {
 		}
 	}
 	
+	@Test
+	public void testSetup3Players_MaxHandlers() {
+		this.game.setUp(3, cardFactory);
+		for(Player player : this.game.getPlayers()){
+			assertEquals(5, player.getMaxHandlers());
+		}
+	}
+	
 }
