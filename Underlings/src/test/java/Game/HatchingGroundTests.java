@@ -16,4 +16,20 @@ public class HatchingGroundTests {
         EasyMock.verify(deck);
     }
 
+    @Test
+    public void testDeal4By3(){
+        Deck deck = EasyMock.strictMock(Deck.class);
+        EasyMock.expect(deck.draw()).andReturn(new Card()).times(12);
+
+        EasyMock.replay(deck);
+
+        HatchingGround hatchingGround = new HatchingGround(4,3, deck);
+        EasyMock.verify(deck);
+    }
+
+
+
+
+
+
 }
