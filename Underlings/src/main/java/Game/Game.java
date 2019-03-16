@@ -11,6 +11,8 @@ public class Game {
 
 	private int roundsLeft;
 	private HatchingGround hatchingGround;
+	
+	private List<Player> players = new LinkedList<Player>();
 
 	public void setUp(int numberOfPlayers) {
 		
@@ -34,6 +36,10 @@ public class Game {
 			throw new IllegalArgumentException("Player count must be between 2 and 6, inclusive");
 		}
 
+		// Set Player List
+		for (int i = 0; i < numberOfPlayers; i++) {
+			this.players.add(new Player());
+		}
 		
 	}
 
@@ -46,7 +52,7 @@ public class Game {
 	}
 
 	public List<Player> getPlayers() {
-		return new LinkedList<Player>();
+		return this.players;
 	}
 
 }

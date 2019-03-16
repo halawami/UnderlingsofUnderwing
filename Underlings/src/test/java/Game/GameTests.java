@@ -77,7 +77,11 @@ public class GameTests {
 		assertEquals(this.game.getHatchingGround().getHeight(), 4);
 	}
 	
-	
+	@Test
+	public void testSetup2Players_Players() {
+		this.game.setUp(2);
+		assertEquals(this.game.getPlayers().size(), 2);
+	}
 	
 	@Test
 	public void testSetup2Players_Handlers() {
