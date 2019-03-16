@@ -32,6 +32,12 @@ public class GameTests {
 		assertEquals(this.game.getRoundsLeft(), 12);
 	}
 	
+	@Test
+	public void testSetup6Players12Rounds() {
+		this.game.setUp(6);
+		assertEquals(this.game.getRoundsLeft(), 12);
+	}
+	
 	
 
 }
