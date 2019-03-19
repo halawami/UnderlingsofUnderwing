@@ -4,7 +4,6 @@ build:
   stage: build
   script:
     - cd Underlings
-    - chmod +x gradlew
     - ./gradlew build
   tags:
     - gradle      # Matches the tags you created for your runner
