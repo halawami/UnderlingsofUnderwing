@@ -9,6 +9,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import Game.Card;
+import Game.Handler;
+import Player.Player;
 
 public class LameGUI implements GUI {
 	private final int WIDTH = 400, HEIGHT = 400;
@@ -45,6 +47,18 @@ public class LameGUI implements GUI {
 		
 		System.out.println("("+row+","+col+")\t"+card.toString());
 		frame.getGraphics().drawImage(img, 0, 0, null);
+	}
+
+	@Override
+	public void displayPlayer(int playerNumber, Player player) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void displayHandler(int playerNumber, Handler handler) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

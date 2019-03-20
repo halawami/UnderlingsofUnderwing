@@ -9,6 +9,7 @@ import org.junit.Test;
 import Game.Card;
 import Game.Deck;
 import Game.Game;
+import Game.Handler;
 import Game.HatchingGround;
 import Player.Player;
 import Player.PlayerFactory;
@@ -65,7 +66,7 @@ public class GUITests {
 	}
 
 	@Test
-	public void testDisplayCardTwoPlayers() {
+	public void testDisplayCardSetupTwoPlayers() {
 		this.game.setUp(2);
 
 		// RECORD
@@ -83,7 +84,7 @@ public class GUITests {
 	}
 
 	@Test
-	public void testDisplayCardThreePlayers() {
+	public void testDisplayCardSetupThreePlayers() {
 		this.game.setUp(3);
 
 		// RECORD
@@ -101,7 +102,7 @@ public class GUITests {
 	}
 
 	@Test
-	public void testDisplayCardFourPlayers() {
+	public void testDisplayCardSetupFourPlayers() {
 		this.game.setUp(4);
 
 		// RECORD
@@ -119,7 +120,7 @@ public class GUITests {
 	}
 
 	@Test
-	public void testDisplayCardSixPlayers() {
+	public void testDisplayCardSetupSixPlayers() {
 		this.game.setUp(6);
 
 		// RECORD
@@ -137,13 +138,15 @@ public class GUITests {
 	}
 
 	@Test
-	public void testDisplayPlayerTwoPlayers() {
+	public void testDisplayPlayerSetupTwoPlayers() {
 		this.game.setUp(2);
 		
 		// RECORD
 		EasyMock.expect(this.gui.promptPlayerCount()).andStubReturn(2);
 		this.gui.displayPlayer(EasyMock.anyInt(), EasyMock.anyObject(Player.class));
 		EasyMock.expectLastCall().times(2);
+		this.gui.displayHandler(EasyMock.anyInt(), EasyMock.anyObject(Handler.class));
+		EasyMock.expectLastCall().anyTimes();
 
 		// REPLAY
 		EasyMock.replay(this.gui);
@@ -154,13 +157,34 @@ public class GUITests {
 	}
 	
 	@Test
-	public void testDisplayPlayerSixPlayers() {
+	public void testDisplayPlayerSetupSixPlayers() {
 		this.game.setUp(6);
 		
 		// RECORD
 		EasyMock.expect(this.gui.promptPlayerCount()).andStubReturn(6);
 		this.gui.displayPlayer(EasyMock.anyInt(), EasyMock.anyObject(Player.class));
 		EasyMock.expectLastCall().times(6);
+		this.gui.displayHandler(EasyMock.anyInt(), EasyMock.anyObject(Handler.class));
+		EasyMock.expectLastCall().anyTimes();
+
+		// REPLAY
+		EasyMock.replay(this.gui);
+		this.game.displayPlayers();
+
+		// VERIFY
+		EasyMock.verify(this.gui);
+	}
+	
+	@Test
+	public void testDisplayHandlerSetupTwoPlayers() {
+		this.game.setUp(2);
+		
+		// RECORD
+		EasyMock.expect(this.gui.promptPlayerCount()).andStubReturn(2);
+		this.gui.displayPlayer(EasyMock.anyInt(), EasyMock.anyObject(Player.class));
+		EasyMock.expectLastCall().anyTimes();
+		this.gui.displayHandler(EasyMock.anyInt(), EasyMock.anyObject(Handler.class));
+		EasyMock.expectLastCall().times(4);
 
 		// REPLAY
 		EasyMock.replay(this.gui);

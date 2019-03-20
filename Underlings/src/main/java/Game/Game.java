@@ -96,8 +96,13 @@ public class Game {
 	}
 
 	public void displayPlayers() {
-		for(int i = 0; i < this.players.size(); i++) {
-			this.gui.displayPlayer(i, this.players.get(i));			
+		for(int playerNumber = 0; playerNumber < this.players.size(); playerNumber++) {
+			Player player = this.players.get(playerNumber);
+			this.gui.displayPlayer(playerNumber, player);
+			List<Handler> handlers = player.getHandlers();
+			for(int handlerNumber = 0; handlerNumber < handlers.size(); handlerNumber++) {
+				this.gui.displayHandler(playerNumber, handlers.get(handlerNumber));
+			}
 		}
 	}
 
