@@ -1,5 +1,7 @@
 package Game;
 
+import GUI.GUI;
+
 public class HatchingGround {
 
 	private int height, width;
@@ -28,6 +30,14 @@ public class HatchingGround {
 		for (int row = 0; row < this.height; row++) {
 			for (int col = 0; col < this.width; col++) {
 				this.cards[row][col] = this.deck.draw();
+			}
+		}
+	}
+
+	public void display(GUI gui) {
+		for (int row = 0; row < this.height; row++) {
+			for (int col = 0; col < this.width; col++) {
+				gui.displayCard(row, col, this.cards[row][col]);
 			}
 		}
 	}

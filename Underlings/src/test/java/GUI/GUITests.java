@@ -6,6 +6,8 @@ import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
 
+import Game.Card;
+import Game.Deck;
 import Game.Game;
 import Game.HatchingGround;
 import Player.PlayerFactory;
@@ -15,11 +17,17 @@ public class GUITests {
 	private Game game;
 	private HatchingGround hatchingGround;
 	private GUI gui;
+	private Deck deck;
 	
 	@Before
 	public void init() {
 		this.gui = EasyMock.mock(GUI.class);
-		this.hatchingGround = EasyMock.mock(HatchingGround.class);
+		
+		this.deck = EasyMock.mock(Deck.class);
+		EasyMock.expect(this.deck.draw()).andStubReturn(new Card());
+		EasyMock.replay(this.deck);
+		
+		this.hatchingGround = new HatchingGround(this.deck);
 		this.game = new Game(this.gui, this.hatchingGround, new PlayerFactory());
 	}
 	
@@ -31,7 +39,7 @@ public class GUITests {
 		
 		// REPLAY
 		EasyMock.replay(this.gui);
-		this.game.start();
+		this.game.requestPlayerCount();
 		
 		// VERIFY
 		EasyMock.verify(this.gui);
@@ -47,11 +55,30 @@ public class GUITests {
 		
 		// REPLAY
 		EasyMock.replay(this.gui);
-		this.game.start();
+		this.game.requestPlayerCount();
 		
 		// VERIFY
 		EasyMock.verify(this.gui);
 		assertEquals(6, this.game.getPlayerCount());
+		
+	}
+	
+	@Test
+	public void testDisplayCardTwoPlayers() {
+		this.hatchingGround.setDimensions(3, 2);
+		this.hatchingGround.populate();
+		
+		// RECORD
+		EasyMock.expect(this.gui.promptPlayerCount()).andStubReturn(2);
+		this.gui.displayCard(EasyMock.anyInt(), EasyMock.anyInt(), EasyMock.anyObject(Card.class));
+		EasyMock.expectLastCall().times(6);
+		
+		// REPLAY
+		EasyMock.replay(this.gui);
+		this.hatchingGround.display(this.gui);
+		
+		// VERIFY
+		EasyMock.verify(this.gui);
 		
 	}
 }

@@ -38,6 +38,10 @@ public class Game {
 		this.playerFactory = playerFactory;
 	}
 
+	public void requestPlayerCount() {
+		this.numberOfPlayers = this.gui.promptPlayerCount();
+	}
+	
 	public void setUp(int numberOfPlayers) {
 		if (numberOfPlayers < MIN_PLAYERS || numberOfPlayers > MAX_PLAYERS) {
 			throw new IllegalArgumentException("Player count must be between 2 and 6, inclusive");
@@ -76,12 +80,18 @@ public class Game {
 	}
 
 	public void start() {
-		this.numberOfPlayers = this.gui.promptPlayerCount();
+		this.requestPlayerCount();
 		this.setUp(this.numberOfPlayers);
+		
+		this.display();
 	}
 
 	public int getPlayerCount() {
 		return this.numberOfPlayers;
+	}
+	
+	private void display() {
+		this.hatchingGround.display(this.gui);
 	}
 
 }
