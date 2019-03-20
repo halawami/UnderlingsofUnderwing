@@ -91,6 +91,7 @@ public class Game {
 	}
 	
 	private void display() {
+		this.gui.displayBackground();
 		this.hatchingGround.display(this.gui);
 		this.displayPlayers();
 	}

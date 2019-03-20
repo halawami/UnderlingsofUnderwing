@@ -14,4 +14,6 @@ public interface GUI {
 
 	public void displayHandler(int playerNumber, Handler handler);
 
+	public void displayBackground();
+
 }
