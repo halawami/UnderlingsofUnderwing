@@ -1,6 +1,5 @@
-import org.easymock.EasyMock;
-
 import GUI.GUI;
+import GUI.LameGUI;
 import Game.CardFactory;
 import Game.Deck;
 import Game.Game;
@@ -11,7 +10,7 @@ public class Main {
 
 	public static void main(String[] args ) {
 		
-		GUI gui = EasyMock.mock(GUI.class);
+		GUI gui = new LameGUI();
 		CardFactory cardFactory = new CardFactory();
 		Deck deck = new Deck(cardFactory.getCards());
 		HatchingGround hatchingGround = new HatchingGround(deck);

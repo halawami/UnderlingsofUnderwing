@@ -119,6 +119,7 @@ public class GUITests {
 		EasyMock.verify(this.gui);
 		
 	}
+	
 	@Test
 	public void testDisplayCardSixPlayers() {
 		this.hatchingGround.setDimensions(4, 4);
@@ -137,4 +138,5 @@ public class GUITests {
 		EasyMock.verify(this.gui);
 		
 	}
+	
 }
