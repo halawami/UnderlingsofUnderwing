@@ -152,4 +152,21 @@ public class GUITests {
 		// VERIFY
 		EasyMock.verify(this.gui);
 	}
+	
+	@Test
+	public void testDisplayPlayerSixPlayers() {
+		this.game.setUp(6);
+		
+		// RECORD
+		EasyMock.expect(this.gui.promptPlayerCount()).andStubReturn(6);
+		this.gui.displayPlayer(EasyMock.anyInt(), EasyMock.anyObject(Player.class));
+		EasyMock.expectLastCall().times(6);
+
+		// REPLAY
+		EasyMock.replay(this.gui);
+		this.game.displayPlayers();
+
+		// VERIFY
+		EasyMock.verify(this.gui);
+	}
 }
