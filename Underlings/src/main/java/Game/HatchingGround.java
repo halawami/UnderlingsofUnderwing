@@ -25,9 +25,9 @@ public class HatchingGround {
 
 	public void populate() {
 		this.cards = new Card[this.height][this.width];
-		for (int i = 0; i < this.height; i++) {
-			for (int j = 0; j < this.width; j++) {
-				this.cards[i][j] = this.deck.draw();
+		for (int row = 0; row < this.height; row++) {
+			for (int col = 0; col < this.width; col++) {
+				this.cards[row][col] = this.deck.draw();
 			}
 		}
 	}

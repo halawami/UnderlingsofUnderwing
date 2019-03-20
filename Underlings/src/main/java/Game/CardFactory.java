@@ -7,5 +7,5 @@ public class CardFactory {
 	public Stack<Card> getCards() {
 		return new Stack<Card>();
 	}
-	
+
 }

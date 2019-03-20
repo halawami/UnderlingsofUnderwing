@@ -1,13 +1,12 @@
 package Game;
 
-import org.easymock.EasyMock;
-import org.junit.Before;
-import org.junit.Test;
-
-import java.util.*;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
+
+import java.util.Stack;
+
+import org.junit.Before;
+import org.junit.Test;
 
 public class DeckTests {
 
