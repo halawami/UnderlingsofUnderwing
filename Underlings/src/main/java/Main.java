@@ -1,8 +1,16 @@
+import org.easymock.EasyMock;
+
+import GUI.GUI;
+import Game.Game;
 
 public class Main {
 
 	public static void main(String[] args ) {
-		System.out.println("Hello World");
+		
+		GUI gui = EasyMock.mock(GUI.class);
+		Game game = new Game(gui);
+		game.start();
+		
 	}
 	
 }

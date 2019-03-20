@@ -1,9 +1,9 @@
 package Game;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Stack;
+
+import GUI.GUI;
 
 public class Game {
 
@@ -13,35 +13,39 @@ public class Game {
     private final int MAX_HANDLERS_TWO = 4, MAX_HANDLERS_THREE = 5, MAX_HANDLERS_FOUR_SIX = 6; 
     private Deck deck;
     private int maxHandlers;
+    private GUI gui;
     
-
     private int roundsLeft;
     private HatchingGround hatchingGround;
 
     private List<Player> players = new LinkedList<Player>();
 
-    public void setUp(int numberOfPlayers, CardFactory cardFactory) {
+    public Game(GUI gui) {
+		this.gui = gui;
+	}
+
+	public void setUp(int numberOfPlayers, CardFactory cardFactory) {
 
         this.deck = new Deck(cardFactory.getCards());
 
         // Set Round Number and Hatching Ground
         switch (numberOfPlayers) {
             case 2:
-                this.roundsLeft = ROUNDS_TWO_PLAYERS;
-                this.hatchingGround = new HatchingGround(HATCHING_TWO_WIDTH, HATCHING_TWO_HEIGHT, deck);
-                this.maxHandlers = MAX_HANDLERS_TWO;
+                this.roundsLeft = this.ROUNDS_TWO_PLAYERS;
+                this.hatchingGround = new HatchingGround(this.HATCHING_TWO_WIDTH, this.HATCHING_TWO_HEIGHT, this.deck);
+                this.maxHandlers = this.MAX_HANDLERS_TWO;
                 break;
             case 3:
-                this.roundsLeft = ROUNDS_THREE_PLAYERS;
-                this.hatchingGround = new HatchingGround(HATCHING_THREE_WIDTH, HATCHING_THREE_HEIGHT, deck);
-                this.maxHandlers = MAX_HANDLERS_THREE;
+                this.roundsLeft = this.ROUNDS_THREE_PLAYERS;
+                this.hatchingGround = new HatchingGround(this.HATCHING_THREE_WIDTH, this.HATCHING_THREE_HEIGHT, this.deck);
+                this.maxHandlers = this.MAX_HANDLERS_THREE;
                 break;
             case 4:
             case 5:
             case 6:
-                this.roundsLeft = ROUNDS_FOUR_SIX_PLAYERS;
-                this.hatchingGround = new HatchingGround(HATCHING_FOUR_SIX_WIDTH, HATCHING_FOUR_SIX_HEIGHT, deck);
-                this.maxHandlers = MAX_HANDLERS_FOUR_SIX;
+                this.roundsLeft = this.ROUNDS_FOUR_SIX_PLAYERS;
+                this.hatchingGround = new HatchingGround(this.HATCHING_FOUR_SIX_WIDTH, this.HATCHING_FOUR_SIX_HEIGHT, this.deck);
+                this.maxHandlers = this.MAX_HANDLERS_FOUR_SIX;
                 break;
             default:
                 throw new IllegalArgumentException("Player count must be between 2 and 6, inclusive");
@@ -49,7 +53,7 @@ public class Game {
 
         // Set Player List
         for (int i = 0; i < numberOfPlayers; i++) {
-            this.players.add(new Player(maxHandlers));
+            this.players.add(new Player(this.maxHandlers));
         }
 
     }
@@ -65,5 +69,13 @@ public class Game {
     public List<Player> getPlayers() {
         return this.players;
     }
+
+	public void start() {
+		this.gui.promptPlayerCount();
+	}
+
+	public int getPlayerCount() {
+		return 2;
+	}
 
 }
