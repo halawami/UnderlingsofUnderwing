@@ -4,6 +4,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 import GUI.GUI;
+import Player.Player;
+import Player.PlayerFactory;
 
 public class Game {
 
@@ -18,12 +20,14 @@ public class Game {
     
     private HatchingGround hatchingGround;
     private GUI gui;
-
+    private PlayerFactory playerFactory;
+    
     private List<Player> players = new LinkedList<Player>();
 
-    public Game(GUI gui, HatchingGround hatchingGround) {
+    public Game(GUI gui, HatchingGround hatchingGround, PlayerFactory playerFactory) {
 		this.gui = gui;
 		this.hatchingGround = hatchingGround;
+		this.playerFactory = playerFactory;
 	}
 
 	public void setUp(int numberOfPlayers) {
@@ -55,7 +59,7 @@ public class Game {
 
         // Set Player List
         for (int i = 0; i < numberOfPlayers; i++) {
-            this.players.add(new Player(this.maxHandlers));
+            this.players.add(this.playerFactory.createPlayer(this.maxHandlers));
         }
 
     }

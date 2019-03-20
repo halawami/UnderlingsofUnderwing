@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import Game.Game;
 import Game.HatchingGround;
+import Player.PlayerFactory;
 
 public class GUITests {
 
@@ -19,7 +20,7 @@ public class GUITests {
 	public void init() {
 		this.gui = EasyMock.mock(GUI.class);
 		this.hatchingGround = EasyMock.mock(HatchingGround.class);
-		this.game = new Game(this.gui, this.hatchingGround);
+		this.game = new Game(this.gui, this.hatchingGround, new PlayerFactory());
 	}
 	
 	@Test

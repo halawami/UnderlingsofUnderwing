@@ -10,6 +10,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import GUI.GUI;
+import Player.Player;
+import Player.PlayerFactory;
 
 public class GameTests {
 	
@@ -28,7 +30,7 @@ public class GameTests {
 		}
 
 		this.hatchingGround = new HatchingGround(new Deck(this.cards));
-		this.game = new Game(this.gui, this.hatchingGround);
+		this.game = new Game(this.gui, this.hatchingGround, new PlayerFactory());
 		
 	}	
 	

@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.junit.Test;
 
+import Player.Player;
+
 public class PlayerTests {
 
 	@Test

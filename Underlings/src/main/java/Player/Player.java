@@ -1,7 +1,9 @@
-package Game;
+package Player;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import Game.Handler;
 
 public class Player {
 
