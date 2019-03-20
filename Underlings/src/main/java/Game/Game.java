@@ -92,6 +92,12 @@ public class Game {
 	
 	private void display() {
 		this.hatchingGround.display(this.gui);
+		this.displayPlayers();
+	}
+
+	public void displayPlayers() {
+		this.gui.displayPlayer(0, this.players.get(0));
+		this.gui.displayPlayer(1, this.players.get(1));
 	}
 
 }
