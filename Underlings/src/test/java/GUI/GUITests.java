@@ -81,4 +81,60 @@ public class GUITests {
 		EasyMock.verify(this.gui);
 		
 	}
+	
+	@Test
+	public void testDisplayCardThreePlayers() {
+		this.hatchingGround.setDimensions(4, 3);
+		this.hatchingGround.populate();
+		
+		// RECORD
+		EasyMock.expect(this.gui.promptPlayerCount()).andStubReturn(2);
+		this.gui.displayCard(EasyMock.anyInt(), EasyMock.anyInt(), EasyMock.anyObject(Card.class));
+		EasyMock.expectLastCall().times(12);
+		
+		// REPLAY
+		EasyMock.replay(this.gui);
+		this.hatchingGround.display(this.gui);
+		
+		// VERIFY
+		EasyMock.verify(this.gui);
+		
+	}
+	
+	@Test
+	public void testDisplayCardFourPlayers() {
+		this.hatchingGround.setDimensions(4, 4);
+		this.hatchingGround.populate();
+		
+		// RECORD
+		EasyMock.expect(this.gui.promptPlayerCount()).andStubReturn(2);
+		this.gui.displayCard(EasyMock.anyInt(), EasyMock.anyInt(), EasyMock.anyObject(Card.class));
+		EasyMock.expectLastCall().times(16);
+		
+		// REPLAY
+		EasyMock.replay(this.gui);
+		this.hatchingGround.display(this.gui);
+		
+		// VERIFY
+		EasyMock.verify(this.gui);
+		
+	}
+	@Test
+	public void testDisplayCardSixPlayers() {
+		this.hatchingGround.setDimensions(4, 4);
+		this.hatchingGround.populate();
+		
+		// RECORD
+		EasyMock.expect(this.gui.promptPlayerCount()).andStubReturn(2);
+		this.gui.displayCard(EasyMock.anyInt(), EasyMock.anyInt(), EasyMock.anyObject(Card.class));
+		EasyMock.expectLastCall().times(16);
+		
+		// REPLAY
+		EasyMock.replay(this.gui);
+		this.hatchingGround.display(this.gui);
+		
+		// VERIFY
+		EasyMock.verify(this.gui);
+		
+	}
 }
