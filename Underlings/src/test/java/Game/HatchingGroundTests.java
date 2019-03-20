@@ -1,10 +1,12 @@
 package Game;
 
-import org.junit.Test;
 import org.easymock.EasyMock;
+import org.junit.Test;
 
 public class HatchingGroundTests {
 
+	
+	
     @Test
     public void testDeal3By2(){
         Deck deck = EasyMock.strictMock(Deck.class);
@@ -12,7 +14,10 @@ public class HatchingGroundTests {
 
         EasyMock.replay(deck);
 
-        HatchingGround hatchingGround = new HatchingGround(3,2, deck);
+        HatchingGround hatchingGround = new HatchingGround(deck);
+        hatchingGround.setDimensions(3,2);
+        hatchingGround.populate();
+        
         EasyMock.verify(deck);
     }
 
@@ -23,7 +28,10 @@ public class HatchingGroundTests {
 
         EasyMock.replay(deck);
 
-        HatchingGround hatchingGround = new HatchingGround(4,3, deck);
+        HatchingGround hatchingGround = new HatchingGround(deck);
+        hatchingGround.setDimensions(4,3);
+        hatchingGround.populate();
+        
         EasyMock.verify(deck);
     }
 
@@ -34,7 +42,10 @@ public class HatchingGroundTests {
 
         EasyMock.replay(deck);
 
-        HatchingGround hatchingGround = new HatchingGround(4,4, deck);
+        HatchingGround hatchingGround = new HatchingGround(deck);
+        hatchingGround.setDimensions(4,4);
+        hatchingGround.populate();
+        
         EasyMock.verify(deck);
     }
 }
