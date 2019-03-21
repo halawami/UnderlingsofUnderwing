@@ -55,30 +55,59 @@ public class LameGUI implements GUI {
 
 	@Override
 	public void displayCard(int row, int col, Card card) {
-		int xOffset = 25, yOffset = 25;
-		int gap = 10;
-		int width = 20;
-		int height = 20;
+		// 1313 1228
+		// 1823 1588
+		// 1896 1648
+		int xOffset = 1313, yOffset = 1228;
+		int xGap = 73, yGap = 60;
+		int width = 510, height = 360;
+		double ratio = 1066/4099.0;
 
-		g.setColor(Color.WHITE);
-		g.fillRect(xOffset + (width + gap) * col, yOffset + (height + gap) * row, width, height);
-
-		frame.getContentPane().getGraphics().drawImage(img, 0, 0, null);
+		g.setColor(new Color((int)(Math.random()*255*255*255)));
+		g.fillRect((int)(ratio*(xOffset + (width + xGap) * col)), (int)(ratio*(yOffset + (height + yGap) * row)), (int)(ratio*width), (int)(ratio*height));
 	}
 
 	@Override
 	public void displayPlayer(int playerNumber, Player player) {
+		// 8 7
+		// 1363 730
+		// 1372 2921
+		
+		int xOffset = 8, yOffset = 7;
+		int xGap = 9, yGap = 2191;
+		int width = 1355, height = 723;
+		double ratio = 1066/4099.0;
+		
+		int row = playerNumber/3;
+		int col = playerNumber%3;
 
+		g.setColor(new Color((int)(Math.random()*255*255*255)));
+		g.fillRect((int)(ratio*(xOffset + (width + xGap) * col)), (int)(ratio*(yOffset + (height + yGap) * row)), (int)(ratio*width), (int)(ratio*height));
 	}
 
 	@Override
 	public void displayHandler(int playerNumber, Handler handler) {
+		int xOffset = 8, yOffset = 7;
+		int xGap = 9, yGap = 2191;
+		int width = 1355, height = 723;
+		double ratio = 1066/4099.0;
+		
+		int row = playerNumber/3;
+		int col = playerNumber%3;
 
+		g.setColor(new Color((int)(Math.random()*255*255*255)));
+		g.drawString(handler.getState().toString(), (int)(ratio*(30 + xOffset + (width + xGap) * col)), (int)(Math.random()*50+ratio*(height/2 + yOffset + (height + yGap) * row)));
+		
 	}
 
 	@Override
 	public void displayBackground() {
 		g.drawImage(background, 0, 0, WIDTH, HEIGHT, null);
+	}
+
+	@Override
+	public void update() {
+		frame.getContentPane().getGraphics().drawImage(img, 0, 0, null);
 	}
 
 }

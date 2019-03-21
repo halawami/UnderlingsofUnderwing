@@ -16,4 +16,6 @@ public interface GUI {
 
 	public void displayBackground();
 
+	public void update();
+
 }
