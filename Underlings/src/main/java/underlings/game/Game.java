@@ -53,12 +53,12 @@ public class Game {
 	}
 
 	private void setUpProperties(int numberOfPlayers) {
-		int propertyIndex = numberOfPlayers - this.MIN_PLAYERS;
+		int propertyIndex = numberOfPlayers - MIN_PLAYERS;
 
-		this.roundsLeft = this.NUMBER_OF_ROUNDS[propertyIndex];
-		this.hatchingGround.setDimensions(this.HATCHING_GROUND_WIDTH[propertyIndex],
+		this.roundsLeft = NUMBER_OF_ROUNDS[propertyIndex];
+		this.hatchingGround.setDimensions(HATCHING_GROUND_WIDTH[propertyIndex],
 				HATCHING_GROUND_HEIGHT[propertyIndex]);
-		this.maxHandlers = this.MAX_HANDLERS[propertyIndex];
+		this.maxHandlers = MAX_HANDLERS[propertyIndex];
 	}
 
 	public void setUpPlayerList(int numberOfPlayers) {
@@ -103,9 +103,7 @@ public class Game {
 			Player player = this.players.get(playerNumber);
 			this.gui.displayPlayer(playerNumber, player);
 			List<Handler> handlers = player.getHandlers();
-			for(int handlerNumber = 0; handlerNumber < handlers.size(); handlerNumber++) {
-				this.gui.displayHandler(playerNumber, handlers.get(handlerNumber));
-			}
+			this.gui.displayHandlers(playerNumber, handlers);
 		}
 	}
 

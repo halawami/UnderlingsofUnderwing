@@ -1,5 +1,7 @@
 package underlings.gui;
 
+import java.util.List;
+
 import underlings.game.Card;
 import underlings.game.Handler;
 import underlings.player.Player;
@@ -12,7 +14,7 @@ public interface GUI {
 
 	public void displayPlayer(int playerNumber, Player player);
 
-	public void displayHandler(int playerNumber, Handler handler);
+	public void displayHandlers(int playerNumber, List<Handler> handler);
 
 	public void displayBackground();
 

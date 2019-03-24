@@ -6,6 +6,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
@@ -54,6 +55,12 @@ public class LameGUI implements GUI {
 		return Integer.parseInt(JOptionPane.showInputDialog("How many players? [2,6]"));
 	}
 
+	/**
+	 * 
+	 * prompts for each phase
+	 * 
+	 */
+
 	@Override
 	public void displayCard(int row, int col, Card card) {
 		// 1313 1228
@@ -73,12 +80,12 @@ public class LameGUI implements GUI {
 		// 8 7
 		// 1363 730
 		// 1372 2921
-		
+
 		int xOffset = 8, yOffset = 7;
 		int xGap = 9, yGap = 2191;
 		int width = 1355, height = 723;
 		double ratio = 1066/4099.0;
-		
+
 		int row = playerNumber/3;
 		int col = playerNumber%3;
 
@@ -87,18 +94,19 @@ public class LameGUI implements GUI {
 	}
 
 	@Override
-	public void displayHandler(int playerNumber, Handler handler) {
+	public void displayHandlers(int playerNumber, List<Handler> handlers) {
 		int xOffset = 8, yOffset = 7;
 		int xGap = 9, yGap = 2191;
 		int width = 1355, height = 723;
 		double ratio = 1066/4099.0;
-		
-		int row = playerNumber/3;
-		int col = playerNumber%3;
 
-		this.g.setColor(new Color((int)(Math.random()*255*255*255)));
-		this.g.drawString(handler.getState().toString(), (int)(ratio*(30 + xOffset + (width + xGap) * col)), (int)(Math.random()*50+ratio*(height/2 + yOffset + (height + yGap) * row)));
-		
+		for(Handler handler : handlers) {
+			int row = playerNumber/3;
+			int col = playerNumber%3;
+
+			this.g.setColor(new Color((int)(Math.random()*255*255*255)));
+			this.g.drawString(handler.getState().toString(), (int)(ratio*(30 + xOffset + (width + xGap) * col)), (int)(Math.random()*50+ratio*(height/2 + yOffset + (height + yGap) * row)));
+		}
 	}
 
 	@Override
