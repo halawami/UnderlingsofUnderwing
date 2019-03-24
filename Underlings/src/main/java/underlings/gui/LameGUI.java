@@ -100,12 +100,12 @@ public class LameGUI implements GUI {
 		int width = 1355, height = 723;
 		double ratio = 1066/4099.0;
 
-		for(Handler handler : handlers) {
+		for(int i = 0; i < handlers.size(); i++) {
 			int row = playerNumber/3;
 			int col = playerNumber%3;
 
 			this.g.setColor(new Color((int)(Math.random()*255*255*255)));
-			this.g.drawString(handler.getState().toString(), (int)(ratio*(30 + xOffset + (width + xGap) * col)), (int)(Math.random()*50+ratio*(height/2 + yOffset + (height + yGap) * row)));
+			this.g.drawString(handlers.get(i).getState().toString(), (int)(ratio*(30 + xOffset + (width + xGap) * col)), (int)(i*25+ratio*(height/2 + yOffset + (height + yGap) * row)));
 		}
 	}
 
