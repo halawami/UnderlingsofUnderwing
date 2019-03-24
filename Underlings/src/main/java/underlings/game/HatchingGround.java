@@ -1,6 +1,6 @@
 package underlings.game;
 
-import GUI.GUI;
+import underlings.gui.GUI;
 
 public class HatchingGround {
 

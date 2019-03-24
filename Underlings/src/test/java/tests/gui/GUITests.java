@@ -6,20 +6,14 @@ import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
 
-<<<<<<< HEAD:Underlings/src/test/java/GUI/GUITests.java
-import Game.Card;
-import Game.Deck;
-import Game.Game;
-import Game.Handler;
-import Game.HatchingGround;
-import Player.Player;
-import Player.PlayerFactory;
-=======
+import underlings.game.Card;
+import underlings.game.Deck;
 import underlings.game.Game;
+import underlings.game.Handler;
 import underlings.game.HatchingGround;
 import underlings.gui.GUI;
+import underlings.player.Player;
 import underlings.player.PlayerFactory;
->>>>>>> gradle_config:Underlings/src/test/java/tests/gui/GUITests.java
 
 public class GUITests {
 

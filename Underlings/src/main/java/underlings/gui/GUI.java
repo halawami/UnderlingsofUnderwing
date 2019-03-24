@@ -1,8 +1,8 @@
 package underlings.gui;
 
-import Game.Card;
-import Game.Handler;
-import Player.Player;
+import underlings.game.Card;
+import underlings.game.Handler;
+import underlings.player.Player;
 
 public interface GUI {
 

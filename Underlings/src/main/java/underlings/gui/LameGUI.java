@@ -1,4 +1,4 @@
-package GUI;
+package underlings.gui;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -11,9 +11,9 @@ import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import Game.Card;
-import Game.Handler;
-import Player.Player;
+import underlings.game.Card;
+import underlings.game.Handler;
+import underlings.player.Player;
 
 public class LameGUI implements GUI {
 	private final int WIDTH = 1066, HEIGHT = 950;
@@ -24,31 +24,32 @@ public class LameGUI implements GUI {
 	private Image background;
 
 	public LameGUI() {
-		frame = new JFrame("Lame Underlings");
+		this.frame = new JFrame("Lame Underlings");
 
-		frame.setSize(WIDTH + 6, HEIGHT + 35);
-		frame.getContentPane().setSize(WIDTH, HEIGHT);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setResizable(false);
+		this.frame.setSize(this.WIDTH + 6, this.HEIGHT + 35);
+		this.frame.getContentPane().setSize(this.WIDTH, this.HEIGHT);
+		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.frame.setResizable(false);
 
-		img = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_ARGB);
-		g = img.getGraphics();
+		this.img = new BufferedImage(this.WIDTH, this.HEIGHT, BufferedImage.TYPE_INT_ARGB);
+		this.g = this.img.getGraphics();
 
-		getImages();
+		this.getImages();
 
-		frame.setVisible(true);
-		frame.getGraphics().setColor(Color.BLUE);
-		frame.getGraphics().fillRect(0, 0, WIDTH, HEIGHT);
+		this.frame.setVisible(true);
+		this.frame.getGraphics().setColor(Color.BLUE);
+		this.frame.getGraphics().fillRect(0, 0, this.WIDTH, this.HEIGHT);
 	}
 
 	private void getImages() {
 		try {
-			background = ImageIO.read(new File("Graphics\\background.png"));
+			this.background = ImageIO.read(new File("Graphics\\background.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
+	@Override
 	public int promptPlayerCount() {
 		return Integer.parseInt(JOptionPane.showInputDialog("How many players? [2,6]"));
 	}
@@ -63,8 +64,8 @@ public class LameGUI implements GUI {
 		int width = 510, height = 360;
 		double ratio = 1066/4099.0;
 
-		g.setColor(new Color((int)(Math.random()*255*255*255)));
-		g.fillRect((int)(ratio*(xOffset + (width + xGap) * col)), (int)(ratio*(yOffset + (height + yGap) * row)), (int)(ratio*width), (int)(ratio*height));
+		this.g.setColor(new Color((int)(Math.random()*255*255*255)));
+		this.g.fillRect((int)(ratio*(xOffset + (width + xGap) * col)), (int)(ratio*(yOffset + (height + yGap) * row)), (int)(ratio*width), (int)(ratio*height));
 	}
 
 	@Override
@@ -81,8 +82,8 @@ public class LameGUI implements GUI {
 		int row = playerNumber/3;
 		int col = playerNumber%3;
 
-		g.setColor(new Color((int)(Math.random()*255*255*255)));
-		g.fillRect((int)(ratio*(xOffset + (width + xGap) * col)), (int)(ratio*(yOffset + (height + yGap) * row)), (int)(ratio*width), (int)(ratio*height));
+		this.g.setColor(new Color((int)(Math.random()*255*255*255)));
+		this.g.fillRect((int)(ratio*(xOffset + (width + xGap) * col)), (int)(ratio*(yOffset + (height + yGap) * row)), (int)(ratio*width), (int)(ratio*height));
 	}
 
 	@Override
@@ -95,19 +96,19 @@ public class LameGUI implements GUI {
 		int row = playerNumber/3;
 		int col = playerNumber%3;
 
-		g.setColor(new Color((int)(Math.random()*255*255*255)));
-		g.drawString(handler.getState().toString(), (int)(ratio*(30 + xOffset + (width + xGap) * col)), (int)(Math.random()*50+ratio*(height/2 + yOffset + (height + yGap) * row)));
+		this.g.setColor(new Color((int)(Math.random()*255*255*255)));
+		this.g.drawString(handler.getState().toString(), (int)(ratio*(30 + xOffset + (width + xGap) * col)), (int)(Math.random()*50+ratio*(height/2 + yOffset + (height + yGap) * row)));
 		
 	}
 
 	@Override
 	public void displayBackground() {
-		g.drawImage(background, 0, 0, WIDTH, HEIGHT, null);
+		this.g.drawImage(this.background, 0, 0, this.WIDTH, this.HEIGHT, null);
 	}
 
 	@Override
 	public void update() {
-		frame.getContentPane().getGraphics().drawImage(img, 0, 0, null);
+		this.frame.getContentPane().getGraphics().drawImage(this.img, 0, 0, null);
 	}
 
 }
