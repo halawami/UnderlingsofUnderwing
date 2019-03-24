@@ -1,4 +1,4 @@
-package Player;
+package underlings.player;
 
 public class PlayerFactory {
 

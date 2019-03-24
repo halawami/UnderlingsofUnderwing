@@ -1,7 +1,21 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        //Needed only for SNAPSHOT versions
+        //maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
+    }
+    dependencies {
+        classpath 'info.solidsoft.gradle.pitest:gradle-pitest-plugin:1.4.0'
+    }
+}
+
 plugins {
     id 'java-library'
     id 'findbugs'
+    id 'info.solidsoft.pitest' version '1.4.0'
 }
+
+build.dependsOn 'pitest'
 
 dependencies {
     testImplementation 'junit:junit:4.+'    
@@ -20,9 +34,25 @@ tasks.withType(FindBugs) {
     }
 }
 
+sourceSets {
+    main {
+        java.srcDirs = ['src/main/java']
+    }
+    test {
+        java.srcDirs = ['src/test/java']
+    }
+}
+
 findbugs {
     ignoreFailures = true
     effort = "max"
-    showProgress = true
+    // showProgress = true
     reportLevel = "high"
+}
+
+pitest {
+    targetClasses = ['underlings.*', 'tests.*']
+    threads = 4
+    outputFormats = ['XML', 'HTML']
+    timestampedReports = false
 }

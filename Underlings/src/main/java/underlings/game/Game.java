@@ -1,11 +1,11 @@
-package Game;
+package underlings.game;
 
 import java.util.LinkedList;
 import java.util.List;
 
-import GUI.GUI;
-import Player.Player;
-import Player.PlayerFactory;
+import underlings.gui.GUI;
+import underlings.player.Player;
+import underlings.player.PlayerFactory;
 
 public class Game {
 
