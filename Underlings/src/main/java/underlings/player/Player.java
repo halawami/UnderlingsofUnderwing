@@ -1,9 +1,9 @@
-package Player;
+package underlings.player;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import Game.Handler;
+import underlings.game.Handler;
 
 public class Player {
 

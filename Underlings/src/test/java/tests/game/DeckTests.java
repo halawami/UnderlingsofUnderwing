@@ -1,4 +1,4 @@
-package Game;
+package tests.game;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
@@ -8,10 +8,13 @@ import java.util.Stack;
 import org.junit.Before;
 import org.junit.Test;
 
+import underlings.game.Card;
+import underlings.game.Deck;
+
 public class DeckTests {
 
     private Deck deck;
-    final private int DECK_SIZE = 50;
+    private final static int DECK_SIZE = 50;
 
     @Before
     public void init() {
@@ -24,7 +27,7 @@ public class DeckTests {
 
     @Test
     public void testDeckSetUp() {
-        assertEquals(DECK_SIZE, deck.getSize());
+        assertEquals(DECK_SIZE, this.deck.getSize());
     }
 
 

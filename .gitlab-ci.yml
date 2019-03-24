@@ -6,4 +6,5 @@ build:
     - cd Underlings
     - ./gradlew build
   tags:
-    - gradle      # Matches the tags you created for your runner
+    - gradle
+    - linux
