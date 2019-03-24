@@ -1,11 +1,12 @@
+package underlings;
 import org.easymock.EasyMock;
 
-import GUI.GUI;
-import Game.CardFactory;
-import Game.Deck;
-import Game.Game;
-import Game.HatchingGround;
-import Player.PlayerFactory;
+import underlings.game.CardFactory;
+import underlings.game.Deck;
+import underlings.game.Game;
+import underlings.game.HatchingGround;
+import underlings.gui.GUI;
+import underlings.player.PlayerFactory;
 
 public class Main {
 

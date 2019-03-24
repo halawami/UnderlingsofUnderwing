@@ -1,4 +1,4 @@
-package GUI;
+package underlings.gui;
 
 public interface GUI {
 

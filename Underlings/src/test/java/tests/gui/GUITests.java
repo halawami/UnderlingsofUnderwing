@@ -1,4 +1,4 @@
-package GUI;
+package tests.gui;
 
 import static org.junit.Assert.assertEquals;
 
@@ -6,9 +6,10 @@ import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
 
-import Game.Game;
-import Game.HatchingGround;
-import Player.PlayerFactory;
+import underlings.game.Game;
+import underlings.game.HatchingGround;
+import underlings.gui.GUI;
+import underlings.player.PlayerFactory;
 
 public class GUITests {
 
