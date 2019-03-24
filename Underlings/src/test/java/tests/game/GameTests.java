@@ -1,4 +1,4 @@
-package Game;
+package tests.game;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
@@ -9,9 +9,15 @@ import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
 
-import GUI.GUI;
-import Player.Player;
-import Player.PlayerFactory;
+import underlings.game.Card;
+import underlings.game.Deck;
+import underlings.game.Game;
+import underlings.game.Handler;
+import underlings.game.HandlerState;
+import underlings.game.HatchingGround;
+import underlings.gui.GUI;
+import underlings.player.Player;
+import underlings.player.PlayerFactory;
 
 public class GameTests {
 	

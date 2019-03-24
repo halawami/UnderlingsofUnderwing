@@ -1,4 +1,4 @@
-package GUI;
+package underlings.gui;
 
 import Game.Card;
 import Game.Handler;

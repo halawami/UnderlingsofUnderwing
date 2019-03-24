@@ -1,4 +1,4 @@
-package Game;
+package underlings.game;
 
 import GUI.GUI;
 

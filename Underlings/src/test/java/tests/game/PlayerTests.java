@@ -1,4 +1,4 @@
-package Game;
+package tests.game;
 
 import static org.junit.Assert.*;
 
@@ -6,7 +6,8 @@ import java.util.List;
 
 import org.junit.Test;
 
-import Player.Player;
+import underlings.game.Handler;
+import underlings.player.Player;
 
 public class PlayerTests {
 

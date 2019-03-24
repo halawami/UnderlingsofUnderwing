@@ -1,7 +1,11 @@
-package Game;
+package tests.game;
 
 import org.easymock.EasyMock;
 import org.junit.Test;
+
+import underlings.game.Card;
+import underlings.game.Deck;
+import underlings.game.HatchingGround;
 
 public class HatchingGroundTests {
 
