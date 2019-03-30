@@ -76,4 +76,13 @@ public class PlayerTests {
 		player.addPoints(25);
 		assertEquals(4, player.getHandlerCount());
 	}
+	
+	@Test
+	public void testReach25PointsWith4Handlers(){
+		Player player = new Player(4);
+		player.addHandler();
+		player.addHandler();
+		player.addPoints(25);
+		assertEquals(4, player.getHandlerCount());
+	}
 }
