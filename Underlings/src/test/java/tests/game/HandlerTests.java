@@ -51,4 +51,12 @@ public class HandlerTests {
 		handler.moveToIncubation();
 		assertEquals(HandlerState.READY_ROOM, handler.getState());
 	}
+	
+	@Test
+	public void testMoveClockwiseInField(){
+		Handler handler = new Handler();
+		handler.moveToField();
+		handler.moveClockwiseInField();
+		assertEquals(HandlerState.FIELD, handler.getState());
+	}
 }

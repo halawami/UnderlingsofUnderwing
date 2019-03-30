@@ -36,4 +36,8 @@ public class Handler {
 		
 	}
 
+	public void moveClockwiseInField() {
+		
+	}
+
 }
