@@ -24,4 +24,8 @@ public class Handler {
 		this.state = HandlerState.FIELD_WHITESPACE;
 	}
 
+	public void moveToReadyRoom() {
+		this.state = HandlerState.READY_ROOM;
+	}
+
 }
