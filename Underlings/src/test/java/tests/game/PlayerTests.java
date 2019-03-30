@@ -85,4 +85,12 @@ public class PlayerTests {
 		player.addPoints(25);
 		assertEquals(4, player.getHandlerCount());
 	}
+	
+	// check this test
+	@Test 
+	public void testReach25PointsFromBelow12Points(){
+		Player player = new Player(4);
+		player.addPoints(25);
+		assertEquals(3, player.getHandlerCount());
+	}
 }
