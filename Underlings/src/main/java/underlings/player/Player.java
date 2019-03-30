@@ -38,11 +38,11 @@ public class Player {
 	}
 
 	public void addPoints(int pointsToAdd) {
-		if(this.handlers.size() < 3 && this.points + pointsToAdd >= 12){
-			this.points += pointsToAdd;
+		this.points += pointsToAdd;
+		if(this.handlers.size() < 3 && this.points >= 12){
 			this.handlers.add(new Handler());
-		} else {
-			this.points += pointsToAdd;
+		} else if (this.points >= 25) {
+			this.handlers.add(new Handler());
 		}
 	}
 
