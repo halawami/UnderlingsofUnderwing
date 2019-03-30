@@ -14,5 +14,12 @@ public class HandlerTests {
 		Handler handler = new Handler();
 		assertEquals(HandlerState.READY_ROOM, handler.getState());
 	}
+	
+	@Test
+	public void testMoveToEggFromReadyRoom(){
+		Handler handler = new Handler();
+		handler.moveToCard();
+		assertEquals(HandlerState.CARD, handler.getState());
+	}
 
 }
