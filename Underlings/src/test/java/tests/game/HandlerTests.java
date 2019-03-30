@@ -29,4 +29,10 @@ public class HandlerTests {
 		assertEquals(HandlerState.FIELD, handler.getState());
 	}
 
+	@Test
+	public void testMoveToFieldWhiteFromReadyRoom(){
+		Handler handler = new Handler();
+		handler.moveToFieldWhite();
+		assertEquals(HandlerState.FIELD_WHITESPACE, handler.getState());
+	}
 }

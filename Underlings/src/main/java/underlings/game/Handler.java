@@ -19,5 +19,9 @@ public class Handler {
 	public void moveToField() {
 		this.state = HandlerState.FIELD;
 	}
+	
+	public void moveToFieldWhite(){
+		this.state = HandlerState.FIELD_WHITESPACE;
+	}
 
 }
