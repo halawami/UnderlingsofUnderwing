@@ -42,4 +42,11 @@ public class HandlerTests {
 		handler.moveToReadyRoom();
 		assertEquals(HandlerState.READY_ROOM, handler.getState());
 	}
+	
+	@Test
+	public void testMoveToIllegalStateFromReadyRoom(){
+		Handler handler = new Handler();
+		handler.moveToBreakRoom();
+		assertEquals(HandlerState.READY_ROOM, handler.getState());
+	}
 }

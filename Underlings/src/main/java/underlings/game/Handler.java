@@ -28,4 +28,8 @@ public class Handler {
 		this.state = HandlerState.READY_ROOM;
 	}
 
+	public void moveToBreakRoom() {
+		
+	}
+
 }
