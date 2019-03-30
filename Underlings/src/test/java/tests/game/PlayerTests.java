@@ -86,7 +86,7 @@ public class PlayerTests {
 		assertEquals(4, player.getHandlerCount());
 	}
 	
-	// check this test
+	// is this correct behavior? or do they get 2 handlers
 	@Test 
 	public void testReach25PointsFromBelow12Points(){
 		Player player = new Player(4);
@@ -105,6 +105,15 @@ public class PlayerTests {
 	@Test 
 	public void testLoseHandlerAtMinHandlers(){
 		Player player = new Player(4);
+		player.loseHandler();
+		assertEquals(2, player.getHandlerCount());
+	}
+
+	// is this correct behavior?
+	@Test 
+	public void testReach12PointsAfterLosingAHandler(){
+		Player player = new Player(4);
+		player.addPoints(13);
 		player.loseHandler();
 		assertEquals(2, player.getHandlerCount());
 	}
