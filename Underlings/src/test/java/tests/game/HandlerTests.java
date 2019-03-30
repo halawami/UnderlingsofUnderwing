@@ -16,10 +16,17 @@ public class HandlerTests {
 	}
 	
 	@Test
-	public void testMoveToEggFromReadyRoom(){
+	public void testMoveToUnclaimedAndUnhatchedEggFromReadyRoom(){
 		Handler handler = new Handler();
 		handler.moveToCard();
 		assertEquals(HandlerState.CARD, handler.getState());
+	}
+	
+	@Test
+	public void testMoveToFieldFromReadyRoom(){
+		Handler handler = new Handler();
+		handler.moveToField();
+		assertEquals(HandlerState.FIELD, handler.getState());
 	}
 
 }

@@ -9,11 +9,15 @@ public class Handler {
 	}
 	
 	public HandlerState getState() {
-		return state;
+		return this.state;
 	}
 
 	public void moveToCard() {
-		state = HandlerState.CARD;
+		this.state = HandlerState.CARD;
+	}
+
+	public void moveToField() {
+		this.state = HandlerState.FIELD;
 	}
 
 }

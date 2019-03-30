@@ -2,5 +2,6 @@ package underlings.game;
 
 public enum HandlerState {
 	READY_ROOM,
-	CARD
+	CARD,
+	FIELD
 }
