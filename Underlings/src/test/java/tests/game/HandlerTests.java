@@ -48,5 +48,7 @@ public class HandlerTests {
 		Handler handler = new Handler();
 		handler.moveToBreakRoom();
 		assertEquals(HandlerState.READY_ROOM, handler.getState());
+		handler.moveToIncubation();
+		assertEquals(HandlerState.READY_ROOM, handler.getState());
 	}
 }
