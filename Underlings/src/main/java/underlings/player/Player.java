@@ -46,4 +46,9 @@ public class Player {
 		}
 	}
 
+	// which one do we lose
+	public void loseHandler() {
+		this.handlers.remove(0);
+	}
+
 }

@@ -93,4 +93,12 @@ public class PlayerTests {
 		player.addPoints(25);
 		assertEquals(3, player.getHandlerCount());
 	}
+	
+	@Test 
+	public void testLoseHandlerAbove12Points(){
+		Player player = new Player(4);
+		player.addPoints(13);
+		player.loseHandler();
+		assertEquals(2, player.getHandlerCount());
+	}
 }
