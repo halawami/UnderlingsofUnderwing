@@ -9,12 +9,14 @@ public class Player {
 
 	private List<Handler> handlers;
 	private int maxHandlers;
+	private int points;
 
 	public Player(int maxHandlers) {
 		this.handlers = new ArrayList<Handler>();
 		this.handlers.add(new Handler());
 		this.handlers.add(new Handler());
 		this.maxHandlers = maxHandlers;
+		this.points = 0;
 	}
 
 	public int getHandlerCount() {
@@ -33,6 +35,15 @@ public class Player {
 
 	public int getMaxHandlers() {
 		return this.maxHandlers;
+	}
+
+	public void addPoints(int pointsToAdd) {
+		if(this.handlers.size() < 3 && this.points + pointsToAdd >= 12){
+			this.points += pointsToAdd;
+			this.handlers.add(new Handler());
+		} else {
+			this.points += pointsToAdd;
+		}
 	}
 
 }
