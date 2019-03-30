@@ -1,35 +1,66 @@
 package underlings.game;
 
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+
 public class Handler {
 
 	private HandlerState state;
+	private final static HashMap<HandlerState, List<HandlerState>> allowedStates = initializeHashMap();
 	
 	public Handler(){
 		this.state = HandlerState.READY_ROOM;
 	}
 	
+	private static HashMap<HandlerState, List<HandlerState>> initializeHashMap() {
+		HashMap<HandlerState, List<HandlerState>> toReturn = new HashMap<>();
+		toReturn.put(HandlerState.READY_ROOM, new LinkedList<HandlerState>(){{
+			add(HandlerState.CARD);
+			add(HandlerState.FIELD);
+			add(HandlerState.FIELD_WHITESPACE);
+			add(HandlerState.READY_ROOM);
+		}});
+		// can field go to whitespace?
+		toReturn.put(HandlerState.FIELD, new LinkedList<HandlerState>(){{
+			add(HandlerState.FIELD);
+			add(HandlerState.BREAK_ROOM);
+		}});
+		return toReturn;
+	}
+
 	public HandlerState getState() {
 		return this.state;
 	}
 
 	public void moveToCard() {
-		this.state = HandlerState.CARD;
+		if(allowedStates.get(this.state).contains(HandlerState.CARD)){
+			this.state = HandlerState.CARD;
+		}
 	}
 
 	public void moveToField() {
-		this.state = HandlerState.FIELD;
+		if(allowedStates.get(this.state).contains(HandlerState.FIELD)){
+			this.state = HandlerState.FIELD;
+		}
 	}
 	
 	public void moveToFieldWhite(){
-		this.state = HandlerState.FIELD_WHITESPACE;
+		if(allowedStates.get(this.state).contains(HandlerState.FIELD_WHITESPACE)){
+			this.state = HandlerState.FIELD_WHITESPACE;
+		}
 	}
 
 	public void moveToReadyRoom() {
-		this.state = HandlerState.READY_ROOM;
+		if(allowedStates.get(this.state).contains(HandlerState.READY_ROOM)){
+			this.state = HandlerState.READY_ROOM;
+		}
 	}
 
 	public void moveToBreakRoom() {
-		
+		if(allowedStates.get(this.state).contains(HandlerState.BREAK_ROOM)){
+			this.state = HandlerState.BREAK_ROOM;
+		}
 	}
 
 	public void moveToIncubation() {

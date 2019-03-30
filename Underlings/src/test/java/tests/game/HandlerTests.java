@@ -59,4 +59,12 @@ public class HandlerTests {
 		handler.moveClockwiseInField();
 		assertEquals(HandlerState.FIELD, handler.getState());
 	}
+	
+	@Test
+	public void testMoveToBreakRoomFromField(){
+		Handler handler = new Handler();
+		handler.moveToField();
+		handler.moveToBreakRoom();
+		assertEquals(HandlerState.BREAK_ROOM, handler.getState());
+	}
 }
