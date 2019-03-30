@@ -101,4 +101,11 @@ public class PlayerTests {
 		player.loseHandler();
 		assertEquals(2, player.getHandlerCount());
 	}
+	
+	@Test 
+	public void testLoseHandlerAtMinHandlers(){
+		Player player = new Player(4);
+		player.loseHandler();
+		assertEquals(2, player.getHandlerCount());
+	}
 }

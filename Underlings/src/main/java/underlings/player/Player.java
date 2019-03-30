@@ -48,7 +48,9 @@ public class Player {
 
 	// which one do we lose
 	public void loseHandler() {
-		this.handlers.remove(0);
+		if(this.handlers.size() > 2){
+			this.handlers.remove(0);
+		}
 	}
 
 }
