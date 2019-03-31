@@ -1,15 +1,19 @@
 package underlings.element;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class ElementBag {
 
 	private Map<ElementColor, Integer> elementCount;
 	private ElementFactory elementFactory;
+	private Random random;
 	
-	public ElementBag(ElementFactory elementFactory) {
+	public ElementBag(ElementFactory elementFactory, Random random) {
 		this.elementFactory = elementFactory;
+		this.random = random;
 		
 		this.elementCount = new HashMap<>();
 		this.elementCount.put(ElementColor.BLUE, 20);
@@ -23,8 +27,20 @@ public class ElementBag {
 	}
 	
 	public Element drawElementFromList(ElementColor... colors) {
-		this.elementCount.put(colors[0], this.elementCount.get(colors[0]) - 1);
-		return this.elementFactory.createElement(colors[0]);
+		
+		ArrayList<ElementColor> possibilities = new ArrayList<>();
+		
+		for (ElementColor color : colors) {
+			for (int numberRemaining = 0; numberRemaining < this.elementCount.get(color); numberRemaining++) {
+				possibilities.add(color);
+			}
+		}
+		
+		int selectionNumber = this.random.nextInt(possibilities.size());
+		ElementColor selectedElement = possibilities.get(selectionNumber);
+		
+		this.elementCount.put(selectedElement, this.elementCount.get(selectedElement) - 1);
+		return this.elementFactory.createElement(selectedElement);
 	}
 
 	public int getNumberRemaining(ElementColor color) {
