@@ -66,4 +66,16 @@ public class ElementTests {
 		assertEquals(ElementColor.BLACK, drawnElement.getColor());
 	}
 	
+	@Test
+	public void testInitNumberRemaining() {
+		assertEquals(20, this.elementBag.getNumberRemaining(ElementColor.BLUE));
+		assertEquals(20, this.elementBag.getNumberRemaining(ElementColor.RED));
+		assertEquals(20, this.elementBag.getNumberRemaining(ElementColor.YELLOW));
+		assertEquals(10, this.elementBag.getNumberRemaining(ElementColor.PURPLE));
+		assertEquals(10, this.elementBag.getNumberRemaining(ElementColor.GREEN));
+		assertEquals(10, this.elementBag.getNumberRemaining(ElementColor.ORANGE));
+		assertEquals(5, this.elementBag.getNumberRemaining(ElementColor.WHITE));
+		assertEquals(5, this.elementBag.getNumberRemaining(ElementColor.BLACK));
+	}
+	
 }
