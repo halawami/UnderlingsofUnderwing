@@ -1,5 +1,5 @@
 package underlings.element;
 
 public enum ElementColor {
-	BLUE, RED, GREEN
+	BLUE, RED, GREEN, YELLOW
 }
