@@ -67,4 +67,12 @@ public class HandlerTests {
 		handler.moveToBreakRoom();
 		assertEquals(HandlerState.BREAK_ROOM, handler.getState());
 	}
+	
+	@Test
+	public void testMoveToIllegalStateFromField(){
+		Handler handler = new Handler();
+		handler.moveToField();
+		handler.moveToReadyRoom();
+		assertEquals(HandlerState.FIELD, handler.getState());
+	}
 }
