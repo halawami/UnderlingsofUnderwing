@@ -40,11 +40,16 @@ public class ElementBag {
 		ElementColor selectedElement = possibilities.get(selectionNumber);
 		
 		this.elementCount.put(selectedElement, this.elementCount.get(selectedElement) - 1);
+		
 		return this.elementFactory.createElement(selectedElement);
 	}
 
 	public int getNumberRemaining(ElementColor color) {
 		return this.elementCount.get(color);
+	}
+
+	public Element drawRandomElement() {
+		return new Element(ElementColor.GREEN);
 	}
 
 }

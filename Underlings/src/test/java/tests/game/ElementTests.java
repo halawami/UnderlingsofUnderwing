@@ -63,6 +63,7 @@ public class ElementTests {
 		Element drawnElement = this.elementBag.drawElementFromList(ElementColor.BLUE, ElementColor.RED,
 				ElementColor.YELLOW, ElementColor.PURPLE, ElementColor.GREEN, ElementColor.ORANGE, ElementColor.WHITE,
 				ElementColor.BLACK);
+		
 		assertEquals(ElementColor.PURPLE, drawnElement.getColor());
 	}
 
@@ -84,5 +85,15 @@ public class ElementTests {
 		this.elementBag.drawElementFromList(ElementColor.BLUE);
 		assertEquals(19, this.elementBag.getNumberRemaining(ElementColor.BLUE));
 	}
+	
+	@Test 
+	public void testDrawRandomElement_Green() {
+		EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(75);
+		EasyMock.replay(this.random);
+		
+		Element drawnElement = this.elementBag.drawRandomElement();
+		assertEquals(ElementColor.GREEN, drawnElement.getColor());
+	}
+	
 
 }
