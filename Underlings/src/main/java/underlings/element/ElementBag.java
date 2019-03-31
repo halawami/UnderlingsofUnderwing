@@ -20,6 +20,7 @@ public class ElementBag {
 	}
 	
 	public Element drawElementFromList(ElementColor... colors) {
+		this.elementCount.put(colors[0], this.elementCount.get(colors[0]) - 1);
 		return new Element(colors[0]);
 	}
 

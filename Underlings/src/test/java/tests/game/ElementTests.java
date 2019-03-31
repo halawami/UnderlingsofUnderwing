@@ -56,5 +56,12 @@ public class ElementTests {
 		assertEquals(5, this.elementBag.getNumberRemaining(ElementColor.WHITE));
 		assertEquals(5, this.elementBag.getNumberRemaining(ElementColor.BLACK));
 	}
+	
+	@Test 
+	public void testNumberRemainingAfterDraw() {
+		assertEquals(20, this.elementBag.getNumberRemaining(ElementColor.BLUE));
+		this.elementBag.drawElementFromList(ElementColor.BLUE);
+		assertEquals(19, this.elementBag.getNumberRemaining(ElementColor.BLUE));
+	}
 
 }
