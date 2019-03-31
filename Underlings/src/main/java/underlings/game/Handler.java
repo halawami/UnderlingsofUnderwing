@@ -53,41 +53,35 @@ public class Handler {
 	}
 
 	public void moveToCard() {
-		if (allowedStates.get(this.state).contains(HandlerState.CARD)) {
-			this.state = HandlerState.CARD;
-		}
+		moveToState(HandlerState.CARD);
 	}
 
 	public void moveToField() {
-		if (allowedStates.get(this.state).contains(HandlerState.FIELD)) {
-			this.state = HandlerState.FIELD;
-		}
+		moveToState(HandlerState.FIELD);
 	}
 
 	public void moveToFieldWhite() {
-		if (allowedStates.get(this.state).contains(HandlerState.FIELD_WHITESPACE)) {
-			this.state = HandlerState.FIELD_WHITESPACE;
-		}
+		moveToState(HandlerState.FIELD_WHITESPACE);
 	}
 
 	public void moveToReadyRoom() {
-		if (allowedStates.get(this.state).contains(HandlerState.READY_ROOM)) {
-			this.state = HandlerState.READY_ROOM;
-		}
+		moveToState(HandlerState.READY_ROOM);
 	}
 
 	public void moveToBreakRoom() {
-		if (allowedStates.get(this.state).contains(HandlerState.BREAK_ROOM)) {
-			this.state = HandlerState.BREAK_ROOM;
-		}
+		moveToState(HandlerState.BREAK_ROOM);
 	}
 
 	public void moveToIncubation() {
-		if (allowedStates.get(this.state).contains(HandlerState.INCUBATION)) {
-			this.state = HandlerState.INCUBATION;
-		}
+		moveToState(HandlerState.INCUBATION);
 	}
 
+	private void moveToState(HandlerState state){
+		if (allowedStates.get(this.state).contains(state)) {
+			this.state = state;
+		}
+	}
+	
 	public void moveClockwiseInField() {
 
 	}
