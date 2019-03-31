@@ -1,5 +1,14 @@
+package underlings;
 import org.easymock.EasyMock;
-import Player.PlayerFactory;public class Main {
+
+import underlings.game.CardFactory;
+import underlings.game.Deck;
+import underlings.game.Game;
+import underlings.game.HatchingGround;
+import underlings.gui.GUI;
+import underlings.player.PlayerFactory;
+
+public class Main {
 
 	public static void main(String[] args ) {
 		
