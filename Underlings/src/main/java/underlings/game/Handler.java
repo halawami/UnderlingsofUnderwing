@@ -1,5 +1,6 @@
 package underlings.game;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,45 +21,29 @@ public class Handler {
 
 	private static HashMap<HandlerState, List<HandlerState>> initializeHashMap() {
 		HashMap<HandlerState, List<HandlerState>> toReturn = new HashMap<>();
-		toReturn.put(HandlerState.READY_ROOM, new LinkedList<HandlerState>() {
-			{
-				add(HandlerState.CARD);
-				add(HandlerState.FIELD);
-				add(HandlerState.FIELD_WHITESPACE);
-				add(HandlerState.READY_ROOM);
-			}
-		});
-		// can field go to whitespace?
-		toReturn.put(HandlerState.FIELD, new LinkedList<HandlerState>() {
-			{
-				add(HandlerState.FIELD);
-				add(HandlerState.BREAK_ROOM);
-			}
-		});
-		toReturn.put(HandlerState.CARD, new LinkedList<HandlerState>() {
-			{
-				add(HandlerState.CARD);
-				add(HandlerState.BREAK_ROOM);
-				// should I put ready_room from the effect?
-			}
-		});
-		toReturn.put(HandlerState.BREAK_ROOM, new LinkedList<HandlerState>() {
-			{
-				add(HandlerState.READY_ROOM);
-			}
-		});
-		toReturn.put(HandlerState.FIELD_WHITESPACE, new LinkedList<HandlerState>() {
-			{
-				add(HandlerState.BREAK_ROOM);
-			}
-		});
-		// shouldn't incubation go to break room/ready room?
-		toReturn.put(HandlerState.INCUBATION, new LinkedList<HandlerState>() {
-			{
-				add(HandlerState.INCUBATION);
-			}
-		});
+		toReturn.put(HandlerState.READY_ROOM, createStateList(
+				HandlerState.CARD, 
+				HandlerState.FIELD,
+				HandlerState.FIELD_WHITESPACE, 
+				HandlerState.READY_ROOM));
+		
+		toReturn.put(HandlerState.FIELD, createStateList(
+				HandlerState.FIELD,
+				HandlerState.BREAK_ROOM));
+		
+		toReturn.put(HandlerState.CARD, createStateList(
+				HandlerState.CARD, 
+				HandlerState.BREAK_ROOM));
+		
+		toReturn.put(HandlerState.BREAK_ROOM, createStateList(HandlerState.READY_ROOM));
+		toReturn.put(HandlerState.FIELD_WHITESPACE, createStateList(HandlerState.BREAK_ROOM));
+		// add ready_room
+		toReturn.put(HandlerState.INCUBATION, createStateList(HandlerState.INCUBATION));
 		return toReturn;
+	}
+
+	private static List<HandlerState> createStateList(HandlerState... handlerStates) {
+		return new LinkedList<>(Arrays.asList(handlerStates));
 	}
 
 	public HandlerState getState() {
