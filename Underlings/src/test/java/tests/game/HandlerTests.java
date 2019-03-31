@@ -102,10 +102,16 @@ public class HandlerTests {
 
 	@Test
 	public void testMoveToReadyRoomFromBreakRoom() {
-		Handler handler = new Handler();
-		handler.moveToBreakRoom();
+		Handler handler = new Handler(HandlerState.BREAK_ROOM);
 		handler.moveToReadyRoom();
 		assertEquals(HandlerState.READY_ROOM, handler.getState());
+	}
+	
+	@Test
+	public void testMoveToIllegalStateFromBreakRoom() {
+		Handler handler = new Handler(HandlerState.BREAK_ROOM);
+		handler.moveToCard();
+		assertEquals(HandlerState.BREAK_ROOM, handler.getState());
 	}
 
 	@Test
