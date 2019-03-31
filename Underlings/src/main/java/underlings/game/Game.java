@@ -38,10 +38,6 @@ public class Game {
 		this.playerFactory = playerFactory;
 	}
 
-	public void requestPlayerCount() {
-		this.numberOfPlayers = this.gui.promptPlayerCount();
-	}
-	
 	public void setUp(int numberOfPlayers) {
 		if (numberOfPlayers < MIN_PLAYERS || numberOfPlayers > MAX_PLAYERS) {
 			throw new IllegalArgumentException("Player count must be between 2 and 6, inclusive");
@@ -53,12 +49,12 @@ public class Game {
 	}
 
 	private void setUpProperties(int numberOfPlayers) {
-		int propertyIndex = numberOfPlayers - MIN_PLAYERS;
+		int propertyIndex = numberOfPlayers - this.MIN_PLAYERS;
 
-		this.roundsLeft = NUMBER_OF_ROUNDS[propertyIndex];
-		this.hatchingGround.setDimensions(HATCHING_GROUND_WIDTH[propertyIndex],
+		this.roundsLeft = this.NUMBER_OF_ROUNDS[propertyIndex];
+		this.hatchingGround.setDimensions(this.HATCHING_GROUND_WIDTH[propertyIndex],
 				HATCHING_GROUND_HEIGHT[propertyIndex]);
-		this.maxHandlers = MAX_HANDLERS[propertyIndex];
+		this.maxHandlers = this.MAX_HANDLERS[propertyIndex];
 	}
 
 	public void setUpPlayerList(int numberOfPlayers) {
@@ -80,31 +76,12 @@ public class Game {
 	}
 
 	public void start() {
-		this.requestPlayerCount();
+		this.numberOfPlayers = this.gui.promptPlayerCount();
 		this.setUp(this.numberOfPlayers);
-		
-		this.display();
 	}
 
 	public int getPlayerCount() {
 		return this.numberOfPlayers;
-	}
-	
-	private void display() {
-		this.gui.displayBackground();
-		this.hatchingGround.display(this.gui);
-		this.displayPlayers();
-		
-		this.gui.update();
-	}
-
-	public void displayPlayers() {
-		for(int playerNumber = 0; playerNumber < this.players.size(); playerNumber++) {
-			Player player = this.players.get(playerNumber);
-			this.gui.displayPlayer(playerNumber, player);
-			List<Handler> handlers = player.getHandlers();
-			this.gui.displayHandlers(playerNumber, handlers);
-		}
 	}
 
 }
