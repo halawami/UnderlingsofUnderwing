@@ -83,7 +83,7 @@ public class HandlerTests {
 		handler.moveToBreakRoom();
 		assertEquals(HandlerState.BREAK_ROOM, handler.getState());
 	}
-	
+
 	@Test
 	public void testMoveToIllegateStateFromCard() {
 		Handler handler = new Handler();
@@ -106,7 +106,7 @@ public class HandlerTests {
 		handler.moveToReadyRoom();
 		assertEquals(HandlerState.READY_ROOM, handler.getState());
 	}
-	
+
 	@Test
 	public void testMoveToIllegalStateFromBreakRoom() {
 		Handler handler = new Handler(HandlerState.BREAK_ROOM);
@@ -120,6 +120,14 @@ public class HandlerTests {
 		handler.moveToFieldWhite();
 		handler.moveToBreakRoom();
 		assertEquals(HandlerState.BREAK_ROOM, handler.getState());
+	}
+
+	@Test
+	public void testMoveToIllegalStateFromFieldWhiteSpace() {
+		Handler handler = new Handler();
+		handler.moveToFieldWhite();
+		handler.moveToReadyRoom();
+		assertEquals(HandlerState.FIELD_WHITESPACE, handler.getState());
 	}
 
 	@Test
