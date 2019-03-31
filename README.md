@@ -17,14 +17,14 @@ The definition of done is created by examining and applying BVA on the rules.
 #### Gaining Handlers and Handler Deficiency
 
 
-- [ ] Reach 12 points while having 3+ handlers
-- [ ] Reach 25 points while having 4+ handlers
+- [x] Reach 12 points while having 3+ handlers
+- [x] Reach 25 points while having 4+ handlers
 - [ ] Reach 12 points and gain a handler from a dragon at the same time
 - [ ] Reach 25 points and gain a handler from a dragon as the same time
-- [ ] Start at < 12 points and end the round at 25+ points
+- [x] Start at < 12 points and end the round at 25+ points
 - [ ] Gain a handler from dragon while at the max handler amount
-- [ ] Lose a handler while at min handler amount
-- [ ] Lose a handler while above 12 points
+- [x] Lose a handler while at min handler amount
+- [x] Lose a handler while above 12 points
 - [ ] Reach 12 points after losing a handler
 - [ ] Reach 25 points after losing a handler
 
@@ -67,34 +67,40 @@ The definition of done is created by examining and applying BVA on the rules.
 #### Move & Assign Dragon Handlers (Phase 2)
 
 
-- [ ] Handler in Ready Room
-  - [ ] Move to Handler on Unclaimed & Unhatched Egg
-  - [ ] Move to Hander in Field
-  - [ ] Move to Handler in Field White
-  - [ ] Keep handler in Ready Room
+- [x] Handler in Ready Room
+  - [x] Move to Handler on Unclaimed & Unhatched Egg
+  - [x] Move to Hander in Field
+  - [x] Move to Handler in Field White
+  - [x] Keep handler in Ready Room
+  - [x] Move to illegal state
 
 
-- [ ] Handler in Field
-  - [ ] Move clockwise in Field
-  - [ ] Move to Break Room
+- [x] Handler in Field
+  - [x] Move clockwise in Field
+  - [x] Move to Break Room
+  - [x] Move to illegal state
 
 
-- [ ] Handler on Unclaimed & Unhatched Egg
-  - [ ] Move to Break Room
-  - [ ] Keep handler on Egg
+- [x] Handler on Unclaimed & Unhatched Egg
+  - [x] Move to Break Room
+  - [x] Keep handler on Egg
+  - [x] Move to illegal state
   - [ ] Move to Handler in Ready Room due to Dragon Effect
 
 
-- [ ] Handler in Break Room
-  - [ ] Move to Handler in Ready Room
+- [x] Handler in Break Room
+  - [x] Move to Handler in Ready Room
+  - [x] Move to illegal state
 
 
-- [ ] Handler in Field White
-  - [ ] Move Handler to Break Room
+- [x] Handler in Field White
+  - [x] Move Handler to Break Room
+  - [x] Move to illegal state
 
 
-- [ ] Handler during Incubation
-  - [ ] Keep handler in Incubation
+- [x] Handler during Incubation
+  - [x] Keep handler in Incubation
+  - [x] Move to illegal state
 
 
 - [ ] Handler in Ready Room and all Eggs claimed
