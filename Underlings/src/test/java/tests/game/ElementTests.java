@@ -8,6 +8,7 @@ import org.junit.Test;
 import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
+import underlings.element.ElementFactory;
 
 public class ElementTests {
 
@@ -15,7 +16,8 @@ public class ElementTests {
 
 	@Before
 	public void init() {
-		this.elementBag = new ElementBag();
+		ElementFactory elementFactory = new ElementFactory();
+		this.elementBag = new ElementBag(elementFactory);
 	}
 
 	@Test

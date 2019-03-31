@@ -5,9 +5,12 @@ import java.util.Map;
 
 public class ElementBag {
 
-	Map<ElementColor, Integer> elementCount;
+	private Map<ElementColor, Integer> elementCount;
+	private ElementFactory elementFactory;
 	
-	public ElementBag() {
+	public ElementBag(ElementFactory elementFactory) {
+		this.elementFactory = elementFactory;
+		
 		this.elementCount = new HashMap<>();
 		this.elementCount.put(ElementColor.BLUE, 20);
 		this.elementCount.put(ElementColor.RED, 20);
@@ -21,7 +24,7 @@ public class ElementBag {
 	
 	public Element drawElementFromList(ElementColor... colors) {
 		this.elementCount.put(colors[0], this.elementCount.get(colors[0]) - 1);
-		return new Element(colors[0]);
+		return this.elementFactory.createElement(colors[0]);
 	}
 
 	public int getNumberRemaining(ElementColor color) {
