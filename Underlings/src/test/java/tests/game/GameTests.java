@@ -37,6 +37,27 @@ public class GameTests {
 
 		this.hatchingGround = new HatchingGround(new Deck(this.cards));
 		this.game = new Game(this.gui, this.hatchingGround, new PlayerFactory());
+	}	
+	
+	@Test
+	public void testStart2Players() {
+		EasyMock.expect(this.gui.promptPlayerCount()).andReturn(2);
+		
+		EasyMock.replay(this.gui);
+		this.game.start();
+		
+		// VERIFY
+		EasyMock.verify(this.gui);
+		
+		assertEquals(2, this.game.getPlayerCount());
+		
+		for (Player player : this.game.getPlayers()) {
+			assertEquals(2, player.getHandlerCount());
+			assertEquals(4, player.getMaxHandlers());
+		}
+		
+		assertEquals(3, this.game.getHatchingGround().getWidth());
+		assertEquals(2, this.game.getHatchingGround().getHeight());
 		
 	}
 	
