@@ -75,4 +75,12 @@ public class HandlerTests {
 		handler.moveToReadyRoom();
 		assertEquals(HandlerState.FIELD, handler.getState());
 	}
+	
+	@Test
+	public void testMoveToBreakRoomFromCard(){
+		Handler handler = new Handler();
+		handler.moveToCard();
+		handler.moveToBreakRoom();
+		assertEquals(HandlerState.BREAK_ROOM, handler.getState());
+	}
 }

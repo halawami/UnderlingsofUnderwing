@@ -26,6 +26,11 @@ public class Handler {
 			add(HandlerState.FIELD);
 			add(HandlerState.BREAK_ROOM);
 		}});
+		toReturn.put(HandlerState.CARD, new LinkedList<HandlerState>(){{
+			add(HandlerState.CARD);
+			add(HandlerState.BREAK_ROOM);
+			// should I put ready_room from the effect?
+		}});
 		return toReturn;
 	}
 
