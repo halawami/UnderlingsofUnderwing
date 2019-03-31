@@ -60,4 +60,10 @@ public class ElementTests {
 		assertEquals(ElementColor.WHITE, drawnElement.getColor());
 	}
 	
+	@Test
+	public void testDrawListSingle_Black() {
+		Element drawnElement = this.elementBag.drawElementFromList(ElementColor.BLACK);
+		assertEquals(ElementColor.BLACK, drawnElement.getColor());
+	}
+	
 }
