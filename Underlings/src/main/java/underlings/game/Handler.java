@@ -31,6 +31,9 @@ public class Handler {
 			add(HandlerState.BREAK_ROOM);
 			// should I put ready_room from the effect?
 		}});
+		toReturn.put(HandlerState.BREAK_ROOM, new LinkedList<HandlerState>(){{
+			add(HandlerState.READY_ROOM);
+		}});
 		return toReturn;
 	}
 
