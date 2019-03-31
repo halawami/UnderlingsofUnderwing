@@ -12,60 +12,39 @@ import underlings.element.ElementColor;
 public class ElementTests {
 
 	private ElementBag elementBag;
-	
+
 	@Before
 	public void init() {
 		this.elementBag = new ElementBag();
 	}
-	
+
 	@Test
-	public void testDrawListSingle_Blue() {
+	public void testDrawListSingle() {
 		Element drawnElement = this.elementBag.drawElementFromList(ElementColor.BLUE);
 		assertEquals(ElementColor.BLUE, drawnElement.getColor());
-	}
-	
-	@Test
-	public void testDrawListSingle_Red() {
-		Element drawnElement = this.elementBag.drawElementFromList(ElementColor.RED);
+
+		drawnElement = this.elementBag.drawElementFromList(ElementColor.RED);
 		assertEquals(ElementColor.RED, drawnElement.getColor());
-	}
-	
-	@Test
-	public void testDrawListSingle_Green() {
-		Element drawnElement = this.elementBag.drawElementFromList(ElementColor.GREEN);
+		
+		drawnElement = this.elementBag.drawElementFromList(ElementColor.GREEN);
 		assertEquals(ElementColor.GREEN, drawnElement.getColor());
-	}
-	
-	@Test
-	public void testDrawListSingle_Yellow() {
-		Element drawnElement = this.elementBag.drawElementFromList(ElementColor.YELLOW);
+		
+		drawnElement = this.elementBag.drawElementFromList(ElementColor.YELLOW);
 		assertEquals(ElementColor.YELLOW, drawnElement.getColor());
-	}
-	
-	@Test
-	public void testDrawListSingle_Orange() {
-		Element drawnElement = this.elementBag.drawElementFromList(ElementColor.ORANGE);
+		
+		drawnElement = this.elementBag.drawElementFromList(ElementColor.ORANGE);
 		assertEquals(ElementColor.ORANGE, drawnElement.getColor());
-	}
-	
-	@Test
-	public void testDrawListSingle_Purple() {
-		Element drawnElement = this.elementBag.drawElementFromList(ElementColor.PURPLE);
+		
+		drawnElement = this.elementBag.drawElementFromList(ElementColor.PURPLE);
 		assertEquals(ElementColor.PURPLE, drawnElement.getColor());
-	}
-	
-	@Test
-	public void testDrawListSingle_White() {
-		Element drawnElement = this.elementBag.drawElementFromList(ElementColor.WHITE);
+		
+		drawnElement = this.elementBag.drawElementFromList(ElementColor.WHITE);
 		assertEquals(ElementColor.WHITE, drawnElement.getColor());
-	}
-	
-	@Test
-	public void testDrawListSingle_Black() {
-		Element drawnElement = this.elementBag.drawElementFromList(ElementColor.BLACK);
+
+		drawnElement = this.elementBag.drawElementFromList(ElementColor.BLACK);
 		assertEquals(ElementColor.BLACK, drawnElement.getColor());
 	}
-	
+
 	@Test
 	public void testInitNumberRemaining() {
 		assertEquals(20, this.elementBag.getNumberRemaining(ElementColor.BLUE));
@@ -77,5 +56,5 @@ public class ElementTests {
 		assertEquals(5, this.elementBag.getNumberRemaining(ElementColor.WHITE));
 		assertEquals(5, this.elementBag.getNumberRemaining(ElementColor.BLACK));
 	}
-	
+
 }
