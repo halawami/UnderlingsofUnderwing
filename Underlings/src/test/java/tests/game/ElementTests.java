@@ -95,5 +95,14 @@ public class ElementTests {
 		assertEquals(ElementColor.GREEN, drawnElement.getColor());
 	}
 	
+	@Test 
+	public void testDrawRandomElement_Black() {
+		EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(97);
+		EasyMock.replay(this.random);
+		
+		Element drawnElement = this.elementBag.drawRandomElement();
+		assertEquals(ElementColor.BLACK, drawnElement.getColor());
+	}
+	
 
 }

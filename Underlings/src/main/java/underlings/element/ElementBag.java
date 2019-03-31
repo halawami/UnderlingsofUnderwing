@@ -49,7 +49,9 @@ public class ElementBag {
 	}
 
 	public Element drawRandomElement() {
-		return new Element(ElementColor.GREEN);
+		return this.drawElementFromList(ElementColor.BLUE, ElementColor.RED,
+				ElementColor.YELLOW, ElementColor.PURPLE, ElementColor.GREEN, ElementColor.ORANGE, ElementColor.WHITE,
+				ElementColor.BLACK);
 	}
 
 }
