@@ -136,4 +136,11 @@ public class HandlerTests {
 		handler.moveToIncubation();
 		assertEquals(HandlerState.INCUBATION, handler.getState());
 	}
+	
+	@Test
+	public void testMoveToIllegalStateFromIncubation() {
+		Handler handler = new Handler(HandlerState.INCUBATION);
+		handler.moveToField();
+		assertEquals(HandlerState.INCUBATION, handler.getState());
+	}
 }

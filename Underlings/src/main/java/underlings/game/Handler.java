@@ -52,6 +52,7 @@ public class Handler {
 				add(HandlerState.BREAK_ROOM);
 			}
 		});
+		// shouldn't incubation go to break room/ready room?
 		toReturn.put(HandlerState.INCUBATION, new LinkedList<HandlerState>() {
 			{
 				add(HandlerState.INCUBATION);
