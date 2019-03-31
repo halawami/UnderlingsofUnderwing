@@ -37,7 +37,7 @@ public class Handler {
 		
 		toReturn.put(HandlerState.BREAK_ROOM, createStateList(HandlerState.READY_ROOM));
 		toReturn.put(HandlerState.FIELD_WHITESPACE, createStateList(HandlerState.BREAK_ROOM));
-		// add ready_room
+		
 		toReturn.put(HandlerState.INCUBATION, createStateList(
 				HandlerState.INCUBATION,
 				HandlerState.READY_ROOM));
