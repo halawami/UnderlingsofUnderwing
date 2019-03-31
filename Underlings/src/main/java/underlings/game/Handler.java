@@ -34,6 +34,9 @@ public class Handler {
 		toReturn.put(HandlerState.BREAK_ROOM, new LinkedList<HandlerState>(){{
 			add(HandlerState.READY_ROOM);
 		}});
+		toReturn.put(HandlerState.FIELD_WHITESPACE, new LinkedList<HandlerState>(){{
+			add(HandlerState.BREAK_ROOM);
+		}});
 		return toReturn;
 	}
 

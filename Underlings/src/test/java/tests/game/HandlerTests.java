@@ -99,4 +99,12 @@ public class HandlerTests {
 		handler.moveToReadyRoom();
 		assertEquals(HandlerState.READY_ROOM, handler.getState());
 	}
+	
+	@Test
+	public void testMoveToBreakRoomFromFieldWhiteSpace(){
+		Handler handler = new Handler();
+		handler.moveToFieldWhite();
+		handler.moveToBreakRoom();
+		assertEquals(HandlerState.BREAK_ROOM, handler.getState());
+	}
 }
