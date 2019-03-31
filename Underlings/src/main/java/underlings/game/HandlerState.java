@@ -6,4 +6,5 @@ public enum HandlerState {
 	FIELD,
 	FIELD_WHITESPACE,
 	BREAK_ROOM,
+	INCUBATION
 }

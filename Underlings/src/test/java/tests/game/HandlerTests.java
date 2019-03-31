@@ -107,4 +107,11 @@ public class HandlerTests {
 		handler.moveToBreakRoom();
 		assertEquals(HandlerState.BREAK_ROOM, handler.getState());
 	}
+	
+	@Test
+	public void testMoveToIncubationFromIncubation(){
+		Handler handler = new Handler(HandlerState.INCUBATION);
+		handler.moveToIncubation();
+		assertEquals(HandlerState.INCUBATION, handler.getState());
+	}
 }
