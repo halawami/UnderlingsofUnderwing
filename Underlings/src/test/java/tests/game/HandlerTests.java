@@ -138,6 +138,13 @@ public class HandlerTests {
 	}
 	
 	@Test
+	public void testMoveToReadyRoomFromIncubation() {
+		Handler handler = new Handler(HandlerState.INCUBATION);
+		handler.moveToReadyRoom();;
+		assertEquals(HandlerState.READY_ROOM, handler.getState());
+	}
+	
+	@Test
 	public void testMoveToIllegalStateFromIncubation() {
 		Handler handler = new Handler(HandlerState.INCUBATION);
 		handler.moveToField();
