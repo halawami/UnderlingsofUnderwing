@@ -37,6 +37,7 @@ public class GameTests {
 
 		this.hatchingGround = new HatchingGround(new Deck(this.cards));
 		this.game = new Game(this.gui, this.hatchingGround, new PlayerFactory());
+		
 	}	
 	
 	@Test
