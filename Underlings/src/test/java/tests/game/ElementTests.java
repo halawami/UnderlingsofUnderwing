@@ -48,4 +48,10 @@ public class ElementTests {
 		assertEquals(ElementColor.ORANGE, drawnElement.getColor());
 	}
 	
+	@Test
+	public void testDrawListSingle_Purple() {
+		Element drawnElement = this.elementBag.drawElementFromList(ElementColor.PURPLE);
+		assertEquals(ElementColor.PURPLE, drawnElement.getColor());
+	}
+	
 }
