@@ -72,8 +72,9 @@ public class PlayerTests {
 	@Test
 	public void testReach25PointsWith3Handlers(){
 		Player player = new Player(4);
+		player.addPoints(13);
 		player.addHandler();
-		player.addPoints(25);
+		player.addPoints(13);
 		assertEquals(4, player.getHandlerCount());
 	}
 	

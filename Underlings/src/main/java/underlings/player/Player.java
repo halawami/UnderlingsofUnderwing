@@ -10,6 +10,8 @@ public class Player {
 	private List<Handler> handlers;
 	private int maxHandlers;
 	private int points;
+	private boolean reached12Points;
+	private boolean reached25Points;
 
 	public Player(int maxHandlers) {
 		this.handlers = new ArrayList<Handler>();
@@ -17,6 +19,8 @@ public class Player {
 		this.handlers.add(new Handler());
 		this.maxHandlers = maxHandlers;
 		this.points = 0;
+		this.reached12Points = false;
+		this.reached25Points = false;
 	}
 
 	public int getHandlerCount() {
@@ -39,10 +43,21 @@ public class Player {
 
 	public void addPoints(int pointsToAdd) {
 		this.points += pointsToAdd;
-		if(this.points >= 12 && this.handlers.size() < 3){
+		if(this.points >= 12 && this.handlers.size() < 3 && !this.reached12Points){
 			this.handlers.add(new Handler());
-		} else if (this.points >= 25 && this.handlers.size() < 4) {
+			this.reached12Points = true;
+		} 
+		if (this.points >= 25 && this.handlers.size() < 4 && !this.reached25Points 
+				&& !this.reached12Points) {
 			this.handlers.add(new Handler());
+			this.handlers.add(new Handler());
+			this.reached25Points = true;
+			this.reached12Points = true;
+		}
+		if (this.points >= 25 && this.handlers.size() < 4 && !this.reached25Points 
+				&& this.reached12Points) {
+			this.handlers.add(new Handler());
+			this.reached25Points = true;
 		}
 	}
 
