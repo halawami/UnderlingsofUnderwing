@@ -10,11 +10,6 @@ public class Handler {
 	private HandlerState state;
 	private final static HashMap<HandlerState, List<HandlerState>> allowedStates = initializeHashMap();
 
-	public Handler() {
-		this.state = HandlerState.READY_ROOM;
-	}
-
-	// had to add this because we can't go from ready room to incubation
 	public Handler(HandlerState state) {
 		this.state = state;
 	}

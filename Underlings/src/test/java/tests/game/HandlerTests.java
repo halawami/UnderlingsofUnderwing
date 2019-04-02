@@ -11,41 +11,41 @@ public class HandlerTests {
 
 	@Test
 	public void testInitialState() {
-		Handler handler = new Handler();
+		Handler handler = new Handler(HandlerState.READY_ROOM);
 		assertEquals(HandlerState.READY_ROOM, handler.getState());
 	}
 
 	@Test
 	public void testMoveToUnclaimedAndUnhatchedEggFromReadyRoom() {
-		Handler handler = new Handler();
+		Handler handler = new Handler(HandlerState.READY_ROOM);
 		handler.moveToCard();
 		assertEquals(HandlerState.CARD, handler.getState());
 	}
 
 	@Test
 	public void testMoveToFieldFromReadyRoom() {
-		Handler handler = new Handler();
+		Handler handler = new Handler(HandlerState.READY_ROOM);
 		handler.moveToField();
 		assertEquals(HandlerState.FIELD, handler.getState());
 	}
 
 	@Test
 	public void testMoveToFieldWhiteFromReadyRoom() {
-		Handler handler = new Handler();
+		Handler handler = new Handler(HandlerState.READY_ROOM);
 		handler.moveToFieldWhite();
 		assertEquals(HandlerState.FIELD_WHITESPACE, handler.getState());
 	}
 
 	@Test
 	public void testMoveToReadyRoomFromReadyRoom() {
-		Handler handler = new Handler();
+		Handler handler = new Handler(HandlerState.READY_ROOM);
 		handler.moveToReadyRoom();
 		assertEquals(HandlerState.READY_ROOM, handler.getState());
 	}
 
 	@Test
 	public void testMoveToIllegalStateFromReadyRoom() {
-		Handler handler = new Handler();
+		Handler handler = new Handler(HandlerState.READY_ROOM);
 		handler.moveToBreakRoom();
 		assertEquals(HandlerState.READY_ROOM, handler.getState());
 		handler.moveToIncubation();
@@ -54,7 +54,7 @@ public class HandlerTests {
 
 	@Test
 	public void testMoveClockwiseInField() {
-		Handler handler = new Handler();
+		Handler handler = new Handler(HandlerState.READY_ROOM);
 		handler.moveToField();
 		handler.moveClockwiseInField();
 		assertEquals(HandlerState.FIELD, handler.getState());
@@ -62,7 +62,7 @@ public class HandlerTests {
 
 	@Test
 	public void testMoveToBreakRoomFromField() {
-		Handler handler = new Handler();
+		Handler handler = new Handler(HandlerState.READY_ROOM);
 		handler.moveToField();
 		handler.moveToBreakRoom();
 		assertEquals(HandlerState.BREAK_ROOM, handler.getState());
@@ -70,7 +70,7 @@ public class HandlerTests {
 
 	@Test
 	public void testMoveToIllegalStateFromField() {
-		Handler handler = new Handler();
+		Handler handler = new Handler(HandlerState.READY_ROOM);
 		handler.moveToField();
 		handler.moveToReadyRoom();
 		assertEquals(HandlerState.FIELD, handler.getState());
@@ -78,7 +78,7 @@ public class HandlerTests {
 
 	@Test
 	public void testMoveToBreakRoomFromCard() {
-		Handler handler = new Handler();
+		Handler handler = new Handler(HandlerState.READY_ROOM);
 		handler.moveToCard();
 		handler.moveToBreakRoom();
 		assertEquals(HandlerState.BREAK_ROOM, handler.getState());
@@ -86,7 +86,7 @@ public class HandlerTests {
 
 	@Test
 	public void testMoveToIllegateStateFromCard() {
-		Handler handler = new Handler();
+		Handler handler = new Handler(HandlerState.READY_ROOM);
 		handler.moveToCard();
 		handler.moveToReadyRoom();
 		assertEquals(HandlerState.CARD, handler.getState());
@@ -94,7 +94,7 @@ public class HandlerTests {
 
 	@Test
 	public void testMoveToCardFromCard() {
-		Handler handler = new Handler();
+		Handler handler = new Handler(HandlerState.READY_ROOM);
 		handler.moveToCard();
 		handler.moveToCard();
 		assertEquals(HandlerState.CARD, handler.getState());
@@ -116,7 +116,7 @@ public class HandlerTests {
 
 	@Test
 	public void testMoveToBreakRoomFromFieldWhiteSpace() {
-		Handler handler = new Handler();
+		Handler handler = new Handler(HandlerState.READY_ROOM);
 		handler.moveToFieldWhite();
 		handler.moveToBreakRoom();
 		assertEquals(HandlerState.BREAK_ROOM, handler.getState());
@@ -124,7 +124,7 @@ public class HandlerTests {
 
 	@Test
 	public void testMoveToIllegalStateFromFieldWhiteSpace() {
-		Handler handler = new Handler();
+		Handler handler = new Handler(HandlerState.READY_ROOM);
 		handler.moveToFieldWhite();
 		handler.moveToReadyRoom();
 		assertEquals(HandlerState.FIELD_WHITESPACE, handler.getState());

@@ -13,6 +13,7 @@ import underlings.game.Card;
 import underlings.game.Deck;
 import underlings.game.Game;
 import underlings.game.Handler;
+import underlings.game.HandlerFactory;
 import underlings.game.HandlerState;
 import underlings.game.HatchingGround;
 import underlings.gui.GUI;
@@ -36,7 +37,7 @@ public class GameTests {
 		}
 
 		this.hatchingGround = new HatchingGround(new Deck(this.cards));
-		this.game = new Game(this.gui, this.hatchingGround, new PlayerFactory());
+		this.game = new Game(this.gui, this.hatchingGround, new PlayerFactory(new HandlerFactory()));
 		
 	}	
 	

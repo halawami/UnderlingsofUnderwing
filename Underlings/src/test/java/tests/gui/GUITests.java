@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import underlings.game.Game;
+import underlings.game.HandlerFactory;
 import underlings.game.HatchingGround;
 import underlings.gui.GUI;
 import underlings.player.PlayerFactory;
@@ -21,7 +22,7 @@ public class GUITests {
 	public void init() {
 		this.gui = EasyMock.mock(GUI.class);
 		this.hatchingGround = EasyMock.mock(HatchingGround.class);
-		this.game = new Game(this.gui, this.hatchingGround, new PlayerFactory());
+		this.game = new Game(this.gui, this.hatchingGround, new PlayerFactory(new HandlerFactory()));
 	}
 	
 	@Test
