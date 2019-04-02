@@ -37,7 +37,7 @@ public class Player {
 
 	public void addHandler() {
 		if (this.handlers.size() != this.maxHandlers) {
-			this.handlers.add(handlerFactory.createHandler());
+			this.handlers.add(this.handlerFactory.createHandler());
 		}
 	}
 
@@ -48,24 +48,25 @@ public class Player {
 	public void addPoints(int pointsToAdd) {
 		this.points += pointsToAdd;
 		if(this.points >= 12 && this.handlers.size() < 3 && !this.reached12Points){
-			this.handlers.add(handlerFactory.createHandler());
-			this.reached12Points = true;
+			this.handlers.add(this.handlerFactory.createHandler());
 		} 
 		if (this.points >= 25 && this.handlers.size() < 4 && !this.reached25Points 
 				&& !this.reached12Points) {
-			this.handlers.add(handlerFactory.createHandler());
-			this.handlers.add(handlerFactory.createHandler());
-			this.reached25Points = true;
-			this.reached12Points = true;
+			this.handlers.add(this.handlerFactory.createHandler());
+			this.handlers.add(this.handlerFactory.createHandler());
 		}
 		if (this.points >= 25 && this.handlers.size() < 4 && !this.reached25Points 
 				&& this.reached12Points) {
-			this.handlers.add(handlerFactory.createHandler());
+			this.handlers.add(this.handlerFactory.createHandler());
+		}
+		if (this.points >= 12) {
+			this.reached12Points = true;
+		}
+		if (this.points >= 25) {
 			this.reached25Points = true;
 		}
 	}
 
-	// which one do we lose
 	public void loseHandler() {
 		if(this.handlers.size() > 2){
 			this.handlers.remove(0);

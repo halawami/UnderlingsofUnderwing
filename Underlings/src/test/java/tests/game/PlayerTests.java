@@ -89,8 +89,6 @@ public class PlayerTests {
 		assertEquals(4, player.getHandlerCount());
 	}
 	
-	// is this correct behavior? or do they get 2 handlers: 
-	// yes they should
 	@Test 
 	public void testReach25PointsFromBelow12Points(){
 		Player player = new Player(4, handlerFactory);

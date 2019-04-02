@@ -47,6 +47,7 @@ public class Handler {
 		return this.state;
 	}
 
+	// should I get rid of these and only use moveToState
 	public void moveToCard() {
 		moveToState(HandlerState.CARD);
 	}
