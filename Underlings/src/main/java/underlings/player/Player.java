@@ -3,9 +3,10 @@ package underlings.player;
 import java.util.ArrayList;
 import java.util.List;
 
+import underlings.element.Element;
 import underlings.game.Handler;
 import underlings.game.HandlerFactory;
-import underlings.game.HandlerState;
+import underlings.gui.ElementGiver;
 
 public class Player {
 
@@ -67,6 +68,14 @@ public class Player {
 		if(this.handlers.size() > 2){
 			this.handlers.remove(0);
 		}
+	}
+
+	public List<ElementGiver> getElementGivers() {
+		return null;
+	}
+
+	public void addElement(Element elementToAdd) {
+		
 	}
 
 }
