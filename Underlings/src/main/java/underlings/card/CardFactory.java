@@ -17,6 +17,10 @@ public class CardFactory {
         Stack<Card> allCards = new Stack<>();
         Card card = new Card();
         card.name = "test";
+        card.filePath = "fakePath";
+        card.points = 1;
+        card.temperature = Temperature.COOL;
+        card.family = Family.TRIADIC;
         allCards.add(card);
         return allCards;
     }

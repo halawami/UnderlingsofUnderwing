@@ -4,6 +4,8 @@ import com.google.gson.stream.JsonReader;
 import org.easymock.EasyMock;
 import org.junit.Test;
 import underlings.card.CardFactory;
+import underlings.card.Family;
+import underlings.card.Temperature;
 import underlings.game.Card;
 
 import java.io.StringReader;
@@ -33,7 +35,11 @@ public class CardFactoryTests {
         assertEquals(1, resultCards.size());
 
         Card firstCard = resultCards.pop();
-        assertEquals(firstCard.getName(), "test");
+        assertEquals("test", firstCard.getName());
+        assertEquals("fakePath", firstCard.getFilePath());
+        assertEquals(1, firstCard.getPoints());
+        assertEquals(Temperature.COOL, firstCard.getTemperature());
+        assertEquals(Family.TRIADIC, firstCard.getFamily());
 
         EasyMock.verify(testCardFactory);
     }
@@ -44,7 +50,7 @@ public class CardFactoryTests {
     }
 
     private String getTestJson() {
-        String testJson ="[{\"name\": \"test\"}]";
+        String testJson ="[{\"name\":\"test\",\"filePath\":\"fakePath\",\"points\":1,\"temperature\":\"COOL\",\"family\":\"TRIADIC\"}]";
         return testJson;
     }
 }
