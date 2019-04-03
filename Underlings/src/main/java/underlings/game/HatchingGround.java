@@ -1,5 +1,4 @@
 package underlings.game;
-
 import underlings.gui.GUI;
 
 public class HatchingGround {
@@ -33,6 +32,7 @@ public class HatchingGround {
 			}
 		}
 	}
+
 
 	public void display(GUI gui) {
 		for (int row = 0; row < this.height; row++) {
