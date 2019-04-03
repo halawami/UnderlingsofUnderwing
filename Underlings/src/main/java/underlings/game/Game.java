@@ -76,7 +76,7 @@ public class Game {
 	}
 
 	public void start() {
-		this.numberOfPlayers = this.gui.promptPlayerCount();
+		this.numberOfPlayers = this.gui.promptHandler.promptPlayerCount();
 		this.setUp(this.numberOfPlayers);
 	}
 

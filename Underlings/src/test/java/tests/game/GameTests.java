@@ -16,7 +16,9 @@ import underlings.game.Handler;
 import underlings.game.HandlerFactory;
 import underlings.game.HandlerState;
 import underlings.game.HatchingGround;
+import underlings.gui.Display;
 import underlings.gui.GUI;
+import underlings.gui.PromptHandler;
 import underlings.player.Player;
 import underlings.player.PlayerFactory;
 
@@ -29,7 +31,9 @@ public class GameTests {
 	
 	@Before
 	public void init() {
-		this.gui = EasyMock.mock(GUI.class);
+		Display mockedDisplay = EasyMock.mock(Display.class);
+		PromptHandler mockedPrompts = EasyMock.mock(PromptHandler.class);
+		this.gui = new GUI(mockedPrompts, mockedDisplay);
 		
 		this.cards = new Stack<Card>();
 		for(int i = 0; i < 50; i++){
@@ -43,13 +47,13 @@ public class GameTests {
 	
 	@Test
 	public void testStart2Players() {
-		EasyMock.expect(this.gui.promptPlayerCount()).andReturn(2);
+		EasyMock.expect(this.gui.promptHandler.promptPlayerCount()).andReturn(2);
 		
-		EasyMock.replay(this.gui);
+		EasyMock.replay(this.gui.promptHandler, this.gui.display);
 		this.game.start();
 		
 		// VERIFY
-		EasyMock.verify(this.gui);
+		EasyMock.verify(this.gui.promptHandler, this.gui.display);
 		
 		assertEquals(2, this.game.getPlayerCount());
 		

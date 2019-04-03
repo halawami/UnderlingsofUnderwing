@@ -1,7 +1,11 @@
 package underlings.gui;
 
-public interface GUI {
-
-	public int promptPlayerCount();
-
+public class GUI {
+	public PromptHandler promptHandler;
+	public Display display;
+	
+	public GUI(PromptHandler promptHandler, Display display) {
+		this.promptHandler = promptHandler;
+		this.display = display;
+	}
 }

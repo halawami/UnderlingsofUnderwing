@@ -1,10 +1,13 @@
 package underlings.gui;
 
+import java.util.List;
+
 public interface PromptHandler {
 	
 	public int promptPlayerCount();
 	
-//	public ?? promptElementDrawChoice(ElementDrawChoice... choices) {
-//		
-//	}
+	public ElementGiver promptElementGiver(List<ElementGiver> elementGivers);
+	
+	public ElementDrawChoice promptElementDrawChoice(List<ElementDrawChoice> elementDrawChoices);
+		
 }
