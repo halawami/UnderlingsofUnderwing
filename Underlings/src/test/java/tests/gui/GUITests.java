@@ -7,9 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import underlings.game.Game;
-
 import underlings.game.HandlerFactory;
-
 import underlings.game.HatchingGround;
 import underlings.gui.GUI;
 import underlings.player.PlayerFactory;
@@ -31,7 +29,7 @@ public class GUITests {
 	public void testGetPlayerCountTwoPlayers() {
 
 		// RECORD
-		EasyMock.expect(this.gui.promptPlayerCount()).andReturn(2);
+		EasyMock.expect(this.gui.promptHandler.promptPlayerCount()).andReturn(2);
 		
 		// REPLAY
 		EasyMock.replay(this.gui);
@@ -47,7 +45,7 @@ public class GUITests {
 	public void testGetPlayerCountSixPlayers() {
 		
 		// RECORD
-		EasyMock.expect(this.gui.promptPlayerCount()).andReturn(6);
+		EasyMock.expect(this.gui.promptHandler.promptPlayerCount()).andReturn(6);
 		
 		// REPLAY
 		EasyMock.replay(this.gui);

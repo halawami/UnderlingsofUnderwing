@@ -1,5 +1,7 @@
 package underlings.gui;
 
+import underlings.element.ElementColor;
+
 public class ElementDrawChoice {
 	private ElementColor[] choices;
 

@@ -1,14 +1,13 @@
 package underlings.card;
 
-import com.google.gson.Gson;
-import com.google.gson.stream.JsonReader;
-import underlings.game.Card;
-
-import java.io.File;
-import java.io.StringReader;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
+
+import com.google.gson.Gson;
+import com.google.gson.stream.JsonReader;
+
+import underlings.game.Card;
 
 public class CardFactory {
 
@@ -16,7 +15,7 @@ public class CardFactory {
         Stack<Card> allCards = new Stack<>();
 
         List<String> packNames = this.getPackNames();
-        List<Card> packCards = getPackCards("");
+        List<Card> packCards = this.getPackCards("");
         allCards.addAll(packCards);
 
         return allCards;
@@ -27,8 +26,8 @@ public class CardFactory {
     }
 
     private List<Card> getPackCards(String packName) {
-        JsonReader packCardsReader = getCardsJsonReader("");
-        Card[] constructedCard = constructPackCards(packCardsReader);
+        JsonReader packCardsReader = this.getCardsJsonReader("");
+        Card[] constructedCard = this.constructPackCards(packCardsReader);
         return Arrays.asList(constructedCard);
     }
 

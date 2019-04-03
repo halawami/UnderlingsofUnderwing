@@ -43,7 +43,7 @@ public class GameTests {
 	
 	@Test
 	public void testStart2Players() {
-		EasyMock.expect(this.gui.promptPlayerCount()).andReturn(2);
+		EasyMock.expect(this.gui.promptHandler.promptPlayerCount()).andReturn(2);
 		
 		EasyMock.replay(this.gui);
 		this.game.start();
