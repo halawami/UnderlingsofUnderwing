@@ -138,6 +138,22 @@ public class PlayerTests {
 		Player player = new Player(4, this.handlerFactory);
 		List<ElementGiver> elementGivers = player.getElementGivers();
 		assertEquals(2, elementGivers.size());
+		for (ElementGiver elementGiver : elementGivers) {
+			assertEquals(1, elementGiver.getElementDrawChoices().size());
+			assertTrue(elementGiver.getElementDrawChoices().get(0).isRandom());
+		}
+	}
+	
+	@Test
+	public void testPlayerElementGiversAddHandler() {
+		Player player = new Player(4, this.handlerFactory);
+		player.addHandler();
+		List<ElementGiver> elementGivers = player.getElementGivers();
+		assertEquals(3, elementGivers.size());
+		for (ElementGiver elementGiver : elementGivers) {
+			assertEquals(1, elementGiver.getElementDrawChoices().size());
+			assertTrue(elementGiver.getElementDrawChoices().get(0).isRandom());
+		}
 	}
 
 }
