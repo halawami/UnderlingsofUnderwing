@@ -1,6 +1,10 @@
 package underlings;
 
+import java.util.Random;
+
 import underlings.card.CardFactory;
+import underlings.element.ElementBag;
+import underlings.element.ElementFactory;
 import underlings.game.Deck;
 import underlings.game.Game;
 import underlings.game.HandlerFactory;
@@ -22,7 +26,11 @@ public class Main {
 		HandlerFactory handlerFactory = new HandlerFactory();
 		PlayerFactory playerFactory = new PlayerFactory(handlerFactory);
 		
-		Game game = new Game(gui, hatchingGround, playerFactory);
+		ElementFactory elementFactory = new ElementFactory();
+		Random random = new Random();
+		ElementBag elementBag = new ElementBag(elementFactory, random);
+		
+		Game game = new Game(gui, hatchingGround, playerFactory, elementBag);
 		
 		game.start();
 		

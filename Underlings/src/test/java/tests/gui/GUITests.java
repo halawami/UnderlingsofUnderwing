@@ -2,10 +2,14 @@ package tests.gui;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.Random;
+
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
 
+import underlings.element.ElementBag;
+import underlings.element.ElementFactory;
 import underlings.game.Game;
 import underlings.game.HandlerFactory;
 import underlings.game.HatchingGround;
@@ -27,7 +31,7 @@ public class GUITests {
 		
 		this.gui = new GUI(mockedPrompts, mockedDisplay);
 		this.hatchingGround = EasyMock.mock(HatchingGround.class);
-		this.game = new Game(this.gui, this.hatchingGround, new PlayerFactory(new HandlerFactory()));
+		this.game = new Game(this.gui, this.hatchingGround, new PlayerFactory(new HandlerFactory()), new ElementBag(new ElementFactory(), new Random()));
 	}
 	
 	@Test
@@ -38,7 +42,7 @@ public class GUITests {
 		
 		// REPLAY
 		EasyMock.replay(this.gui.promptHandler, this.gui.display);
-		this.game.start();
+		this.game.promptPlayerCount();
 		
 		// VERIFY
 		EasyMock.verify(this.gui.promptHandler, this.gui.display);
@@ -54,7 +58,7 @@ public class GUITests {
 		
 		// REPLAY
 		EasyMock.replay(this.gui.promptHandler, this.gui.display);
-		this.game.start();
+		this.game.promptPlayerCount();
 		
 		// VERIFY
 		EasyMock.verify(this.gui.promptHandler, this.gui.display);

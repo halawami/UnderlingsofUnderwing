@@ -3,7 +3,10 @@ package underlings.game;
 import java.util.LinkedList;
 import java.util.List;
 
+import underlings.element.ElementBag;
 import underlings.gui.GUI;
+import underlings.phase.ElementPhase;
+import underlings.phase.Phase;
 import underlings.player.Player;
 import underlings.player.PlayerFactory;
 
@@ -29,13 +32,15 @@ public class Game {
 	private HatchingGround hatchingGround;
 	private GUI gui;
 	private PlayerFactory playerFactory;
-
+	private ElementBag elementBag;
+		
 	private List<Player> players = new LinkedList<Player>();
 
-	public Game(GUI gui, HatchingGround hatchingGround, PlayerFactory playerFactory) {
+	public Game(GUI gui, HatchingGround hatchingGround, PlayerFactory playerFactory, ElementBag elementBag) {
 		this.gui = gui;
 		this.hatchingGround = hatchingGround;
 		this.playerFactory = playerFactory;
+		this.elementBag = elementBag;
 	}
 
 	public void setUp(int numberOfPlayers) {
@@ -76,8 +81,18 @@ public class Game {
 	}
 
 	public void start() {
-		this.numberOfPlayers = this.gui.promptHandler.promptPlayerCount();
+		this.promptPlayerCount();
 		this.setUp(this.numberOfPlayers);
+		
+		Phase phaseOne = new ElementPhase();
+		for (Player player : this.players) {
+			phaseOne.execute(player, this.gui, this.elementBag, this.hatchingGround);
+		}
+		
+	}
+
+	public void promptPlayerCount() {
+		this.numberOfPlayers = this.gui.promptHandler.promptPlayerCount();
 	}
 
 	public int getPlayerCount() {
