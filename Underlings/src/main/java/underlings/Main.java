@@ -1,5 +1,7 @@
 package underlings;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import underlings.card.CardFactory;
@@ -12,12 +14,12 @@ import underlings.game.HatchingGround;
 import underlings.gui.GUI;
 import underlings.gui.LameGUI;
 import underlings.gui.LamePrompt;
+import underlings.phase.ElementPhase;
 import underlings.player.PlayerFactory;
 
 public class Main {
 
 	public static void main(String[] args ) {
-		
 
 		GUI gui = new GUI(new LamePrompt(), new LameGUI());
 		CardFactory cardFactory = new CardFactory();
@@ -32,7 +34,10 @@ public class Main {
 		
 		Game game = new Game(gui, hatchingGround, playerFactory, elementBag);
 		
-		game.start();
+		List<ElementPhase> elementPhases = new ArrayList<ElementPhase>();
+		elementPhases.add(new ElementPhase());
+		
+		game.start(elementPhases);
 		
 	}
 	

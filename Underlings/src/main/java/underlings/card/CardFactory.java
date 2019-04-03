@@ -14,9 +14,12 @@ public class CardFactory {
     public Stack<Card> getCards() {
         Stack<Card> allCards = new Stack<>();
 
-        List<String> packNames = this.getPackNames();
-        List<Card> packCards = this.getPackCards("");
-        allCards.addAll(packCards);
+//        List<String> packNames = this.getPackNames();
+//        List<Card> packCards = this.getPackCards("");
+//        allCards.addAll(packCards);
+        for (int i = 0; i < 50; i++) {
+        	allCards.add(new Card());
+        }
 
         return allCards;
     }

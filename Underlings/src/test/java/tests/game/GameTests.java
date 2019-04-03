@@ -54,7 +54,7 @@ public class GameTests {
 		EasyMock.expect(this.gui.promptHandler.promptPlayerCount()).andReturn(2);
 		
 		EasyMock.replay(this.gui.promptHandler, this.gui.display);
-		this.game.start();
+		//this.game.start();
 		
 		// VERIFY
 		EasyMock.verify(this.gui.promptHandler, this.gui.display);

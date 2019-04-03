@@ -6,7 +6,6 @@ import java.util.List;
 import underlings.element.ElementBag;
 import underlings.gui.GUI;
 import underlings.phase.ElementPhase;
-import underlings.phase.Phase;
 import underlings.player.Player;
 import underlings.player.PlayerFactory;
 
@@ -80,15 +79,16 @@ public class Game {
 		return this.players;
 	}
 
-	public void start() {
+	public void start(List<ElementPhase> elementPhases) {
 		this.promptPlayerCount();
 		this.setUp(this.numberOfPlayers);
 		
-		Phase phaseOne = new ElementPhase();
-		for (Player player : this.players) {
-			phaseOne.execute(player, this.gui, this.elementBag, this.hatchingGround);
+		for (ElementPhase elementPhase : elementPhases) {			
+			for (Player player : this.players) {
+				elementPhase.execute(player, this.gui, this.elementBag, this.hatchingGround);
+			}
 		}
-		
+	
 	}
 
 	public void promptPlayerCount() {
