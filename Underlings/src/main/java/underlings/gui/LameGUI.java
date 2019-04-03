@@ -10,13 +10,12 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 import underlings.game.Card;
 import underlings.game.Handler;
 import underlings.player.Player;
 
-public class LameGUI implements GUI {
+public class LameGUI implements Display {
 	private final int WIDTH = 1066, HEIGHT = 950;
 	private JFrame frame;
 	private Image img;
@@ -48,11 +47,6 @@ public class LameGUI implements GUI {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-
-	@Override
-	public int promptPlayerCount() {
-		return Integer.parseInt(JOptionPane.showInputDialog("How many players? [2,6]"));
 	}
 
 	/**

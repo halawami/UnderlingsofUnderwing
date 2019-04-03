@@ -39,7 +39,7 @@ public class Game {
 	}
 
 	public void requestPlayerCount() {
-		this.numberOfPlayers = this.gui.promptPlayerCount();
+		this.numberOfPlayers = this.gui.promptHandler.promptPlayerCount();
 	}
 	
 	public void setUp(int numberOfPlayers) {
@@ -91,19 +91,19 @@ public class Game {
 	}
 	
 	private void display() {
-		this.gui.displayBackground();
+		this.gui.display.displayBackground();
 		this.hatchingGround.display(this.gui);
 		this.displayPlayers();
 		
-		this.gui.update();
+		this.gui.display.update();
 	}
 
 	public void displayPlayers() {
 		for(int playerNumber = 0; playerNumber < this.players.size(); playerNumber++) {
 			Player player = this.players.get(playerNumber);
-			this.gui.displayPlayer(playerNumber, player);
+			this.gui.display.displayPlayer(playerNumber, player);
 			List<Handler> handlers = player.getHandlers();
-			this.gui.displayHandlers(playerNumber, handlers);
+			this.gui.display.displayHandlers(playerNumber, handlers);
 		}
 	}
 

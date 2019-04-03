@@ -13,7 +13,9 @@ import underlings.game.Deck;
 import underlings.game.Game;
 import underlings.game.Handler;
 import underlings.game.HatchingGround;
+import underlings.gui.Display;
 import underlings.gui.GUI;
+import underlings.gui.PromptHandler;
 import underlings.player.Player;
 import underlings.player.PlayerFactory;
 
@@ -26,7 +28,10 @@ public class GUITests {
 
 	@Before
 	public void init() {
-		this.gui = EasyMock.mock(GUI.class);
+		PromptHandler promptHandler = EasyMock.mock(PromptHandler.class);
+		Display display = EasyMock.mock(Display.class);
+		
+		this.gui = new GUI(promptHandler, display);
 
 		this.deck = EasyMock.mock(Deck.class);
 		EasyMock.expect(this.deck.draw()).andStubReturn(new Card());
@@ -40,14 +45,14 @@ public class GUITests {
 	public void testGetPlayerCountTwoPlayers() {
 
 		// RECORD
-		EasyMock.expect(this.gui.promptPlayerCount()).andReturn(2);
+		EasyMock.expect(this.gui.promptHandler.promptPlayerCount()).andReturn(2);
 
 		// REPLAY
-		EasyMock.replay(this.gui);
+		EasyMock.replay(this.gui.promptHandler, this.gui.display);
 		this.game.requestPlayerCount();
 
 		// VERIFY
-		EasyMock.verify(this.gui);
+		EasyMock.verify(this.gui.promptHandler, this.gui.display);
 		assertEquals(2, this.game.getPlayerCount());
 
 	}
@@ -56,14 +61,14 @@ public class GUITests {
 	public void testGetPlayerCountSixPlayers() {
 
 		// RECORD
-		EasyMock.expect(this.gui.promptPlayerCount()).andReturn(6);
+		EasyMock.expect(this.gui.promptHandler.promptPlayerCount()).andReturn(6);
 
 		// REPLAY
-		EasyMock.replay(this.gui);
+		EasyMock.replay(this.gui.promptHandler, this.gui.display);
 		this.game.requestPlayerCount();
 
 		// VERIFY
-		EasyMock.verify(this.gui);
+		EasyMock.verify(this.gui.promptHandler, this.gui.display);
 		assertEquals(6, this.game.getPlayerCount());
 
 	}
@@ -73,16 +78,16 @@ public class GUITests {
 		this.game.setUp(2);
 
 		// RECORD
-		EasyMock.expect(this.gui.promptPlayerCount()).andStubReturn(2);
-		this.gui.displayCard(EasyMock.anyInt(), EasyMock.anyInt(), EasyMock.anyObject(Card.class));
+		EasyMock.expect(this.gui.promptHandler.promptPlayerCount()).andStubReturn(2);
+		this.gui.display.displayCard(EasyMock.anyInt(), EasyMock.anyInt(), EasyMock.anyObject(Card.class));
 		EasyMock.expectLastCall().times(6);
 
 		// REPLAY
-		EasyMock.replay(this.gui);
+		EasyMock.replay(this.gui.promptHandler, this.gui.display);
 		this.hatchingGround.display(this.gui);
 
 		// VERIFY
-		EasyMock.verify(this.gui);
+		EasyMock.verify(this.gui.promptHandler, this.gui.display);
 
 	}
 
@@ -91,16 +96,16 @@ public class GUITests {
 		this.game.setUp(3);
 
 		// RECORD
-		EasyMock.expect(this.gui.promptPlayerCount()).andStubReturn(2);
-		this.gui.displayCard(EasyMock.anyInt(), EasyMock.anyInt(), EasyMock.anyObject(Card.class));
+		EasyMock.expect(this.gui.promptHandler.promptPlayerCount()).andStubReturn(2);
+		this.gui.display.displayCard(EasyMock.anyInt(), EasyMock.anyInt(), EasyMock.anyObject(Card.class));
 		EasyMock.expectLastCall().times(12);
 
 		// REPLAY
-		EasyMock.replay(this.gui);
+		EasyMock.replay(this.gui.promptHandler, this.gui.display);
 		this.hatchingGround.display(this.gui);
 
 		// VERIFY
-		EasyMock.verify(this.gui);
+		EasyMock.verify(this.gui.promptHandler, this.gui.display);
 
 	}
 
@@ -109,16 +114,16 @@ public class GUITests {
 		this.game.setUp(4);
 
 		// RECORD
-		EasyMock.expect(this.gui.promptPlayerCount()).andStubReturn(2);
-		this.gui.displayCard(EasyMock.anyInt(), EasyMock.anyInt(), EasyMock.anyObject(Card.class));
+		EasyMock.expect(this.gui.promptHandler.promptPlayerCount()).andStubReturn(2);
+		this.gui.display.displayCard(EasyMock.anyInt(), EasyMock.anyInt(), EasyMock.anyObject(Card.class));
 		EasyMock.expectLastCall().times(16);
 
 		// REPLAY
-		EasyMock.replay(this.gui);
+		EasyMock.replay(this.gui.promptHandler, this.gui.display);
 		this.hatchingGround.display(this.gui);
 
 		// VERIFY
-		EasyMock.verify(this.gui);
+		EasyMock.verify(this.gui.promptHandler, this.gui.display);
 
 	}
 
@@ -127,16 +132,16 @@ public class GUITests {
 		this.game.setUp(6);
 
 		// RECORD
-		EasyMock.expect(this.gui.promptPlayerCount()).andStubReturn(2);
-		this.gui.displayCard(EasyMock.anyInt(), EasyMock.anyInt(), EasyMock.anyObject(Card.class));
+		EasyMock.expect(this.gui.promptHandler.promptPlayerCount()).andStubReturn(2);
+		this.gui.display.displayCard(EasyMock.anyInt(), EasyMock.anyInt(), EasyMock.anyObject(Card.class));
 		EasyMock.expectLastCall().times(16);
 
 		// REPLAY
-		EasyMock.replay(this.gui);
+		EasyMock.replay(this.gui.promptHandler, this.gui.display);
 		this.hatchingGround.display(this.gui);
 
 		// VERIFY
-		EasyMock.verify(this.gui);
+		EasyMock.verify(this.gui.promptHandler, this.gui.display);
 
 	}
 
@@ -145,18 +150,18 @@ public class GUITests {
 		this.game.setUp(2);
 		
 		// RECORD
-		EasyMock.expect(this.gui.promptPlayerCount()).andStubReturn(2);
-		this.gui.displayPlayer(EasyMock.anyInt(), EasyMock.anyObject(Player.class));
+		EasyMock.expect(this.gui.promptHandler.promptPlayerCount()).andStubReturn(2);
+		this.gui.display.displayPlayer(EasyMock.anyInt(), EasyMock.anyObject(Player.class));
 		EasyMock.expectLastCall().times(2);
-		this.gui.displayHandlers(EasyMock.anyInt(), EasyMock.<List<Handler>>anyObject());
+		this.gui.display.displayHandlers(EasyMock.anyInt(), EasyMock.<List<Handler>>anyObject());
 		EasyMock.expectLastCall().anyTimes();
 
 		// REPLAY
-		EasyMock.replay(this.gui);
+		EasyMock.replay(this.gui.promptHandler, this.gui.display);
 		this.game.displayPlayers();
 
 		// VERIFY
-		EasyMock.verify(this.gui);
+		EasyMock.verify(this.gui.promptHandler, this.gui.display);
 	}
 	
 	@Test
@@ -164,18 +169,18 @@ public class GUITests {
 		this.game.setUp(6);
 		
 		// RECORD
-		EasyMock.expect(this.gui.promptPlayerCount()).andStubReturn(6);
-		this.gui.displayPlayer(EasyMock.anyInt(), EasyMock.anyObject(Player.class));
+		EasyMock.expect(this.gui.promptHandler.promptPlayerCount()).andStubReturn(6);
+		this.gui.display.displayPlayer(EasyMock.anyInt(), EasyMock.anyObject(Player.class));
 		EasyMock.expectLastCall().times(6);
-		this.gui.displayHandlers(EasyMock.anyInt(), EasyMock.<List<Handler>>anyObject());
+		this.gui.display.displayHandlers(EasyMock.anyInt(), EasyMock.<List<Handler>>anyObject());
 		EasyMock.expectLastCall().anyTimes();
 
 		// REPLAY
-		EasyMock.replay(this.gui);
+		EasyMock.replay(this.gui.promptHandler, this.gui.display);
 		this.game.displayPlayers();
 
 		// VERIFY
-		EasyMock.verify(this.gui);
+		EasyMock.verify(this.gui.promptHandler, this.gui.display);
 	}
 	
 	@Test
@@ -183,18 +188,18 @@ public class GUITests {
 		this.game.setUp(2);
 		
 		// RECORD
-		EasyMock.expect(this.gui.promptPlayerCount()).andStubReturn(2);
-		this.gui.displayPlayer(EasyMock.anyInt(), EasyMock.anyObject(Player.class));
+		EasyMock.expect(this.gui.promptHandler.promptPlayerCount()).andStubReturn(2);
+		this.gui.display.displayPlayer(EasyMock.anyInt(), EasyMock.anyObject(Player.class));
 		EasyMock.expectLastCall().anyTimes();
-		this.gui.displayHandlers(EasyMock.anyInt(), EasyMock.<List<Handler>>anyObject());
+		this.gui.display.displayHandlers(EasyMock.anyInt(), EasyMock.<List<Handler>>anyObject());
 		EasyMock.expectLastCall().times(2);
 
 		// REPLAY
-		EasyMock.replay(this.gui);
+		EasyMock.replay(this.gui.promptHandler, this.gui.display);
 		this.game.displayPlayers();
 
 		// VERIFY
-		EasyMock.verify(this.gui);
+		EasyMock.verify(this.gui.promptHandler, this.gui.display);
 	}
 	
 	@Test
@@ -202,17 +207,17 @@ public class GUITests {
 		this.game.setUp(6);
 		
 		// RECORD
-		EasyMock.expect(this.gui.promptPlayerCount()).andStubReturn(2);
-		this.gui.displayPlayer(EasyMock.anyInt(), EasyMock.anyObject(Player.class));
+		EasyMock.expect(this.gui.promptHandler.promptPlayerCount()).andStubReturn(2);
+		this.gui.display.displayPlayer(EasyMock.anyInt(), EasyMock.anyObject(Player.class));
 		EasyMock.expectLastCall().anyTimes();
-		this.gui.displayHandlers(EasyMock.anyInt(), EasyMock.<List<Handler>>anyObject());
+		this.gui.display.displayHandlers(EasyMock.anyInt(), EasyMock.<List<Handler>>anyObject());
 		EasyMock.expectLastCall().times(6);
 
 		// REPLAY
-		EasyMock.replay(this.gui);
+		EasyMock.replay(this.gui.promptHandler, this.gui.display);
 		this.game.displayPlayers();
 
 		// VERIFY
-		EasyMock.verify(this.gui);
+		EasyMock.verify(this.gui.promptHandler, this.gui.display);
 	}
 }
