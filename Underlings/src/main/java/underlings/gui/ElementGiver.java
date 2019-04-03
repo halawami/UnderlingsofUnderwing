@@ -10,5 +10,10 @@ public class ElementGiver {
 		drawChoices.add(new ElementDrawChoice());
 		return drawChoices;
 	}
+	
+	@Override
+	public String toString() {
+		return "Handler";
+	}
 
 }

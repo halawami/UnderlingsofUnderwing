@@ -6,4 +6,9 @@ public class ElementDrawChoice {
 		return true;
 	}
 	
+	@Override
+	public String toString() {
+		return "Random Element";
+	}
+	
 }
