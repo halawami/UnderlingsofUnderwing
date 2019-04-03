@@ -1,4 +1,6 @@
-package underlings.game;
+package underlings.card;
+
+import underlings.game.Card;
 
 import java.util.Stack;
 

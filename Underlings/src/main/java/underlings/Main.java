@@ -1,5 +1,5 @@
 package underlings;
-import underlings.game.CardFactory;
+import underlings.card.CardFactory;
 import underlings.game.Deck;
 import underlings.game.Game;
 import underlings.game.HatchingGround;
