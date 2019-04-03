@@ -11,6 +11,7 @@ import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.game.Handler;
 import underlings.game.HandlerFactory;
+import underlings.gui.ElementGiver;
 import underlings.player.Player;
 
 public class PlayerTests {
@@ -130,6 +131,13 @@ public class PlayerTests {
 		Element elementToAdd = new Element(ElementColor.BLUE);
 		player.addElement(elementToAdd);
 		assertTrue(player.getElements().contains(elementToAdd));
+	}
+	
+	@Test
+	public void testNewPlayerElementGivers() {
+		Player player = new Player(4, this.handlerFactory);
+		List<ElementGiver> elementGivers = player.getElementGivers();
+		assertEquals(2, elementGivers.size());
 	}
 
 }

@@ -73,7 +73,11 @@ public class Player {
 	}
 
 	public List<ElementGiver> getElementGivers() {
-		return null;
+		List<ElementGiver> toReturn = new ArrayList<ElementGiver>();
+		toReturn.add(null);
+		toReturn.add(null);
+		return toReturn;
+		
 	}
 
 	public void addElement(Element elementToAdd) {
