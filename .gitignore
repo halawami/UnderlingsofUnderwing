@@ -1,8 +1,9 @@
 Underlings/.gradle
 Underlings/bin
+Underlings/build
 Underlings/.classpath
-Underlings/.project
 Underlings/.idea
+Underlings/.project
 Underlings/Underlings.iml
 Underlings/build
 Underlings/gradlew.bat
