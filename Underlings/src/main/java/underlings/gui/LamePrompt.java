@@ -13,13 +13,17 @@ public class LamePrompt implements PromptHandler {
 
 	@Override
 	public ElementGiver promptElementGiver(List<ElementGiver> elementGivers) {
-		// TODO Auto-generated method stub
-		return null;
+		Object[] options = elementGivers.toArray();
+		int index = JOptionPane.showOptionDialog(null, "Select a drawing option", "Drawing Elements",
+				JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+		return elementGivers.get(index);
 	}
 
 	@Override
 	public ElementDrawChoice promptElementDrawChoice(List<ElementDrawChoice> elementDrawChoices) {
-		// TODO Auto-generated method stub
-		return null;
+		Object[] options = elementDrawChoices.toArray();
+		int index = JOptionPane.showOptionDialog(null, "Select a drawing option", "Drawing Elements",
+				JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+		return elementDrawChoices.get(index);
 	}
 }
