@@ -83,9 +83,12 @@ public class Game {
 		this.promptPlayerCount();
 		this.setUp(this.numberOfPlayers);
 		
+		this.display();
+		
 		for (ElementPhase elementPhase : elementPhases) {			
 			for (Player player : this.players) {
 				elementPhase.execute(player, this.gui, this.elementBag, this.hatchingGround);
+				this.display();
 			}
 		}
 	
@@ -98,5 +101,21 @@ public class Game {
 	public int getPlayerCount() {
 		return this.numberOfPlayers;
 	}
+	
+	private void display() {
+		this.gui.display.displayBackground();
+		this.hatchingGround.display(this.gui);
+		this.displayPlayers();
+		
+		this.gui.display.update();
+	}
 
+	public void displayPlayers() {
+		for(int playerNumber = 0; playerNumber < this.players.size(); playerNumber++) {
+			Player player = this.players.get(playerNumber);
+			this.gui.display.displayPlayer(playerNumber, player);
+			List<Handler> handlers = player.getHandlers();
+			this.gui.display.displayHandlers(playerNumber, handlers);
+		}
+	}
 }
