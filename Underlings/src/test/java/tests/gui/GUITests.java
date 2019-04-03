@@ -9,7 +9,9 @@ import org.junit.Test;
 import underlings.game.Game;
 import underlings.game.HandlerFactory;
 import underlings.game.HatchingGround;
+import underlings.gui.Display;
 import underlings.gui.GUI;
+import underlings.gui.PromptHandler;
 import underlings.player.PlayerFactory;
 
 public class GUITests {
@@ -20,7 +22,10 @@ public class GUITests {
 	
 	@Before
 	public void init() {
-		this.gui = EasyMock.mock(GUI.class);
+		PromptHandler mockedPrompts = EasyMock.mock(PromptHandler.class);
+		Display mockedDisplay = EasyMock.mock(Display.class);
+		
+		this.gui = new GUI(mockedPrompts, mockedDisplay);
 		this.hatchingGround = EasyMock.mock(HatchingGround.class);
 		this.game = new Game(this.gui, this.hatchingGround, new PlayerFactory(new HandlerFactory()));
 	}
@@ -32,11 +37,11 @@ public class GUITests {
 		EasyMock.expect(this.gui.promptHandler.promptPlayerCount()).andReturn(2);
 		
 		// REPLAY
-		EasyMock.replay(this.gui);
+		EasyMock.replay(this.gui.promptHandler, this.gui.display);
 		this.game.start();
 		
 		// VERIFY
-		EasyMock.verify(this.gui);
+		EasyMock.verify(this.gui.promptHandler, this.gui.display);
 		assertEquals(2, this.game.getPlayerCount());
 		
 	}
@@ -48,11 +53,11 @@ public class GUITests {
 		EasyMock.expect(this.gui.promptHandler.promptPlayerCount()).andReturn(6);
 		
 		// REPLAY
-		EasyMock.replay(this.gui);
+		EasyMock.replay(this.gui.promptHandler, this.gui.display);
 		this.game.start();
 		
 		// VERIFY
-		EasyMock.verify(this.gui);
+		EasyMock.verify(this.gui.promptHandler, this.gui.display);
 		assertEquals(6, this.game.getPlayerCount());
 		
 	}
