@@ -1,6 +1,6 @@
 package underlings.gui;
 
-public class ElementDrawChoice {
+public class ElementDrawChoice implements Choice {
 
 	public boolean isRandom() {
 		return true;

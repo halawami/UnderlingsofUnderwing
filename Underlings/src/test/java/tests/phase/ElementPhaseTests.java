@@ -2,6 +2,7 @@ package tests.phase;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -18,14 +19,15 @@ import underlings.gui.ElementGiver;
 import underlings.gui.GUI;
 import underlings.gui.PromptHandler;
 import underlings.phase.ElementPhase;
+import underlings.phase.Phase;
 import underlings.player.Player;
 
 public class ElementPhaseTests {
 
 	@Test
-	public void testExecuteTwoRandom() {
+	public void testExecuteOnePlayerTwoRandom() {
 
-		ElementPhase elementPhase = new ElementPhase();
+		Phase elementPhase = new ElementPhase();
 
 		Player player = EasyMock.createMock(Player.class);
 		PromptHandler promptHandler = EasyMock.mock(PromptHandler.class);
@@ -35,6 +37,7 @@ public class ElementPhaseTests {
 		HatchingGround hatchingGround = EasyMock.createMock(HatchingGround.class);
 		Element element = EasyMock.createMock(Element.class);
 		Handler handler = EasyMock.mock(Handler.class);
+		Runnable runnable = EasyMock.mock(Runnable.class);
 
 		ElementGiver elementGiver = EasyMock.mock(ElementGiver.class);
 		
@@ -61,12 +64,18 @@ public class ElementPhaseTests {
 		EasyMock.expect(elementBag.drawRandomElement()).andReturn(element);
 		player.addElement(EasyMock.anyObject(Element.class));
 		
-		EasyMock.replay(player, promptHandler, display, elementBag, hatchingGround, handler, elementGiver, elementDrawChoice);
+		runnable.run();
+		EasyMock.expectLastCall().times(2);
 		
-		elementPhase.execute(player, gui, elementBag, hatchingGround);
+		EasyMock.replay(player, promptHandler, display, elementBag, hatchingGround, handler, elementGiver, elementDrawChoice, runnable);
+		
+		List<Player> players = new ArrayList<>();
+		players.add(player);
+		
+		elementPhase.execute(players, gui, elementBag, hatchingGround, runnable);
 		assertEquals(0, elementGivers.size());
 		
-		EasyMock.verify(player, promptHandler, display, elementBag, hatchingGround, handler, elementGiver, elementDrawChoice);
+		EasyMock.verify(player, promptHandler, display, elementBag, hatchingGround, handler, elementGiver, elementDrawChoice, runnable);
 
 	}
 

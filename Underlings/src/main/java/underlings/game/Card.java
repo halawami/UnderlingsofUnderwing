@@ -17,18 +17,21 @@ public class Card {
         return this.name;
     }
     public String getFilePath() {
-        return filePath;
+        return this.filePath;
     }
 
     public int getPoints() {
-        return points;
+        return this.points;
     }
 
     public Temperature getTemperature() {
-        return temperature;
+        return this.temperature;
     }
 
     public Family getFamily() {
-        return family;
+        return this.family;
     }
+	public void setHandler(Handler handler) {
+
+	}
 }

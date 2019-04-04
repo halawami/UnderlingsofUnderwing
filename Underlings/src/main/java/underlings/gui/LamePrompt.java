@@ -4,6 +4,9 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
+import underlings.game.Card;
+import underlings.game.HandlerState;
+
 public class LamePrompt implements PromptHandler {
 
 	@Override
@@ -25,5 +28,17 @@ public class LamePrompt implements PromptHandler {
 		int index = JOptionPane.showOptionDialog(null, "Select a drawing option", "Drawing Elements",
 				JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
 		return elementDrawChoices.get(index);
+	}
+
+	@Override
+	public HandlerState promptHandlerState(List<HandlerState> possibleStates) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Card promptCardSelection(List<Card> unclaimedEggs) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

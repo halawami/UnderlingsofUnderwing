@@ -47,32 +47,7 @@ public class Handler {
 		return this.state;
 	}
 
-	// should I get rid of these and only use moveToState
-	public void moveToCard() {
-		moveToState(HandlerState.CARD);
-	}
-
-	public void moveToField() {
-		moveToState(HandlerState.FIELD);
-	}
-
-	public void moveToFieldWhite() {
-		moveToState(HandlerState.FIELD_WHITESPACE);
-	}
-
-	public void moveToReadyRoom() {
-		moveToState(HandlerState.READY_ROOM);
-	}
-
-	public void moveToBreakRoom() {
-		moveToState(HandlerState.BREAK_ROOM);
-	}
-
-	public void moveToIncubation() {
-		moveToState(HandlerState.INCUBATION);
-	}
-
-	private void moveToState(HandlerState state){
+	public void moveToState(HandlerState state){
 		if (allowedStates.get(this.state).contains(state)) {
 			this.state = state;
 		}
@@ -80,6 +55,10 @@ public class Handler {
 	
 	public void moveClockwiseInField() {
 
+	}
+
+	public List<HandlerState> getPossibleStates() {
+		return allowedStates.get(this.state);
 	}
 
 }

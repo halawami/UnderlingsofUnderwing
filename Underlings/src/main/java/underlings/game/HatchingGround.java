@@ -1,4 +1,6 @@
 package underlings.game;
+import java.util.List;
+
 import underlings.gui.GUI;
 
 public class HatchingGround {
@@ -40,6 +42,10 @@ public class HatchingGround {
 				gui.display.displayCard(row, col, this.cards[row][col]);
 			}
 		}
+	}
+
+	public List<Card> getUnclaimedEggs() {
+		return null;
 	}
 
 }
