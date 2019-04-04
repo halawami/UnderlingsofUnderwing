@@ -11,6 +11,7 @@ import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
+import underlings.element.Element;
 import underlings.game.Card;
 import underlings.game.Handler;
 import underlings.player.Player;
@@ -85,6 +86,13 @@ public class LameGUI implements Display {
 
 		this.g.setColor(new Color((int)(Math.random()*255*255*255)));
 		this.g.fillRect((int)(ratio*(xOffset + (width + xGap) * col)), (int)(ratio*(yOffset + (height + yGap) * row)), (int)(ratio*width), (int)(ratio*height));
+		
+		String elements = "";
+		for(Element e : player.getElements()) {
+			elements += e.getColor() + " ";
+		}
+		this.g.setColor(new Color((int)(Math.random()*255*255*255)));
+		this.g.drawString(elements, (int)(ratio*(30 + xOffset + (width + xGap) * col)), (int)(-25+ratio*(height/2 + yOffset + (height + yGap) * row)));
 	}
 
 	@Override
