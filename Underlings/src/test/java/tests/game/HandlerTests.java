@@ -18,44 +18,44 @@ public class HandlerTests {
 	@Test
 	public void testMoveToUnclaimedAndUnhatchedEggFromReadyRoom() {
 		Handler handler = new Handler(HandlerState.READY_ROOM);
-		handler.moveToCard();
+		handler.moveToState(HandlerState.CARD);
 		assertEquals(HandlerState.CARD, handler.getState());
 	}
 
 	@Test
 	public void testMoveToFieldFromReadyRoom() {
 		Handler handler = new Handler(HandlerState.READY_ROOM);
-		handler.moveToField();
+		handler.moveToState(HandlerState.FIELD);
 		assertEquals(HandlerState.FIELD, handler.getState());
 	}
 
 	@Test
 	public void testMoveToFieldWhiteFromReadyRoom() {
 		Handler handler = new Handler(HandlerState.READY_ROOM);
-		handler.moveToFieldWhite();
+		handler.moveToState(HandlerState.FIELD_WHITESPACE);
 		assertEquals(HandlerState.FIELD_WHITESPACE, handler.getState());
 	}
 
 	@Test
 	public void testMoveToReadyRoomFromReadyRoom() {
 		Handler handler = new Handler(HandlerState.READY_ROOM);
-		handler.moveToReadyRoom();
+		handler.moveToState(HandlerState.READY_ROOM);
 		assertEquals(HandlerState.READY_ROOM, handler.getState());
 	}
 
 	@Test
 	public void testMoveToIllegalStateFromReadyRoom() {
 		Handler handler = new Handler(HandlerState.READY_ROOM);
-		handler.moveToBreakRoom();
+		handler.moveToState(HandlerState.BREAK_ROOM);
 		assertEquals(HandlerState.READY_ROOM, handler.getState());
-		handler.moveToIncubation();
+		handler.moveToState(HandlerState.INCUBATION);
 		assertEquals(HandlerState.READY_ROOM, handler.getState());
 	}
 
 	@Test
 	public void testMoveClockwiseInField() {
 		Handler handler = new Handler(HandlerState.READY_ROOM);
-		handler.moveToField();
+		handler.moveToState(HandlerState.FIELD);
 		handler.moveClockwiseInField();
 		assertEquals(HandlerState.FIELD, handler.getState());
 	}
@@ -63,91 +63,91 @@ public class HandlerTests {
 	@Test
 	public void testMoveToBreakRoomFromField() {
 		Handler handler = new Handler(HandlerState.READY_ROOM);
-		handler.moveToField();
-		handler.moveToBreakRoom();
+		handler.moveToState(HandlerState.FIELD);
+		handler.moveToState(HandlerState.BREAK_ROOM);
 		assertEquals(HandlerState.BREAK_ROOM, handler.getState());
 	}
 
 	@Test
 	public void testMoveToIllegalStateFromField() {
 		Handler handler = new Handler(HandlerState.READY_ROOM);
-		handler.moveToField();
-		handler.moveToReadyRoom();
+		handler.moveToState(HandlerState.FIELD);
+		handler.moveToState(HandlerState.READY_ROOM);
 		assertEquals(HandlerState.FIELD, handler.getState());
 	}
 
 	@Test
 	public void testMoveToBreakRoomFromCard() {
 		Handler handler = new Handler(HandlerState.READY_ROOM);
-		handler.moveToCard();
-		handler.moveToBreakRoom();
+		handler.moveToState(HandlerState.CARD);
+		handler.moveToState(HandlerState.BREAK_ROOM);
 		assertEquals(HandlerState.BREAK_ROOM, handler.getState());
 	}
 
 	@Test
 	public void testMoveToIllegateStateFromCard() {
 		Handler handler = new Handler(HandlerState.READY_ROOM);
-		handler.moveToCard();
-		handler.moveToReadyRoom();
+		handler.moveToState(HandlerState.CARD);
+		handler.moveToState(HandlerState.READY_ROOM);
 		assertEquals(HandlerState.CARD, handler.getState());
 	}
 
 	@Test
 	public void testMoveToCardFromCard() {
 		Handler handler = new Handler(HandlerState.READY_ROOM);
-		handler.moveToCard();
-		handler.moveToCard();
+		handler.moveToState(HandlerState.CARD);
+		handler.moveToState(HandlerState.CARD);
 		assertEquals(HandlerState.CARD, handler.getState());
 	}
 
 	@Test
 	public void testMoveToReadyRoomFromBreakRoom() {
 		Handler handler = new Handler(HandlerState.BREAK_ROOM);
-		handler.moveToReadyRoom();
+		handler.moveToState(HandlerState.READY_ROOM);
 		assertEquals(HandlerState.READY_ROOM, handler.getState());
 	}
 
 	@Test
 	public void testMoveToIllegalStateFromBreakRoom() {
 		Handler handler = new Handler(HandlerState.BREAK_ROOM);
-		handler.moveToCard();
+		handler.moveToState(HandlerState.CARD);
 		assertEquals(HandlerState.BREAK_ROOM, handler.getState());
 	}
 
 	@Test
 	public void testMoveToBreakRoomFromFieldWhiteSpace() {
 		Handler handler = new Handler(HandlerState.READY_ROOM);
-		handler.moveToFieldWhite();
-		handler.moveToBreakRoom();
+		handler.moveToState(HandlerState.FIELD_WHITESPACE);
+		handler.moveToState(HandlerState.BREAK_ROOM);
 		assertEquals(HandlerState.BREAK_ROOM, handler.getState());
 	}
 
 	@Test
 	public void testMoveToIllegalStateFromFieldWhiteSpace() {
 		Handler handler = new Handler(HandlerState.READY_ROOM);
-		handler.moveToFieldWhite();
-		handler.moveToReadyRoom();
+		handler.moveToState(HandlerState.FIELD_WHITESPACE);
+		handler.moveToState(HandlerState.READY_ROOM);
 		assertEquals(HandlerState.FIELD_WHITESPACE, handler.getState());
 	}
 
 	@Test
 	public void testMoveToIncubationFromIncubation() {
 		Handler handler = new Handler(HandlerState.INCUBATION);
-		handler.moveToIncubation();
+		handler.moveToState(HandlerState.INCUBATION);
 		assertEquals(HandlerState.INCUBATION, handler.getState());
 	}
 	
 	@Test
 	public void testMoveToReadyRoomFromIncubation() {
 		Handler handler = new Handler(HandlerState.INCUBATION);
-		handler.moveToReadyRoom();;
+		handler.moveToState(HandlerState.READY_ROOM);
 		assertEquals(HandlerState.READY_ROOM, handler.getState());
 	}
 	
 	@Test
 	public void testMoveToIllegalStateFromIncubation() {
 		Handler handler = new Handler(HandlerState.INCUBATION);
-		handler.moveToField();
+		handler.moveToState(HandlerState.FIELD);
 		assertEquals(HandlerState.INCUBATION, handler.getState());
 	}
 }
