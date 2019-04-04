@@ -48,7 +48,7 @@ public class Handler {
 	}
 
 	public void moveToState(HandlerState state){
-		if (allowedStates.get(this.state).contains(state)) {
+		if (getPossibleStates().contains(state)) {
 			this.state = state;
 		}
 	}
