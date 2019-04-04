@@ -17,41 +17,36 @@ public class LamePrompt implements PromptHandler {
 
 	@Override
 	public ElementGiver promptElementGiver(List<ElementGiver> elementGivers) {
-		Object[] options = elementGivers.toArray();
-		int index = JOptionPane.showOptionDialog(null, "Select a drawing option", "Drawing Elements",
-				JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+		int index = displayOptions(elementGivers.toArray(), "Drawing Elements", "Select a drawing option");
 		return elementGivers.get(index);
 	}
 
 	@Override
 	public ElementDrawChoice promptElementDrawChoice(List<ElementDrawChoice> elementDrawChoices) {
-		Object[] options = elementDrawChoices.toArray();
-		int index = JOptionPane.showOptionDialog(null, "Select a drawing option", "Drawing Elements",
-				JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+		int index = displayOptions(elementDrawChoices.toArray(), "Drawing Elements", "Select a drawing option");
 		return elementDrawChoices.get(index);
 	}
 
 	@Override
 	public HandlerState promptHandlerState(List<HandlerState> possibleStates) {
-		Object[] options = possibleStates.toArray();
-		int index = JOptionPane.showOptionDialog(null, "Select a phase", "Moving Handlers",
-				JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+		int index = displayOptions(possibleStates.toArray(), "Moving Handlers", "Select a state");
 		return possibleStates.get(index);
 	}
 
 	@Override
 	public Card promptCardSelection(List<Card> unclaimedEggs) {
-		Object[] options = unclaimedEggs.toArray();
-		int index = JOptionPane.showOptionDialog(null, "Select a card", "Moving Handlers",
-				JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+		int index = displayOptions(unclaimedEggs.toArray(), "Moving Handlers", "Select a card");
 		return unclaimedEggs.get(index);
 	}
 
 	@Override
 	public Handler promptHandler(List<Handler> playersHandlers) {
-		Object[] options = playersHandlers.toArray();
-		int index = JOptionPane.showOptionDialog(null, "Select a handler", "Moving Handlers",
-				JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+		int index = displayOptions(playersHandlers.toArray(), "Moving Handlers", "Select a handler");
 		return playersHandlers.get(index);
+	}
+
+	private int displayOptions(Object[] options, String title, String message) {
+		return JOptionPane.showOptionDialog(null, message, title, JOptionPane.DEFAULT_OPTION,
+				JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
 	}
 }

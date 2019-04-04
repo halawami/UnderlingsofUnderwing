@@ -17,7 +17,8 @@ import underlings.game.Handler;
 import underlings.player.Player;
 
 public class LameGUI implements Display {
-	private final int WIDTH = 1066, HEIGHT = 950;
+	private static final int WIDTH = 1066, HEIGHT = 950;
+	private static final int OFFSET_X = 6, OFFSET_Y = 35;
 	private JFrame frame;
 	private Image img;
 	private Graphics g;
@@ -27,19 +28,19 @@ public class LameGUI implements Display {
 	public LameGUI() {
 		this.frame = new JFrame("Lame Underlings");
 
-		this.frame.setSize(this.WIDTH + 6, this.HEIGHT + 35);
-		this.frame.getContentPane().setSize(this.WIDTH, this.HEIGHT);
+		this.frame.setSize(WIDTH + OFFSET_X, HEIGHT + OFFSET_Y);
+		this.frame.getContentPane().setSize(WIDTH, HEIGHT);
 		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.frame.setResizable(false);
 
-		this.img = new BufferedImage(this.WIDTH, this.HEIGHT, BufferedImage.TYPE_INT_ARGB);
+		this.img = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_ARGB);
 		this.g = this.img.getGraphics();
 
 		this.getImages();
 
 		this.frame.setVisible(true);
 		this.frame.getGraphics().setColor(Color.BLUE);
-		this.frame.getGraphics().fillRect(0, 0, this.WIDTH, this.HEIGHT);
+		this.frame.getGraphics().fillRect(0, 0, WIDTH, HEIGHT);
 	}
 
 	private void getImages() {
@@ -49,12 +50,6 @@ public class LameGUI implements Display {
 			e.printStackTrace();
 		}
 	}
-
-	/**
-	 * 
-	 * prompts for each phase
-	 * 
-	 */
 
 	@Override
 	public void displayCard(int row, int col, Card card) {
@@ -66,7 +61,7 @@ public class LameGUI implements Display {
 		int width = 510, height = 360;
 		double ratio = 1066/4099.0;
 
-		this.g.setColor(new Color((int)(Math.random()*255*255*255)));
+		this.g.setColor(Color.LIGHT_GRAY);
 		this.g.fillRect((int)(ratio*(xOffset + (width + xGap) * col)), (int)(ratio*(yOffset + (height + yGap) * row)), (int)(ratio*width), (int)(ratio*height));
 	}
 
@@ -84,14 +79,14 @@ public class LameGUI implements Display {
 		int row = playerNumber/3;
 		int col = playerNumber%3;
 
-		this.g.setColor(new Color((int)(Math.random()*255*255*255)));
+		this.g.setColor(Color.LIGHT_GRAY);
 		this.g.fillRect((int)(ratio*(xOffset + (width + xGap) * col)), (int)(ratio*(yOffset + (height + yGap) * row)), (int)(ratio*width), (int)(ratio*height));
 		
 		String elements = "";
 		for(Element e : player.getElements()) {
 			elements += e.getColor() + " ";
 		}
-		this.g.setColor(new Color((int)(Math.random()*255*255*255)));
+		this.g.setColor(Color.BLACK);
 		this.g.drawString(elements, (int)(ratio*(30 + xOffset + (width + xGap) * col)), (int)(-25+ratio*(height/2 + yOffset + (height + yGap) * row)));
 	}
 
@@ -106,14 +101,14 @@ public class LameGUI implements Display {
 			int row = playerNumber/3;
 			int col = playerNumber%3;
 
-			this.g.setColor(new Color((int)(Math.random()*255*255*255)));
+			this.g.setColor(Color.BLACK);
 			this.g.drawString(handlers.get(i).getState().toString(), (int)(ratio*(30 + xOffset + (width + xGap) * col)), (int)(i*25+ratio*(height/2 + yOffset + (height + yGap) * row)));
 		}
 	}
 
 	@Override
 	public void displayBackground() {
-		this.g.drawImage(this.background, 0, 0, this.WIDTH, this.HEIGHT, null);
+		this.g.drawImage(this.background, 0, 0, WIDTH, HEIGHT, null);
 	}
 
 	@Override
