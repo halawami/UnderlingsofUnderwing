@@ -1,11 +1,19 @@
 package underlings.gui;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ElementGiver {
 
 	public List<ElementDrawChoice> getElementDrawChoices() {
-		return null;
+		List<ElementDrawChoice> drawChoices = new ArrayList<>();
+		drawChoices.add(new ElementDrawChoice());
+		return drawChoices;
+	}
+	
+	@Override
+	public String toString() {
+		return "Handler";
 	}
 
 }

@@ -1,5 +1,7 @@
 package tests.game;
 
+import static org.junit.Assert.assertEquals;
+
 import org.easymock.EasyMock;
 import org.junit.Test;
 
@@ -9,7 +11,21 @@ import underlings.game.HatchingGround;
 
 public class HatchingGroundTests {
 
-	
+	@Test
+	public void testInitUnclaimedEggs() {
+		Deck deck = EasyMock.strictMock(Deck.class);
+        EasyMock.expect(deck.draw()).andReturn(new Card()).times(6);
+
+        EasyMock.replay(deck);
+
+        HatchingGround hatchingGround = new HatchingGround(deck);
+        hatchingGround.setDimensions(3,2);
+        hatchingGround.populate();
+        
+        EasyMock.verify(deck);
+        
+        assertEquals(6, hatchingGround.getUnclaimedEggs().size());
+	}
 	
     @Test
     public void testDeal3By2(){

@@ -17,6 +17,9 @@ public class CardFactory {
         List<String> packNames = this.getPackNames();
         List<Card> packCards = this.getPackCards("");
         allCards.addAll(packCards);
+//        for (int i = 0; i < 50; i++) {
+//        	allCards.add(new Card());
+//        }
 
         return allCards;
     }

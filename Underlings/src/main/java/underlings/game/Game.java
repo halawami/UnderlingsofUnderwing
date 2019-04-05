@@ -3,7 +3,9 @@ package underlings.game;
 import java.util.LinkedList;
 import java.util.List;
 
+import underlings.element.ElementBag;
 import underlings.gui.GUI;
+import underlings.phase.Phase;
 import underlings.player.Player;
 import underlings.player.PlayerFactory;
 
@@ -17,10 +19,10 @@ public class Game {
 
 	private final static int[] NUMBER_OF_ROUNDS = { ROUNDS_TWO_PLAYERS, ROUNDS_THREE_PLAYERS, ROUNDS_FOUR_SIX_PLAYERS,
 			ROUNDS_FOUR_SIX_PLAYERS, ROUNDS_FOUR_SIX_PLAYERS };
-	private final static int[] HATCHING_GROUND_WIDTH = { HATCHING_TWO_WIDTH, HATCHING_THREE_WIDTH, HATCHING_FOUR_SIX_WIDTH,
-			HATCHING_FOUR_SIX_WIDTH, HATCHING_FOUR_SIX_WIDTH };
-	private final static int[] HATCHING_GROUND_HEIGHT = { HATCHING_TWO_HEIGHT, HATCHING_THREE_HEIGHT, HATCHING_FOUR_SIX_HEIGHT,
-			HATCHING_FOUR_SIX_HEIGHT, HATCHING_FOUR_SIX_HEIGHT };
+	private final static int[] HATCHING_GROUND_WIDTH = { HATCHING_TWO_WIDTH, HATCHING_THREE_WIDTH,
+			HATCHING_FOUR_SIX_WIDTH, HATCHING_FOUR_SIX_WIDTH, HATCHING_FOUR_SIX_WIDTH };
+	private final static int[] HATCHING_GROUND_HEIGHT = { HATCHING_TWO_HEIGHT, HATCHING_THREE_HEIGHT,
+			HATCHING_FOUR_SIX_HEIGHT, HATCHING_FOUR_SIX_HEIGHT, HATCHING_FOUR_SIX_HEIGHT };
 	private final static int[] MAX_HANDLERS = { MAX_HANDLERS_TWO, MAX_HANDLERS_THREE, MAX_HANDLERS_FOUR_SIX,
 			MAX_HANDLERS_FOUR_SIX, MAX_HANDLERS_FOUR_SIX };
 
@@ -29,13 +31,15 @@ public class Game {
 	private HatchingGround hatchingGround;
 	private GUI gui;
 	private PlayerFactory playerFactory;
+	private ElementBag elementBag;
 
 	private List<Player> players = new LinkedList<Player>();
 
-	public Game(GUI gui, HatchingGround hatchingGround, PlayerFactory playerFactory) {
+	public Game(GUI gui, HatchingGround hatchingGround, PlayerFactory playerFactory, ElementBag elementBag) {
 		this.gui = gui;
 		this.hatchingGround = hatchingGround;
 		this.playerFactory = playerFactory;
+		this.elementBag = elementBag;
 	}
 
 	public void setUp(int numberOfPlayers) {
@@ -75,13 +79,40 @@ public class Game {
 		return this.players;
 	}
 
-	public void start() {
-		this.numberOfPlayers = this.gui.promptHandler.promptPlayerCount();
+	public void start(List<Phase> phases) {
+		this.promptPlayerCount();
 		this.setUp(this.numberOfPlayers);
+
+		this.display();
+
+		for (Phase phase : phases) {
+			phase.execute(this.players, this.gui, this.elementBag, this.hatchingGround, () -> {this.display();});
+		}
+
+	}
+
+	public void promptPlayerCount() {
+		this.numberOfPlayers = this.gui.promptHandler.promptPlayerCount();
 	}
 
 	public int getPlayerCount() {
 		return this.numberOfPlayers;
 	}
 
+	private void display() {
+		this.gui.display.displayBackground();
+		this.hatchingGround.display(this.gui);
+		this.displayPlayers();
+
+		this.gui.display.update();
+	}
+
+	public void displayPlayers() {
+		for (int playerNumber = 0; playerNumber < this.players.size(); playerNumber++) {
+			Player player = this.players.get(playerNumber);
+			this.gui.display.displayPlayer(playerNumber, player);
+			List<Handler> handlers = player.getHandlers();
+			this.gui.display.displayHandlers(playerNumber, handlers);
+		}
+	}
 }

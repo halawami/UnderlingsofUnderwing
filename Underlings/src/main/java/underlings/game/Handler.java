@@ -8,13 +8,13 @@ import java.util.List;
 public class Handler {
 
 	private HandlerState state;
-	private final static HashMap<HandlerState, List<HandlerState>> allowedStates = initializeHashMap();
+	private final HashMap<HandlerState, List<HandlerState>> allowedStates = initializeHashMap();
 
 	public Handler(HandlerState state) {
 		this.state = state;
 	}
 
-	private static HashMap<HandlerState, List<HandlerState>> initializeHashMap() {
+	public HashMap<HandlerState, List<HandlerState>> initializeHashMap() {
 		HashMap<HandlerState, List<HandlerState>> toReturn = new HashMap<>();
 		toReturn.put(HandlerState.READY_ROOM, createStateList(
 				HandlerState.CARD, 
@@ -39,7 +39,7 @@ public class Handler {
 		return toReturn;
 	}
 
-	private static List<HandlerState> createStateList(HandlerState... handlerStates) {
+	public List<HandlerState> createStateList(HandlerState... handlerStates) {
 		return new LinkedList<>(Arrays.asList(handlerStates));
 	}
 
@@ -47,39 +47,18 @@ public class Handler {
 		return this.state;
 	}
 
-	// should I get rid of these and only use moveToState
-	public void moveToCard() {
-		moveToState(HandlerState.CARD);
-	}
-
-	public void moveToField() {
-		moveToState(HandlerState.FIELD);
-	}
-
-	public void moveToFieldWhite() {
-		moveToState(HandlerState.FIELD_WHITESPACE);
-	}
-
-	public void moveToReadyRoom() {
-		moveToState(HandlerState.READY_ROOM);
-	}
-
-	public void moveToBreakRoom() {
-		moveToState(HandlerState.BREAK_ROOM);
-	}
-
-	public void moveToIncubation() {
-		moveToState(HandlerState.INCUBATION);
-	}
-
-	private void moveToState(HandlerState state){
-		if (allowedStates.get(this.state).contains(state)) {
+	public void moveToState(HandlerState state){
+		if (getPossibleStates().contains(state)) {
 			this.state = state;
 		}
 	}
 	
 	public void moveClockwiseInField() {
 
+	}
+
+	public List<HandlerState> getPossibleStates() {
+		return allowedStates.get(this.state);
 	}
 
 }
