@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import underlings.element.Element;
@@ -155,5 +156,29 @@ public class PlayerTests {
 			assertTrue(elementGiver.getElementDrawChoices().get(0).isRandom());
 		}
 	}
-
+	
+	@Test
+	public void testAddPointsAllFalse(){
+		Player player = new Player(2, this.handlerFactory);
+		player.addPoints(5);
+		assertEquals(2, player.getHandlerCount());
+	}
+	
+	@Test
+	public void testAddPointsOtherTest(){
+		Player player = new Player(2, this.handlerFactory);
+		player.addPoints(25);
+		player.addPoints(1);
+		assertEquals(4, player.getHandlerCount());
+	}
+	
+	@Test
+	public void testAddPointsTFFOtherTest(){
+		Player player = new Player(2, this.handlerFactory);
+		player.addPoints(25);
+		player.loseHandler();
+		player.addPoints(1);
+		assertEquals(3, player.getHandlerCount());
+	}
+	
 }

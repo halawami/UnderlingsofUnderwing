@@ -47,7 +47,7 @@ public class HandlerPhase implements Phase {
 					Card chosenCard = gui.promptHandler.promptCardSelection(unclaimedEggs);
 					
 					chosenHandler.moveToState(chosenState); // TODO: Refactor into setHandler
-					chosenCard.setHandler(chosenHandler);
+					chosenCard.handler = chosenHandler;
 					
 					playersHandlers.remove(chosenHandler);
 					displayMethod.run();

@@ -1,26 +1,25 @@
 package tests.card;
 
-import com.google.gson.stream.JsonReader;
-import org.easymock.EasyMock;
-import org.junit.Ignore;
-import org.junit.Test;
-import underlings.card.CardFactory;
-import underlings.card.Family;
-import underlings.card.Temperature;
-import underlings.game.Card;
+import static org.junit.Assert.assertEquals;
 
-import java.io.File;
 import java.io.StringReader;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
 
-import static org.junit.Assert.assertEquals;
+import org.easymock.EasyMock;
+import org.junit.Test;
+
+import com.google.gson.stream.JsonReader;
+
+import underlings.card.CardFactory;
+import underlings.card.Family;
+import underlings.card.Temperature;
+import underlings.game.Card;
 
 public class CardFactoryTests {
 
     @Test
-    @Ignore
     public void testGetPackCards_onePack_oneCard(){
         CardFactory testCardFactory = EasyMock.partialMockBuilder(CardFactory.class).addMockedMethod("getCardsJsonReader").addMockedMethod("getPackNames").createMock();
 
@@ -37,17 +36,16 @@ public class CardFactoryTests {
         assertEquals(1, resultCards.size());
 
         Card firstCard = resultCards.pop();
-        assertEquals("test", firstCard.getName());
-        assertEquals("fakePath", firstCard.getFilePath());
-        assertEquals(1, firstCard.getPoints());
-        assertEquals(Temperature.COOL, firstCard.getTemperature());
-        assertEquals(Family.TRIADIC, firstCard.getFamily());
+        assertEquals("test", firstCard.name);
+        assertEquals("fakePath", firstCard.filePath);
+        assertEquals(1, firstCard.points);
+        assertEquals(Temperature.COOL, firstCard.temperature);
+        assertEquals(Family.TRIADIC, firstCard.family);
 
         EasyMock.verify(testCardFactory);
     }
 
     @Test
-    @Ignore
     public void testGetPackCards_onePack_twoCards(){
         CardFactory testCardFactory = EasyMock.partialMockBuilder(CardFactory.class).addMockedMethod("getCardsJsonReader").addMockedMethod("getPackNames").createMock();
 
@@ -64,18 +62,18 @@ public class CardFactoryTests {
         assertEquals(2, resultCards.size());
 
         Card secondCard = resultCards.pop();
-        assertEquals("second", secondCard.getName());
-        assertEquals("diffFakePath", secondCard.getFilePath());
-        assertEquals(2, secondCard.getPoints());
-        assertEquals(Temperature.NEUTRAL, secondCard.getTemperature());
-        assertEquals(Family.TERTIARY, secondCard.getFamily());
+        assertEquals("second", secondCard.name);
+        assertEquals("diffFakePath", secondCard.filePath);
+        assertEquals(2, secondCard.points);
+        assertEquals(Temperature.NEUTRAL, secondCard.temperature);
+        assertEquals(Family.TERTIARY, secondCard.family);
 
         Card firstCard = resultCards.pop();
-        assertEquals("first", firstCard.getName());
-        assertEquals("fakePath", firstCard.getFilePath());
-        assertEquals(1, firstCard.getPoints());
-        assertEquals(Temperature.COOL, firstCard.getTemperature());
-        assertEquals(Family.TRIADIC, firstCard.getFamily());
+        assertEquals("first", firstCard.name);
+        assertEquals("fakePath", firstCard.filePath);
+        assertEquals(1, firstCard.points);
+        assertEquals(Temperature.COOL, firstCard.temperature);
+        assertEquals(Family.TRIADIC, firstCard.family);
 
 
         EasyMock.verify(testCardFactory);

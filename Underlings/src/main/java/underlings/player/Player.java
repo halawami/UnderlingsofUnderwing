@@ -61,12 +61,6 @@ public class Player {
 			this.handlers.add(this.handlerFactory.createHandler());
 			this.reached25Points = true;
 		}
-//		if (this.points >= 12) {
-//			this.reached12Points = true;
-//		}
-//		if (this.points >= 25) {
-//			this.reached25Points = true;
-//		}
 	}
 
 	public void loseHandler() {
