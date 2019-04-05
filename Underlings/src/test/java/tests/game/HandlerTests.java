@@ -2,6 +2,9 @@ package tests.game;
 
 import static org.junit.Assert.*;
 
+import java.util.HashMap;
+import java.util.List;
+
 import org.junit.Test;
 
 import underlings.game.Handler;
@@ -15,6 +18,20 @@ public class HandlerTests {
 		assertEquals(HandlerState.READY_ROOM, handler.getState());
 	}
 
+	@Test 
+	public void testInitializeHashMap(){
+		Handler handler = new Handler(HandlerState.READY_ROOM);
+		HashMap<HandlerState, List<HandlerState>> map = handler.initializeHashMap();
+		assertEquals(6, map.size());
+	}
+	
+	@Test
+	public void testCreateStateList(){
+		Handler handler = new Handler(HandlerState.READY_ROOM);
+		List<HandlerState> list = handler.createStateList(HandlerState.READY_ROOM);
+		assertEquals(1, list.size());
+	}
+	
 	@Test
 	public void testMoveToUnclaimedAndUnhatchedEggFromReadyRoom() {
 		Handler handler = new Handler(HandlerState.READY_ROOM);

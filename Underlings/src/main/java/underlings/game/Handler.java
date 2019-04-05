@@ -8,13 +8,13 @@ import java.util.List;
 public class Handler {
 
 	private HandlerState state;
-	private final static HashMap<HandlerState, List<HandlerState>> allowedStates = initializeHashMap();
+	private final HashMap<HandlerState, List<HandlerState>> allowedStates = initializeHashMap();
 
 	public Handler(HandlerState state) {
 		this.state = state;
 	}
 
-	private static HashMap<HandlerState, List<HandlerState>> initializeHashMap() {
+	public HashMap<HandlerState, List<HandlerState>> initializeHashMap() {
 		HashMap<HandlerState, List<HandlerState>> toReturn = new HashMap<>();
 		toReturn.put(HandlerState.READY_ROOM, createStateList(
 				HandlerState.CARD, 
@@ -39,7 +39,7 @@ public class Handler {
 		return toReturn;
 	}
 
-	private static List<HandlerState> createStateList(HandlerState... handlerStates) {
+	public List<HandlerState> createStateList(HandlerState... handlerStates) {
 		return new LinkedList<>(Arrays.asList(handlerStates));
 	}
 

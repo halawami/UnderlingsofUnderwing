@@ -2,6 +2,7 @@ package tests.card;
 
 import com.google.gson.stream.JsonReader;
 import org.easymock.EasyMock;
+import org.junit.Ignore;
 import org.junit.Test;
 import underlings.card.CardFactory;
 import underlings.card.Family;
@@ -19,6 +20,7 @@ import static org.junit.Assert.assertEquals;
 public class CardFactoryTests {
 
     @Test
+    @Ignore
     public void testGetPackCards_onePack_oneCard(){
         CardFactory testCardFactory = EasyMock.partialMockBuilder(CardFactory.class).addMockedMethod("getCardsJsonReader").addMockedMethod("getPackNames").createMock();
 
@@ -45,6 +47,7 @@ public class CardFactoryTests {
     }
 
     @Test
+    @Ignore
     public void testGetPackCards_onePack_twoCards(){
         CardFactory testCardFactory = EasyMock.partialMockBuilder(CardFactory.class).addMockedMethod("getCardsJsonReader").addMockedMethod("getPackNames").createMock();
 
