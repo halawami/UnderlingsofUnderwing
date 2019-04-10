@@ -23,10 +23,28 @@ The definition of done is created by examining and applying BVA on the rules.
 - [x] Reach 12 points while having [3, MAX] handlers
   - When at 3 handlers, the handler count should remain at 3
     - ```tests.game.AddHandlerTests.test12Points3Handlers()```
-  - When at 6 handlers, the handler count should remain at 6
-    - ```tests.game.AddHandlerTests.test12Points6Handlers()```
-- [ ] Reach 25 points while having [2, 4] handlers
-- [x] Reach 25 points while having [4, MAX] handlers
+  - When at MAX handlers, the handler count should remain at MAX
+    - ```tests.game.AddHandlerTests.test12PointsMaxHandlers()```
+- [x] Reach 25 points from above 12 points while having [2, 3] handlers
+  - When at 2 handlers, the handler count should increase to 3
+    - ```tests.game.AddHandlerTests.test25PointsFrom12With2Handlers()```
+  - When at 3 handlers, the handler count should increase to 4
+    - ```tests.game.AddHandlerTests.test25PointsFrom12With3Handlers()```
+- [x] Reach 25 points from above 12 points while having [4, MAX] handlers
+  - When at 4 handlers, the handler count should remain at 4
+    - ```tests.game.AddHandlerTests.test25PointsFrom12With3Handlers()```
+  - When at MAX handlers, the handler count should remain at MAX
+    - ```tests.game.AddHandlerTests.test25PointsFrom12WithMaxHandlers()```
+- [x] Reach 25 points from below 12 points while having [2, 3] handlers
+  - When at 2 handlers, the handler count should increase to 4
+    - ```tests.game.AddHandlerTests.test25PointsFrom0With2Handlers()```
+  - When at 3 handlers, the handler count should increase to 4
+    - ```tests.game.AddHandlerTests.test25PointsFrom0With3Handlers()```
+- [x] Reach 25 points from below 12 points while having [4, MAX] handlers
+  - When at 4 handlers, the handler count should remain at 4
+    - ```tests.game.AddHandlerTests.test25PointsFrom0With3Handlers()```
+  - When at MAX handlers, the handler count should remain at MAX
+    - ```tests.game.AddHandlerTests.test25PointsFrom0WithMaxHandlers()```
 - [ ] Reach 12 points and gain a handler from a dragon at the same time
 - [ ] Reach 25 points and gain a handler from a dragon as the same time
 - [x] Start at < 12 points and end the round at 25+ points

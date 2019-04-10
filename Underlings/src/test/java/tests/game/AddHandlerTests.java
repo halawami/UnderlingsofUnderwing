@@ -29,7 +29,7 @@ public class AddHandlerTests {
 	}
 	
 	@Test
-	public void test12Points6Handlers() {
+	public void test12PointsMaxHandlers() {
 		Player player = new Player(6, this.handlerFactory);
 		player.addHandler();
 		player.addHandler();
