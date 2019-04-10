@@ -32,7 +32,7 @@ The definition of done is created by examining and applying BVA on the rules.
     - ```tests.game.AddHandlerTests.test25PointsFrom12With3Handlers()```
 - [x] Reach 25 points from above 12 points while having [4, MAX] handlers
   - When at 4 handlers, the handler count should remain at 4
-    - ```tests.game.AddHandlerTests.test25PointsFrom12With3Handlers()```
+    - ```tests.game.AddHandlerTests.test25PointsFrom12With4Handlers()```
   - When at MAX handlers, the handler count should remain at MAX
     - ```tests.game.AddHandlerTests.test25PointsFrom12WithMaxHandlers()```
 - [x] Reach 25 points from below 12 points while having [2, 3] handlers
@@ -42,7 +42,7 @@ The definition of done is created by examining and applying BVA on the rules.
     - ```tests.game.AddHandlerTests.test25PointsFrom0With3Handlers()```
 - [x] Reach 25 points from below 12 points while having [4, MAX] handlers
   - When at 4 handlers, the handler count should remain at 4
-    - ```tests.game.AddHandlerTests.test25PointsFrom0With3Handlers()```
+    - ```tests.game.AddHandlerTests.test25PointsFrom0With4Handlers()```
   - When at MAX handlers, the handler count should remain at MAX
     - ```tests.game.AddHandlerTests.test25PointsFrom0WithMaxHandlers()```
 - [ ] Reach 12 points and gain a handler from a dragon at the same time
