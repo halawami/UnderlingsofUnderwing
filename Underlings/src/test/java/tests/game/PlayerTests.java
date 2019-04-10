@@ -5,7 +5,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import underlings.element.Element;
@@ -61,20 +60,7 @@ public class PlayerTests {
 		assertEquals(4, player.getHandlerCount());
 	}
 	
-	@Test
-	public void testReach12PointsWith2Handlers(){
-		Player player = new Player(4, this.handlerFactory);
-		player.addPoints(12);
-		assertEquals(3, player.getHandlerCount());
-	}
-	
-	@Test
-	public void testReach12PointsWith3Handlers(){
-		Player player = new Player(4, this.handlerFactory);
-		player.addHandler();
-		player.addPoints(12);
-		assertEquals(3, player.getHandlerCount());
-	}
+
 	
 	@Test
 	public void testReach25PointsWith3Handlers(){

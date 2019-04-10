@@ -4,21 +4,26 @@ CSSE376 Spring 18-19 Term Project
 
 Hussein Alawami, Mohammad Baqer, George Main IV, Wesley Siebenthaler
 
-
 ## Done Definition
-
 
 The definition of done is created by examining and applying BVA on the rules.
 
 
 ### Rules
 
+#### Game Setup
 
-#### Gaining Handlers and Handler Deficiency
+- [ ] Handlers start in the Ready Room
 
+#### Gaining Handlers and Handler Deficiency ```tests.game.AddHandlerTests```
 
-- [x] Reach 12 points while having 3+ handlers
-- [x] Reach 25 points while having 4+ handlers
+- [x ] Reach 12 points while having 2 handlers
+  - ```tests.game.AddHandlerTests.test12Points2Handlers()```
+- [x] Reach 12 points while having [3, MAX] handlers
+  - ```tests.game.AddHandlerTests.test12Points3Handlers()```
+  - ```tests.game.AddHandlerTests.test12Points6Handlers()```
+- [ ] Reach 25 points while having [2, 4] handlers
+- [x] Reach 25 points while having [4, MAX] handlers
 - [ ] Reach 12 points and gain a handler from a dragon at the same time
 - [ ] Reach 25 points and gain a handler from a dragon as the same time
 - [x] Start at < 12 points and end the round at 25+ points
