@@ -17,11 +17,14 @@ The definition of done is created by examining and applying BVA on the rules.
 
 #### Gaining Handlers and Handler Deficiency ```tests.game.AddHandlerTests```
 
-- [x ] Reach 12 points while having 2 handlers
-  - ```tests.game.AddHandlerTests.test12Points2Handlers()```
+- [x] Reach 12 points while having 2 handlers
+  - The handler count should increase to 3
+    - ```tests.game.AddHandlerTests.test12Points2Handlers()```
 - [x] Reach 12 points while having [3, MAX] handlers
-  - ```tests.game.AddHandlerTests.test12Points3Handlers()```
-  - ```tests.game.AddHandlerTests.test12Points6Handlers()```
+  - When at 3 handlers, the handler count should remain at 3
+    - ```tests.game.AddHandlerTests.test12Points3Handlers()```
+  - When at 6 handlers, the handler count should remain at 6
+    - ```tests.game.AddHandlerTests.test12Points6Handlers()```
 - [ ] Reach 25 points while having [2, 4] handlers
 - [x] Reach 25 points while having [4, MAX] handlers
 - [ ] Reach 12 points and gain a handler from a dragon at the same time
