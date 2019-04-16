@@ -17,6 +17,19 @@ The definition of done is created by examining and applying BVA on the rules.
     - ```tests.game.setup.HandlerTests.test2PlayerHandlerCount()```
   - When there are 6 players, each player has 2 handlers
     - ```tests.game.setup.HandlerTests.test6PlayerHandlerCount()```
+- [x] Handlers should start in the ready room for [2, 6] players
+  - When there are 2 players, each handler for each player should start in the ready room
+    - ```tests.game.setup.HandlerTests.test2PlayerReadyRoom()```
+  - When there are 6 players, each handler for each player should start in the ready room
+    - ```tests.game.setup.HandlerTests.test6PlayerReadyRoom()```
+- [x] The maximum number of handlers should be set for [2, 6] players
+  - When there are 2 players, the maximum number of handlers is 4
+    - ```tests.game.setup.HandlerTests.test2PlayerMaxHandlers()```
+  - When there are 3 players, the maximum number of handlers is 5
+    - ```tests.game.setup.HandlerTests.test3PlayerMaxHandlers()```
+  - When there are [4, 6] players, the maximum number of handlers is 6
+    - ```tests.game.setup.HandlerTests.test4PlayerMaxHandlers()```
+    - ```tests.game.setup.HandlerTests.test6PlayerMaxHandlers()```
 
 ### Gaining Handlers and Handler Deficiency ```tests.game.AddHandlerTests```
 

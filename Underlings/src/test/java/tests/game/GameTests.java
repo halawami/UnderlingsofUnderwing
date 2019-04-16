@@ -15,14 +15,11 @@ import underlings.element.ElementFactory;
 import underlings.game.Card;
 import underlings.game.Deck;
 import underlings.game.Game;
-import underlings.game.Handler;
 import underlings.game.HandlerFactory;
-import underlings.game.HandlerState;
 import underlings.game.HatchingGround;
 import underlings.gui.Display;
 import underlings.gui.GUI;
 import underlings.gui.PromptHandler;
-import underlings.player.Player;
 import underlings.player.PlayerFactory;
 
 public class GameTests {
@@ -125,50 +122,12 @@ public class GameTests {
 
 	
 	
-	@Test
-	public void testSetupHandlerState(){
-		this.game.setUp(2);
-		for(Player player : this.game.getPlayers()){
-			for(Handler handler : player.getHandlers()){
-				assertEquals(HandlerState.READY_ROOM, handler.getState());
-			}
-		}
-	}
-	
-	
-	
-	@Test
-	public void testSetup2Players_MaxHandlers() {
-		this.game.setUp(2);
-		for(Player player : this.game.getPlayers()){
-			assertEquals(4, player.getMaxHandlers());
-		}
-	}
-	
-	@Test
-	public void testSetup3Players_MaxHandlers() {
-		this.game.setUp(3);
-		for(Player player : this.game.getPlayers()){
-			assertEquals(5, player.getMaxHandlers());
-		}
-	}
-	
-	@Test
 
-	public void testSetup4Players_MaxHandlers() {
-		this.game.setUp(4);
-		for(Player player : this.game.getPlayers()){
-			assertEquals(6, player.getMaxHandlers());
-		}
-	}
 	
-	@Test
-	public void testSetup6Players_MaxHandlers() {
-		this.game.setUp(6);
-		for(Player player : this.game.getPlayers()){
-			assertEquals(6, player.getMaxHandlers());
-		}
-	}
+	
+	
+
+
 
 
 }
