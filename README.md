@@ -98,18 +98,28 @@ The definition of done is created by examining and applying BVA on the rules.
 - [ ] Reach 25 points after losing a handler
 
 
-#### Suggested Number of Rounds
+### Element Collection (Phase 1) ```tests.elements.drawing```
 
-
-- [ ] Play with 2 players, 15 rounds
-- [ ] Play with 3 players, 13 rounds
-- [ ] Play with 4-6 players, 12 rounds
-- [ ] Reach round 0 and add another round
-- [ ] Reach round 0 and end game
-
-
-#### Element Collection (Phase 1)
-
+#### Drawing Specific Elements ```tests.elements.drawing.SpecificTests```
+- [x] A specific color element can be drawn from the bag
+  - When a red element is requested, a red element will be returned
+    - ```tests.elements.drawing.SpecificTests.testRed()```
+  - When a green element is requested, a green element will be returned
+    - ```tests.elements.drawing.SpecificTests.testGreen()```
+  - When a blue element is requested, a blue element will be returned
+    - ```tests.elements.drawing.SpecificTests.testBlue()```
+  - When a orange element is requested, a orange element will be returned
+    - ```tests.elements.drawing.SpecificTests.testOrange()```
+  - When a yellow element is requested, a yellow element will be returned
+    - ```tests.elements.drawing.SpecificTests.testYellow()```
+  - When a purple element is requested, a purple element will be returned
+    - ```tests.elements.drawing.SpecificTests.testPurple()```
+  - When a black element is requested, a black element will be returned
+    - ```tests.elements.drawing.SpecificTests.testBlack()```
+  - When a white element is requested, a white element will be returned
+    - ```tests.elements.drawing.SpecificTests.testWhite()```
+    
+#### Drawing Random Elements ```tests.elements.drawing.RandomTests```
 
 - [ ] Drawing Random Elements
   - [ ] Draw random Element
@@ -227,6 +237,11 @@ The definition of done is created by examining and applying BVA on the rules.
 
 
 ### Ending the Game
+
+#### End of Game Options
+
+- [ ] Reach round 0 and add another round
+- [ ] Reach round 0 and end game
 
 
 #### End Conditions

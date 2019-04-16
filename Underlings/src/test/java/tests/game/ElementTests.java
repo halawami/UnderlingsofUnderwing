@@ -25,35 +25,6 @@ public class ElementTests {
 		this.elementBag = new ElementBag(elementFactory, this.random);
 	}
 
-	@Test
-	public void testDrawListSingle() {
-		EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(1);
-		EasyMock.replay(this.random);
-		
-		Element drawnElement = this.elementBag.drawElementFromList(ElementColor.BLUE);
-		assertEquals(ElementColor.BLUE, drawnElement.getColor());
-
-		drawnElement = this.elementBag.drawElementFromList(ElementColor.RED);
-		assertEquals(ElementColor.RED, drawnElement.getColor());
-
-		drawnElement = this.elementBag.drawElementFromList(ElementColor.GREEN);
-		assertEquals(ElementColor.GREEN, drawnElement.getColor());
-
-		drawnElement = this.elementBag.drawElementFromList(ElementColor.YELLOW);
-		assertEquals(ElementColor.YELLOW, drawnElement.getColor());
-
-		drawnElement = this.elementBag.drawElementFromList(ElementColor.ORANGE);
-		assertEquals(ElementColor.ORANGE, drawnElement.getColor());
-
-		drawnElement = this.elementBag.drawElementFromList(ElementColor.PURPLE);
-		assertEquals(ElementColor.PURPLE, drawnElement.getColor());
-
-		drawnElement = this.elementBag.drawElementFromList(ElementColor.WHITE);
-		assertEquals(ElementColor.WHITE, drawnElement.getColor());
-
-		drawnElement = this.elementBag.drawElementFromList(ElementColor.BLACK);
-		assertEquals(ElementColor.BLACK, drawnElement.getColor());
-	}
 
 	@Test
 	public void testDrawListAllElements() {
