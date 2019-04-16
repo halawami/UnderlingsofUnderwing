@@ -11,9 +11,13 @@ The definition of done is created by examining and applying BVA on the rules.
 
 ### Rules
 
-#### Game Setup
+#### Game Setup ```tests.game.setup```
 
-- [ ] Handlers start in the Ready Room
+#### Handler Setup ```tests.game.setup.HandlerTests```
+
+- [x] Players start off with 2 handlers for [2, 6] players
+  - When there are 2 players, each player has 2 handlers
+    - ```tests.game.setup.HandlerTests.test2PlayerHandlerCount()```
 
 #### Gaining Handlers and Handler Deficiency ```tests.game.AddHandlerTests```
 

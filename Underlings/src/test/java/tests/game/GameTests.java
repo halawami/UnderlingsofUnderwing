@@ -8,7 +8,6 @@ import java.util.Stack;
 
 import org.easymock.EasyMock;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import underlings.element.ElementBag;
@@ -48,28 +47,6 @@ public class GameTests {
 		this.game = new Game(this.gui, this.hatchingGround, new PlayerFactory(new HandlerFactory()), new ElementBag(new ElementFactory(), new Random()));
 		
 	}	
-
-	@Ignore
-	public void testStart2Players() {
-		EasyMock.expect(this.gui.promptHandler.promptPlayerCount()).andReturn(2);
-		
-		EasyMock.replay(this.gui.promptHandler, this.gui.display);
-		//this.game.start();
-		
-		// VERIFY
-		EasyMock.verify(this.gui.promptHandler, this.gui.display);
-		
-		assertEquals(2, this.game.getPlayerCount());
-		
-		for (Player player : this.game.getPlayers()) {
-			assertEquals(2, player.getHandlerCount());
-			assertEquals(4, player.getMaxHandlers());
-		}
-		
-		assertEquals(3, this.game.getHatchingGround().getWidth());
-		assertEquals(2, this.game.getHatchingGround().getHeight());
-		
-	}
 	
 	@Test 
 	public void testSetup2Players_Rounds() {
@@ -145,14 +122,7 @@ public class GameTests {
 		assertEquals(6, this.game.getPlayers().size());
 	}
 	
-	@Test
-	public void testSetup2Players_Handlers() {
-		this.game.setUp(2);
-		
-		for (Player player : this.game.getPlayers()) {
-			assertEquals(2, player.getHandlerCount());
-		}
-	}
+
 	
 	
 	@Test
