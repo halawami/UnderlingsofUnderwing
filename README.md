@@ -8,18 +8,17 @@ Hussein Alawami, Mohammad Baqer, George Main IV, Wesley Siebenthaler
 
 The definition of done is created by examining and applying BVA on the rules.
 
-
-### Rules
-
-#### Game Setup ```tests.game.setup```
+### Game Setup ```tests.game.setup```
 
 #### Handler Setup ```tests.game.setup.HandlerTests```
 
 - [x] Players start off with 2 handlers for [2, 6] players
   - When there are 2 players, each player has 2 handlers
     - ```tests.game.setup.HandlerTests.test2PlayerHandlerCount()```
+  - When there are 6 players, each player has 2 handlers
+    - ```tests.game.setup.HandlerTests.test6PlayerHandlerCount()```
 
-#### Gaining Handlers and Handler Deficiency ```tests.game.AddHandlerTests```
+### Gaining Handlers and Handler Deficiency ```tests.game.AddHandlerTests```
 
 - [x] Reach 12 points while having 2 handlers
   - The handler count should increase to 3

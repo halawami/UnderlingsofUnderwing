@@ -135,14 +135,7 @@ public class GameTests {
 		}
 	}
 	
-	@Test
-	public void testSetup6Players_Handlers() {
-		this.game.setUp(6);
-		
-		for (Player player : this.game.getPlayers()) {
-			assertEquals(2, player.getHandlerCount());
-		}
-	}
+	
 	
 	@Test
 	public void testSetup2Players_MaxHandlers() {

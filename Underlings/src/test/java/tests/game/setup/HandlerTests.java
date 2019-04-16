@@ -24,8 +24,17 @@ public class HandlerTests {
 	}	
 	
 	@Test
-	public void testSetup2Players_Handlers() {
+	public void test2PlayerHandlerCount() {
 		this.game.setUp(2);
+		
+		for (Player player : this.game.getPlayers()) {
+			assertEquals(2, player.getHandlerCount());
+		}
+	}
+	
+	@Test
+	public void test6PlayerHandlerCount() {
+		this.game.setUp(6);
 		
 		for (Player player : this.game.getPlayers()) {
 			assertEquals(2, player.getHandlerCount());
