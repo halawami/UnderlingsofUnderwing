@@ -31,6 +31,17 @@ The definition of done is created by examining and applying BVA on the rules.
     - ```tests.game.setup.HandlerTests.test4PlayerMaxHandlers()```
     - ```tests.game.setup.HandlerTests.test6PlayerMaxHandlers()```
 
+#### Hatching Ground Setup ```tests.game.setup.HatchingGroundTests```
+
+- [x] The hatching ground size should be set for [2, 6] players
+  - When there are 2 players, the hatching ground should be 3x2
+    - ```tests.game.setup.HatchingGroundTests.test2PlayerSize()```
+  - When there are 3 players, the hatching ground size should be 4x3
+    - ```tests.game.setup.HatchingGroundTests.test3PlayerSize()```
+  - When there are [4, 6] players, the hatching ground size should be 4x4
+    - ```tests.game.setup.HatchingGroundTests.test4PlayerSize()```
+    - ```tests.game.setup.HatchingGroundTests.test6PlayerSize()```
+
 ### Gaining Handlers and Handler Deficiency ```tests.game.AddHandlerTests```
 
 - [x] Reach 12 points while having 2 handlers

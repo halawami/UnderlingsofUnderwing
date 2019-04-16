@@ -80,34 +80,6 @@ public class GameTests {
 	}
 	
 	@Test
-	public void testSetup2Players_HatchingGround() {
-		this.game.setUp(2);
-		assertEquals(3, this.game.getHatchingGround().getWidth());
-		assertEquals(2, this.game.getHatchingGround().getHeight());
-	}
-	
-	@Test
-	public void testSetup3Players_HatchingGround() {
-		this.game.setUp(3);
-		assertEquals(4, this.game.getHatchingGround().getWidth());
-		assertEquals(3, this.game.getHatchingGround().getHeight());
-	}
-	
-	@Test
-	public void testSetup4Players_HatchingGround() {
-		this.game.setUp(4);
-		assertEquals(4, this.game.getHatchingGround().getWidth());
-		assertEquals(4, this.game.getHatchingGround().getHeight());
-	}
-	
-	@Test
-	public void testSetup6Players_HatchingGround() {
-		this.game.setUp(6);
-		assertEquals(4, this.game.getHatchingGround().getWidth());
-		assertEquals(4, this.game.getHatchingGround().getHeight());
-	}
-	
-	@Test
 	public void testSetup2Players_Players() {
 		this.game.setUp(2);
 		assertEquals(2, this.game.getPlayers().size());
