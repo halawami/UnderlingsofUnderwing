@@ -1,4 +1,4 @@
-package tests.game;
+package tests.game.setup;
 
 import static org.junit.Assert.assertEquals;
 
@@ -12,20 +12,17 @@ import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementFactory;
 
-public class ElementTests {
-
+public class ElementBagTests {
 	private ElementBag elementBag;
-	private Random random;
 
 	@Before
 	public void init() {
 		ElementFactory elementFactory = new ElementFactory();
-		this.random = EasyMock.createMock(Random.class);
-		this.elementBag = new ElementBag(elementFactory, this.random);
+		this.elementBag = new ElementBag(elementFactory, new Random());
 	}
 
 	@Test
-	public void testInitNumberRemaining() {
+	public void testElementCount() {
 		assertEquals(20, this.elementBag.getNumberRemaining(ElementColor.BLUE));
 		assertEquals(20, this.elementBag.getNumberRemaining(ElementColor.RED));
 		assertEquals(20, this.elementBag.getNumberRemaining(ElementColor.YELLOW));
@@ -35,14 +32,7 @@ public class ElementTests {
 		assertEquals(5, this.elementBag.getNumberRemaining(ElementColor.WHITE));
 		assertEquals(5, this.elementBag.getNumberRemaining(ElementColor.BLACK));
 	}
-
-	@Test
-	public void testNumberRemainingAfterDraw() {
-		assertEquals(20, this.elementBag.getNumberRemaining(ElementColor.BLUE));
-		this.elementBag.drawElementFromList(ElementColor.BLUE);
-		assertEquals(19, this.elementBag.getNumberRemaining(ElementColor.BLUE));
-	}
 	
 	
-
+	
 }
