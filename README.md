@@ -169,12 +169,31 @@ The definition of done is created by examining and applying BVA on the rules.
 - [x] Drawing a Random Primary Color Element
   - A red element may be returned as the random element
     - ```tests.elements.drawing.RandomTests.testPrimaryRandomRed()```
-  - A green element may be returned as the random element
-    - ```tests.elements.drawing.RandomTests.testPrimaryRandomRed()```
+  - A yellow element may be returned as the random element
+    - ```tests.elements.drawing.RandomTests.testPrimaryRandomYellow()```
   - A blue element may be returned as the random element
-    - ```tests.elements.drawing.RandomTests.testPrimaryRandomRed()```
-- [ ] Drawing a Random Secondary Color Element
-- [ ] Drawing a Random Cool Element
+    - ```tests.elements.drawing.RandomTests.testPrimaryRandomBlue()```
+- [x] Drawing a Random Secondary Color Element
+  - A purple element may be returned as the random element
+    - ```tests.elements.drawing.RandomTests.testSecondaryRandomPurple()```
+  - A green element may be returned as the random element
+    - ```tests.elements.drawing.RandomTests.testSecondaryRandomGreen()```
+  - A orange element may be returned as the random element
+    - ```tests.elements.drawing.RandomTests.testSecondaryRandomOrange()```
+- [x] Drawing a Random Cool Element
+  - A blue element may be returned as the random element
+    - ```tests.elements.drawing.RandomTests.testCoolRandomBlue()```
+  - A green element may be returned as the random element
+    - ```tests.elements.drawing.RandomTests.testCoolRandomGreen()```
+  - A purple element may be returned as the random element
+    - ```tests.elements.drawing.RandomTests.testCoolRandomPurple()```
+- [x] Drawing a Random Warm Element
+  - A red element may be returned as the random element
+    - ```tests.elements.drawing.RandomTests.testsWarmRandomRed()```
+  - A yellow element may be returned as the random element
+    - ```tests.elements.drawing.RandomTests.testWarmRandomYelow()```
+  - A orange element may be returned as the random element
+    - ```tests.elements.drawing.RandomTests.testWarmRandomOrange()```
 
 #### Move & Assign Dragon Handlers (Phase 2)
 
