@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import underlings.element.Element;
-import underlings.element.ElementGiver;
 import underlings.game.Handler;
 import underlings.game.HandlerFactory;
 
@@ -17,12 +16,10 @@ public class Player {
 	private boolean reached25Points;
 	private HandlerFactory handlerFactory;
 	private List<Element> elements;
-	private List<ElementGiver> elementGivers;
 
 	public Player(int maxHandlers, HandlerFactory handlerFactory) {
 		this.handlers = new ArrayList<Handler>();
 		this.elements = new ArrayList<Element>();
-		this.elementGivers = new ArrayList<ElementGiver>();
 		this.handlerFactory = handlerFactory;
 		this.maxHandlers = maxHandlers;
 		this.gainHandler();
@@ -43,7 +40,6 @@ public class Player {
 	public void gainHandler() {
 		if (this.handlers.size() != this.maxHandlers) {
 			this.handlers.add(this.handlerFactory.createHandler());
-			this.elementGivers.add(new ElementGiver());
 		}
 	}
 
@@ -73,10 +69,6 @@ public class Player {
 		}
 	}
 
-	public List<ElementGiver> getElementGivers() {
-		return this.elementGivers;
-	}
-
 	public void addElement(Element elementToAdd) {
 		this.elements.add(elementToAdd);
 	}
@@ -89,4 +81,7 @@ public class Player {
 		this.points -= pointsToLose;
 	}
 
+	public void removeElement(Element elementToRemove) {
+		this.elements.remove(elementToRemove);
+	}
 }

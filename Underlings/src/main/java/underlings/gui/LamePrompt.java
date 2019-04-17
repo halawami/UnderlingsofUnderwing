@@ -24,7 +24,7 @@ public class LamePrompt implements PromptHandler {
 	}
 
 	@Override
-	public ElementDrawChoice promptElementDrawChoice(List<ElementDrawChoice> elementDrawChoices) {
+	public DrawChoice promptElementDrawChoice(List<DrawChoice> elementDrawChoices) {
 		int index = this.displayOptions(elementDrawChoices.toArray(), "Drawing Elements", "Select a drawing option");
 		return elementDrawChoices.get(index);
 	}

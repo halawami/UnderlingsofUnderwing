@@ -1,18 +1,27 @@
 package underlings.game;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
+import underlings.element.ElementGiver;
+import underlings.gui.DrawChoice;
+
+import java.util.*;
 
 public class Handler {
 
+    public ElementGiver elementGiver;
     private HandlerState state;
     private HashMap<HandlerState, List<HandlerState>> allowedStates;
 
     public Handler(HandlerState state) {
         this.state = state;
         this.initializeHashMap();
+
+        Map<HandlerState, String> displayStrings = new HashMap<>();
+        displayStrings.put(HandlerState.READY_ROOM, "in Ready Room");
+        displayStrings.put(HandlerState.BREAK_ROOM, "in Break Room");
+        displayStrings.put(HandlerState.INCUBATION, "in Incubation");
+        displayStrings.put(HandlerState.CARD, "on Card");
+
+        this.elementGiver = new ElementGiver("Handler " + displayStrings.get(state), DrawChoice.RANDOM);
     }
 
     private void initializeHashMap() {
@@ -61,5 +70,4 @@ public class Handler {
     public List<HandlerState> getPossibleStates() {
         return allowedStates.get(this.state);
     }
-
 }
