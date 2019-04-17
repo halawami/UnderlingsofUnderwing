@@ -217,7 +217,56 @@ The definition of done is created by examining and applying BVA on the rules.
 - [x] A player plays an element from their inventory
   - When an element is played, it is removed from their inventory
     - ```tests.player.ElementTests.testRemoveElement()```
- 
+
+### Element Givers ```tests.elements.giver```
+
+#### Draw Choices ```tests.elements.giver.DrawChoiceTests```
+
+- [x] Draw choices should describe their colors
+  - Blue draw choice should be "BLUE Element"
+    - ```tests.elements.giver.DrawChoiceTests.testToStringBlue()```
+  - Red draw choice should be "RED Element"
+    - ```tests.elements.giver.DrawChoiceTests.testToStringRed()```
+
+#### Handlers ```tests.elements.giver.HandlerTests```
+
+- [x] Handlers in the field should give a random element or field space element
+  - Handlers on a red field space should give red or random
+    - ```tests.elements.giver.HandlerTests.testFieldRed()```
+  - Handlers on a red field space should give blue or random
+    - ```tests.elements.giver.HandlerTests.testFieldBlue()```
+  - Handlers on a red field space should give green or random
+    - ```tests.elements.giver.HandlerTests.testFieldGreen()```
+  - Handlers on a red field space should give orange or random
+    - ```tests.elements.giver.HandlerTests.testFieldOrange()```
+  - Handlers on a red field space should give yellow or random
+    - ```tests.elements.giver.HandlerTests.testFieldYellow()```
+ - Handlers on a red field space should give purple or random
+    - ```tests.elements.giver.HandlerTests.testFieldPurple()```
+  - Handlers on a red field space should give black or random
+    - ```tests.elements.giver.HandlerTests.testFieldBlack()```
+  - Handlers on a red field space should give white or random
+    - ```tests.elements.giver.HandlerTests.testFieldWhite()```
+- [x] Handlers not in the field should give a random element
+  - ```tests.elements.giver.HandlerTests.testNotField()```
+- [x] Handler element givers should describe the handler and location
+  - Handler in the handler room should be "Handler in Ready Room"
+    - ```tests.elements.giver.HandlerTests.testToStringReadyRoom()```
+  - Handler on a card should be "Handler on Card"
+    - ```tests.elements.giver.HandlerTests.testToStringCard()```
+  - Handler in the break room should be "Handler in Break Room"
+    - ```tests.elements.giver.HandlerTests.testToStringBreakRoom()```
+  - Handler in incubation should be be "Handler in Incubation"
+    - ```tests.elements.giver.HandlerTests.testToStringIncubation```
+  - Handler on field should be "Handler on COLOR Field Space"
+    - ```tests.elements.giver.HandlerTests.testToStringFieldBlue()```
+    - ```tests.elements.giver.HandlerTests.testToStringFieldWhite()```
+
+#### Cards
+
+#### Player
+
+
 ### Move & Assign Dragon Handlers (Phase 2) ```tests.handler```
 
 #### Handler Movement States ```tests.handler.movement.StateTests```
