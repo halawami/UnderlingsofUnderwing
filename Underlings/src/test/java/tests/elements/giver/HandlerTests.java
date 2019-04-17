@@ -9,7 +9,6 @@ import underlings.game.FieldSpace;
 import underlings.game.Handler;
 import underlings.game.HandlerState;
 import underlings.gui.DrawChoice;
-import underlings.gui.ElementDrawChoice;
 
 
 import java.util.List;
@@ -20,7 +19,7 @@ import static org.junit.Assert.assertTrue;
 public class HandlerTests {
 
     @Test
-    public void testNotField(){
+    public void testNotField() {
         Handler handler = new Handler(HandlerState.BREAK_ROOM);
         ElementGiver elementGiver = handler.elementGiver;
         List<DrawChoice> drawChoices = elementGiver.drawChoices;
@@ -29,56 +28,94 @@ public class HandlerTests {
     }
 
 
-
     @Test
-    public void testFieldBlue(){
+    public void testFieldBlue() {
         testFieldColor(DrawChoice.BLUE);
     }
 
     @Test
-    public void testFieldRed(){
+    public void testFieldRed() {
         testFieldColor(DrawChoice.RED);
     }
 
     @Test
-    public void testFieldGreen(){
+    public void testFieldGreen() {
         testFieldColor(DrawChoice.GREEN);
     }
 
     @Test
-    public void testFieldPurple(){
+    public void testFieldPurple() {
         testFieldColor(DrawChoice.PURPLE);
     }
 
     @Test
-    public void testFieldOrange(){
+    public void testFieldOrange() {
         testFieldColor(DrawChoice.ORANGE);
     }
 
     @Test
-    public void testFieldYellow(){
+    public void testFieldYellow() {
         testFieldColor(DrawChoice.YELLOW);
     }
 
     @Test
-    public void testFieldBlack(){
+    public void testFieldBlack() {
         testFieldColor(DrawChoice.BLACK);
     }
 
     @Test
-    public void testFieldWhite(){
+    public void testFieldWhite() {
         testFieldColor(DrawChoice.WHITE);
     }
 
     @Test
-    public void testToStringReadyRoom(){
+    public void testToStringReadyRoom() {
         Handler handler = new Handler(HandlerState.READY_ROOM);
         ElementGiver elementGiver = handler.elementGiver;
         assertEquals("Handler in Ready Room", elementGiver.toString());
     }
 
+    @Test
+    public void testToStringBreakRoom() {
+        Handler handler = new Handler(HandlerState.BREAK_ROOM);
+        ElementGiver elementGiver = handler.elementGiver;
+        assertEquals("Handler in Break Room", elementGiver.toString());
+    }
 
-    private void testFieldColor(DrawChoice color){
+    @Test
+    public void testToStringCard() {
+        Handler handler = new Handler(HandlerState.CARD);
+        ElementGiver elementGiver = handler.elementGiver;
+        assertEquals("Handler on Card", elementGiver.toString());
+    }
+
+    @Test
+    public void testToStringIncubation() {
+        Handler handler = new Handler(HandlerState.INCUBATION);
+        ElementGiver elementGiver = handler.elementGiver;
+        assertEquals("Handler in Incubation", elementGiver.toString());
+    }
+
+    @Test
+    public void testToStringFieldBlue() {
+        Handler handler = new Handler(HandlerState.FIELD);
+        FieldSpace fieldSpace = new FieldSpace(DrawChoice.BLUE);
+        fieldSpace.addHandler(handler);
+        ElementGiver elementGiver = handler.elementGiver;
+        assertEquals("Handler on BLUE Field Space", elementGiver.toString());
+    }
+
+    @Test
+    public void testToStringFieldRed() {
+        Handler handler = new Handler(HandlerState.FIELD);
+        FieldSpace fieldSpace = new FieldSpace(DrawChoice.RED);
+        fieldSpace.addHandler(handler);
+        ElementGiver elementGiver = handler.elementGiver;
+        assertEquals("Handler on RED Field Space", elementGiver.toString());
+    }
+
+
+    private void testFieldColor(DrawChoice color) {
         FieldSpace fieldSpace = new FieldSpace(color);
         Handler handler = new Handler(HandlerState.FIELD);
         fieldSpace.addHandler(handler);

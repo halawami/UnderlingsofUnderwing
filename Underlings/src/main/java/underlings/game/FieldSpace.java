@@ -14,6 +14,7 @@ public class FieldSpace {
     }
 
     public void addHandler(Handler handler) {
-        handler.elementGiver = new ElementGiver(DrawChoice.RANDOM, this.color);
+        handler.elementGiver = new ElementGiver("Handler on " + this.color.toString() + " Field Space", DrawChoice.RANDOM, this.color);
+
     }
 }

@@ -3,10 +3,7 @@ package underlings.game;
 import underlings.element.ElementGiver;
 import underlings.gui.DrawChoice;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Handler {
 
@@ -17,7 +14,14 @@ public class Handler {
     public Handler(HandlerState state) {
         this.state = state;
         this.initializeHashMap();
-        this.elementGiver = new ElementGiver(DrawChoice.RANDOM);
+
+        Map<HandlerState, String> displayStrings = new HashMap<>();
+        displayStrings.put(HandlerState.READY_ROOM, "in Ready Room");
+        displayStrings.put(HandlerState.BREAK_ROOM, "in Break Room");
+        displayStrings.put(HandlerState.INCUBATION, "in Incubation");
+        displayStrings.put(HandlerState.CARD, "on Card");
+
+        this.elementGiver = new ElementGiver("Handler " + displayStrings.get(state), DrawChoice.RANDOM);
     }
 
     private void initializeHashMap() {

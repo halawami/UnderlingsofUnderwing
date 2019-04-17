@@ -7,18 +7,19 @@ import java.util.Arrays;
 import java.util.List;
 
 import underlings.gui.DrawChoice;
-import underlings.gui.ElementDrawChoice;
 
 public class ElementGiver {
 
 	public List<DrawChoice> drawChoices;
+	private String display;
 
-	public ElementGiver(DrawChoice ... drawChoices) {
+	public ElementGiver(String display, DrawChoice ... drawChoices) {
 		this.drawChoices = Arrays.asList(drawChoices);
+		this.display = display;
 	}
 
 	@Override
 	public String toString() {
-		return "Handler in Ready Room";
+		return this.display;
 	}
 }
