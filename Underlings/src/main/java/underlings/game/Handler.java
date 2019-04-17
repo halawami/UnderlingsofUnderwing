@@ -1,7 +1,7 @@
 package underlings.game;
 
+import underlings.element.ElementGiver;
 import underlings.gui.DrawChoice;
-import underlings.gui.ElementGiver;
 
 import java.util.Arrays;
 import java.util.HashMap;

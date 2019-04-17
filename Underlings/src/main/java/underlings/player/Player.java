@@ -17,12 +17,10 @@ public class Player {
 	private boolean reached25Points;
 	private HandlerFactory handlerFactory;
 	private List<Element> elements;
-	private List<ElementGiver> elementGivers;
 
 	public Player(int maxHandlers, HandlerFactory handlerFactory) {
 		this.handlers = new ArrayList<Handler>();
 		this.elements = new ArrayList<Element>();
-		this.elementGivers = new ArrayList<ElementGiver>();
 		this.handlerFactory = handlerFactory;
 		this.maxHandlers = maxHandlers;
 		this.gainHandler();
@@ -43,7 +41,6 @@ public class Player {
 	public void gainHandler() {
 		if (this.handlers.size() != this.maxHandlers) {
 			this.handlers.add(this.handlerFactory.createHandler());
-			this.elementGivers.add(new ElementGiver());
 		}
 	}
 
@@ -71,10 +68,6 @@ public class Player {
 		if (this.handlers.size() > 2) {
 			this.handlers.remove(0);
 		}
-	}
-
-	public List<ElementGiver> getElementGivers() {
-		return this.elementGivers;
 	}
 
 	public void addElement(Element elementToAdd) {

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import underlings.gui.DrawChoice;
 import underlings.gui.ElementDrawChoice;
 
 public class ElementGiver {
@@ -19,9 +20,5 @@ public class ElementGiver {
 	@Override
 	public String toString() {
 		return "Handler";
-	}
-
-	public List<ElementDrawChoice> getElementDrawChoices(){
-		return null;
 	}
 }

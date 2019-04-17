@@ -3,13 +3,13 @@ package tests.elements.giver;
 import org.junit.Test;
 
 import underlings.element.ElementColor;
+import underlings.element.ElementGiver;
 import underlings.game.Field;
 import underlings.game.FieldSpace;
 import underlings.game.Handler;
 import underlings.game.HandlerState;
 import underlings.gui.DrawChoice;
 import underlings.gui.ElementDrawChoice;
-import underlings.gui.ElementGiver;
 
 
 import java.util.List;

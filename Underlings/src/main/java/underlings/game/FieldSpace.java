@@ -2,8 +2,8 @@ package underlings.game;
 
 import underlings.element.Element;
 import underlings.element.ElementColor;
+import underlings.element.ElementGiver;
 import underlings.gui.DrawChoice;
-import underlings.gui.ElementGiver;
 
 public class FieldSpace {
 
