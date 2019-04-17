@@ -1,10 +1,12 @@
-package underlings.gui;
+package underlings.element;
 
 import underlings.element.Element;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import underlings.gui.ElementDrawChoice;
 
 public class ElementGiver {
 

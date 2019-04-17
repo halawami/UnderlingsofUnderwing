@@ -9,8 +9,8 @@ import org.junit.Test;
 
 import underlings.element.Element;
 import underlings.element.ElementColor;
+import underlings.element.ElementGiver;
 import underlings.game.HandlerFactory;
-import underlings.gui.ElementGiver;
 import underlings.player.Player;
 
 public class PlayerTests {
