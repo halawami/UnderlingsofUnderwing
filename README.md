@@ -46,7 +46,7 @@ The definition of done is created by examining and applying BVA on the rules.
   - When there are [4, 6] players, the maximum number of handlers is 6
     - ```tests.game.setup.HandlerTests.test4PlayerMaxHandlers()```
     - ```tests.game.setup.HandlerTests.test6PlayerMaxHandlers()```
-
+    
 #### Hatching Ground Setup ```tests.game.setup.HatchingGroundTests```
 
 - [x] The hatching ground size should be set for [2, 6] players
