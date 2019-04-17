@@ -23,7 +23,7 @@ public class Player {
 		this.handlers = new ArrayList<Handler>();
 		this.elements = new ArrayList<Element>();
 		this.elementGivers = new ArrayList<ElementGiver>();
-		this.handlerFactory = handlerFactory; 
+		this.handlerFactory = handlerFactory;
 		this.maxHandlers = maxHandlers;
 		this.gainHandler();
 		this.gainHandler();
@@ -53,18 +53,22 @@ public class Player {
 
 	public void addPoints(int pointsToAdd) {
 		this.points += pointsToAdd;
-		if(this.points >= 12 && this.handlers.size() < 3 && !this.reached12Points){
-			this.handlers.add(this.handlerFactory.createHandler());
-			this.reached12Points = true;
-		} 
-		if (this.points >= 25 && this.handlers.size() < 4 && !this.reached25Points) {
-			this.handlers.add(this.handlerFactory.createHandler());
-			this.reached25Points = true;
+		if (!this.reached12Points) {
+			if (this.points >= 12 && this.handlers.size() < 3) {
+				this.handlers.add(this.handlerFactory.createHandler());
+				this.reached12Points = true;
+			}
+		}
+		if (!this.reached25Points) {
+			if (this.points >= 25 && this.handlers.size() < 4) {
+				this.handlers.add(this.handlerFactory.createHandler());
+				this.reached25Points = true;
+			}
 		}
 	}
 
 	public void loseHandler() {
-		if(this.handlers.size() > 2){
+		if (this.handlers.size() > 2) {
 			this.handlers.remove(0);
 		}
 	}

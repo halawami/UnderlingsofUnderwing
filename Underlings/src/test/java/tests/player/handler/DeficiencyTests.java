@@ -20,6 +20,20 @@ public class DeficiencyTests {
 	}
 
 	@Test
+	public void test11Points2Handlers() {
+		this.player.addPoints(11);
+		assertEquals(2, this.player.getHandlerCount());
+	}
+	
+	@Test
+	public void test11PointsMaxHandlers() {
+		this.gainHandler(4);
+		
+		this.player.addPoints(11);
+		assertEquals(6, this.player.getHandlerCount());
+	}
+	
+	@Test
 	public void test12Points2Handlers() {
 		this.player.addPoints(12);
 		assertEquals(3, this.player.getHandlerCount());
