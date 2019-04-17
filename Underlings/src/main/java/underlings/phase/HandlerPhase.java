@@ -48,6 +48,7 @@ public class HandlerPhase implements Phase {
 					
 					chosenHandler.moveToState(chosenState); // TODO: Refactor into setHandler
 					chosenCard.handler = chosenHandler;
+					chosenHandler.locationString = chosenCard.name;
 					
 					playersHandlers.remove(chosenHandler);
 					displayMethod.run();

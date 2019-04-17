@@ -10,6 +10,7 @@ public class Handler {
     public ElementGiver elementGiver;
     private HandlerState state;
     private HashMap<HandlerState, List<HandlerState>> allowedStates;
+	public String locationString;
 
     public Handler(HandlerState state) {
         this.state = state;
@@ -69,5 +70,10 @@ public class Handler {
 
     public List<HandlerState> getPossibleStates() {
         return allowedStates.get(this.state);
+    }
+    
+    @Override
+    public String toString() {
+    	return elementGiver.toString();
     }
 }
