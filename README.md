@@ -110,7 +110,9 @@ The definition of done is created by examining and applying BVA on the rules.
     - ```tests.player.handler.RemoveTests.test3Handlers()```
   - When at MAX handlers, the handler count should decrease to MAX - 1
     - ```tests.player.handler.RemoveTests.testMaxHandlers()```
-- Lose a handler while at 2 handlers
+- [x] Lose a handler while at 2 handlers
+  - When at 2 handlers, the handler count should remain at 2
+    - ```tests.player.handler.RemoveTests.test2Handlers()```
 
 
 

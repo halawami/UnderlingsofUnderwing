@@ -33,6 +33,12 @@ public class RemoveTests {
 		assertEquals(5, this.player.getHandlerCount());
 	}
 	
+	@Test
+	public void test2Handlers() {
+		this.player.loseHandler();
+		assertEquals(2, this.player.getHandlerCount());
+	}
+	
 	private void addHandler(int amt) {
 		for (int i = 0; i < amt; i++) {
 			this.player.addHandler();
