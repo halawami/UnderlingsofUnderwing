@@ -216,38 +216,40 @@ The definition of done is created by examining and applying BVA on the rules.
 - [x] When the handler is in the Ready Room
   - [x] The handler state can change to card
     - ```tests.handler.movement.StateTest.testReadyRoomToUnclaimedEggs()```
-  - [x] Move to Hander in Field
-  - [x] Move to Handler in Field White
+  - [x] The handler state can change to field
+  	- ```tests.handler.movement.StateTest.testReadyRoomToField()```
+  - [x] The handler state can change to field whitespace
+  	- ```tests.handler.movement.StateTest.testReadyRoomToFieldWhite()```
   - [x] The handler state can remain at ready room
-  - [x] Move to illegal state
-
+  	- ```tests.handler.movement.StateTest.testReadyRoomToReadyRoom()```
 
 - [x] Handler in Field
-  - [x] Move clockwise in Field
-  - [x] Move to Break Room
-  - [x] Move to illegal state
+  - [x] The handler can remain at field
+  	- ```tests.handler.movement.StateTest.testFieldMoveClockwise()```
+  - [x] The handler can change to break room
+  	- ```tests.handler.movement.StateTest.testFieldToBreakRoom()```
 
-
-- [x] Handler on Unclaimed & Unhatched Egg
-  - [x] Move to Break Room
-  - [x] Keep handler on Egg
-  - [x] Move to illegal state
+- [x] Handler on Unclaimed Egg
+  - [x] The handler can change to break room
+  	- ```tests.handler.movement.StateTest.testUnclaimedEggToBreakRoom()```
+  - [x] The handler remains on card
+  	- ```tests.handler.movement.StateTest.testUnclaimedEggToBreakRoom()```
   - [ ] Move to Handler in Ready Room due to Dragon Effect
 
 
 - [x] Handler in Break Room
-  - [x] Move to Handler in Ready Room
-  - [x] Move to illegal state
-
+  - [x] The handler can change to ready room
+  	- ```tests.handler.movement.StateTest.testBreakRoomToReadyRoom()```
 
 - [x] Handler in Field White
-  - [x] Move Handler to Break Room
-  - [x] Move to illegal state
-
+  - [x] The handler can change to break room
+  	- ```tests.handler.movement.StateTest.testFieldWhiteToBreakRoom()```
 
 - [x] Handler during Incubation
-  - [x] Keep handler in Incubation
-  - [x] Move to illegal state
+  - [x] The handler can remain in incubation
+  	- ```tests.handler.movement.StateTest.testIncubationToIncubation()```
+  - [x] The handler can change to ready room
+  	- ```tests.handler.movement.StateTest.testIncubationToBreakRoom()```
 
 
 - [ ] Handler in Ready Room and all Eggs claimed
