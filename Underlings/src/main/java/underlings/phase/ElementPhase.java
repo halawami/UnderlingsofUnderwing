@@ -4,10 +4,10 @@ import java.util.List;
 
 import underlings.element.Element;
 import underlings.element.ElementBag;
+import underlings.element.ElementGiver;
 import underlings.game.HatchingGround;
 import underlings.gui.Choice;
 import underlings.gui.ElementDrawChoice;
-import underlings.gui.ElementGiver;
 import underlings.gui.GUI;
 import underlings.player.Player;
 

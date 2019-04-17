@@ -1,7 +1,9 @@
-package underlings.gui;
+package underlings.element;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import underlings.gui.ElementDrawChoice;
 
 public class ElementGiver {
 

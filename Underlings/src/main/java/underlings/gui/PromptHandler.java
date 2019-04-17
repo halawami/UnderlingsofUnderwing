@@ -2,6 +2,7 @@ package underlings.gui;
 
 import java.util.List;
 
+import underlings.element.ElementGiver;
 import underlings.game.Card;
 import underlings.game.Handler;
 import underlings.game.HandlerState;
