@@ -58,6 +58,12 @@ The definition of done is created by examining and applying BVA on the rules.
     - ```tests.game.setup.HatchingGroundTests.test4PlayerSize()```
     - ```tests.game.setup.HatchingGroundTests.test6PlayerSize()```
 
+#### Element Bag Tests ```tests.game.setup.ElementBagTests```
+
+- [x] When the game starts there should be the correct number of elements
+  - The game should start with 20 blue, red, and yellow elements, 10 purple, green, and orange elements, and 5 black and white elements
+    - ```tests.game.setup.ElementBagTests.testElementCount()```
+
 ### Player's Handler Count ```tests.player.handler```
 
 #### Handler Deficiency ```tests.player.handler.DeficiencyTests```
@@ -195,7 +201,15 @@ The definition of done is created by examining and applying BVA on the rules.
   - A orange element may be returned as the random element
     - ```tests.elements.drawing.RandomTests.testWarmRandomOrange()```
 
-#### Move & Assign Dragon Handlers (Phase 2)
+#### Number of Elements Remaining ```tests.elements.drawing.CountTests```
+
+- [x] Drawing an element when there are [1, 20] of that color left
+  - When there are 20 left, drawing should decrease the count to 19
+    - ```tests.elements.drawing.CountTests.testDraw20Left()```
+  - When there is 1 left, drawing should decrease the count to 0
+    - ```tests.elements.drawing.CountTests.testDraw1Left()```
+
+### Move & Assign Dragon Handlers (Phase 2)
 
 
 - [x] Handler in Ready Room
