@@ -2,6 +2,7 @@ package tests.player.handler;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import underlings.game.HandlerFactory;
@@ -9,115 +10,106 @@ import underlings.player.Player;
 
 public class DeficiencyTests {
 
-private HandlerFactory handlerFactory = new HandlerFactory();
-	
+	private HandlerFactory handlerFactory = new HandlerFactory();
+
+	private Player player;
+
+	@Before
+	public void init() {
+		this.player = new Player(6, new HandlerFactory());
+	}
+
 	@Test
 	public void test12Points2Handlers() {
-		Player player = new Player(6, this.handlerFactory);
-		
-		player.addPoints(12);
-		assertEquals(3, player.getHandlerCount());
+		this.player.addPoints(12);
+		assertEquals(3, this.player.getHandlerCount());
 	}
-	
+
 	@Test
 	public void test12Points3Handlers() {
-		Player player = new Player(6, this.handlerFactory);
-		player.addHandler();
-		
-		player.addPoints(12);
-		assertEquals(3, player.getHandlerCount());
+		this.addHandler(1);
+
+		this.player.addPoints(12);
+		assertEquals(3, this.player.getHandlerCount());
 	}
-	
+
 	@Test
 	public void test12PointsMaxHandlers() {
-		Player player = new Player(6, this.handlerFactory);
-		player.addHandler();
-		player.addHandler();
-		player.addHandler();
-		player.addHandler();
-		
-		player.addPoints(12);
-		assertEquals(6, player.getHandlerCount());
+		this.addHandler(4);
+
+		this.player.addPoints(12);
+		assertEquals(6, this.player.getHandlerCount());
 	}
-	
+
 	@Test
 	public void test25PointsFrom12With2Handlers() {
-		Player player = new Player(6, this.handlerFactory);
-		player.addPoints(12);
-		player.loseHandler();
-		
-		player.addPoints(13);
-		assertEquals(3, player.getHandlerCount());
+		this.player.addPoints(12);
+		this.player.loseHandler();
+
+		this.player.addPoints(13);
+		assertEquals(3, this.player.getHandlerCount());
 	}
-	
+
 	@Test
 	public void test25PointsFrom12With3Handlers() {
-		Player player = new Player(6, this.handlerFactory);
-		player.addPoints(12);
-		
-		player.addPoints(13);
-		assertEquals(4, player.getHandlerCount());
+		this.player.addPoints(12);
+
+		this.player.addPoints(13);
+		assertEquals(4, this.player.getHandlerCount());
 	}
-	
+
 	@Test
 	public void test25PointsFrom12With4Handlers() {
-		Player player = new Player(6, this.handlerFactory);
-		player.addPoints(12);
-		player.addHandler();
-		
-		player.addPoints(13);
-		assertEquals(4, player.getHandlerCount());
+		this.player.addPoints(12);
+		this.addHandler(1);
+
+		this.player.addPoints(13);
+		assertEquals(4, this.player.getHandlerCount());
 	}
-	
+
 	@Test
 	public void test25PointsFrom12WithMaxHandlers() {
-		Player player = new Player(6, this.handlerFactory);
-		player.addPoints(12);
-		player.addHandler();
-		player.addHandler();
-		player.addHandler();
-		
-		player.addPoints(13);
-		assertEquals(6, player.getHandlerCount());
+		this.player.addPoints(12);
+		this.addHandler(3);
+
+		this.player.addPoints(13);
+		assertEquals(6, this.player.getHandlerCount());
 	}
-	
+
 	@Test
 	public void test25PointsFrom0With2Handlers() {
-		Player player = new Player(6, this.handlerFactory);
-		
-		player.addPoints(25);
-		assertEquals(4, player.getHandlerCount());
+		this.player.addPoints(25);
+		assertEquals(4, this.player.getHandlerCount());
 	}
-	
+
 	@Test
 	public void test25PointsFrom0With3Handlers() {
-		Player player = new Player(6, this.handlerFactory);
-		player.addHandler();
+		this.addHandler(1);
 		
-		player.addPoints(25);
-		assertEquals(4, player.getHandlerCount());
+		this.player.addPoints(25);
+		assertEquals(4, this.player.getHandlerCount());
 	}
-	
+
 	@Test
 	public void test25PointsFrom0With4Handlers() {
-		Player player = new Player(6, this.handlerFactory);
-		player.addHandler();
-		player.addHandler();
-		
-		player.addPoints(25);
-		assertEquals(4, player.getHandlerCount());
+		this.addHandler(2);
+
+		this.player.addPoints(25);
+		assertEquals(4, this.player.getHandlerCount());
 	}
-	
+
 	@Test
 	public void test25PointsFrom0WithMaxHandlers() {
-		Player player = new Player(6, this.handlerFactory);
-		player.addHandler();
-		player.addHandler();
-		player.addHandler();
-		player.addHandler();
-		
-		player.addPoints(25);
-		assertEquals(6, player.getHandlerCount());
+		this.addHandler(4);
+
+		this.player.addPoints(25);
+		assertEquals(6, this.player.getHandlerCount());
 	}
 	
+	private void addHandler(int amt) {
+		for (int i = 0; i < amt; i++) {
+			this.player.addHandler();
+		}
+	}
+
 }

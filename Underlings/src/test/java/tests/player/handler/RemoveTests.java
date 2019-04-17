@@ -8,7 +8,7 @@ import org.junit.Test;
 import underlings.game.HandlerFactory;
 import underlings.player.Player;
 
-public class AddTests {
+public class RemoveTests {
 
 	private Player player;
 
@@ -16,27 +16,21 @@ public class AddTests {
 	public void init() {
 		this.player = new Player(6, new HandlerFactory());
 	}
-	
+
 	@Test
-	public void test2Handlers() {
+	public void test3Handlers() {
 		this.addHandler(1);
-		assertEquals(3, this.player.getHandlerCount());
-	}
-	
-	@Test
-	public void testMaxMinus1Handlers() {
-		this.addHandler(3);
 		
-		this.player.addHandler();
-		assertEquals(6, this.player.getHandlerCount());
+		this.player.loseHandler();
+		assertEquals(2, this.player.getHandlerCount());
 	}
-	
+
 	@Test
-	public void testMaxHandler() {
-		this.addHandler(5);
+	public void testMaxHandlers() {
+		this.addHandler(4);
 		
-		this.player.addHandler();
-		assertEquals(6, this.player.getHandlerCount());
+		this.player.loseHandler();
+		assertEquals(5, this.player.getHandlerCount());
 	}
 	
 	private void addHandler(int amt) {
@@ -44,4 +38,5 @@ public class AddTests {
 			this.player.addHandler();
 		}
 	}
+
 }

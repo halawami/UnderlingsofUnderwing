@@ -90,6 +90,7 @@ The definition of done is created by examining and applying BVA on the rules.
     - ```tests.player.handler.DeficiencyTests.test25PointsFrom0With4Handlers()```
   - When at MAX handlers, the handler count should remain at MAX
     - ```tests.player.handler.DeficiencyTests.test25PointsFrom0WithMaxHandlers()```
+- [ ] Reach 12 points after going below 12 points
 
 #### Add Handler ```tests.player.handler.AddTests```
 
@@ -102,14 +103,20 @@ The definition of done is created by examining and applying BVA on the rules.
   - When an additional handler is added, the handler count should remain at MAX
     - ```tests.player.handler.AddTests.testMaxHandler()```
 
+#### Remove Handler ```tests.player.handler.RemoveTests```
 
+- [x] Lose a handler while at [3, MAX] handlers
+  - When at 3 handlers, the handler count should decrease to 2
+    - ```tests.player.handler.RemoveTests.test3Handlers()```
+  - When at MAX handlers, the handler count should decrease to MAX - 1
+    - ```tests.player.handler.RemoveTests.testMaxHandlers()```
+- Lose a handler while at 2 handlers
+
+
+
+// TODO: Remove
 - [ ] Reach 12 points and gain a handler from a dragon at the same time
 - [ ] Reach 25 points and gain a handler from a dragon as the same time
-
-- [x] Lose a handler while at min handler amount
-- [x] Lose a handler while above 12 points
-- [ ] Reach 12 points after losing a handler
-- [ ] Reach 25 points after losing a handler
 
 
 ### Element Collection (Phase 1) ```tests.elements.drawing```
