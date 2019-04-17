@@ -19,7 +19,7 @@ public class RemoveTests {
 
 	@Test
 	public void test3Handlers() {
-		this.addHandler(1);
+		this.gainHandler(1);
 		
 		this.player.loseHandler();
 		assertEquals(2, this.player.getHandlerCount());
@@ -27,7 +27,7 @@ public class RemoveTests {
 
 	@Test
 	public void testMaxHandlers() {
-		this.addHandler(4);
+		this.gainHandler(4);
 		
 		this.player.loseHandler();
 		assertEquals(5, this.player.getHandlerCount());
@@ -39,9 +39,9 @@ public class RemoveTests {
 		assertEquals(2, this.player.getHandlerCount());
 	}
 	
-	private void addHandler(int amt) {
+	private void gainHandler(int amt) {
 		for (int i = 0; i < amt; i++) {
-			this.player.addHandler();
+			this.player.gainHandler();
 		}
 	}
 

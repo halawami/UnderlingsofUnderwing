@@ -27,7 +27,7 @@ public class DeficiencyTests {
 
 	@Test
 	public void test12Points3Handlers() {
-		this.addHandler(1);
+		this.gainHandler(1);
 
 		this.player.addPoints(12);
 		assertEquals(3, this.player.getHandlerCount());
@@ -35,7 +35,7 @@ public class DeficiencyTests {
 
 	@Test
 	public void test12PointsMaxHandlers() {
-		this.addHandler(4);
+		this.gainHandler(4);
 
 		this.player.addPoints(12);
 		assertEquals(6, this.player.getHandlerCount());
@@ -61,7 +61,7 @@ public class DeficiencyTests {
 	@Test
 	public void test25PointsFrom12With4Handlers() {
 		this.player.addPoints(12);
-		this.addHandler(1);
+		this.gainHandler(1);
 
 		this.player.addPoints(13);
 		assertEquals(4, this.player.getHandlerCount());
@@ -70,7 +70,7 @@ public class DeficiencyTests {
 	@Test
 	public void test25PointsFrom12WithMaxHandlers() {
 		this.player.addPoints(12);
-		this.addHandler(3);
+		this.gainHandler(3);
 
 		this.player.addPoints(13);
 		assertEquals(6, this.player.getHandlerCount());
@@ -84,7 +84,7 @@ public class DeficiencyTests {
 
 	@Test
 	public void test25PointsFrom0With3Handlers() {
-		this.addHandler(1);
+		this.gainHandler(1);
 		
 		this.player.addPoints(25);
 		assertEquals(4, this.player.getHandlerCount());
@@ -92,7 +92,7 @@ public class DeficiencyTests {
 
 	@Test
 	public void test25PointsFrom0With4Handlers() {
-		this.addHandler(2);
+		this.gainHandler(2);
 
 		this.player.addPoints(25);
 		assertEquals(4, this.player.getHandlerCount());
@@ -100,15 +100,46 @@ public class DeficiencyTests {
 
 	@Test
 	public void test25PointsFrom0WithMaxHandlers() {
-		this.addHandler(4);
+		this.gainHandler(4);
 
 		this.player.addPoints(25);
 		assertEquals(6, this.player.getHandlerCount());
 	}
 	
-	private void addHandler(int amt) {
+	@Test
+	public void test12PointsTwice() {
+		this.player.addPoints(12);
+		this.player.loseHandler();
+		this.player.losePoints(12);
+		
+		this.player.addPoints(12);
+		assertEquals(2, this.player.getHandlerCount());
+	}
+	
+	@Test
+	public void test25PointsTwice2Handlers() {
+		this.player.addPoints(25);
+		this.player.loseHandler();
+		this.player.loseHandler();
+		this.player.losePoints(25);
+		
+		this.player.addPoints(25);
+		assertEquals(2, this.player.getHandlerCount());
+	}
+	
+	@Test
+	public void test25PointsTwice3Handlers() {
+		this.player.addPoints(25);
+		this.player.loseHandler();
+		this.player.losePoints(25);
+		
+		this.player.addPoints(25);
+		assertEquals(3, this.player.getHandlerCount());
+	}
+	
+	private void gainHandler(int amt) {
 		for (int i = 0; i < amt; i++) {
-			this.player.addHandler();
+			this.player.gainHandler();
 		}
 	}
 

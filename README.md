@@ -90,7 +90,14 @@ The definition of done is created by examining and applying BVA on the rules.
     - ```tests.player.handler.DeficiencyTests.test25PointsFrom0With4Handlers()```
   - When at MAX handlers, the handler count should remain at MAX
     - ```tests.player.handler.DeficiencyTests.test25PointsFrom0WithMaxHandlers()```
-- [ ] Reach 12 points after going below 12 points
+- [x] Reach 12 points with 2 handlers after dropping below 12 points
+  - The handler count should remain at 2
+    - ```tests.player.handler.DeficiencyTests.test12PointsTwice()```
+- [x] Reach 25 points with [2, 3] handlers after dropping below 25 points
+  - When at 2 handlers, the handler count should remain at 2
+    - ```tests.player.handler.DeficiencyTests.test25PointsTwice2Handlers()```
+  - When at 3 handlers, the handler count should remain at 3
+    - ```tests.player.handler.DeficiencyTests.test25PointsTwice3Handlers()```
 
 #### Add Handler ```tests.player.handler.AddTests```
 

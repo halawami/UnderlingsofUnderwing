@@ -26,14 +26,14 @@ public class PlayerTests {
 	@Test
 	public void testAddHandlerAfterInit() {
 		Player player = new Player(4, this.handlerFactory);
-		player.addHandler();
+		player.gainHandler();
 		assertEquals(3, player.getHandlerCount());
 	}
 
 	@Test
 	public void testGetHandlerListSize() {
 		Player player = new Player(4, this.handlerFactory);
-		player.addHandler();
+		player.gainHandler();
 		List<Handler> handlers = player.getHandlers();
 		assertEquals(handlers.size(), player.getHandlerCount());
 	}
@@ -41,22 +41,22 @@ public class PlayerTests {
 	@Test
 	public void testAddHandlerMaxSize6() {
 		Player player = new Player(6, this.handlerFactory);
-		player.addHandler();
-		player.addHandler();
-		player.addHandler();
-		player.addHandler();
+		player.gainHandler();
+		player.gainHandler();
+		player.gainHandler();
+		player.gainHandler();
 		assertEquals(6, player.getHandlerCount());
-		player.addHandler();
+		player.gainHandler();
 		assertEquals(6, player.getHandlerCount());
 	}
 	
 	@Test
 	public void testAddHandlerMaxSize4(){
 		Player player = new Player(4, this.handlerFactory);
-		player.addHandler();
-		player.addHandler();
+		player.gainHandler();
+		player.gainHandler();
 		assertEquals(4, player.getHandlerCount());
-		player.addHandler();
+		player.gainHandler();
 		assertEquals(4, player.getHandlerCount());
 	}
 	
@@ -66,7 +66,7 @@ public class PlayerTests {
 	public void testReach25PointsWith3Handlers(){
 		Player player = new Player(4, this.handlerFactory);
 		player.addPoints(13);
-		player.addHandler();
+		player.gainHandler();
 		player.addPoints(13);
 		assertEquals(4, player.getHandlerCount());
 	}
@@ -74,8 +74,8 @@ public class PlayerTests {
 	@Test
 	public void testReach25PointsWith4Handlers(){
 		Player player = new Player(4, this.handlerFactory);
-		player.addHandler();
-		player.addHandler();
+		player.gainHandler();
+		player.gainHandler();
 		player.addPoints(25);
 		assertEquals(4, player.getHandlerCount());
 	}
@@ -134,7 +134,7 @@ public class PlayerTests {
 	@Test
 	public void testPlayerElementGiversAddHandler() {
 		Player player = new Player(4, this.handlerFactory);
-		player.addHandler();
+		player.gainHandler();
 		List<ElementGiver> elementGivers = player.getElementGivers();
 		assertEquals(3, elementGivers.size());
 		for (ElementGiver elementGiver : elementGivers) {
