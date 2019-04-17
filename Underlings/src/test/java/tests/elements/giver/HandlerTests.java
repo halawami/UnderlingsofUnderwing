@@ -70,6 +70,14 @@ public class HandlerTests {
         testFieldColor(DrawChoice.WHITE);
     }
 
+    @Test
+    public void testToStringReadyRoom(){
+        Handler handler = new Handler(HandlerState.READY_ROOM);
+        ElementGiver elementGiver = handler.elementGiver;
+        assertEquals("Handler in Ready Room", elementGiver.toString());
+    }
+
+
     private void testFieldColor(DrawChoice color){
         FieldSpace fieldSpace = new FieldSpace(color);
         Handler handler = new Handler(HandlerState.FIELD);
