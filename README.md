@@ -209,14 +209,16 @@ The definition of done is created by examining and applying BVA on the rules.
   - When there is 1 left, drawing should decrease the count to 0
     - ```tests.elements.drawing.CountTests.testDraw1Left()```
 
-### Move & Assign Dragon Handlers (Phase 2)
+### Move & Assign Dragon Handlers (Phase 2) ```tests.handler```
 
+#### Handler Movement States ```tests.handler.movement.StateTests```
 
-- [x] Handler in Ready Room
-  - [x] Move to Handler on Unclaimed & Unhatched Egg
+- [x] When the handler is in the Ready Room
+  - [x] The handler state can change to card
+    - ```tests.handler.movement.StateTest.testReadyRoomToUnclaimedEggs()```
   - [x] Move to Hander in Field
   - [x] Move to Handler in Field White
-  - [x] Keep handler in Ready Room
+  - [x] The handler state can remain at ready room
   - [x] Move to illegal state
 
 
