@@ -17,25 +17,25 @@ public class ElementPhase implements Phase {
 	public void execute(List<Player> players, GUI gui, ElementBag elementBag, HatchingGround hatchingGround,
 			Runnable displayMethod) {
 
-		for (Player player : players) {
-
-			List<ElementGiver> elementGivers = player.getElementGivers();
-
-			while (!elementGivers.isEmpty()) {
-				ElementGiver chosenElementGiver = gui.promptHandler.promptElementGiver(elementGivers);
-				List<ElementDrawChoice> possibleElementDrawChoices = chosenElementGiver.getElementDrawChoices();
-
-				Choice chosenElementDrawChoice = gui.promptHandler.promptElementDrawChoice(possibleElementDrawChoices);
-
-				Element drawnElement = elementBag.drawRandomElement();
-				player.addElement(drawnElement);
-
-				elementGivers.remove(chosenElementGiver);
-				
-				displayMethod.run();
-				
-			}
-		}
+//		for (Player player : players) {
+//
+//			List<ElementGiver> elementGivers = player.getElementGivers();
+//
+//			while (!elementGivers.isEmpty()) {
+//				ElementGiver chosenElementGiver = gui.promptHandler.promptElementGiver(elementGivers);
+//				List<ElementDrawChoice> possibleElementDrawChoices = chosenElementGiver.getElementDrawChoices();
+//
+//				Choice chosenElementDrawChoice = gui.promptHandler.promptElementDrawChoice(possibleElementDrawChoices);
+//
+//				Element drawnElement = elementBag.drawRandomElement();
+//				player.addElement(drawnElement);
+//
+//				elementGivers.remove(chosenElementGiver);
+//
+//				displayMethod.run();
+//
+//			}
+//		}
 
 	}
 

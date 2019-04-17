@@ -1,5 +1,7 @@
 package underlings.game;
 
+import underlings.gui.ElementGiver;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -62,4 +64,7 @@ public class Handler {
         return allowedStates.get(this.state);
     }
 
+    public ElementGiver getElementGiver() {
+        return new ElementGiver();
+    }
 }
