@@ -304,6 +304,12 @@ The definition of done is created by examining and applying BVA on the rules.
   - The handler can change to ready room
   	- ```tests.handler.movement.StateTest.testIncubationToBreakRoom()```
 
+#### Handler To String ```tests.handler.StringTests```
+
+// TODO: DO
+
+#### Handler Choices ```tests.handler.movement.ChoiceTests()```
+
 #### Placing Elements on Eggs (Phase 3)
 
 
