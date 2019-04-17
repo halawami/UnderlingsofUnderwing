@@ -214,41 +214,39 @@ The definition of done is created by examining and applying BVA on the rules.
 #### Handler Movement States ```tests.handler.movement.StateTests```
 
 - [x] When the handler is in the Ready Room
-  - [x] The handler state can change to card
+  - The handler state can change to card
     - ```tests.handler.movement.StateTest.testReadyRoomToUnclaimedEggs()```
-  - [x] The handler state can change to field
+  - The handler state can change to field
   	- ```tests.handler.movement.StateTest.testReadyRoomToField()```
-  - [x] The handler state can change to field whitespace
+  - The handler state can change to field whitespace
   	- ```tests.handler.movement.StateTest.testReadyRoomToFieldWhite()```
-  - [x] The handler state can remain at ready room
+  - The handler state can remain at ready room
   	- ```tests.handler.movement.StateTest.testReadyRoomToReadyRoom()```
 
 - [x] Handler in Field
-  - [x] The handler can remain at field
+  - The handler can remain at field
   	- ```tests.handler.movement.StateTest.testFieldMoveClockwise()```
-  - [x] The handler can change to break room
+  - The handler can change to break room
   	- ```tests.handler.movement.StateTest.testFieldToBreakRoom()```
 
 - [x] Handler on Unclaimed Egg
-  - [x] The handler can change to break room
+  - The handler can change to break room
   	- ```tests.handler.movement.StateTest.testUnclaimedEggToBreakRoom()```
-  - [x] The handler remains on card
+  - The handler remains on card
   	- ```tests.handler.movement.StateTest.testUnclaimedEggToBreakRoom()```
-  - [ ] Move to Handler in Ready Room due to Dragon Effect
-
 
 - [x] Handler in Break Room
-  - [x] The handler can change to ready room
+  - The handler can change to ready room
   	- ```tests.handler.movement.StateTest.testBreakRoomToReadyRoom()```
 
 - [x] Handler in Field White
-  - [x] The handler can change to break room
+  - The handler can change to break room
   	- ```tests.handler.movement.StateTest.testFieldWhiteToBreakRoom()```
 
 - [x] Handler during Incubation
-  - [x] The handler can remain in incubation
+  - The handler can remain in incubation
   	- ```tests.handler.movement.StateTest.testIncubationToIncubation()```
-  - [x] The handler can change to ready room
+  - The handler can change to ready room
   	- ```tests.handler.movement.StateTest.testIncubationToBreakRoom()```
 
 
