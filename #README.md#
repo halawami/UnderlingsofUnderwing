@@ -121,8 +121,6 @@ The definition of done is created by examining and applying BVA on the rules.
   - When at 2 handlers, the handler count should remain at 2
     - ```tests.player.handler.RemoveTests.test2Handlers()```
 
-
-
 // TODO: Remove
 - [ ] Reach 12 points and gain a handler from a dragon at the same time
 - [ ] Reach 25 points and gain a handler from a dragon as the same time
