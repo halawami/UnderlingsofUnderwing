@@ -89,4 +89,7 @@ public class Player {
 		this.points -= pointsToLose;
 	}
 
+	public void removeElement(Element elementToRemove) {
+		this.elements.remove(elementToRemove);
+	}
 }
