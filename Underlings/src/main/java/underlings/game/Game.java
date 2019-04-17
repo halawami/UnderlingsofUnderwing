@@ -43,10 +43,6 @@ public class Game {
 	}
 
 	public void setUp(int numberOfPlayers) {
-		if (numberOfPlayers < MIN_PLAYERS || numberOfPlayers > MAX_PLAYERS) {
-			throw new IllegalArgumentException("Player count must be between 2 and 6, inclusive");
-		}
-
 		this.setUpProperties(numberOfPlayers);
 		this.hatchingGround.populate();
 		this.setUpPlayerList(numberOfPlayers);
@@ -88,11 +84,10 @@ public class Game {
 		for (Phase phase : phases) {
 			phase.execute(this.players, this.gui, this.elementBag, this.hatchingGround, () -> {this.display();});
 		}
-
 	}
 
 	public void promptPlayerCount() {
-		this.numberOfPlayers = this.gui.promptHandler.promptPlayerCount();
+		this.numberOfPlayers = this.gui.promptHandler.promptPlayerCount(MIN_PLAYERS, MAX_PLAYERS);
 	}
 
 	public int getPlayerCount() {

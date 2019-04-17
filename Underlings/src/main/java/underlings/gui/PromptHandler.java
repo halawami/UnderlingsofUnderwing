@@ -8,7 +8,7 @@ import underlings.game.HandlerState;
 
 public interface PromptHandler {
 	
-	public int promptPlayerCount();
+	public int promptPlayerCount(int minPlayers, int maxPlayers);
 	
 	public ElementGiver promptElementGiver(List<ElementGiver> elementGivers);
 	

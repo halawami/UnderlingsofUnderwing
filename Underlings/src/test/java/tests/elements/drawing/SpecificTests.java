@@ -8,7 +8,6 @@ import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
 
-import underlings.element.ColorEmptyException;
 import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
@@ -29,49 +28,49 @@ public class SpecificTests {
 	}
 
 	@Test
-	public void testRed() throws ColorEmptyException {
+	public void testRed() {
 		Element drawnElement = this.elementBag.drawElementFromList(ElementColor.RED);
 		assertEquals(ElementColor.RED, drawnElement.getColor());
 	}
-	
+
 	@Test
-	public void testGreen() throws ColorEmptyException {
+	public void testGreen() {
 		Element drawnElement = this.elementBag.drawElementFromList(ElementColor.GREEN);
 		assertEquals(ElementColor.GREEN, drawnElement.getColor());
 	}
-	
+
 	@Test
-	public void testBlue() throws ColorEmptyException {
+	public void testBlue() {
 		Element drawnElement = this.elementBag.drawElementFromList(ElementColor.BLUE);
 		assertEquals(ElementColor.BLUE, drawnElement.getColor());
 	}
-	
+
 	@Test
-	public void testOrange() throws ColorEmptyException {
+	public void testOrange() {
 		Element drawnElement = this.elementBag.drawElementFromList(ElementColor.ORANGE);
 		assertEquals(ElementColor.ORANGE, drawnElement.getColor());
 	}
-	
+
 	@Test
-	public void testYellow() throws ColorEmptyException {
+	public void testYellow() {
 		Element drawnElement = this.elementBag.drawElementFromList(ElementColor.YELLOW);
 		assertEquals(ElementColor.YELLOW, drawnElement.getColor());
 	}
-	
+
 	@Test
-	public void testPurple() throws ColorEmptyException {
+	public void testPurple() {
 		Element drawnElement = this.elementBag.drawElementFromList(ElementColor.PURPLE);
 		assertEquals(ElementColor.PURPLE, drawnElement.getColor());
 	}
-	
+
 	@Test
-	public void testBlack() throws ColorEmptyException {
+	public void testBlack() {
 		Element drawnElement = this.elementBag.drawElementFromList(ElementColor.BLACK);
 		assertEquals(ElementColor.BLACK, drawnElement.getColor());
 	}
-	
+
 	@Test
-	public void testWhite() throws ColorEmptyException {
+	public void testWhite() {
 		Element drawnElement = this.elementBag.drawElementFromList(ElementColor.WHITE);
 		assertEquals(ElementColor.WHITE, drawnElement.getColor());
 	}
