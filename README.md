@@ -58,7 +58,7 @@ The definition of done is created by examining and applying BVA on the rules.
     - ```tests.game.setup.HatchingGroundTests.test4PlayerSize()```
     - ```tests.game.setup.HatchingGroundTests.test6PlayerSize()```
 
-#### Element Bag Tests ```tests.game.setup.ElementBagTests```
+#### Element Bag Setup ```tests.game.setup.ElementBagTests```
 
 - [x] When the game starts there should be the correct number of elements
   - The game should start with 20 blue, red, and yellow elements, 10 purple, green, and orange elements, and 5 black and white elements
@@ -131,11 +131,6 @@ The definition of done is created by examining and applying BVA on the rules.
 - [x] Lose a handler while at 2 handlers
   - When at 2 handlers, the handler count should remain at 2
     - ```tests.player.handler.RemoveTests.test2Handlers()```
-
-// TODO: Remove
-- [ ] Reach 12 points and gain a handler from a dragon at the same time
-- [ ] Reach 25 points and gain a handler from a dragon as the same time
-
 
 ### Element Collection (Phase 1) ```tests.elements.drawing```
 
