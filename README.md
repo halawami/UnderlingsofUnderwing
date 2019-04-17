@@ -209,6 +209,15 @@ The definition of done is created by examining and applying BVA on the rules.
   - When there is 1 left, drawing should decrease the count to 0
     - ```tests.elements.drawing.CountTests.testDraw1Left()```
 
+### Player Element Inventory ```tests.player.ElementTests```
+
+- [x] A player adds an element to their inventory
+  - When an element is added, it appears in their inventory
+    - ```tests.player.ElementsTests.testAddElement()```
+- [x] A player plays an element from their inventory
+  - When an element is played, it is removed from their inventory
+    - ```tests.player.ElementTests.testRemoveElement()```
+ 
 ### Move & Assign Dragon Handlers (Phase 2) ```tests.handler```
 
 #### Handler Movement States ```tests.handler.movement.StateTests```
@@ -248,13 +257,6 @@ The definition of done is created by examining and applying BVA on the rules.
   	- ```tests.handler.movement.StateTest.testIncubationToIncubation()```
   - The handler can change to ready room
   	- ```tests.handler.movement.StateTest.testIncubationToBreakRoom()```
-
-
-- [ ] Handler in Ready Room and all Eggs claimed
-- [ ] Max handlers on field position and move another handler to same spot
-- [ ] Players have different number of assigning turns (number of handlers is different)
-- [ ] Players have the same number of assigning turns (number of handlers is the same)
-
 
 #### Placing Elements on Eggs (Phase 3)
 
@@ -800,3 +802,11 @@ The definition of done is created by examining and applying BVA on the rules.
       - [ ] Follows BVA of Assigning Handlers
    - [ ] Dragons
       - [ ] Kel’Droth
+
+#### Game Scenarios
+
+- [ ] Handler in Ready Room and all Eggs claimed
+- [ ] Max handlers on field position and move another handler to same spot
+- [ ] Players have different number of assigning turns (number of handlers is different)
+- [ ] Players have the same number of assigning turns (number of handlers is the same)
+
