@@ -26,7 +26,7 @@ public class ElementBag {
 		this.elementCount.put(ElementColor.BLACK, 5);
 	}
 	
-	public Element drawElementFromList(ElementColor... colors) {
+	public Element drawElementFromList(ElementColor... colors)  {
 		
 		ArrayList<ElementColor> possibilities = new ArrayList<>();
 		
@@ -38,6 +38,7 @@ public class ElementBag {
 		
 		int selectionNumber = this.random.nextInt(possibilities.size());
 		ElementColor selectedElement = possibilities.get(selectionNumber);
+		
 		
 		this.elementCount.put(selectedElement, this.elementCount.get(selectedElement) - 1);
 		

@@ -1,4 +1,4 @@
-package tests.game;
+package tests.player.handler;
 
 import static org.junit.Assert.assertEquals;
 
@@ -7,9 +7,9 @@ import org.junit.Test;
 import underlings.game.HandlerFactory;
 import underlings.player.Player;
 
-public class AddHandlerTests {
+public class DeficiencyTests {
 
-	private HandlerFactory handlerFactory = new HandlerFactory();
+private HandlerFactory handlerFactory = new HandlerFactory();
 	
 	@Test
 	public void test12Points2Handlers() {

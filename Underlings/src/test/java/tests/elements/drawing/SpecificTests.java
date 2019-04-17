@@ -8,6 +8,7 @@ import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
 
+import underlings.element.ColorEmptyException;
 import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
@@ -23,76 +24,54 @@ public class SpecificTests {
 		ElementFactory elementFactory = new ElementFactory();
 		this.random = EasyMock.createMock(Random.class);
 		this.elementBag = new ElementBag(elementFactory, this.random);
+		EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(1);
+		EasyMock.replay(this.random);
 	}
 
 	@Test
-	public void testRed() {
-		EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(1);
-		EasyMock.replay(this.random);
-
+	public void testRed() throws ColorEmptyException {
 		Element drawnElement = this.elementBag.drawElementFromList(ElementColor.RED);
 		assertEquals(ElementColor.RED, drawnElement.getColor());
 	}
 	
 	@Test
-	public void testGreen() {
-		EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(1);
-		EasyMock.replay(this.random);
-
+	public void testGreen() throws ColorEmptyException {
 		Element drawnElement = this.elementBag.drawElementFromList(ElementColor.GREEN);
 		assertEquals(ElementColor.GREEN, drawnElement.getColor());
 	}
 	
 	@Test
-	public void testBlue() {
-		EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(1);
-		EasyMock.replay(this.random);
-
+	public void testBlue() throws ColorEmptyException {
 		Element drawnElement = this.elementBag.drawElementFromList(ElementColor.BLUE);
 		assertEquals(ElementColor.BLUE, drawnElement.getColor());
 	}
 	
 	@Test
-	public void testOrange() {
-		EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(1);
-		EasyMock.replay(this.random);
-
+	public void testOrange() throws ColorEmptyException {
 		Element drawnElement = this.elementBag.drawElementFromList(ElementColor.ORANGE);
 		assertEquals(ElementColor.ORANGE, drawnElement.getColor());
 	}
 	
 	@Test
-	public void testYellow() {
-		EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(1);
-		EasyMock.replay(this.random);
-
+	public void testYellow() throws ColorEmptyException {
 		Element drawnElement = this.elementBag.drawElementFromList(ElementColor.YELLOW);
 		assertEquals(ElementColor.YELLOW, drawnElement.getColor());
 	}
 	
 	@Test
-	public void testPurple() {
-		EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(1);
-		EasyMock.replay(this.random);
-
+	public void testPurple() throws ColorEmptyException {
 		Element drawnElement = this.elementBag.drawElementFromList(ElementColor.PURPLE);
 		assertEquals(ElementColor.PURPLE, drawnElement.getColor());
 	}
 	
 	@Test
-	public void testBlack() {
-		EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(1);
-		EasyMock.replay(this.random);
-
+	public void testBlack() throws ColorEmptyException {
 		Element drawnElement = this.elementBag.drawElementFromList(ElementColor.BLACK);
 		assertEquals(ElementColor.BLACK, drawnElement.getColor());
 	}
 	
 	@Test
-	public void testWhite() {
-		EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(1);
-		EasyMock.replay(this.random);
-
+	public void testWhite() throws ColorEmptyException {
 		Element drawnElement = this.elementBag.drawElementFromList(ElementColor.WHITE);
 		assertEquals(ElementColor.WHITE, drawnElement.getColor());
 	}

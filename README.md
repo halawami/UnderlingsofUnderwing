@@ -58,40 +58,54 @@ The definition of done is created by examining and applying BVA on the rules.
     - ```tests.game.setup.HatchingGroundTests.test4PlayerSize()```
     - ```tests.game.setup.HatchingGroundTests.test6PlayerSize()```
 
-### Gaining Handlers and Handler Deficiency ```tests.game.AddHandlerTests```
+### Handlers ```tests.player.handler```
+
+#### Handler Deficiency ```tests.player.handler.DeficiencyTests```
 
 - [x] Reach 12 points while having 2 handlers
   - The handler count should increase to 3
-    - ```tests.game.AddHandlerTests.test12Points2Handlers()```
+    - ```tests.player.handler.DeficiencyTests.test12Points2Handlers()```
 - [x] Reach 12 points while having [3, MAX] handlers
   - When at 3 handlers, the handler count should remain at 3
-    - ```tests.game.AddHandlerTests.test12Points3Handlers()```
+    - ```tests.player.handler.DeficiencyTests.test12Points3Handlers()```
   - When at MAX handlers, the handler count should remain at MAX
-    - ```tests.game.AddHandlerTests.test12PointsMaxHandlers()```
+    - ```tests.player.handler.DeficiencyTests.test12PointsMaxHandlers()```
 - [x] Reach 25 points from above 12 points while having [2, 3] handlers
   - When at 2 handlers, the handler count should increase to 3
-    - ```tests.game.AddHandlerTests.test25PointsFrom12With2Handlers()```
+    - ```tests.player.handler.DeficiencyTests.test25PointsFrom12With2Handlers()```
   - When at 3 handlers, the handler count should increase to 4
-    - ```tests.game.AddHandlerTests.test25PointsFrom12With3Handlers()```
+    - ```tests.player.handler.DeficiencyTests.test25PointsFrom12With3Handlers()```
 - [x] Reach 25 points from above 12 points while having [4, MAX] handlers
   - When at 4 handlers, the handler count should remain at 4
-    - ```tests.game.AddHandlerTests.test25PointsFrom12With4Handlers()```
+    - ```tests.player.handler.DeficiencyTests.test25PointsFrom12With4Handlers()```
   - When at MAX handlers, the handler count should remain at MAX
-    - ```tests.game.AddHandlerTests.test25PointsFrom12WithMaxHandlers()```
+    - ```tests.player.handler.DeficiencyTests.test25PointsFrom12WithMaxHandlers()```
 - [x] Reach 25 points from below 12 points while having [2, 3] handlers
   - When at 2 handlers, the handler count should increase to 4
-    - ```tests.game.AddHandlerTests.test25PointsFrom0With2Handlers()```
+    - ```tests.player.handler.DeficiencyTests.test25PointsFrom0With2Handlers()```
   - When at 3 handlers, the handler count should increase to 4
-    - ```tests.game.AddHandlerTests.test25PointsFrom0With3Handlers()```
+    - ```tests.player.handler.DeficiencyTests.test25PointsFrom0With3Handlers()```
 - [x] Reach 25 points from below 12 points while having [4, MAX] handlers
   - When at 4 handlers, the handler count should remain at 4
-    - ```tests.game.AddHandlerTests.test25PointsFrom0With4Handlers()```
+    - ```tests.player.handler.DeficiencyTests.test25PointsFrom0With4Handlers()```
   - When at MAX handlers, the handler count should remain at MAX
-    - ```tests.game.AddHandlerTests.test25PointsFrom0WithMaxHandlers()```
+    - ```tests.player.handler.DeficiencyTests.test25PointsFrom0WithMaxHandlers()```
+
+#### Add Handler ```tests.player.handler.AddTests```
+
+- [x] Gain a handler while at [2, MAX) handlers
+  - When at 2 handlers, adding a handler will result in a 3rd handler
+    - ```tests.player.handler.AddTests.test2Handlers()```
+  - When at MAX - 1 handlers, adding a handler will result in MAX handlers
+    - ```tests.player.handler.AddTests.testMaxMinus1Handlers()```
+- [x] Gain a handler while at the MAX handler amount
+  - When an additional handler is added, the handler count should remain at MAX
+    - ```tests.player.handler.AddTests.testMaxHandler()```
+
+
 - [ ] Reach 12 points and gain a handler from a dragon at the same time
 - [ ] Reach 25 points and gain a handler from a dragon as the same time
-- [x] Start at < 12 points and end the round at 25+ points
-- [ ] Gain a handler from dragon while at the max handler amount
+
 - [x] Lose a handler while at min handler amount
 - [x] Lose a handler while above 12 points
 - [ ] Reach 12 points after losing a handler
@@ -118,6 +132,9 @@ The definition of done is created by examining and applying BVA on the rules.
     - ```tests.elements.drawing.SpecificTests.testBlack()```
   - When a white element is requested, a white element will be returned
     - ```tests.elements.drawing.SpecificTests.testWhite()```
+- [ ] A specific color element can not be drawn if none of that color remain
+  - When a specific color element is requested, and the bag does not contain that color, an exception should be thrown
+    
     
 #### Drawing Random Elements ```tests.elements.drawing.RandomTests```
 
@@ -127,7 +144,6 @@ The definition of done is created by examining and applying BVA on the rules.
 
 
 - [ ] Drawing Elements From Field
-  - [ ] Draw field Element
   - [ ] Draw field Element from empty bag
   - [ ] Draw field Element with no field Elements remaining
 
