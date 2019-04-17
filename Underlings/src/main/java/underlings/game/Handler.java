@@ -1,5 +1,6 @@
 package underlings.game;
 
+import underlings.gui.DrawChoice;
 import underlings.gui.ElementGiver;
 
 import java.util.Arrays;
@@ -9,12 +10,14 @@ import java.util.List;
 
 public class Handler {
 
+    public ElementGiver elementGiver;
     private HandlerState state;
     private HashMap<HandlerState, List<HandlerState>> allowedStates;
 
     public Handler(HandlerState state) {
         this.state = state;
         this.initializeHashMap();
+        this.elementGiver = new ElementGiver(DrawChoice.RANDOM);
     }
 
     private void initializeHashMap() {
@@ -62,9 +65,5 @@ public class Handler {
 
     public List<HandlerState> getPossibleStates() {
         return allowedStates.get(this.state);
-    }
-
-    public ElementGiver getElementGiver() {
-        return new ElementGiver();
     }
 }

@@ -7,16 +7,16 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ElementGiver {
-	
+
+	public List<DrawChoice> drawChoices;
+
+	public ElementGiver(DrawChoice ... drawChoices) {
+		this.drawChoices = Arrays.asList(drawChoices);
+	}
+
 	@Override
 	public String toString() {
 		return "Handler";
-	}
-
-	public List<DrawChoice> getDrawChoices() {
-		List<DrawChoice> drawChoices = new ArrayList<>();
-		drawChoices.add(DrawChoice.RANDOM);
-		return drawChoices;
 	}
 
 	public List<ElementDrawChoice> getElementDrawChoices(){
