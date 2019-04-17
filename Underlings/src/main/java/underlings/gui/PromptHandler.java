@@ -13,7 +13,7 @@ public interface PromptHandler {
 	
 	public ElementGiver promptElementGiver(List<ElementGiver> elementGivers);
 	
-	public ElementDrawChoice promptElementDrawChoice(List<ElementDrawChoice> elementDrawChoices);
+	public DrawChoice promptElementDrawChoice(List<DrawChoice> possibleElementDrawChoices);
 
 	public HandlerState promptHandlerState(List<HandlerState> possibleStates);
 
