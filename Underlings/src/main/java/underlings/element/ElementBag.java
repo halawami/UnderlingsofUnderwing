@@ -55,5 +55,21 @@ public class ElementBag {
 				ElementColor.BLACK);
 	}
 
+	public Element drawRandomPrimaryElement() {
+		return drawElementFromList(ElementColor.BLUE, ElementColor.RED, ElementColor.YELLOW);
+	}
+
+	public Element drawRandomSecondayElement() {
+		return drawElementFromList(ElementColor.PURPLE, ElementColor.GREEN, ElementColor.ORANGE);
+	}
+
+	public Element drawCoolElement() {
+		return drawElementFromList(ElementColor.BLUE, ElementColor.GREEN, ElementColor.PURPLE);
+	}
+
+	public Element drawWarmElement() {
+		return drawElementFromList(ElementColor.RED, ElementColor.YELLOW, ElementColor.ORANGE);
+	}
+
 }
 	
