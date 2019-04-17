@@ -262,10 +262,7 @@ The definition of done is created by examining and applying BVA on the rules.
     - ```tests.elements.giver.HandlerTests.testToStringFieldBlue()```
     - ```tests.elements.giver.HandlerTests.testToStringFieldWhite()```
 
-#### Cards
-
-#### Player
-
+#### Cards ```tests.elements.giver.CardTests```
 
 ### Move & Assign Dragon Handlers (Phase 2) ```tests.handler```
 
