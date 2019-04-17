@@ -6,6 +6,6 @@ public enum DrawChoice {
 
     @Override
     public String toString(){
-        return "BLUE Element";
+        return  this.name() + " Element";
     }
 }

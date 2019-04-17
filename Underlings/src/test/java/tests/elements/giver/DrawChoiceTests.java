@@ -13,4 +13,10 @@ public class DrawChoiceTests {
         DrawChoice drawChoice = DrawChoice.BLUE;
         assertEquals("BLUE Element", drawChoice.toString());
     }
+
+    @Test
+    public void testToStringRed(){
+        DrawChoice drawChoice = DrawChoice.RED;
+        assertEquals("RED Element", drawChoice.toString());
+    }
 }
