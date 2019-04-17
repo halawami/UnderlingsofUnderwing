@@ -8,7 +8,6 @@ import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
 
-import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementFactory;
@@ -23,19 +22,6 @@ public class ElementTests {
 		ElementFactory elementFactory = new ElementFactory();
 		this.random = EasyMock.createMock(Random.class);
 		this.elementBag = new ElementBag(elementFactory, this.random);
-	}
-
-
-	@Test
-	public void testDrawListAllElements() {
-		EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(65);
-		EasyMock.replay(this.random);
-		
-		Element drawnElement = this.elementBag.drawElementFromList(ElementColor.BLUE, ElementColor.RED,
-				ElementColor.YELLOW, ElementColor.PURPLE, ElementColor.GREEN, ElementColor.ORANGE, ElementColor.WHITE,
-				ElementColor.BLACK);
-		
-		assertEquals(ElementColor.PURPLE, drawnElement.getColor());
 	}
 
 	@Test
@@ -57,23 +43,6 @@ public class ElementTests {
 		assertEquals(19, this.elementBag.getNumberRemaining(ElementColor.BLUE));
 	}
 	
-	@Test 
-	public void testDrawRandomElement_Green() {
-		EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(75);
-		EasyMock.replay(this.random);
-		
-		Element drawnElement = this.elementBag.drawRandomElement();
-		assertEquals(ElementColor.GREEN, drawnElement.getColor());
-	}
-	
-	@Test 
-	public void testDrawRandomElement_Black() {
-		EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(97);
-		EasyMock.replay(this.random);
-		
-		Element drawnElement = this.elementBag.drawRandomElement();
-		assertEquals(ElementColor.BLACK, drawnElement.getColor());
-	}
 	
 
 }

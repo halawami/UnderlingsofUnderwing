@@ -121,8 +121,6 @@ The definition of done is created by examining and applying BVA on the rules.
   - When at 2 handlers, the handler count should remain at 2
     - ```tests.player.handler.RemoveTests.test2Handlers()```
 
-
-
 // TODO: Remove
 - [ ] Reach 12 points and gain a handler from a dragon at the same time
 - [ ] Reach 25 points and gain a handler from a dragon as the same time
@@ -148,32 +146,35 @@ The definition of done is created by examining and applying BVA on the rules.
     - ```tests.elements.drawing.SpecificTests.testBlack()```
   - When a white element is requested, a white element will be returned
     - ```tests.elements.drawing.SpecificTests.testWhite()```
-- [ ] A specific color element can not be drawn if none of that color remain
-  - When a specific color element is requested, and the bag does not contain that color, an exception should be thrown
-    
-    
+
 #### Drawing Random Elements ```tests.elements.drawing.RandomTests```
 
-- [ ] Drawing Random Elements
-  - [ ] Draw random Element
-  - [ ] Draw random Element from an empty bag
-
-
-- [ ] Drawing Elements From Field
-  - [ ] Draw field Element from empty bag
-  - [ ] Draw field Element with no field Elements remaining
-
-
-- [ ] Drawing Elements from Dragon Effect
-  - [ ] Draw dragon effect Element
-  - [ ] Draw dragon effect Element from empty bag
-  - [ ] Draw dragon effect Element with no dragon effect Elements remaining
-
-
-- [ ] Drawing Decisions
-  - [ ] Draw random Element instead of dragon effect Element
-  - [ ] Draw random Element instead of field Element
-
+- [x] Drawing a Completly Random Element
+  - A red element may be returned as the random element
+    - ```tests.elements.drawing.RandomTests.testCompletlyRandomRed()```
+  - A green element may be returned as the random element
+    - ```tests.elements.drawing.RandomTests.testCompletlyRandomGreen()```
+  - A blue element may be returned as the random element
+    - ```tests.elements.drawing.RandomTests.testCompletlyRandomBlue()```
+  - A orange element may be returned as the random element
+    - ```tests.elements.drawing.RandomTests.testCompletlyRandomOrange()```
+  - A yellow element may be returned as the random element
+    - ```tests.elements.drawing.RandomTests.testCompletlyRandomYellow()```
+  - A purple element may be returned as the random element
+    - ```tests.elements.drawing.RandomTests.testCompletlyRandomPurple()```
+  - A black element may be returned as the random element
+    - ```tests.elements.drawing.RandomTests.testCompletlyRandomBlack()```
+  - A white element may be returned as the random element
+    - ```tests.elements.drawing.RandomTests.testCompletlyRandomWhite()```
+- [x] Drawing a Random Primary Color Element
+  - A red element may be returned as the random element
+    - ```tests.elements.drawing.RandomTests.testPrimaryRandomRed()```
+  - A green element may be returned as the random element
+    - ```tests.elements.drawing.RandomTests.testPrimaryRandomRed()```
+  - A blue element may be returned as the random element
+    - ```tests.elements.drawing.RandomTests.testPrimaryRandomRed()```
+- [ ] Drawing a Random Secondary Color Element
+- [ ] Drawing a Random Cool Element
 
 #### Move & Assign Dragon Handlers (Phase 2)
 
