@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Random;
 
-import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -32,7 +31,5 @@ public class ElementBagTests {
 		assertEquals(5, this.elementBag.getNumberRemaining(ElementColor.WHITE));
 		assertEquals(5, this.elementBag.getNumberRemaining(ElementColor.BLACK));
 	}
-	
-	
-	
+
 }

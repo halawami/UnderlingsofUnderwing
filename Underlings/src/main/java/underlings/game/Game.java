@@ -49,12 +49,12 @@ public class Game {
 	}
 
 	private void setUpProperties(int numberOfPlayers) {
-		int propertyIndex = numberOfPlayers - this.MIN_PLAYERS;
+		int propertyIndex = numberOfPlayers - MIN_PLAYERS;
 
-		this.roundsLeft = this.NUMBER_OF_ROUNDS[propertyIndex];
-		this.hatchingGround.setDimensions(this.HATCHING_GROUND_WIDTH[propertyIndex],
+		this.roundsLeft = NUMBER_OF_ROUNDS[propertyIndex];
+		this.hatchingGround.setDimensions(HATCHING_GROUND_WIDTH[propertyIndex],
 				HATCHING_GROUND_HEIGHT[propertyIndex]);
-		this.maxHandlers = this.MAX_HANDLERS[propertyIndex];
+		this.maxHandlers = MAX_HANDLERS[propertyIndex];
 	}
 
 	public void setUpPlayerList(int numberOfPlayers) {

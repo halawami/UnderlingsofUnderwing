@@ -25,7 +25,7 @@ public class StringTests {
 	@Test
 	public void testToStringCard() {
 		Handler handler = new Handler(HandlerState.CARD);
-		handler.locationString = "testCard";
+		handler.setLocation("testCard");
 		assertEquals("Handler on testCard", handler.toString());
 	}
 

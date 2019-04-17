@@ -10,7 +10,6 @@ public class Handler {
     public ElementGiver elementGiver;
     private HandlerState state;
     private HashMap<HandlerState, List<HandlerState>> allowedStates;
-	public String locationString;
 
     public Handler(HandlerState state) {
         this.state = state;
@@ -76,4 +75,8 @@ public class Handler {
     public String toString() {
     	return elementGiver.toString();
     }
+
+	public void setLocation(String location) {
+		this.elementGiver.display = "Handler on "+location;
+	}
 }

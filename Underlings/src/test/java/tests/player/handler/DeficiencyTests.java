@@ -10,8 +10,6 @@ import underlings.player.Player;
 
 public class DeficiencyTests {
 
-	private HandlerFactory handlerFactory = new HandlerFactory();
-
 	private Player player;
 
 	@Before
@@ -24,15 +22,15 @@ public class DeficiencyTests {
 		this.player.addPoints(11);
 		assertEquals(2, this.player.getHandlerCount());
 	}
-	
+
 	@Test
 	public void test11PointsMaxHandlers() {
 		this.gainHandler(4);
-		
+
 		this.player.addPoints(11);
 		assertEquals(6, this.player.getHandlerCount());
 	}
-	
+
 	@Test
 	public void test12Points2Handlers() {
 		this.player.addPoints(12);
@@ -99,7 +97,7 @@ public class DeficiencyTests {
 	@Test
 	public void test25PointsFrom0With3Handlers() {
 		this.gainHandler(1);
-		
+
 		this.player.addPoints(25);
 		assertEquals(4, this.player.getHandlerCount());
 	}
@@ -119,38 +117,38 @@ public class DeficiencyTests {
 		this.player.addPoints(25);
 		assertEquals(6, this.player.getHandlerCount());
 	}
-	
+
 	@Test
 	public void test12PointsTwice() {
 		this.player.addPoints(12);
 		this.player.loseHandler();
 		this.player.losePoints(12);
-		
+
 		this.player.addPoints(12);
 		assertEquals(2, this.player.getHandlerCount());
 	}
-	
+
 	@Test
 	public void test25PointsTwice2Handlers() {
 		this.player.addPoints(25);
 		this.player.loseHandler();
 		this.player.loseHandler();
 		this.player.losePoints(25);
-		
+
 		this.player.addPoints(25);
 		assertEquals(2, this.player.getHandlerCount());
 	}
-	
+
 	@Test
 	public void test25PointsTwice3Handlers() {
 		this.player.addPoints(25);
 		this.player.loseHandler();
 		this.player.losePoints(25);
-		
+
 		this.player.addPoints(25);
 		assertEquals(3, this.player.getHandlerCount());
 	}
-	
+
 	private void gainHandler(int amt) {
 		for (int i = 0; i < amt; i++) {
 			this.player.gainHandler();

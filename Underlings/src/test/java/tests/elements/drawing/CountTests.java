@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Random;
 
-import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,14 +20,14 @@ public class CountTests {
 		ElementFactory elementFactory = new ElementFactory();
 		this.elementBag = new ElementBag(elementFactory, new Random());
 	}
-	
+
 	@Test
 	public void testDraw20Left() {
 		assertEquals(20, this.elementBag.getNumberRemaining(ElementColor.BLUE));
 		this.elementBag.drawElementFromList(ElementColor.BLUE);
 		assertEquals(19, this.elementBag.getNumberRemaining(ElementColor.BLUE));
 	}
-	
+
 	@Test
 	public void testDraw1Left() {
 		drawElements(ElementColor.BLUE, 19);
@@ -36,11 +35,11 @@ public class CountTests {
 		this.elementBag.drawElementFromList(ElementColor.BLUE);
 		assertEquals(0, this.elementBag.getNumberRemaining(ElementColor.BLUE));
 	}
-	
-	private void drawElements(ElementColor color, int numToDraw){
+
+	private void drawElements(ElementColor color, int numToDraw) {
 		for (int i = 0; i < numToDraw; i++) {
 			this.elementBag.drawElementFromList(color);
 		}
 	}
-	
+
 }

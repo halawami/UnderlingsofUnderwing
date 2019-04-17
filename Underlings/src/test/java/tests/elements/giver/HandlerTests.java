@@ -92,9 +92,9 @@ public class HandlerTests {
 	@Test
 	public void testToStringCard() {
 		Handler handler = new Handler(HandlerState.CARD);
-		handler.locationString = "testCard";
+		handler.setLocation("testCard");
 		ElementGiver elementGiver = handler.elementGiver;
-		assertEquals("Handler on Card", elementGiver.toString());
+		assertEquals("Handler on testCard", elementGiver.toString());
 	}
 
 	@Test
