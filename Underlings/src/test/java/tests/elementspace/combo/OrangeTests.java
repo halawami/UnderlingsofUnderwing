@@ -13,44 +13,48 @@ import underlings.element.ElementSpace;
 public class OrangeTests {
 
 	private ElementSpace elementSpace;
-	private Element redElement, yellowElement;
+	private Element elementOne, elementTwo;
+	
+	private ElementColor desired = ElementColor.ORANGE;
+	private ElementColor elementOneColor = ElementColor.RED;
+	private ElementColor elementTwoColor = ElementColor.YELLOW;
 	
 	@Before
 	public void init() {
-		this.elementSpace = new ElementSpace(ElementColor.ORANGE);
-		this.redElement = new Element(ElementColor.RED);
-		this.yellowElement = new Element(ElementColor.YELLOW);
+		this.elementSpace = new ElementSpace(this.desired);
+		this.elementOne = new Element(this.elementOneColor);
+		this.elementTwo = new Element(this.elementTwoColor);
 	}
 	
 	@Test
 	public void testRed() {
-		this.elementSpace.addElements(this.redElement);
+		this.elementSpace.addElements(this.elementOne);
 		assertFalse(this.elementSpace.isComplete());
 	}
 	
 	@Test
 	public void testYellow() {
-		this.elementSpace.addElements(this.yellowElement);
+		this.elementSpace.addElements(this.elementTwo);
 		assertFalse(this.elementSpace.isComplete());
 	}
 	
 	@Test
 	public void testRedThenYellow() {	
-		this.elementSpace.addElements(this.redElement);
-		this.elementSpace.addElements(this.yellowElement);
+		this.elementSpace.addElements(this.elementOne);
+		this.elementSpace.addElements(this.elementTwo);
 		assertTrue(this.elementSpace.isComplete());
 	}
 	
 	@Test
 	public void testYellowThenRed() {
-		this.elementSpace.addElements(this.yellowElement);
-		this.elementSpace.addElements(this.redElement);
+		this.elementSpace.addElements(this.elementTwo);
+		this.elementSpace.addElements(this.elementOne);
 		assertTrue(this.elementSpace.isComplete());
 	}
 	
 	@Test
 	public void testRedAndYellow() {
-		this.elementSpace.addElements(this.redElement, this.yellowElement);
+		this.elementSpace.addElements(this.elementOne, this.elementTwo);
 		assertTrue(this.elementSpace.isComplete());
 	}
 	

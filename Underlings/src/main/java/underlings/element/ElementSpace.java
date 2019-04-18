@@ -31,7 +31,8 @@ public class ElementSpace {
 		case BLACK:
 			return (this.hasElement(ElementColor.BLACK));
 		case GREEN:
-			return (this.hasElement(ElementColor.GREEN));
+			return (this.hasElement(ElementColor.GREEN) 
+					|| (this.hasElement(ElementColor.BLUE) && this.hasElement(ElementColor.YELLOW)));
 		case BLUE:
 			return (this.hasElement(ElementColor.BLUE));
 		case WHITE:
