@@ -373,6 +373,20 @@ The definition of done is created by examining and applying BVA on the rules.
   - When a yellow and blue are played on a green space, the combo is complete
     - ```tests.elementspace.combo.GreenTests.testBlueAndYellow()```
 
+#### Purple Combo ```tests.elementspace.combo.PurpleTests```
+
+- [x] An pruple element can be made from red and blue elements
+  - When only a blue is placed on a purple space, the combo is not complete
+    - ```tests.elementspace.combo.PurpleTests.testBlue()```
+  - When only a red is placed on a purple space, the combo is not complete
+    - ```tests.elementspace.combo.PurpleTests.testRed()```
+  - When a blue and then a red is placed on a purple space, the combo is complete
+    - ```tests.elementspace.combo.PurpleTests.testBlueThenRed()```
+  - When a red and then blue is played on a purple space, the combo is complete
+    - ```tests.elementspace.combo.PurpleTests.testRedThenBlue()```
+  - When a red and blue are played on a purple space, the combo is complete
+    - ```tests.elementspace.combo.PurpleTests.testBlueAndRed()```
+
 - [ ] No Elements in inventory
 - [ ] No color spaces for specific Element
 - [ ] No color spaces for combo Element

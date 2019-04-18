@@ -40,7 +40,8 @@ public class ElementSpace {
 		case YELLOW:
 			return (this.hasElement(ElementColor.YELLOW));
 		case PURPLE:
-			return (this.hasElement(ElementColor.PURPLE));
+			return (this.hasElement(ElementColor.PURPLE))
+					|| (this.hasElement(ElementColor.BLUE) && this.hasElement(ElementColor.RED));
 		default:
 			return this.complete;
 		}
