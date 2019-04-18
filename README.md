@@ -306,7 +306,18 @@ The definition of done is created by examining and applying BVA on the rules.
 
 #### Handler To String ```tests.handler.StringTests```
 
-// TODO: DO
+- [x] Handler's string should describe the handler and location
+  - Handler in the handler room should be "Handler in Ready Room"
+    - ```tests.handler.StringTests.testToStringReadyRoom()```
+  - Handler on a card should be "Handler on CARD NAME"
+    - ```tests.handler.StringTests.testToStringCard()```
+  - Handler in the break room should be "Handler in Break Room"
+    - ```tests.handler.StringTests.testToStringBreakRoom()```
+  - Handler in incubation should be be "Handler in Incubation"
+    - ```tests.handler.StringTests.testToStringIncubation```
+  - Handler on field should be "Handler on COLOR Field Space"
+    - ```tests.handler.StringTests.testToStringFieldBlue()```
+    - ```tests.handler.StringTests.testToStringFieldRed()```
 
 #### Handler Choices ```tests.handler.movement.ChoiceTests()```
 
