@@ -323,37 +323,41 @@ The definition of done is created by examining and applying BVA on the rules.
 
 ### Placing Elements on Eggs (Phase 3)
 
-#### Place a Single Non-Combo Element to Complete Element Space ```tests.elementspace.SingleDoneNoComboTests```
+#### Place a Single Non-Combo Element to Complete Element Space ```tests.elementspace.single.DoneTests```
 - [x] An element is not placed on an empty element space
   - The element space should not be complete
-    - ```tests.elementspace.SingleDoneNoComboTests.testEmpty()```
+    - ```tests.elementspace.single.DoneTests.testEmpty()```
 - [x] A single non-combo element is placed on an empty element space
   - When a red element is placed on a red element space, the element space should be completed
-    - ```tests.elementspace.SingleDoneNoComboTests.testRed()```
+    - ```tests.elementspace.single.DoneTests.testRed()```
   - When a green element is placed on a green element space, the element space should be completed
-    - ```tests.elementspace.SingleDoneNoComboTests.testGreen()```
+    - ```tests.elementspace.single.DoneTests.testGreen()```
   - When a blue element is placed on a blue element space, the element space should be completed
-    - ```tests.elementspace.SingleDoneNoComboTests.testBlue()```
+    - ```tests.elementspace.single.DoneTests.testBlue()```
   - When a orange element is placed on a orange element space, the element space should be completed
-    - ```tests.elementspace.SingleDoneNoComboTests.testOrange()```
+    - ```tests.elementspace.single.DoneTests.testOrange()```
   - When a yellow element is placed on a yellow element space, the element space should be completed
-    - ```tests.elementspace.SingleDoneNoComboTests.testYellow()```
+    - ```tests.elementspace.single.DoneTests.testYellow()```
   - When a purple element is placed on a purple element space, the element space should be completed
-    - ```tests.elementspace.SingleDoneNoComboTests.testPurple()```
+    - ```tests.elementspace.single.DoneTests.testPurple()```
   - When a black element is placed on a black element space, the element space should be completed
-    - ```tests.elementspace.SingleDoneNoComboTests.testBlack()```
+    - ```tests.elementspace.single.DoneTests.testBlack()```
   - When a white element is placed on a white element space, the element space should be completed
-    - ```tests.elementspace.SingleDoneNoComboTests.testWhite()```
+    - ```tests.elementspace.single.DoneTests.testWhite()```
 
-#### Orange Combo ```tests.elementspace.OrangeComboTests```
+#### Orange Combo ```tests.elementspace.combo.OrangeTests```
 
 - [x] An orange element can be made from yellow and red elements
   - When only a red is placed on an orange space, the combo is not complete
-    - ```tests.elementspace.OrangeComboTests.testRed()```
+    - ```tests.elementspace.combo.OrangeTests.testRed()```
   - When only a yellow is placed on an orange space, the combo is not complete
-    - ```tests.elementspace.OrangeComboTests.testYellow()```
-  - When an orange and then a yellow is placed on an orange space, the combo is complete
-    - ```tests.elementspace.OrangeComboTests.testRedThenYellow()```
+    - ```tests.elementspace.combo.OrangeTests.testYellow()```
+  - When a red and then a yellow is placed on an orange space, the combo is complete
+    - ```tests.elementspace.combo.OrangeTests.testRedThenYellow()```
+  - When a yellow and then red is played on an orange space, the combo is complete
+    - ```tests.elementspace.combo.OrangeTests.testYellowThenRed()```
+  - When a yellow and red are played on an orange space, the combo is complete
+    - ```tests.elementspace.combo.OrangeTests.testRedAndYellow()```
 
 - [ ] No Elements in inventory
 - [ ] No color spaces for specific Element

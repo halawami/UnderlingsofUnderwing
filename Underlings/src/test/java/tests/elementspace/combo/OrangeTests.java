@@ -1,4 +1,4 @@
-package tests.elementspace;
+package tests.elementspace.combo;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -10,7 +10,7 @@ import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 
-public class OrangeComboTests {
+public class OrangeTests {
 
 	private ElementSpace elementSpace;
 	private Element redElement, yellowElement;

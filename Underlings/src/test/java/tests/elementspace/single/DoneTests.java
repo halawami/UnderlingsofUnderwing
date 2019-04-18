@@ -1,4 +1,4 @@
-package tests.elementspace;
+package tests.elementspace.single;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -9,7 +9,7 @@ import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 
-public class SingleDoneNoCombo {
+public class DoneTests {
 
 	@Test
 	public void testEmpty() {
