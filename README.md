@@ -375,7 +375,7 @@ The definition of done is created by examining and applying BVA on the rules.
 
 #### Purple Combo ```tests.elementspace.combo.PurpleTests```
 
-- [x] An pruple element can be made from red and blue elements
+- [x] An purple element can be made from red and blue elements
   - When only a blue is placed on a purple space, the combo is not complete
     - ```tests.elementspace.combo.PurpleTests.testBlue()```
   - When only a red is placed on a purple space, the combo is not complete
@@ -386,6 +386,22 @@ The definition of done is created by examining and applying BVA on the rules.
     - ```tests.elementspace.combo.PurpleTests.testRedThenBlue()```
   - When a red and blue are played on a purple space, the combo is complete
     - ```tests.elementspace.combo.PurpleTests.testBlueAndRed()```
+
+#### Black Combo ```tests.elementspace.combo.BlackTests```
+
+- [x] A black element can be made from all primary elements
+  - When only a red is placed, the combo is not complete
+    - ```tests.elementspace.combo.BlackTests.testRed()```
+  - When only a blue is placed, the combo is not complete
+    - ```tests.elementspace.combo.BlackTests.testBlue()```
+  - When only a yellow is placed, the combo is not complete
+    - ```tests.elementspace.combo.BlackTests.testYellow()```
+  - When a red and blue is placed, the combo is not complete
+    - ```tests.elementspace.combo.BlackTests.testRedBlue()```
+  - When a blue and yellow is placed, the combo is not complete
+    - ```tests.elementspace.combo.BlackTests.testBlueYellow()```
+  - When a red and blue and yellow is placed, the combo is complete
+    - ```tests.elementspace.combo.BlackTests.testRedBlueYellow()```
 
 - [ ] No Elements in inventory
 - [ ] No color spaces for specific Element
