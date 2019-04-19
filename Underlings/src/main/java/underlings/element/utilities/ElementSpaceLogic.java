@@ -22,18 +22,7 @@ public class ElementSpaceLogic {
 	private static Map<ElementColor, List<List<ElementColor>>> recipeMap;
 
 	public static boolean isComplete(ElementSpace elementSpace) {
-		if (recipeMap == null)
-			initMap();
-
-		if (recipeMap.containsKey(elementSpace.color)) {
-			List<List<ElementColor>> recipes = recipeMap.get(elementSpace.color);
-
-			for (List<ElementColor> recipe : recipes) {
-				if (recipe.containsAll(elementSpace.elements) && elementSpace.elements.containsAll(recipe))
-					return true;
-			}
-		}
-		return false;
+		return getValidAdditions(elementSpace).isEmpty();
 	}
 
 	public static void initMap() {
@@ -73,6 +62,12 @@ public class ElementSpaceLogic {
 		for (List<ElementColor> recipe : recipeMap.get(elementSpace.color)) {
 			List<ElementColor> remaining = new ArrayList<ElementColor>(recipe);
 			elementSpace.elements.forEach((color) -> remaining.remove(color));
+			
+			if(remaining.isEmpty()) {
+				validAdditions.clear();
+				break;
+			}
+			
 			validAdditions.addAll(remaining);
 		}
 
