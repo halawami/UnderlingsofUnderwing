@@ -17,7 +17,11 @@ public class CardFactory {
         this.gson = gson;
     }
 
-    public List<Card> getCards() {
+    public CardFactory() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public List<Card> getCards() {
         return Arrays.asList(this.constructCards());
     }
 
