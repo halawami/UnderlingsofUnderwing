@@ -43,7 +43,7 @@ public class ElementSpace {
 			return (this.hasElement(ElementColor.PURPLE))
 					|| (this.hasElement(ElementColor.BLUE) && this.hasElement(ElementColor.RED));
 		default:
-			return this.complete;
+			return false;
 		}
 
 	}

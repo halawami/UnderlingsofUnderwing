@@ -37,17 +37,14 @@ public enum GameProperties {
 
     public static GameProperties getPropertiesOf(int numberOfPlayers) {
         switch (numberOfPlayers) {
-            case 2:
-                return TWO_PLAYERS;
             case 3:
                 return THREE_PLAYERS;
             case 4:
             case 5:
             case 6:
                 return FOUR_TO_SIX_PLAYERS;
-            default:
-                throw new IllegalArgumentException();
         }
+        return TWO_PLAYERS;
     }
 
 

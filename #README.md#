@@ -305,6 +305,7 @@ The definition of done is created by examining and applying BVA on the rules.
   	- ```tests.handler.movement.StateTest.testFieldWhiteToBreakRoom()```
 
 - [x] Handler during Incubation
+  - ```tests.handler.movement.StateTest.testIncubationPossibleStates()```
   - The handler can remain in incubation
   	- ```tests.handler.movement.StateTest.testIncubationToIncubation()```
   - The handler can change to ready room
