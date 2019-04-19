@@ -9,7 +9,7 @@ import underlings.player.Player;
 
 public interface Phase {
 
-	public void execute(List<Player> players, GUI gui, ElementBag elementBag, HatchingGround hatchingGround,
-			Runnable displayMethod);
+	void execute(List<Player> players, GUI gui, ElementBag elementBag, HatchingGround hatchingGround,
+                 Runnable displayMethod);
 	
 }

@@ -1,8 +1,7 @@
 package tests.phase;
 
-import static org.junit.Assert.assertEquals;
-
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -11,11 +10,11 @@ import org.junit.Test;
 
 import underlings.element.Element;
 import underlings.element.ElementBag;
+import underlings.element.ElementGiver;
 import underlings.game.Handler;
 import underlings.game.HatchingGround;
 import underlings.gui.Display;
-import underlings.gui.ElementDrawChoice;
-import underlings.gui.ElementGiver;
+import underlings.gui.DrawChoice;
 import underlings.gui.GUI;
 import underlings.gui.PromptHandler;
 import underlings.phase.ElementPhase;
@@ -24,6 +23,7 @@ import underlings.player.Player;
 
 public class ElementPhaseTests {
 
+	@SuppressWarnings("unchecked")
 	@Test
 	public void testExecuteOnePlayerTwoRandom() {
 
@@ -40,42 +40,38 @@ public class ElementPhaseTests {
 		Runnable runnable = EasyMock.mock(Runnable.class);
 
 		ElementGiver elementGiver = EasyMock.mock(ElementGiver.class);
-		
-		List<ElementGiver> elementGivers = new LinkedList<>();
-		elementGivers.add(elementGiver);
-		elementGivers.add(elementGiver);
-		
-		ElementDrawChoice elementDrawChoice = EasyMock.mock(ElementDrawChoice.class);
-		
-		List<ElementDrawChoice> elementDrawChoices = new LinkedList<>();
-		elementDrawChoices.add(elementDrawChoice);
-		
-		EasyMock.expect(player.getElementGivers()).andReturn(elementGivers);
-		
-		EasyMock.expect(promptHandler.promptElementGiver(elementGivers)).andReturn(elementGiver);
-		EasyMock.expect(elementGiver.getElementDrawChoices()).andReturn(elementDrawChoices);
-		EasyMock.expect(promptHandler.promptElementDrawChoice(elementDrawChoices)).andReturn(elementDrawChoice);
+		elementGiver.drawChoices = Arrays.asList(DrawChoice.RANDOM);
+
+		List<DrawChoice> drawChoices = new LinkedList<>();
+		drawChoices.add(DrawChoice.RANDOM);
+
+		List<Handler> handlers = new LinkedList<>();
+		handlers.add(handler);
+		handlers.add(handler);
+		EasyMock.expect(player.getHandlers()).andReturn(handlers);
+		handler.elementGiver = elementGiver;
+
+		EasyMock.expect(promptHandler.promptElementGiver(EasyMock.anyObject(List.class))).andReturn(elementGiver);
+		EasyMock.expect(promptHandler.promptElementDrawChoice(drawChoices)).andReturn(DrawChoice.RANDOM);
 		EasyMock.expect(elementBag.drawRandomElement()).andReturn(element);
 		player.addElement(EasyMock.anyObject(Element.class));
-		
-		EasyMock.expect(promptHandler.promptElementGiver(elementGivers)).andReturn(elementGiver);
-		EasyMock.expect(elementGiver.getElementDrawChoices()).andReturn(elementDrawChoices);
-		EasyMock.expect(promptHandler.promptElementDrawChoice(elementDrawChoices)).andReturn(elementDrawChoice);
+
+		EasyMock.expect(promptHandler.promptElementGiver(EasyMock.anyObject(List.class))).andReturn(elementGiver);
+		EasyMock.expect(promptHandler.promptElementDrawChoice(drawChoices)).andReturn(DrawChoice.RANDOM);
 		EasyMock.expect(elementBag.drawRandomElement()).andReturn(element);
 		player.addElement(EasyMock.anyObject(Element.class));
-		
+
 		runnable.run();
 		EasyMock.expectLastCall().times(2);
-		
-		EasyMock.replay(player, promptHandler, display, elementBag, hatchingGround, handler, elementGiver, elementDrawChoice, runnable);
-		
+
+		EasyMock.replay(player, promptHandler, display, elementBag, hatchingGround, handler, elementGiver, runnable);
+
 		List<Player> players = new ArrayList<>();
 		players.add(player);
-		
+
 		elementPhase.execute(players, gui, elementBag, hatchingGround, runnable);
-		assertEquals(0, elementGivers.size());
-		
-		EasyMock.verify(player, promptHandler, display, elementBag, hatchingGround, handler, elementGiver, elementDrawChoice, runnable);
+
+		EasyMock.verify(player, promptHandler, display, elementBag, hatchingGround, handler, elementGiver, runnable);
 
 	}
 

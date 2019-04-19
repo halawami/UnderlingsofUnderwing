@@ -1,6 +1,6 @@
 package tests.phase;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -36,6 +36,7 @@ public class HandlerPhaseTest {
 		HatchingGround hatchingGround = EasyMock.createMock(HatchingGround.class);
 		Handler handler = EasyMock.mock(Handler.class);
 		Card card = EasyMock.mock(Card.class);
+		card.name = "mockedCard";
 		Runnable runnable = EasyMock.mock(Runnable.class);
 
 		List<Handler> handlerList = new LinkedList<>();
@@ -65,6 +66,7 @@ public class HandlerPhaseTest {
 		EasyMock.expect(promptHandler.promptCardSelection(unclaimedEggs)).andReturn(card);
 		
 		handler.moveToState(HandlerState.CARD);
+		handler.setLocation("mockedCard");
 		
 		handlerList = new ArrayList<>(handlerList);
 		handlerList.remove(handler);
@@ -79,6 +81,7 @@ public class HandlerPhaseTest {
 		EasyMock.expect(promptHandler.promptCardSelection(unclaimedEggs)).andReturn(card);
 		
 		handler.moveToState(HandlerState.CARD);
+		handler.setLocation("mockedCard");
 		
 		List<Player> players = new ArrayList<>();
 		players.add(player);

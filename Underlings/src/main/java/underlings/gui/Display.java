@@ -8,13 +8,13 @@ import underlings.player.Player;
 
 public interface Display {
 	
-	public void displayCard(int row, int col, Card card);
+	void displayCard(int row, int col, Card card);
 
-	public void displayPlayer(int playerNumber, Player player);
+	void displayPlayer(int playerNumber, Player player);
 
-	public void displayHandlers(int playerNumber, List<Handler> handler);
+	void displayHandlers(int playerNumber, List<Handler> handler);
 
-	public void displayBackground();
+	void displayBackground();
 
-	public void update();
+	void update();
 }
