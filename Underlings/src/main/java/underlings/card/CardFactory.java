@@ -1,6 +1,6 @@
 package underlings.card;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.Gson;
@@ -22,7 +22,11 @@ public class CardFactory {
 	}
 
 	public List<Card> getCards() {
-        return Arrays.asList(this.constructCards());
+		List<Card> cards = new ArrayList<Card>();
+		for (int i = 0; i < 50; i++) {
+			cards.add(new Card());
+		}
+		return cards;
     }
 
     private Card[] constructCards() {
