@@ -64,7 +64,10 @@ public class ElementSpaceLogic {
 	}
 
 	public static List<ElementColor> getValidAdditions(ElementSpace elementSpace) {
-		return new ArrayList<ElementColor>(Arrays.asList(ElementColor.RED));
+		if(isComplete(elementSpace))
+			return new ArrayList<ElementColor>();
+		
+		return new ArrayList<ElementColor>(Arrays.asList(elementSpace.color));
 	}
 
 }
