@@ -10,30 +10,17 @@ import underlings.player.Player;
 import underlings.player.PlayerFactory;
 
 public class Game {
-
-	private final static int ROUNDS_TWO_PLAYERS = 15, ROUNDS_THREE_PLAYERS = 13, ROUNDS_FOUR_SIX_PLAYERS = 12;
-	private final static int HATCHING_TWO_WIDTH = 3, HATCHING_THREE_WIDTH = 4, HATCHING_FOUR_SIX_WIDTH = 4;
-	private final static int HATCHING_TWO_HEIGHT = 2, HATCHING_THREE_HEIGHT = 3, HATCHING_FOUR_SIX_HEIGHT = 4;
-	private final static int MAX_HANDLERS_TWO = 4, MAX_HANDLERS_THREE = 5, MAX_HANDLERS_FOUR_SIX = 6;
 	private final static int MIN_PLAYERS = 2, MAX_PLAYERS = 6;
 
-	private final static int[] NUMBER_OF_ROUNDS = { ROUNDS_TWO_PLAYERS, ROUNDS_THREE_PLAYERS, ROUNDS_FOUR_SIX_PLAYERS,
-			ROUNDS_FOUR_SIX_PLAYERS, ROUNDS_FOUR_SIX_PLAYERS };
-	private final static int[] HATCHING_GROUND_WIDTH = { HATCHING_TWO_WIDTH, HATCHING_THREE_WIDTH,
-			HATCHING_FOUR_SIX_WIDTH, HATCHING_FOUR_SIX_WIDTH, HATCHING_FOUR_SIX_WIDTH };
-	private final static int[] HATCHING_GROUND_HEIGHT = { HATCHING_TWO_HEIGHT, HATCHING_THREE_HEIGHT,
-			HATCHING_FOUR_SIX_HEIGHT, HATCHING_FOUR_SIX_HEIGHT, HATCHING_FOUR_SIX_HEIGHT };
-	private final static int[] MAX_HANDLERS = { MAX_HANDLERS_TWO, MAX_HANDLERS_THREE, MAX_HANDLERS_FOUR_SIX,
-			MAX_HANDLERS_FOUR_SIX, MAX_HANDLERS_FOUR_SIX };
-
-	private int maxHandlers, numberOfPlayers, roundsLeft;
-
+	private int maxHandlers;
+	private int numberOfPlayers;
+	private int roundsLeft;
 	private HatchingGround hatchingGround;
 	private GUI gui;
 	private PlayerFactory playerFactory;
 	private ElementBag elementBag;
 
-	private List<Player> players = new LinkedList<Player>();
+	private List<Player> players = new LinkedList<>();
 
 	public Game(GUI gui, HatchingGround hatchingGround, PlayerFactory playerFactory, ElementBag elementBag) {
 		this.gui = gui;
@@ -49,12 +36,11 @@ public class Game {
 	}
 
 	private void setUpProperties(int numberOfPlayers) {
-		int propertyIndex = numberOfPlayers - MIN_PLAYERS;
+		GameProperties correspondingProps = GameProperties.getPropertiesOf(numberOfPlayers);
 
-		this.roundsLeft = NUMBER_OF_ROUNDS[propertyIndex];
-		this.hatchingGround.setDimensions(HATCHING_GROUND_WIDTH[propertyIndex],
-				HATCHING_GROUND_HEIGHT[propertyIndex]);
-		this.maxHandlers = MAX_HANDLERS[propertyIndex];
+		this.roundsLeft = correspondingProps.numberOfRounds;
+		this.hatchingGround.setDimensions(correspondingProps.hatchingGroundWidth, correspondingProps.hatchingGroundHeight);
+		this.maxHandlers = correspondingProps.maxHandlers;
 	}
 
 	public void setUpPlayerList(int numberOfPlayers) {

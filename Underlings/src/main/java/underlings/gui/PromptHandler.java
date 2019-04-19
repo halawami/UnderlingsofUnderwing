@@ -9,16 +9,16 @@ import underlings.game.HandlerState;
 
 public interface PromptHandler {
 	
-	public int promptPlayerCount(int minPlayers, int maxPlayers);
+	int promptPlayerCount(int minPlayers, int maxPlayers);
 	
-	public ElementGiver promptElementGiver(List<ElementGiver> elementGivers);
+	ElementGiver promptElementGiver(List<ElementGiver> elementGivers);
 	
-	public DrawChoice promptElementDrawChoice(List<DrawChoice> possibleElementDrawChoices);
+	DrawChoice promptElementDrawChoice(List<DrawChoice> possibleElementDrawChoices);
 
-	public HandlerState promptHandlerState(List<HandlerState> possibleStates);
+	HandlerState promptHandlerState(List<HandlerState> possibleStates);
 
-	public Card promptCardSelection(List<Card> unclaimedEggs);
+	Card promptCardSelection(List<Card> unclaimedEggs);
 
-	public Handler promptHandler(List<Handler> playersHandlers);
+	Handler promptHandler(List<Handler> playersHandlers);
 		
 }
