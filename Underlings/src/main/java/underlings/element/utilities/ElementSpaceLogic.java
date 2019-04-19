@@ -3,10 +3,11 @@ package underlings.element.utilities;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
@@ -40,21 +41,21 @@ public class ElementSpaceLogic {
 
 		try {
 			BufferedReader br = new BufferedReader(new FileReader("docs\\DefaultRecipeList.txt"));
-			
+
 			String line = br.readLine();
 			while (line != null) {
 				ElementColor color = ElementColor.valueOf(line.split(":")[0]);
 				String[] recipes = line.split(":")[1].split(" ");
 				List<List<ElementColor>> recipeList = new ArrayList<List<ElementColor>>();
-				for(String recipe : recipes) {
+				for (String recipe : recipes) {
 					List<ElementColor> constructedRecipe = new ArrayList<ElementColor>();
-					for(String ingredient : recipe.split(",")) {
+					for (String ingredient : recipe.split(",")) {
 						constructedRecipe.add(ElementColor.valueOf(ingredient));
 					}
 					recipeList.add(constructedRecipe);
 				}
 				recipeMap.put(color, recipeList);
-				
+
 				line = br.readLine();
 			}
 			br.close();
@@ -64,10 +65,18 @@ public class ElementSpaceLogic {
 	}
 
 	public static List<ElementColor> getValidAdditions(ElementSpace elementSpace) {
-		if(isComplete(elementSpace))
-			return new ArrayList<ElementColor>();
-		
-		return new ArrayList<ElementColor>(Arrays.asList(elementSpace.color));
+		Set<ElementColor> validAdditions = new TreeSet<ElementColor>();
+
+		if (recipeMap == null)
+			initMap();
+
+		for (List<ElementColor> recipe : recipeMap.get(elementSpace.color)) {
+			List<ElementColor> remaining = new ArrayList<ElementColor>(recipe);
+			elementSpace.elements.forEach((color) -> remaining.remove(color));
+			validAdditions.addAll(remaining);
+		}
+
+		return new ArrayList<ElementColor>(validAdditions);
 	}
 
 }

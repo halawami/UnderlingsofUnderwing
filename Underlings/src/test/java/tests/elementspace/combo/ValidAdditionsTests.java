@@ -3,6 +3,7 @@ package tests.elementspace.combo;
 import static org.junit.Assert.assertEquals;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.Test;
@@ -18,7 +19,11 @@ public class ValidAdditionsTests {
 		ElementSpace elementSpace = new ElementSpace(ElementColor.GREEN);
 		List<ElementColor> expected = Arrays.asList(ElementColor.GREEN, ElementColor.YELLOW, ElementColor.BLUE);
 		
-		assertEquals(expected, ElementSpaceLogic.getValidAdditions(elementSpace));
+		List<ElementColor> actual = ElementSpaceLogic.getValidAdditions(elementSpace);
+		Collections.sort(expected);
+		Collections.sort(actual);
+		
+		assertEquals(expected, actual);
 	}
 	
 	@Test
@@ -26,7 +31,11 @@ public class ValidAdditionsTests {
 		ElementSpace elementSpace = new ElementSpace(ElementColor.ORANGE);
 		List<ElementColor> expected = Arrays.asList(ElementColor.ORANGE, ElementColor.RED, ElementColor.YELLOW);
 		
-		assertEquals(expected, ElementSpaceLogic.getValidAdditions(elementSpace));
+		List<ElementColor> actual = ElementSpaceLogic.getValidAdditions(elementSpace);
+		Collections.sort(expected);
+		Collections.sort(actual);
+		
+		assertEquals(expected, actual);
 	}
 
 }
