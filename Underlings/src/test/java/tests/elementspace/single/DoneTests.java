@@ -8,13 +8,14 @@ import org.junit.Test;
 import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
+import underlings.element.utilities.ElementSpaceLogic;
 
 public class DoneTests {
 
 	@Test
 	public void testEmpty() {
 		ElementSpace elementSpace = new ElementSpace(ElementColor.RED);
-		assertFalse(elementSpace.isComplete());
+		assertFalse(ElementSpaceLogic.isComplete(elementSpace));
 	}
 
 	@Test
@@ -23,7 +24,7 @@ public class DoneTests {
 		Element element = new Element(ElementColor.RED);
 
 		elementSpace.addElements(element);
-		assertTrue(elementSpace.isComplete());
+		assertTrue(ElementSpaceLogic.isComplete(elementSpace));
 	}
 
 	@Test
@@ -32,7 +33,7 @@ public class DoneTests {
 		Element element = new Element(ElementColor.GREEN);
 
 		elementSpace.addElements(element);
-		assertTrue(elementSpace.isComplete());
+		assertTrue(ElementSpaceLogic.isComplete(elementSpace));
 	}
 
 	@Test
@@ -41,7 +42,7 @@ public class DoneTests {
 		Element element = new Element(ElementColor.BLUE);
 
 		elementSpace.addElements(element);
-		assertTrue(elementSpace.isComplete());
+		assertTrue(ElementSpaceLogic.isComplete(elementSpace));
 	}
 
 	@Test
@@ -50,7 +51,7 @@ public class DoneTests {
 		Element element = new Element(ElementColor.ORANGE);
 
 		elementSpace.addElements(element);
-		assertTrue(elementSpace.isComplete());
+		assertTrue(ElementSpaceLogic.isComplete(elementSpace));
 	}
 
 	@Test
@@ -59,7 +60,7 @@ public class DoneTests {
 		Element element = new Element(ElementColor.YELLOW);
 
 		elementSpace.addElements(element);
-		assertTrue(elementSpace.isComplete());
+		assertTrue(ElementSpaceLogic.isComplete(elementSpace));
 	}
 
 	@Test
@@ -68,7 +69,7 @@ public class DoneTests {
 		Element element = new Element(ElementColor.PURPLE);
 
 		elementSpace.addElements(element);
-		assertTrue(elementSpace.isComplete());
+		assertTrue(ElementSpaceLogic.isComplete(elementSpace));
 	}
 
 	@Test
@@ -77,7 +78,7 @@ public class DoneTests {
 		Element element = new Element(ElementColor.WHITE);
 
 		elementSpace.addElements(element);
-		assertTrue(elementSpace.isComplete());
+		assertTrue(ElementSpaceLogic.isComplete(elementSpace));
 	}
 	
 	@Test
@@ -86,7 +87,7 @@ public class DoneTests {
 		Element element = new Element(ElementColor.BLACK);
 		
 		elementSpace.addElements(element);
-		assertTrue(elementSpace.isComplete());
+		assertTrue(ElementSpaceLogic.isComplete(elementSpace));
 	}
 
 }

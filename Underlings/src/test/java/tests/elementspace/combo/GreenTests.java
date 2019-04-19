@@ -9,6 +9,7 @@ import org.junit.Test;
 import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
+import underlings.element.utilities.ElementSpaceLogic;
 
 public class GreenTests {
 
@@ -29,33 +30,33 @@ public class GreenTests {
 		@Test
 		public void testBlue() {
 			this.elementSpace.addElements(this.elementOne);
-			assertFalse(this.elementSpace.isComplete());
+			assertFalse(ElementSpaceLogic.isComplete(this.elementSpace));
 		}
 		
 		@Test
 		public void testYellow() {
 			this.elementSpace.addElements(this.elementTwo);
-			assertFalse(this.elementSpace.isComplete());
+			assertFalse(ElementSpaceLogic.isComplete(this.elementSpace));
 		}
 		
 		@Test
 		public void testBlueThenYellow() {	
 			this.elementSpace.addElements(this.elementOne);
 			this.elementSpace.addElements(this.elementTwo);
-			assertTrue(this.elementSpace.isComplete());
+			assertTrue(ElementSpaceLogic.isComplete(this.elementSpace));
 		}
 		
 		@Test
 		public void testYellowThenBlue() {
 			this.elementSpace.addElements(this.elementTwo);
 			this.elementSpace.addElements(this.elementOne);
-			assertTrue(this.elementSpace.isComplete());
+			assertTrue(ElementSpaceLogic.isComplete(this.elementSpace));
 		}
 		
 		@Test
 		public void testBlueAndYellow() {
 			this.elementSpace.addElements(this.elementOne, this.elementTwo);
-			assertTrue(this.elementSpace.isComplete());
+			assertTrue(ElementSpaceLogic.isComplete(this.elementSpace));
 		}
 		
 }
