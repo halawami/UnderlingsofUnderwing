@@ -3,6 +3,7 @@ package underlings.element.utilities;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -60,6 +61,10 @@ public class ElementSpaceLogic {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public static List<ElementColor> getValidAdditions(ElementSpace elementSpace) {
+		return new ArrayList<ElementColor>(Arrays.asList(ElementColor.RED));
 	}
 
 }
