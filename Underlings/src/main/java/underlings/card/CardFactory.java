@@ -1,5 +1,6 @@
 package underlings.card;
 
+import java.io.StringReader;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
@@ -11,36 +12,24 @@ import underlings.game.Card;
 
 public class CardFactory {
 
-    public Stack<Card> getCards() {
-        Stack<Card> allCards = new Stack<>();
+    private Gson gson;
+    private String jsonString;
 
-        List<String> packNames = this.getPackNames();
-        List<Card> packCards = this.getPackCards("");
-        allCards.addAll(packCards);
-//        for (int i = 0; i < 50; i++) {
-//        	allCards.add(new Card());
-//        }
+    public CardFactory() {
 
-        return allCards;
     }
 
-    public List<String> getPackNames() {
-        return null;
+    public CardFactory(String jsonString, Gson gson) {
+        this.jsonString = jsonString;
+        this.gson = gson;
     }
 
-    private List<Card> getPackCards(String packName) {
-        JsonReader packCardsReader = this.getCardsJsonReader("");
-        Card[] constructedCard = this.constructPackCards(packCardsReader);
-        return Arrays.asList(constructedCard);
+    public List<Card> getCards() {
+        return Arrays.asList(constructCards());
     }
 
-    public JsonReader getCardsJsonReader(String packName) {
-        return null;
-    }
-
-    private Card[] constructPackCards(JsonReader packCardsReader) {
-        Gson gson = new Gson();
-        return gson.fromJson(packCardsReader, Card[].class);
+    private Card[] constructCards() {
+        return this.gson.fromJson(jsonString, Card[].class);
     }
 
 

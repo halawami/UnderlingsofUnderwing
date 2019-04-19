@@ -1,5 +1,6 @@
 package underlings.game;
 
+import java.util.List;
 import java.util.Stack;
 
 public class Deck {
@@ -8,6 +9,11 @@ public class Deck {
 
 	public Deck(Stack<Card> cards) {
 		this.cards = cards;
+	}
+
+	public Deck(List<Card> cards){
+		this.cards = new Stack<>();
+		this.cards.addAll(cards);
 	}
 
 	public Card draw() {
