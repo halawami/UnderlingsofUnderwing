@@ -1,7 +1,8 @@
-package underlings.game;
+package underlings.card;
 
 import underlings.card.Family;
 import underlings.card.Temperature;
+import underlings.game.Handler;
 
 public class Card {
     public String name;

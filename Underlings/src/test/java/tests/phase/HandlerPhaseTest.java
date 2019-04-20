@@ -11,7 +11,7 @@ import org.easymock.EasyMock;
 import org.junit.Test;
 
 import underlings.element.ElementBag;
-import underlings.game.Card;
+import underlings.card.Card;
 import underlings.game.Handler;
 import underlings.game.HandlerState;
 import underlings.game.HatchingGround;

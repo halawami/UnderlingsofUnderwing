@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.easymock.EasyMock;
 import org.junit.Test;
 
-import underlings.game.Card;
+import underlings.card.Card;
 import underlings.game.Deck;
 import underlings.game.HatchingGround;
 

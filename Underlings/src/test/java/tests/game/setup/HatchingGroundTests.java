@@ -9,7 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import underlings.element.ElementBag;
-import underlings.game.Card;
+import underlings.card.Card;
 import underlings.game.Deck;
 import underlings.game.Game;
 import underlings.game.HandlerFactory;

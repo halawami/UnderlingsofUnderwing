@@ -8,7 +8,7 @@ import java.util.Stack;
 import org.junit.Before;
 import org.junit.Test;
 
-import underlings.game.Card;
+import underlings.card.Card;
 import underlings.game.Deck;
 
 public class DeckTests {

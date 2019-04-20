@@ -1,11 +1,10 @@
-package underlings.card;
+package underlings.card.construction;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.Gson;
-
-import underlings.game.Card;
+import underlings.card.Card;
 
 public class CardFactory {
 

@@ -5,7 +5,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import underlings.element.ElementGiver;
-import underlings.game.Card;
+import underlings.card.Card;
 import underlings.game.Handler;
 import underlings.game.HandlerState;
 

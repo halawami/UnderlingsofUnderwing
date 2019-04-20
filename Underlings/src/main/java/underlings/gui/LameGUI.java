@@ -12,7 +12,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 import underlings.element.Element;
-import underlings.game.Card;
+import underlings.card.Card;
 import underlings.game.Handler;
 import underlings.player.Player;
 
