@@ -1,5 +1,7 @@
 package underlings.card;
 
+import underlings.card.effect.Effect;
+
 public class CompositeEffect extends Effect {
 
     private Effect decoratedEffect;

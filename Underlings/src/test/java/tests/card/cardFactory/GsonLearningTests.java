@@ -6,11 +6,11 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.typeadapters.RuntimeTypeAdapterFactory;
 import org.junit.Test;
 import underlings.card.Card;
-import underlings.card.Effect;
 import underlings.card.Family;
 import underlings.card.Temperature;
-import underlings.card.effects.badEffects.HatchAllUnclaimedAdjacentEggs;
-import underlings.card.effects.goodEffects.GainOneHandler;
+import underlings.card.effect.Effect;
+import underlings.card.effect.badEffects.HatchAllUnclaimedAdjacentEggs;
+import underlings.card.effect.goodEffects.GainOneHandler;
 
 import java.io.*;
 import java.net.URL;

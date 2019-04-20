@@ -495,48 +495,46 @@ The definition of done is created by examining and applying BVA on the rules.
 
 ## BVA of Cards (Dragons)
 
+### Player Tests ```tests.effect.PlayerTests```
 
-- [ ] BVA of Adjacent Eggs        
-   - [ ] Egg is in the corner of the hatching grounds
-   - [ ] Egg is on the edge of the hatching grounds
-   - [ ] Egg is surrounded by Eggs 
+#### [x] Gain One Handler
 
+- Abyssal Wyrm
+- Aeon Wyrm
+- Nebula Wyrm
+- Opalescent Whelp
+- Water Wyvern
+- Sky Wyvern
+- Blood Wyvern
+- Water Wyrm
+- Sky Wyrm
+- Blood Wyrm
+- Electric Drake
+- Steam Drake
+- Chromatic Drake
+- Nature Drake
+- Vadrenox
+- Blood Whelp
+- Water Whelp
+- Water Drake
+- Blood Drake
+- Sky Drake
+- Sky Whelp
+- Sunstone Drake
+- Brimstone Drake
+- Undine Drake
+- Twilight Drake
+- Harvest Drake
+- Ethereal Drake
+- Arbor Drake
+- Void Drake
+- Storm Drake
 
-### Positive Effects:
-- [ ] Gain +1 Handler
-   - [ ] BVA
-      - [ ] Follows BVA of gaining handlers and handler deficiency
-   - [ ] Dragons
-      - [ ] Abyssal Wyrm
-      - [ ] Aeon Wyrm
-      - [ ] Nebula Wyrm
-      - [ ] Opalescent Whelp
-      - [ ] Water Wyvern
-      - [ ] Sky Wyvern
-      - [ ] Blood Wyvern
-      - [ ] Water Wyrm
-      - [ ] Sky Wyrm
-      - [ ] Blood Wyrm
-      - [ ] Electric Drake
-      - [ ] Steam Drake
-      - [ ] Chromatic Drake
-      - [ ] Nature Drake
-      - [ ] Vadrenox
-      - [ ] Blood Whelp
-      - [ ] Water Whelp
-      - [ ] Water Drake
-      - [ ] Blood Drake
-      - [ ] Sky Drake
-      - [ ] Sky Whelp
-      - [ ] Sunstone Drake
-      - [ ] Brimstone Drake
-      - [ ] Undine Drake
-      - [ ] Twilight Drake
-      - [ ] Harvest Drake
-      - [ ] Ethereal Drake
-      - [ ] Arbor Drake
-      - [ ] Void Drake
-      - [ ] Storm Drake
+-  The player gains one handler
+- ```tests.effect.PlayerTests.testGainOneHandler()```
+
+#### [ ] Collect 1 Primary Element
+
 - [ ] Collect 1 Primary Element
    - [ ] BVA
       - [ ] Follows BVA of Element Collection

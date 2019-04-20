@@ -2,6 +2,7 @@ package underlings.card;
 
 import underlings.card.Family;
 import underlings.card.Temperature;
+import underlings.card.effect.Effect;
 import underlings.game.Handler;
 
 public class Card {
