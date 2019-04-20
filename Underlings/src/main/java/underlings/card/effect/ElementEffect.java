@@ -1,18 +1,18 @@
 package underlings.card.effect;
 
-import underlings.element.ElementBag;
+import underlings.game.HatchingGround;
 import underlings.player.Player;
 
-public abstract class HatchingGroundEffect implements Effect {
+public abstract class ElementEffect implements Effect {
 
 	@Override
 	public void apply(Player player) {
 		throw new UnsupportedOperationException();
 	}
-	
+
 	@Override
-	public void apply(Player player, ElementBag elementBag) {
+	public void apply(HatchingGround hatchingGround) {
 		throw new UnsupportedOperationException();
 	}
-	
+
 }

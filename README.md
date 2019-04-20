@@ -495,9 +495,11 @@ The definition of done is created by examining and applying BVA on the rules.
 
 ## BVA of Cards (Dragons)
 
+## Effect Tests ```tests.effect```
+
 ### Player Tests ```tests.effect.PlayerTests```
 
-#### [x] Gain One Handler
+#### Gain One Handler
 
 - Abyssal Wyrm
 - Aeon Wyrm
@@ -530,16 +532,24 @@ The definition of done is created by examining and applying BVA on the rules.
 - Void Drake
 - Storm Drake
 
--  The player gains one handler
-- ```tests.effect.PlayerTests.testGainOneHandler()```
+- [x] The player gains one handler
+   - ```tests.effect.PlayerTests.testGainOneHandler()```
+   
+### Player Tests ```tests.effect.ElementTests```
 
-#### [ ] Collect 1 Primary Element
+#### Collect 1 Primary Element
+
+- Chromatic Whelp
+
+- [ ] The player gains one primary element
+  - ```tests.effect.ElementTests.testGainPrimaryElement()```
+
 
 - [ ] Collect 1 Primary Element
    - [ ] BVA
       - [ ] Follows BVA of Element Collection
    - [ ] Dragons
-      - [ ] Chromatic Whelp
+      
 - [ ] Collect and Hatch any 5 point or fewer unclaimed Egg
    - [ ] BVA
       - [ ] No 5 point of fewer unclaimed Egg
