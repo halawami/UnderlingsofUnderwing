@@ -1,0 +1,20 @@
+[
+  {
+    "name": "test",
+    "hatchedFilePath": "fakePath",
+    "unhatchedFilePath": "anotherFakePath",
+    "points": 1,
+    "temperature": "COOL",
+    "family": "TRIADIC",
+    "domesticEffects": [
+      {
+        "effect": "GainOneHandler"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedAdjacentEggs"
+      }
+    ]
+  }
+]
