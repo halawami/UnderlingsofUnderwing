@@ -1,0 +1,16 @@
+[
+  {
+    "name": "first",
+    "filePath": "fakePath",
+    "points": 1,
+    "temperature": "COOL",
+    "family": "TRIADIC"
+  },
+  {
+    "name": "second",
+    "filePath": "diffFakePath",
+    "points": 2,
+    "temperature": "NEUTRAL",
+    "family": "TERTIARY"
+  }
+]
