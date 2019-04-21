@@ -1,9 +1,12 @@
 package underlings.card.effect.wild;
 
 import underlings.card.effect.HatchingGroundEffect;
+import underlings.element.ElementColor;
 import underlings.game.HatchingGround;
 
 public class AddElementToAllAdjacentEggsEffect extends HatchingGroundEffect {
+
+    public ElementColor elementColor;
 
     @Override
     public void apply(HatchingGround hatchingGround) {

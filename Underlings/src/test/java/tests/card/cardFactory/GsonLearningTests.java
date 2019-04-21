@@ -10,11 +10,13 @@ import underlings.card.Temperature;
 import underlings.card.effect.Effect;
 import underlings.card.effect.domestic.GainOneHandlerEffect;
 import underlings.card.effect.domestic.GainPrimaryElementEffect;
+import underlings.card.effect.wild.AddElementToAllAdjacentEggsEffect;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.ElementSpacePosition;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -122,6 +124,22 @@ public class GsonLearningTests {
         Effect[] domesticEffects = testCard.domesticEffects;
 
         assertEquals(2, domesticEffects.length);
+    }
+
+    @Test
+    public void testOneCardVariableEffect() throws FileNotFoundException {
+        List<Class<? extends Effect>> effectClasses = Arrays.asList(AddElementToAllAdjacentEggsEffect.class);
+        Gson gson = getGsonWithComplexCardEffects(effectClasses);
+
+        FileReader fileReader = new FileReader(getFile("oneCardVariableEffect.json"));
+
+        Card[] cards = gson.fromJson(fileReader, Card[].class);
+
+        Card testCard = cards[0];
+        Effect wildEffect = testCard.wildEffects[0];
+
+        assertTrue(wildEffect instanceof AddElementToAllAdjacentEggsEffect);
+        assertEquals(ElementColor.WHITE, ((AddElementToAllAdjacentEggsEffect) wildEffect).elementColor);
     }
 
     private Gson getGsonWithSimpleCardEffects() {

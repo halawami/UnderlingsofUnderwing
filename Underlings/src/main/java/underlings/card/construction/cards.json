@@ -26,7 +26,8 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementToAllAdjacentEggsEffect"
+        "effect": "AddElementToAllAdjacentEggsEffect",
+        "elementColor" : "WHITE"
       }
     ]
   },
@@ -57,7 +58,8 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementToAllAdjacentEggsEffect"
+        "effect": "AddElementToAllAdjacentEggsEffect",
+        "elementColor" : "BLACK"
       }
     ]
   }
