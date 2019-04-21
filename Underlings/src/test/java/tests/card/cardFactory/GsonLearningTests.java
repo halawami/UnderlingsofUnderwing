@@ -14,7 +14,9 @@ import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.ElementSpacePosition;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
@@ -111,8 +113,11 @@ public class GsonLearningTests {
     public void testOneCardComplexEffects() throws IOException {
         List<Class<? extends Effect>> effectClasses = Arrays.asList(GainOneHandlerEffect.class, GainPrimaryElementEffect.class);
         Gson gson = getGsonWithComplexCardEffects(effectClasses);
+
         FileReader fileReader = new FileReader(getFile("oneCardComplexEffect.json"));
+
         Card[] cards = gson.fromJson(fileReader, Card[].class);
+
         Card testCard = cards[0];
         Effect[] domesticEffects = testCard.domesticEffects;
 
@@ -129,6 +134,7 @@ public class GsonLearningTests {
 
     private Gson getGsonWithComplexCardEffects(List<Class<? extends Effect>> effectClasses) {
         RuntimeTypeAdapterFactory<Effect> effectsTypeAdapter = RuntimeTypeAdapterFactory.of(Effect.class, "effect");
+
         for (Class<? extends Effect> effectClass : effectClasses)
             effectsTypeAdapter = effectsTypeAdapter.registerSubtype(effectClass);
 

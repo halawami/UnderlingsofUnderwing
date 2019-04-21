@@ -1,9 +1,5 @@
 package underlings;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
 import underlings.card.construction.CardFactory;
 import underlings.element.ElementBag;
 import underlings.element.ElementFactory;
@@ -19,12 +15,18 @@ import underlings.phase.HandlerPhase;
 import underlings.phase.Phase;
 import underlings.player.PlayerFactory;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class Main {
+
+	private final static String CARDS_JSON_FILE_PATH = "\\src\\main\\java\\underlings\\card\\construction\\cards.json";
 
 	public static void main(String[] args ) {
 
 		GUI gui = new GUI(new LamePrompt(), new LameGUI());
-		CardFactory cardFactory = new CardFactory();
+		CardFactory cardFactory = new CardFactory(CARDS_JSON_FILE_PATH);
 		Deck deck = new Deck(cardFactory.getCards());
 		HatchingGround hatchingGround = new HatchingGround(deck);
 		HandlerFactory handlerFactory = new HandlerFactory();

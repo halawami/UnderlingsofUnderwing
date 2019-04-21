@@ -17,8 +17,8 @@ public class GuavaLearningTests {
         final ClassLoader loader = Thread.currentThread().getContextClassLoader();
 
         for (ClassPath.ClassInfo info : ClassPath.from(loader).getTopLevelClassesRecursive("tests.card.cardFactory.testClasses")) {
-            Class<?> retrievedClass = Class.forName(info.getName());
-            retrievedClasses.add(retrievedClass);
+//            Class<?> retrievedClass = Class.forName(info.getName());
+            retrievedClasses.add(info.load());
         }
 
         assertEquals(2,retrievedClasses.size());
