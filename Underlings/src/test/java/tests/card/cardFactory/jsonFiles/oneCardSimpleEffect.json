@@ -8,12 +8,22 @@
     "family": "TRIADIC",
     "domesticEffects": [
       {
-        "effect": "GainOneHandler"
+        "effect": "GainOneHandlerEffect"
       }
     ],
     "wildEffects": [
       {
-        "effect": "HatchAllUnclaimedAdjacentEggs"
+        "effect": "GainPrimaryElementEffect"
+      }
+    ],
+    "elementSpaces": [
+      {
+        "color": "BLUE",
+        "position" : "L3_2"
+      },
+      {
+        "color": "RED",
+        "position" : "R3_2"
       }
     ]
   }

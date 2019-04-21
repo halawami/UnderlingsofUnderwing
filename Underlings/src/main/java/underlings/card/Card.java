@@ -2,6 +2,7 @@ package underlings.card;
 
 import underlings.card.Family;
 import underlings.card.Temperature;
+import underlings.element.ElementSpace;
 import underlings.card.effect.Effect;
 import underlings.game.Handler;
 
@@ -15,4 +16,5 @@ public class Card {
 	public Handler handler;
     public Effect[] domesticEffects;
     public Effect[] wildEffects;
+    public ElementSpace[] elementSpaces;
 }

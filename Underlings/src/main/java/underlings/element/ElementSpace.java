@@ -7,10 +7,15 @@ public class ElementSpace {
 
 	public List<ElementColor> elements;
 	public ElementColor color;
+	public ElementSpacePosition position;
+
+	public ElementSpace(){
+		this.elements = new ArrayList<>();
+	}
 
 	public ElementSpace(ElementColor color) {
+		this();
 		this.color = color;
-		this.elements = new ArrayList<>();
 	}
 
 	public void addElements(Element... elementsToAdd) {
