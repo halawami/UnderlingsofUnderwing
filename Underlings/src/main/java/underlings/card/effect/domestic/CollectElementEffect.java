@@ -7,7 +7,7 @@ import underlings.player.Player;
 
 public class CollectElementEffect extends ElementEffect {
 
-    private ElementColor elementColor;
+    private ElementColor[] elementChoices;
 
     @Override
     public void apply(Player player, ElementBag elementBag) {

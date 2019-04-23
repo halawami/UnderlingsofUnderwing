@@ -20,7 +20,7 @@
       },
       {
         "effect": "CollectElementEffect",
-        "elementColor": "YELLOW"
+        "elementChoices": ["YELLOW"]
       }
     ],
     "wildEffects": [
@@ -51,13 +51,41 @@
       },
       {
         "effect": "CollectElementEffect",
-        "elementColor": "BLUE"
+        "elementChoices": ["BLUE"]
       }
     ],
     "wildEffects": [
       {
         "effect": "AddElementToAllAdjacentEggsEffect",
         "elementColor" : "BLACK"
+      }
+    ]
+  },
+  {
+    "name": "ARBOR WHELP",
+    "points": 6,
+    "temperature": "COOL",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "GREEN",
+        "position": "L3_2"
+      },
+      {
+        "color": "WHITE",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": ["YELLOW", "BLUE"]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementToAllAdjacentEggsEffect",
+        "elementColor" : "GREEN"
       }
     ]
   }
