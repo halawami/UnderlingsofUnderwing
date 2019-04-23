@@ -119,6 +119,33 @@
         "elementColors" : ["WHITE"]
       }
     ]
+  },
+  {
+    "name": "BRIMSTONE WHELP",
+    "points": 3,
+    "temperature": "WARM",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_2"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": ["RED", "ORANGE"]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["ORANGE"]
+      }
+    ]
   }
-
 ]
