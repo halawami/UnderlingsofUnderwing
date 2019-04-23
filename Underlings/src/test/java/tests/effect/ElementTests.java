@@ -2,9 +2,8 @@ package tests.effect;
 
 import org.easymock.EasyMock;
 import org.junit.Test;
-
 import underlings.card.effect.Effect;
-import underlings.card.effect.domestic.GainPrimaryElementEffect;
+import underlings.card.effect.domestic.CollectPrimaryElementEffect;
 import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
@@ -18,7 +17,7 @@ public class ElementTests {
 		ElementBag elementBag = EasyMock.mock(ElementBag.class);
 		Element element = new Element(ElementColor.BLUE);
 		
-		Effect gainPrimaryElement = new GainPrimaryElementEffect();
+		Effect gainPrimaryElement = new CollectPrimaryElementEffect();
 		
 		EasyMock.expect(elementBag.drawRandomPrimaryElement()).andReturn(element);
 		player.addElement(element);

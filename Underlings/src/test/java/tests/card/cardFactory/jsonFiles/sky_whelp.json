@@ -1,8 +1,6 @@
 [
   {
     "name": "SKY WHELP",
-    "hatchedFilePath": "fakePath",
-    "unhatchedFilePath": "anotherFakePath",
     "points": 5,
     "temperature": "WARM",
     "family": "MONOCHROMATIC",
@@ -21,7 +19,7 @@
         "effect": "GainOneHandlerEffect"
       },
       {
-        "effect": "GainPrimaryElementEffect"
+        "effect": "CollectPrimaryElementEffect"
       }
     ],
     "wildEffects": [

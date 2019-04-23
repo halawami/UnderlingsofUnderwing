@@ -5,7 +5,7 @@
         "effect": "GainOneHandlerEffect"
       },
       {
-        "effect": "GainPrimaryElementEffect"
+        "effect": "CollectPrimaryElementEffect"
       }
     ]
   }

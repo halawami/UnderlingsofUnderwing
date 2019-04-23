@@ -5,7 +5,7 @@ import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.player.Player;
 
-public class GainPrimaryElementEffect extends ElementEffect {
+public class CollectPrimaryElementEffect extends ElementEffect {
 
 	@Override
 	public void apply(Player player, ElementBag elementBag) {

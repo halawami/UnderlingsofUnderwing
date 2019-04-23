@@ -1,18 +1,16 @@
 [
   {
     "name": "SKY WHELP",
-    "hatchedFilePath": "fakePath",
-    "unhatchedFilePath": "anotherFakePath",
     "points": 5,
     "temperature": "WARM",
     "family": "MONOCHROMATIC",
     "elementSpaces": [
       {
-        "color": "BLUE",
+        "color": "YELLOW",
         "position": "L3_2"
       },
       {
-        "color": "RED",
+        "color": "WHITE",
         "position": "R3_2"
       }
     ],
@@ -21,7 +19,8 @@
         "effect": "GainOneHandlerEffect"
       },
       {
-        "effect": "GainPrimaryElementEffect"
+        "effect": "CollectElementEffect",
+        "elementColor": "YELLOW"
       }
     ],
     "wildEffects": [
@@ -33,8 +32,6 @@
   },
   {
     "name": "WATER WHELP",
-    "hatchedFilePath": "fakePath",
-    "unhatchedFilePath": "anotherFakePath",
     "points": 5,
     "temperature": "COOL",
     "family": "MONOCHROMATIC",
@@ -44,7 +41,7 @@
         "position": "L3_2"
       },
       {
-        "color": "RED",
+        "color": "BLACK",
         "position": "R3_2"
       }
     ],
@@ -53,7 +50,8 @@
         "effect": "GainOneHandlerEffect"
       },
       {
-        "effect": "GainPrimaryElementEffect"
+        "effect": "CollectElementEffect",
+        "elementColor": "BLUE"
       }
     ],
     "wildEffects": [

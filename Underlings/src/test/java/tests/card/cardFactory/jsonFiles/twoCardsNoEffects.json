@@ -1,8 +1,6 @@
 [
   {
     "name": "first",
-    "hatchedFilePath": "fakePath",
-    "unhatchedFilePath": "anotherFakePath",
     "points": 1,
     "temperature": "COOL",
     "family": "TRIADIC",
@@ -19,8 +17,6 @@
   },
   {
     "name": "second",
-    "hatchedFilePath": "diffFakePath",
-    "unhatchedFilePath": "diffAnotherFakePath",
     "points": 2,
     "temperature": "NEUTRAL",
     "family": "TERTIARY",

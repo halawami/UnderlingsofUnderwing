@@ -1,8 +1,6 @@
 [
   {
     "name": "test",
-    "hatchedFilePath": "fakePath",
-    "unhatchedFilePath": "anotherFakePath",
     "points": 1,
     "temperature": "COOL",
     "family": "TRIADIC",
@@ -13,7 +11,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "GainPrimaryElementEffect"
+        "effect": "CollectPrimaryElementEffect"
       }
     ],
     "elementSpaces": [

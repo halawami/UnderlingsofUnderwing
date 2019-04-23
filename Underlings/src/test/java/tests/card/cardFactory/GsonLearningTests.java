@@ -8,8 +8,8 @@ import underlings.card.Card;
 import underlings.card.Family;
 import underlings.card.Temperature;
 import underlings.card.effect.Effect;
+import underlings.card.effect.domestic.CollectPrimaryElementEffect;
 import underlings.card.effect.domestic.GainOneHandlerEffect;
-import underlings.card.effect.domestic.GainPrimaryElementEffect;
 import underlings.card.effect.wild.AddElementToAllAdjacentEggsEffect;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
@@ -38,8 +38,6 @@ public class GsonLearningTests {
 
         Card testCard = cards[0];
         assertEquals("test", testCard.name);
-        assertEquals("fakePath", testCard.hatchedFilePath);
-        assertEquals("anotherFakePath", testCard.unhatchedFilePath);
         assertEquals(1, testCard.points);
         assertEquals(Temperature.COOL, testCard.temperature);
         assertEquals(Family.TRIADIC, testCard.family);
@@ -65,8 +63,6 @@ public class GsonLearningTests {
 
         Card firstCard = cards[0];
         assertEquals("first", firstCard.name);
-        assertEquals("fakePath", firstCard.hatchedFilePath);
-        assertEquals("anotherFakePath", firstCard.unhatchedFilePath);
         assertEquals(1, firstCard.points);
         assertEquals(Temperature.COOL, firstCard.temperature);
         assertEquals(Family.TRIADIC, firstCard.family);
@@ -79,8 +75,6 @@ public class GsonLearningTests {
 
         Card secondCard = cards[1];
         assertEquals("second", secondCard.name);
-        assertEquals("diffFakePath", secondCard.hatchedFilePath);
-        assertEquals("diffAnotherFakePath", secondCard.unhatchedFilePath);
         assertEquals(2, secondCard.points);
         assertEquals(Temperature.NEUTRAL, secondCard.temperature);
         assertEquals(Family.TERTIARY, secondCard.family);
@@ -108,12 +102,12 @@ public class GsonLearningTests {
         assertEquals(1, wildEffects.length);
 
         assertTrue(domesticEffects[0] instanceof GainOneHandlerEffect);
-        assertTrue(wildEffects[0] instanceof GainPrimaryElementEffect);
+        assertTrue(wildEffects[0] instanceof CollectPrimaryElementEffect);
     }
 
     @Test
     public void testOneCardComplexEffects() throws IOException {
-        List<Class<? extends Effect>> effectClasses = Arrays.asList(GainOneHandlerEffect.class, GainPrimaryElementEffect.class);
+        List<Class<? extends Effect>> effectClasses = Arrays.asList(GainOneHandlerEffect.class, CollectPrimaryElementEffect.class);
         Gson gson = getGsonWithComplexCardEffects(effectClasses);
 
         FileReader fileReader = new FileReader(getFile("oneCardComplexEffect.json"));
@@ -145,7 +139,7 @@ public class GsonLearningTests {
     private Gson getGsonWithSimpleCardEffects() {
         RuntimeTypeAdapterFactory<Effect> effectsTypeAdapter = RuntimeTypeAdapterFactory.of(Effect.class, "effect")
                 .registerSubtype(GainOneHandlerEffect.class)
-                .registerSubtype(GainPrimaryElementEffect.class);
+                .registerSubtype(CollectPrimaryElementEffect.class);
 
         return new GsonBuilder().registerTypeAdapterFactory(effectsTypeAdapter).create();
     }
