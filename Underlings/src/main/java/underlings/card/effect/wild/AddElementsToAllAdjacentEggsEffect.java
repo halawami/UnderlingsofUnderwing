@@ -4,7 +4,7 @@ import underlings.card.effect.HatchingGroundEffect;
 import underlings.element.ElementColor;
 import underlings.game.HatchingGround;
 
-public class AddElementToAllAdjacentEggsEffect extends HatchingGroundEffect {
+public class AddElementsToAllAdjacentEggsEffect extends HatchingGroundEffect {
 
     public ElementColor elementColor;
 

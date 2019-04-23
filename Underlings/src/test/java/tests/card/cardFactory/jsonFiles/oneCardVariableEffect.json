@@ -2,7 +2,7 @@
   {
     "wildEffects": [
       {
-        "effect": "AddElementToAllAdjacentEggsEffect",
+        "effect": "AddElementsToAllAdjacentEggsEffect",
         "elementColor": "WHITE"
       }
     ]

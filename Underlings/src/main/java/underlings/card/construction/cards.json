@@ -25,8 +25,8 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementToAllAdjacentEggsEffect",
-        "elementColor" : "WHITE"
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["WHITE"]
       }
     ]
   },
@@ -56,8 +56,8 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementToAllAdjacentEggsEffect",
-        "elementColor" : "BLACK"
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["BLACK"]
       }
     ]
   },
@@ -84,9 +84,41 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementToAllAdjacentEggsEffect",
-        "elementColor" : "GREEN"
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["GREEN"]
+      }
+    ]
+  },
+  {
+    "name": "BLOOD WHELP",
+    "points": 5,
+    "temperature": "WARM",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_2"
+      },
+      {
+        "color": "WHITE",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": ["RED"]
+      },
+      {
+        "effect": "GainOneHandlerEffect"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["WHITE"]
       }
     ]
   }
+
 ]
