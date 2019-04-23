@@ -147,5 +147,33 @@
         "elementColors" : ["ORANGE"]
       }
     ]
+  },
+  {
+    "name": "ELECTRIC WHELP",
+    "points": 3,
+    "temperature": "NEUTRAL",
+    "family": "COMPLEMENTARY",
+    "elementSpaces": [
+      {
+        "color": "YELLOW",
+        "position": "L3_2"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": ["PURPLE", "YELLOW"]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["PURPLE"]
+      }
+    ]
   }
 ]

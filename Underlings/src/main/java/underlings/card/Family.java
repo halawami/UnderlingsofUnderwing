@@ -1,5 +1,5 @@
 package underlings.card;
 
 public enum Family {
-    TRIADIC, TERTIARY
+    MONOCHROMATIC, TRIADIC, TERTIARY
 }
