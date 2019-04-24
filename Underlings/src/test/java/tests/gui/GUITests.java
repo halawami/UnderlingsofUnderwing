@@ -13,11 +13,11 @@ import underlings.element.ElementFactory;
 import underlings.card.Card;
 import underlings.game.Deck;
 import underlings.game.Game;
-import underlings.game.HandlerFactory;
 import underlings.game.HatchingGround;
 import underlings.gui.Display;
 import underlings.gui.GUI;
 import underlings.gui.PromptHandler;
+import underlings.handler.HandlerFactory;
 import underlings.player.PlayerFactory;
 
 public class GUITests {

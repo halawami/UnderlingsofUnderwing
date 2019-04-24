@@ -1,6 +1,6 @@
 package underlings.player;
 
-import underlings.game.HandlerFactory;
+import underlings.handler.HandlerFactory;
 
 public class PlayerFactory {
 

@@ -268,7 +268,6 @@ The definition of done is created by examining and applying BVA on the rules.
 
 #### Handler Movement States ```tests.handler.movement.StateTests```
 
-
 - [x] When the handler is in the Ready Room
   - ```tests.handler.movement.StateTest.testReadyRoomPossibleStates()```
   - The handler state can change to card
@@ -325,7 +324,20 @@ The definition of done is created by examining and applying BVA on the rules.
     - ```tests.handler.StringTests.testToStringFieldBlue()```
     - ```tests.handler.StringTests.testToStringFieldRed()```
 
-#### Handler Choices ```tests.handler.movement.ChoiceTests()```
+#### Handler Choices ```tests.handler.movement.ChoiceTests```
+
+- [x] Handlers in the Ready Room can: Stay, Field Whitespace, Field, or Card
+  - ```tests.handler.movement.ChoiceTests.testReadyRoom()```
+- [x] Handlers in the Break Room can: Ready Room
+  - ```tests.handler.movement.ChoiceTests.testBreakRoom()```
+- [x] Handlers on the Field Whitespace can: Break Room
+  - ```tests.handler.movement.ChoiceTests.testFieldWhitespace()```
+- [x] Handlers in the Field can: Stay, Break Room
+  - ```tests.handlers.movement.ChoiceTests.testField()```
+- [x] Handlers in Incubation can: Stay
+  - ```tests.handlers.movement.ChoiceTests.testIncubation()```
+- [x] Handlers on a Card can: Stay, Break Room
+  - ```tests.handlers.movement.ChoiceTests.testCard()```
 
 ### Placing Elements on Eggs (Phase 3)
 

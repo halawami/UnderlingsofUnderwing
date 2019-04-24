@@ -3,7 +3,7 @@ package tests.player;
 import org.junit.Test;
 import underlings.element.Element;
 import underlings.element.ElementColor;
-import underlings.game.HandlerFactory;
+import underlings.handler.HandlerFactory;
 import underlings.player.Player;
 
 import static org.junit.Assert.*;

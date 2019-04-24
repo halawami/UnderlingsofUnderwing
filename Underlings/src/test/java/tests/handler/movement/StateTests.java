@@ -7,41 +7,29 @@ import java.util.List;
 
 import org.junit.Test;
 
-import underlings.game.Handler;
-import underlings.game.HandlerState;
+import underlings.handler.Handler;
+import underlings.handler.HandlerState;
 
 public class StateTests {
-
+	
 	@Test
 	public void testReadyRoomPossibleStates() {
-		Handler handler = new Handler(HandlerState.READY_ROOM);
-		List<HandlerState> possibleStates = handler.getPossibleStates();
-		assertEquals(4, possibleStates.size());
-		assertTrue(possibleStates.contains(HandlerState.CARD));
-		assertTrue(possibleStates.contains(HandlerState.READY_ROOM));
-		assertTrue(possibleStates.contains(HandlerState.FIELD));
-		assertTrue(possibleStates.contains(HandlerState.FIELD_WHITESPACE));
+		this.testPossibilities(HandlerState.READY_ROOM, HandlerState.CARD, HandlerState.READY_ROOM, HandlerState.FIELD, HandlerState.FIELD_WHITESPACE);
 	}
 
 	@Test
 	public void testReadyRoomToUnclaimedEgg() {
-		Handler handler = new Handler(HandlerState.READY_ROOM);
-		handler.moveToState(HandlerState.CARD);
-		assertEquals(HandlerState.CARD, handler.getState());
+		this.testMove(HandlerState.READY_ROOM, HandlerState.CARD);
 	}
 
 	@Test
 	public void testReadyRoomToReadyRoom() {
-		Handler handler = new Handler(HandlerState.READY_ROOM);
-		handler.moveToState(HandlerState.READY_ROOM);
-		assertEquals(HandlerState.READY_ROOM, handler.getState());
+		this.testMove(HandlerState.READY_ROOM, HandlerState.READY_ROOM);
 	}
 
 	@Test
 	public void testReadyRoomToFieldWhite() {
-		Handler handler = new Handler(HandlerState.READY_ROOM);
-		handler.moveToState(HandlerState.FIELD_WHITESPACE);
-		assertEquals(HandlerState.FIELD_WHITESPACE, handler.getState());
+		this.testMove(HandlerState.READY_ROOM, HandlerState.FIELD_WHITESPACE);
 	}
 
 	@Test
@@ -51,11 +39,7 @@ public class StateTests {
 
 	@Test
 	public void testFieldPossibleStates() {
-		Handler handler = new Handler(HandlerState.FIELD);
-		List<HandlerState> possibleStates = handler.getPossibleStates();
-		assertEquals(2, possibleStates.size());
-		assertTrue(possibleStates.contains(HandlerState.FIELD));
-		assertTrue(possibleStates.contains(HandlerState.BREAK_ROOM));
+		this.testPossibilities(HandlerState.FIELD, HandlerState.FIELD, HandlerState.BREAK_ROOM);
 	}
 
 	@Test
@@ -70,11 +54,7 @@ public class StateTests {
 
 	@Test
 	public void testCardPossibleStates() {
-		Handler handler = new Handler(HandlerState.CARD);
-		List<HandlerState> possibleStates = handler.getPossibleStates();
-		assertEquals(2, possibleStates.size());
-		assertTrue(possibleStates.contains(HandlerState.CARD));
-		assertTrue(possibleStates.contains(HandlerState.BREAK_ROOM));
+		this.testPossibilities(HandlerState.CARD, HandlerState.CARD, HandlerState.BREAK_ROOM);
 	}
 
 	@Test
@@ -89,10 +69,7 @@ public class StateTests {
 
 	@Test
 	public void testBreakRoomPossibleStates() {
-		Handler handler = new Handler(HandlerState.BREAK_ROOM);
-		List<HandlerState> possibleStates = handler.getPossibleStates();
-		assertEquals(1, possibleStates.size());
-		assertTrue(possibleStates.contains(HandlerState.READY_ROOM));
+		this.testPossibilities(HandlerState.BREAK_ROOM, HandlerState.READY_ROOM);
 	}
 
 	@Test
@@ -102,10 +79,7 @@ public class StateTests {
 
 	@Test
 	public void testFieldWhiteSpacePossibleStates() {
-		Handler handler = new Handler(HandlerState.FIELD_WHITESPACE);
-		List<HandlerState> possibleStates = handler.getPossibleStates();
-		assertEquals(1, possibleStates.size());
-		assertTrue(possibleStates.contains(HandlerState.BREAK_ROOM));
+		this.testPossibilities(HandlerState.FIELD_WHITESPACE, HandlerState.BREAK_ROOM);
 	}
 
 	@Test
@@ -115,11 +89,7 @@ public class StateTests {
 
 	@Test
 	public void testIncubationPossibleStates() {
-		Handler handler = new Handler(HandlerState.INCUBATION);
-		List<HandlerState> possibleStates = handler.getPossibleStates();
-		assertEquals(2, possibleStates.size());
-		assertTrue(possibleStates.contains(HandlerState.INCUBATION));
-		assertTrue(possibleStates.contains(HandlerState.READY_ROOM));
+		this.testPossibilities(HandlerState.INCUBATION, HandlerState.INCUBATION, HandlerState.READY_ROOM);
 	}
 
 	@Test
@@ -132,7 +102,16 @@ public class StateTests {
 		this.testMove(HandlerState.INCUBATION, HandlerState.READY_ROOM);
 	}
 
-	public void testMove(HandlerState from, HandlerState to) {
+	private void testPossibilities(HandlerState state, HandlerState... possibilities) {
+		Handler handler = new Handler(state);
+		List<HandlerState> possibleStates = handler.getPossibleStates();
+		assertEquals(possibilities.length, possibleStates.size());
+		for (HandlerState possibility : possibilities) {
+			assertTrue(possibleStates.contains(possibility));
+		}
+	}
+	
+	private void testMove(HandlerState from, HandlerState to) {
 		Handler handler = new Handler(from);
 		handler.moveToState(to);
 		assertEquals(to, handler.getState());

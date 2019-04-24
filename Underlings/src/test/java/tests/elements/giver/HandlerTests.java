@@ -9,9 +9,9 @@ import org.junit.Test;
 
 import underlings.element.ElementGiver;
 import underlings.game.FieldSpace;
-import underlings.game.Handler;
-import underlings.game.HandlerState;
 import underlings.gui.DrawChoice;
+import underlings.handler.Handler;
+import underlings.handler.HandlerState;
 
 public class HandlerTests {
 

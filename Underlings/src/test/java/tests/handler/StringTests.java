@@ -5,9 +5,9 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import underlings.game.FieldSpace;
-import underlings.game.Handler;
-import underlings.game.HandlerState;
 import underlings.gui.DrawChoice;
+import underlings.handler.Handler;
+import underlings.handler.HandlerState;
 
 public class StringTests {
 	@Test

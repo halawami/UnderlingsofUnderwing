@@ -1,23 +1,23 @@
 package underlings;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 import underlings.card.construction.CardFactory;
 import underlings.element.ElementBag;
 import underlings.element.ElementFactory;
 import underlings.game.Deck;
 import underlings.game.Game;
-import underlings.game.HandlerFactory;
 import underlings.game.HatchingGround;
 import underlings.gui.GUI;
 import underlings.gui.LameGUI;
 import underlings.gui.LamePrompt;
+import underlings.handler.HandlerFactory;
 import underlings.phase.ElementPhase;
 import underlings.phase.HandlerPhase;
 import underlings.phase.Phase;
 import underlings.player.PlayerFactory;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 public class Main {
 

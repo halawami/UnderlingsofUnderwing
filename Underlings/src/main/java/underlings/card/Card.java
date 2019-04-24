@@ -2,7 +2,7 @@ package underlings.card;
 
 import underlings.card.effect.Effect;
 import underlings.element.ElementSpace;
-import underlings.game.Handler;
+import underlings.handler.Handler;
 
 public class Card {
     public String name;

@@ -12,12 +12,12 @@ import org.junit.Test;
 
 import underlings.element.ElementBag;
 import underlings.card.Card;
-import underlings.game.Handler;
-import underlings.game.HandlerState;
 import underlings.game.HatchingGround;
 import underlings.gui.Display;
 import underlings.gui.GUI;
 import underlings.gui.PromptHandler;
+import underlings.handler.Handler;
+import underlings.handler.HandlerState;
 import underlings.phase.HandlerPhase;
 import underlings.phase.Phase;
 import underlings.player.Player;

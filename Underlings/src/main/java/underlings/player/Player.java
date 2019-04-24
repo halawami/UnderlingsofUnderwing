@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import underlings.element.Element;
-import underlings.game.Handler;
-import underlings.game.HandlerFactory;
+import underlings.handler.Handler;
+import underlings.handler.HandlerFactory;
 
 public class Player {
 

@@ -6,10 +6,10 @@ import java.util.List;
 import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementGiver;
-import underlings.game.Handler;
 import underlings.game.HatchingGround;
 import underlings.gui.DrawChoice;
 import underlings.gui.GUI;
+import underlings.handler.Handler;
 import underlings.player.Player;
 
 public class ElementPhase implements Phase {

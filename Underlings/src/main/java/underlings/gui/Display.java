@@ -3,7 +3,7 @@ package underlings.gui;
 import java.util.List;
 
 import underlings.card.Card;
-import underlings.game.Handler;
+import underlings.handler.Handler;
 import underlings.player.Player;
 
 public interface Display {

@@ -12,8 +12,8 @@ import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 import underlings.element.Element;
+import underlings.handler.Handler;
 import underlings.card.Card;
-import underlings.game.Handler;
 import underlings.player.Player;
 
 public class LameGUI implements Display {

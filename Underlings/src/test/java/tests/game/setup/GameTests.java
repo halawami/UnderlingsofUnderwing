@@ -8,9 +8,9 @@ import org.junit.Test;
 
 import underlings.element.ElementBag;
 import underlings.game.Game;
-import underlings.game.HandlerFactory;
 import underlings.game.HatchingGround;
 import underlings.gui.GUI;
+import underlings.handler.HandlerFactory;
 import underlings.player.PlayerFactory;
 
 public class GameTests {

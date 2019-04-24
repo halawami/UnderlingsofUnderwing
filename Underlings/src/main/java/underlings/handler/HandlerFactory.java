@@ -1,4 +1,4 @@
-package underlings.game;
+package underlings.handler;
 
 public class HandlerFactory {
 	

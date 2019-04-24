@@ -8,11 +8,11 @@ import org.junit.Test;
 
 import underlings.element.ElementBag;
 import underlings.game.Game;
-import underlings.game.Handler;
-import underlings.game.HandlerFactory;
-import underlings.game.HandlerState;
 import underlings.game.HatchingGround;
 import underlings.gui.GUI;
+import underlings.handler.Handler;
+import underlings.handler.HandlerFactory;
+import underlings.handler.HandlerState;
 import underlings.player.Player;
 import underlings.player.PlayerFactory;
 

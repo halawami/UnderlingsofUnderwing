@@ -1,4 +1,4 @@
-package underlings.game;
+package underlings.handler;
 
 import java.util.List;
 
@@ -25,6 +25,10 @@ public class Handler {
 	
 	public List<HandlerState> getPossibleStates() {
 		return this.state.allowedStates;
+	}
+
+	public List<HandlerChoice> getPossibleChoices() {
+		return HandlerChoice.getMovements(this.state);
 	}
 
 	@Override
