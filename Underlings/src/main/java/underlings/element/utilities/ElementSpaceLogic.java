@@ -26,7 +26,12 @@ public class ElementSpaceLogic {
 	}
 
 	public boolean isComplete(Card card){
-		return isComplete(card.elementSpaces[0]);
+		for(ElementSpace elementSpace : card.elementSpaces){
+			if (!isComplete(elementSpace)){
+				return false;
+			}
+		}
+		return true;
 	}
 
 	public void initMap() {
