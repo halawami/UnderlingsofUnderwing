@@ -1,14 +1,14 @@
 package underlings.game;
 
-import java.util.LinkedList;
-import java.util.List;
-
 import underlings.element.ElementBag;
 import underlings.gui.GUI;
 import underlings.handler.Handler;
 import underlings.phase.Phase;
 import underlings.player.Player;
 import underlings.player.PlayerFactory;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public class Game {
 	private final static int MIN_PLAYERS = 2, MAX_PLAYERS = 6;
@@ -69,7 +69,7 @@ public class Game {
 		this.display();
 
 		for (Phase phase : phases) {
-			phase.execute(this.players, this.gui, this.elementBag, this.hatchingGround, () -> {this.display();});
+			phase.execute(this.players, this.gui, this.elementBag, this.hatchingGround, this::display);
 		}
 	}
 

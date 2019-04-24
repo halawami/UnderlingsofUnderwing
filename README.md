@@ -759,6 +759,7 @@ The definition of done is created by examining and applying BVA on the rules.
       - [ ] Follows BVA of gaining handlers and handler deficiency
    - [ ] Dragons
       - [ ] Kel’Droth
+            
 ###Negative Effects:
 - [ ] Hatch ALL unclaimed adjacent Eggs
    - [ ] BVA

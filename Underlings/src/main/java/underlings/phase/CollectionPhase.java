@@ -1,8 +1,5 @@
 package underlings.phase;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementGiver;
@@ -11,6 +8,9 @@ import underlings.gui.DrawChoice;
 import underlings.gui.GUI;
 import underlings.handler.Handler;
 import underlings.player.Player;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CollectionPhase implements Phase {
 
@@ -34,7 +34,6 @@ public class CollectionPhase implements Phase {
 				elementGivers.remove(chosenElementGiver);
 
 				displayMethod.run();
-
 			}
 		}
 

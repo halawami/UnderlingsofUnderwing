@@ -60,4 +60,5 @@ public class HatchingGround {
 	public void getAdjacentCards(Card centerCard) {
 
 	}
+
 }
