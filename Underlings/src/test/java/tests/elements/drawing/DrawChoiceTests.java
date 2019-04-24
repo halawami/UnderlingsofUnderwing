@@ -44,4 +44,12 @@ public class DrawChoiceTests {
 		assertEquals(ElementColor.RED, element.getColor());
 	}
 	
+	@Test
+	public void testCool() {
+		Element element = this.elementBag.drawElement(DrawChoice.COOL);
+		
+		EasyMock.verify(this.random);
+		assertEquals(ElementColor.BLUE, element.getColor());
+	}
+	
 }

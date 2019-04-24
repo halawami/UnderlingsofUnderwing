@@ -79,6 +79,8 @@ public class ElementBag {
 			return this.drawRandomElement();
 		case WARM:
 			return this.drawWarmElement();
+		case COOL:
+			return this.drawCoolElement();
 		}
 		return null;
 	}
