@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import underlings.element.Element;
+import underlings.element.utilities.ElementSpaceLogic;
 import underlings.element.ElementGiver;
 import underlings.handler.Handler;
 import underlings.handler.HandlerFactory;
@@ -17,6 +18,7 @@ public class Player {
 	private boolean reached25Points;
 	private HandlerFactory handlerFactory;
 	private List<Element> elements;
+	private ElementSpaceLogic logic;
 
 	public Player(int maxHandlers, HandlerFactory handlerFactory) {
 		this.handlers = new ArrayList<Handler>();
@@ -84,6 +86,10 @@ public class Player {
 
 	public void removeElement(Element elementToRemove) {
 		this.elements.remove(elementToRemove);
+	}
+	
+	public ElementSpaceLogic getElementSpaceLogic() {
+		return logic;
 	}
 
 	// TODO: Test This
