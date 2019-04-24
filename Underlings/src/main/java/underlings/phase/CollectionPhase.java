@@ -1,6 +1,5 @@
 package underlings.phase;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import underlings.element.Element;
@@ -9,34 +8,38 @@ import underlings.element.ElementGiver;
 import underlings.game.HatchingGround;
 import underlings.gui.DrawChoice;
 import underlings.gui.GUI;
-import underlings.handler.Handler;
 import underlings.player.Player;
 
-public class CollectionPhase implements Phase {
+public class CollectionPhase extends Phase {
 
-	@Override
-	public void execute(List<Player> players, GUI gui, ElementBag elementBag, HatchingGround hatchingGround,
+	public CollectionPhase(List<Player> players, GUI gui, ElementBag elementBag, HatchingGround hatchingGround,
 			Runnable displayMethod) {
-
-		for (Player player : players) {
-
-			List<ElementGiver> elementGivers = new ArrayList<>();
-			for(Handler handler : player.getHandlers())
-				elementGivers.add(handler.elementGiver);
-
-			while (!elementGivers.isEmpty()) {
-				ElementGiver chosenElementGiver = gui.promptHandler.promptChoice("Choose an Element Giver", elementGivers);
-				DrawChoice chosenDrawChoice = gui.promptHandler.promptChoice("Choose a Draw", chosenElementGiver.drawChoices);
-
-				Element drawnElement = elementBag.drawRandomElement();
-				player.addElement(drawnElement);
-
-				elementGivers.remove(chosenElementGiver);
-
-				displayMethod.run();
-			}
-		}
-
+		super(players, gui, elementBag, hatchingGround, displayMethod);
 	}
 
+	@Override
+	public void execute() {	
+		for (Player player : this.players) {
+			this.execute(player);
+		}
+	}
+
+	private void execute(Player player) {
+		List<ElementGiver> elementGivers = player.getElementGivers();
+
+		while (!elementGivers.isEmpty()) {
+
+			ElementGiver elementGiver = this.gui.promptHandler.promptChoice("Choose an Element Giver", elementGivers);
+			
+			DrawChoice drawChoice = this.gui.promptHandler.promptChoice("Choose a Draw", elementGiver.drawChoices);
+			
+			Element element = this.elementBag.drawElement(drawChoice);
+			player.addElement(element);
+			
+			elementGivers.remove(elementGiver);
+			this.displayMethod.run();
+
+		}
+	}
+	
 }

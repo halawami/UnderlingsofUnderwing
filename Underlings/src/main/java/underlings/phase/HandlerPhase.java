@@ -13,15 +13,20 @@ import underlings.handler.Handler;
 import underlings.handler.HandlerChoice;
 import underlings.player.Player;
 
-public class HandlerPhase implements Phase {
+public class HandlerPhase extends Phase {
+
+	public HandlerPhase(List<Player> players, GUI gui, ElementBag elementBag, HatchingGround hatchingGround,
+			Runnable displayMethod) {
+		super(players, gui, elementBag, hatchingGround, displayMethod);
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
-	public void execute(List<Player> players, GUI gui, ElementBag elementBag, HatchingGround hatchingGround,
-			Runnable displayMethod) {
+	public void execute() {
 
 		Map<Player, List<Handler>> unmovedHandlers = new HashMap<>();
 
-		for (Player player : players) {
+		for (Player player : this.players) {
 			unmovedHandlers.put(player, new ArrayList<>(player.getHandlers()));
 		}
 
@@ -30,23 +35,23 @@ public class HandlerPhase implements Phase {
 		while (!allHandlersPlayed) {
 			allHandlersPlayed = true;
 
-			for (Player player : players) {
+			for (Player player : this.players) {
 
 				List<Handler> playersHandlers = unmovedHandlers.get(player);
 
 				if (!playersHandlers.isEmpty()) {
 					allHandlersPlayed = false;
 
-					Handler chosenHandler = gui.promptHandler.promptChoice("Choose a Handler", playersHandlers);
+					Handler chosenHandler = this.gui.promptHandler.promptChoice("Choose a Handler", playersHandlers);
 
 					List<HandlerChoice> possibleChoices = chosenHandler.getPossibleChoices();
 
-					HandlerChoice chosenChoice = gui.promptHandler
+					HandlerChoice chosenChoice = this.gui.promptHandler
 							.promptChoice("Choose a movement for " + chosenHandler, possibleChoices);
 
 					if (chosenChoice != HandlerChoice.STAY) {
 						if (chosenChoice == HandlerChoice.CARD) {
-							Card chosenCard = gui.promptHandler.promptChoice("Choose a card", hatchingGround.getUnclaimedEggs());
+							Card chosenCard = this.gui.promptHandler.promptChoice("Choose a card", this.hatchingGround.getUnclaimedEggs());
 							chosenCard.handler = chosenHandler;
 							chosenHandler.setLocation(chosenCard.name);
 						} else if (chosenChoice == HandlerChoice.FIELD) {
@@ -58,7 +63,7 @@ public class HandlerPhase implements Phase {
 					}
 
 					playersHandlers.remove(chosenHandler);
-					displayMethod.run();
+					this.displayMethod.run();
 
 				}
 

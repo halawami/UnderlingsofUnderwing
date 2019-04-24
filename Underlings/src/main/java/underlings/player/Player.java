@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import underlings.element.Element;
+import underlings.element.ElementGiver;
 import underlings.handler.Handler;
 import underlings.handler.HandlerFactory;
 
@@ -83,5 +84,16 @@ public class Player {
 
 	public void removeElement(Element elementToRemove) {
 		this.elements.remove(elementToRemove);
+	}
+
+	// TODO: Test This
+	public List<ElementGiver> getElementGivers() {
+		List<ElementGiver> elementGivers = new ArrayList<>();
+		
+		for (Handler handler : this.getHandlers()) {
+			elementGivers.add(handler.elementGiver);
+		}
+		
+		return elementGivers;
 	}
 }

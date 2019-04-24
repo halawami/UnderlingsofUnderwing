@@ -69,7 +69,7 @@ public class Game {
 		this.display();
 
 		for (Phase phase : phases) {
-			phase.execute(this.players, this.gui, this.elementBag, this.hatchingGround, () -> {this.display();});
+			phase.execute();
 		}
 	}
 
@@ -81,7 +81,7 @@ public class Game {
 		return this.numberOfPlayers;
 	}
 
-	private void display() {
+	public void display() {
 		this.gui.display.displayBackground();
 		this.hatchingGround.display(this.gui);
 		this.displayPlayers();

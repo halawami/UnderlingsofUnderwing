@@ -7,11 +7,17 @@ import underlings.game.HatchingGround;
 import underlings.gui.GUI;
 import underlings.player.Player;
 
-public class PlacementPhase implements Phase {
+public class PlacementPhase extends Phase {
+
+	public PlacementPhase(List<Player> players, GUI gui, ElementBag elementBag, HatchingGround hatchingGround,
+			Runnable displayMethod) {
+		super(players, gui, elementBag, hatchingGround, displayMethod);
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
-	public void execute(List<Player> players, GUI gui, ElementBag elementBag, HatchingGround hatchingGround,
-			Runnable displayMethod) {
+	public void execute() {
+		// TODO Auto-generated method stub
 		
 	}
 
