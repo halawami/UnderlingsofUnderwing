@@ -13,8 +13,16 @@ public class LamePrompt implements PromptHandler {
 
 	@Override
 	public int promptPlayerCount(int minPlayers, int maxPlayers) {
-		// TODO: Input Validation
-		return Integer.parseInt(JOptionPane.showInputDialog("How many players? [" + minPlayers + ", " + maxPlayers + "]"));
+		int result = 0;
+		do {
+			try {
+				result = Integer.parseInt(JOptionPane.showInputDialog("How many players? [" + minPlayers + ", " + maxPlayers + "]"));
+			} catch(Exception e) {
+				JOptionPane.showMessageDialog(null, "Please enter a number in [" + minPlayers + ", " + maxPlayers + "].");
+			}
+		} while(result > maxPlayers || result < minPlayers);
+		
+		return result;
 	}
 
 	@Override
