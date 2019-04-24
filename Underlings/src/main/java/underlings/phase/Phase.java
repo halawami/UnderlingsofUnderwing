@@ -7,9 +7,23 @@ import underlings.game.HatchingGround;
 import underlings.gui.GUI;
 import underlings.player.Player;
 
-public interface Phase {
+public abstract class Phase {
 
-	void execute(List<Player> players, GUI gui, ElementBag elementBag, HatchingGround hatchingGround,
-                 Runnable displayMethod);
-	
+	List<Player> players;
+	GUI gui;
+	ElementBag elementBag;
+	HatchingGround hatchingGround;
+	Runnable displayMethod;
+
+	public Phase(List<Player> players, GUI gui, ElementBag elementBag, HatchingGround hatchingGround,
+			Runnable displayMethod) {
+		this.players = players;
+		this.gui = gui;
+		this.elementBag = elementBag;
+		this.hatchingGround = hatchingGround;
+		this.displayMethod = displayMethod;
+	}
+
+	public abstract void execute();
+
 }

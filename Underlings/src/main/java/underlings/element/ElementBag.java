@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
+import underlings.gui.DrawChoice;
+
 public class ElementBag {
 
 	private Map<ElementColor, Integer> elementCount;
@@ -56,19 +58,32 @@ public class ElementBag {
 	}
 
 	public Element drawRandomPrimaryElement() {
-		return drawElementFromList(ElementColor.BLUE, ElementColor.RED, ElementColor.YELLOW);
+		return this.drawElementFromList(ElementColor.BLUE, ElementColor.RED, ElementColor.YELLOW);
 	}
 
 	public Element drawRandomSecondayElement() {
-		return drawElementFromList(ElementColor.PURPLE, ElementColor.GREEN, ElementColor.ORANGE);
+		return this.drawElementFromList(ElementColor.PURPLE, ElementColor.GREEN, ElementColor.ORANGE);
 	}
 
 	public Element drawCoolElement() {
-		return drawElementFromList(ElementColor.BLUE, ElementColor.GREEN, ElementColor.PURPLE);
+		return this.drawElementFromList(ElementColor.BLUE, ElementColor.GREEN, ElementColor.PURPLE);
 	}
 
 	public Element drawWarmElement() {
-		return drawElementFromList(ElementColor.RED, ElementColor.YELLOW, ElementColor.ORANGE);
+		return this.drawElementFromList(ElementColor.RED, ElementColor.YELLOW, ElementColor.ORANGE);
+	}
+
+	public Element drawElement(DrawChoice drawChoice) {
+		switch (drawChoice) {
+		case RANDOM:
+			return this.drawRandomElement();
+		case WARM:
+			return this.drawWarmElement();
+		case COOL:
+			return this.drawCoolElement();
+		default:
+			return this.drawElementFromList(drawChoice.elementColor);
+		}
 	}
 
 }
