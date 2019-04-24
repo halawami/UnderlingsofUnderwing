@@ -18,7 +18,7 @@ import underlings.player.PlayerFactory;
 
 public class PlacementPhaseTests {
 
-	@Test
+	@Ignore
 	public void basicTest() {
 		GUI gui = new GUI(new LamePrompt(), new LameGUI());
 		CardFactory cardFactory = new CardFactory(CARDS_JSON_FILE_PATH);
