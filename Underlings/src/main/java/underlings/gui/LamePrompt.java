@@ -31,4 +31,15 @@ public class LamePrompt implements PromptHandler {
 				JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
 	}
 
+	@Override
+	public boolean promptDecision(String question) {
+		int option = JOptionPane.showConfirmDialog(null, question, "", JOptionPane.YES_NO_OPTION);
+		return option == JOptionPane.YES_OPTION;
+	}
+
+	@Override
+	public void displayMessage(String message) {
+		JOptionPane.showMessageDialog(null, message, "", JOptionPane.WARNING_MESSAGE);
+	}
+
 }
