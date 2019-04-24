@@ -3,7 +3,9 @@ package underlings.handler;
 import java.util.Arrays;
 import java.util.List;
 
-public enum HandlerState {
+import underlings.gui.Choice;
+
+public enum HandlerState implements Choice {
 	READY_ROOM, CARD, FIELD, FIELD_WHITESPACE, BREAK_ROOM, INCUBATION;
 
 	static {

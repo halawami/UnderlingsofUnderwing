@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.easymock.EasyMock;
-import org.junit.Ignore;
+import org.junit.Test;
 
 import underlings.card.Card;
 import underlings.element.ElementBag;
@@ -24,9 +24,8 @@ import underlings.player.Player;
 
 public class HandlerPhaseTest {
 
-	@Ignore
+	@Test
 	public void testExecuteOnePlayerTwoHandlersReadyRoomToCard() {
-		Phase handlerPhase = new HandlerPhase();
 
 		Player player = EasyMock.createMock(Player.class);
 		PromptHandler promptHandler = EasyMock.mock(PromptHandler.class);
@@ -51,10 +50,10 @@ public class HandlerPhaseTest {
 				HandlerState.FIELD_WHITESPACE, 
 				HandlerState.READY_ROOM));
 		
-		EasyMock.expect(promptHandler.promptHandler(handlerList)).andReturn(handler);
+		EasyMock.expect(promptHandler.promptChoice("Please choose a handler", handlerList)).andReturn(handler);
 		
 		EasyMock.expect(handler.getPossibleStates()).andReturn(possibleStates);
-		EasyMock.expect(promptHandler.promptHandlerState(possibleStates)).andReturn(HandlerState.CARD);
+		EasyMock.expect(promptHandler.promptChoice("Please choose a state to more your handler to", possibleStates)).andReturn(HandlerState.CARD);
 		
 		List<Card> unclaimedEggs = new LinkedList<>();
 		for (int i = 0; i < 10; i++) {
@@ -63,7 +62,7 @@ public class HandlerPhaseTest {
 		
 		EasyMock.expect(hatchingGround.getUnclaimedEggs()).andReturn(unclaimedEggs);
 		
-		EasyMock.expect(promptHandler.promptCardSelection(unclaimedEggs)).andReturn(card);
+		EasyMock.expect(promptHandler.promptChoice("Please choose a card to move your handler to", unclaimedEggs)).andReturn(card);
 		
 		handler.moveToState(HandlerState.CARD);
 		handler.setLocation("mockedCard");
@@ -71,14 +70,14 @@ public class HandlerPhaseTest {
 		handlerList = new ArrayList<>(handlerList);
 		handlerList.remove(handler);
 		
-		EasyMock.expect(promptHandler.promptHandler(handlerList)).andReturn(handler);
+		EasyMock.expect(promptHandler.promptChoice("Please choose a handler", handlerList)).andReturn(handler);
 		
 		EasyMock.expect(handler.getPossibleStates()).andReturn(possibleStates);
-		EasyMock.expect(promptHandler.promptHandlerState(possibleStates)).andReturn(HandlerState.CARD);
+		EasyMock.expect(promptHandler.promptChoice("Please choose a state to more your handler to", possibleStates)).andReturn(HandlerState.CARD);
 		
 		EasyMock.expect(hatchingGround.getUnclaimedEggs()).andReturn(unclaimedEggs);
 		
-		EasyMock.expect(promptHandler.promptCardSelection(unclaimedEggs)).andReturn(card);
+		EasyMock.expect(promptHandler.promptChoice("Please choose a card to move your handler to", unclaimedEggs)).andReturn(card);
 		
 		handler.moveToState(HandlerState.CARD);
 		handler.setLocation("mockedCard");
@@ -90,8 +89,8 @@ public class HandlerPhaseTest {
 		EasyMock.expectLastCall().times(2);
 		
 		EasyMock.replay(player, promptHandler, display, elementBag, hatchingGround, handler, card, runnable);
-		
-		handlerPhase.execute(players, gui, elementBag, hatchingGround, runnable);
+		Phase handlerPhase = new HandlerPhase(players, gui, elementBag, hatchingGround, runnable);
+		handlerPhase.execute();
 		assertEquals(handler, card.handler);
 		EasyMock.verify(player, promptHandler, display, elementBag, hatchingGround, handler, card, runnable);
 		

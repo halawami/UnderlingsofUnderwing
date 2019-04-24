@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.easymock.EasyMock;
-import org.junit.Ignore;
+import org.junit.Test;
 
 import underlings.element.ElementBag;
 import underlings.game.Deck;
@@ -20,11 +20,8 @@ import underlings.player.Player;
 
 public class CollectionPhaseTests {
 
-	@Ignore
+	@Test
 	public void testExecuteOnePlayerTwoRandom() {
-
-		Phase collectionPhase = new CollectionPhase();
-
 		Player player = new Player(6, new HandlerFactory());
 		List<Player> players = new ArrayList<>();
 		players.add(player);
@@ -38,8 +35,8 @@ public class CollectionPhaseTests {
 		
 		HatchingGround hatchingGround = new HatchingGround(new Deck(Collections.emptyList()));
 		
-		collectionPhase.execute(players, gui, elementBag, hatchingGround, () -> {});
-
+		Phase collectionPhase = new CollectionPhase(players, gui, elementBag, hatchingGround, () -> {});
+		collectionPhase.execute();
 	}
 
 }
