@@ -34,6 +34,7 @@ public abstract class SequentialPhase implements Phase {
 			this.phaseComplete = false;
 			while (!this.phaseComplete) {
 				this.turn(player);
+				this.displayMethod.run();
 			}
 		}
 

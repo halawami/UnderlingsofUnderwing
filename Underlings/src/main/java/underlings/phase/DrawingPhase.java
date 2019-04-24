@@ -1,6 +1,8 @@
 package underlings.phase;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import underlings.element.Element;
 import underlings.element.ElementBag;
@@ -17,25 +19,27 @@ public class DrawingPhase extends SequentialPhase {
 		super(players, gui, elementBag, hatchingGround, displayMethod);
 	}
 
+	Map<Player, List<ElementGiver>> elementGivers;
+
 	@Override
 	public void turn(Player player) {
 
-		List<ElementGiver> elementGivers = player.getElementGivers();
+		DrawChoice drawChoice = this.gui.getDrawChoice(this.elementGivers.get(player));
 
-		while (!elementGivers.isEmpty()) {
-			
-			DrawChoice drawChoice = this.gui.getDrawChoice(elementGivers);
+		Element element = this.elementBag.drawElement(drawChoice);
+		player.addElement(element);
+		
+		this.phaseComplete = this.elementGivers.get(player).isEmpty();
 
-			Element element = this.elementBag.drawElement(drawChoice);
-			player.addElement(element);
-
-			this.displayMethod.run();
-		}
 	}
 
 	@Override
 	public void setup() {
+		this.elementGivers = new HashMap<>();
 
+		for (Player player : this.players) {
+			this.elementGivers.put(player, player.getElementGivers());
+		}
 	}
 
 }

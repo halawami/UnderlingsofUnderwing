@@ -34,6 +34,7 @@ public abstract class RotationPhase implements Phase {
 			this.phaseComplete = true;
 			for (Player player : this.players) {
 				this.turn(player);
+				this.displayMethod.run();
 			}
 		}
 
