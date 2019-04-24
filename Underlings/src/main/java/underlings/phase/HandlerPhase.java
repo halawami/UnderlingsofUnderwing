@@ -5,12 +5,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import underlings.card.Card;
 import underlings.element.ElementBag;
 import underlings.game.HatchingGround;
 import underlings.gui.GUI;
 import underlings.handler.Handler;
-import underlings.handler.HandlerChoice;
+import underlings.handler.HandlerDecision;
+import underlings.handler.HandlerMovementLogic;
 import underlings.player.Player;
 
 public class HandlerPhase extends RotationPhase {
@@ -21,6 +21,7 @@ public class HandlerPhase extends RotationPhase {
 	}
 
 	private Map<Player, List<Handler>> unmovedHandlers;
+	private HandlerMovementLogic handlerMovementLogic = new HandlerMovementLogic();
 
 	@Override
 	public void setup() {
@@ -36,35 +37,12 @@ public class HandlerPhase extends RotationPhase {
 
 		List<Handler> playersHandlers = this.unmovedHandlers.get(player);
 
-		if (!playersHandlers.isEmpty()) {
-			this.phaseComplete = false;
+		this.phaseComplete = false;
 
-			Handler chosenHandler = this.gui.promptHandler.promptChoice("Choose a Handler", playersHandlers);
+		HandlerDecision decision = this.gui.getHandlerDecision(playersHandlers);
+		this.handlerMovementLogic.move(decision.handler, decision.choice);
 
-			List<HandlerChoice> possibleChoices = chosenHandler.getPossibleChoices();
-
-			HandlerChoice chosenChoice = this.gui.promptHandler.promptChoice("Choose a movement for " + chosenHandler,
-					possibleChoices);
-
-			if (chosenChoice != HandlerChoice.STAY) {
-				if (chosenChoice == HandlerChoice.CARD) {
-					Card chosenCard = this.gui.promptHandler.promptChoice("Choose a card",
-							this.hatchingGround.getUnclaimedEggs());
-					chosenCard.handler = chosenHandler;
-					chosenHandler.setLocation(chosenCard.name);
-				} else if (chosenChoice == HandlerChoice.FIELD) {
-
-				}
-				if (chosenChoice == HandlerChoice.FIELD_WHITESPACE) {
-
-				}
-				chosenHandler.moveToState(chosenChoice.getState());
-			}
-
-			playersHandlers.remove(chosenHandler);
-			this.displayMethod.run();
-
-		}
+		this.phaseComplete = playersHandlers.size() == 0;
 
 	}
 
