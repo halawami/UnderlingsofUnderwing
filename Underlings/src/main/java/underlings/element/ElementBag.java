@@ -74,7 +74,13 @@ public class ElementBag {
 	}
 
 	public Element drawElement(DrawChoice drawChoice) {
-		return this.drawRandomElement();
+		switch (drawChoice) {
+		case RANDOM:
+			return this.drawRandomElement();
+		case WARM:
+			return this.drawWarmElement();
+		}
+		return null;
 	}
 
 }

@@ -29,4 +29,18 @@ public class DrawChoiceTests {
 		assertEquals(ElementColor.BLUE, element.getColor());
 	}
 	
+	@Test
+	public void testWarm() {
+		Random random = EasyMock.mock(Random.class);
+		EasyMock.expect(random.nextInt(EasyMock.anyInt())).andReturn(1);
+		EasyMock.replay(random);
+		
+		ElementBag elementBag = new ElementBag(new ElementFactory(), random);
+		
+		Element element = elementBag.drawElement(DrawChoice.WARM);
+		
+		EasyMock.verify(random);
+		assertEquals(ElementColor.RED, element.getColor());
+	}
+	
 }
