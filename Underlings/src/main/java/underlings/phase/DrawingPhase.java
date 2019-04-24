@@ -16,28 +16,26 @@ public class DrawingPhase extends Phase {
 			Runnable displayMethod) {
 		super(players, gui, elementBag, hatchingGround, displayMethod);
 	}
-	
+
 	@Override
-	protected void turn(Player player) {
-		
+	public void turn(Player player) {
+
 		List<ElementGiver> elementGivers = player.getElementGivers();
 
 		while (!elementGivers.isEmpty()) {
+			
+			DrawChoice drawChoice = this.gui.getDrawChoice(elementGivers);
 
-			ElementGiver elementGiver = this.gui.promptHandler.promptChoice("Choose an Element Giver", elementGivers);
-			DrawChoice drawChoice = this.gui.promptHandler.promptChoice("Choose a Draw Choice", elementGiver.drawChoices);
-		
 			Element element = this.elementBag.drawElement(drawChoice);
 			player.addElement(element);
-			
-			elementGivers.remove(elementGiver);
+
 			this.displayMethod.run();
 		}
 	}
 
 	@Override
-	protected void setup() {
+	public void setup() {
 
 	}
-	
+
 }

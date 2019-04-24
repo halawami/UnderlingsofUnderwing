@@ -10,7 +10,7 @@ import underlings.player.Player;
 public abstract class Phase {
 
 	protected List<Player> players;
-	protected GUI gui;
+	public GUI gui;
 	protected ElementBag elementBag;
 	protected HatchingGround hatchingGround;
 	protected Runnable displayMethod;
@@ -38,8 +38,8 @@ public abstract class Phase {
 
 	}
 
-	protected abstract void setup();
+	public abstract void setup();
 
-	protected abstract void turn(Player player);
+	public abstract void turn(Player player);
 
 }

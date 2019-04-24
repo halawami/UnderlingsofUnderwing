@@ -16,7 +16,13 @@ public class PlacementPhase extends Phase {
 	}
 
 	@Override
-	public void execute() {
+	public void setup() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void turn(Player player) {
 		// TODO Auto-generated method stub
 		
 	}
