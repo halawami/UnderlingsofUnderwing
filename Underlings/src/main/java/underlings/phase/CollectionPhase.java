@@ -34,7 +34,6 @@ public class CollectionPhase implements Phase {
 				elementGivers.remove(chosenElementGiver);
 
 				displayMethod.run();
-
 			}
 		}
 

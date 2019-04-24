@@ -1,12 +1,13 @@
 package underlings.game;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import underlings.card.Card;
 import underlings.gui.GUI;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class HatchingGround {
+public class HatchingGround implements Iterable<Card> {
 
 	private int height, width;
 	public Card[][] cards;
@@ -49,8 +50,10 @@ public class HatchingGround {
 
 	public List<Card> getUnclaimedEggs() {
 		List<Card> unclaimedEggs = new ArrayList<>();
-		for(int i = 0; i < 6; i++) {
-			unclaimedEggs.add(new Card());
+		for (Card card : this) {
+			if (card.handler == null) {
+				unclaimedEggs.add(card);
+			}
 		}
 		
 		return unclaimedEggs;
@@ -59,5 +62,31 @@ public class HatchingGround {
 
 	public void getAdjacentCards(Card centerCard) {
 
+	}
+
+	@Override
+	public Iterator<Card> iterator() {
+		return new Iterator<Card>() {
+
+			int row = 1, col = 1;
+			
+			@Override
+			public boolean hasNext() {
+				return this.row <= HatchingGround.this.height;
+			}
+
+			@Override
+			public Card next() {
+				Card card = HatchingGround.this.cards[this.row - 1][this.col - 1];
+				if (this.col == HatchingGround.this.width) {
+					this.col = 1;
+					this.row++;
+				} else {
+					this.col++;
+				}
+				
+				return card;
+			}
+		};
 	}
 }

@@ -11,9 +11,9 @@ import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
+import underlings.card.Card;
 import underlings.element.Element;
 import underlings.handler.Handler;
-import underlings.card.Card;
 import underlings.player.Player;
 
 public class LameGUI implements Display {
@@ -102,7 +102,7 @@ public class LameGUI implements Display {
 			int col = playerNumber%3;
 
 			this.g.setColor(Color.BLACK);
-			this.g.drawString(handlers.get(i).getState().toString(), (int)(ratio*(30 + xOffset + (width + xGap) * col)), (int)(i*25+ratio*(height/2 + yOffset + (height + yGap) * row)));
+			this.g.drawString(handlers.get(i).toString(), (int)(ratio*(30 + xOffset + (width + xGap) * col)), (int)(i*25+ratio*(height/2 + yOffset + (height + yGap) * row)));
 		}
 	}
 
