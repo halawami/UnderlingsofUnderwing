@@ -14,7 +14,7 @@ import underlings.gui.Display;
 import underlings.gui.GUI;
 import underlings.gui.PromptHandler;
 import underlings.handler.HandlerFactory;
-import underlings.phase.CollectionPhase;
+import underlings.phase.DrawingPhase;
 import underlings.phase.Phase;
 import underlings.player.Player;
 
@@ -23,7 +23,7 @@ public class CollectionPhaseTests {
 	@Ignore
 	public void testExecuteOnePlayerTwoRandom() {
 
-		Phase collectionPhase = new CollectionPhase();
+		Phase collectionPhase = new DrawingPhase();
 
 		Player player = new Player(6, new HandlerFactory());
 		List<Player> players = new ArrayList<>();

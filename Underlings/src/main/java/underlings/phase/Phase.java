@@ -9,11 +9,13 @@ import underlings.player.Player;
 
 public abstract class Phase {
 
-	List<Player> players;
-	GUI gui;
-	ElementBag elementBag;
-	HatchingGround hatchingGround;
-	Runnable displayMethod;
+	protected List<Player> players;
+	protected GUI gui;
+	protected ElementBag elementBag;
+	protected HatchingGround hatchingGround;
+	protected Runnable displayMethod;
+
+	protected boolean phaseComplete;
 
 	public Phase(List<Player> players, GUI gui, ElementBag elementBag, HatchingGround hatchingGround,
 			Runnable displayMethod) {
@@ -24,6 +26,20 @@ public abstract class Phase {
 		this.displayMethod = displayMethod;
 	}
 
-	public abstract void execute();
+	public void execute() {
+		this.setup();
+
+		while (!this.phaseComplete) {
+			this.phaseComplete = true;
+			for (Player player : this.players) {
+				this.turn(player);
+			}
+		}
+
+	}
+
+	protected abstract void setup();
+
+	protected abstract void turn(Player player);
 
 }

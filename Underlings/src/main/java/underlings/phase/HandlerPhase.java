@@ -18,56 +18,52 @@ public class HandlerPhase extends Phase {
 	public HandlerPhase(List<Player> players, GUI gui, ElementBag elementBag, HatchingGround hatchingGround,
 			Runnable displayMethod) {
 		super(players, gui, elementBag, hatchingGround, displayMethod);
-		// TODO Auto-generated constructor stub
+	}
+
+	private Map<Player, List<Handler>> unmovedHandlers;
+
+	@Override
+	public void setup() {
+		this.unmovedHandlers = new HashMap<>();
+
+		for (Player player : this.players) {
+			this.unmovedHandlers.put(player, new ArrayList<>(player.getHandlers()));
+		}
 	}
 
 	@Override
-	public void execute() {
+	public void turn(Player player) {
 
-		Map<Player, List<Handler>> unmovedHandlers = new HashMap<>();
+		List<Handler> playersHandlers = this.unmovedHandlers.get(player);
 
-		for (Player player : this.players) {
-			unmovedHandlers.put(player, new ArrayList<>(player.getHandlers()));
-		}
+		if (!playersHandlers.isEmpty()) {
+			this.phaseComplete = false;
 
-		boolean allHandlersPlayed = false;
+			Handler chosenHandler = this.gui.promptHandler.promptChoice("Choose a Handler", playersHandlers);
 
-		while (!allHandlersPlayed) {
-			allHandlersPlayed = true;
+			List<HandlerChoice> possibleChoices = chosenHandler.getPossibleChoices();
 
-			for (Player player : this.players) {
+			HandlerChoice chosenChoice = this.gui.promptHandler.promptChoice("Choose a movement for " + chosenHandler,
+					possibleChoices);
 
-				List<Handler> playersHandlers = unmovedHandlers.get(player);
-
-				if (!playersHandlers.isEmpty()) {
-					allHandlersPlayed = false;
-
-					Handler chosenHandler = this.gui.promptHandler.promptChoice("Choose a Handler", playersHandlers);
-
-					List<HandlerChoice> possibleChoices = chosenHandler.getPossibleChoices();
-
-					HandlerChoice chosenChoice = this.gui.promptHandler
-							.promptChoice("Choose a movement for " + chosenHandler, possibleChoices);
-
-					if (chosenChoice != HandlerChoice.STAY) {
-						if (chosenChoice == HandlerChoice.CARD) {
-							Card chosenCard = this.gui.promptHandler.promptChoice("Choose a card", this.hatchingGround.getUnclaimedEggs());
-							chosenCard.handler = chosenHandler;
-							chosenHandler.setLocation(chosenCard.name);
-						} else if (chosenChoice == HandlerChoice.FIELD) {
-
-						} if (chosenChoice == HandlerChoice.FIELD_WHITESPACE) {
-							
-						}
-						chosenHandler.moveToState(chosenChoice.getState());
-					}
-
-					playersHandlers.remove(chosenHandler);
-					this.displayMethod.run();
+			if (chosenChoice != HandlerChoice.STAY) {
+				if (chosenChoice == HandlerChoice.CARD) {
+					Card chosenCard = this.gui.promptHandler.promptChoice("Choose a card",
+							this.hatchingGround.getUnclaimedEggs());
+					chosenCard.handler = chosenHandler;
+					chosenHandler.setLocation(chosenCard.name);
+				} else if (chosenChoice == HandlerChoice.FIELD) {
 
 				}
+				if (chosenChoice == HandlerChoice.FIELD_WHITESPACE) {
 
+				}
+				chosenHandler.moveToState(chosenChoice.getState());
 			}
+
+			playersHandlers.remove(chosenHandler);
+			this.displayMethod.run();
+
 		}
 
 	}
