@@ -75,4 +75,8 @@ public class ElementSpaceLogic {
 		return new ArrayList<ElementColor>(validAdditions);
 	}
 
+	public List<ElementSpace> getPlayableSpaces() {
+		return new ArrayList<ElementSpace>();
+	}
+
 }
