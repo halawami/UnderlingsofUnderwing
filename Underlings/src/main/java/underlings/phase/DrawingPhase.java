@@ -10,7 +10,7 @@ import underlings.gui.DrawChoice;
 import underlings.gui.GUI;
 import underlings.player.Player;
 
-public class DrawingPhase extends Phase {
+public class DrawingPhase extends SequentialPhase {
 
 	public DrawingPhase(List<Player> players, GUI gui, ElementBag elementBag, HatchingGround hatchingGround,
 			Runnable displayMethod) {

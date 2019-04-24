@@ -13,7 +13,7 @@ import underlings.handler.Handler;
 import underlings.handler.HandlerChoice;
 import underlings.player.Player;
 
-public class HandlerPhase extends Phase {
+public class HandlerPhase extends RotationPhase {
 
 	public HandlerPhase(List<Player> players, GUI gui, ElementBag elementBag, HatchingGround hatchingGround,
 			Runnable displayMethod) {

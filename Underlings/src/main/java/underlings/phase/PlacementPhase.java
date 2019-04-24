@@ -13,7 +13,7 @@ import underlings.game.HatchingGround;
 import underlings.gui.GUI;
 import underlings.player.Player;
 
-public class PlacementPhase extends Phase {
+public class PlacementPhase extends RotationPhase {
 
 	public PlacementPhase(List<Player> players, GUI gui, ElementBag elementBag, HatchingGround hatchingGround,
 			Runnable displayMethod) {
