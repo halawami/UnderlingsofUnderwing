@@ -70,6 +70,7 @@ public class PlacementPhaseTests {
 		EasyMock.expect(promptHandler.promptChoice("Pick an element to place", Arrays.asList(blue1, blue2))).andReturn(blue1);
 		blueSpace.addElements(blue1);
 		player.removeElement(blue1);
+		runnable.run();
 		EasyMock.expect(logic.getValidAdditions(blueSpace)).andReturn(Arrays.asList(ElementColor.BLUE));
 		EasyMock.expect(promptHandler.promptDecision("Would you like to place another element?")).andReturn(false);
 		

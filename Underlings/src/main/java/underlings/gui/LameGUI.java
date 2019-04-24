@@ -60,9 +60,14 @@ public class LameGUI implements Display {
 		int xGap = 73, yGap = 60;
 		int width = 510, height = 360;
 		double ratio = 1066/4099.0;
-
+		
 		this.g.setColor(Color.LIGHT_GRAY);
 		this.g.fillRect((int)(ratio*(xOffset + (width + xGap) * col)), (int)(ratio*(yOffset + (height + yGap) * row)), (int)(ratio*width), (int)(ratio*height));
+		
+		this.g.setColor(Color.BLACK);
+		this.g.drawString(card.name, (int)(ratio*(30 + xOffset + (width + xGap) * col)), (int)(-25+ratio*(height/2 + yOffset + (height + yGap) * row)));
+		this.g.drawString(card.elementSpaces[0].toString(), (int)(ratio*(30 + xOffset + (width + xGap) * col)), (int)(-5+ratio*(height/2 + yOffset + (height + yGap) * row)));
+		this.g.drawString(card.elementSpaces[1].toString(), (int)(ratio*(30 + xOffset + (width + xGap) * col)), (int)(15+ratio*(height/2 + yOffset + (height + yGap) * row)));
 	}
 
 	@Override

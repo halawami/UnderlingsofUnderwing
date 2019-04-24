@@ -25,5 +25,10 @@ public class ElementSpace implements Choice {
 			this.elements.add(element.getColor());
 		}
 	}
+	
+	@Override
+	public String toString() {
+		return color + " Element Space";
+	}
 
 }

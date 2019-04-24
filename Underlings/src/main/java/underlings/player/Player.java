@@ -30,6 +30,7 @@ public class Player {
 		this.points = 0;
 		this.reached12Points = false;
 		this.reached25Points = false;
+		this.logic = new ElementSpaceLogic();
 	}
 
 	public int getHandlerCount() {
