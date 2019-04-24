@@ -14,7 +14,7 @@ import underlings.gui.Display;
 import underlings.gui.GUI;
 import underlings.gui.PromptHandler;
 import underlings.handler.HandlerFactory;
-import underlings.phase.CollectionPhase;
+import underlings.phase.DrawingPhase;
 import underlings.phase.Phase;
 import underlings.player.Player;
 
@@ -35,7 +35,7 @@ public class CollectionPhaseTests {
 		
 		HatchingGround hatchingGround = new HatchingGround(new Deck(Collections.emptyList()));
 		
-		Phase collectionPhase = new CollectionPhase(players, gui, elementBag, hatchingGround, () -> {});
+		Phase collectionPhase = new DrawingPhase(players, gui, elementBag, hatchingGround, () -> {});
 		collectionPhase.execute();
 	}
 
