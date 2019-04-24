@@ -3,7 +3,6 @@ package underlings.element.utilities;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -78,9 +77,15 @@ public class ElementSpaceLogic {
 	}
 
 	public List<ElementSpace> getPlayableSpaces(Card card, ElementColor...colors) {
-		if(colors.length == 0)
-			return new ArrayList<ElementSpace>();
-		return Arrays.asList(card.elementSpaces[0]);
+		List<ElementSpace> spaces = new ArrayList<ElementSpace>();
+		for(ElementSpace space : card.elementSpaces) {
+			for(ElementColor color : colors)
+				if(getValidAdditions(space).contains(color)) {
+					spaces.add(space);
+					break;
+				}
+		}
+		return spaces;
 	}
 
 }
