@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import java.util.Random;
 
 import org.easymock.EasyMock;
+import org.junit.Before;
 import org.junit.Test;
 
 import underlings.element.Element;
@@ -15,31 +16,31 @@ import underlings.gui.DrawChoice;
 
 public class DrawChoiceTests {
 
+	Random random;
+	ElementBag elementBag;
+	
+	@Before
+	public void init() {
+		this.random = EasyMock.mock(Random.class);
+		EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andReturn(1);
+		EasyMock.replay(this.random);
+		
+		this.elementBag = new ElementBag(new ElementFactory(), this.random);
+	}
+	
 	@Test
 	public void testRandom() {
-		Random random = EasyMock.mock(Random.class);
-		EasyMock.expect(random.nextInt(EasyMock.anyInt())).andReturn(1);
-		EasyMock.replay(random);
+		Element element = this.elementBag.drawElement(DrawChoice.RANDOM);
 		
-		ElementBag elementBag = new ElementBag(new ElementFactory(), random);
-		
-		Element element = elementBag.drawElement(DrawChoice.RANDOM);
-		
-		EasyMock.verify(random);
+		EasyMock.verify(this.random);
 		assertEquals(ElementColor.BLUE, element.getColor());
 	}
 	
 	@Test
 	public void testWarm() {
-		Random random = EasyMock.mock(Random.class);
-		EasyMock.expect(random.nextInt(EasyMock.anyInt())).andReturn(1);
-		EasyMock.replay(random);
+		Element element = this.elementBag.drawElement(DrawChoice.WARM);
 		
-		ElementBag elementBag = new ElementBag(new ElementFactory(), random);
-		
-		Element element = elementBag.drawElement(DrawChoice.WARM);
-		
-		EasyMock.verify(random);
+		EasyMock.verify(this.random);
 		assertEquals(ElementColor.RED, element.getColor());
 	}
 	
