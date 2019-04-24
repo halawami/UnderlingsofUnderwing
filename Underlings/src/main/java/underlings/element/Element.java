@@ -1,6 +1,8 @@
 package underlings.element;
 
-public class Element {
+import underlings.gui.Choice;
+
+public class Element implements Choice {
 
 	private ElementColor elementColor;
 	
