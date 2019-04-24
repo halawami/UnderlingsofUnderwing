@@ -15,7 +15,7 @@ import underlings.element.ElementFactory;
 import underlings.gui.DrawChoice;
 
 public class DrawChoiceTests {
-
+	
 	Random random;
 	ElementBag elementBag;
 	
@@ -30,26 +30,24 @@ public class DrawChoiceTests {
 	
 	@Test
 	public void testRandom() {
-		Element element = this.elementBag.drawElement(DrawChoice.RANDOM);
-		
-		EasyMock.verify(this.random);
-		assertEquals(ElementColor.BLUE, element.getColor());
+		this.testDrawChoice(DrawChoice.RANDOM, ElementColor.BLUE);
 	}
 	
 	@Test
 	public void testWarm() {
-		Element element = this.elementBag.drawElement(DrawChoice.WARM);
-		
-		EasyMock.verify(this.random);
-		assertEquals(ElementColor.RED, element.getColor());
+		this.testDrawChoice(DrawChoice.WARM, ElementColor.RED);
 	}
 	
 	@Test
 	public void testCool() {
-		Element element = this.elementBag.drawElement(DrawChoice.COOL);
+		this.testDrawChoice(DrawChoice.COOL, ElementColor.BLUE);
+	}
+	
+	private void testDrawChoice(DrawChoice drawChoice, ElementColor color) {
+		Element element = this.elementBag.drawElement(drawChoice);
 		
 		EasyMock.verify(this.random);
-		assertEquals(ElementColor.BLUE, element.getColor());
+		assertEquals(color, element.getColor());
 	}
 	
 }
