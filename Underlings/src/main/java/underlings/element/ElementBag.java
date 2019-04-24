@@ -81,8 +81,9 @@ public class ElementBag {
 			return this.drawWarmElement();
 		case COOL:
 			return this.drawCoolElement();
+		default:
+			return this.drawElementFromList(drawChoice.elementColor);
 		}
-		return null;
 	}
 
 }

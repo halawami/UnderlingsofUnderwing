@@ -43,6 +43,11 @@ public class DrawChoiceTests {
 		this.testDrawChoice(DrawChoice.COOL, ElementColor.BLUE);
 	}
 	
+	@Test
+	public void testRed() {
+		this.testDrawChoice(DrawChoice.RED, ElementColor.RED);
+	}
+	
 	private void testDrawChoice(DrawChoice drawChoice, ElementColor color) {
 		Element element = this.elementBag.drawElement(drawChoice);
 		
