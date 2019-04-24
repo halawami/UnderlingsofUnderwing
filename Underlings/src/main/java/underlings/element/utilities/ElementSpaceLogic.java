@@ -19,13 +19,17 @@ import underlings.element.ElementSpace;
  */
 
 public class ElementSpaceLogic {
-	private static Map<ElementColor, List<List<ElementColor>>> recipeMap;
+	private Map<ElementColor, List<List<ElementColor>>> recipeMap;
+	
+	public ElementSpaceLogic() {
+		initMap();
+	}
 
-	public static boolean isComplete(ElementSpace elementSpace) {
+	public boolean isComplete(ElementSpace elementSpace) {
 		return getValidAdditions(elementSpace).isEmpty();
 	}
 
-	public static void initMap() {
+	public void initMap() {
 		recipeMap = new HashMap<ElementColor, List<List<ElementColor>>>();
 
 		try {
@@ -53,11 +57,8 @@ public class ElementSpaceLogic {
 		}
 	}
 
-	public static List<ElementColor> getValidAdditions(ElementSpace elementSpace) {
+	public List<ElementColor> getValidAdditions(ElementSpace elementSpace) {
 		Set<ElementColor> validAdditions = new TreeSet<ElementColor>();
-
-		if (recipeMap == null)
-			initMap();
 
 		for (List<ElementColor> recipe : recipeMap.get(elementSpace.color)) {
 			List<ElementColor> remaining = new ArrayList<ElementColor>(recipe);

@@ -14,42 +14,44 @@ import underlings.element.utilities.ElementSpaceLogic;
 public class BlackTests {
 	
 	ElementSpace blackElementSpace;
+	ElementSpaceLogic logic;
 	
 	@Before
 	public void init() {
 		this.blackElementSpace = new ElementSpace(ElementColor.BLACK);
+		this.logic = new ElementSpaceLogic();
 	}
 	
 	@Test
 	public void testRed() {
 		this.blackElementSpace.addElements(new Element(ElementColor.RED));
-		assertFalse(ElementSpaceLogic.isComplete(this.blackElementSpace));
+		assertFalse(logic.isComplete(this.blackElementSpace));
 	}
 	
 	@Test
 	public void testBlue() {
 		this.blackElementSpace.addElements(new Element(ElementColor.BLUE));
-		assertFalse(ElementSpaceLogic.isComplete(this.blackElementSpace));
+		assertFalse(logic.isComplete(this.blackElementSpace));
 	}
 	
 	@Test
 	public void testYellow() {
 		this.blackElementSpace.addElements(new Element(ElementColor.YELLOW));
-		assertFalse(ElementSpaceLogic.isComplete(this.blackElementSpace));
+		assertFalse(logic.isComplete(this.blackElementSpace));
 	}
 	
 	@Test
 	public void testRedBlue() {
 		this.blackElementSpace.addElements(new Element(ElementColor.RED));
 		this.blackElementSpace.addElements(new Element(ElementColor.BLUE));
-		assertFalse(ElementSpaceLogic.isComplete(this.blackElementSpace));
+		assertFalse(logic.isComplete(this.blackElementSpace));
 	}
 	
 	@Test
 	public void testBlueYellow() {
 		this.blackElementSpace.addElements(new Element(ElementColor.BLUE));
 		this.blackElementSpace.addElements(new Element(ElementColor.YELLOW));
-		assertFalse(ElementSpaceLogic.isComplete(this.blackElementSpace));
+		assertFalse(logic.isComplete(this.blackElementSpace));
 	}
 	
 	@Test
@@ -57,7 +59,7 @@ public class BlackTests {
 		this.blackElementSpace.addElements(new Element(ElementColor.RED));
 		this.blackElementSpace.addElements(new Element(ElementColor.BLUE));
 		this.blackElementSpace.addElements(new Element(ElementColor.YELLOW));
-		assertTrue(ElementSpaceLogic.isComplete(this.blackElementSpace));
+		assertTrue(logic.isComplete(this.blackElementSpace));
 	}
 	
 }

@@ -19,44 +19,46 @@ public class OrangeTests {
 	private ElementColor desired = ElementColor.ORANGE;
 	private ElementColor elementOneColor = ElementColor.RED;
 	private ElementColor elementTwoColor = ElementColor.YELLOW;
+	ElementSpaceLogic logic;
 	
 	@Before
 	public void init() {
 		this.elementSpace = new ElementSpace(this.desired);
 		this.elementOne = new Element(this.elementOneColor);
 		this.elementTwo = new Element(this.elementTwoColor);
+		this.logic = new ElementSpaceLogic();
 	}
 	
 	@Test
 	public void testRed() {
 		this.elementSpace.addElements(this.elementOne);
-		assertFalse(ElementSpaceLogic.isComplete(this.elementSpace));
+		assertFalse(logic.isComplete(this.elementSpace));
 	}
 	
 	@Test
 	public void testYellow() {
 		this.elementSpace.addElements(this.elementTwo);
-		assertFalse(ElementSpaceLogic.isComplete(this.elementSpace));
+		assertFalse(logic.isComplete(this.elementSpace));
 	}
 	
 	@Test
 	public void testRedThenYellow() {	
 		this.elementSpace.addElements(this.elementOne);
 		this.elementSpace.addElements(this.elementTwo);
-		assertTrue(ElementSpaceLogic.isComplete(this.elementSpace));
+		assertTrue(logic.isComplete(this.elementSpace));
 	}
 	
 	@Test
 	public void testYellowThenRed() {
 		this.elementSpace.addElements(this.elementTwo);
 		this.elementSpace.addElements(this.elementOne);
-		assertTrue(ElementSpaceLogic.isComplete(this.elementSpace));
+		assertTrue(logic.isComplete(this.elementSpace));
 	}
 	
 	@Test
 	public void testRedAndYellow() {
 		this.elementSpace.addElements(this.elementOne, this.elementTwo);
-		assertTrue(ElementSpaceLogic.isComplete(this.elementSpace));
+		assertTrue(logic.isComplete(this.elementSpace));
 	}
 	
 }
