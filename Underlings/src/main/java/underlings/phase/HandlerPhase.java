@@ -6,11 +6,10 @@ import java.util.List;
 import java.util.Map;
 
 import underlings.element.ElementBag;
-import underlings.card.Card;
 import underlings.game.HatchingGround;
 import underlings.gui.GUI;
 import underlings.handler.Handler;
-import underlings.handler.HandlerState;
+import underlings.handler.HandlerChoice;
 import underlings.player.Player;
 
 public class HandlerPhase implements Phase {
@@ -29,28 +28,30 @@ public class HandlerPhase implements Phase {
 		
 		while (!allHandlersPlayed) {
 			allHandlersPlayed = true;
+			
 			for (Player player : players) {
 				
 				List<Handler> playersHandlers = unmovedHandlers.get(player);
 				
 				if (!playersHandlers.isEmpty()) {
 					allHandlersPlayed = false;
+				
+					Handler chosenHandler = gui.promptHandler.promptChoice("Choose a Handler", playersHandlers);
 					
-					Handler chosenHandler = gui.promptHandler.promptHandler(playersHandlers);
+					List<HandlerChoice> possibleChoices = chosenHandler.getPossibleChoices();
 					
-					List<HandlerState> possibleStates = chosenHandler.getPossibleStates();
+					HandlerChoice chosenChoice = gui.promptHandler.promptChoice("Choose a Movement", possibleChoices);
 					
-					HandlerState chosenState = gui.promptHandler.promptHandlerState(possibleStates);
 					
-					List<Card> unclaimedEggs = hatchingGround.getUnclaimedEggs();
 					
-					Card chosenCard = gui.promptHandler.promptCardSelection(unclaimedEggs);
+					//List<Card> unclaimedEggs = hatchingGround.getUnclaimedEggs();
 					
-					chosenHandler.moveToState(chosenState); // TODO: Refactor into setHandler
-					chosenCard.handler = chosenHandler;
-					chosenHandler.setLocation(chosenCard.name);
+					//Card chosenCard = gui.promptHandler.promptCardSelection(unclaimedEggs);
+					//chosenHandler.moveToState(chosenState); // TODO: Refactor into setHandler
+					//chosenCard.handler = chosenHandler;
+					//chosenHandler.setLocation(chosenCard.name);
 					
-					playersHandlers.remove(chosenHandler);
+					//playersHandlers.remove(chosenHandler);
 					displayMethod.run();
 					
 				}

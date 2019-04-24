@@ -12,7 +12,7 @@ import underlings.gui.GUI;
 import underlings.handler.Handler;
 import underlings.player.Player;
 
-public class ElementPhase implements Phase {
+public class CollectionPhase implements Phase {
 
 	@Override
 	public void execute(List<Player> players, GUI gui, ElementBag elementBag, HatchingGround hatchingGround,
@@ -25,9 +25,8 @@ public class ElementPhase implements Phase {
 				elementGivers.add(handler.elementGiver);
 
 			while (!elementGivers.isEmpty()) {
-				ElementGiver chosenElementGiver = gui.promptHandler.promptElementGiver(elementGivers);
-
-				DrawChoice chosenDrawChoice = gui.promptHandler.promptElementDrawChoice(chosenElementGiver.drawChoices);
+				ElementGiver chosenElementGiver = gui.promptHandler.promptChoice("Choose an Element Giver", elementGivers);
+				DrawChoice chosenDrawChoice = gui.promptHandler.promptChoice("Choose a Draw", chosenElementGiver.drawChoices);
 
 				Element drawnElement = elementBag.drawRandomElement();
 				player.addElement(drawnElement);

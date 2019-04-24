@@ -14,7 +14,7 @@ import underlings.gui.GUI;
 import underlings.gui.LameGUI;
 import underlings.gui.LamePrompt;
 import underlings.handler.HandlerFactory;
-import underlings.phase.ElementPhase;
+import underlings.phase.CollectionPhase;
 import underlings.phase.HandlerPhase;
 import underlings.phase.Phase;
 import underlings.player.PlayerFactory;
@@ -39,7 +39,7 @@ public class Main {
 		Game game = new Game(gui, hatchingGround, playerFactory, elementBag);
 		
 		List<Phase> phases = new ArrayList<>();
-		phases.add(new ElementPhase());
+		phases.add(new CollectionPhase());
 		phases.add(new HandlerPhase());
 		
 		game.start(phases);

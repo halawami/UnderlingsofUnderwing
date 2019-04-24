@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.easymock.EasyMock;
-import org.junit.Test;
+import org.junit.Ignore;
 
 import underlings.element.Element;
 import underlings.element.ElementBag;
@@ -17,17 +17,16 @@ import underlings.gui.DrawChoice;
 import underlings.gui.GUI;
 import underlings.gui.PromptHandler;
 import underlings.handler.Handler;
-import underlings.phase.ElementPhase;
+import underlings.phase.CollectionPhase;
 import underlings.phase.Phase;
 import underlings.player.Player;
 
 public class ElementPhaseTests {
 
-	@SuppressWarnings("unchecked")
-	@Test
+	@Ignore
 	public void testExecuteOnePlayerTwoRandom() {
 
-		Phase elementPhase = new ElementPhase();
+		Phase elementPhase = new CollectionPhase();
 
 		Player player = EasyMock.createMock(Player.class);
 		PromptHandler promptHandler = EasyMock.mock(PromptHandler.class);

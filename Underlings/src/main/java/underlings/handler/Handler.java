@@ -3,9 +3,10 @@ package underlings.handler;
 import java.util.List;
 
 import underlings.element.ElementGiver;
+import underlings.gui.Choice;
 import underlings.gui.DrawChoice;
 
-public class Handler {
+public class Handler implements Choice {
 
 	public ElementGiver elementGiver;
 	private HandlerState state;
