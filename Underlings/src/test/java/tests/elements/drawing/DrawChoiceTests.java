@@ -48,6 +48,41 @@ public class DrawChoiceTests {
 		this.testDrawChoice(DrawChoice.RED, ElementColor.RED);
 	}
 	
+	@Test
+	public void testYellow() {
+		this.testDrawChoice(DrawChoice.YELLOW, ElementColor.YELLOW);
+	}
+	
+	@Test
+	public void testBlue() {
+		this.testDrawChoice(DrawChoice.BLUE, ElementColor.BLUE);
+	}
+	
+	@Test
+	public void testGreen() {
+		this.testDrawChoice(DrawChoice.GREEN, ElementColor.GREEN);
+	}
+	
+	@Test
+	public void testOrange() {
+		this.testDrawChoice(DrawChoice.ORANGE, ElementColor.ORANGE);
+	}
+	
+	@Test
+	public void testPurple() {
+		this.testDrawChoice(DrawChoice.PURPLE, ElementColor.PURPLE);
+	}
+	
+	@Test
+	public void testBlack() {
+		this.testDrawChoice(DrawChoice.BLACK, ElementColor.BLACK);
+	}
+	
+	@Test
+	public void testWhite() {
+		this.testDrawChoice(DrawChoice.WHITE, ElementColor.WHITE);
+	}
+	
 	private void testDrawChoice(DrawChoice drawChoice, ElementColor color) {
 		Element element = this.elementBag.drawElement(drawChoice);
 		
