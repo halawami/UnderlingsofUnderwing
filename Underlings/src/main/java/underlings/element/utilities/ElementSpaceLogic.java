@@ -29,7 +29,7 @@ public class ElementSpaceLogic {
 		recipeMap = new HashMap<ElementColor, List<List<ElementColor>>>();
 
 		try {
-			BufferedReader br = new BufferedReader(new FileReader("docs\\DefaultRecipeList.txt"));
+			BufferedReader br = new BufferedReader(new FileReader(".\\docs\\DefaultRecipeList.txt"));
 
 			String line = br.readLine();
 			while (line != null) {
