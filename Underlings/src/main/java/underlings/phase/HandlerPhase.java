@@ -21,7 +21,7 @@ public class HandlerPhase extends RotationPhase {
 	}
 
 	private Map<Player, List<Handler>> unmovedHandlers;
-	private HandlerMovementLogic handlerMovementLogic = new HandlerMovementLogic();
+	private HandlerMovementLogic handlerMovementLogic = new HandlerMovementLogic(this.hatchingGround, this.gui);
 
 	@Override
 	public void setup() {

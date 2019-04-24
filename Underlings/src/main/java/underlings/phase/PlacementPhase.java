@@ -71,6 +71,7 @@ public class PlacementPhase extends RotationPhase {
 						// play element
 						space.addElements(element);
 						player.removeElement(element);
+						displayMethod.run();
 
 						// if more elements can be played, ask if done
 						// if not done then loop

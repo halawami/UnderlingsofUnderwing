@@ -13,5 +13,10 @@ public class Element implements Choice {
 	public ElementColor getColor() {
 		return this.elementColor;
 	}
+	
+	@Override
+	public String toString() {
+		return elementColor.toString();
+	}
 
 }
