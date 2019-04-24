@@ -10,6 +10,6 @@ public class AddElementsToAllAdjacentEggsEffect extends HatchingGroundEffect {
 
     @Override
     public void apply(HatchingGround hatchingGround) {
-        //Todo: implement this method
+
     }
 }
