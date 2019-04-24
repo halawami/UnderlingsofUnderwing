@@ -175,5 +175,258 @@
         "elementColors" : ["PURPLE"]
       }
     ]
+  },
+  {
+    "name": "TWILIGHT WHELP",
+    "points": 3,
+    "temperature": "COOL",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_2"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": ["PURPLE", "RED"]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["RED"]
+      }
+    ]
+  },
+  {
+    "name": "HARVEST WHELP",
+    "points": 6,
+    "temperature": "WARM",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "ORANGE",
+        "position": "L3_2"
+      },
+      {
+        "color": "WHITE",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": ["YELLOW", "RED"]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["ORANGE"]
+      }
+    ]
+  },
+  {
+    "name": "VOID WHELP",
+    "points": 3,
+    "temperature": "COOL",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "BLUE",
+        "position": "L3_2"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": ["PURPLE", "BLUE"]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["PURPLE"]
+      }
+    ]
+  },
+  {
+    "name": "UNDINE WHELP",
+    "points": 3,
+    "temperature": "COOL",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "BLUE",
+        "position": "L3_2"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": ["BLUE", "GREEN"]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["BLUE"]
+      }
+    ]
+  },
+  {
+    "name": "SUNSTONE WHELP",
+    "points": 3,
+    "temperature": "WARM",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "YELLOW",
+        "position": "L3_2"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": ["YELLOW", "ORANGE"]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["YELLOW"]
+      }
+    ]
+  },
+  {
+    "name": "STORM WHELP",
+    "points": 6,
+    "temperature": "BLUE",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "PURPLE",
+        "position": "L3_2"
+      },
+      {
+        "color": "BLACK",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": ["BLUE", "RED"]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["PURPLE"]
+      }
+    ]
+  },
+  {
+    "name": "STEAM WHELP",
+    "points": 3,
+    "temperature": "WARM",
+    "family": "COMPLEMENTARY",
+    "elementSpaces": [
+      {
+        "color": "BLUE",
+        "position": "L3_2"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": ["BLUE", "ORANGE"]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["ORANGE"]
+      }
+    ]
+  },
+  {
+    "name": "NATURE WHELP",
+    "points": 3,
+    "temperature": "NEUTRAL",
+    "family": "COMPLEMENTARY",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_2"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": ["RED", "GREEN"]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["GREEN"]
+      }
+    ]
+  },
+  {
+    "name": "ETHEREAL WHELP",
+    "points": 3,
+    "temperature": "COOL",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_2"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": ["YELLOW", "GREEN"]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["GREEN"]
+      }
+    ]
   }
+
 ]

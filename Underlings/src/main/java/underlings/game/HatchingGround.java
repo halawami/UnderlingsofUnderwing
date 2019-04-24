@@ -1,14 +1,15 @@
 package underlings.game;
-import java.util.ArrayList;
-import java.util.List;
 
 import underlings.card.Card;
 import underlings.gui.GUI;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class HatchingGround {
 
 	private int height, width;
-	private Card[][] cards;
+	public Card[][] cards;
 	private Deck deck;
 
 	public HatchingGround(Deck deck) {
@@ -55,4 +56,8 @@ public class HatchingGround {
 		return unclaimedEggs;
 	}
 
+
+	public void getAdjacentCards(Card centerCard) {
+
+	}
 }
