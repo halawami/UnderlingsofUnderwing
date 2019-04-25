@@ -15,6 +15,21 @@ import underlings.handler.HandlerState;
 public class LogicTests {
 
 	@Test
+	public void testStay() {
+		HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
+		GUI gui = EasyMock.mock(GUI.class);
+		HandlerMovementLogic logic = new HandlerMovementLogic(hatchingGround, gui);
+		Handler handler = new Handler(HandlerState.READY_ROOM);
+		
+		EasyMock.replay(hatchingGround, gui);
+		
+		logic.move(handler, HandlerChoice.STAY);
+		
+		EasyMock.verify(hatchingGround, gui);
+		assertEquals(HandlerState.READY_ROOM, handler.getState());
+	}
+	
+	@Test
 	public void testReadyRoom() {
 		HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
 		GUI gui = EasyMock.mock(GUI.class);
