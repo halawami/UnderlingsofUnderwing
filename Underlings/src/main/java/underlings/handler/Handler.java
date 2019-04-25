@@ -10,10 +10,10 @@ public class Handler implements Choice {
 
 	public ElementGiver elementGiver;
 	private HandlerState state;
+	private String location;
 
 	public Handler(HandlerState state) {
-		this.state = state;
-		this.elementGiver = new ElementGiver("Handler " + state.displayString, DrawChoice.RANDOM);
+		this.moveToState(state);
 	}
 
 	public HandlerState getState() {
@@ -22,6 +22,8 @@ public class Handler implements Choice {
 
 	public void moveToState(HandlerState state) {
 		this.state = state;
+		System.out.println(state);
+		this.elementGiver = new ElementGiver("Handler " + state.displayString, DrawChoice.RANDOM);
 	}
 	
 	public List<HandlerState> getPossibleStates() {
@@ -34,10 +36,13 @@ public class Handler implements Choice {
 
 	@Override
 	public String toString() {
-		return this.elementGiver.toString();
+		if (this.state == HandlerState.CARD || this.state == HandlerState.FIELD || this.state == HandlerState.FIELD_WHITESPACE) {
+			return "Handler on " + this.location;
+		}
+		return "Handler " + this.state.displayString;
 	}
 
 	public void setLocation(String location) {
-		this.elementGiver.display = "Handler on " + location;
+		this.location = location;
 	}
 }
