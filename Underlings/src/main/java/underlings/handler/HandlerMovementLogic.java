@@ -16,19 +16,26 @@ public class HandlerMovementLogic {
 	
 	public void move(Handler handler, HandlerChoice choice) {
 		
-		if (choice != HandlerChoice.STAY) {
-			if (choice == HandlerChoice.CARD) {
-				Card chosenCard = this.gui.getCard(this.hatchingGround.getUnclaimedEggs());
-				chosenCard.handler = handler;
-				handler.setLocation(chosenCard.name);
-			} else if (choice == HandlerChoice.FIELD) {
-
-			}
-			if (choice == HandlerChoice.FIELD_WHITESPACE) {
-
-			}
-			handler.moveToState(choice.getState());
+		switch (choice) {
+		case CARD:
+			Card chosenCard = this.gui.getCard(this.hatchingGround.getUnclaimedEggs());
+			chosenCard.handler = handler;
+			handler.setLocation(chosenCard.name);
+			break;
+		case FIELD:
+			
+			break;
+		case FIELD_WHITESPACE:
+			
+			break;
+		case STAY:
+			return;
+		default:
+			break;
 		}
+		
+		handler.moveToState(choice.getState());
+		
 
 	}
 	
