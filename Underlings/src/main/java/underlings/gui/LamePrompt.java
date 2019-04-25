@@ -7,8 +7,8 @@ import javax.swing.JOptionPane;
 public class LamePrompt implements PromptHandler {
 
 	@Override
-	public <T extends Choice> T promptChoice(String prompt, List<T> choices) {
-		int index = this.displayOptions(choices.toArray(), "", prompt);
+	public <T extends Choice> T promptChoice(String prompt, List<T> choices, int playerId) {
+		int index = this.displayOptions(choices.toArray(), "Player "+playerId, prompt);
 		return choices.get(index);
 	}
 	
@@ -18,14 +18,14 @@ public class LamePrompt implements PromptHandler {
 	}
 
 	@Override
-	public boolean promptDecision(String question) {
-		int option = JOptionPane.showConfirmDialog(null, question, "", JOptionPane.YES_NO_OPTION);
+	public boolean promptDecision(String question, int playerId) {
+		int option = JOptionPane.showConfirmDialog(null, question, "Player "+playerId, JOptionPane.YES_NO_OPTION);
 		return option == JOptionPane.YES_OPTION;
 	}
 
 	@Override
-	public void displayMessage(String message) {
-		JOptionPane.showMessageDialog(null, message, "", JOptionPane.WARNING_MESSAGE);
+	public void displayMessage(String message, int playerId) {
+		JOptionPane.showMessageDialog(null, message, "Player "+playerId, JOptionPane.WARNING_MESSAGE);
 	}
 
 	@Override

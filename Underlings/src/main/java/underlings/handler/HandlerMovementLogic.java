@@ -17,12 +17,12 @@ public class HandlerMovementLogic {
 		this.field = field;
 	}
 	
-	public void move(Handler handler, HandlerChoice choice) {
+	public void move(Handler handler, HandlerChoice choice, int playerId) {
 		
 		switch (choice) {
 		case CARD:
 			handler.moveToState(choice.getState());
-			Card chosenCard = this.gui.getCard(this.hatchingGround.getUnclaimedEggs());
+			Card chosenCard = this.gui.getCard(this.hatchingGround.getUnclaimedEggs(), playerId);
 			chosenCard.handler = handler;
 			handler.setLocation(chosenCard.name);
 			break;

@@ -17,24 +17,24 @@ public class GUI {
 		this.display = display;
 	}
 
-	public DrawChoice getDrawChoice(List<ElementGiver> elementGivers) {
-		ElementGiver elementGiver = this.promptHandler.promptChoice("Choose and Element Giver", elementGivers);
+	public DrawChoice getDrawChoice(List<ElementGiver> elementGivers, int playerId) {
+		ElementGiver elementGiver = this.promptHandler.promptChoice("Choose an Element Giver", elementGivers, playerId);
 		elementGivers.remove(elementGiver);
-		return this.promptHandler.promptChoice("Choose a Draw Choice", elementGiver.drawChoices);
+		return this.promptHandler.promptChoice("Choose a Draw Choice", elementGiver.drawChoices, playerId);
 	}
 
-	public HandlerDecision getHandlerDecision(List<Handler> handlers) {
-		Handler handler = this.promptHandler.promptChoice("Choose a Handler", handlers);
+	public HandlerDecision getHandlerDecision(List<Handler> handlers, int playerId) {
+		Handler handler = this.promptHandler.promptChoice("Choose a Handler", handlers, playerId);
 		handlers.remove(handler);
 		
 		List<HandlerChoice> possibleChoices = handler.getPossibleChoices();
-		HandlerChoice handlerChoice = this.promptHandler.promptChoice("Choose a movement for " + handler, possibleChoices);
+		HandlerChoice handlerChoice = this.promptHandler.promptChoice("Choose a movement for " + handler, possibleChoices, playerId);
 		
 		return new HandlerDecision(handler, handlerChoice);
 	}
 
-	public Card getCard(List<Card> cards) {
-		Card card = this.promptHandler.promptChoice("Choose a card", cards);
+	public Card getCard(List<Card> cards, int playerId) {
+		Card card = this.promptHandler.promptChoice("Choose a card", cards, playerId);
 		return card;
 	}
 

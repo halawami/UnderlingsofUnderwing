@@ -49,17 +49,17 @@ public class PlacementPhase extends RotationPhase {
 				}
 
 				if (cards.isEmpty()) {
-					this.gui.promptHandler.displayMessage("Player has no valid placements");
+					this.gui.promptHandler.displayMessage("Player has no valid placements", player.getPlayerId());
 				} else {
 					// choose card
-					Card card = this.gui.promptHandler.promptChoice("Pick a card to place an element on.", cards);
+					Card card = this.gui.promptHandler.promptChoice("Pick a card to place an element on.", cards, player.getPlayerId());
 
 					// get element spaces that can be played on
 					List<ElementSpace> spaces = logic.getPlayableSpaces(card, elements);
 
 					// choose element space
 					ElementSpace space = this.gui.promptHandler.promptChoice("Pick an element space to place an element on.",
-							spaces);
+							spaces, player.getPlayerId());
 
 					boolean moreMoves = true;
 					while (moreMoves) {
@@ -67,7 +67,7 @@ public class PlacementPhase extends RotationPhase {
 						List<Element> choices = this.playableElements(logic.getValidAdditions(space), player.getElements());
 
 						// choose element to play
-						Element element = this.gui.promptHandler.promptChoice("Pick an element to place", choices);
+						Element element = this.gui.promptHandler.promptChoice("Pick an element to place", choices, player.getPlayerId());
 
 						// play element
 						space.addElements(element);
@@ -80,7 +80,7 @@ public class PlacementPhase extends RotationPhase {
 						if (choices.isEmpty())
 							moreMoves = false;
 						else
-							moreMoves = this.gui.promptHandler.promptDecision("Would you like to place another element?");
+							moreMoves = this.gui.promptHandler.promptDecision("Would you like to place another element?", player.getPlayerId());
 					}
 				}
 			}

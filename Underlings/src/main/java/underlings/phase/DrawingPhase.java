@@ -25,7 +25,7 @@ public class DrawingPhase extends SequentialPhase {
 	@Override
 	public void turn(Player player) {
 
-		DrawChoice drawChoice = this.gui.getDrawChoice(this.elementGivers.get(player));
+		DrawChoice drawChoice = this.gui.getDrawChoice(this.elementGivers.get(player), player.getPlayerId());
 
 		Element element = this.elementBag.drawElement(drawChoice);
 		player.addElement(element);

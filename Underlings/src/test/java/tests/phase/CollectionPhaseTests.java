@@ -22,7 +22,7 @@ public class CollectionPhaseTests {
 
 	@Test
 	public void testExecuteOnePlayerTwoRandom() {
-		Player player = new Player(6, new HandlerFactory());
+		Player player = new Player(6, new HandlerFactory(), 0);
 		List<Player> players = new ArrayList<>();
 		players.add(player);
 		

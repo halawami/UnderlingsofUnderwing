@@ -57,7 +57,7 @@ public class LogicTests {
 		EasyMock.expect(this.gui.getFieldSpace()).andReturn(0);
 		EasyMock.replay(this.hatchingGround, this.gui);
 		
-		this.logic.move(handler, HandlerChoice.FIELD);
+		this.logic.move(handler, HandlerChoice.FIELD, 0);
 		
 		EasyMock.verify(this.hatchingGround, this.gui);
 		assertEquals(HandlerState.FIELD, handler.getState());
@@ -70,10 +70,10 @@ public class LogicTests {
 		Card card = new Card();
 		
 		EasyMock.expect(this.hatchingGround.getUnclaimedEggs()).andReturn(Collections.emptyList());
-		EasyMock.expect(this.gui.getCard(Collections.emptyList())).andReturn(card);
+		EasyMock.expect(this.gui.getCard(Collections.emptyList(), 0)).andReturn(card);
 		EasyMock.replay(this.hatchingGround, this.gui);
 		
-		this.logic.move(handler, HandlerChoice.CARD);
+		this.logic.move(handler, HandlerChoice.CARD, 0);
 		
 		EasyMock.verify(this.hatchingGround, this.gui);
 		assertEquals(HandlerState.CARD, handler.getState());
@@ -87,7 +87,7 @@ public class LogicTests {
 		
 		EasyMock.replay(this.hatchingGround, this.gui);
 		
-		this.logic.move(handler, HandlerChoice.FIELD_WHITESPACE);
+		this.logic.move(handler, HandlerChoice.FIELD_WHITESPACE, 0);
 		
 		EasyMock.verify(this.hatchingGround, this.gui);
 		assertEquals(HandlerState.FIELD_WHITESPACE, handler.getState());
@@ -100,7 +100,7 @@ public class LogicTests {
 		
 		EasyMock.replay(this.hatchingGround, this.gui);
 		
-		this.logic.move(handler, HandlerChoice.BREAK_ROOM);
+		this.logic.move(handler, HandlerChoice.BREAK_ROOM, 0);
 		
 		EasyMock.verify(this.hatchingGround, this.gui);
 		assertEquals(HandlerState.BREAK_ROOM, handler.getState());
@@ -112,7 +112,7 @@ public class LogicTests {
 		
 		EasyMock.replay(this.hatchingGround, this.gui);
 		
-		this.logic.move(handler, HandlerChoice.STAY);
+		this.logic.move(handler, HandlerChoice.STAY, 0);
 		
 		EasyMock.verify(this.hatchingGround, this.gui);
 		assertEquals(HandlerState.READY_ROOM, handler.getState());
@@ -124,7 +124,7 @@ public class LogicTests {
 		
 		EasyMock.replay(this.hatchingGround, this.gui);
 		
-		this.logic.move(handler, HandlerChoice.READY_ROOM);
+		this.logic.move(handler, HandlerChoice.READY_ROOM, 0);
 		
 		EasyMock.verify(this.hatchingGround, this.gui);
 		assertEquals(HandlerState.READY_ROOM, handler.getState());

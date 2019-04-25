@@ -19,8 +19,9 @@ public class Player {
 	private HandlerFactory handlerFactory;
 	private List<Element> elements;
 	private ElementSpaceLogic logic;
+	private int playerId;
 
-	public Player(int maxHandlers, HandlerFactory handlerFactory) {
+	public Player(int maxHandlers, HandlerFactory handlerFactory, int playerId) {
 		this.handlers = new ArrayList<Handler>();
 		this.elements = new ArrayList<Element>();
 		this.handlerFactory = handlerFactory;
@@ -31,6 +32,7 @@ public class Player {
 		this.reached12Points = false;
 		this.reached25Points = false;
 		this.logic = new ElementSpaceLogic();
+		this.playerId = playerId;
 	}
 
 	public int getHandlerCount() {
@@ -102,5 +104,9 @@ public class Player {
 		}
 		
 		return elementGivers;
+	}
+
+	public int getPlayerId() {
+		return this.playerId;
 	}
 }
