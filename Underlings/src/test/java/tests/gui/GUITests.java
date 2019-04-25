@@ -8,9 +8,9 @@ import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
 
+import underlings.card.Card;
 import underlings.element.ElementBag;
 import underlings.element.ElementFactory;
-import underlings.card.Card;
 import underlings.game.Deck;
 import underlings.game.Game;
 import underlings.game.HatchingGround;
