@@ -26,6 +26,7 @@ public class HandlerPhase extends RotationPhase {
 
 	@Override
 	public void setup() {
+		
 		this.unmovedHandlers = new HashMap<>();
 
 		for (Player player : this.players) {
@@ -43,6 +44,7 @@ public class HandlerPhase extends RotationPhase {
 		HandlerDecision decision = this.gui.getHandlerDecision(playersHandlers);
 		this.handlerMovementLogic.move(decision.handler, decision.choice);
 
+		System.out.println(playersHandlers.size());
 		this.phaseComplete = playersHandlers.size() == 0;
 
 	}

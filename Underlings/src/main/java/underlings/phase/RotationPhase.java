@@ -31,6 +31,7 @@ public abstract class RotationPhase implements Phase {
 
 	@Override
 	public void execute() {
+		this.phaseComplete = false;
 		this.setup();
 
 		while (!this.phaseComplete) {
