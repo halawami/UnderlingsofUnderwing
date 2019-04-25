@@ -23,7 +23,7 @@ public class DragonPhase extends SequentialPhase {
 
 	@Override
 	public void setup() {
-		this.completeEggs = hatchingGround.pullAndReplaceCompleteEggs();
+		this.completeEggs = hatchingGround.getUnclaimedEggs();
 		for (Card completeEgg : this.completeEggs) {
 			for (ElementSpace space : completeEgg.elementSpaces) {
 				for (ElementColor color : space.elements) {

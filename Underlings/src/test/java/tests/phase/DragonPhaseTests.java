@@ -291,9 +291,9 @@ public class DragonPhaseTests {
 		Player player = EasyMock.mock(Player.class);
 		List<Player> players = Arrays.asList(player);
 
-		List<Card> completeEggs = new ArrayList<>();
+		List<Card> unhatchedEggs = new ArrayList<>();
 
-		EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(completeEggs);
+		EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(unhatchedEggs);
 		
 		EasyMock.replay(hatchingGround, bag, player);
 		
@@ -303,11 +303,41 @@ public class DragonPhaseTests {
 		EasyMock.verify(hatchingGround, bag, player);
 	}
 	
+	@Test
+	public void testOneUncompletedEgg(){
+		HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
+		ElementBag bag = EasyMock.mock(ElementBag.class);
+		Player player = EasyMock.mock(Player.class);
+		List<Player> players = Arrays.asList(player);
+
+		Card card = new Card();
+		ElementSpace[] spaces = { new ElementSpace(ElementColor.PURPLE) };
+		card.elementSpaces = spaces;
+		spaces[0].elements = Arrays.asList(ElementColor.BLUE, ElementColor.RED);
+		bag.putElement(ElementColor.BLUE);
+		bag.putElement(ElementColor.RED);
+		
+		Handler handler = EasyMock.mock(Handler.class);
+		card.handler = handler;
+		EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList()).anyTimes();
+		EasyMock.expect(player.getUnhatchedEggs()).andReturn(Arrays.asList(card)).anyTimes();
+		EasyMock.expect(player.getHandlerCount()).andReturn(1).anyTimes();
+		EasyMock.expect(player.getHandlers()).andReturn(Arrays.asList(handler)).anyTimes();
+
+		handler.moveToState(HandlerState.INCUBATION);
+		
+		EasyMock.replay(hatchingGround, bag, player, handler);
+		Phase phase = new DragonPhase(players, null, bag, hatchingGround, null, null);
+		phase.setup();
+		phase.turn(player);
+		EasyMock.verify(hatchingGround, bag, player, handler);	
+	}
+	
 	// TODO: add more tests
 	// 1. add test for two eggs, where one is not the player's DONE
 	// 2. add test for one egg with two effects DONE
-	// 3. add test for no eggs
-	// 4. add tests where the player has 1 unhatched egg
+	// 3. add test for no eggs DONE
+	// 4. add tests where the player has 1 unhatched egg 
 	// 5. add tests where the player has 2 unhatched eggs
 	// 6. add tests where the player has 0 unhatched eggs
 }
