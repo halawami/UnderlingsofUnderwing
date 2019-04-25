@@ -38,8 +38,10 @@ public class DragonPhase extends SequentialPhase {
 	// run the positive effects
 	@Override
 	public void turn(Player player) {
-		player.getHandlers().get(0).moveToState(HandlerState.READY_ROOM);
-		completeEggs.get(0).domesticEffects[0].apply(player);
+		for(Card completeEgg : completeEggs) {
+			completeEgg.handler.moveToState(HandlerState.READY_ROOM);
+			completeEgg.domesticEffects[0].apply(player);
+		}
 	}
 
 }
