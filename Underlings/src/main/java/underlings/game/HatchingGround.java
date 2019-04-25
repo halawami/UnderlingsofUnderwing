@@ -66,9 +66,9 @@ public class HatchingGround implements Iterable<Card> {
 		cardsToReturn.add(this.cards[0][2]);
 		cardsToReturn.add(this.cards[1][0]);
 		cardsToReturn.add(this.cards[1][2]);
-		cardsToReturn.add(this.cards[2][0]);
 		cardsToReturn.add(this.cards[2][1]);
 		cardsToReturn.add(this.cards[2][2]);
+		cardsToReturn.add(this.cards[2][0]);
 		return cardsToReturn;
 	}
 

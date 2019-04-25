@@ -20,17 +20,13 @@ public class AdjacentCardsTests {
         Card[][] mockedCards = createMockedCards();
         hatchingGround.cards = mockedCards;
         List<Card> returnedCards = hatchingGround.getAdjacentCards(mockedCards[1][1]);
-        int ctr = 0;
         for(int i = 0; i < 3; i++){
         	for(int j = 0; j < 3; j++){
         		if(i != 1 || j != 1){
         			assertTrue(returnedCards.contains(mockedCards[i][j]));
-        			ctr++;
-        			System.out.println(i + " " + j);
         		}
         	}
         }
-        System.out.println(ctr);
         assertEquals(8, returnedCards.size());
     }
 
