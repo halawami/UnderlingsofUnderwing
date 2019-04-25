@@ -373,11 +373,53 @@ public class DragonPhaseTests {
 		EasyMock.verify(hatchingGround, bag, player, handler);	
 	}
 	
+	@Test
+	public void testTwoUncompletedEgg(){
+		HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
+		ElementBag bag = EasyMock.mock(ElementBag.class);
+		Player player = EasyMock.mock(Player.class);
+		List<Player> players = Arrays.asList(player);
+
+		Card card = new Card();
+		Card card2 = new Card();
+		player.hatchedCards = new ArrayList<>();
+		Handler handler = EasyMock.mock(Handler.class);
+		ElementSpace[] spaces = { new ElementSpace(ElementColor.PURPLE) };
+		card.elementSpaces = spaces;
+		card2.elementSpaces = spaces;
+		spaces[0].elements = Arrays.asList(ElementColor.BLUE, ElementColor.RED);
+		card.handler = handler;
+		card.domesticEffects = new Effect[0];
+		card2.handler = handler;
+		card2.domesticEffects = new Effect[0];
+		bag.putElement(ElementColor.BLUE);
+		bag.putElement(ElementColor.RED);
+		EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList(card)).anyTimes();
+		EasyMock.expect(player.getUnhatchedEggs()).andReturn(Arrays.asList()).anyTimes();
+		EasyMock.expect(player.getHandlerCount()).andReturn(1).anyTimes();
+		EasyMock.expect(player.getHandlers()).andReturn(Arrays.asList(handler)).anyTimes();
+		player.addUnhatchedEggs(card);
+		EasyMock.expectLastCall().anyTimes();
+		player.clearUnhatchedEggs();
+		EasyMock.expectLastCall().anyTimes();
+		handler.moveToState(HandlerState.READY_ROOM);
+		EasyMock.expectLastCall().anyTimes();
+		handler.moveToState(HandlerState.INCUBATION);
+		EasyMock.expectLastCall().anyTimes();
+		
+		EasyMock.replay(hatchingGround, bag, player, handler);
+		
+		Phase phase = new DragonPhase(players, null, bag, hatchingGround, null, null);
+		phase.setup();
+		phase.turn(player);
+		EasyMock.verify(hatchingGround, bag, player, handler);	
+	}
+	
 	// TODO: add more tests
 	// 1. add test for two eggs, where one is not the player's DONE
 	// 2. add test for one egg with two effects DONE
 	// 3. add test for no eggs DONE
 	// 4. add tests where the player has 1 unhatched egg DONE 
-	// 5. add tests where the player has 2 unhatched eggs
+	// 5. add tests where the player has 2 unhatched eggs DONE
 	// 6. add tests where the player has 0 unhatched eggs
 }
