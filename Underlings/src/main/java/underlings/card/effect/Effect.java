@@ -11,21 +11,36 @@ public abstract class Effect {
 	private Player player;
 	private HatchingGround hatchingGround;
 	private ElementBag elementBag;
+	private Card centerCard;
+	private ElementSpaceLogic elementSpaceLogic;
 
-	public void apply() {
-
+	public Effect on(HatchingGround hatchingGround){
+		this.hatchingGround = hatchingGround;
+		return this;
 	}
 
-	public void apply(Player player);
+	public Effect on(Card card){
+		this.centerCard = card;
+		return this;
+	}
 
-	public void apply(HatchingGround hatchingGround);
+	public Effect on(ElementSpaceLogic elementSpaceLogic){
+		this.elementSpaceLogic = elementSpaceLogic;
+		return this;
+	}
 
-	public void apply(Player player, ElementBag elementBag);
+	public Effect on(ElementBag elementBag) {
+		this.elementBag = elementBag;
+		return this;
+	}
 
-	public abstract Effect on(HatchingGround mockHatchingGround);
+	public void apply() {
+		this.apply(this.centerCard, this.hatchingGround, this.elementBag, this.elementSpaceLogic);
+	}
 
-	public abstract Effect on(Card card);
+	protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag, ElementSpaceLogic elementSpaceLogic){
+		throw new UnsupportedOperationException();
+	}
 
-	public abstract void on(ElementSpaceLogic mockElementSpaceLogic);
 
 }

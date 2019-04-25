@@ -61,7 +61,7 @@ public class HatchingGround implements Iterable<Card> {
 
 
 	public List<Card> getAdjacentCards(Card centerCard) {
-
+		return null;
 	}
 
 	@Override

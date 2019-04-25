@@ -17,7 +17,7 @@ import java.util.List;
 public class HatchingGroundTests {
 
     @Test
-    public void testAddElementsToAllAdjacentEggsEffect() {
+    public void testAddElementsToAllAdjacentEggsEffectOneColor() {
         HatchingGround mockHatchingGround = EasyMock.mock(HatchingGround.class);
 
         Card card = new Card();
@@ -34,11 +34,14 @@ public class HatchingGroundTests {
         ElementBag mockElementBag = EasyMock.mock(ElementBag.class);
 
         AddElementsToAllAdjacentEggsEffect addElementsEffect = new AddElementsToAllAdjacentEggsEffect();
-        addElementsEffect.on(mockHatchingGround).on(card).on(mockElementSpaceLogic);
+        addElementsEffect.on(mockHatchingGround).on(card).on(mockElementSpaceLogic).on(mockElementBag);
+
         ElementColor[] elementColorsToAdd = new ElementColor[]{ElementColor.BLUE};
         addElementsEffect.elementColors = elementColorsToAdd;
 
         EasyMock.expect(mockHatchingGround.getAdjacentCards(card)).andReturn(mockAdjacentCards);
+        EasyMock.expect(mockElementSpaceLogic.getPlayableSpaces(Arrays.asList(elementColorsToAdd), adjacentCard)).andReturn(Arrays.asList(mockElementSpace));
+        EasyMock.expect(mockElementSpaceLogic.getValidAdditions(mockElementSpace)).andReturn(Arrays.asList(ElementColor.BLUE));
         EasyMock.expect(mockElementBag.drawElementFromList(elementColorsToAdd)).andReturn(mockElement);
         mockElementSpace.addElements(mockElement);
 

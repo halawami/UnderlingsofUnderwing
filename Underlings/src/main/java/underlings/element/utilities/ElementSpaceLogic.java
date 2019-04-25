@@ -1,16 +1,5 @@
 package underlings.element.utilities;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
-
-import underlings.card.Card;
-import underlings.element.Element;
 import underlings.card.Card;
 import underlings.element.Element;
 import underlings.element.ElementColor;
@@ -111,6 +100,18 @@ public class ElementSpaceLogic {
 		for(ElementSpace space : card.elementSpaces) {
 			for(Element element : elements)
 				if(getValidAdditions(space).contains(element.getColor())) {
+					spaces.add(space);
+					break;
+				}
+		}
+		return spaces;
+	}
+
+	public List<ElementSpace> getPlayableSpaces(List<ElementColor> elementColors, Card card) {
+		List<ElementSpace> spaces = new ArrayList<>();
+		for(ElementSpace space : card.elementSpaces) {
+			for(ElementColor color : elementColors)
+				if(getValidAdditions(space).contains(color)) {
 					spaces.add(space);
 					break;
 				}

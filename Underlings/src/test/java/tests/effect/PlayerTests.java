@@ -15,7 +15,7 @@ public class PlayerTests {
 		player.gainHandler();
 		EasyMock.replay(player);
 		
-		gainOneHandler.apply(player);
+		gainOneHandler.apply();
 		EasyMock.verify(player);
 	}
 	

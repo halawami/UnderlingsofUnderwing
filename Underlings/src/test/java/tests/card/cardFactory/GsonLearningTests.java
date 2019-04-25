@@ -133,7 +133,7 @@ public class GsonLearningTests {
         Effect wildEffect = testCard.wildEffects[0];
 
         assertTrue(wildEffect instanceof AddElementsToAllAdjacentEggsEffect);
-        assertEquals(ElementColor.WHITE, ((AddElementsToAllAdjacentEggsEffect) wildEffect).elementColor);
+        assertEquals(ElementColor.WHITE, ((AddElementsToAllAdjacentEggsEffect) wildEffect).elementColors[0]);
     }
 
     private Gson getGsonWithSimpleCardEffects() {

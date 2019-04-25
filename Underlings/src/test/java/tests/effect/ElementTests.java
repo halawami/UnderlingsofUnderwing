@@ -25,7 +25,7 @@ public class ElementTests {
 
         EasyMock.replay(player, elementBag);
 
-        gainPrimaryElement.apply(player, elementBag);
+        gainPrimaryElement.apply();
         EasyMock.verify(player, elementBag);
     }
 
@@ -44,7 +44,7 @@ public class ElementTests {
 
         EasyMock.replay(player, elementBag);
 
-        collectElementEffect.apply(player, elementBag);
+        collectElementEffect.apply();
         EasyMock.verify(player, elementBag);
     }
 
