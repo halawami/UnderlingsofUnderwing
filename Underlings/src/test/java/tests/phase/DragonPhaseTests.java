@@ -67,4 +67,40 @@ public class DragonPhaseTests {
 		phase.setup();
 		EasyMock.verify(hatchingGround, bag, player);	
 	}
+	
+
+	
+	@Test
+	public void testMultiSetup() {
+		HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
+		ElementBag bag = EasyMock.mock(ElementBag.class);
+		Player player = EasyMock.mock(Player.class);
+		List<Player> players = Arrays.asList(player);
+		
+		Card card1 = new Card();
+		ElementSpace[] spaces1 = { new ElementSpace(ElementColor.ORANGE) };
+		card1.elementSpaces = spaces1;
+		spaces1[0].elements = Arrays.asList(ElementColor.RED, ElementColor.YELLOW);
+		
+		Card card2 = new Card();
+		ElementSpace[] spaces2 = { new ElementSpace(ElementColor.PURPLE), new ElementSpace(ElementColor.RED) };
+		card2.elementSpaces = spaces2;
+		spaces2[0].elements = Arrays.asList(ElementColor.BLUE, ElementColor.RED);
+		spaces2[1].elements = Arrays.asList(ElementColor.RED);
+		
+		List<Card> completeEggs = Arrays.asList(card1, card2);
+		
+		EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(completeEggs);
+		bag.putElement(ElementColor.RED);
+		bag.putElement(ElementColor.YELLOW);
+		bag.putElement(ElementColor.BLUE);
+		bag.putElement(ElementColor.RED);
+		bag.putElement(ElementColor.RED);
+		
+		
+		EasyMock.replay(hatchingGround, bag, player);
+		Phase phase = new DragonPhase(players, null, bag, hatchingGround, null, null);
+		phase.setup();
+		EasyMock.verify(hatchingGround, bag, player);	
+	}
 }
