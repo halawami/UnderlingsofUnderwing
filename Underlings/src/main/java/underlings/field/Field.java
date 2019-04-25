@@ -24,6 +24,24 @@ public class Field {
 	public void addHandlerWhitespace(Handler handler) {
 		this.white.addHandler(handler);
 	}
+
+	public void rotate(Handler handler) {
+		FieldSpace space = this.findHandler(handler);
+		space.remove(handler);
+		int index = this.field.indexOf(space);
+		index++;
+		index %= this.field.size();
+		this.field.get(index).addHandler(handler);
+	}
+	
+	private FieldSpace findHandler(Handler handler) {
+		for (FieldSpace space : this.field) {
+			 if (space.contains(handler)) {
+				 return space;
+			 }
+		}
+		return null;
+	}
 	
 	
 	

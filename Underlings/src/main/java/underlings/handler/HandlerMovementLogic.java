@@ -1,6 +1,7 @@
 package underlings.handler;
 
 import underlings.card.Card;
+import underlings.field.Field;
 import underlings.game.HatchingGround;
 import underlings.gui.GUI;
 
@@ -9,7 +10,7 @@ public class HandlerMovementLogic {
 	private HatchingGround hatchingGround;
 	private GUI gui;
 	
-	public HandlerMovementLogic(HatchingGround hatchingGround, GUI gui) {
+	public HandlerMovementLogic(HatchingGround hatchingGround, GUI gui, Field field) {
 		this.hatchingGround = hatchingGround;
 		this.gui = gui;
 	}
@@ -26,6 +27,7 @@ public class HandlerMovementLogic {
 			
 			break;
 		case FIELD_WHITESPACE:
+			
 			
 			break;
 		case STAY:
