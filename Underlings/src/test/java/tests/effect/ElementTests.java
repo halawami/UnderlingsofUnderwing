@@ -19,7 +19,6 @@ public class ElementTests {
         Element element = new Element(ElementColor.BLUE);
 
         Effect gainPrimaryElement = new CollectPrimaryElementEffect();
-
         gainPrimaryElement.on(player).on(elementBag);
 
         EasyMock.expect(elementBag.drawRandomPrimaryElement()).andReturn(element);
@@ -32,12 +31,13 @@ public class ElementTests {
     }
 
     @Test
-    public void testCollectElement() {
+    public void testCollectElementOneColor() {
         Player player = EasyMock.mock(Player.class);
         ElementBag elementBag = EasyMock.mock(ElementBag.class);
         Element blueElement = new Element(ElementColor.BLUE);
 
         CollectElementEffect collectElementEffect = new CollectElementEffect();
+        collectElementEffect.on(player).on(elementBag);
         ElementColor[] elementChoices = new ElementColor[]{ElementColor.BLUE};
         collectElementEffect.elementChoices = elementChoices;
 

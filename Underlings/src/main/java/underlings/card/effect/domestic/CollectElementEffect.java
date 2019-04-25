@@ -12,6 +12,6 @@ public class CollectElementEffect extends ElementEffect {
 
     @Override
     protected void apply(Player player, ElementBag elementBag) {
-
+        player.addElement(elementBag.drawElementFromList(elementChoices[0]));
     }
 }
