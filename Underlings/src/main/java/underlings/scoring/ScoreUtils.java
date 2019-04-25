@@ -18,7 +18,13 @@ public class ScoreUtils {
 	}
 	
 	public int calculatePoints(List<Card> cards) {
-		return 0;
+		int points = 0;
+		
+		for (Card card : cards) {
+			points += card.points;
+		}
+		
+		return points;
 	}
 
 	public int calculateTemperature(List<Card> cards) {
