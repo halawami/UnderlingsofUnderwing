@@ -40,7 +40,8 @@ public class Game {
 		GameProperties correspondingProps = GameProperties.getPropertiesOf(numberOfPlayers);
 
 		this.roundsLeft = correspondingProps.numberOfRounds;
-		this.hatchingGround.setDimensions(correspondingProps.hatchingGroundWidth, correspondingProps.hatchingGroundHeight);
+		this.hatchingGround.setDimensions(correspondingProps.hatchingGroundWidth,
+				correspondingProps.hatchingGroundHeight);
 		this.maxHandlers = correspondingProps.maxHandlers;
 	}
 
@@ -68,8 +69,10 @@ public class Game {
 
 		this.display();
 
-		for (Phase phase : phases) {
-			phase.execute();
+		while (true) { // TODO: Replace with round counter
+			for (Phase phase : phases) {
+				phase.execute();
+			}
 		}
 	}
 
