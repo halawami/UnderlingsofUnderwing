@@ -1,5 +1,6 @@
 package tests.phase;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -275,16 +276,36 @@ public class DragonPhaseTests {
 		card2.domesticEffects[0].apply(player2);
 		
 		EasyMock.replay(hatchingGround, bag, player, card.domesticEffects[0], handler, player2, card2.domesticEffects[0], handler2);
+		
 		Phase phase = new DragonPhase(players, null, bag, hatchingGround, null, null);
 		phase.setup();
 		phase.turn(player);
 		phase.turn(player2);
 		EasyMock.verify(hatchingGround, bag, player, card.domesticEffects[0], handler, player2, card2.domesticEffects[0], handler2);
-	}	
+	}
+	
+	@Test
+	public void testNoEggs() {
+		HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
+		ElementBag bag = EasyMock.mock(ElementBag.class);
+		Player player = EasyMock.mock(Player.class);
+		List<Player> players = Arrays.asList(player);
+
+		List<Card> completeEggs = new ArrayList<>();
+
+		EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(completeEggs);
+		
+		EasyMock.replay(hatchingGround, bag, player);
+		
+		Phase phase = new DragonPhase(players, null, bag, hatchingGround, null, null);
+		phase.setup();
+		phase.turn(player);
+		EasyMock.verify(hatchingGround, bag, player);
+	}
 	
 	// TODO: add more tests
 	// 1. add test for two eggs, where one is not the player's DONE
-	// 2. add test for one egg with two effects
+	// 2. add test for one egg with two effects DONE
 	// 3. add test for no eggs
 	// 4. add tests where the player has 1 unhatched egg
 	// 5. add tests where the player has 2 unhatched eggs
