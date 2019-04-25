@@ -13,6 +13,9 @@ public class ScoreUtils {
 	public Map<Player, Integer> calculateScores(List<Player> players) {
 		Map<Player, Integer> scores = new HashMap<>();
 		
+		for (Player player : players) {
+			scores.put(player, this.calculatePoints(player.hatchedCards));
+		}
 		
 		return scores;
 	}
