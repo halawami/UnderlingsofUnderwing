@@ -58,11 +58,25 @@ public class ElementSpaceLogic {
 			e.printStackTrace();
 		}
 	}
+	
+	public boolean isValidRecipe(List<ElementColor> recipe, ElementSpace space) {
+		recipe = new ArrayList<ElementColor>(recipe);
+		for(ElementColor color : space.elements) {
+			if(recipe.contains(color))
+				recipe.remove(color);
+			else
+				return false;
+		}
+		return true;
+	}
 
 	public List<ElementColor> getValidAdditions(ElementSpace elementSpace) {
 		Set<ElementColor> validAdditions = new TreeSet<ElementColor>();
 
 		for (List<ElementColor> recipe : recipeMap.get(elementSpace.color)) {
+			if(!isValidRecipe(recipe, elementSpace))
+				continue;
+			
 			List<ElementColor> remaining = new ArrayList<ElementColor>(recipe);
 			elementSpace.elements.forEach((color) -> remaining.remove(color));
 			

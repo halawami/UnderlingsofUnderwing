@@ -6,13 +6,17 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 import underlings.card.Card;
 import underlings.element.Element;
+import underlings.element.ElementColor;
+import underlings.element.ElementSpace;
 import underlings.handler.Handler;
 import underlings.player.Player;
 
@@ -24,8 +28,20 @@ public class LameGUI implements Display {
 	private Graphics g;
 
 	private Image background;
+	
+	private Map<ElementColor, Color> colorMap;
 
 	public LameGUI() {
+		this.colorMap = new HashMap<ElementColor, Color>();
+		this.colorMap.put(ElementColor.WHITE, Color.WHITE);
+		this.colorMap.put(ElementColor.BLACK, Color.BLACK);
+		this.colorMap.put(ElementColor.RED, Color.RED);
+		this.colorMap.put(ElementColor.BLUE, Color.BLUE);
+		this.colorMap.put(ElementColor.YELLOW, Color.YELLOW);
+		this.colorMap.put(ElementColor.PURPLE, new Color(255, 0, 255));
+		this.colorMap.put(ElementColor.ORANGE, Color.ORANGE);
+		this.colorMap.put(ElementColor.GREEN, Color.GREEN);
+		
 		this.frame = new JFrame("Lame Underlings");
 
 		this.frame.setSize(WIDTH + OFFSET_X, HEIGHT + OFFSET_Y);
@@ -66,8 +82,21 @@ public class LameGUI implements Display {
 		
 		this.g.setColor(Color.BLACK);
 		this.g.drawString(card.name, (int)(ratio*(30 + xOffset + (width + xGap) * col)), (int)(-25+ratio*(height/2 + yOffset + (height + yGap) * row)));
-		this.g.drawString(card.elementSpaces[0].toString(), (int)(ratio*(30 + xOffset + (width + xGap) * col)), (int)(-5+ratio*(height/2 + yOffset + (height + yGap) * row)));
-		this.g.drawString(card.elementSpaces[1].toString(), (int)(ratio*(30 + xOffset + (width + xGap) * col)), (int)(15+ratio*(height/2 + yOffset + (height + yGap) * row)));
+		int spaceNum = 0;
+		for(ElementSpace space : card.elementSpaces) {
+			this.g.setColor(colorMap.get(space.color));
+			this.g.fillRect((int)(ratio*(30 + xOffset + (width + xGap) * col)), (int)(spaceNum*20-5+ratio*(height/2 + yOffset + (height + yGap) * row)), 5, 5);
+			this.g.setColor(Color.BLACK);
+			String s = "";
+			if(space.elements.isEmpty())
+				s = "Empty";
+			for(int i = 0; i < space.elements.size(); i++) {
+				String elementName = space.elements.get(i).name();
+				s += ""+elementName.charAt(0)+elementName.charAt(elementName.length()-1)+" ";
+			}
+			this.g.drawString(s, (int)(ratio*(40 + xOffset + (width + xGap) * col)), (int)(spaceNum*20-5+ratio*(height/2 + yOffset + (height + yGap) * row)));
+			spaceNum++;
+		}
 	}
 
 	@Override
