@@ -23,11 +23,11 @@ public class DragonPhase extends SequentialPhase {
 
 	@Override
 	public void setup() {
-		this.completeEggs = hatchingGround.pullAndReplaceCompleteEggs();
+		this.completeEggs = this.hatchingGround.pullAndReplaceCompleteEggs();
 		for (Card completeEgg : this.completeEggs) {
 			for (ElementSpace space : completeEgg.elementSpaces) {
 				for (ElementColor color : space.elements) {
-					elementBag.putElement(color);
+					this.elementBag.putElement(color);
 				}
 			}
 		}
@@ -38,11 +38,11 @@ public class DragonPhase extends SequentialPhase {
 	// run the positive effects
 	@Override
 	public void turn(Player player) {
-		for(Card unhatchedEgg : player.getUnhatchedEggs()) {
-			if (player.getHandlers().contains(unhatchedEgg.handler)){
-				unhatchedEgg.handler.moveToState(HandlerState.READY_ROOM);
-				for(int i = 0; i < unhatchedEgg.domesticEffects.length; i++) {
-					unhatchedEgg.domesticEffects[i].apply(player);
+		for(Card completeEgg : this.completeEggs) {
+			if (player.getHandlers().contains(completeEgg.handler)){
+				completeEgg.handler.moveToState(HandlerState.READY_ROOM);
+				for(int i = 0; i < completeEgg.domesticEffects.length; i++) {
+					completeEgg.domesticEffects[i].apply(player);
 				}
 				player.hatchedCards.add(unhatchedEgg);
 			}
