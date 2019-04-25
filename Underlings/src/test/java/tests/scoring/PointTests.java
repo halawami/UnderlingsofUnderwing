@@ -39,4 +39,23 @@ public class PointTests {
 		
 	}
 	
+	@Test
+	public void testTwoCard() {
+		ScoreUtils scoreUtils = new ScoreUtils();
+		
+		Card cardOne = new Card();
+		Card cardTwo = new Card();
+		
+		cardOne.points = 13;
+		cardTwo.points = 16;
+		
+		List<Card> cards = new ArrayList<>();
+		cards.add(cardOne);
+		cards.add(cardTwo);
+		
+		int points = scoreUtils.calculatePoints(cards);
+		
+		assertEquals(29, points);
+	}
+	
 }
