@@ -2,6 +2,7 @@ package tests.phase;
 
 import org.junit.Test;
 
+import underlings.phase.DragonPhase;
 import underlings.phase.Phase;
 
 public class DragonPhaseTests {
