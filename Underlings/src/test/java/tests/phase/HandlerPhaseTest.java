@@ -1,24 +1,16 @@
 package tests.phase;
 
-
-import static org.junit.Assert.assertEquals;
-
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
 import org.easymock.EasyMock;
 import org.junit.Test;
 
-import underlings.card.Card;
-import underlings.element.ElementBag;
-import underlings.game.HatchingGround;
-import underlings.gui.Display;
 import underlings.gui.GUI;
-import underlings.gui.PromptHandler;
-import underlings.handler.Handler;
-import underlings.handler.HandlerState;
+import underlings.handler.HandlerChoice;
+import underlings.handler.HandlerDecision;
+import underlings.handler.HandlerFactory;
+import underlings.handler.HandlerMovementLogic;
 import underlings.phase.HandlerPhase;
 import underlings.phase.Phase;
 import underlings.player.Player;
@@ -26,75 +18,29 @@ import underlings.player.Player;
 public class HandlerPhaseTest {
 
 	@Test
-	public void testExecuteOnePlayerTwoHandlersReadyRoomToCard() {
+	public void testTurn() {
 
-		Player player = EasyMock.createMock(Player.class);
-		PromptHandler promptHandler = EasyMock.mock(PromptHandler.class);
-		Display display = EasyMock.mock(Display.class);
-		GUI gui = new GUI(promptHandler, display);
-		ElementBag elementBag = EasyMock.createMock(ElementBag.class);
-		HatchingGround hatchingGround = EasyMock.createMock(HatchingGround.class);
-		Handler handler = EasyMock.mock(Handler.class);
-		Card card = EasyMock.mock(Card.class);
-		card.name = "mockedCard";
-		Runnable runnable = EasyMock.mock(Runnable.class);
+		GUI gui = EasyMock.mock(GUI.class);
+		HandlerMovementLogic handlerMovementLogic = EasyMock.mock(HandlerMovementLogic.class);
+		Player player = new Player(6, new HandlerFactory(), 0);
 
-		List<Handler> handlerList = new LinkedList<>();
-		handlerList.add(handler);
-		handlerList.add(handler);
-		
-		EasyMock.expect(player.getHandlers()).andReturn(handlerList);
-		
-		List<HandlerState> possibleStates = new LinkedList<>();
-		possibleStates.addAll(Arrays.asList(HandlerState.CARD, 
-				HandlerState.FIELD,
-				HandlerState.FIELD_WHITESPACE, 
-				HandlerState.READY_ROOM));
-		
-		EasyMock.expect(promptHandler.promptChoice("Please choose a handler", handlerList)).andReturn(handler);
-		
-		EasyMock.expect(handler.getPossibleStates()).andReturn(possibleStates);
-		EasyMock.expect(promptHandler.promptChoice("Please choose a state to more your handler to", possibleStates)).andReturn(HandlerState.CARD);
-		
-		List<Card> unclaimedEggs = new LinkedList<>();
-		for (int i = 0; i < 10; i++) {
-				unclaimedEggs.add(card); 
-		}
-		
-		EasyMock.expect(hatchingGround.getUnclaimedEggs()).andReturn(unclaimedEggs);
-		
-		EasyMock.expect(promptHandler.promptChoice("Please choose a card to move your handler to", unclaimedEggs)).andReturn(card);
-		
-		handler.moveToState(HandlerState.CARD);
-		handler.setLocation("mockedCard");
-		
-		handlerList = new ArrayList<>(handlerList);
-		handlerList.remove(handler);
-		
-		EasyMock.expect(promptHandler.promptChoice("Please choose a handler", handlerList)).andReturn(handler);
-		
-		EasyMock.expect(handler.getPossibleStates()).andReturn(possibleStates);
-		EasyMock.expect(promptHandler.promptChoice("Please choose a state to more your handler to", possibleStates)).andReturn(HandlerState.CARD);
-		
-		EasyMock.expect(hatchingGround.getUnclaimedEggs()).andReturn(unclaimedEggs);
-		
-		EasyMock.expect(promptHandler.promptChoice("Please choose a card to move your handler to", unclaimedEggs)).andReturn(card);
-		
-		handler.moveToState(HandlerState.CARD);
-		handler.setLocation("mockedCard");
-		
-		List<Player> players = new ArrayList<>();
+		List<Player> players = new ArrayList<Player>();
 		players.add(player);
 		
-		runnable.run();
-		EasyMock.expectLastCall().times(2);
-		
-		EasyMock.replay(player, promptHandler, display, elementBag, hatchingGround, handler, card, runnable);
-		Phase handlerPhase = new HandlerPhase(players, gui, elementBag, hatchingGround, runnable);
-		handlerPhase.execute();
-		assertEquals(handler, card.handler);
-		EasyMock.verify(player, promptHandler, display, elementBag, hatchingGround, handler, card, runnable);
-		
+		HandlerDecision handlerDecision = new HandlerDecision(player.getHandlers().get(0), HandlerChoice.CARD);
+
+		EasyMock.expect(gui.getHandlerDecision(player.getHandlers(), 0)).andReturn(handlerDecision);
+		handlerMovementLogic.move(handlerDecision.handler, handlerDecision.choice, 0);
+
+		Phase handlerPhase = new HandlerPhase(players, gui, null, null, null, null, handlerMovementLogic);
+
+		EasyMock.replay(gui, handlerMovementLogic);
+
+		handlerPhase.setup();
+		handlerPhase.turn(player);
+
+		EasyMock.verify(gui, handlerMovementLogic);
+
 	}
 
 }

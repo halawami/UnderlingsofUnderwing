@@ -21,7 +21,7 @@ import underlings.player.Player;
 public class DrawingPhaseTests {
 
 	@Test
-	public void testDrawRandom() {
+	public void testTurn() {
 
 		GUI gui = EasyMock.mock(GUI.class);
 		ElementBag elementBag = EasyMock.mock(ElementBag.class);

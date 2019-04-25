@@ -16,6 +16,7 @@ import underlings.gui.GUI;
 import underlings.gui.LameGUI;
 import underlings.gui.LamePrompt;
 import underlings.handler.HandlerFactory;
+import underlings.handler.HandlerMovementLogic;
 import underlings.phase.DrawingPhase;
 import underlings.phase.HandlerPhase;
 import underlings.phase.Phase;
@@ -36,6 +37,7 @@ public class Main {
 		PlayerFactory playerFactory = new PlayerFactory(handlerFactory);
 		FieldSpaceFactory fieldSpaceFactory = new FieldSpaceFactory();
 		Field field = new Field(fieldSpaceFactory);
+		HandlerMovementLogic handlerMovementLogic = new HandlerMovementLogic(hatchingGround, gui, field);
 		
 		ElementFactory elementFactory = new ElementFactory();
 		Random random = new Random();
@@ -45,7 +47,7 @@ public class Main {
 		
 		List<Phase> phases = new ArrayList<>();
 		phases.add(new DrawingPhase(game.getPlayers(), gui, elementBag, hatchingGround, () -> {game.display();}, field));
-		phases.add(new HandlerPhase(game.getPlayers(), gui, elementBag, hatchingGround, () -> {game.display();}, field));
+		phases.add(new HandlerPhase(game.getPlayers(), gui, elementBag, hatchingGround, () -> {game.display();}, field, handlerMovementLogic));
 		phases.add(new PlacementPhase(game.getPlayers(), gui, elementBag, hatchingGround, () -> {game.display();}, field));
 
 		

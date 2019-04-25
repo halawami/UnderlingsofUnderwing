@@ -17,12 +17,13 @@ import underlings.player.Player;
 public class HandlerPhase extends RotationPhase {
 
 	public HandlerPhase(List<Player> players, GUI gui, ElementBag elementBag, HatchingGround hatchingGround,
-			Runnable displayMethod, Field field) {
+			Runnable displayMethod, Field field, HandlerMovementLogic handlerMovementLogic) {
 		super(players, gui, elementBag, hatchingGround, displayMethod, field);
+		this.handlerMovementLogic = handlerMovementLogic;
 	}
 
 	private Map<Player, List<Handler>> unmovedHandlers;
-	private HandlerMovementLogic handlerMovementLogic = new HandlerMovementLogic(this.hatchingGround, this.gui, this.field);
+	private HandlerMovementLogic handlerMovementLogic;
 
 	@Override
 	public void setup() {
@@ -44,7 +45,6 @@ public class HandlerPhase extends RotationPhase {
 		HandlerDecision decision = this.gui.getHandlerDecision(playersHandlers, player.getPlayerId());
 		this.handlerMovementLogic.move(decision.handler, decision.choice, player.getPlayerId());
 
-		System.out.println(playersHandlers.size());
 		this.phaseComplete = playersHandlers.size() == 0;
 
 	}
