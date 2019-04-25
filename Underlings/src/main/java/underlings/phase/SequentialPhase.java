@@ -30,15 +30,15 @@ public abstract class SequentialPhase implements Phase {
 	}
 
 	@Override
-	public void execute() {
+	public void execute(int turnLeader) {
 		this.setup();
-
-		for (Player player : this.players) {
+		
+		for (int i = turnLeader; i < turnLeader + this.players.size(); i++) {
 			this.phaseComplete = false;
 			while (!this.phaseComplete) {
-				this.turn(player);
+				this.turn(this.players.get(i % this.players.size()));
 				this.displayMethod.run();
-			}
+			}	
 		}
 
 	}

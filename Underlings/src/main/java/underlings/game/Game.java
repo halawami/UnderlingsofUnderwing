@@ -17,6 +17,7 @@ public class Game {
 	private int numberOfPlayers;
 	private int roundsLeft;
 	private int currentPhase = 0;
+	private int turnLeader = 0;
 	private HatchingGround hatchingGround;
 	private GUI gui;
 	private PlayerFactory playerFactory;
@@ -73,9 +74,11 @@ public class Game {
 		while (this.roundsLeft >= 0) {
 			for (Phase phase : phases) {
 				this.currentPhase++;
-				phase.execute();
+				phase.execute(this.turnLeader);
 			}
 			this.currentPhase = 0;
+			this.turnLeader++;
+			this.turnLeader %= 4;
 			this.roundsLeft--;
 		}
 
@@ -93,7 +96,7 @@ public class Game {
 		this.gui.display.displayBackground();
 		this.hatchingGround.display(this.gui);
 		this.displayPlayers();
-		this.gui.display.displayStats(this.elementBag, this.roundsLeft, this.currentPhase);
+		this.gui.display.displayStats(this.elementBag, this.roundsLeft, this.currentPhase, this.turnLeader + 1);
 
 		this.gui.display.update();
 	}
