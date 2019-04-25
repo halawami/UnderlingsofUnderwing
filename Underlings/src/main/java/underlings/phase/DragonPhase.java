@@ -41,7 +41,9 @@ public class DragonPhase extends SequentialPhase {
 		for(Card completeEgg : completeEggs) {
 			if (player.getHandlers().contains(completeEgg.handler)){
 				completeEgg.handler.moveToState(HandlerState.READY_ROOM);
-				completeEgg.domesticEffects[0].apply(player);
+				for(int i = 0; i < completeEgg.domesticEffects.length; i++) {
+					completeEgg.domesticEffects[i].apply(player);
+				}
 			}
 		}
 	}
