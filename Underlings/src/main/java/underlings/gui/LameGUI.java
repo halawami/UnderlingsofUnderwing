@@ -182,7 +182,7 @@ public class LameGUI implements Display {
 	}
 
 	@Override
-	public void displayStats(ElementBag elementBag) {
+	public void displayStats(ElementBag elementBag, int roundsLeft, int currentPhase) {
 		
 		this.g.setColor(Color.LIGHT_GRAY);
 		this.g.fillRect(WIDTH - 200, 0, 200, HEIGHT);
@@ -198,7 +198,9 @@ public class LameGUI implements Display {
 		stats.append("Orange: " + elementBag.getNumberRemaining(ElementColor.ORANGE) + "\n");
 		stats.append("Purple: " + elementBag.getNumberRemaining(ElementColor.PURPLE) + "\n");
 		stats.append("Black: " + elementBag.getNumberRemaining(ElementColor.BLACK) + "\n");
-		stats.append("White: " + elementBag.getNumberRemaining(ElementColor.WHITE) + "\n");
+		stats.append("White: " + elementBag.getNumberRemaining(ElementColor.WHITE) + "\n\n");
+		stats.append("Rounds Left: " + roundsLeft + "\n");
+		stats.append("Current Phase: " + currentPhase + "\n");
 		
 		int y = 15;
 		
