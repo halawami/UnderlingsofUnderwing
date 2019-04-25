@@ -3,9 +3,10 @@ package underlings.player;
 import java.util.ArrayList;
 import java.util.List;
 
+import underlings.card.Card;
 import underlings.element.Element;
-import underlings.element.utilities.ElementSpaceLogic;
 import underlings.element.ElementGiver;
+import underlings.element.utilities.ElementSpaceLogic;
 import underlings.handler.Handler;
 import underlings.handler.HandlerFactory;
 
@@ -108,5 +109,10 @@ public class Player {
 
 	public int getPlayerId() {
 		return this.playerId;
+	}
+
+	// TODO: implement this
+	public List<Card> getUnhatchedEggs() {
+		return new ArrayList<Card>();
 	}
 }
