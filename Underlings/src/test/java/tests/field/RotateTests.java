@@ -13,7 +13,7 @@ import underlings.handler.HandlerState;
 public class RotateTests {
 
 	@Test
-	public void testRotateStart() {
+	public void testStart() {
 		Field field = new Field(new FieldSpaceFactory());
 		Handler handler = new Handler(HandlerState.READY_ROOM);
 		
@@ -24,7 +24,7 @@ public class RotateTests {
 	}
 	
 	@Test
-	public void testRotateEnd() {
+	public void testEnd() {
 		Field field = new Field(new FieldSpaceFactory());
 		Handler handler = new Handler(HandlerState.READY_ROOM);
 		

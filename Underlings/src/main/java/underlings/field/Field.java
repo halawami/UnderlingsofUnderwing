@@ -34,13 +34,17 @@ public class Field {
 		this.field.get(index).addHandler(handler);
 	}
 	
-	private FieldSpace findHandler(Handler handler) {
+	public FieldSpace findHandler(Handler handler) {
 		for (FieldSpace space : this.field) {
 			 if (space.contains(handler)) {
 				 return space;
 			 }
 		}
 		return null;
+	}
+
+	public void removeHandler(Handler handler) {
+		this.findHandler(handler).remove(handler);
 	}
 	
 	

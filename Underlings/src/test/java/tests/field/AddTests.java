@@ -13,7 +13,7 @@ import underlings.handler.HandlerState;
 public class AddTests {
 
 	@Test
-	public void addHandlerStartTest() {
+	public void testStart() {
 		Field field = new Field(new FieldSpaceFactory());
 		Handler handler = new Handler(HandlerState.READY_ROOM);
 		
@@ -22,7 +22,7 @@ public class AddTests {
 	}
 	
 	@Test
-	public void addHandlerEndTest() {
+	public void testEnd() {
 		Field field = new Field(new FieldSpaceFactory());
 		Handler handler = new Handler(HandlerState.READY_ROOM);
 		
@@ -31,7 +31,7 @@ public class AddTests {
 	}
 	
 	@Test
-	public void addHandlerWhiteTest() {
+	public void testWhite() {
 		Field field = new Field(new FieldSpaceFactory());
 		Handler handler = new Handler(HandlerState.READY_ROOM);
 		

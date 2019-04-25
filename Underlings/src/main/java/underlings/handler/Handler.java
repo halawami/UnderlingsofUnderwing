@@ -22,7 +22,6 @@ public class Handler implements Choice {
 
 	public void moveToState(HandlerState state) {
 		this.state = state;
-		System.out.println(state);
 		this.elementGiver = new ElementGiver("Handler " + state.displayString, DrawChoice.RANDOM);
 	}
 	
