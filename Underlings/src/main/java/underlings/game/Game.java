@@ -16,6 +16,7 @@ public class Game {
 	private int maxHandlers;
 	private int numberOfPlayers;
 	private int roundsLeft;
+	private int currentPhase = 0;
 	private HatchingGround hatchingGround;
 	private GUI gui;
 	private PlayerFactory playerFactory;
@@ -69,11 +70,15 @@ public class Game {
 
 		this.display();
 
-		while (true) { // TODO: Replace with round counter
+		while (this.roundsLeft >= 0) {
 			for (Phase phase : phases) {
+				this.currentPhase++;
 				phase.execute();
 			}
+			this.currentPhase = 0;
+			this.roundsLeft--;
 		}
+
 	}
 
 	public void promptPlayerCount() {
@@ -88,8 +93,8 @@ public class Game {
 		this.gui.display.displayBackground();
 		this.hatchingGround.display(this.gui);
 		this.displayPlayers();
-		this.gui.display.displayStats(this.elementBag);
-		
+		this.gui.display.displayStats(this.elementBag, this.roundsLeft, this.currentPhase);
+
 		this.gui.display.update();
 	}
 

@@ -49,6 +49,7 @@ public class Main {
 		phases.add(new DrawingPhase(game.getPlayers(), gui, elementBag, hatchingGround, () -> {game.display();}, field));
 		phases.add(new HandlerPhase(game.getPlayers(), gui, elementBag, hatchingGround, () -> {game.display();}, field, handlerMovementLogic));
 		phases.add(new PlacementPhase(game.getPlayers(), gui, elementBag, hatchingGround, () -> {game.display();}, field));
+		
 
 		
 		game.start(phases);
