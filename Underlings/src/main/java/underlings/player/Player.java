@@ -98,7 +98,6 @@ public class Player {
 		return this.logic;
 	}
 
-	// TODO: Test This
 	public List<ElementGiver> getElementGivers() {
 		List<ElementGiver> elementGivers = new ArrayList<>();
 		

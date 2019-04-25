@@ -30,15 +30,15 @@ public abstract class RotationPhase implements Phase {
 	}
 
 	@Override
-	public void execute() {
+	public void execute(int turnLeader) {
 		this.phaseComplete = false;
 		this.setup();
 
 		while (!this.phaseComplete) {
 			this.phaseComplete = true;
-			for (Player player : this.players) {
-				this.turn(player);
-				this.displayMethod.run();
+			for (int i = turnLeader; i < turnLeader + this.players.size(); i++) {
+				this.turn(this.players.get(i % this.players.size()));
+				this.displayMethod.run();	
 			}
 		}
 
