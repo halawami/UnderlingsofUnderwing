@@ -12,10 +12,12 @@ public class PlayerTests {
 	public void testGainOneHandler() {
 		Player player = EasyMock.mock(Player.class);
 		Effect gainOneHandler = new GainOneHandlerEffect();
+		gainOneHandler.on(player);
 		player.gainHandler();
 		EasyMock.replay(player);
 		
 		gainOneHandler.apply();
+
 		EasyMock.verify(player);
 	}
 	
