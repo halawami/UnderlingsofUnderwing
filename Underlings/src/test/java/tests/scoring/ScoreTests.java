@@ -72,6 +72,11 @@ public class ScoreTests {
 		
 		this.player2 = new Player(6, new HandlerFactory(), 2);
 		this.player2.hatchedCards = p2_c;
+		
+		List<Card> p3_c = new ArrayList<>();
+		
+		this.player3 = new Player(6, new HandlerFactory(), 0);
+		this.player3.hatchedCards = p3_c;
 	
 	}
 
@@ -85,6 +90,20 @@ public class ScoreTests {
 
 		assertTrue(43 == scores.get(this.player1));
 		assertTrue(45 == scores.get(this.player2));
+	}
+	
+	@Test
+	public void testThreePlayers() {
+		List<Player> players = new ArrayList<>();
+		players.add(this.player1);
+		players.add(this.player2);
+		players.add(this.player3);
+		
+		Map<Player, Integer> scores = this.scoreUtils.calculateScores(players);
+
+		assertTrue(58 == scores.get(this.player1));
+		assertTrue(65 == scores.get(this.player2));
+		assertTrue(20 == scores.get(this.player3));
 	}
 	
 }
