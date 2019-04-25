@@ -194,4 +194,12 @@ public class DragonPhaseTests {
 		phase.turn(player);
 		EasyMock.verify(hatchingGround, bag, player, card.domesticEffects[0], handler);
 	}
+	
+	// TODO: add more tests
+	// 1. add test for two eggs, where one is not the player's
+	// 2. add test for one egg with two effects
+	// 3. add test for no eggs
+	// 4. add tests where the player has 1 unhatched egg
+	// 5. add tests where the player has 2 unhatched eggs
+	// 6. add tests where the player has 0 unhatched eggs
 }
