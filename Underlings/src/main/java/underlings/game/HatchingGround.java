@@ -2,6 +2,7 @@ package underlings.game;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 import underlings.card.Card;
@@ -39,7 +40,6 @@ public class HatchingGround implements Iterable<Card> {
 		}
 	}
 
-
 	public void display(GUI gui) {
 		for (int row = 0; row < this.height; row++) {
 			for (int col = 0; col < this.width; col++) {
@@ -55,13 +55,21 @@ public class HatchingGround implements Iterable<Card> {
 				unclaimedEggs.add(card);
 			}
 		}
-		
+
 		return unclaimedEggs;
 	}
 
-
-	public void getAdjacentCards(Card centerCard) {
-
+	public List<Card> getAdjacentCards(Card centerCard) {
+		List<Card> cardsToReturn = new LinkedList<>();
+		cardsToReturn.add(this.cards[0][0]);
+		cardsToReturn.add(this.cards[0][1]);
+		cardsToReturn.add(this.cards[0][2]);
+		cardsToReturn.add(this.cards[1][0]);
+		cardsToReturn.add(this.cards[1][2]);
+		cardsToReturn.add(this.cards[2][0]);
+		cardsToReturn.add(this.cards[2][1]);
+		cardsToReturn.add(this.cards[2][2]);
+		return cardsToReturn;
 	}
 
 	@Override
@@ -69,7 +77,7 @@ public class HatchingGround implements Iterable<Card> {
 		return new Iterator<Card>() {
 
 			int row = 1, col = 1;
-			
+
 			@Override
 			public boolean hasNext() {
 				return this.row <= HatchingGround.this.height;
@@ -84,7 +92,7 @@ public class HatchingGround implements Iterable<Card> {
 				} else {
 					this.col++;
 				}
-				
+
 				return card;
 			}
 		};
