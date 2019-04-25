@@ -59,5 +59,30 @@ public class TemperatureTests {
 
 		assertEquals(1, balance);
 	}
+	
+	@Test
+	public void testCoolBalance() {
+		ScoreUtils scoreUtils = new ScoreUtils();
+
+		Card cardOne = new Card();
+		Card cardTwo = new Card();
+		Card cardThree = new Card();
+		Card cardFour = new Card();
+
+		cardOne.temperature = Temperature.WARM;
+		cardTwo.temperature = Temperature.COOL;
+		cardThree.temperature = Temperature.NEUTRAL;
+		cardFour.temperature = Temperature.COOL;
+
+		List<Card> cards = new ArrayList<>();
+		cards.add(cardOne);
+		cards.add(cardTwo);
+		cards.add(cardThree);
+		cards.add(cardFour);
+
+		int balance = scoreUtils.calculateTemperature(cards);
+
+		assertEquals(-1, balance);
+	}
 
 }
