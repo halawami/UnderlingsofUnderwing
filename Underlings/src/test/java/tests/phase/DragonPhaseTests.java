@@ -157,7 +157,7 @@ public class DragonPhaseTests {
 	}
 	
 	@Test
-	public void testTwoPlayerEggs() {
+	public void testTwoEggsSamePlayer() {
 		HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
 		ElementBag bag = EasyMock.mock(ElementBag.class);
 		Player player = EasyMock.mock(Player.class);
@@ -193,7 +193,7 @@ public class DragonPhaseTests {
 		phase.setup();
 		phase.turn(player);
 		EasyMock.verify(hatchingGround, bag, player, card.domesticEffects[0], handler);
-	}
+	}	
 	
 	// TODO: add more tests
 	// 1. add test for two eggs, where one is not the player's
