@@ -65,7 +65,7 @@ public class Game {
 		return this.players;
 	}
 
-	public void start(List<Phase> phases) {
+	public void start(List<Phase> phases, Phase finalPhase) {
 		this.promptPlayerCount();
 		this.setUp(this.numberOfPlayers);
 
@@ -82,6 +82,8 @@ public class Game {
 			this.roundsLeft--;
 		}
 
+		finalPhase.execute(this.turnLeader);
+		
 	}
 
 	public void promptPlayerCount() {

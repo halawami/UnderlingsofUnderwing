@@ -86,7 +86,7 @@ public class PlacementPhaseTests {
 		EasyMock.replay(player, promptHandler, display, elementBag, runnable);
 		EasyMock.replay(logic, redSpace, blueSpace, greenSpace, whiteSpace);
 		Phase phase = new PlacementPhase(players, gui, elementBag, hatchingGround, runnable, null);
-		phase.execute();
+		phase.execute(1);
 		EasyMock.verify(player, promptHandler, display, elementBag, runnable);
 		EasyMock.verify(logic, redSpace, blueSpace, greenSpace, whiteSpace);
 	}
