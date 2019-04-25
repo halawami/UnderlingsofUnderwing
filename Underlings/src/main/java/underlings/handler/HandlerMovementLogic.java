@@ -36,6 +36,9 @@ public class HandlerMovementLogic {
 			this.field.addHandlerWhitespace(handler);
 			break;
 		case STAY:
+			if (handler.getState() == HandlerState.FIELD) {
+				this.field.rotate(handler);
+			}
 			return;
 		default:
 			handler.moveToState(choice.getState());
