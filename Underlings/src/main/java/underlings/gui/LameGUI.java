@@ -15,13 +15,14 @@ import javax.swing.JFrame;
 
 import underlings.card.Card;
 import underlings.element.Element;
+import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.handler.Handler;
 import underlings.player.Player;
 
 public class LameGUI implements Display {
-	private static final int WIDTH = 1066, HEIGHT = 950;
+	private static final int WIDTH = 1266, HEIGHT = 950;
 	private static final int OFFSET_X = 6, OFFSET_Y = 35;
 	private JFrame frame;
 	private Image img;
@@ -69,7 +70,7 @@ public class LameGUI implements Display {
 
 	@Override
 	public void displayCard(int row, int col, Card card) {
-		displayEgg(row, col, card);
+		this.displayEgg(row, col, card);
 		//displayDragon(row, col, card);
 	}
 
@@ -91,7 +92,7 @@ public class LameGUI implements Display {
 				(int) (-25 + ratio * (height / 2 + yOffset + (height + yGap) * row)));
 		int spaceNum = 0;
 		for (ElementSpace space : card.elementSpaces) {
-			this.g.setColor(colorMap.get(space.color));
+			this.g.setColor(this.colorMap.get(space.color));
 			this.g.fillRect((int) (ratio * (30 + xOffset + (width + xGap) * col)),
 					(int) (spaceNum * 20 - 5 + ratio * (height / 2 + yOffset + (height + yGap) * row)), 5, 5);
 			this.g.setColor(Color.BLACK);
@@ -172,12 +173,41 @@ public class LameGUI implements Display {
 
 	@Override
 	public void displayBackground() {
-		this.g.drawImage(this.background, 0, 0, WIDTH, HEIGHT, null);
+		this.g.drawImage(this.background, 0, 0, WIDTH - 200, HEIGHT, null);
 	}
 
 	@Override
 	public void update() {
 		this.frame.getContentPane().getGraphics().drawImage(this.img, 0, 0, null);
+	}
+
+	@Override
+	public void displayStats(ElementBag elementBag) {
+		
+		this.g.setColor(Color.LIGHT_GRAY);
+		this.g.fillRect(WIDTH - 200, 0, 200, HEIGHT);
+		
+		this.g.setColor(Color.BLACK);
+		
+		StringBuilder stats = new StringBuilder();
+		stats.append("Elements Remaining\n");
+		stats.append("Red: " + elementBag.getNumberRemaining(ElementColor.RED) + "\n");
+		stats.append("Blue: " + elementBag.getNumberRemaining(ElementColor.BLUE) + "\n");
+		stats.append("Yellow: " + elementBag.getNumberRemaining(ElementColor.YELLOW) + "\n");
+		stats.append("Green: " + elementBag.getNumberRemaining(ElementColor.GREEN) + "\n");
+		stats.append("Orange: " + elementBag.getNumberRemaining(ElementColor.ORANGE) + "\n");
+		stats.append("Purple: " + elementBag.getNumberRemaining(ElementColor.PURPLE) + "\n");
+		stats.append("Black: " + elementBag.getNumberRemaining(ElementColor.BLACK) + "\n");
+		stats.append("White: " + elementBag.getNumberRemaining(ElementColor.WHITE) + "\n");
+		
+		int y = 15;
+		
+		for (String item : stats.toString().split("\n")) {
+			this.g.drawString(item, WIDTH - 200, y);
+			y+= 15;
+		}
+		
+		
 	}
 
 }
