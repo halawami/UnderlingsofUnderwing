@@ -1,12 +1,7 @@
 package tests.phase;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import org.easymock.EasyMock;
 import org.junit.Test;
-
 import underlings.card.Card;
 import underlings.card.effect.Effect;
 import underlings.element.ElementBag;
@@ -18,6 +13,10 @@ import underlings.handler.HandlerState;
 import underlings.phase.DragonPhase;
 import underlings.phase.Phase;
 import underlings.player.Player;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class DragonPhaseTests {
 
@@ -153,7 +152,8 @@ public class DragonPhaseTests {
 		EasyMock.expect(player.getHandlers()).andReturn(Arrays.asList(handler)).anyTimes();
 
 		handler.moveToState(HandlerState.READY_ROOM);
-		card.domesticEffects[0].apply(player);
+		card.domesticEffects[0].on(player);
+		card.domesticEffects[0].apply();
 		
 		EasyMock.replay(hatchingGround, bag, player, card.domesticEffects[0], handler);
 		Phase phase = new DragonPhase(players, null, bag, hatchingGround, null, null);
@@ -195,9 +195,9 @@ public class DragonPhaseTests {
 		EasyMock.expectLastCall().anyTimes();
 		
 		handler.moveToState(HandlerState.READY_ROOM);
-		card.domesticEffects[0].apply(player);
+		card.domesticEffects[0].on(player).apply();
 		handler.moveToState(HandlerState.READY_ROOM);
-		card.domesticEffects[0].apply(player);
+		card.domesticEffects[0].on(player).apply();
 		
 		EasyMock.replay(hatchingGround, bag, player, card.domesticEffects[0], handler);
 		Phase phase = new DragonPhase(players, null, bag, hatchingGround, null, null);
@@ -238,8 +238,8 @@ public class DragonPhaseTests {
 		EasyMock.expectLastCall().anyTimes();
 		
 		handler.moveToState(HandlerState.READY_ROOM);
-		card.domesticEffects[0].apply(player);
-		card.domesticEffects[1].apply(player);
+		card.domesticEffects[0].on(player).apply();
+		card.domesticEffects[1].on(player).apply();
 		
 		EasyMock.replay(hatchingGround, bag, player, card.domesticEffects[0], handler, card.domesticEffects[1]);
 		Phase phase = new DragonPhase(players, null, bag, hatchingGround, null, null);
@@ -295,9 +295,9 @@ public class DragonPhaseTests {
 		player2.addUnhatchedEggs(eggs.get(1));
 		EasyMock.expectLastCall().anyTimes();
 		handler.moveToState(HandlerState.READY_ROOM);
-		card.domesticEffects[0].apply(player);
+		card.domesticEffects[0].on(player).apply();
 		handler2.moveToState(HandlerState.READY_ROOM);
-		card2.domesticEffects[0].apply(player2);
+		card2.domesticEffects[0].on(player).apply();
 		
 		EasyMock.replay(hatchingGround, bag, player, card.domesticEffects[0], handler, player2, card2.domesticEffects[0], handler2);
 		
