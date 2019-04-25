@@ -20,6 +20,8 @@ public class ElementTests {
 
         Effect gainPrimaryElement = new CollectPrimaryElementEffect();
 
+        gainPrimaryElement.on(player).on(elementBag);
+
         EasyMock.expect(elementBag.drawRandomPrimaryElement()).andReturn(element);
         player.addElement(element);
 

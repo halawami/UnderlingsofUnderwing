@@ -31,7 +31,6 @@ public class AddElementsToAllAdjacentEggsEffect extends HatchingGroundEffect {
                 }
             }
         }
-
     }
 
     private Set<ElementColor> getIntersection(List<ElementColor> playableElementColors, ElementColor[] possibleElementColorsToAdd) {
