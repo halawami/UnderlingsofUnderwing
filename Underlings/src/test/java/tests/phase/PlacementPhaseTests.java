@@ -23,6 +23,7 @@ import underlings.player.Player;
 
 public class PlacementPhaseTests {
 
+	@SuppressWarnings("unchecked")
 	@Test
 	public void basicTest() {
 		// create players and define actions
@@ -30,6 +31,7 @@ public class PlacementPhaseTests {
 		List<Player> players = Arrays.asList(player);
 
 		EasyMock.expect(player.getHandlerCount()).andReturn(1).anyTimes();
+		EasyMock.expect(player.getPlayerId()).andReturn(1).anyTimes();
 
 		ElementSpaceLogic logic = EasyMock.mock(ElementSpaceLogic.class);
 		EasyMock.expect(player.getElementSpaceLogic()).andReturn(logic).anyTimes();
@@ -63,21 +65,21 @@ public class PlacementPhaseTests {
 		Runnable runnable = EasyMock.mock(Runnable.class);
 
 		// define expected flow of activity
-		EasyMock.expect(logic.getPlayableSpaces(card, ElementColor.BLUE, ElementColor.BLUE, ElementColor.WHITE)).andReturn(Arrays.asList(blueSpace, greenSpace, whiteSpace)).anyTimes();
-		EasyMock.expect(promptHandler.promptChoice("Pick a card to place an element on.", Arrays.asList(card))).andReturn(card);
-		EasyMock.expect(promptHandler.promptChoice("Pick an element space to place an element on.",Arrays.asList(blueSpace, greenSpace, whiteSpace))).andReturn(blueSpace);
+		EasyMock.expect(logic.getPlayableSpaces(card, EasyMock.anyObject(List.class))).andReturn(Arrays.asList(blueSpace, greenSpace, whiteSpace)).anyTimes();
+		EasyMock.expect(promptHandler.promptChoice("Pick a card to place an element on.", Arrays.asList(card), 1)).andReturn(card);
+		EasyMock.expect(promptHandler.promptChoice("Pick an element space to place an element on.",Arrays.asList(blueSpace, greenSpace, whiteSpace), 1)).andReturn(blueSpace);
 		EasyMock.expect(logic.getValidAdditions(blueSpace)).andReturn(Arrays.asList(ElementColor.BLUE));
-		EasyMock.expect(promptHandler.promptChoice("Pick an element to place", Arrays.asList(blue1, blue2))).andReturn(blue1);
+		EasyMock.expect(promptHandler.promptChoice("Pick an element to place", Arrays.asList(blue1, blue2), 1)).andReturn(blue1);
 		blueSpace.addElements(blue1);
 		player.removeElement(blue1);
 		runnable.run();
 		EasyMock.expect(logic.getValidAdditions(blueSpace)).andReturn(Arrays.asList(ElementColor.BLUE));
-		EasyMock.expect(promptHandler.promptDecision("Would you like to place another element?")).andReturn(false);
+		EasyMock.expect(promptHandler.promptDecision("Would you like to place another element?", 1)).andReturn(false);
 		
 		// assert expected actions occurred
 		EasyMock.replay(player, promptHandler, display, elementBag, hatchingGround, runnable);
 		EasyMock.replay(logic, redSpace, blueSpace, greenSpace, whiteSpace);
-		Phase phase = new PlacementPhase(players, gui, elementBag, hatchingGround, runnable);
+		Phase phase = new PlacementPhase(players, gui, elementBag, hatchingGround, runnable, null);
 		phase.execute();
 		EasyMock.verify(player, promptHandler, display, elementBag, hatchingGround, runnable);
 		EasyMock.verify(logic, redSpace, blueSpace, greenSpace, whiteSpace);

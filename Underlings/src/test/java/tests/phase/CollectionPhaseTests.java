@@ -35,7 +35,7 @@ public class CollectionPhaseTests {
 		
 		HatchingGround hatchingGround = new HatchingGround(new Deck(Collections.emptyList()));
 		
-		Phase collectionPhase = new DrawingPhase(players, gui, elementBag, hatchingGround, () -> {});
+		Phase collectionPhase = new DrawingPhase(players, gui, elementBag, hatchingGround, () -> {}, null);
 		collectionPhase.execute();
 	}
 

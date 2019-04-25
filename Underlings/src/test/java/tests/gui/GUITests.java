@@ -115,7 +115,7 @@ public class GUITests {
 		this.game.setUp(4);
 
 		// RECORD
-		EasyMock.expect(this.gui.promptHandler.promptInt("Enter Player Count [2, 6]", 2, 6)).andStubReturn(2);
+		EasyMock.expect(this.gui.promptHandler.promptInt("Enter Player Count [2, 6]", 2, 6)).andStubReturn(4);
 		this.gui.display.displayCard(EasyMock.anyInt(), EasyMock.anyInt(), EasyMock.anyObject(Card.class));
 		EasyMock.expectLastCall().times(16);
 
@@ -133,7 +133,7 @@ public class GUITests {
 		this.game.setUp(6);
 
 		// RECORD
-		EasyMock.expect(this.gui.promptHandler.promptInt("Enter Player Count [2, 6]", 2, 6)).andStubReturn(2);
+		EasyMock.expect(this.gui.promptHandler.promptInt("Enter Player Count [2, 6]", 2, 6)).andStubReturn(6);
 		this.gui.display.displayCard(EasyMock.anyInt(), EasyMock.anyInt(), EasyMock.anyObject(Card.class));
 		EasyMock.expectLastCall().times(16);
 
