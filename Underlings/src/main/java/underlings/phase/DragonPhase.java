@@ -3,6 +3,7 @@ package underlings.phase;
 import java.util.List;
 
 import underlings.element.ElementBag;
+import underlings.element.ElementColor;
 import underlings.field.Field;
 import underlings.game.HatchingGround;
 import underlings.gui.GUI;
@@ -20,7 +21,9 @@ public class DragonPhase extends SequentialPhase {
 	// re-populate hatching ground
 	@Override
 	public void setup() {
-		
+		hatchingGround.pullAndReplaceCompleteEggs();
+		elementBag.putElement(ElementColor.RED);
+		elementBag.putElement(ElementColor.BLUE);
 	}
 
 	// hatch incubated eggs

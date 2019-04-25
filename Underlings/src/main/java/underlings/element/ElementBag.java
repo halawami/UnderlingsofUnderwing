@@ -86,5 +86,10 @@ public class ElementBag {
 		}
 	}
 
+	// TODO: implement this
+	public void putElement(ElementColor color) {
+		
+	}
+
 }
 	
