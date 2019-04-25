@@ -3,6 +3,7 @@ package tests.scoring;
 import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.Test;
@@ -13,6 +14,15 @@ import underlings.scoring.ScoreUtils;
 
 public class TemperatureTests {
 
+	@Test
+	public void testEmpty() {
+		ScoreUtils scoreUtils = new ScoreUtils();
+		
+		int balance = scoreUtils.calculateTemperature(Collections.emptyList());
+		
+		assertEquals(0, balance);
+	}
+	
 	@Test
 	public void testPerfectBalance() {
 		ScoreUtils scoreUtils = new ScoreUtils();

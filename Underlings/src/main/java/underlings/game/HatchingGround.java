@@ -97,4 +97,9 @@ public class HatchingGround implements Iterable<Card> {
 			}
 		};
 	}
+
+	// TODO: implement this
+	public List<Card> pullAndReplaceCompleteEggs() {
+		return new ArrayList<Card>();
+	}
 }
