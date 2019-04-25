@@ -9,6 +9,7 @@ import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
+import underlings.field.Field;
 import underlings.game.HatchingGround;
 import underlings.gui.GUI;
 import underlings.player.Player;
@@ -16,8 +17,8 @@ import underlings.player.Player;
 public class PlacementPhase extends RotationPhase {
 
 	public PlacementPhase(List<Player> players, GUI gui, ElementBag elementBag, HatchingGround hatchingGround,
-			Runnable displayMethod) {
-		super(players, gui, elementBag, hatchingGround, displayMethod);
+			Runnable displayMethod, Field field) {
+		super(players, gui, elementBag, hatchingGround, displayMethod, field);
 	}
 
 	@Override
@@ -71,7 +72,7 @@ public class PlacementPhase extends RotationPhase {
 						// play element
 						space.addElements(element);
 						player.removeElement(element);
-						displayMethod.run();
+						this.displayMethod.run();
 
 						// if more elements can be played, ask if done
 						// if not done then loop

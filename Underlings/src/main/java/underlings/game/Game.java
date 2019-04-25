@@ -74,7 +74,7 @@ public class Game {
 	}
 
 	public void promptPlayerCount() {
-		this.numberOfPlayers = this.gui.promptHandler.promptPlayerCount(MIN_PLAYERS, MAX_PLAYERS);
+		this.numberOfPlayers = this.gui.getPlayerCount(MIN_PLAYERS, MAX_PLAYERS);
 	}
 
 	public int getPlayerCount() {

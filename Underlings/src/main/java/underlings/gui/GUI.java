@@ -39,7 +39,11 @@ public class GUI {
 	}
 
 	public int getFieldSpace() {
-		return this.promptHandler.promptInt(0, 21);
+		return this.promptHandler.promptInt("Enter Field Space", 0, 21);
+	}
+	
+	public int getPlayerCount(int minPlayers, int maxPlayers) {
+		return this.promptHandler.promptInt("Enter Player Count", minPlayers, maxPlayers);
 	}
 	
 }

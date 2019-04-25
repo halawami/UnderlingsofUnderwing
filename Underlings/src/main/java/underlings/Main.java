@@ -7,6 +7,8 @@ import java.util.Random;
 import underlings.card.construction.CardFactory;
 import underlings.element.ElementBag;
 import underlings.element.ElementFactory;
+import underlings.field.Field;
+import underlings.field.FieldSpaceFactory;
 import underlings.game.Deck;
 import underlings.game.Game;
 import underlings.game.HatchingGround;
@@ -31,6 +33,8 @@ public class Main {
 		HatchingGround hatchingGround = new HatchingGround(deck);
 		HandlerFactory handlerFactory = new HandlerFactory();
 		PlayerFactory playerFactory = new PlayerFactory(handlerFactory);
+		FieldSpaceFactory fieldSpaceFactory = new FieldSpaceFactory();
+		Field field = new Field(fieldSpaceFactory);
 		
 		ElementFactory elementFactory = new ElementFactory();
 		Random random = new Random();
@@ -39,8 +43,8 @@ public class Main {
 		Game game = new Game(gui, hatchingGround, playerFactory, elementBag);
 		
 		List<Phase> phases = new ArrayList<>();
-		phases.add(new DrawingPhase(game.getPlayers(), gui, elementBag, hatchingGround, () -> {game.display();}));
-		phases.add(new HandlerPhase(game.getPlayers(), gui, elementBag, hatchingGround, () -> {game.display();}));
+		phases.add(new DrawingPhase(game.getPlayers(), gui, elementBag, hatchingGround, () -> {game.display();}, field));
+		phases.add(new HandlerPhase(game.getPlayers(), gui, elementBag, hatchingGround, () -> {game.display();}, field));
 
 		
 		game.start(phases);

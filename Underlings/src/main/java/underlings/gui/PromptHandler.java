@@ -4,9 +4,7 @@ import java.util.List;
 
 public interface PromptHandler {
 	
-	int promptPlayerCount(int minPlayers, int maxPlayers);
-	
-	int promptInt(int min, int max);
+	int promptInt(String prompt, int min, int max);
 	
 	<T extends Choice> T promptChoice(String prompt, List<T> choices);
 

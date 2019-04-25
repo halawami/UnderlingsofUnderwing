@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import underlings.element.ElementBag;
+import underlings.field.Field;
 import underlings.game.HatchingGround;
 import underlings.gui.GUI;
 import underlings.handler.Handler;
@@ -16,12 +17,12 @@ import underlings.player.Player;
 public class HandlerPhase extends RotationPhase {
 
 	public HandlerPhase(List<Player> players, GUI gui, ElementBag elementBag, HatchingGround hatchingGround,
-			Runnable displayMethod) {
-		super(players, gui, elementBag, hatchingGround, displayMethod);
+			Runnable displayMethod, Field field) {
+		super(players, gui, elementBag, hatchingGround, displayMethod, field);
 	}
 
 	private Map<Player, List<Handler>> unmovedHandlers;
-	private HandlerMovementLogic handlerMovementLogic = new HandlerMovementLogic(this.hatchingGround, this.gui);
+	private HandlerMovementLogic handlerMovementLogic = new HandlerMovementLogic(this.hatchingGround, this.gui, this.field);
 
 	@Override
 	public void setup() {
