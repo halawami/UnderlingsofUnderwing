@@ -13,11 +13,15 @@ public class ScoreUtils {
 	public Map<Player, Integer> calculateScores(List<Player> players) {
 		Map<Player, Integer> scores = new HashMap<>();
 		
+		
 		return scores;
+	}
+	
+	public int calculatePoints(List<Card> cards) {
+		return 0;
 	}
 
 	public int calculateTemperature(List<Card> cards) {
-		
 		int balance = 0;
 		
 		for (Card card : cards) {
@@ -25,8 +29,7 @@ public class ScoreUtils {
 			balance += (temp == Temperature.WARM) ? 1 : (temp == Temperature.COOL) ? - 1 : 0;
 		}
 		
-		return balance;
-		
+		return balance;	
 	}
 	
 }
