@@ -12,9 +12,12 @@ import underlings.element.utilities.ElementSpaceLogic;
 import underlings.field.Field;
 import underlings.game.HatchingGround;
 import underlings.gui.GUI;
+import underlings.gui.PromptHandler;
 import underlings.player.Player;
 
 public class PlacementPhase extends RotationPhase {
+	
+	private int turnCount;
 
 	public PlacementPhase(List<Player> players, GUI gui, ElementBag elementBag, HatchingGround hatchingGround,
 			Runnable displayMethod, Field field) {
@@ -22,69 +25,48 @@ public class PlacementPhase extends RotationPhase {
 	}
 
 	@Override
-	public void execute() {
-		int[] playerTurnCounts = new int[this.players.size()];
-		int maxTurnCount = 0;
-		for (int i = 0; i < this.players.size(); i++) {
-			playerTurnCounts[i] = this.players.get(i).getHandlerCount();
-			maxTurnCount = Math.max(maxTurnCount, playerTurnCounts[i]);
-		}
+	public void setup() {
+		this.turnCount = 0;
+		for (Player player : this.players)
+			this.turnCount = Math.max(this.turnCount, player.getHandlerCount());
+		this.turnCount *= this.players.size();
+	}
 
-		for (int i = 0; i < maxTurnCount; i++) {
+	@Override
+	public void turn(Player player) {
+		PromptHandler prompts = this.gui.promptHandler;
+		int playerNum = player.getPlayerId();
 
-			for (Player player : this.players) {
-				// get cards that can be played on
-				ElementSpaceLogic logic = player.getElementSpaceLogic();
-				ElementColor[] elements = new ElementColor[player.getElements().size()];
-				for (int j = 0; j < elements.length; j++)
-					elements[j] = player.getElements().get(j).getColor();
-				List<Card> cards = new ArrayList<Card>();
-				List<Card> hgCards = new ArrayList<Card>();
-				for(int r = 0; r < this.hatchingGround.cards.length; r++)
-					for(int c = 0; c < this.hatchingGround.cards[0].length; c++)
-						hgCards.add(this.hatchingGround.cards[r][c]);
-				for (Card card : hgCards) {
-					if (!logic.getPlayableSpaces(card, elements).isEmpty())
-						cards.add(card);
-				}
+		ElementSpaceLogic logic = player.getElementSpaceLogic();
+		List<Card> cards = getPlayableCards(logic, player.getElements());
 
-				if (cards.isEmpty()) {
-					this.gui.promptHandler.displayMessage("Player has no valid placements", player.getPlayerId());
-				} else {
-					// choose card
-					Card card = this.gui.promptHandler.promptChoice("Pick a card to place an element on.", cards, player.getPlayerId());
+		if (cards.isEmpty()) {
+			prompts.displayMessage("Player has no valid placements", playerNum);
+		} else {
+			this.phaseComplete = false;
+			Card card = prompts.promptChoice("Pick a card to place an element on.", cards, playerNum);
+			List<ElementSpace> spaces = logic.getPlayableSpaces(card, player.getElements());
+			ElementSpace space = prompts.promptChoice("Pick an element space to place an element on.", spaces,
+					playerNum);
 
-					// get element spaces that can be played on
-					List<ElementSpace> spaces = logic.getPlayableSpaces(card, elements);
+			boolean moreMoves = true;
+			while (moreMoves) {
+				List<Element> choices = this.playableElements(logic.getValidAdditions(space), player.getElements());
+				Element element = prompts.promptChoice("Pick an element to place", choices, playerNum);
 
-					// choose element space
-					ElementSpace space = this.gui.promptHandler.promptChoice("Pick an element space to place an element on.",
-							spaces, player.getPlayerId());
+				space.addElements(element);
+				player.removeElement(element);
+				this.displayMethod.run();
 
-					boolean moreMoves = true;
-					while (moreMoves) {
-						// get valid additions
-						List<Element> choices = this.playableElements(logic.getValidAdditions(space), player.getElements());
-
-						// choose element to play
-						Element element = this.gui.promptHandler.promptChoice("Pick an element to place", choices, player.getPlayerId());
-
-						// play element
-						space.addElements(element);
-						player.removeElement(element);
-						this.displayMethod.run();
-
-						// if more elements can be played, ask if done
-						// if not done then loop
-						choices = this.playableElements(logic.getValidAdditions(space), player.getElements());
-						if (choices.isEmpty())
-							moreMoves = false;
-						else
-							moreMoves = this.gui.promptHandler.promptDecision("Would you like to place another element?", player.getPlayerId());
-					}
-				}
+				choices = this.playableElements(logic.getValidAdditions(space), player.getElements());
+				if (choices.isEmpty())
+					moreMoves = false;
+				else
+					moreMoves = prompts.promptDecision("Would you like to place another element?", playerNum);
 			}
 		}
+		if(--this.turnCount == 0)
+			this.phaseComplete = true;
 	}
 
 	public List<Element> playableElements(List<ElementColor> list, List<Element> elements) {
@@ -94,17 +76,14 @@ public class PlacementPhase extends RotationPhase {
 				elements.remove(i--);
 		return elements;
 	}
-
-	@Override
-	public void setup() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void turn(Player player) {
-		// TODO Auto-generated method stub
-		
+	
+	public List<Card> getPlayableCards(ElementSpaceLogic logic, List<Element> elements) {
+		List<Card> cards = new ArrayList<Card>();
+		for (Card card : this.hatchingGround) {
+			if (!logic.getPlayableSpaces(card, elements).isEmpty())
+				cards.add(card);
+		}
+		return cards;
 	}
 
 }

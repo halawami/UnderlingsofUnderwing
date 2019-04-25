@@ -19,6 +19,7 @@ import underlings.handler.HandlerFactory;
 import underlings.phase.DrawingPhase;
 import underlings.phase.HandlerPhase;
 import underlings.phase.Phase;
+import underlings.phase.PlacementPhase;
 import underlings.player.PlayerFactory;
 
 public class Main {
@@ -45,6 +46,7 @@ public class Main {
 		List<Phase> phases = new ArrayList<>();
 		phases.add(new DrawingPhase(game.getPlayers(), gui, elementBag, hatchingGround, () -> {game.display();}, field));
 		phases.add(new HandlerPhase(game.getPlayers(), gui, elementBag, hatchingGround, () -> {game.display();}, field));
+		phases.add(new PlacementPhase(game.getPlayers(), gui, elementBag, hatchingGround, () -> {game.display();}, field));
 
 		
 		game.start(phases);

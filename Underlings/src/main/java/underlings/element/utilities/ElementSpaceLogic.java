@@ -10,6 +10,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import underlings.card.Card;
+import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 
@@ -76,11 +77,11 @@ public class ElementSpaceLogic {
 		return new ArrayList<ElementColor>(validAdditions);
 	}
 
-	public List<ElementSpace> getPlayableSpaces(Card card, ElementColor...colors) {
+	public List<ElementSpace> getPlayableSpaces(Card card, List<Element> elements) {
 		List<ElementSpace> spaces = new ArrayList<ElementSpace>();
 		for(ElementSpace space : card.elementSpaces) {
-			for(ElementColor color : colors)
-				if(getValidAdditions(space).contains(color)) {
+			for(Element element : elements)
+				if(getValidAdditions(space).contains(element.getColor())) {
 					spaces.add(space);
 					break;
 				}
