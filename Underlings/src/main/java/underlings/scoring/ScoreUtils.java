@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import underlings.card.Card;
+import underlings.card.Temperature;
 import underlings.player.Player;
 
 public class ScoreUtils {
@@ -16,7 +17,16 @@ public class ScoreUtils {
 	}
 
 	public int calculateTemperature(List<Card> cards) {
-		return 0;
+		
+		int balance = 0;
+		
+		for (Card card : cards) {
+			Temperature temp = card.temperature;
+			balance += (temp == Temperature.WARM) ? 1 : (temp == Temperature.COOL) ? - 1 : 0;
+		}
+		
+		return balance;
+		
 	}
 	
 }
