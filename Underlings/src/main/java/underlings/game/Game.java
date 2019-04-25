@@ -1,14 +1,14 @@
 package underlings.game;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import underlings.element.ElementBag;
 import underlings.gui.GUI;
 import underlings.handler.Handler;
 import underlings.phase.Phase;
 import underlings.player.Player;
 import underlings.player.PlayerFactory;
-
-import java.util.LinkedList;
-import java.util.List;
 
 public class Game {
 	private final static int MIN_PLAYERS = 2, MAX_PLAYERS = 6;
@@ -40,7 +40,8 @@ public class Game {
 		GameProperties correspondingProps = GameProperties.getPropertiesOf(numberOfPlayers);
 
 		this.roundsLeft = correspondingProps.numberOfRounds;
-		this.hatchingGround.setDimensions(correspondingProps.hatchingGroundWidth, correspondingProps.hatchingGroundHeight);
+		this.hatchingGround.setDimensions(correspondingProps.hatchingGroundWidth,
+				correspondingProps.hatchingGroundHeight);
 		this.maxHandlers = correspondingProps.maxHandlers;
 	}
 
@@ -68,20 +69,22 @@ public class Game {
 
 		this.display();
 
-		for (Phase phase : phases) {
-			phase.execute(this.players, this.gui, this.elementBag, this.hatchingGround, this::display);
+		while (true) { // TODO: Replace with round counter
+			for (Phase phase : phases) {
+				phase.execute();
+			}
 		}
 	}
 
 	public void promptPlayerCount() {
-		this.numberOfPlayers = this.gui.promptHandler.promptPlayerCount(MIN_PLAYERS, MAX_PLAYERS);
+		this.numberOfPlayers = this.gui.getPlayerCount(MIN_PLAYERS, MAX_PLAYERS);
 	}
 
 	public int getPlayerCount() {
 		return this.numberOfPlayers;
 	}
 
-	private void display() {
+	public void display() {
 		this.gui.display.displayBackground();
 		this.hatchingGround.display(this.gui);
 		this.displayPlayers();

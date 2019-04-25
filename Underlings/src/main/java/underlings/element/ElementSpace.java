@@ -3,7 +3,9 @@ package underlings.element;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ElementSpace {
+import underlings.gui.Choice;
+
+public class ElementSpace implements Choice {
 
 	public List<ElementColor> elements;
 	public ElementColor color;
@@ -22,6 +24,11 @@ public class ElementSpace {
 		for (Element element : elementsToAdd) {
 			this.elements.add(element.getColor());
 		}
+	}
+	
+	@Override
+	public String toString() {
+		return color + " Element Space";
 	}
 
 }

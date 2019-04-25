@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import underlings.game.FieldSpace;
+import underlings.field.FieldSpace;
 import underlings.gui.DrawChoice;
 import underlings.handler.Handler;
 import underlings.handler.HandlerState;
@@ -40,7 +40,7 @@ public class StringTests {
 		Handler handler = new Handler(HandlerState.FIELD);
 		FieldSpace fieldSpace = new FieldSpace(DrawChoice.BLUE);
 		fieldSpace.addHandler(handler);
-		assertEquals("Handler on BLUE Field Space", handler.toString());
+		assertEquals("Handler on BLUE Element Field Space", handler.toString());
 	}
 
 	@Test
@@ -48,6 +48,6 @@ public class StringTests {
 		Handler handler = new Handler(HandlerState.FIELD);
 		FieldSpace fieldSpace = new FieldSpace(DrawChoice.RED);
 		fieldSpace.addHandler(handler);
-		assertEquals("Handler on RED Field Space", handler.toString());
+		assertEquals("Handler on RED Element Field Space", handler.toString());
 	}
 }

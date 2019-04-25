@@ -6,14 +6,18 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
-import underlings.element.Element;
-import underlings.handler.Handler;
 import underlings.card.Card;
+import underlings.element.Element;
+import underlings.element.ElementColor;
+import underlings.element.ElementSpace;
+import underlings.handler.Handler;
 import underlings.player.Player;
 
 public class LameGUI implements Display {
@@ -25,7 +29,19 @@ public class LameGUI implements Display {
 
 	private Image background;
 
+	private Map<ElementColor, Color> colorMap;
+
 	public LameGUI() {
+		this.colorMap = new HashMap<ElementColor, Color>();
+		this.colorMap.put(ElementColor.WHITE, Color.WHITE);
+		this.colorMap.put(ElementColor.BLACK, Color.BLACK);
+		this.colorMap.put(ElementColor.RED, Color.RED);
+		this.colorMap.put(ElementColor.BLUE, Color.BLUE);
+		this.colorMap.put(ElementColor.YELLOW, Color.YELLOW);
+		this.colorMap.put(ElementColor.PURPLE, new Color(255, 0, 255));
+		this.colorMap.put(ElementColor.ORANGE, Color.ORANGE);
+		this.colorMap.put(ElementColor.GREEN, Color.GREEN);
+
 		this.frame = new JFrame("Lame Underlings");
 
 		this.frame.setSize(WIDTH + OFFSET_X, HEIGHT + OFFSET_Y);
@@ -53,16 +69,61 @@ public class LameGUI implements Display {
 
 	@Override
 	public void displayCard(int row, int col, Card card) {
+		displayEgg(row, col, card);
+		//displayDragon(row, col, card);
+	}
+
+	private void displayEgg(int row, int col, Card card) {
 		// 1313 1228
 		// 1823 1588
 		// 1896 1648
 		int xOffset = 1313, yOffset = 1228;
 		int xGap = 73, yGap = 60;
 		int width = 510, height = 360;
-		double ratio = 1066/4099.0;
+		double ratio = 1066 / 4099.0;
 
 		this.g.setColor(Color.LIGHT_GRAY);
-		this.g.fillRect((int)(ratio*(xOffset + (width + xGap) * col)), (int)(ratio*(yOffset + (height + yGap) * row)), (int)(ratio*width), (int)(ratio*height));
+		this.g.fillRect((int) (ratio * (xOffset + (width + xGap) * col)),
+				(int) (ratio * (yOffset + (height + yGap) * row)), (int) (ratio * width), (int) (ratio * height));
+
+		this.g.setColor(Color.BLACK);
+		this.g.drawString(card.name, (int) (ratio * (30 + xOffset + (width + xGap) * col)),
+				(int) (-25 + ratio * (height / 2 + yOffset + (height + yGap) * row)));
+		int spaceNum = 0;
+		for (ElementSpace space : card.elementSpaces) {
+			this.g.setColor(colorMap.get(space.color));
+			this.g.fillRect((int) (ratio * (30 + xOffset + (width + xGap) * col)),
+					(int) (spaceNum * 20 - 5 + ratio * (height / 2 + yOffset + (height + yGap) * row)), 5, 5);
+			this.g.setColor(Color.BLACK);
+			String s = "";
+			if (space.elements.isEmpty())
+				s = "Empty";
+			for (int i = 0; i < space.elements.size(); i++) {
+				String elementName = space.elements.get(i).name();
+				s += "" + elementName.charAt(0) + elementName.charAt(elementName.length() - 1) + " ";
+			}
+			this.g.drawString(s, (int) (ratio * (40 + xOffset + (width + xGap) * col)),
+					(int) (spaceNum * 20 - 5 + ratio * (height / 2 + yOffset + (height + yGap) * row)));
+			spaceNum++;
+		}
+	}
+
+	private void displayDragon(int row, int col, Card card) {
+		// 1313 1228
+		// 1823 1588
+		// 1896 1648
+		int xOffset = 1313, yOffset = 1228;
+		int xGap = 73, yGap = 60;
+		int width = 510, height = 360;
+		double ratio = 1066 / 4099.0;
+
+		this.g.setColor(Color.LIGHT_GRAY);
+		this.g.fillRect((int) (ratio * (xOffset + (width + xGap) * col)),
+				(int) (ratio * (yOffset + (height + yGap) * row)), (int) (ratio * width), (int) (ratio * height));
+
+		this.g.setColor(Color.BLACK);
+		this.g.drawString(card.name, (int) (ratio * (30 + xOffset + (width + xGap) * col)),
+				(int) (-25 + ratio * (height / 2 + yOffset + (height + yGap) * row)));
 	}
 
 	@Override
@@ -74,20 +135,22 @@ public class LameGUI implements Display {
 		int xOffset = 8, yOffset = 7;
 		int xGap = 9, yGap = 2191;
 		int width = 1355, height = 723;
-		double ratio = 1066/4099.0;
+		double ratio = 1066 / 4099.0;
 
-		int row = playerNumber/3;
-		int col = playerNumber%3;
+		int row = playerNumber / 3;
+		int col = playerNumber % 3;
 
 		this.g.setColor(Color.LIGHT_GRAY);
-		this.g.fillRect((int)(ratio*(xOffset + (width + xGap) * col)), (int)(ratio*(yOffset + (height + yGap) * row)), (int)(ratio*width), (int)(ratio*height));
-		
+		this.g.fillRect((int) (ratio * (xOffset + (width + xGap) * col)),
+				(int) (ratio * (yOffset + (height + yGap) * row)), (int) (ratio * width), (int) (ratio * height));
+
 		String elements = "";
-		for(Element e : player.getElements()) {
+		for (Element e : player.getElements()) {
 			elements += e.getColor() + " ";
 		}
 		this.g.setColor(Color.BLACK);
-		this.g.drawString(elements, (int)(ratio*(30 + xOffset + (width + xGap) * col)), (int)(-25+ratio*(height/2 + yOffset + (height + yGap) * row)));
+		this.g.drawString(elements, (int) (ratio * (30 + xOffset + (width + xGap) * col)),
+				(int) (-25 + ratio * (height / 2 + yOffset + (height + yGap) * row)));
 	}
 
 	@Override
@@ -95,14 +158,15 @@ public class LameGUI implements Display {
 		int xOffset = 8, yOffset = 7;
 		int xGap = 9, yGap = 2191;
 		int width = 1355, height = 723;
-		double ratio = 1066/4099.0;
+		double ratio = 1066 / 4099.0;
 
-		for(int i = 0; i < handlers.size(); i++) {
-			int row = playerNumber/3;
-			int col = playerNumber%3;
+		for (int i = 0; i < handlers.size(); i++) {
+			int row = playerNumber / 3;
+			int col = playerNumber % 3;
 
 			this.g.setColor(Color.BLACK);
-			this.g.drawString(handlers.get(i).getState().toString(), (int)(ratio*(30 + xOffset + (width + xGap) * col)), (int)(i*25+ratio*(height/2 + yOffset + (height + yGap) * row)));
+			this.g.drawString(handlers.get(i).toString(), (int) (ratio * (30 + xOffset + (width + xGap) * col)),
+					(int) (i * 25 + ratio * (height / 2 + yOffset + (height + yGap) * row)));
 		}
 	}
 

@@ -8,7 +8,7 @@ import java.util.List;
 import org.junit.Test;
 
 import underlings.element.ElementGiver;
-import underlings.game.FieldSpace;
+import underlings.field.FieldSpace;
 import underlings.gui.DrawChoice;
 import underlings.handler.Handler;
 import underlings.handler.HandlerState;
@@ -26,42 +26,42 @@ public class HandlerTests {
 
 	@Test
 	public void testFieldBlue() {
-		testFieldColor(DrawChoice.BLUE);
+		this.testFieldColor(DrawChoice.BLUE);
 	}
 
 	@Test
 	public void testFieldRed() {
-		testFieldColor(DrawChoice.RED);
+		this.testFieldColor(DrawChoice.RED);
 	}
 
 	@Test
 	public void testFieldGreen() {
-		testFieldColor(DrawChoice.GREEN);
+		this.testFieldColor(DrawChoice.GREEN);
 	}
 
 	@Test
 	public void testFieldPurple() {
-		testFieldColor(DrawChoice.PURPLE);
+		this.testFieldColor(DrawChoice.PURPLE);
 	}
 
 	@Test
 	public void testFieldOrange() {
-		testFieldColor(DrawChoice.ORANGE);
+		this.testFieldColor(DrawChoice.ORANGE);
 	}
 
 	@Test
 	public void testFieldYellow() {
-		testFieldColor(DrawChoice.YELLOW);
+		this.testFieldColor(DrawChoice.YELLOW);
 	}
 
 	@Test
 	public void testFieldBlack() {
-		testFieldColor(DrawChoice.BLACK);
+		this.testFieldColor(DrawChoice.BLACK);
 	}
 
 	@Test
 	public void testFieldWhite() {
-		testFieldColor(DrawChoice.WHITE);
+		this.testFieldColor(DrawChoice.WHITE);
 	}
 
 	private void testFieldColor(DrawChoice color) {
@@ -93,8 +93,7 @@ public class HandlerTests {
 	public void testToStringCard() {
 		Handler handler = new Handler(HandlerState.CARD);
 		handler.setLocation("testCard");
-		ElementGiver elementGiver = handler.elementGiver;
-		assertEquals("Handler on testCard", elementGiver.toString());
+		assertEquals("Handler on testCard", handler.toString());
 	}
 
 	@Test

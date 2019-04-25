@@ -1,6 +1,18 @@
 package underlings.element.utilities;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
+
 import underlings.card.Card;
+import underlings.element.Element;
+import underlings.card.Card;
+import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 
@@ -62,10 +74,24 @@ public class ElementSpaceLogic {
 		}
 	}
 
+	public boolean isValidRecipe(List<ElementColor> recipe, ElementSpace space) {
+		recipe = new ArrayList<ElementColor>(recipe);
+		for(ElementColor color : space.elements) {
+			if(recipe.contains(color))
+				recipe.remove(color);
+			else
+				return false;
+		}
+		return true;
+	}
+
 	public List<ElementColor> getValidAdditions(ElementSpace elementSpace) {
 		Set<ElementColor> validAdditions = new TreeSet<ElementColor>();
 
 		for (List<ElementColor> recipe : recipeMap.get(elementSpace.color)) {
+			if(!isValidRecipe(recipe, elementSpace))
+				continue;
+
 			List<ElementColor> remaining = new ArrayList<ElementColor>(recipe);
 			elementSpace.elements.forEach((color) -> remaining.remove(color));
 			
@@ -78,6 +104,18 @@ public class ElementSpaceLogic {
 		}
 
 		return new ArrayList<ElementColor>(validAdditions);
+	}
+
+	public List<ElementSpace> getPlayableSpaces(Card card, List<Element> elements) {
+		List<ElementSpace> spaces = new ArrayList<ElementSpace>();
+		for(ElementSpace space : card.elementSpaces) {
+			for(Element element : elements)
+				if(getValidAdditions(space).contains(element.getColor())) {
+					spaces.add(space);
+					break;
+				}
+		}
+		return spaces;
 	}
 
 }

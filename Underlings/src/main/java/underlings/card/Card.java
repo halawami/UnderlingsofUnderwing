@@ -2,10 +2,10 @@ package underlings.card;
 
 import underlings.card.effect.Effect;
 import underlings.element.ElementSpace;
-import underlings.element.utilities.ElementSpaceLogic;
+import underlings.gui.Choice;
 import underlings.handler.Handler;
 
-public class Card {
+public class Card implements Choice {
     public String name;
     public int points;
     public Temperature temperature;
@@ -14,7 +14,9 @@ public class Card {
     public Effect[] domesticEffects;
     public Effect[] wildEffects;
     public ElementSpace[] elementSpaces;
-    private ElementSpaceLogic elementSpaceLogic;
 
+    @Override public String toString() {
+    	return this.name;
+    }
 
 }

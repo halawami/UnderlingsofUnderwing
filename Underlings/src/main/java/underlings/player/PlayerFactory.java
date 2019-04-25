@@ -5,13 +5,15 @@ import underlings.handler.HandlerFactory;
 public class PlayerFactory {
 
 	private HandlerFactory handlerFactory;
+	private int playerCount;
 	
 	public PlayerFactory(HandlerFactory handlerFactory) {
 		this.handlerFactory = handlerFactory;
+		this.playerCount = 0;
 	}
 
 	public Player createPlayer(int maxHandlers) {
-		return new Player(maxHandlers, this.handlerFactory);
+		return new Player(maxHandlers, this.handlerFactory, ++playerCount);
 	}
 	
 }

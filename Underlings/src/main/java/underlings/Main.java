@@ -7,6 +7,8 @@ import java.util.Random;
 import underlings.card.construction.CardFactory;
 import underlings.element.ElementBag;
 import underlings.element.ElementFactory;
+import underlings.field.Field;
+import underlings.field.FieldSpaceFactory;
 import underlings.game.Deck;
 import underlings.game.Game;
 import underlings.game.HatchingGround;
@@ -14,9 +16,11 @@ import underlings.gui.GUI;
 import underlings.gui.LameGUI;
 import underlings.gui.LamePrompt;
 import underlings.handler.HandlerFactory;
-import underlings.phase.CollectionPhase;
+import underlings.handler.HandlerMovementLogic;
+import underlings.phase.DrawingPhase;
 import underlings.phase.HandlerPhase;
 import underlings.phase.Phase;
+import underlings.phase.PlacementPhase;
 import underlings.player.PlayerFactory;
 
 public class Main {
@@ -31,6 +35,9 @@ public class Main {
 		HatchingGround hatchingGround = new HatchingGround(deck);
 		HandlerFactory handlerFactory = new HandlerFactory();
 		PlayerFactory playerFactory = new PlayerFactory(handlerFactory);
+		FieldSpaceFactory fieldSpaceFactory = new FieldSpaceFactory();
+		Field field = new Field(fieldSpaceFactory);
+		HandlerMovementLogic handlerMovementLogic = new HandlerMovementLogic(hatchingGround, gui, field);
 		
 		ElementFactory elementFactory = new ElementFactory();
 		Random random = new Random();
@@ -39,8 +46,10 @@ public class Main {
 		Game game = new Game(gui, hatchingGround, playerFactory, elementBag);
 		
 		List<Phase> phases = new ArrayList<>();
-		phases.add(new CollectionPhase());
-		phases.add(new HandlerPhase());
+		phases.add(new DrawingPhase(game.getPlayers(), gui, elementBag, hatchingGround, () -> {game.display();}, field));
+		phases.add(new HandlerPhase(game.getPlayers(), gui, elementBag, hatchingGround, () -> {game.display();}, field, handlerMovementLogic));
+		phases.add(new PlacementPhase(game.getPlayers(), gui, elementBag, hatchingGround, () -> {game.display();}, field));
+
 		
 		game.start(phases);
 		

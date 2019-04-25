@@ -3,7 +3,10 @@ package underlings.player;
 import java.util.ArrayList;
 import java.util.List;
 
+import underlings.card.Card;
 import underlings.element.Element;
+import underlings.element.ElementGiver;
+import underlings.element.utilities.ElementSpaceLogic;
 import underlings.handler.Handler;
 import underlings.handler.HandlerFactory;
 
@@ -16,10 +19,14 @@ public class Player {
 	private boolean reached25Points;
 	private HandlerFactory handlerFactory;
 	private List<Element> elements;
+	private ElementSpaceLogic logic;
+	private int playerId;
+	public List<Card> hatchedCards;
 
-	public Player(int maxHandlers, HandlerFactory handlerFactory) {
-		this.handlers = new ArrayList<Handler>();
-		this.elements = new ArrayList<Element>();
+	public Player(int maxHandlers, HandlerFactory handlerFactory, int playerId) {
+		this.handlers = new ArrayList<>();
+		this.elements = new ArrayList<>();
+		this.hatchedCards = new ArrayList<>();
 		this.handlerFactory = handlerFactory;
 		this.maxHandlers = maxHandlers;
 		this.gainHandler();
@@ -27,6 +34,8 @@ public class Player {
 		this.points = 0;
 		this.reached12Points = false;
 		this.reached25Points = false;
+		this.logic = new ElementSpaceLogic();
+		this.playerId = playerId;
 	}
 
 	public int getHandlerCount() {
@@ -83,5 +92,24 @@ public class Player {
 
 	public void removeElement(Element elementToRemove) {
 		this.elements.remove(elementToRemove);
+	}
+	
+	public ElementSpaceLogic getElementSpaceLogic() {
+		return this.logic;
+	}
+
+	// TODO: Test This
+	public List<ElementGiver> getElementGivers() {
+		List<ElementGiver> elementGivers = new ArrayList<>();
+		
+		for (Handler handler : this.getHandlers()) {
+			elementGivers.add(handler.elementGiver);
+		}
+		
+		return elementGivers;
+	}
+
+	public int getPlayerId() {
+		return this.playerId;
 	}
 }
