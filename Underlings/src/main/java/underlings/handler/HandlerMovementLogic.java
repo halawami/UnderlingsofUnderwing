@@ -9,16 +9,19 @@ public class HandlerMovementLogic {
 
 	private HatchingGround hatchingGround;
 	private GUI gui;
+	private Field field;
 	
 	public HandlerMovementLogic(HatchingGround hatchingGround, GUI gui, Field field) {
 		this.hatchingGround = hatchingGround;
 		this.gui = gui;
+		this.field = field;
 	}
 	
 	public void move(Handler handler, HandlerChoice choice) {
 		
 		switch (choice) {
 		case CARD:
+			handler.moveToState(choice.getState());
 			Card chosenCard = this.gui.getCard(this.hatchingGround.getUnclaimedEggs());
 			chosenCard.handler = handler;
 			handler.setLocation(chosenCard.name);
@@ -27,17 +30,14 @@ public class HandlerMovementLogic {
 			
 			break;
 		case FIELD_WHITESPACE:
-			
-			
+			handler.moveToState(choice.getState());
+			this.field.addHandlerWhitespace(handler);
 			break;
 		case STAY:
 			return;
 		default:
-			break;
+			handler.moveToState(choice.getState());
 		}
-		
-		handler.moveToState(choice.getState());
-		
 
 	}
 	

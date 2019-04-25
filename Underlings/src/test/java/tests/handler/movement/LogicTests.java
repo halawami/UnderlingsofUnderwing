@@ -1,6 +1,7 @@
 package tests.handler.movement;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.easymock.EasyMock;
 import org.junit.Before;
@@ -9,6 +10,7 @@ import org.junit.Test;
 import underlings.field.Field;
 import underlings.field.FieldSpaceFactory;
 import underlings.game.HatchingGround;
+import underlings.gui.DrawChoice;
 import underlings.gui.GUI;
 import underlings.handler.Handler;
 import underlings.handler.HandlerChoice;
@@ -40,6 +42,7 @@ public class LogicTests {
 		
 		EasyMock.verify(this.hatchingGround, this.gui);
 		assertEquals(HandlerState.FIELD_WHITESPACE, handler.getState());
+		assertTrue(handler.elementGiver.drawChoices.contains(DrawChoice.WHITE));
 	}
 	
 	@Test
