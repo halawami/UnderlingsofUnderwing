@@ -3,6 +3,7 @@ package underlings.gui;
 import java.util.List;
 
 import underlings.card.Card;
+import underlings.element.ElementBag;
 import underlings.handler.Handler;
 import underlings.player.Player;
 
@@ -17,4 +18,6 @@ public interface Display {
 	void displayBackground();
 
 	void update();
+	
+	void displayStats(ElementBag elementBag);
 }

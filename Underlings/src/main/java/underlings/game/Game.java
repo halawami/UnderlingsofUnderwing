@@ -88,7 +88,8 @@ public class Game {
 		this.gui.display.displayBackground();
 		this.hatchingGround.display(this.gui);
 		this.displayPlayers();
-
+		this.gui.display.displayStats(this.elementBag);
+		
 		this.gui.display.update();
 	}
 
