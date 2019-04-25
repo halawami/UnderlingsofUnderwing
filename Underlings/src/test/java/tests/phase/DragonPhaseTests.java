@@ -68,7 +68,22 @@ public class DragonPhaseTests {
 		EasyMock.verify(hatchingGround, bag, player);	
 	}
 	
-
+	@Test
+	public void testEmptySetup() {
+		HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
+		ElementBag bag = EasyMock.mock(ElementBag.class);
+		Player player = EasyMock.mock(Player.class);
+		List<Player> players = Arrays.asList(player);
+		
+		List<Card> completeEggs = Arrays.asList();
+		
+		EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(completeEggs);
+		
+		EasyMock.replay(hatchingGround, bag, player);
+		Phase phase = new DragonPhase(players, null, bag, hatchingGround, null, null);
+		phase.setup();
+		EasyMock.verify(hatchingGround, bag, player);	
+	}
 	
 	@Test
 	public void testMultiSetup() {
