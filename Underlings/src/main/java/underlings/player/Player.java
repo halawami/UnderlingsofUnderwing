@@ -20,7 +20,7 @@ public class Player {
 	private List<Element> elements;
 	private ElementSpaceLogic logic;
 
-	public Player(int maxHandlers, HandlerFactory handlerFactory) {
+	public Player(int maxHandlers, HandlerFactory handlerFactory, int playerId) {
 		this.handlers = new ArrayList<Handler>();
 		this.elements = new ArrayList<Element>();
 		this.handlerFactory = handlerFactory;
@@ -102,5 +102,10 @@ public class Player {
 		}
 		
 		return elementGivers;
+	}
+
+	// TODO: test and implement this
+	public int getPlayerId() {
+		return 0;
 	}
 }

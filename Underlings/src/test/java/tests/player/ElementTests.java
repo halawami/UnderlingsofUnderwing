@@ -13,7 +13,7 @@ public class ElementTests {
     @Test
     public void testAddElement() {
         Element element = new Element(ElementColor.BLUE);
-        Player player = new Player(6, new HandlerFactory());
+        Player player = new Player(6, new HandlerFactory(), 0);
 
         player.addElement(element);
         assertTrue(player.getElements().contains(element));
@@ -22,7 +22,7 @@ public class ElementTests {
     @Test
     public void testRemoveElement() {
         Element element = new Element(ElementColor.BLUE);
-        Player player = new Player(6, new HandlerFactory());
+        Player player = new Player(6, new HandlerFactory(), 0);
 
         player.removeElement(element);
         assertFalse(player.getElements().contains(element));

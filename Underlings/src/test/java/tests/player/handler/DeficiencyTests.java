@@ -14,7 +14,7 @@ public class DeficiencyTests {
 
 	@Before
 	public void init() {
-		this.player = new Player(6, new HandlerFactory());
+		this.player = new Player(6, new HandlerFactory(), 0);
 	}
 
 	@Test

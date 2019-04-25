@@ -27,12 +27,12 @@ public class DrawChoiceTests {
 		
 		GUI gui = new GUI(promptHandler, display);
 		
-		EasyMock.expect(promptHandler.promptChoice("Choose and Element Giver", elementGivers)).andReturn(elementGiver);
-		EasyMock.expect(promptHandler.promptChoice("Choose a Draw Choice", elementGiver.drawChoices)).andReturn(DrawChoice.RANDOM);
+		EasyMock.expect(promptHandler.promptChoice("Choose and Element Giver", elementGivers, 0)).andReturn(elementGiver);
+		EasyMock.expect(promptHandler.promptChoice("Choose a Draw Choice", elementGiver.drawChoices, 0)).andReturn(DrawChoice.RANDOM);
 		
 		EasyMock.replay(promptHandler, display);
 		
-		DrawChoice drawChoice = gui.getDrawChoice(elementGivers);
+		DrawChoice drawChoice = gui.getDrawChoice(elementGivers, 0);
 	
 		EasyMock.verify(promptHandler, display);
 		assertEquals(drawChoice, DrawChoice.RANDOM);
