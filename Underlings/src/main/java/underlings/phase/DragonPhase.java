@@ -18,9 +18,6 @@ public class DragonPhase extends SequentialPhase {
 		super(players, gui, elementBag, hatchingGround, displayMethod, field);
 	}
 
-	// pull complete eggs from hatching ground
-	// return elements
-	// re-populate hatching ground
 	@Override
 	public void setup() {
 		List<Card> completeEggs = hatchingGround.pullAndReplaceCompleteEggs();

@@ -19,7 +19,7 @@ public class DragonPhaseTests {
 
 	@Test
 	public void testInit() {
-		Phase phase = new DragonPhase(null, null, null, null, null, null);
+		new DragonPhase(null, null, null, null, null, null);
 	}
 	
 	@Test
@@ -112,10 +112,19 @@ public class DragonPhaseTests {
 		bag.putElement(ElementColor.RED);
 		bag.putElement(ElementColor.RED);
 		
-		
 		EasyMock.replay(hatchingGround, bag, player);
 		Phase phase = new DragonPhase(players, null, bag, hatchingGround, null, null);
 		phase.setup();
 		EasyMock.verify(hatchingGround, bag, player);	
+	}
+	
+	@Test
+	public void testEmptyTurn() {
+		Player player = EasyMock.mock(Player.class);
+		
+		EasyMock.replay(player);
+		Phase phase = new DragonPhase(null, null, null, null, null, null);
+		phase.turn(player);
+		EasyMock.verify(player);	
 	}
 }
