@@ -46,7 +46,7 @@ public class GUITests {
 	public void testGetPlayerCountTwoPlayers() {
 
 		// RECORD
-		EasyMock.expect(this.gui.promptHandler.promptInt("Enter Player Count [2, 6]", 2, 6)).andReturn(2);
+		EasyMock.expect(this.gui.promptHandler.promptInt("Enter Player Count", 2, 6)).andReturn(2);
 
 		// REPLAY
 		EasyMock.replay(this.gui.promptHandler, this.gui.display);
@@ -62,7 +62,7 @@ public class GUITests {
 	public void testGetPlayerCountSixPlayers() {
 
 		// RECORD
-		EasyMock.expect(this.gui.promptHandler.promptInt("Enter Player Count [2, 6]", 2, 6)).andReturn(6);
+		EasyMock.expect(this.gui.promptHandler.promptInt("Enter Player Count", 2, 6)).andReturn(6);
 
 		// REPLAY
 		EasyMock.replay(this.gui.promptHandler, this.gui.display);
