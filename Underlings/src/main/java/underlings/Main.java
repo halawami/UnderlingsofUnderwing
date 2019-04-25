@@ -17,7 +17,9 @@ import underlings.gui.LameGUI;
 import underlings.gui.LamePrompt;
 import underlings.handler.HandlerFactory;
 import underlings.handler.HandlerMovementLogic;
+import underlings.phase.DragonPhase;
 import underlings.phase.DrawingPhase;
+import underlings.phase.FinalPhase;
 import underlings.phase.HandlerPhase;
 import underlings.phase.Phase;
 import underlings.phase.PlacementPhase;
@@ -49,9 +51,11 @@ public class Main {
 		phases.add(new DrawingPhase(game.getPlayers(), gui, elementBag, hatchingGround, () -> {game.display();}, field));
 		phases.add(new HandlerPhase(game.getPlayers(), gui, elementBag, hatchingGround, () -> {game.display();}, field, handlerMovementLogic));
 		phases.add(new PlacementPhase(game.getPlayers(), gui, elementBag, hatchingGround, () -> {game.display();}, field));
-
+		phases.add(new DragonPhase(game.getPlayers(), gui, elementBag, hatchingGround, () -> {game.display();}, field));
 		
-		game.start(phases);
+		Phase finalPhase = new FinalPhase(game.getPlayers());
+		
+		game.start(phases, finalPhase);
 		
 	}
 	

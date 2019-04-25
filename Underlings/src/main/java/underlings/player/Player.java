@@ -98,7 +98,6 @@ public class Player {
 		return this.logic;
 	}
 
-	// TODO: Test This
 	public List<ElementGiver> getElementGivers() {
 		List<ElementGiver> elementGivers = new ArrayList<>();
 		
@@ -111,5 +110,18 @@ public class Player {
 
 	public int getPlayerId() {
 		return this.playerId;
+	}
+
+	// TODO: implement this
+	public List<Card> getUnhatchedEggs() {
+		return new ArrayList<Card>();
+	}
+	
+	public void addUnhatchedEggs(Card card){
+		
+	}
+	
+	public void clearUnhatchedEggs(){
+		
 	}
 }

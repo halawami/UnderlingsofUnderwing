@@ -1,7 +1,12 @@
 package tests.hatchingground;
 
+import static org.junit.Assert.*;
+
+import java.util.List;
+
 import org.easymock.EasyMock;
 import org.junit.Test;
+
 import underlings.card.Card;
 import underlings.game.Deck;
 import underlings.game.HatchingGround;
@@ -14,10 +19,15 @@ public class AdjacentCardsTests {
         HatchingGround hatchingGround = new HatchingGround(stubDeck);
         Card[][] mockedCards = createMockedCards();
         hatchingGround.cards = mockedCards;
-        hatchingGround.getAdjacentCards(mockedCards[1][1]);
-
-
-
+        List<Card> returnedCards = hatchingGround.getAdjacentCards(mockedCards[1][1]);
+        for(int i = 0; i < 3; i++){
+        	for(int j = 0; j < 3; j++){
+        		if(i != 1 || j != 1){
+        			assertTrue(returnedCards.contains(mockedCards[i][j]));
+        		}
+        	}
+        }
+        assertEquals(8, returnedCards.size());
     }
 
     private Card[][] createMockedCards() {

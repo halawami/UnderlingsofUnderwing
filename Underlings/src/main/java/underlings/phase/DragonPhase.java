@@ -9,25 +9,25 @@ import underlings.element.ElementSpace;
 import underlings.field.Field;
 import underlings.game.HatchingGround;
 import underlings.gui.GUI;
+import underlings.handler.HandlerState;
 import underlings.player.Player;
 
 public class DragonPhase extends SequentialPhase {
+	
+	private List<Card> completeEggs;
 
 	public DragonPhase(List<Player> players, GUI gui, ElementBag elementBag, HatchingGround hatchingGround,
 			Runnable displayMethod, Field field) {
 		super(players, gui, elementBag, hatchingGround, displayMethod, field);
 	}
 
-	// pull complete eggs from hatching ground
-	// return elements
-	// re-populate hatching ground
 	@Override
 	public void setup() {
-		List<Card> completeEggs = hatchingGround.pullAndReplaceCompleteEggs();
-		for (Card completeEgg : completeEggs) {
+		this.completeEggs = this.hatchingGround.pullAndReplaceCompleteEggs();
+		for (Card completeEgg : this.completeEggs) {
 			for (ElementSpace space : completeEgg.elementSpaces) {
 				for (ElementColor color : space.elements) {
-					elementBag.putElement(color);
+					this.elementBag.putElement(color);
 				}
 			}
 		}
@@ -38,7 +38,21 @@ public class DragonPhase extends SequentialPhase {
 	// run the positive effects
 	@Override
 	public void turn(Player player) {
-
+		for(Card completeEgg : this.completeEggs) {
+			if (player.getHandlers().contains(completeEgg.handler)){
+				completeEgg.handler.moveToState(HandlerState.READY_ROOM);
+				for(int i = 0; i < completeEgg.domesticEffects.length; i++) {
+					completeEgg.domesticEffects[i].apply(player);
+				}
+				player.hatchedCards.add(unhatchedEgg);
+			}
+		}
+		player.clearUnhatchedEggs();
+		for(Card completeCard : this.completeEggs){
+			if (player.getHandlers().contains(completeCard.handler)){
+				player.addUnhatchedEggs(completeCard);
+			}
+		}
 	}
 
 }
