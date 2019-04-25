@@ -23,4 +23,15 @@ public class RotateTests {
 		assertTrue(handler.elementGiver.drawChoices.contains(DrawChoice.BLUE));
 	}
 	
+	@Test
+	public void testRotateEnd() {
+		Field field = new Field(new FieldSpaceFactory());
+		Handler handler = new Handler(HandlerState.READY_ROOM);
+		
+		field.addHandler(21, handler);
+		field.rotate(handler);
+		
+		assertTrue(handler.elementGiver.drawChoices.contains(DrawChoice.RED));
+	}
+	
 }
