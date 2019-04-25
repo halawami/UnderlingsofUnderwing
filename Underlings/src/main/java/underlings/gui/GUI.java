@@ -18,7 +18,7 @@ public class GUI {
 	}
 
 	public DrawChoice getDrawChoice(List<ElementGiver> elementGivers, int playerId) {
-		ElementGiver elementGiver = this.promptHandler.promptChoice("Choose and Element Giver", elementGivers, playerId);
+		ElementGiver elementGiver = this.promptHandler.promptChoice("Choose an Element Giver", elementGivers, playerId);
 		elementGivers.remove(elementGiver);
 		return this.promptHandler.promptChoice("Choose a Draw Choice", elementGiver.drawChoices, playerId);
 	}
