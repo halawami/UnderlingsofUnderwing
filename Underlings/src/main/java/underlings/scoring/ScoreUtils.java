@@ -47,7 +47,7 @@ public class ScoreUtils {
 
 			if (players.size() > 2) {
 				score += (warmestPlayers.contains(player)) ? 15 : 0;
-				score += (coolestPlayers.contains(player)) ? 12 : 0;
+				score += (coolestPlayers.contains(player)) ? 15 : 0;
 				score += (this.calculateTemperature(player.hatchedCards)) == 0 ? 20 : 0;
 			}
 			
