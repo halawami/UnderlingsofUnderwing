@@ -42,8 +42,8 @@ public class LogicTests {
 		EasyMock.expect(this.gui.getFieldSpace()).andReturn(0);
 		EasyMock.replay(this.hatchingGround, this.gui);
 		
-		this.logic.move(handler, HandlerChoice.FIELD);
-		this.logic.move(handler, HandlerChoice.STAY);
+		this.logic.move(handler, HandlerChoice.FIELD, 0);
+		this.logic.move(handler, HandlerChoice.STAY, 0);
 		
 		EasyMock.verify(this.hatchingGround, this.gui);
 		assertEquals(HandlerState.FIELD, handler.getState());

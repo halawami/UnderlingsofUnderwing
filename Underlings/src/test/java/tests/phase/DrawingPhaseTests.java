@@ -26,14 +26,14 @@ public class DrawingPhaseTests {
 		GUI gui = EasyMock.mock(GUI.class);
 		ElementBag elementBag = EasyMock.mock(ElementBag.class);
 	
-		Player player = new Player(6, new HandlerFactory());
+		Player player = new Player(6, new HandlerFactory(), 0);
 		
 		List<Player> players = new ArrayList<Player>();
 		players.add(player);
 		
 		Element element = new Element(ElementColor.BLUE);
 		
-		EasyMock.expect(gui.getDrawChoice(player.getElementGivers())).andReturn(DrawChoice.RANDOM);
+		EasyMock.expect(gui.getDrawChoice(player.getElementGivers(), 0)).andReturn(DrawChoice.RANDOM);
 		EasyMock.expect(elementBag.drawElement(DrawChoice.RANDOM)).andReturn(element);
 		
 		Phase drawingPhase = new DrawingPhase(players, gui, elementBag, null, null, null);
