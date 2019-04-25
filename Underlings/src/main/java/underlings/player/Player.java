@@ -117,4 +117,12 @@ public class Player {
 	public List<Card> getUnhatchedEggs() {
 		return new ArrayList<Card>();
 	}
+	
+	public void addUnhatchedEggs(Card card){
+		
+	}
+	
+	public void clearUnhatchedEggs(){
+		
+	}
 }
