@@ -1,7 +1,12 @@
 package tests.phase;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.easymock.EasyMock;
 import org.junit.Test;
+
 import underlings.card.Card;
 import underlings.card.effect.Effect;
 import underlings.element.ElementBag;
@@ -13,10 +18,6 @@ import underlings.handler.HandlerState;
 import underlings.phase.DragonPhase;
 import underlings.phase.Phase;
 import underlings.player.Player;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class DragonPhaseTests {
 
@@ -152,9 +153,9 @@ public class DragonPhaseTests {
 		EasyMock.expect(player.getHandlers()).andReturn(Arrays.asList(handler)).anyTimes();
 
 		handler.moveToState(HandlerState.READY_ROOM);
-		card.domesticEffects[0].on(player);
-		card.domesticEffects[0].apply();
-		
+		handler.moveToState(HandlerState.INCUBATION);
+		card.domesticEffects[0].apply(player);
+				
 		EasyMock.replay(hatchingGround, bag, player, card.domesticEffects[0], handler);
 		Phase phase = new DragonPhase(players, null, bag, hatchingGround, null, null);
 		phase.setup();
@@ -195,9 +196,11 @@ public class DragonPhaseTests {
 		EasyMock.expectLastCall().anyTimes();
 		
 		handler.moveToState(HandlerState.READY_ROOM);
-		card.domesticEffects[0].on(player).apply();
+		card.domesticEffects[0].apply(player);
 		handler.moveToState(HandlerState.READY_ROOM);
-		card.domesticEffects[0].on(player).apply();
+		card.domesticEffects[0].apply(player);
+		handler.moveToState(HandlerState.INCUBATION);
+		handler.moveToState(HandlerState.INCUBATION);
 		
 		EasyMock.replay(hatchingGround, bag, player, card.domesticEffects[0], handler);
 		Phase phase = new DragonPhase(players, null, bag, hatchingGround, null, null);
@@ -238,8 +241,9 @@ public class DragonPhaseTests {
 		EasyMock.expectLastCall().anyTimes();
 		
 		handler.moveToState(HandlerState.READY_ROOM);
-		card.domesticEffects[0].on(player).apply();
-		card.domesticEffects[1].on(player).apply();
+		card.domesticEffects[0].apply(player);
+		card.domesticEffects[1].apply(player);
+		handler.moveToState(HandlerState.INCUBATION);
 		
 		EasyMock.replay(hatchingGround, bag, player, card.domesticEffects[0], handler, card.domesticEffects[1]);
 		Phase phase = new DragonPhase(players, null, bag, hatchingGround, null, null);
@@ -295,10 +299,11 @@ public class DragonPhaseTests {
 		player2.addUnhatchedEggs(eggs.get(1));
 		EasyMock.expectLastCall().anyTimes();
 		handler.moveToState(HandlerState.READY_ROOM);
-		card.domesticEffects[0].on(player).apply();
+		card.domesticEffects[0].apply(player);
 		handler2.moveToState(HandlerState.READY_ROOM);
-		card2.domesticEffects[0].on(player).apply();
-		
+		card2.domesticEffects[0].apply(player2);
+		handler.moveToState(HandlerState.INCUBATION);
+		handler2.moveToState(HandlerState.INCUBATION);
 		EasyMock.replay(hatchingGround, bag, player, card.domesticEffects[0], handler, player2, card2.domesticEffects[0], handler2);
 		
 		Phase phase = new DragonPhase(players, null, bag, hatchingGround, null, null);
@@ -338,25 +343,101 @@ public class DragonPhaseTests {
 		List<Player> players = Arrays.asList(player);
 
 		Card card = new Card();
+		player.hatchedCards = new ArrayList<>();
+		Handler handler = EasyMock.mock(Handler.class);
 		ElementSpace[] spaces = { new ElementSpace(ElementColor.PURPLE) };
 		card.elementSpaces = spaces;
 		spaces[0].elements = Arrays.asList(ElementColor.BLUE, ElementColor.RED);
+		card.handler = handler;
+		card.domesticEffects = new Effect[0];
 		bag.putElement(ElementColor.BLUE);
 		bag.putElement(ElementColor.RED);
+		EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList(card)).anyTimes();
+		EasyMock.expect(player.getUnhatchedEggs()).andReturn(Arrays.asList()).anyTimes();
+		EasyMock.expect(player.getHandlerCount()).andReturn(1).anyTimes();
+		EasyMock.expect(player.getHandlers()).andReturn(Arrays.asList(handler)).anyTimes();
+		player.addUnhatchedEggs(card);
+		EasyMock.expectLastCall().anyTimes();
+		player.clearUnhatchedEggs();
+		EasyMock.expectLastCall().anyTimes();
+		handler.moveToState(HandlerState.READY_ROOM);
+		EasyMock.expectLastCall().anyTimes();
+		handler.moveToState(HandlerState.INCUBATION);
+		EasyMock.expectLastCall().anyTimes();
 		
+		EasyMock.replay(hatchingGround, bag, player, handler);
+		
+		Phase phase = new DragonPhase(players, null, bag, hatchingGround, null, null);
+		phase.setup();
+		phase.turn(player);
+		EasyMock.verify(hatchingGround, bag, player, handler);	
+	}
+	
+	@Test
+	public void testTwoUncompletedEgg(){
+		HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
+		ElementBag bag = EasyMock.mock(ElementBag.class);
+		Player player = EasyMock.mock(Player.class);
+		List<Player> players = Arrays.asList(player);
+
+		Card card = new Card();
+		Card card2 = new Card();
+		player.hatchedCards = new ArrayList<>();
 		Handler handler = EasyMock.mock(Handler.class);
+		ElementSpace[] spaces = { new ElementSpace(ElementColor.PURPLE) };
+		card.elementSpaces = spaces;
+		card2.elementSpaces = spaces;
+		spaces[0].elements = Arrays.asList(ElementColor.BLUE, ElementColor.RED);
 		card.handler = handler;
+		card.domesticEffects = new Effect[0];
+		card2.handler = handler;
+		card2.domesticEffects = new Effect[0];
+		bag.putElement(ElementColor.BLUE);
+		bag.putElement(ElementColor.RED);
+		EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList(card)).anyTimes();
+		EasyMock.expect(player.getUnhatchedEggs()).andReturn(Arrays.asList()).anyTimes();
+		EasyMock.expect(player.getHandlerCount()).andReturn(1).anyTimes();
+		EasyMock.expect(player.getHandlers()).andReturn(Arrays.asList(handler)).anyTimes();
+		player.addUnhatchedEggs(card);
+		EasyMock.expectLastCall().anyTimes();
+		player.clearUnhatchedEggs();
+		EasyMock.expectLastCall().anyTimes();
+		handler.moveToState(HandlerState.READY_ROOM);
+		EasyMock.expectLastCall().anyTimes();
+		handler.moveToState(HandlerState.INCUBATION);
+		EasyMock.expectLastCall().anyTimes();
+		
+		EasyMock.replay(hatchingGround, bag, player, handler);
+		
+		Phase phase = new DragonPhase(players, null, bag, hatchingGround, null, null);
+		phase.setup();
+		phase.turn(player);
+		EasyMock.verify(hatchingGround, bag, player, handler);	
+	}
+	
+	@Test
+	public void testNoUncompletedEgg(){
+		HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
+		ElementBag bag = EasyMock.mock(ElementBag.class);
+		Player player = EasyMock.mock(Player.class);
+		List<Player> players = Arrays.asList(player);
+		player.hatchedCards = new ArrayList<>();
+		Handler handler = EasyMock.mock(Handler.class);
+		ElementSpace[] spaces = { new ElementSpace(ElementColor.PURPLE) };
+		spaces[0].elements = Arrays.asList(ElementColor.BLUE, ElementColor.RED);
 		EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList()).anyTimes();
-		EasyMock.expect(player.getUnhatchedEggs()).andReturn(Arrays.asList(card)).anyTimes();
+		EasyMock.expect(player.getUnhatchedEggs()).andReturn(Arrays.asList()).anyTimes();
 		EasyMock.expect(player.getHandlerCount()).andReturn(1).anyTimes();
 		EasyMock.expect(player.getHandlers()).andReturn(Arrays.asList(handler)).anyTimes();
 		player.clearUnhatchedEggs();
 		EasyMock.expectLastCall().anyTimes();
-//		player.addUnhatchedEggs(eggs.get(0));
-//		EasyMock.expectLastCall().anyTimes();
+		handler.moveToState(HandlerState.READY_ROOM);
+		EasyMock.expectLastCall().anyTimes();
 		handler.moveToState(HandlerState.INCUBATION);
+		EasyMock.expectLastCall().anyTimes();
 		
 		EasyMock.replay(hatchingGround, bag, player, handler);
+		
 		Phase phase = new DragonPhase(players, null, bag, hatchingGround, null, null);
 		phase.setup();
 		phase.turn(player);
@@ -367,7 +448,7 @@ public class DragonPhaseTests {
 	// 1. add test for two eggs, where one is not the player's DONE
 	// 2. add test for one egg with two effects DONE
 	// 3. add test for no eggs DONE
-	// 4. add tests where the player has 1 unhatched egg 
-	// 5. add tests where the player has 2 unhatched eggs
+	// 4. add tests where the player has 1 unhatched egg DONE 
+	// 5. add tests where the player has 2 unhatched eggs DONE
 	// 6. add tests where the player has 0 unhatched eggs
 }

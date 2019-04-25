@@ -44,15 +44,17 @@ public class DragonPhase extends SequentialPhase {
 				for(int i = 0; i < completeEgg.domesticEffects.length; i++) {
 					completeEgg.domesticEffects[i].on(player).apply();
 				}
-				player.hatchedCards.add(unhatchedEgg);
+				player.hatchedCards.add(completeEgg);
 			}
 		}
 		player.clearUnhatchedEggs();
 		for(Card completeCard : this.completeEggs){
 			if (player.getHandlers().contains(completeCard.handler)){
 				player.addUnhatchedEggs(completeCard);
+				completeCard.handler.moveToState(HandlerState.INCUBATION);
 			}
 		}
+		this.phaseComplete = true;
 	}
 
 }
