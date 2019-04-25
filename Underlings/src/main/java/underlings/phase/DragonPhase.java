@@ -23,10 +23,14 @@ public class DragonPhase extends SequentialPhase {
 	// re-populate hatching ground
 	@Override
 	public void setup() {
-		Card completeEgg = hatchingGround.pullAndReplaceCompleteEggs().get(0);
-		ElementSpace space = completeEgg.elementSpaces[0];
-		for(ElementColor color : space.elements)
-			elementBag.putElement(color);
+		List<Card> completeEggs = hatchingGround.pullAndReplaceCompleteEggs();
+		for (Card completeEgg : completeEggs) {
+			for (ElementSpace space : completeEgg.elementSpaces) {
+				for (ElementColor color : space.elements) {
+					elementBag.putElement(color);
+				}
+			}
+		}
 	}
 
 	// hatch incubated eggs
@@ -34,7 +38,7 @@ public class DragonPhase extends SequentialPhase {
 	// run the positive effects
 	@Override
 	public void turn(Player player) {
-		
+
 	}
 
 }
