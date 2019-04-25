@@ -85,7 +85,6 @@ public class isCompleteTests {
         assertFalse(elementSpaceLogic.isComplete(completeCard));
 
         EasyMock.verify(firstMockedElementSpace, secondMockedElementSpace, elementSpaceLogic);
-
     }
 
 

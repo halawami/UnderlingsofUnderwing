@@ -6,7 +6,7 @@ import underlings.game.HatchingGround;
 
 public class AddElementsToAllAdjacentEggsEffect extends HatchingGroundEffect {
 
-    public ElementColor elementColor;
+    public ElementColor[] elementColors;
 
     @Override
     public void apply(HatchingGround hatchingGround) {

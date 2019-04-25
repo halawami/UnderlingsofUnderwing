@@ -1,11 +1,11 @@
 package underlings.game;
 
+import underlings.card.Card;
+import underlings.gui.GUI;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
-import underlings.card.Card;
-import underlings.gui.GUI;
 
 public class HatchingGround implements Iterable<Card> {
 
@@ -60,7 +60,7 @@ public class HatchingGround implements Iterable<Card> {
 	}
 
 
-	public void getAdjacentCards(Card centerCard) {
+	public List<Card> getAdjacentCards(Card centerCard) {
 
 	}
 
