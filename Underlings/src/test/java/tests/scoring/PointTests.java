@@ -40,7 +40,7 @@ public class PointTests {
 	}
 	
 	@Test
-	public void testTwoCard() {
+	public void testTwoCards() {
 		ScoreUtils scoreUtils = new ScoreUtils();
 		
 		Card cardOne = new Card();

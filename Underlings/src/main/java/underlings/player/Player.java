@@ -21,10 +21,12 @@ public class Player {
 	private List<Element> elements;
 	private ElementSpaceLogic logic;
 	private int playerId;
+	public List<Card> hatchedCards;
 
 	public Player(int maxHandlers, HandlerFactory handlerFactory, int playerId) {
-		this.handlers = new ArrayList<Handler>();
-		this.elements = new ArrayList<Element>();
+		this.handlers = new ArrayList<>();
+		this.elements = new ArrayList<>();
+		this.hatchedCards = new ArrayList<>();
 		this.handlerFactory = handlerFactory;
 		this.maxHandlers = maxHandlers;
 		this.gainHandler();
@@ -93,7 +95,7 @@ public class Player {
 	}
 	
 	public ElementSpaceLogic getElementSpaceLogic() {
-		return logic;
+		return this.logic;
 	}
 
 	// TODO: Test This
