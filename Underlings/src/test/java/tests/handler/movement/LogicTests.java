@@ -36,6 +36,20 @@ public class LogicTests {
 	}
 	
 	@Test
+	public void testField() {
+		Handler handler = new Handler(HandlerState.READY_ROOM);
+		
+		EasyMock.expect(this.gui.getFieldSpace()).andReturn(0);
+		EasyMock.replay(this.hatchingGround, this.gui);
+		
+		this.logic.move(handler, HandlerChoice.FIELD);
+		
+		EasyMock.verify(this.hatchingGround, this.gui);
+		assertEquals(HandlerState.FIELD, handler.getState());
+		assertTrue(handler.elementGiver.drawChoices.contains(DrawChoice.RED));
+	}
+	
+	@Test
 	public void testCard() {
 		Handler handler = new Handler(HandlerState.READY_ROOM);
 		Card card = new Card();

@@ -27,7 +27,9 @@ public class HandlerMovementLogic {
 			handler.setLocation(chosenCard.name);
 			break;
 		case FIELD:
-			
+			handler.moveToState(choice.getState());
+			int fieldSpace = this.gui.getFieldSpace();
+			this.field.addHandler(fieldSpace, handler);
 			break;
 		case FIELD_WHITESPACE:
 			handler.moveToState(choice.getState());

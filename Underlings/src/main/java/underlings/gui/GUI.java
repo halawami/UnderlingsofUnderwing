@@ -37,5 +37,9 @@ public class GUI {
 		Card card = this.promptHandler.promptChoice("Choose a card", cards);
 		return card;
 	}
+
+	public int getFieldSpace() {
+		return this.promptHandler.promptInt(0, 21);
+	}
 	
 }
