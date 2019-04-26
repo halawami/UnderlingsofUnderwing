@@ -94,9 +94,9 @@ public class HatchingGroundTests {
         hatchingGround.setDimensions(4,4);
         hatchingGround.populate();
         assertEquals(card, hatchingGround.cards[0][0]);
+        assertEquals(Arrays.asList(card), hatchingGround.pullAndReplaceCompleteEggs());
         
         EasyMock.verify(deck, handler);
-        assertEquals(Arrays.asList(card), hatchingGround.pullAndReplaceCompleteEggs());
-        assertEquals(hatchingGround.cards[0][0].name, "temp");
+        assertEquals(hatchingGround.cards[0][0], card2);
     }
 }
