@@ -101,9 +101,15 @@ public class HatchingGround implements Iterable<Card> {
 
 	// TODO: implement this
 	public List<Card> pullAndReplaceCompleteEggs() {
-		List<Card> completeEggs = Arrays.asList(this.cards[0][0]);
-		this.cards[0][0] = null;
-		this.cards[0][0] = this.deck.draw();
+		List<Card> completeEggs = new ArrayList<>();
+		for (int row = 0; row < this.height; row++) {
+			for (int col = 0; col < this.width; col++) {
+				if(this.cards[row][col].isComplete()){
+					completeEggs.add(this.cards[row][col]);
+					this.cards[row][col] = deck.draw();
+				}
+			}
+		}
 		return completeEggs;
 	}
 }

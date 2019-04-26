@@ -14,13 +14,22 @@ public class Card implements Choice {
     public Effect[] domesticEffects;
     public Effect[] wildEffects;
     public ElementSpace[] elementSpaces;
-
+    
     @Override public String toString() {
     	return this.name;
     }
 
+    // TODO: Add more tests
 	public boolean isComplete() {
-		return true;
+//		for(int i = 0; i < this.elementSpaces.length; i++){
+			if(this.elementSpaces.length > 0 && this.elementSpaces[0].elements.size() > 0 &&
+					this.elementSpaces[0].elements.get(0).equals(this.elementSpaces[0].color)){
+				System.out.println("this.elementSpaces[0].elements.get(0) " + this.elementSpaces[0].elements.get(0));
+				System.out.println("this.elementSpaces[0].color " + this.elementSpaces[0].color);
+				return true;
+			}
+//		}
+		return false;
 	}
 
 }
