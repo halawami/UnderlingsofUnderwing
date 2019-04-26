@@ -157,7 +157,6 @@ public class DragonPhaseTests {
         // TODO: ask Mohammad if this is ok?
         EasyMock.expect(card.domesticEffects[0].on(player)).andReturn(card.domesticEffects[0]).anyTimes();
         card.domesticEffects[0].apply();
-        EasyMock.expectLastCall().anyTimes();
 
         EasyMock.replay(hatchingGround, bag, player, card.domesticEffects[0], handler);
         
@@ -200,9 +199,10 @@ public class DragonPhaseTests {
         EasyMock.expectLastCall().anyTimes();
 
         handler.moveToState(HandlerState.READY_ROOM);
-        card.domesticEffects[0].on(player).apply();
+        EasyMock.expect(card.domesticEffects[0].on(player)).andReturn(card.domesticEffects[0]).anyTimes();
+        card.domesticEffects[0].apply();
+        EasyMock.expectLastCall().anyTimes();
         handler.moveToState(HandlerState.READY_ROOM);
-        card.domesticEffects[0].on(player).apply();
         handler.moveToState(HandlerState.INCUBATION);
         handler.moveToState(HandlerState.INCUBATION);
 
@@ -245,8 +245,10 @@ public class DragonPhaseTests {
         EasyMock.expectLastCall().anyTimes();
 
         handler.moveToState(HandlerState.READY_ROOM);
-        card.domesticEffects[0].on(player).apply();
-        card.domesticEffects[1].on(player).apply();
+        EasyMock.expect(card.domesticEffects[0].on(player)).andReturn(card.domesticEffects[0]).anyTimes();
+        EasyMock.expect(card.domesticEffects[1].on(player)).andReturn(card.domesticEffects[1]).anyTimes();
+        card.domesticEffects[0].apply();
+        card.domesticEffects[1].apply();
         handler.moveToState(HandlerState.INCUBATION);
 
         EasyMock.replay(hatchingGround, bag, player, card.domesticEffects[0], handler, card.domesticEffects[1]);
@@ -303,9 +305,11 @@ public class DragonPhaseTests {
         player2.addUnhatchedEggs(eggs.get(1));
         EasyMock.expectLastCall().anyTimes();
         handler.moveToState(HandlerState.READY_ROOM);
-        card.domesticEffects[0].on(player).apply();
+        EasyMock.expect(card.domesticEffects[0].on(player)).andReturn(card.domesticEffects[0]).anyTimes();
+        card.domesticEffects[0].apply();
         handler2.moveToState(HandlerState.READY_ROOM);
-        card2.domesticEffects[0].on(player2).apply();
+        EasyMock.expect(card2.domesticEffects[0].on(player2)).andReturn(card2.domesticEffects[0]).anyTimes();
+        card2.domesticEffects[0].apply();
         handler.moveToState(HandlerState.INCUBATION);
         handler2.moveToState(HandlerState.INCUBATION);
         EasyMock.replay(hatchingGround, bag, player, card.domesticEffects[0], handler, player2, card2.domesticEffects[0], handler2);
