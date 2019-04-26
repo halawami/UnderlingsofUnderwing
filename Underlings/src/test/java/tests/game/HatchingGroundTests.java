@@ -14,6 +14,7 @@ import underlings.element.ElementSpace;
 import underlings.game.Deck;
 import underlings.game.HatchingGround;
 import underlings.handler.Handler;
+import underlings.handler.HandlerState;
 
 public class HatchingGroundTests {
 
@@ -31,6 +32,25 @@ public class HatchingGroundTests {
         EasyMock.verify(deck);
         
         assertEquals(6, hatchingGround.getUnclaimedEggs().size());
+	}
+	
+	@Test
+	public void testNotAllUnclaimedEggs() {
+		Deck deck = EasyMock.strictMock(Deck.class);
+		Card card = new Card();
+		card.handler = new Handler(HandlerState.CARD);
+        EasyMock.expect(deck.draw()).andReturn(new Card()).times(5);
+        EasyMock.expect(deck.draw()).andReturn(card);
+
+        EasyMock.replay(deck);
+
+        HatchingGround hatchingGround = new HatchingGround(deck);
+        hatchingGround.setDimensions(3,2);
+        hatchingGround.populate();
+        
+        EasyMock.verify(deck);
+        
+        assertEquals(5, hatchingGround.getUnclaimedEggs().size());
 	}
 	
     @Test
