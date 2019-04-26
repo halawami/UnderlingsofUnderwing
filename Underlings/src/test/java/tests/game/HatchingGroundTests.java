@@ -99,4 +99,32 @@ public class HatchingGroundTests {
         EasyMock.verify(deck, handler);
         assertEquals(hatchingGround.cards[0][0], card2);
     }
+    
+    @Test
+    public void testPullAndReplaceTwoCompleteEggs(){
+    	Deck deck = EasyMock.strictMock(Deck.class);
+    	Card card = new Card();
+    	Card card2 = new Card();
+    	card2.name = "temp";
+    	Handler handler = EasyMock.mock(Handler.class);
+    	ElementSpace[] spaces = {new ElementSpace(ElementColor.PURPLE)};
+        card.elementSpaces = spaces;
+        spaces[0].elements = Arrays.asList(ElementColor.BLUE, ElementColor.RED);
+        card.handler = handler;
+        EasyMock.expect(deck.draw()).andReturn(card).times(2);
+        EasyMock.expect(deck.draw()).andReturn(new Card()).times(14);
+        EasyMock.expect(deck.draw()).andReturn(card2).times(2);
+        
+        EasyMock.replay(deck, handler);
+        HatchingGround hatchingGround = new HatchingGround(deck);
+        hatchingGround.setDimensions(4,4);
+        hatchingGround.populate();
+        assertEquals(card, hatchingGround.cards[0][0]);
+        assertEquals(card, hatchingGround.cards[0][1]);
+        assertEquals(Arrays.asList(card), hatchingGround.pullAndReplaceCompleteEggs());
+        
+        EasyMock.verify(deck, handler);
+        assertEquals(hatchingGround.cards[0][0], card2);
+        assertEquals(hatchingGround.cards[0][1], card2);
+    }
 }
