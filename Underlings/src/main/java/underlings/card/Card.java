@@ -19,4 +19,8 @@ public class Card implements Choice {
     	return this.name;
     }
 
+	public boolean isComplete() {
+		return true;
+	}
+
 }

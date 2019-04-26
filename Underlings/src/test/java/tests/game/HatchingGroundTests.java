@@ -2,12 +2,17 @@ package tests.game;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.Arrays;
+
 import org.easymock.EasyMock;
 import org.junit.Test;
 
 import underlings.card.Card;
+import underlings.element.ElementColor;
+import underlings.element.ElementSpace;
 import underlings.game.Deck;
 import underlings.game.HatchingGround;
+import underlings.handler.Handler;
 
 public class HatchingGroundTests {
 
@@ -67,5 +72,31 @@ public class HatchingGroundTests {
         hatchingGround.populate();
         
         EasyMock.verify(deck);
+    }
+    
+    @Test
+    public void testPullAndReplaceOneCompleteEggs(){
+    	Deck deck = EasyMock.strictMock(Deck.class);
+    	Card card = new Card();
+    	Card card2 = new Card();
+    	card2.name = "temp";
+    	Handler handler = EasyMock.mock(Handler.class);
+    	ElementSpace[] spaces = {new ElementSpace(ElementColor.PURPLE)};
+        card.elementSpaces = spaces;
+        spaces[0].elements = Arrays.asList(ElementColor.BLUE, ElementColor.RED);
+        card.handler = handler;
+        EasyMock.expect(deck.draw()).andReturn(card);
+        EasyMock.expect(deck.draw()).andReturn(new Card()).times(15);
+        EasyMock.expect(deck.draw()).andReturn(card2);
+        
+        EasyMock.replay(deck, handler);
+        HatchingGround hatchingGround = new HatchingGround(deck);
+        hatchingGround.setDimensions(4,4);
+        hatchingGround.populate();
+        assertEquals(card, hatchingGround.cards[0][0]);
+        
+        EasyMock.verify(deck, handler);
+        assertEquals(Arrays.asList(card), hatchingGround.pullAndReplaceCompleteEggs());
+        assertEquals(hatchingGround.cards[0][0].name, "temp");
     }
 }
