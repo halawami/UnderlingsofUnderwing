@@ -202,7 +202,7 @@ public class HatchingGroundTests {
     	ElementSpace[] spaces = {new ElementSpace(ElementColor.PURPLE), new ElementSpace(ElementColor.BLACK)};
         card.elementSpaces = spaces;
         spaces[0].elements = Arrays.asList(ElementColor.PURPLE);
-        spaces[1].elements = Arrays.asList(ElementColor.RED);
+        spaces[1].elements = Arrays.asList(ElementColor.BLACK);
         card.handler = handler;
         EasyMock.expect(deck.draw()).andReturn(card);
         EasyMock.expect(deck.draw()).andReturn(fakeCard).times(15);
@@ -213,8 +213,9 @@ public class HatchingGroundTests {
         hatchingGround.setDimensions(4,4);
         hatchingGround.populate();
         assertEquals(card, hatchingGround.cards[0][0]);
-        assertEquals(Arrays.asList(), hatchingGround.pullAndReplaceCompleteEggs());
+        assertEquals(Arrays.asList(card), hatchingGround.pullAndReplaceCompleteEggs());
         
         EasyMock.verify(deck, handler);
+        assertEquals(hatchingGround.cards[0][0], card2);
     }
 }
