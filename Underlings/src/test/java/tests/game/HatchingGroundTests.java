@@ -140,4 +140,18 @@ public class HatchingGroundTests {
         assertEquals(hatchingGround.cards[0][0], card2);
         assertEquals(hatchingGround.cards[0][1], card2);
     }
+    
+    @Test
+    public void testPullAndReplaceNoCompleteEggs(){
+    	Deck deck = EasyMock.strictMock(Deck.class);
+    	Handler handler = EasyMock.mock(Handler.class);
+        EasyMock.expect(deck.draw()).andReturn(new Card()).times(16);
+        
+        EasyMock.replay(deck, handler);
+        HatchingGround hatchingGround = new HatchingGround(deck);
+        hatchingGround.setDimensions(4,4);
+        hatchingGround.populate();
+        
+        EasyMock.verify(deck, handler);
+    }
 }
