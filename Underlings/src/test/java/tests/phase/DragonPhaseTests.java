@@ -2,6 +2,8 @@ package tests.phase;
 
 import org.easymock.EasyMock;
 import org.junit.Test;
+import org.w3c.dom.DOMError;
+
 import underlings.card.Card;
 import underlings.card.effect.Effect;
 import underlings.element.ElementBag;
@@ -150,12 +152,15 @@ public class DragonPhaseTests {
         player.addUnhatchedEggs(eggs.get(0));
         EasyMock.expectLastCall().anyTimes();
         EasyMock.expect(player.getHandlers()).andReturn(Arrays.asList(handler)).anyTimes();
-
         handler.moveToState(HandlerState.READY_ROOM);
         handler.moveToState(HandlerState.INCUBATION);
-        card.domesticEffects[0].on(player).apply();
+        // TODO: ask Mohammad if this is ok?
+        EasyMock.expect(card.domesticEffects[0].on(player)).andReturn(card.domesticEffects[0]).anyTimes();
+        card.domesticEffects[0].apply();
+        EasyMock.expectLastCall().anyTimes();
 
         EasyMock.replay(hatchingGround, bag, player, card.domesticEffects[0], handler);
+        
         Phase phase = new DragonPhase(players, null, bag, hatchingGround, null, null);
         phase.setup();
         phase.turn(player);
