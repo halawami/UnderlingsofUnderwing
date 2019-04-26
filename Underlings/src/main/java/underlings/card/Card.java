@@ -21,15 +21,12 @@ public class Card implements Choice {
 
     // TODO: Add more tests
 	public boolean isComplete() {
-//		for(int i = 0; i < this.elementSpaces.length; i++){
-			if(this.elementSpaces.length > 0 && this.elementSpaces[0].elements.size() > 0 &&
-					this.elementSpaces[0].elements.get(0).equals(this.elementSpaces[0].color)){
-				System.out.println("this.elementSpaces[0].elements.get(0) " + this.elementSpaces[0].elements.get(0));
-				System.out.println("this.elementSpaces[0].color " + this.elementSpaces[0].color);
-				return true;
+		for(int i = 0; i < this.elementSpaces.length; i++){
+			if(this.elementSpaces[i].elements.size() <= 0 || !this.elementSpaces[i].elements.get(0).equals(this.elementSpaces[i].color)){
+				return false;
 			}
-//		}
-		return false;
+		}
+		return true;
 	}
 
 }
