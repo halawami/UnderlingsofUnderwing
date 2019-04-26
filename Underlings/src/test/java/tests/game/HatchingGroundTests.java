@@ -154,4 +154,37 @@ public class HatchingGroundTests {
         
         EasyMock.verify(deck, handler);
     }
+    
+    @Test
+    public void testPullAndReplaceOneCompleteEggsWithTwoElementSpaces(){
+    	Deck deck = EasyMock.strictMock(Deck.class);
+    	Card card = new Card();
+    	Card card2 = new Card();
+    	Card fakeCard = new Card();
+    	ElementSpace[] fakeSpaces = {new ElementSpace(ElementColor.PURPLE)};
+    	card2.elementSpaces = fakeSpaces;
+    	fakeCard.elementSpaces = fakeSpaces;
+    	card2.elementSpaces[0].elements = new ArrayList<>();
+    	fakeCard.elementSpaces[0].elements = new ArrayList<>();
+    	card2.name = "temp";
+    	Handler handler = EasyMock.mock(Handler.class);
+    	ElementSpace[] spaces = {new ElementSpace(ElementColor.PURPLE), new ElementSpace(ElementColor.BLACK)};
+        card.elementSpaces = spaces;
+        spaces[0].elements = Arrays.asList(ElementColor.PURPLE);
+        spaces[1].elements = Arrays.asList(ElementColor.RED);
+        card.handler = handler;
+        EasyMock.expect(deck.draw()).andReturn(card);
+        EasyMock.expect(deck.draw()).andReturn(fakeCard).times(15);
+        EasyMock.expect(deck.draw()).andReturn(card2);
+        
+        EasyMock.replay(deck, handler);
+        HatchingGround hatchingGround = new HatchingGround(deck);
+        hatchingGround.setDimensions(4,4);
+        hatchingGround.populate();
+        assertEquals(card, hatchingGround.cards[0][0]);
+        assertEquals(Arrays.asList(), hatchingGround.pullAndReplaceCompleteEggs());
+        
+        EasyMock.verify(deck, handler);
+        assertEquals(hatchingGround.cards[0][0], card2);
+    }
 }
