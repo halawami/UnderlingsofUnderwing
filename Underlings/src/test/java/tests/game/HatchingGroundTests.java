@@ -206,6 +206,7 @@ public class HatchingGroundTests {
         card.handler = handler;
         EasyMock.expect(deck.draw()).andReturn(card);
         EasyMock.expect(deck.draw()).andReturn(fakeCard).times(15);
+        EasyMock.expect(deck.draw()).andReturn(card2);
         
         EasyMock.replay(deck, handler);
         HatchingGround hatchingGround = new HatchingGround(deck);
