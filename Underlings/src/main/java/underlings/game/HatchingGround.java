@@ -35,7 +35,9 @@ public class HatchingGround implements Iterable<Card> {
 		this.cards = new Card[this.height][this.width];
 		for (int row = 0; row < this.height; row++) {
 			for (int col = 0; col < this.width; col++) {
-				this.cards[row][col] = this.deck.draw();
+				if(this.cards[row][col] == null){
+					this.cards[row][col] = this.deck.draw();
+				}
 			}
 		}
 	}
@@ -77,7 +79,7 @@ public class HatchingGround implements Iterable<Card> {
 		return new Iterator<Card>() {
 
 			int row = 1, col = 1;
-			
+
 			@Override
 			public boolean hasNext() {
 				return this.row <= HatchingGround.this.height;
