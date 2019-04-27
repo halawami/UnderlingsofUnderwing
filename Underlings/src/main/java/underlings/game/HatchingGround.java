@@ -99,9 +99,9 @@ public class HatchingGround implements Iterable<Card> {
 		};
 	}
 
-	// TODO: implement this
 	public List<Card> pullAndReplaceCompleteEggs() {
 		List<Card> completeEggs = new ArrayList<>();
+		// call populate in the future when cards are done
 		for (int row = 0; row < this.height; row++) {
 			for (int col = 0; col < this.width; col++) {
 				if(this.cards[row][col].isComplete()){

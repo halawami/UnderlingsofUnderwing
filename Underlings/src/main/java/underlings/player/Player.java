@@ -22,11 +22,13 @@ public class Player {
 	private ElementSpaceLogic logic;
 	private int playerId;
 	public List<Card> hatchedCards;
+	public List<Card> unhatchedCards;
 
 	public Player(int maxHandlers, HandlerFactory handlerFactory, int playerId) {
 		this.handlers = new ArrayList<>();
 		this.elements = new ArrayList<>();
 		this.hatchedCards = new ArrayList<>();
+		this.unhatchedCards = new ArrayList<>();
 		this.handlerFactory = handlerFactory;
 		this.maxHandlers = maxHandlers;
 		this.gainHandler();
@@ -110,18 +112,5 @@ public class Player {
 
 	public int getPlayerId() {
 		return this.playerId;
-	}
-
-	// TODO: implement this
-	public List<Card> getUnhatchedEggs() {
-		return new ArrayList<Card>();
-	}
-	
-	public void addUnhatchedEggs(Card card){
-		
-	}
-	
-	public void clearUnhatchedEggs(){
-		
 	}
 }

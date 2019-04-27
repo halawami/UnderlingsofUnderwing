@@ -38,19 +38,17 @@ public class DragonPhase extends SequentialPhase {
 	// run the positive effects
 	@Override
 	public void turn(Player player) {
-		for(Card completeEgg : this.completeEggs) {
-			if (player.getHandlers().contains(completeEgg.handler)){
-				completeEgg.handler.moveToState(HandlerState.READY_ROOM);
-				for(int i = 0; i < completeEgg.domesticEffects.length; i++) {
-					completeEgg.domesticEffects[i].on(player).apply();
-				}
-				player.hatchedCards.add(completeEgg);
+		for(Card unhatchedEgg : player.unhatchedCards) {
+			unhatchedEgg.handler.moveToState(HandlerState.READY_ROOM);
+			for(int i = 0; i < unhatchedEgg.domesticEffects.length; i++) {
+				unhatchedEgg.domesticEffects[i].on(player).apply();
 			}
+			player.hatchedCards.add(unhatchedEgg);
 		}
-		player.clearUnhatchedEggs();
+		player.unhatchedCards.clear();
 		for(Card completeCard : this.completeEggs){
 			if (player.getHandlers().contains(completeCard.handler)){
-				player.addUnhatchedEggs(completeCard);
+				player.unhatchedCards.add(completeCard);
 				completeCard.handler.moveToState(HandlerState.INCUBATION);
 			}
 		}
