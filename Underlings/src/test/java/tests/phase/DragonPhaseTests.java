@@ -295,6 +295,7 @@ public class DragonPhaseTests {
 		player.unhatchedCards = new ArrayList<>();
 		player2.unhatchedCards = new ArrayList<>();
 		player.unhatchedCards.add(card);
+		player2.unhatchedCards.add(card2);
 		EasyMock.expect(player.getHandlerCount()).andReturn(1).anyTimes();
 		EasyMock.expect(player.getHandlers()).andReturn(Arrays.asList(handler)).anyTimes();
 		EasyMock.expect(player2.getHandlerCount()).andReturn(1).anyTimes();
