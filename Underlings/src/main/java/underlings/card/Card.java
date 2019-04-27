@@ -19,14 +19,4 @@ public class Card implements Choice {
     	return this.name;
     }
 
-    // TODO: Add more tests
-	public boolean isComplete() {
-		for(int i = 0; i < this.elementSpaces.length; i++){
-			if(this.elementSpaces[i].elements.size() <= 0 || !this.elementSpaces[i].elements.get(0).equals(this.elementSpaces[i].color)){
-				return false;
-			}
-		}
-		return true;
-	}
-
 }

@@ -1,6 +1,8 @@
 package underlings.game;
 
 import underlings.card.Card;
+import underlings.element.ElementSpace;
+import underlings.element.utilities.ElementSpaceLogic;
 import underlings.gui.GUI;
 
 import java.util.ArrayList;
@@ -101,11 +103,12 @@ public class HatchingGround implements Iterable<Card> {
 
 	public List<Card> pullAndReplaceCompleteEggs() {
 		List<Card> completeEggs = new ArrayList<>();
+		ElementSpaceLogic elementSpaceLogic = new ElementSpaceLogic();
 		// call populate in the future when cards are done
 		for (int row = 0; row < this.height; row++) {
 			for (int col = 0; col < this.width; col++) {
 				Card currentCard = this.cards[row][col]; 
-				if(currentCard.isComplete() && currentCard.handler != null){
+				if(elementSpaceLogic.isComplete(currentCard) && currentCard.handler != null){
 					completeEggs.add(this.cards[row][col]);
 					this.cards[row][col] = deck.draw();
 				}
