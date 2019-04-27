@@ -243,13 +243,8 @@ public class DragonPhaseTests {
 		card.domesticEffects[1] = EasyMock.mock(Effect.class);
 		player.unhatchedCards = new ArrayList<>();
 		player.unhatchedCards.add(card);
-//		EasyMock.expect(player.getUnhatchedEggs()).andReturn((eggs)).anyTimes();
 		EasyMock.expect(player.getHandlerCount()).andReturn(1).anyTimes();
 		EasyMock.expect(player.getHandlers()).andReturn(Arrays.asList(handler)).anyTimes();
-//		player.clearUnhatchedEggs();
-//		EasyMock.expectLastCall().anyTimes();
-//		player.addUnhatchedEggs(eggs.get(0));
-//		EasyMock.expectLastCall().anyTimes();
 
 		handler.moveToState(HandlerState.READY_ROOM);
 		EasyMock.expect(card.domesticEffects[0].on(player)).andReturn(card.domesticEffects[0]).anyTimes();
@@ -300,21 +295,10 @@ public class DragonPhaseTests {
 		player.unhatchedCards = new ArrayList<>();
 		player2.unhatchedCards = new ArrayList<>();
 		player.unhatchedCards.add(card);
-		player2.unhatchedCards.add(card2);
-//		EasyMock.expect(player.getUnhatchedEggs()).andReturn(eggs).anyTimes();
 		EasyMock.expect(player.getHandlerCount()).andReturn(1).anyTimes();
 		EasyMock.expect(player.getHandlers()).andReturn(Arrays.asList(handler)).anyTimes();
-//		EasyMock.expect(player2.getUnhatchedEggs()).andReturn(eggs).anyTimes();
 		EasyMock.expect(player2.getHandlerCount()).andReturn(1).anyTimes();
 		EasyMock.expect(player2.getHandlers()).andReturn(Arrays.asList(handler2)).anyTimes();
-//		player.clearUnhatchedEggs();
-//		EasyMock.expectLastCall().anyTimes();
-//		player.addUnhatchedEggs(eggs.get(0));
-//		EasyMock.expectLastCall().anyTimes();
-//		player2.clearUnhatchedEggs();
-//		EasyMock.expectLastCall().anyTimes();
-//		player2.addUnhatchedEggs(eggs.get(1));
-//		EasyMock.expectLastCall().anyTimes();
 		handler.moveToState(HandlerState.READY_ROOM);
 		EasyMock.expect(card.domesticEffects[0].on(player)).andReturn(card.domesticEffects[0]).anyTimes();
 		card.domesticEffects[0].apply();
@@ -344,10 +328,7 @@ public class DragonPhaseTests {
 		List<Card> eggs = new ArrayList<>();
 		player.unhatchedCards = new ArrayList<>();
 		EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(eggs);
-//		EasyMock.expect(player.getUnhatchedEggs()).andReturn((eggs)).anyTimes();
-//		player.clearUnhatchedEggs();
-//		EasyMock.expectLastCall().anyTimes();
-
+		
 		EasyMock.replay(hatchingGround, bag, player);
 
 		Phase phase = new DragonPhase(players, null, bag, hatchingGround, null, null);
@@ -375,13 +356,8 @@ public class DragonPhaseTests {
 		bag.putElement(ElementColor.BLUE);
 		bag.putElement(ElementColor.RED);
 		EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList(card)).anyTimes();
-//		EasyMock.expect(player.getUnhatchedEggs()).andReturn(Arrays.asList()).anyTimes();
 		EasyMock.expect(player.getHandlerCount()).andReturn(1).anyTimes();
 		EasyMock.expect(player.getHandlers()).andReturn(Arrays.asList(handler)).anyTimes();
-//		player.addUnhatchedEggs(card);
-//		EasyMock.expectLastCall().anyTimes();
-//		player.clearUnhatchedEggs();
-//		EasyMock.expectLastCall().anyTimes();
 		handler.moveToState(HandlerState.READY_ROOM);
 		EasyMock.expectLastCall().anyTimes();
 		handler.moveToState(HandlerState.INCUBATION);
@@ -418,13 +394,8 @@ public class DragonPhaseTests {
 		bag.putElement(ElementColor.BLUE);
 		bag.putElement(ElementColor.RED);
 		EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList(card)).anyTimes();
-//		EasyMock.expect(player.getUnhatchedEggs()).andReturn(Arrays.asList()).anyTimes();
 		EasyMock.expect(player.getHandlerCount()).andReturn(1).anyTimes();
 		EasyMock.expect(player.getHandlers()).andReturn(Arrays.asList(handler)).anyTimes();
-//		player.addUnhatchedEggs(card);
-//		EasyMock.expectLastCall().anyTimes();
-//		player.clearUnhatchedEggs();
-//		EasyMock.expectLastCall().anyTimes();
 		handler.moveToState(HandlerState.READY_ROOM);
 		EasyMock.expectLastCall().anyTimes();
 		handler.moveToState(HandlerState.INCUBATION);
@@ -450,11 +421,8 @@ public class DragonPhaseTests {
 		spaces[0].elements = Arrays.asList(ElementColor.BLUE, ElementColor.RED);
 		player.unhatchedCards = new ArrayList<>();
 		EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList()).anyTimes();
-//		EasyMock.expect(player.getUnhatchedEggs()).andReturn(Arrays.asList()).anyTimes();
 		EasyMock.expect(player.getHandlerCount()).andReturn(1).anyTimes();
 		EasyMock.expect(player.getHandlers()).andReturn(Arrays.asList(handler)).anyTimes();
-//		player.clearUnhatchedEggs();
-//		EasyMock.expectLastCall().anyTimes();
 		handler.moveToState(HandlerState.READY_ROOM);
 		EasyMock.expectLastCall().anyTimes();
 		handler.moveToState(HandlerState.INCUBATION);
@@ -467,12 +435,4 @@ public class DragonPhaseTests {
 		phase.turn(player);
 		EasyMock.verify(hatchingGround, bag, player, handler);
 	}
-
-	// TODO: add more tests
-	// 1. add test for two eggs, where one is not the player's DONE
-	// 2. add test for one egg with two effects DONE
-	// 3. add test for no eggs DONE
-	// 4. add tests where the player has 1 unhatched egg DONE
-	// 5. add tests where the player has 2 unhatched eggs DONE
-	// 6. add tests where the player has 0 unhatched eggs
 }
