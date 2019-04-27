@@ -248,6 +248,9 @@ public class HatchingGroundTests {
         card.elementSpaces = spaces;
         spaces[0].elements = Arrays.asList(ElementColor.PURPLE);
         spaces[1].elements = Arrays.asList(ElementColor.BLACK);
+        ElementSpace[] fakeSpaces = {new ElementSpace(ElementColor.PURPLE)};
+        fakeCard.elementSpaces = fakeSpaces;
+        fakeCard.elementSpaces[0].elements = new ArrayList<>();
         EasyMock.expect(deck.draw()).andReturn(card);
         EasyMock.expect(deck.draw()).andReturn(fakeCard).times(15);
         
