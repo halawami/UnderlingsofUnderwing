@@ -12,6 +12,7 @@ import underlings.gui.GUI;
 import underlings.handler.Handler;
 import underlings.handler.HandlerDecision;
 import underlings.handler.HandlerMovementLogic;
+import underlings.handler.HandlerState;
 import underlings.player.Player;
 
 public class HandlerPhase extends RotationPhase {
@@ -32,7 +33,17 @@ public class HandlerPhase extends RotationPhase {
 
 		for (Player player : this.players) {
 			this.unmovedHandlers.put(player, new ArrayList<>(player.getHandlers()));
+			
+			for (Handler handler : this.unmovedHandlers.get(player)) {
+				if (handler.getState() == HandlerState.BREAK_ROOM) {
+					handler.moveToState(HandlerState.READY_ROOM);
+				}
+			}
+			
 		}
+		
+		this.displayMethod.run();
+		
 	}
 
 	@Override
