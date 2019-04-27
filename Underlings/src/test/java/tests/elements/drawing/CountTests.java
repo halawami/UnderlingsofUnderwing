@@ -52,7 +52,7 @@ public class CountTests {
 	}
 	
 	@Test
-	public void testPutTwoBlueElement(){
+	public void testPutTwoBlueElements(){
 		assertEquals(20, this.elementBag.getNumberRemaining(ElementColor.BLUE));
 		drawElements(ElementColor.BLUE, 5);
 		assertEquals(15, this.elementBag.getNumberRemaining(ElementColor.BLUE));

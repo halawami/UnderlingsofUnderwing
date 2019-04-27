@@ -86,7 +86,6 @@ public class ElementBag {
 		}
 	}
 
-	// TODO: implement this
 	public void putElement(ElementColor color) {
 		this.elementCount.put(color, this.elementCount.get(color) + 1);
 	}
