@@ -60,5 +60,19 @@ public class CountTests {
 		this.elementBag.putElement(ElementColor.BLUE);
 		assertEquals(17, this.elementBag.getNumberRemaining(ElementColor.BLUE));
 	}
+	
+	@Test
+	public void testPutOneBlueOneRedElement(){
+		assertEquals(20, this.elementBag.getNumberRemaining(ElementColor.BLUE));
+		drawElements(ElementColor.BLUE, 5);
+		assertEquals(20, this.elementBag.getNumberRemaining(ElementColor.RED));
+		drawElements(ElementColor.RED, 3);
+		assertEquals(15, this.elementBag.getNumberRemaining(ElementColor.BLUE));
+		assertEquals(17, this.elementBag.getNumberRemaining(ElementColor.RED));
+		this.elementBag.putElement(ElementColor.BLUE);
+		this.elementBag.putElement(ElementColor.RED);
+		assertEquals(16, this.elementBag.getNumberRemaining(ElementColor.BLUE));
+		assertEquals(18, this.elementBag.getNumberRemaining(ElementColor.RED));
+	}
 
 }
