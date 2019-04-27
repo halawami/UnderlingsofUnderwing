@@ -32,8 +32,8 @@ public class HandlerPhaseTest {
 		EasyMock.expect(gui.getHandlerDecision(player.getHandlers(), 0)).andReturn(handlerDecision);
 		handlerMovementLogic.move(handlerDecision.handler, handlerDecision.choice, 0);
 
-		Phase handlerPhase = new HandlerPhase(players, gui, null, null, null, null, handlerMovementLogic);
-
+		Phase handlerPhase = new HandlerPhase(players, gui, null, null, () -> {}, null, handlerMovementLogic);
+		
 		EasyMock.replay(gui, handlerMovementLogic);
 
 		handlerPhase.setup();
