@@ -41,5 +41,14 @@ public class CountTests {
 			this.elementBag.drawElementFromList(color);
 		}
 	}
+	
+	@Test
+	public void testPutOneElement(){
+		assertEquals(20, this.elementBag.getNumberRemaining(ElementColor.BLUE));
+		drawElements(ElementColor.BLUE, 5);
+		assertEquals(15, this.elementBag.getNumberRemaining(ElementColor.BLUE));
+		this.elementBag.putElement(ElementColor.BLUE);
+		assertEquals(16, this.elementBag.getNumberRemaining(ElementColor.BLUE));
+	}
 
 }
