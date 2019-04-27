@@ -39,10 +39,10 @@ public class DragonPhase extends SequentialPhase {
 	@Override
 	public void turn(Player player) {
 		for(Card unhatchedEgg : player.unhatchedCards) {
-			unhatchedEgg.handler.moveToState(HandlerState.READY_ROOM);
 			for(int i = 0; i < unhatchedEgg.domesticEffects.length; i++) {
-				unhatchedEgg.domesticEffects[i].on(player).apply();
+				unhatchedEgg.domesticEffects[i].on(elementBag).on(player).apply();
 			}
+			unhatchedEgg.handler.moveToState(HandlerState.READY_ROOM);
 			player.hatchedCards.add(unhatchedEgg);
 		}
 		player.unhatchedCards.clear();
