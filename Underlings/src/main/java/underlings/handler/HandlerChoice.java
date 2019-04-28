@@ -25,8 +25,7 @@ public enum HandlerChoice implements Choice {
 		FIELD.state = HandlerState.FIELD;
 		CARD.state = HandlerState.CARD;
 		READY_ROOM.state = HandlerState.READY_ROOM;
-		BREAK_ROOM.state = HandlerState.BREAK_ROOM;
-		
+		BREAK_ROOM.state = HandlerState.BREAK_ROOM;	
 	}
 
 	

@@ -47,5 +47,4 @@ public class DeckTests {
         assertThrows(IllegalStateException.class, () -> this.deck.draw());
     }
 
-
 }

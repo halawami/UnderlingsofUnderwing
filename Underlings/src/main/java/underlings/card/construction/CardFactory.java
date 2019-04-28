@@ -1,18 +1,23 @@
 package underlings.card.construction;
 
-import com.google.common.reflect.ClassPath;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.typeadapters.RuntimeTypeAdapterFactory;
-import underlings.card.Card;
-import underlings.card.effect.Effect;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Paths;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
+
+import com.google.common.reflect.ClassPath;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.typeadapters.RuntimeTypeAdapterFactory;
+
+import underlings.card.Card;
+import underlings.card.effect.Effect;
 
 public class CardFactory {
     private String cardsFilePath;
@@ -22,15 +27,15 @@ public class CardFactory {
 
     public CardFactory(String cardsFilePath) {
         this.cardsFilePath = cardsFilePath;
-        this.effectClasses = getEffectClasses();
-        this.gson = getGson();
+        this.effectClasses = this.getEffectClasses();
+        this.gson = this.getGson();
     }
 
     private List<Class<? extends Effect>> getEffectClasses() {
         List<Class<? extends Effect>> effectClasses = new ArrayList<>();
 
-        Set<ClassPath.ClassInfo> effectClassInfos = loadEffectClassInfos();
-        effectClassInfos.forEach(effectClassInfo -> effectClasses.add(getClassFromClassInfo(effectClassInfo)));
+        Set<ClassPath.ClassInfo> effectClassInfos = this.loadEffectClassInfos();
+        effectClassInfos.forEach(effectClassInfo -> effectClasses.add(this.getClassFromClassInfo(effectClassInfo)));
 
         return effectClasses;
     }
@@ -52,7 +57,7 @@ public class CardFactory {
     }
 
     private Gson getGson() {
-        RuntimeTypeAdapterFactory<Effect> effectsTypeAdapter = getEffectTypeAdapter();
+        RuntimeTypeAdapterFactory<Effect> effectsTypeAdapter = this.getEffectTypeAdapter();
         return new GsonBuilder().registerTypeAdapterFactory(effectsTypeAdapter).create();
     }
 
@@ -68,13 +73,17 @@ public class CardFactory {
 
 
     public List<Card> getCards() {
-        Card[] cards = constructCards();
-        return Arrays.asList(cards);
+        Card[] cards = this.constructCards();
+        
+        List<Card> cardList = Arrays.asList(cards);
+        Collections.shuffle(cardList);
+        
+        return cardList;
     }
 
     private Card[] constructCards() {
         try {
-            FileReader fileReader = new FileReader(getCardsFile());
+            FileReader fileReader = new FileReader(this.getCardsFile());
             return this.gson.fromJson(fileReader, Card[].class);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
