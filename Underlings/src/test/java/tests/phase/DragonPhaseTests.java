@@ -147,17 +147,12 @@ public class DragonPhaseTests {
 		card.domesticEffects[0] = EasyMock.mock(Effect.class);
 		player.unhatchedCards = new ArrayList<>();
 		player.unhatchedCards.add(card);
-//		EasyMock.expect(player.getUnhatchedEggs()).andReturn((eggs)).anyTimes();
 		EasyMock.expect(player.getHandlerCount()).andReturn(1).anyTimes();
-//		player.clearUnhatchedEggs();
-//		EasyMock.expectLastCall().anyTimes();
-//		player.addUnhatchedEggs(eggs.get(0));
-//		EasyMock.expectLastCall().anyTimes();
 		EasyMock.expect(player.getHandlers()).andReturn(Arrays.asList(handler)).anyTimes();
 		handler.moveToState(HandlerState.READY_ROOM);
 		handler.moveToState(HandlerState.INCUBATION);
-		// TODO: ask Mohammad if this is ok?
 		EasyMock.expect(card.domesticEffects[0].on(player)).andReturn(card.domesticEffects[0]).anyTimes();
+		EasyMock.expect(card.domesticEffects[0].on(bag)).andReturn(card.domesticEffects[0]).anyTimes();
 		card.domesticEffects[0].apply();
 
 		EasyMock.replay(hatchingGround, bag, player, card.domesticEffects[0], handler);
@@ -195,16 +190,12 @@ public class DragonPhaseTests {
 		player.unhatchedCards = new ArrayList<>();
 		player.unhatchedCards.add(card);
 		player.unhatchedCards.add(card);
-//		EasyMock.expect(player.getUnhatchedEggs()).andReturn((eggs)).anyTimes();
 		EasyMock.expect(player.getHandlerCount()).andReturn(1).anyTimes();
 		EasyMock.expect(player.getHandlers()).andReturn(Arrays.asList(handler)).anyTimes();
-//		player.clearUnhatchedEggs();
-//		EasyMock.expectLastCall().anyTimes();
-//		player.addUnhatchedEggs(eggs.get(0));
-//		EasyMock.expectLastCall().anyTimes();
 
 		handler.moveToState(HandlerState.READY_ROOM);
 		EasyMock.expect(card.domesticEffects[0].on(player)).andReturn(card.domesticEffects[0]).anyTimes();
+		EasyMock.expect(card.domesticEffects[0].on(bag)).andReturn(card.domesticEffects[0]).anyTimes();
 		card.domesticEffects[0].apply();
 		EasyMock.expectLastCall().anyTimes();
 		handler.moveToState(HandlerState.READY_ROOM);
@@ -249,6 +240,8 @@ public class DragonPhaseTests {
 		handler.moveToState(HandlerState.READY_ROOM);
 		EasyMock.expect(card.domesticEffects[0].on(player)).andReturn(card.domesticEffects[0]).anyTimes();
 		EasyMock.expect(card.domesticEffects[1].on(player)).andReturn(card.domesticEffects[1]).anyTimes();
+		EasyMock.expect(card.domesticEffects[0].on(bag)).andReturn(card.domesticEffects[0]).anyTimes();
+		EasyMock.expect(card.domesticEffects[1].on(bag)).andReturn(card.domesticEffects[1]).anyTimes();
 		card.domesticEffects[0].apply();
 		card.domesticEffects[1].apply();
 		handler.moveToState(HandlerState.INCUBATION);
@@ -302,9 +295,11 @@ public class DragonPhaseTests {
 		EasyMock.expect(player2.getHandlers()).andReturn(Arrays.asList(handler2)).anyTimes();
 		handler.moveToState(HandlerState.READY_ROOM);
 		EasyMock.expect(card.domesticEffects[0].on(player)).andReturn(card.domesticEffects[0]).anyTimes();
+		EasyMock.expect(card.domesticEffects[0].on(bag)).andReturn(card.domesticEffects[0]).anyTimes();
 		card.domesticEffects[0].apply();
 		handler2.moveToState(HandlerState.READY_ROOM);
 		EasyMock.expect(card2.domesticEffects[0].on(player2)).andReturn(card2.domesticEffects[0]).anyTimes();
+		EasyMock.expect(card2.domesticEffects[0].on(bag)).andReturn(card2.domesticEffects[0]).anyTimes();
 		card2.domesticEffects[0].apply();
 		handler.moveToState(HandlerState.INCUBATION);
 		handler2.moveToState(HandlerState.INCUBATION);
