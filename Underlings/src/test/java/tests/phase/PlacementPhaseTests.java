@@ -228,11 +228,13 @@ public class PlacementPhaseTests {
 		EasyMock.expect(card.wildEffects[0].on(logic)).andReturn(card.wildEffects[0]).anyTimes();
 		EasyMock.expect(card.wildEffects[0].on(player)).andReturn(card.wildEffects[0]).anyTimes();
 		card.wildEffects[0].apply();
+		gui.notifyAction(-1, card.wildEffects[0].toString() + " has been applied");
 		EasyMock.expect(card.wildEffects[1].on(elementBag)).andReturn(card.wildEffects[1]).anyTimes();
 		EasyMock.expect(card.wildEffects[1].on(hatchingGround)).andReturn(card.wildEffects[1]).anyTimes();
 		EasyMock.expect(card.wildEffects[1].on(logic)).andReturn(card.wildEffects[1]).anyTimes();
 		EasyMock.expect(card.wildEffects[1].on(player)).andReturn(card.wildEffects[1]).anyTimes();
 		card.wildEffects[1].apply();
+		gui.notifyAction(-1, card.wildEffects[1].toString() + " has been applied");
 		
 		// assert expected actions occurred
 		EasyMock.replay(player, promptHandler, display, elementBag, runnable);
