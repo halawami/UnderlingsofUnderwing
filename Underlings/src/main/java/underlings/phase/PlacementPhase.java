@@ -3,6 +3,8 @@ package underlings.phase;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import underlings.card.Card;
 import underlings.element.Element;
 import underlings.element.ElementBag;
@@ -41,7 +43,7 @@ public class PlacementPhase extends RotationPhase {
 		List<Card> cards = getPlayableCards(logic, player.getElements());
 
 		if (cards.isEmpty()) {
-			prompts.displayMessage("Player has no valid placements", playerNum);
+			prompts.displayMessage("Player has no valid placements", playerNum, JOptionPane.WARNING_MESSAGE);
 		} else {
 			this.phaseComplete = false;
 			Card card = prompts.promptChoice("Pick a card to place an element on.", cards, playerNum);

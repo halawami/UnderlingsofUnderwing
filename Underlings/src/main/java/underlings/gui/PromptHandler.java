@@ -10,6 +10,6 @@ public interface PromptHandler {
 
 	boolean promptDecision(String question, int playerId);
 
-	void displayMessage(String message, int playerId);
+	void displayMessage(String message, int playerId, int icon);
 
 }

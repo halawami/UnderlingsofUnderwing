@@ -2,6 +2,7 @@ package underlings.gui;
 
 import java.util.List;
 
+import javax.swing.Icon;
 import javax.swing.JOptionPane;
 
 public class LamePrompt implements PromptHandler {
@@ -24,8 +25,8 @@ public class LamePrompt implements PromptHandler {
 	}
 
 	@Override
-	public void displayMessage(String message, int playerId) {
-		JOptionPane.showMessageDialog(null, message, "Player "+playerId, JOptionPane.WARNING_MESSAGE);
+	public void displayMessage(String message, int playerId, int icon) {
+		JOptionPane.showMessageDialog(null, message, "Player "+playerId, icon);
 	}
 
 	@Override

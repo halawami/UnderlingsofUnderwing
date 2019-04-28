@@ -2,6 +2,8 @@ package underlings.gui;
 
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import underlings.card.Card;
 import underlings.element.ElementGiver;
 import underlings.handler.Handler;
@@ -38,6 +40,10 @@ public class GUI {
 		return card;
 	}
 
+	public void notifyAction(int playerId, String message){
+		this.promptHandler.displayMessage(message, playerId, JOptionPane.PLAIN_MESSAGE);
+	}
+	
 	public int getFieldSpace() {
 		return this.promptHandler.promptInt("Enter Field Space", 0, 21);
 	}
