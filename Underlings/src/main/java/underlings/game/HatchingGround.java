@@ -70,15 +70,14 @@ public class HatchingGround implements Iterable<Card> {
       for (int xDiff = -1; xDiff <= 1; xDiff++) {
         int distanceFromCard = Math.abs(xDiff) + Math.abs(yDiff);
         if (distanceFromCard == 1) {
-          cardsToReturn.add(this.cards[cardCoordinates.y + yDiff][cardCoordinates.x + xDiff]);
+          int adjacentCardY = cardCoordinates.y + yDiff;
+          int adjacentCardX = cardCoordinates.x + xDiff;
+          if (!(adjacentCardX < 0 || adjacentCardY < 0)) {
+            cardsToReturn.add(this.cards[adjacentCardY][adjacentCardX]);
+          }
         }
       }
     }
-
-    cardsToReturn.add(this.cards[0][1]);
-    cardsToReturn.add(this.cards[1][0]);
-    cardsToReturn.add(this.cards[1][2]);
-    cardsToReturn.add(this.cards[2][1]);
     return cardsToReturn;
   }
 

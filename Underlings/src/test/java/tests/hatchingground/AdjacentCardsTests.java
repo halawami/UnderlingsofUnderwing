@@ -19,6 +19,7 @@ public class AdjacentCardsTests {
     HatchingGround hatchingGround = new HatchingGround(stubDeck);
     Card[][] mockedCards = createMockedCards();
     hatchingGround.cards = mockedCards;
+    hatchingGround.setDimensions(4, 4);
     List<Card> returnedCards = hatchingGround.getAdjacentCards(mockedCards[1][1]);
     assertEquals(4, returnedCards.size());
     assertTrue(returnedCards.contains(mockedCards[0][1]));
@@ -31,6 +32,7 @@ public class AdjacentCardsTests {
   public void testLeftEdgeCard() {
     Deck stubDeck = EasyMock.niceMock(Deck.class);
     HatchingGround hatchingGround = new HatchingGround(stubDeck);
+    hatchingGround.setDimensions(4, 4);
     Card[][] mockedCards = createMockedCards();
     hatchingGround.cards = mockedCards;
     List<Card> returnedCards = hatchingGround.getAdjacentCards(mockedCards[1][0]);
