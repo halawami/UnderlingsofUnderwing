@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-
 import underlings.card.Card;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.gui.GUI;
@@ -64,14 +63,10 @@ public class HatchingGround implements Iterable<Card> {
 
 	public List<Card> getAdjacentCards(Card centerCard) {
 		List<Card> cardsToReturn = new LinkedList<>();
-		cardsToReturn.add(this.cards[0][0]);
 		cardsToReturn.add(this.cards[0][1]);
-		cardsToReturn.add(this.cards[0][2]);
 		cardsToReturn.add(this.cards[1][0]);
 		cardsToReturn.add(this.cards[1][2]);
 		cardsToReturn.add(this.cards[2][1]);
-		cardsToReturn.add(this.cards[2][2]);
-		cardsToReturn.add(this.cards[2][0]);
 		return cardsToReturn;
 	}
 
