@@ -69,9 +69,10 @@ public class Game {
 		this.promptPlayerCount();
 		this.setUp(this.numberOfPlayers);
 
-		this.display();
-
-		while (this.roundsLeft >= 0) {
+		while (this.roundsLeft > 0) {
+			
+			this.display();
+			
 			for (Phase phase : phases) {
 				this.currentPhase++;
 				phase.execute(this.turnLeader);

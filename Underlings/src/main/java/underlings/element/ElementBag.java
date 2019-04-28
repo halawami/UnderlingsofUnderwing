@@ -30,6 +30,18 @@ public class ElementBag {
 	
 	public Element drawElementFromList(ElementColor... colors)  {
 		
+		boolean allEmpty = true;
+		
+		for (ElementColor color : colors) {
+			if (this.elementCount.get(color) != 0) {
+				allEmpty = false;
+			}
+		}
+		
+		if (allEmpty) {
+			return NullElement.getInstance();
+		}
+		
 		ArrayList<ElementColor> possibilities = new ArrayList<>();
 		
 		for (ElementColor color : colors) {

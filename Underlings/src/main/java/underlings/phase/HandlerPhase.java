@@ -28,22 +28,22 @@ public class HandlerPhase extends RotationPhase {
 
 	@Override
 	public void setup() {
-		
+
 		this.unmovedHandlers = new HashMap<>();
 
 		for (Player player : this.players) {
 			this.unmovedHandlers.put(player, new ArrayList<>(player.getHandlers()));
-			
+
 			for (Handler handler : this.unmovedHandlers.get(player)) {
 				if (handler.getState() == HandlerState.BREAK_ROOM) {
 					handler.moveToState(HandlerState.READY_ROOM);
 				}
 			}
-			
+
 		}
-		
+
 		this.displayMethod.run();
-		
+
 	}
 
 	@Override
@@ -51,13 +51,13 @@ public class HandlerPhase extends RotationPhase {
 
 		List<Handler> playersHandlers = this.unmovedHandlers.get(player);
 
-		this.phaseComplete = false;
+		if (playersHandlers.size() != 0) {
 
-		HandlerDecision decision = this.gui.getHandlerDecision(playersHandlers, player.getPlayerId());
-		this.handlerMovementLogic.move(decision.handler, decision.choice, player.getPlayerId());
+			HandlerDecision decision = this.gui.getHandlerDecision(playersHandlers, player.getPlayerId());
+			this.handlerMovementLogic.move(decision.handler, decision.choice, player.getPlayerId());
+			this.phaseComplete = false;
 
-		this.phaseComplete = playersHandlers.size() == 0;
-
+		}
 	}
 
 }

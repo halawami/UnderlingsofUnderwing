@@ -71,7 +71,7 @@ public class LameGUI implements Display {
 	@Override
 	public void displayCard(int row, int col, Card card) {
 		this.displayEgg(row, col, card);
-		//displayDragon(row, col, card);
+		// displayDragon(row, col, card);
 	}
 
 	private void displayEgg(int row, int col, Card card) {
@@ -152,6 +152,8 @@ public class LameGUI implements Display {
 			elements += e.getColor() + " ";
 		}
 		this.g.setColor(Color.BLACK);
+		this.g.drawString("Player " + (playerNumber+ 1), (int) (ratio * (xOffset + (width + xGap) * col)) + 5,
+				(int) (ratio * (yOffset + (height + yGap) * row)) + 15);
 		this.g.drawString(elements, (int) (ratio * (30 + xOffset + (width + xGap) * col)),
 				(int) (-25 + ratio * (height / 2 + yOffset + (height + yGap) * row)));
 	}
@@ -185,12 +187,12 @@ public class LameGUI implements Display {
 
 	@Override
 	public void displayStats(ElementBag elementBag, int roundsLeft, int currentPhase, int leadTurn) {
-		
+
 		this.g.setColor(Color.LIGHT_GRAY);
 		this.g.fillRect(WIDTH - 200, 0, 200, HEIGHT);
-		
+
 		this.g.setColor(Color.BLACK);
-		
+
 		StringBuilder stats = new StringBuilder();
 		stats.append("Elements Remaining\n");
 		stats.append("Red: " + elementBag.getNumberRemaining(ElementColor.RED) + "\n");
@@ -204,15 +206,14 @@ public class LameGUI implements Display {
 		stats.append("Rounds Left: " + roundsLeft + "\n");
 		stats.append("Phase: " + currentPhase + "\n");
 		stats.append("Turn Leader: " + leadTurn + "\n");
-		
+
 		int y = 15;
-		
+
 		for (String item : stats.toString().split("\n")) {
 			this.g.drawString(item, WIDTH - 200, y);
-			y+= 15;
+			y += 15;
 		}
-		
-		
+
 	}
 
 }

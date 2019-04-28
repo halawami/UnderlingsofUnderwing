@@ -53,7 +53,7 @@ public class Main {
 		phases.add(new PlacementPhase(game.getPlayers(), gui, elementBag, hatchingGround, () -> {game.display();}, field));
 		phases.add(new DragonPhase(game.getPlayers(), gui, elementBag, hatchingGround, () -> {game.display();}, field));
 		
-		Phase finalPhase = new FinalPhase(game.getPlayers());
+		Phase finalPhase = new FinalPhase(game.getPlayers(), gui, elementBag, hatchingGround, () -> {game.display();}, field);
 		
 		game.start(phases, finalPhase);
 		
