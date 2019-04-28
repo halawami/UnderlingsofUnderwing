@@ -13,7 +13,8 @@ public class PlayerFactory {
 	}
 
 	public Player createPlayer(int maxHandlers) {
-		return new Player(maxHandlers, this.handlerFactory, ++playerCount);
+		Player player =  new Player(maxHandlers, this.handlerFactory, ++this.playerCount);
+		return player;
 	}
 	
 }
