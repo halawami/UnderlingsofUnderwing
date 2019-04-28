@@ -74,8 +74,9 @@ public class HatchingGround implements Iterable<Card> {
 
   public Point getCardCoordinates(Card centerCard) {
     for (int row = 0; row < this.height; row++) {
-      if (centerCard == this.cards[row][0]) {
-        return new Point(row, 0);
+      for(int col =0; col < this.width; col++)
+      if (centerCard == this.cards[row][col]) {
+        return new Point(row, col);
       }
     }
     return null;
