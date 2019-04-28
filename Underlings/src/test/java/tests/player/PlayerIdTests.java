@@ -27,4 +27,11 @@ public class PlayerIdTests {
 		assertEquals(2, p.getPlayerId());
 	}
 	
+	@Test
+	public void testToString() {
+		Player p = new Player(2, new HandlerFactory(), 0);
+		
+		assertEquals("Player 1", p.toString());
+	}
+	
 }

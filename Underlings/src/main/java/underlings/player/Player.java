@@ -119,7 +119,7 @@ public class Player {
 
 	@Override
 	public String toString() {
-		return "Player " + this.getPlayerId();
+		return "Player " + (this.getPlayerId() + 1);
 	}
 
 }
