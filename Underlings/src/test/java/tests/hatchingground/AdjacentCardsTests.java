@@ -106,6 +106,19 @@ public class AdjacentCardsTests {
     assertEquals(1, cardCoordinates.y);
   }
 
+  @Test
+  public void testGetCardCoordinatesMiddle() {
+    Deck stubDeck = EasyMock.niceMock(Deck.class);
+    HatchingGround hatchingGround = new HatchingGround(stubDeck);
+    hatchingGround.setDimensions(4, 4);
+    Card[][] mockedCards = createMockedCards();
+    hatchingGround.cards = mockedCards;
+
+    Point cardCoordinates = hatchingGround.getCardCoordinates(mockedCards[1][1]);
+    assertEquals(1, cardCoordinates.x);
+    assertEquals(1, cardCoordinates.y);
+  }
+
 
   private Card[][] createMockedCards() {
     Card[][] mockedCards = new Card[4][4];
