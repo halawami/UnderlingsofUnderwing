@@ -71,6 +71,7 @@ public class PlacementPhase extends RotationPhase {
 			if (logic.isComplete(card) && card.handler == null) {
 				card.handler = WildHandler.getInstance();
 				// TODO: Apply Effect
+				
 			}
 			
 		}
