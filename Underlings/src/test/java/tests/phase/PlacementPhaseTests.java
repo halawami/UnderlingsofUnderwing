@@ -46,7 +46,8 @@ public class PlacementPhaseTests {
         playerElements.add(blue2);
         Element white = new Element(ElementColor.WHITE);
         playerElements.add(white);
-        EasyMock.expect(player.getElements()).andReturn(playerElements).anyTimes();
+        EasyMock.expect(player.getElements()).andReturn(playerElements)
+                .anyTimes();
 
         // create hatchingGround and define actions
         Card card = new Card();
@@ -75,11 +76,15 @@ public class PlacementPhaseTests {
         // define expected flow of activity
         EasyMock.expect(logic.getPlayableSpaces(EasyMock.anyObject(Card.class),
                 EasyMock.anyObject(List.class)))
-                .andReturn(Arrays.asList(blueSpace, greenSpace, whiteSpace)).anyTimes();
-        EasyMock.expect(promptHandler.promptChoice("Pick a card to place an element on.",
-                Arrays.asList(card), 1)).andReturn(card);
-        EasyMock.expect(promptHandler.promptChoice("Pick an element space to place an element on.",
-                Arrays.asList(blueSpace, greenSpace, whiteSpace), 1)).andReturn(blueSpace);
+                .andReturn(Arrays.asList(blueSpace, greenSpace, whiteSpace))
+                .anyTimes();
+        EasyMock.expect(promptHandler.promptChoice(
+                "Pick a card to place an element on.", Arrays.asList(card), 1))
+                .andReturn(card);
+        EasyMock.expect(promptHandler.promptChoice(
+                "Pick an element space to place an element on.",
+                Arrays.asList(blueSpace, greenSpace, whiteSpace), 1))
+                .andReturn(blueSpace);
         EasyMock.expect(logic.getValidAdditions(blueSpace))
                 .andReturn(Arrays.asList(ElementColor.BLUE));
         EasyMock.expect(promptHandler.promptChoice("Pick an element to place",
@@ -90,14 +95,16 @@ public class PlacementPhaseTests {
         EasyMock.expectLastCall().anyTimes();
         EasyMock.expect(logic.getValidAdditions(blueSpace))
                 .andReturn(Arrays.asList(ElementColor.BLUE));
-        EasyMock.expect(promptHandler.promptDecision("Would you like to place another element?", 1))
+        EasyMock.expect(promptHandler
+                .promptDecision("Would you like to place another element?", 1))
                 .andReturn(false);
         EasyMock.expect(logic.isComplete(card)).andReturn(true).anyTimes();
 
         // assert expected actions occurred
         EasyMock.replay(player, promptHandler, display, elementBag, runnable);
         EasyMock.replay(logic, redSpace, blueSpace, greenSpace, whiteSpace);
-        Phase phase = new PlacementPhase(players, gui, elementBag, hatchingGround, runnable, null);
+        Phase phase = new PlacementPhase(players, gui, elementBag,
+                hatchingGround, runnable, null);
         phase.execute(1);
         EasyMock.verify(player, promptHandler, display, elementBag, runnable);
         EasyMock.verify(logic, redSpace, blueSpace, greenSpace, whiteSpace);
@@ -120,7 +127,8 @@ public class PlacementPhaseTests {
         playerElements.add(blue2);
         Element white = new Element(ElementColor.WHITE);
         playerElements.add(white);
-        EasyMock.expect(player.getElements()).andReturn(playerElements).anyTimes();
+        EasyMock.expect(player.getElements()).andReturn(playerElements)
+                .anyTimes();
 
         // create hatchingGround and define actions
         Card card = new Card();
@@ -152,11 +160,15 @@ public class PlacementPhaseTests {
         // define expected flow of activity
         EasyMock.expect(logic.getPlayableSpaces(EasyMock.anyObject(Card.class),
                 EasyMock.anyObject(List.class)))
-                .andReturn(Arrays.asList(blueSpace, greenSpace, whiteSpace)).anyTimes();
-        EasyMock.expect(promptHandler.promptChoice("Pick a card to place an element on.",
-                Arrays.asList(card), 1)).andReturn(card);
-        EasyMock.expect(promptHandler.promptChoice("Pick an element space to place an element on.",
-                Arrays.asList(blueSpace, greenSpace, whiteSpace), 1)).andReturn(blueSpace);
+                .andReturn(Arrays.asList(blueSpace, greenSpace, whiteSpace))
+                .anyTimes();
+        EasyMock.expect(promptHandler.promptChoice(
+                "Pick a card to place an element on.", Arrays.asList(card), 1))
+                .andReturn(card);
+        EasyMock.expect(promptHandler.promptChoice(
+                "Pick an element space to place an element on.",
+                Arrays.asList(blueSpace, greenSpace, whiteSpace), 1))
+                .andReturn(blueSpace);
         EasyMock.expect(logic.getValidAdditions(blueSpace))
                 .andReturn(Arrays.asList(ElementColor.BLUE));
         EasyMock.expect(promptHandler.promptChoice("Pick an element to place",
@@ -167,27 +179,36 @@ public class PlacementPhaseTests {
         EasyMock.expectLastCall().anyTimes();
         EasyMock.expect(logic.getValidAdditions(blueSpace))
                 .andReturn(Arrays.asList(ElementColor.BLUE));
-        EasyMock.expect(promptHandler.promptDecision("Would you like to place another element?", 1))
+        EasyMock.expect(promptHandler
+                .promptDecision("Would you like to place another element?", 1))
                 .andReturn(false);
         EasyMock.expect(logic.isComplete(card)).andReturn(true).anyTimes();
-        EasyMock.expect(card.wildEffects[0].on(elementBag)).andReturn(card.wildEffects[0])
-                .anyTimes();
-        EasyMock.expect(card.wildEffects[0].on(hatchingGround)).andReturn(card.wildEffects[0])
-                .anyTimes();
-        EasyMock.expect(card.wildEffects[0].on(logic)).andReturn(card.wildEffects[0]).anyTimes();
-        EasyMock.expect(card.wildEffects[0].on(player)).andReturn(card.wildEffects[0]).anyTimes();
+        EasyMock.expect(card.wildEffects[0].on(elementBag))
+                .andReturn(card.wildEffects[0]).anyTimes();
+        EasyMock.expect(card.wildEffects[0].on(hatchingGround))
+                .andReturn(card.wildEffects[0]).anyTimes();
+        EasyMock.expect(card.wildEffects[0].on(logic))
+                .andReturn(card.wildEffects[0]).anyTimes();
+        EasyMock.expect(card.wildEffects[0].on(player))
+                .andReturn(card.wildEffects[0]).anyTimes();
         card.wildEffects[0].apply();
-        gui.notifyAction(-1, card.wildEffects[0].toString() + " has been applied");
-        gui.promptHandler.displayMessage("All dragons hatched wild! You lose!", -1,
-                JOptionPane.WARNING_MESSAGE);
+        gui.notifyAction(-1,
+                card.wildEffects[0].toString() + " has been applied");
+        gui.promptHandler.displayMessage("All dragons hatched wild! You lose!",
+                -1, JOptionPane.WARNING_MESSAGE);
 
         // assert expected actions occurred
-        EasyMock.replay(player, promptHandler, display, elementBag, runnable, gui);
-        EasyMock.replay(logic, redSpace, blueSpace, greenSpace, whiteSpace, card.wildEffects[0]);
-        Phase phase = new PlacementPhase(players, gui, elementBag, hatchingGround, runnable, null);
+        EasyMock.replay(player, promptHandler, display, elementBag, runnable,
+                gui);
+        EasyMock.replay(logic, redSpace, blueSpace, greenSpace, whiteSpace,
+                card.wildEffects[0]);
+        Phase phase = new PlacementPhase(players, gui, elementBag,
+                hatchingGround, runnable, null);
         phase.turn(player);
-        EasyMock.verify(player, promptHandler, display, elementBag, runnable, gui);
-        EasyMock.verify(logic, redSpace, blueSpace, greenSpace, whiteSpace, card.wildEffects[0]);
+        EasyMock.verify(player, promptHandler, display, elementBag, runnable,
+                gui);
+        EasyMock.verify(logic, redSpace, blueSpace, greenSpace, whiteSpace,
+                card.wildEffects[0]);
     }
 
     @SuppressWarnings("unchecked")
@@ -209,7 +230,8 @@ public class PlacementPhaseTests {
         playerElements.add(blue2);
         Element white = new Element(ElementColor.WHITE);
         playerElements.add(white);
-        EasyMock.expect(player.getElements()).andReturn(playerElements).anyTimes();
+        EasyMock.expect(player.getElements()).andReturn(playerElements)
+                .anyTimes();
 
         // create hatchingGround and define actions
         Card card = new Card();
@@ -242,11 +264,15 @@ public class PlacementPhaseTests {
         // define expected flow of activity
         EasyMock.expect(logic.getPlayableSpaces(EasyMock.anyObject(Card.class),
                 EasyMock.anyObject(List.class)))
-                .andReturn(Arrays.asList(blueSpace, greenSpace, whiteSpace)).anyTimes();
-        EasyMock.expect(promptHandler.promptChoice("Pick a card to place an element on.",
-                Arrays.asList(card), 1)).andReturn(card);
-        EasyMock.expect(promptHandler.promptChoice("Pick an element space to place an element on.",
-                Arrays.asList(blueSpace, greenSpace, whiteSpace), 1)).andReturn(blueSpace);
+                .andReturn(Arrays.asList(blueSpace, greenSpace, whiteSpace))
+                .anyTimes();
+        EasyMock.expect(promptHandler.promptChoice(
+                "Pick a card to place an element on.", Arrays.asList(card), 1))
+                .andReturn(card);
+        EasyMock.expect(promptHandler.promptChoice(
+                "Pick an element space to place an element on.",
+                Arrays.asList(blueSpace, greenSpace, whiteSpace), 1))
+                .andReturn(blueSpace);
         EasyMock.expect(logic.getValidAdditions(blueSpace))
                 .andReturn(Arrays.asList(ElementColor.BLUE));
         EasyMock.expect(promptHandler.promptChoice("Pick an element to place",
@@ -257,37 +283,47 @@ public class PlacementPhaseTests {
         EasyMock.expectLastCall().anyTimes();
         EasyMock.expect(logic.getValidAdditions(blueSpace))
                 .andReturn(Arrays.asList(ElementColor.BLUE));
-        EasyMock.expect(promptHandler.promptDecision("Would you like to place another element?", 1))
+        EasyMock.expect(promptHandler
+                .promptDecision("Would you like to place another element?", 1))
                 .andReturn(false);
         EasyMock.expect(logic.isComplete(card)).andReturn(true).anyTimes();
-        EasyMock.expect(card.wildEffects[0].on(elementBag)).andReturn(card.wildEffects[0])
-                .anyTimes();
-        EasyMock.expect(card.wildEffects[0].on(hatchingGround)).andReturn(card.wildEffects[0])
-                .anyTimes();
-        EasyMock.expect(card.wildEffects[0].on(logic)).andReturn(card.wildEffects[0]).anyTimes();
-        EasyMock.expect(card.wildEffects[0].on(player)).andReturn(card.wildEffects[0]).anyTimes();
+        EasyMock.expect(card.wildEffects[0].on(elementBag))
+                .andReturn(card.wildEffects[0]).anyTimes();
+        EasyMock.expect(card.wildEffects[0].on(hatchingGround))
+                .andReturn(card.wildEffects[0]).anyTimes();
+        EasyMock.expect(card.wildEffects[0].on(logic))
+                .andReturn(card.wildEffects[0]).anyTimes();
+        EasyMock.expect(card.wildEffects[0].on(player))
+                .andReturn(card.wildEffects[0]).anyTimes();
         card.wildEffects[0].apply();
-        gui.notifyAction(-1, card.wildEffects[0].toString() + " has been applied");
-        EasyMock.expect(card.wildEffects[1].on(elementBag)).andReturn(card.wildEffects[1])
-                .anyTimes();
-        EasyMock.expect(card.wildEffects[1].on(hatchingGround)).andReturn(card.wildEffects[1])
-                .anyTimes();
-        EasyMock.expect(card.wildEffects[1].on(logic)).andReturn(card.wildEffects[1]).anyTimes();
-        EasyMock.expect(card.wildEffects[1].on(player)).andReturn(card.wildEffects[1]).anyTimes();
+        gui.notifyAction(-1,
+                card.wildEffects[0].toString() + " has been applied");
+        EasyMock.expect(card.wildEffects[1].on(elementBag))
+                .andReturn(card.wildEffects[1]).anyTimes();
+        EasyMock.expect(card.wildEffects[1].on(hatchingGround))
+                .andReturn(card.wildEffects[1]).anyTimes();
+        EasyMock.expect(card.wildEffects[1].on(logic))
+                .andReturn(card.wildEffects[1]).anyTimes();
+        EasyMock.expect(card.wildEffects[1].on(player))
+                .andReturn(card.wildEffects[1]).anyTimes();
         card.wildEffects[1].apply();
-        gui.notifyAction(-1, card.wildEffects[1].toString() + " has been applied");
-        gui.promptHandler.displayMessage("All dragons hatched wild! You lose!", -1,
-                JOptionPane.WARNING_MESSAGE);
+        gui.notifyAction(-1,
+                card.wildEffects[1].toString() + " has been applied");
+        gui.promptHandler.displayMessage("All dragons hatched wild! You lose!",
+                -1, JOptionPane.WARNING_MESSAGE);
 
         // assert expected actions occurred
-        EasyMock.replay(player, promptHandler, display, elementBag, runnable, gui);
-        EasyMock.replay(logic, redSpace, blueSpace, greenSpace, whiteSpace, card.wildEffects[0],
-                card.wildEffects[1]);
-        Phase phase = new PlacementPhase(players, gui, elementBag, hatchingGround, runnable, null);
+        EasyMock.replay(player, promptHandler, display, elementBag, runnable,
+                gui);
+        EasyMock.replay(logic, redSpace, blueSpace, greenSpace, whiteSpace,
+                card.wildEffects[0], card.wildEffects[1]);
+        Phase phase = new PlacementPhase(players, gui, elementBag,
+                hatchingGround, runnable, null);
         phase.turn(player);
-        EasyMock.verify(player, promptHandler, display, elementBag, runnable, gui);
-        EasyMock.verify(logic, redSpace, blueSpace, greenSpace, whiteSpace, card.wildEffects[0],
-                card.wildEffects[1]);
+        EasyMock.verify(player, promptHandler, display, elementBag, runnable,
+                gui);
+        EasyMock.verify(logic, redSpace, blueSpace, greenSpace, whiteSpace,
+                card.wildEffects[0], card.wildEffects[1]);
     }
 
 }

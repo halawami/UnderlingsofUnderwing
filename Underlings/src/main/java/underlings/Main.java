@@ -49,21 +49,25 @@ public class Main {
         Game game = new Game(gui, hatchingGround, playerFactory, elementBag);
 
         List<Phase> phases = new ArrayList<>();
-        phases.add(new DrawingPhase(game.getPlayers(), gui, elementBag, hatchingGround, () -> {
-            game.display();
-        }, field));
-        phases.add(new HandlerPhase(game.getPlayers(), gui, elementBag, hatchingGround, () -> {
-            game.display();
-        }, field, handlerMovementLogic));
-        phases.add(new PlacementPhase(game.getPlayers(), gui, elementBag, hatchingGround, () -> {
-            game.display();
-        }, field));
-        phases.add(new DragonPhase(game.getPlayers(), gui, elementBag, hatchingGround, () -> {
-            game.display();
-        }, field));
+        phases.add(new DrawingPhase(game.getPlayers(), gui, elementBag,
+                hatchingGround, () -> {
+                    game.display();
+                }, field));
+        phases.add(new HandlerPhase(game.getPlayers(), gui, elementBag,
+                hatchingGround, () -> {
+                    game.display();
+                }, field, handlerMovementLogic));
+        phases.add(new PlacementPhase(game.getPlayers(), gui, elementBag,
+                hatchingGround, () -> {
+                    game.display();
+                }, field));
+        phases.add(new DragonPhase(game.getPlayers(), gui, elementBag,
+                hatchingGround, () -> {
+                    game.display();
+                }, field));
 
-        Phase finalPhase =
-                new FinalPhase(game.getPlayers(), gui, elementBag, hatchingGround, () -> {
+        Phase finalPhase = new FinalPhase(game.getPlayers(), gui, elementBag,
+                hatchingGround, () -> {
                     game.display();
                 }, field);
 

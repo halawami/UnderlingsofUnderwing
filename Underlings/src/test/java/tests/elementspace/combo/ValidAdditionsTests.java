@@ -24,8 +24,8 @@ public class ValidAdditionsTests {
     @Test
     public void testEmptyGreen() {
         ElementSpace elementSpace = new ElementSpace(ElementColor.GREEN);
-        List<ElementColor> expected =
-                Arrays.asList(ElementColor.GREEN, ElementColor.YELLOW, ElementColor.BLUE);
+        List<ElementColor> expected = Arrays.asList(ElementColor.GREEN,
+                ElementColor.YELLOW, ElementColor.BLUE);
 
         List<ElementColor> actual = logic.getValidAdditions(elementSpace);
         Collections.sort(expected);
@@ -45,8 +45,8 @@ public class ValidAdditionsTests {
     @Test
     public void testEmptyOrange() {
         ElementSpace elementSpace = new ElementSpace(ElementColor.ORANGE);
-        List<ElementColor> expected =
-                Arrays.asList(ElementColor.ORANGE, ElementColor.RED, ElementColor.YELLOW);
+        List<ElementColor> expected = Arrays.asList(ElementColor.ORANGE,
+                ElementColor.RED, ElementColor.YELLOW);
 
         List<ElementColor> actual = logic.getValidAdditions(elementSpace);
         Collections.sort(expected);

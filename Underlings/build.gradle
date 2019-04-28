@@ -63,7 +63,7 @@ pitest {
 }
 
 checkstyle {
-    toolVersion "7.6.1"
+    toolVersion "8.11"
     configFile = file("${rootDir}/config/checkstyle/checkstyle.xml")
     ignoreFailures = true
 }

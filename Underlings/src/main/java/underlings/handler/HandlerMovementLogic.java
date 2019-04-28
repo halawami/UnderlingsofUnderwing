@@ -11,7 +11,8 @@ public class HandlerMovementLogic {
     private GUI gui;
     private Field field;
 
-    public HandlerMovementLogic(HatchingGround hatchingGround, GUI gui, Field field) {
+    public HandlerMovementLogic(HatchingGround hatchingGround, GUI gui,
+            Field field) {
         this.hatchingGround = hatchingGround;
         this.gui = gui;
         this.field = field;
@@ -28,8 +29,8 @@ public class HandlerMovementLogic {
                 break;
             case CARD:
                 handler.moveToState(choice.getState());
-                Card chosenCard =
-                        this.gui.getCard(this.hatchingGround.getUnclaimedEggs(), playerId);
+                Card chosenCard = this.gui.getCard(
+                        this.hatchingGround.getUnclaimedEggs(), playerId);
                 chosenCard.handler = handler;
                 handler.setLocation(chosenCard.name);
                 break;

@@ -16,7 +16,8 @@ import underlings.player.Player;
 public class DrawingPhase extends SequentialPhase {
 
     public DrawingPhase(List<Player> players, GUI gui, ElementBag elementBag,
-            HatchingGround hatchingGround, Runnable displayMethod, Field field) {
+            HatchingGround hatchingGround, Runnable displayMethod,
+            Field field) {
         super(players, gui, elementBag, hatchingGround, displayMethod, field);
     }
 
@@ -25,8 +26,8 @@ public class DrawingPhase extends SequentialPhase {
     @Override
     public boolean turn(Player player) {
 
-        DrawChoice drawChoice =
-                this.gui.getDrawChoice(this.elementGivers.get(player), player.getPlayerId());
+        DrawChoice drawChoice = this.gui.getDrawChoice(
+                this.elementGivers.get(player), player.getPlayerId());
 
         Element element = this.elementBag.drawElement(drawChoice);
 

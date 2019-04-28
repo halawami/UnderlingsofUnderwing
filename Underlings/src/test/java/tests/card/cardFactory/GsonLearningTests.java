@@ -29,7 +29,8 @@ public class GsonLearningTests {
     @Test
     public void testOneCardNoEffects() throws IOException {
         Gson gson = new Gson();
-        FileReader fileReader = new FileReader(getFile("oneCardNoEffects.json"));
+        FileReader fileReader =
+                new FileReader(getFile("oneCardNoEffects.json"));
         Card[] cards = gson.fromJson(fileReader, Card[].class);
 
         assertEquals(1, cards.length);
@@ -54,7 +55,8 @@ public class GsonLearningTests {
     @Test
     public void testTwoCardsNoEffects() throws IOException {
         Gson gson = new Gson();
-        FileReader fileReader = new FileReader(getFile("twoCardsNoEffects.json"));
+        FileReader fileReader =
+                new FileReader(getFile("twoCardsNoEffects.json"));
         Card[] cards = gson.fromJson(fileReader, Card[].class);
 
         assertEquals(2, cards.length);
@@ -66,10 +68,12 @@ public class GsonLearningTests {
         assertEquals(Family.TRIADIC, firstCard.family);
         ElementSpace firstCardFirstElementSpace = firstCard.elementSpaces[0];
         assertEquals(ElementColor.BLUE, firstCardFirstElementSpace.color);
-        assertEquals(ElementSpacePosition.L3_2, firstCardFirstElementSpace.position);
+        assertEquals(ElementSpacePosition.L3_2,
+                firstCardFirstElementSpace.position);
         ElementSpace firstCardSecondElementSpace = firstCard.elementSpaces[1];
         assertEquals(ElementColor.RED, firstCardSecondElementSpace.color);
-        assertEquals(ElementSpacePosition.R3_2, firstCardSecondElementSpace.position);
+        assertEquals(ElementSpacePosition.R3_2,
+                firstCardSecondElementSpace.position);
 
         Card secondCard = cards[1];
         assertEquals("second", secondCard.name);
@@ -78,10 +82,12 @@ public class GsonLearningTests {
         assertEquals(Family.TERTIARY, secondCard.family);
         ElementSpace secondCardFirstElementSpace = secondCard.elementSpaces[0];
         assertEquals(ElementColor.GREEN, secondCardFirstElementSpace.color);
-        assertEquals(ElementSpacePosition.L3_3, secondCardFirstElementSpace.position);
+        assertEquals(ElementSpacePosition.L3_3,
+                secondCardFirstElementSpace.position);
         ElementSpace secondCardSecondElementSpace = secondCard.elementSpaces[1];
         assertEquals(ElementColor.PURPLE, secondCardSecondElementSpace.color);
-        assertEquals(ElementSpacePosition.R3_3, secondCardSecondElementSpace.position);
+        assertEquals(ElementSpacePosition.R3_3,
+                secondCardSecondElementSpace.position);
 
 
     }
@@ -89,7 +95,8 @@ public class GsonLearningTests {
     @Test
     public void testOneCardSimpleEffects() throws IOException {
         Gson gson = getGsonWithSimpleCardEffects();
-        FileReader fileReader = new FileReader(getFile("oneCardSimpleEffect.json"));
+        FileReader fileReader =
+                new FileReader(getFile("oneCardSimpleEffect.json"));
         Card[] cards = gson.fromJson(fileReader, Card[].class);
 
         Card testCard = cards[0];
@@ -105,11 +112,12 @@ public class GsonLearningTests {
 
     @Test
     public void testOneCardComplexEffects() throws IOException {
-        List<Class<? extends Effect>> effectClasses =
-                Arrays.asList(GainOneHandlerEffect.class, CollectPrimaryElementEffect.class);
+        List<Class<? extends Effect>> effectClasses = Arrays.asList(
+                GainOneHandlerEffect.class, CollectPrimaryElementEffect.class);
         Gson gson = getGsonWithComplexCardEffects(effectClasses);
 
-        FileReader fileReader = new FileReader(getFile("oneCardComplexEffect.json"));
+        FileReader fileReader =
+                new FileReader(getFile("oneCardComplexEffect.json"));
 
         Card[] cards = gson.fromJson(fileReader, Card[].class);
 
@@ -125,7 +133,8 @@ public class GsonLearningTests {
                 Arrays.asList(AddElementsToAllAdjacentEggsEffect.class);
         Gson gson = getGsonWithComplexCardEffects(effectClasses);
 
-        FileReader fileReader = new FileReader(getFile("oneCardVariableEffect.json"));
+        FileReader fileReader =
+                new FileReader(getFile("oneCardVariableEffect.json"));
 
         Card[] cards = gson.fromJson(fileReader, Card[].class);
 
@@ -138,28 +147,34 @@ public class GsonLearningTests {
     }
 
     private Gson getGsonWithSimpleCardEffects() {
-        RuntimeTypeAdapterFactory<Effect> effectsTypeAdapter = RuntimeTypeAdapterFactory
-                .of(Effect.class, "effect").registerSubtype(GainOneHandlerEffect.class)
-                .registerSubtype(CollectPrimaryElementEffect.class);
+        RuntimeTypeAdapterFactory<Effect> effectsTypeAdapter =
+                RuntimeTypeAdapterFactory.of(Effect.class, "effect")
+                        .registerSubtype(GainOneHandlerEffect.class)
+                        .registerSubtype(CollectPrimaryElementEffect.class);
 
-        return new GsonBuilder().registerTypeAdapterFactory(effectsTypeAdapter).create();
+        return new GsonBuilder().registerTypeAdapterFactory(effectsTypeAdapter)
+                .create();
     }
 
-    private Gson getGsonWithComplexCardEffects(List<Class<? extends Effect>> effectClasses) {
+    private Gson getGsonWithComplexCardEffects(
+            List<Class<? extends Effect>> effectClasses) {
         RuntimeTypeAdapterFactory<Effect> effectsTypeAdapter =
                 RuntimeTypeAdapterFactory.of(Effect.class, "effect");
 
         for (Class<? extends Effect> effectClass : effectClasses)
-            effectsTypeAdapter = effectsTypeAdapter.registerSubtype(effectClass);
+            effectsTypeAdapter =
+                    effectsTypeAdapter.registerSubtype(effectClass);
 
-        return new GsonBuilder().registerTypeAdapterFactory(effectsTypeAdapter).create();
+        return new GsonBuilder().registerTypeAdapterFactory(effectsTypeAdapter)
+                .create();
     }
 
 
     private File getFile(String fileName) {
         String workingDirectory = Paths.get("").toAbsolutePath().toString();
         return new File(workingDirectory
-                + "\\src\\test\\java\\tests\\card\\cardFactory\\jsonFiles\\" + fileName);
+                + "\\src\\test\\java\\tests\\card\\cardFactory\\jsonFiles\\"
+                + fileName);
     }
 
 

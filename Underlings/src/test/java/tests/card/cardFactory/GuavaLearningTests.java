@@ -10,12 +10,15 @@ import static org.junit.Assert.assertEquals;
 public class GuavaLearningTests {
 
     @Test
-    public void testLoadClassFromPackage() throws IOException, ClassNotFoundException {
+    public void testLoadClassFromPackage()
+            throws IOException, ClassNotFoundException {
         List<Class<?>> retrievedClasses = new ArrayList<>();
-        final ClassLoader loader = Thread.currentThread().getContextClassLoader();
+        final ClassLoader loader =
+                Thread.currentThread().getContextClassLoader();
 
         for (ClassPath.ClassInfo info : ClassPath.from(loader)
-                .getTopLevelClassesRecursive("tests.card.cardFactory.testClasses")) {
+                .getTopLevelClassesRecursive(
+                        "tests.card.cardFactory.testClasses")) {
             // Class<?> retrievedClass = Class.forName(info.getName());
             retrievedClasses.add(info.load());
         }

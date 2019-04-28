@@ -119,7 +119,8 @@ public class HatchingGroundTests {
         hatchingGround.setDimensions(4, 4);
         hatchingGround.populate();
         assertEquals(card, hatchingGround.cards[0][0]);
-        assertEquals(Arrays.asList(card), hatchingGround.pullAndReplaceCompleteEggs());
+        assertEquals(Arrays.asList(card),
+                hatchingGround.pullAndReplaceCompleteEggs());
 
         EasyMock.verify(deck, handler);
         assertEquals(hatchingGround.cards[0][0], card2);
@@ -152,7 +153,8 @@ public class HatchingGroundTests {
         hatchingGround.populate();
         assertEquals(card, hatchingGround.cards[0][0]);
         assertEquals(card, hatchingGround.cards[0][1]);
-        assertEquals(Arrays.asList(card, card), hatchingGround.pullAndReplaceCompleteEggs());
+        assertEquals(Arrays.asList(card, card),
+                hatchingGround.pullAndReplaceCompleteEggs());
 
         EasyMock.verify(deck, handler);
         assertEquals(hatchingGround.cards[0][0], card2);
@@ -186,8 +188,8 @@ public class HatchingGroundTests {
         fakeCard.elementSpaces[0].elements = new ArrayList<>();
         card2.name = "temp";
         Handler handler = EasyMock.mock(Handler.class);
-        ElementSpace[] spaces =
-                {new ElementSpace(ElementColor.PURPLE), new ElementSpace(ElementColor.BLACK)};
+        ElementSpace[] spaces = {new ElementSpace(ElementColor.PURPLE),
+                new ElementSpace(ElementColor.BLACK)};
         card.elementSpaces = spaces;
         spaces[0].elements = Arrays.asList(ElementColor.PURPLE);
         spaces[1].elements = Arrays.asList(ElementColor.RED);
@@ -200,7 +202,8 @@ public class HatchingGroundTests {
         hatchingGround.setDimensions(4, 4);
         hatchingGround.populate();
         assertEquals(card, hatchingGround.cards[0][0]);
-        assertEquals(Arrays.asList(), hatchingGround.pullAndReplaceCompleteEggs());
+        assertEquals(Arrays.asList(),
+                hatchingGround.pullAndReplaceCompleteEggs());
 
         EasyMock.verify(deck, handler);
     }
@@ -218,8 +221,8 @@ public class HatchingGroundTests {
         fakeCard.elementSpaces[0].elements = new ArrayList<>();
         card2.name = "temp";
         Handler handler = EasyMock.mock(Handler.class);
-        ElementSpace[] spaces =
-                {new ElementSpace(ElementColor.PURPLE), new ElementSpace(ElementColor.BLACK)};
+        ElementSpace[] spaces = {new ElementSpace(ElementColor.PURPLE),
+                new ElementSpace(ElementColor.BLACK)};
         card.elementSpaces = spaces;
         spaces[0].elements = Arrays.asList(ElementColor.PURPLE);
         spaces[1].elements = Arrays.asList(ElementColor.BLACK);
@@ -233,7 +236,8 @@ public class HatchingGroundTests {
         hatchingGround.setDimensions(4, 4);
         hatchingGround.populate();
         assertEquals(card, hatchingGround.cards[0][0]);
-        assertEquals(Arrays.asList(card), hatchingGround.pullAndReplaceCompleteEggs());
+        assertEquals(Arrays.asList(card),
+                hatchingGround.pullAndReplaceCompleteEggs());
 
         EasyMock.verify(deck, handler);
         assertEquals(hatchingGround.cards[0][0], card2);
@@ -245,8 +249,8 @@ public class HatchingGroundTests {
         Card card = new Card();
         Card fakeCard = new Card();
         card.handler = WildHandler.getInstance();
-        ElementSpace[] spaces =
-                {new ElementSpace(ElementColor.PURPLE), new ElementSpace(ElementColor.BLACK)};
+        ElementSpace[] spaces = {new ElementSpace(ElementColor.PURPLE),
+                new ElementSpace(ElementColor.BLACK)};
         card.elementSpaces = spaces;
         spaces[0].elements = Arrays.asList(ElementColor.PURPLE);
         spaces[1].elements = Arrays.asList(ElementColor.BLACK);
@@ -261,7 +265,8 @@ public class HatchingGroundTests {
         hatchingGround.setDimensions(4, 4);
         hatchingGround.populate();
         assertEquals(card, hatchingGround.cards[0][0]);
-        assertEquals(Arrays.asList(), hatchingGround.pullAndReplaceCompleteEggs());
+        assertEquals(Arrays.asList(),
+                hatchingGround.pullAndReplaceCompleteEggs());
 
         EasyMock.verify(deck);
     }

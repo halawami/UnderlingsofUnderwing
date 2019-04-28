@@ -32,7 +32,8 @@ public class HandlerPhase extends RotationPhase {
         this.unmovedHandlers = new HashMap<>();
 
         for (Player player : this.players) {
-            this.unmovedHandlers.put(player, new ArrayList<>(player.getHandlers()));
+            this.unmovedHandlers.put(player,
+                    new ArrayList<>(player.getHandlers()));
 
             for (Handler handler : this.unmovedHandlers.get(player)) {
                 if (handler.getState() == HandlerState.BREAK_ROOM) {
@@ -53,9 +54,10 @@ public class HandlerPhase extends RotationPhase {
 
         if (playersHandlers.size() != 0) {
 
-            HandlerDecision decision = this.gui.getHandlerDecision(playersHandlers,
-                    player.getPlayerId(), this.hatchingGround);
-            this.handlerMovementLogic.move(decision.handler, decision.choice, player.getPlayerId());
+            HandlerDecision decision = this.gui.getHandlerDecision(
+                    playersHandlers, player.getPlayerId(), this.hatchingGround);
+            this.handlerMovementLogic.move(decision.handler, decision.choice,
+                    player.getPlayerId());
             this.phaseComplete = false;
 
         }
