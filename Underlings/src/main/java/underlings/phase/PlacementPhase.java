@@ -81,10 +81,10 @@ public class PlacementPhase extends RotationPhase {
 						gameOver = false;
 					}
 				}
-//				if (gameOver) {
-//					this.gui.promptHandler.displayMessage("All dragons hatched wild! You lose!", -1, JOptionPane.WARNING_MESSAGE);
-//					System.exit(0);
-//				}
+				if (gameOver) {
+					this.gui.promptHandler.displayMessage("All dragons hatched wild! You lose!", -1, JOptionPane.WARNING_MESSAGE);
+					System.exit(0);
+				}
 				
 			}
 			
