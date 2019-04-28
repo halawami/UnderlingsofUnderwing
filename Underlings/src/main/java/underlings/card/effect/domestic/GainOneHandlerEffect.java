@@ -12,7 +12,7 @@ public class GainOneHandlerEffect extends PlayerEffect {
 
     @Override
     public String toString() {
-    	return "Gain one handler";
+        return "Gain one handler";
     }
-    
+
 }

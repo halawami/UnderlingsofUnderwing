@@ -14,7 +14,6 @@ import underlings.card.effect.wild.AddElementsToAllAdjacentEggsEffect;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.ElementSpacePosition;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -22,7 +21,6 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -107,7 +105,8 @@ public class GsonLearningTests {
 
     @Test
     public void testOneCardComplexEffects() throws IOException {
-        List<Class<? extends Effect>> effectClasses = Arrays.asList(GainOneHandlerEffect.class, CollectPrimaryElementEffect.class);
+        List<Class<? extends Effect>> effectClasses =
+                Arrays.asList(GainOneHandlerEffect.class, CollectPrimaryElementEffect.class);
         Gson gson = getGsonWithComplexCardEffects(effectClasses);
 
         FileReader fileReader = new FileReader(getFile("oneCardComplexEffect.json"));
@@ -122,7 +121,8 @@ public class GsonLearningTests {
 
     @Test
     public void testOneCardVariableEffect() throws FileNotFoundException {
-        List<Class<? extends Effect>> effectClasses = Arrays.asList(AddElementsToAllAdjacentEggsEffect.class);
+        List<Class<? extends Effect>> effectClasses =
+                Arrays.asList(AddElementsToAllAdjacentEggsEffect.class);
         Gson gson = getGsonWithComplexCardEffects(effectClasses);
 
         FileReader fileReader = new FileReader(getFile("oneCardVariableEffect.json"));
@@ -133,19 +133,21 @@ public class GsonLearningTests {
         Effect wildEffect = testCard.wildEffects[0];
 
         assertTrue(wildEffect instanceof AddElementsToAllAdjacentEggsEffect);
-        assertEquals(ElementColor.WHITE, ((AddElementsToAllAdjacentEggsEffect) wildEffect).elementColors[0]);
+        assertEquals(ElementColor.WHITE,
+                ((AddElementsToAllAdjacentEggsEffect) wildEffect).elementColors[0]);
     }
 
     private Gson getGsonWithSimpleCardEffects() {
-        RuntimeTypeAdapterFactory<Effect> effectsTypeAdapter = RuntimeTypeAdapterFactory.of(Effect.class, "effect")
-                .registerSubtype(GainOneHandlerEffect.class)
+        RuntimeTypeAdapterFactory<Effect> effectsTypeAdapter = RuntimeTypeAdapterFactory
+                .of(Effect.class, "effect").registerSubtype(GainOneHandlerEffect.class)
                 .registerSubtype(CollectPrimaryElementEffect.class);
 
         return new GsonBuilder().registerTypeAdapterFactory(effectsTypeAdapter).create();
     }
 
     private Gson getGsonWithComplexCardEffects(List<Class<? extends Effect>> effectClasses) {
-        RuntimeTypeAdapterFactory<Effect> effectsTypeAdapter = RuntimeTypeAdapterFactory.of(Effect.class, "effect");
+        RuntimeTypeAdapterFactory<Effect> effectsTypeAdapter =
+                RuntimeTypeAdapterFactory.of(Effect.class, "effect");
 
         for (Class<? extends Effect> effectClass : effectClasses)
             effectsTypeAdapter = effectsTypeAdapter.registerSubtype(effectClass);
@@ -156,7 +158,8 @@ public class GsonLearningTests {
 
     private File getFile(String fileName) {
         String workingDirectory = Paths.get("").toAbsolutePath().toString();
-        return new File(workingDirectory + "\\src\\test\\java\\tests\\card\\cardFactory\\jsonFiles\\" + fileName);
+        return new File(workingDirectory
+                + "\\src\\test\\java\\tests\\card\\cardFactory\\jsonFiles\\" + fileName);
     }
 
 

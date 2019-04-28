@@ -13,36 +13,36 @@ import underlings.game.HatchingGround;
 
 public class AddElementsToAllAdjacentEggsEffect extends HatchingGroundEffect {
 
-  public ElementColor[] elementColors;
+    public ElementColor[] elementColors;
 
-  @Override
-  protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag,
-      ElementSpaceLogic elementSpaceLogic) {
-    List<Card> adjacentCards = hatchingGround.getAdjacentCards(centerCard);
-    for (Card adjacentCard : adjacentCards) {
-      List<ElementSpace> playableSpaces = elementSpaceLogic
-          .getPlayableSpaces(Arrays.asList(this.elementColors), adjacentCard);
-      for (ElementSpace playableSpace : playableSpaces) {
-        List<ElementColor> playableElementColors = elementSpaceLogic
-            .getValidAdditions(playableSpace);
-        for (ElementColor playableElementColor : playableElementColors) {
-          if (elementColorsContains(playableElementColor)) {
-            Element element = elementBag.drawElementFromList(playableElementColor);
-            playableSpace.addElements(element);
-          }
+    @Override
+    protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag,
+            ElementSpaceLogic elementSpaceLogic) {
+        List<Card> adjacentCards = hatchingGround.getAdjacentCards(centerCard);
+        for (Card adjacentCard : adjacentCards) {
+            List<ElementSpace> playableSpaces = elementSpaceLogic
+                    .getPlayableSpaces(Arrays.asList(this.elementColors), adjacentCard);
+            for (ElementSpace playableSpace : playableSpaces) {
+                List<ElementColor> playableElementColors =
+                        elementSpaceLogic.getValidAdditions(playableSpace);
+                for (ElementColor playableElementColor : playableElementColors) {
+                    if (elementColorsContains(playableElementColor)) {
+                        Element element = elementBag.drawElementFromList(playableElementColor);
+                        playableSpace.addElements(element);
+                    }
+                }
+            }
         }
-      }
     }
-  }
 
-  private boolean elementColorsContains(ElementColor elementColor) {
-    for (int i = 0; i < this.elementColors.length; i++) {
-      if (this.elementColors[i] == elementColor) {
-        return true;
-      }
+    private boolean elementColorsContains(ElementColor elementColor) {
+        for (int i = 0; i < this.elementColors.length; i++) {
+            if (this.elementColors[i] == elementColor) {
+                return true;
+            }
+        }
+        return false;
     }
-    return false;
-  }
 
 
 }

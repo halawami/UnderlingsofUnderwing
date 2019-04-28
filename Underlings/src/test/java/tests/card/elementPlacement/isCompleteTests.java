@@ -5,7 +5,6 @@ import org.junit.Test;
 import underlings.card.Card;
 import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
-
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -18,7 +17,7 @@ public class isCompleteTests {
         ElementSpaceLogic elementSpaceLogic = EasyMock.partialMockBuilder(ElementSpaceLogic.class)
                 .addMockedMethod("isComplete", ElementSpace.class).createMock();
 
-        completeCard.elementSpaces = new ElementSpace[]{mockedElementSpace};
+        completeCard.elementSpaces = new ElementSpace[] {mockedElementSpace};
         EasyMock.expect(elementSpaceLogic.isComplete(mockedElementSpace)).andReturn(true);
 
         EasyMock.replay(mockedElementSpace, elementSpaceLogic);
@@ -29,13 +28,13 @@ public class isCompleteTests {
     }
 
     @Test
-    public void testIncompleteCardOneElementSpace(){
+    public void testIncompleteCardOneElementSpace() {
         Card completeCard = new Card();
         ElementSpace mockedElementSpace = EasyMock.mock(ElementSpace.class);
         ElementSpaceLogic elementSpaceLogic = EasyMock.partialMockBuilder(ElementSpaceLogic.class)
                 .addMockedMethod("isComplete", ElementSpace.class).createMock();
 
-        completeCard.elementSpaces = new ElementSpace[]{mockedElementSpace};
+        completeCard.elementSpaces = new ElementSpace[] {mockedElementSpace};
         EasyMock.expect(elementSpaceLogic.isComplete(mockedElementSpace)).andReturn(false);
 
         EasyMock.replay(mockedElementSpace, elementSpaceLogic);
@@ -55,7 +54,8 @@ public class isCompleteTests {
         ElementSpaceLogic elementSpaceLogic = EasyMock.partialMockBuilder(ElementSpaceLogic.class)
                 .addMockedMethod("isComplete", ElementSpace.class).createMock();
 
-        completeCard.elementSpaces = new ElementSpace[]{firstMockedElementSpace, secondMockedElementSpace};
+        completeCard.elementSpaces =
+                new ElementSpace[] {firstMockedElementSpace, secondMockedElementSpace};
         EasyMock.expect(elementSpaceLogic.isComplete(firstMockedElementSpace)).andReturn(true);
         EasyMock.expect(elementSpaceLogic.isComplete(secondMockedElementSpace)).andReturn(true);
 
@@ -76,7 +76,8 @@ public class isCompleteTests {
         ElementSpaceLogic elementSpaceLogic = EasyMock.partialMockBuilder(ElementSpaceLogic.class)
                 .addMockedMethod("isComplete", ElementSpace.class).createMock();
 
-        completeCard.elementSpaces = new ElementSpace[]{firstMockedElementSpace, secondMockedElementSpace};
+        completeCard.elementSpaces =
+                new ElementSpace[] {firstMockedElementSpace, secondMockedElementSpace};
         EasyMock.expect(elementSpaceLogic.isComplete(firstMockedElementSpace)).andReturn(true);
         EasyMock.expect(elementSpaceLogic.isComplete(secondMockedElementSpace)).andReturn(false);
 
@@ -86,7 +87,6 @@ public class isCompleteTests {
 
         EasyMock.verify(firstMockedElementSpace, secondMockedElementSpace, elementSpaceLogic);
     }
-
 
 
 

@@ -10,12 +10,10 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
-
 import com.google.common.reflect.ClassPath;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.typeadapters.RuntimeTypeAdapterFactory;
-
 import underlings.card.Card;
 import underlings.card.effect.Effect;
 
@@ -35,13 +33,14 @@ public class CardFactory {
         List<Class<? extends Effect>> effectClasses = new ArrayList<>();
 
         Set<ClassPath.ClassInfo> effectClassInfos = this.loadEffectClassInfos();
-        effectClassInfos.forEach(effectClassInfo -> effectClasses.add(this.getClassFromClassInfo(effectClassInfo)));
+        effectClassInfos.forEach(
+                effectClassInfo -> effectClasses.add(this.getClassFromClassInfo(effectClassInfo)));
 
         return effectClasses;
     }
 
     @SuppressWarnings("unchecked")
-	private Class<? extends Effect> getClassFromClassInfo(ClassPath.ClassInfo effectClassInfo) {
+    private Class<? extends Effect> getClassFromClassInfo(ClassPath.ClassInfo effectClassInfo) {
         return (Class<? extends Effect>) effectClassInfo.load();
     }
 
@@ -63,7 +62,8 @@ public class CardFactory {
     }
 
     private RuntimeTypeAdapterFactory<Effect> getEffectTypeAdapter() {
-        RuntimeTypeAdapterFactory<Effect> effectsTypeAdapter = RuntimeTypeAdapterFactory.of(Effect.class, "effect");
+        RuntimeTypeAdapterFactory<Effect> effectsTypeAdapter =
+                RuntimeTypeAdapterFactory.of(Effect.class, "effect");
 
         for (Class<? extends Effect> effectClass : this.effectClasses) {
             effectsTypeAdapter = effectsTypeAdapter.registerSubtype(effectClass);
@@ -75,10 +75,10 @@ public class CardFactory {
 
     public List<Card> getCards() {
         Card[] cards = this.constructCards();
-        
+
         List<Card> cardList = Arrays.asList(cards);
         Collections.shuffle(cardList);
-        
+
         return cardList;
     }
 

@@ -2,7 +2,6 @@ package underlings.game;
 
 import java.util.LinkedList;
 import java.util.List;
-
 import underlings.element.ElementBag;
 import underlings.gui.GUI;
 import underlings.handler.Handler;
@@ -11,104 +10,106 @@ import underlings.player.Player;
 import underlings.player.PlayerFactory;
 
 public class Game {
-	private final static int MIN_PLAYERS = 2, MAX_PLAYERS = 6;
+    private final static int MIN_PLAYERS = 2, MAX_PLAYERS = 6;
 
-	private int maxHandlers;
-	private int numberOfPlayers;
-	private int roundsLeft;
-	private int currentPhase = 0;
-	private int turnLeader = 0;
-	private HatchingGround hatchingGround;
-	private GUI gui;
-	private PlayerFactory playerFactory;
-	private ElementBag elementBag;
+    private int maxHandlers;
+    private int numberOfPlayers;
+    private int roundsLeft;
+    private int currentPhase = 0;
+    private int turnLeader = 0;
+    private HatchingGround hatchingGround;
+    private GUI gui;
+    private PlayerFactory playerFactory;
+    private ElementBag elementBag;
 
-	private List<Player> players = new LinkedList<>();
+    private List<Player> players = new LinkedList<>();
 
-	public Game(GUI gui, HatchingGround hatchingGround, PlayerFactory playerFactory, ElementBag elementBag) {
-		this.gui = gui;
-		this.hatchingGround = hatchingGround;
-		this.playerFactory = playerFactory;
-		this.elementBag = elementBag;
-	}
+    public Game(GUI gui, HatchingGround hatchingGround, PlayerFactory playerFactory,
+            ElementBag elementBag) {
+        this.gui = gui;
+        this.hatchingGround = hatchingGround;
+        this.playerFactory = playerFactory;
+        this.elementBag = elementBag;
+    }
 
-	public void setUp(int numberOfPlayers) {
-		this.setUpProperties(numberOfPlayers);
-		this.hatchingGround.populate();
-		this.setUpPlayerList(numberOfPlayers);
-	}
+    public void setUp(int numberOfPlayers) {
+        this.setUpProperties(numberOfPlayers);
+        this.hatchingGround.populate();
+        this.setUpPlayerList(numberOfPlayers);
+    }
 
-	private void setUpProperties(int numberOfPlayers) {
-		GameProperties correspondingProps = GameProperties.getPropertiesOf(numberOfPlayers);
+    private void setUpProperties(int numberOfPlayers) {
+        GameProperties correspondingProps = GameProperties.getPropertiesOf(numberOfPlayers);
 
-		this.roundsLeft = correspondingProps.numberOfRounds;
-		this.hatchingGround.setDimensions(correspondingProps.hatchingGroundWidth,
-				correspondingProps.hatchingGroundHeight);
-		this.maxHandlers = correspondingProps.maxHandlers;
-	}
+        this.roundsLeft = correspondingProps.numberOfRounds;
+        this.hatchingGround.setDimensions(correspondingProps.hatchingGroundWidth,
+                correspondingProps.hatchingGroundHeight);
+        this.maxHandlers = correspondingProps.maxHandlers;
+    }
 
-	public void setUpPlayerList(int numberOfPlayers) {
-		for (int i = 0; i < numberOfPlayers; i++) {
-			this.players.add(this.playerFactory.createPlayer(this.maxHandlers));
-		}
-	}
+    public void setUpPlayerList(int numberOfPlayers) {
+        for (int i = 0; i < numberOfPlayers; i++) {
+            this.players.add(this.playerFactory.createPlayer(this.maxHandlers));
+        }
+    }
 
-	public int getRoundsLeft() {
-		return this.roundsLeft;
-	}
+    public int getRoundsLeft() {
+        return this.roundsLeft;
+    }
 
-	public HatchingGround getHatchingGround() {
-		return this.hatchingGround;
-	}
+    public HatchingGround getHatchingGround() {
+        return this.hatchingGround;
+    }
 
-	public List<Player> getPlayers() {
-		return this.players;
-	}
+    public List<Player> getPlayers() {
+        return this.players;
+    }
 
-	public void start(List<Phase> phases, Phase finalPhase) {
-		this.promptPlayerCount();
-		this.setUp(this.numberOfPlayers);
+    public void start(List<Phase> phases, Phase finalPhase) {
+        this.promptPlayerCount();
+        this.setUp(this.numberOfPlayers);
 
-		while (this.roundsLeft > 0) {
-			
-			for (Phase phase : phases) {
-				this.currentPhase++;
-				this.display();
-				phase.execute(this.turnLeader);
-			}
-			this.currentPhase = 0;
-			this.turnLeader++;
-			this.turnLeader %= 4;
-			this.roundsLeft--;
-		}
+        while (this.roundsLeft > 0) {
 
-		finalPhase.execute(this.turnLeader);
-		
-	}
+            for (Phase phase : phases) {
+                this.currentPhase++;
+                this.display();
+                phase.execute(this.turnLeader);
+            }
+            this.currentPhase = 0;
+            this.turnLeader++;
+            this.turnLeader %= 4;
+            this.roundsLeft--;
+        }
 
-	public void promptPlayerCount() {
-		this.numberOfPlayers = this.gui.getPlayerCount(MIN_PLAYERS, MAX_PLAYERS);
-	}
+        finalPhase.execute(this.turnLeader);
 
-	public int getPlayerCount() {
-		return this.numberOfPlayers;
-	}
+    }
 
-	public void display() {
-		this.gui.display.displayBackground();
-		this.hatchingGround.display(this.gui);
-		this.displayPlayers();
-		this.gui.display.displayStats(this.elementBag, this.roundsLeft, this.currentPhase, this.turnLeader + 1);
+    public void promptPlayerCount() {
+        this.numberOfPlayers = this.gui.getPlayerCount(MIN_PLAYERS, MAX_PLAYERS);
+    }
 
-		this.gui.display.update();
-	}
+    public int getPlayerCount() {
+        return this.numberOfPlayers;
+    }
 
-	public void displayPlayers() {
-		for (int playerNumber = 0; playerNumber < this.players.size(); playerNumber++) {
-			Player player = this.players.get(playerNumber);
-			this.gui.display.displayPlayer(playerNumber, player);
-			List<Handler> handlers = player.getHandlers();
-			this.gui.display.displayHandlers(playerNumber, handlers);
-		}
-	}
+    public void display() {
+        this.gui.display.displayBackground();
+        this.hatchingGround.display(this.gui);
+        this.displayPlayers();
+        this.gui.display.displayStats(this.elementBag, this.roundsLeft, this.currentPhase,
+                this.turnLeader + 1);
+
+        this.gui.display.update();
+    }
+
+    public void displayPlayers() {
+        for (int playerNumber = 0; playerNumber < this.players.size(); playerNumber++) {
+            Player player = this.players.get(playerNumber);
+            this.gui.display.displayPlayer(playerNumber, player);
+            List<Handler> handlers = player.getHandlers();
+            this.gui.display.displayHandlers(playerNumber, handlers);
+        }
+    }
 }

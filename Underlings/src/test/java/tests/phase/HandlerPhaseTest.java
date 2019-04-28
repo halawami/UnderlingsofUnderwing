@@ -2,10 +2,8 @@ package tests.phase;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.easymock.EasyMock;
 import org.junit.Test;
-
 import underlings.game.HatchingGround;
 import underlings.gui.GUI;
 import underlings.handler.HandlerChoice;
@@ -18,31 +16,34 @@ import underlings.player.Player;
 
 public class HandlerPhaseTest {
 
-	@Test
-	public void testTurn() {
+    @Test
+    public void testTurn() {
 
-		GUI gui = EasyMock.mock(GUI.class);
-		HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
-		HandlerMovementLogic handlerMovementLogic = EasyMock.mock(HandlerMovementLogic.class);
-		Player player = new Player(6, new HandlerFactory(), 0);
+        GUI gui = EasyMock.mock(GUI.class);
+        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
+        HandlerMovementLogic handlerMovementLogic = EasyMock.mock(HandlerMovementLogic.class);
+        Player player = new Player(6, new HandlerFactory(), 0);
 
-		List<Player> players = new ArrayList<Player>();
-		players.add(player);
-		
-		HandlerDecision handlerDecision = new HandlerDecision(player.getHandlers().get(0), HandlerChoice.CARD);
+        List<Player> players = new ArrayList<Player>();
+        players.add(player);
 
-		EasyMock.expect(gui.getHandlerDecision(player.getHandlers(), 0, hatchingGround)).andReturn(handlerDecision);
-		handlerMovementLogic.move(handlerDecision.handler, handlerDecision.choice, 0);
+        HandlerDecision handlerDecision =
+                new HandlerDecision(player.getHandlers().get(0), HandlerChoice.CARD);
 
-		Phase handlerPhase = new HandlerPhase(players, gui, null, hatchingGround, () -> {}, null, handlerMovementLogic);
-		
-		EasyMock.replay(gui, handlerMovementLogic, hatchingGround);
+        EasyMock.expect(gui.getHandlerDecision(player.getHandlers(), 0, hatchingGround))
+                .andReturn(handlerDecision);
+        handlerMovementLogic.move(handlerDecision.handler, handlerDecision.choice, 0);
 
-		handlerPhase.setup();
-		handlerPhase.turn(player);
+        Phase handlerPhase = new HandlerPhase(players, gui, null, hatchingGround, () -> {
+        }, null, handlerMovementLogic);
 
-		EasyMock.verify(gui, handlerMovementLogic, hatchingGround);
+        EasyMock.replay(gui, handlerMovementLogic, hatchingGround);
 
-	}
+        handlerPhase.setup();
+        handlerPhase.turn(player);
+
+        EasyMock.verify(gui, handlerMovementLogic, hatchingGround);
+
+    }
 
 }

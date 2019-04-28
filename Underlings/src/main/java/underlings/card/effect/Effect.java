@@ -45,11 +45,12 @@ public abstract class Effect {
         this.apply(this.player);
     }
 
-    protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag, ElementSpaceLogic elementSpaceLogic) {}
+    protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag,
+            ElementSpaceLogic elementSpaceLogic) {}
 
-    protected void apply(Player player, ElementBag elementBag){}
+    protected void apply(Player player, ElementBag elementBag) {}
 
-    protected void apply(Player player){}
+    protected void apply(Player player) {}
 
 
 
