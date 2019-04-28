@@ -4,7 +4,6 @@ import underlings.card.effect.ElementEffect;
 import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
-import underlings.element.NullElement;
 import underlings.player.Player;
 
 public class CollectElementEffect extends ElementEffect {
@@ -15,13 +14,10 @@ public class CollectElementEffect extends ElementEffect {
 	protected void apply(Player player, ElementBag elementBag) {
 
 		Element element = elementBag.drawElementFromList(this.elementChoices);
+		player.addElement(element);
 
-		if (element != NullElement.getInstance()) {
-			player.addElement(element);
-		}
-		
 	}
-	
+
 	@Override
 	public String toString() {
 		StringBuilder elements = new StringBuilder();
