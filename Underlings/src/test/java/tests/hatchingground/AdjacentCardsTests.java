@@ -1,42 +1,40 @@
 package tests.hatchingground;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.List;
-
 import org.easymock.EasyMock;
 import org.junit.Test;
-
 import underlings.card.Card;
 import underlings.game.Deck;
 import underlings.game.HatchingGround;
 
 public class AdjacentCardsTests {
 
-    @Test
-    public void testMiddleCard() {
-        Deck stubDeck = EasyMock.niceMock(Deck.class);
-        HatchingGround hatchingGround = new HatchingGround(stubDeck);
-        Card[][] mockedCards = createMockedCards();
-        hatchingGround.cards = mockedCards;
-        List<Card> returnedCards = hatchingGround.getAdjacentCards(mockedCards[1][1]);
-        for(int i = 0; i < 3; i++){
-        	for(int j = 0; j < 3; j++){
-        		if(i != 1 || j != 1){
-        			assertTrue(returnedCards.contains(mockedCards[i][j]));
-        		}
-        	}
-        }
-        assertEquals(8, returnedCards.size());
-    }
+  @Test
+  public void testMiddleCard() {
+    Deck stubDeck = EasyMock.niceMock(Deck.class);
+    HatchingGround hatchingGround = new HatchingGround(stubDeck);
+    Card[][] mockedCards = createMockedCards();
+    hatchingGround.cards = mockedCards;
+    List<Card> returnedCards = hatchingGround.getAdjacentCards(mockedCards[1][1]);
+    assertEquals(4, returnedCards.size());
+    assertTrue(returnedCards.contains(mockedCards[0][1]));
+    assertTrue(returnedCards.contains(mockedCards[1][0]));
+    assertTrue(returnedCards.contains(mockedCards[1][2]));
+    assertTrue(returnedCards.contains(mockedCards[2][1]));
+  }
 
-    private Card[][] createMockedCards() {
-        Card[][] mockedCards = new Card[4][4];
-        for (int i = 0; i < mockedCards.length; i++) {
-            for (int j = 0; j < mockedCards[i].length; j++) {
-                EasyMock.mock(Card.class);
-            }
-        }
-        return mockedCards;
+
+
+  private Card[][] createMockedCards() {
+    Card[][] mockedCards = new Card[4][4];
+    for (int i = 0; i < mockedCards.length; i++) {
+      for (int j = 0; j < mockedCards[i].length; j++) {
+        EasyMock.mock(Card.class);
+      }
     }
+    return mockedCards;
+  }
 }
