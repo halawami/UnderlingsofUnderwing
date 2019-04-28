@@ -1,11 +1,13 @@
 package underlings.gui;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JOptionPane;
 
 import underlings.card.Card;
 import underlings.element.ElementGiver;
+import underlings.game.HatchingGround;
 import underlings.handler.Handler;
 import underlings.handler.HandlerChoice;
 import underlings.handler.HandlerDecision;
@@ -25,11 +27,16 @@ public class GUI {
 		return this.promptHandler.promptChoice("Choose a Draw Choice", elementGiver.drawChoices, playerId);
 	}
 
-	public HandlerDecision getHandlerDecision(List<Handler> handlers, int playerId) {
+	public HandlerDecision getHandlerDecision(List<Handler> handlers, int playerId, HatchingGround hatchingGround) {
 		Handler handler = this.promptHandler.promptChoice("Choose a Handler", handlers, playerId);
 		handlers.remove(handler);
 		
 		List<HandlerChoice> possibleChoices = handler.getPossibleChoices();
+		possibleChoices = new ArrayList<>(possibleChoices);
+		if(hatchingGround.getUnclaimedEggs().isEmpty()) {
+			possibleChoices.remove(HandlerChoice.CARD);
+		}
+		
 		HandlerChoice handlerChoice = this.promptHandler.promptChoice("Choose a movement for " + handler, possibleChoices, playerId);
 		
 		return new HandlerDecision(handler, handlerChoice);
