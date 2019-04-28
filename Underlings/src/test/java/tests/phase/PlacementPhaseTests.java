@@ -51,6 +51,7 @@ public class PlacementPhaseTests {
 
 		// create hatchingGround and define actions
 		Card card = new Card();
+		card.wildEffects = new Effect[0];
 		Stack<Card> cardStack = new Stack<>();
 		cardStack.push(card);
 		Deck deck = new Deck(cardStack);
@@ -154,7 +155,7 @@ public class PlacementPhaseTests {
 		EasyMock.expect(card.wildEffects[0].on(logic)).andReturn(card.wildEffects[0]).anyTimes();
 		EasyMock.expect(card.wildEffects[0].on(player)).andReturn(card.wildEffects[0]).anyTimes();
 		card.wildEffects[0].apply();
-		
+		gui.notifyAction(-1, card.wildEffects[0].toString() + " has been applied");
 		// assert expected actions occurred
 		EasyMock.replay(player, promptHandler, display, elementBag, runnable);
 		EasyMock.replay(logic, redSpace, blueSpace, greenSpace, whiteSpace, card.wildEffects[0]);
