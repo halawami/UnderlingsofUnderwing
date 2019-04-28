@@ -36,7 +36,7 @@ public class PlacementPhase extends RotationPhase {
 	}
 
 	@Override
-	public void turn(Player player) {
+	public boolean turn(Player player) {
 		PromptHandler prompts = this.gui.promptHandler;
 		int playerNum = player.getPlayerId();
 
@@ -83,7 +83,7 @@ public class PlacementPhase extends RotationPhase {
 				}
 				if (gameOver) {
 					this.gui.promptHandler.displayMessage("All dragons hatched wild! You lose!", -1, JOptionPane.WARNING_MESSAGE);
-					System.exit(0);
+					return true;
 				}
 				
 			}
@@ -92,6 +92,7 @@ public class PlacementPhase extends RotationPhase {
 		}
 		if(--this.turnCount == 0)
 			this.phaseComplete = true;
+		return false;
 	}
 
 	public List<Element> playableElements(List<ElementColor> list, List<Element> elements) {

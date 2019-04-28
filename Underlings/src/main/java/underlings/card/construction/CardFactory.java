@@ -40,7 +40,8 @@ public class CardFactory {
         return effectClasses;
     }
 
-    private Class<? extends Effect> getClassFromClassInfo(ClassPath.ClassInfo effectClassInfo) {
+    @SuppressWarnings("unchecked")
+	private Class<? extends Effect> getClassFromClassInfo(ClassPath.ClassInfo effectClassInfo) {
         return (Class<? extends Effect>) effectClassInfo.load();
     }
 

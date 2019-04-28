@@ -8,6 +8,6 @@ public interface Phase {
 	
 	public void setup();
 
-	public void turn(Player player);
+	public boolean turn(Player player);
 
 }

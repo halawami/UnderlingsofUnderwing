@@ -48,6 +48,6 @@ public abstract class RotationPhase implements Phase {
 	public abstract void setup();
 
 	@Override
-	public abstract void turn(Player player);
+	public abstract boolean turn(Player player);
 
 }

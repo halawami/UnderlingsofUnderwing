@@ -4,7 +4,6 @@ import underlings.card.Card;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
-import underlings.element.utilities.ElementSpaceLogic;
 import underlings.field.Field;
 import underlings.game.HatchingGround;
 import underlings.gui.GUI;
@@ -36,7 +35,7 @@ public class DragonPhase extends SequentialPhase {
 
 	@Override
 	// TODO fix the problem with builder pattern, call all possible parameters 
-	public void turn(Player player) {
+	public boolean turn(Player player) {
 		for(Card unhatchedEgg : player.unhatchedCards) {
 			for(int i = 0; i < unhatchedEgg.domesticEffects.length; i++) {
 				unhatchedEgg.domesticEffects[i].on(elementBag).on(player).apply();
@@ -54,6 +53,7 @@ public class DragonPhase extends SequentialPhase {
 			}
 		}
 		this.phaseComplete = true;
+		return false;
 	}
 
 }

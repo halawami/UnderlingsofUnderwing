@@ -47,7 +47,7 @@ public class HandlerPhase extends RotationPhase {
 	}
 
 	@Override
-	public void turn(Player player) {
+	public boolean turn(Player player) {
 
 		List<Handler> playersHandlers = this.unmovedHandlers.get(player);
 
@@ -58,6 +58,8 @@ public class HandlerPhase extends RotationPhase {
 			this.phaseComplete = false;
 
 		}
+		
+		return false;
 	}
 
 }

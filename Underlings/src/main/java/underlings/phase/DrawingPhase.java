@@ -24,7 +24,7 @@ public class DrawingPhase extends SequentialPhase {
 	Map<Player, List<ElementGiver>> elementGivers;
 
 	@Override
-	public void turn(Player player) {
+	public boolean turn(Player player) {
 
 		DrawChoice drawChoice = this.gui.getDrawChoice(this.elementGivers.get(player), player.getPlayerId());
 
@@ -35,7 +35,7 @@ public class DrawingPhase extends SequentialPhase {
 		}
 
 		this.phaseComplete = this.elementGivers.get(player).isEmpty();
-
+		return false;
 	}
 
 	@Override
