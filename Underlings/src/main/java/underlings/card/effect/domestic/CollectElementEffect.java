@@ -21,4 +21,9 @@ public class CollectElementEffect extends ElementEffect {
 		}
 		
 	}
+	
+	@Override
+	public String toString() {
+		return "Collect one of the following elements randomly: [" + this.elementChoices.toString() + "]";
+	}
 }

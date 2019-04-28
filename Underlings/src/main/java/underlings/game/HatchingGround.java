@@ -1,15 +1,14 @@
 package underlings.game;
 
-import underlings.card.Card;
-import underlings.element.ElementSpace;
-import underlings.element.utilities.ElementSpaceLogic;
-import underlings.gui.GUI;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+
+import underlings.card.Card;
+import underlings.element.utilities.ElementSpaceLogic;
+import underlings.gui.GUI;
+import underlings.handler.Handler;
 
 public class HatchingGround implements Iterable<Card> {
 
@@ -110,10 +109,19 @@ public class HatchingGround implements Iterable<Card> {
 				Card currentCard = this.cards[row][col]; 
 				if(elementSpaceLogic.isComplete(currentCard) && currentCard.handler != null){
 					completeEggs.add(this.cards[row][col]);
-					this.cards[row][col] = deck.draw();
+					this.cards[row][col] = this.deck.draw();
 				}
 			}
 		}
 		return completeEggs;
+	}
+
+	public Card findCard(Handler handler) {
+		for (Card card : this) {
+			if (card.handler == handler) {
+				return card;
+			}
+		}
+		return null;
 	}
 }
