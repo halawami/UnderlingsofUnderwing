@@ -90,6 +90,8 @@ public class LameGUI implements Display {
 		this.g.setColor(Color.BLACK);
 		this.g.drawString(card.name, (int) (ratio * (30 + xOffset + (width + xGap) * col)),
 				(int) (-25 + ratio * (height / 2 + yOffset + (height + yGap) * row)));
+		this.g.drawString(card.points+"", (int) (ratio * (30 + xOffset + (width + xGap) * col)) + 118,
+				(int) (-25 + ratio * (height / 2 + yOffset + (height + yGap) * row)));
 		int spaceNum = 0;
 		for (ElementSpace space : card.elementSpaces) {
 			this.g.setColor(this.colorMap.get(space.color));
