@@ -3,6 +3,7 @@ package underlings;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
 import underlings.card.construction.CardFactory;
 import underlings.element.ElementBag;
 import underlings.element.ElementFactory;
@@ -13,7 +14,7 @@ import underlings.game.Game;
 import underlings.game.HatchingGround;
 import underlings.gui.GUI;
 import underlings.gui.LameGUI;
-import underlings.gui.LamePrompt;
+import underlings.gui.TestPrompt;
 import underlings.handler.HandlerFactory;
 import underlings.handler.HandlerMovementLogic;
 import underlings.phase.DragonPhase;
@@ -30,7 +31,7 @@ public class Main {
 
 	public static void main(String[] args ) {
 
-		GUI gui = new GUI(new LamePrompt(), new LameGUI());
+		GUI gui = new GUI(new TestPrompt(), new LameGUI());
 		CardFactory cardFactory = new CardFactory(CARDS_JSON_FILE_PATH);
 		Deck deck = new Deck(cardFactory.getCards());
 		HatchingGround hatchingGround = new HatchingGround(deck);

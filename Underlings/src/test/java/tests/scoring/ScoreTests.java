@@ -1,6 +1,6 @@
 package tests.scoring;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -120,8 +120,8 @@ public class ScoreTests {
 		
 		Map<Player, Integer> scores = this.scoreUtils.calculateScores(players);
 
-		assertTrue(43 == scores.get(this.player1));
-		assertTrue(45 == scores.get(this.player2));
+		assertEquals(43, (int)(scores.get(this.player1)));
+		assertEquals(45, (int)(scores.get(this.player2)));
 	}
 	
 	@Test
@@ -133,9 +133,10 @@ public class ScoreTests {
 		
 		Map<Player, Integer> scores = this.scoreUtils.calculateScores(players);
 
-		assertTrue(58 == scores.get(this.player1));
-		assertTrue(65 == scores.get(this.player2));
-		assertTrue(20 == scores.get(this.player3));
+		assertEquals(58, (int)(scores.get(this.player1)));
+		assertEquals(65, (int)(scores.get(this.player2)));
+		assertEquals(20, (int)(scores.get(this.player3)));
+		
 	}
 	
 	@Test
@@ -148,10 +149,11 @@ public class ScoreTests {
 		
 		Map<Player, Integer> scores = this.scoreUtils.calculateScores(players);
 
-		assertTrue(58 == scores.get(this.player1));
-		assertTrue(65 == scores.get(this.player2));
-		assertTrue(20 == scores.get(this.player3));
-		assertTrue(28 == scores.get(this.player4));
+		assertEquals(58, (int)(scores.get(this.player1)));
+		assertEquals(65, (int)(scores.get(this.player2)));
+		assertEquals(20, (int)(scores.get(this.player3)));
+		assertEquals(28, (int)(scores.get(this.player4)));
+
 	}
 	
 	@Test
@@ -165,11 +167,11 @@ public class ScoreTests {
 		
 		Map<Player, Integer> scores = this.scoreUtils.calculateScores(players);
 
-		assertTrue(58 == scores.get(this.player1));
-		assertTrue(65 == scores.get(this.player2));
-		assertTrue(20 == scores.get(this.player3));
-		assertTrue(28 == scores.get(this.player4));
-		assertTrue(21 == scores.get(this.player5));
+		assertEquals(58, (int)(scores.get(this.player1)));
+		assertEquals(65, (int)(scores.get(this.player2)));
+		assertEquals(20, (int)(scores.get(this.player3)));
+		assertEquals(28, (int)(scores.get(this.player4)));
+		assertEquals(21, (int)(scores.get(this.player5)));
 	}
 	
 }

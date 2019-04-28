@@ -114,7 +114,7 @@ public class Player {
 
 	@Override
 	public String toString() {
-		return "Player " + (this.getPlayerId() + 1);
+		return "Player " + this.getPlayerId();
 	}
 
 }

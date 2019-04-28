@@ -31,7 +31,7 @@ public class PlayerIdTests {
 	public void testToString() {
 		Player p = new Player(2, new HandlerFactory(), 0);
 		
-		assertEquals("Player 1", p.toString());
+		assertEquals("Player 0", p.toString());
 	}
 	
 }
