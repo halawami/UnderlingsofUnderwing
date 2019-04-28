@@ -19,7 +19,8 @@ public abstract class RotationPhase implements Phase {
     protected boolean phaseComplete;
 
     public RotationPhase(List<Player> players, GUI gui, ElementBag elementBag,
-            HatchingGround hatchingGround, Runnable displayMethod, Field field) {
+            HatchingGround hatchingGround, Runnable displayMethod,
+            Field field) {
         this.players = players;
         this.gui = gui;
         this.elementBag = elementBag;
@@ -35,7 +36,8 @@ public abstract class RotationPhase implements Phase {
 
         while (!this.phaseComplete) {
             this.phaseComplete = true;
-            for (int i = turnLeader; i < turnLeader + this.players.size(); i++) {
+            for (int i = turnLeader; i < turnLeader
+                    + this.players.size(); i++) {
                 this.turn(this.players.get(i % this.players.size()));
                 this.displayMethod.run();
             }

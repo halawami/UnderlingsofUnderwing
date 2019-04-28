@@ -21,7 +21,8 @@ public class CollectPrimaryElementTests {
         Effect gainPrimaryElement = new CollectPrimaryElementEffect();
         gainPrimaryElement.on(player).on(elementBag);
 
-        EasyMock.expect(elementBag.drawRandomPrimaryElement()).andReturn(element);
+        EasyMock.expect(elementBag.drawRandomPrimaryElement())
+                .andReturn(element);
         player.addElement(element);
 
         EasyMock.replay(player, elementBag);
@@ -34,7 +35,8 @@ public class CollectPrimaryElementTests {
     public void testToString() {
         Effect gainPrimaryElement = new CollectPrimaryElementEffect();
 
-        assertEquals("Collect a random primary element", gainPrimaryElement.toString());
+        assertEquals("Collect a random primary element",
+                gainPrimaryElement.toString());
     }
 
 }

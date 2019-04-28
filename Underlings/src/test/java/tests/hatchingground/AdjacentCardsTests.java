@@ -19,7 +19,8 @@ public class AdjacentCardsTests {
         Card[][] mockedCards = createMockedCards();
         hatchingGround.cards = mockedCards;
         hatchingGround.setDimensions(4, 4);
-        List<Card> returnedCards = hatchingGround.getAdjacentCards(mockedCards[1][1]);
+        List<Card> returnedCards =
+                hatchingGround.getAdjacentCards(mockedCards[1][1]);
         assertEquals(4, returnedCards.size());
         assertTrue(returnedCards.contains(mockedCards[0][1]));
         assertTrue(returnedCards.contains(mockedCards[1][0]));
@@ -34,7 +35,8 @@ public class AdjacentCardsTests {
         hatchingGround.setDimensions(4, 4);
         Card[][] mockedCards = createMockedCards();
         hatchingGround.cards = mockedCards;
-        List<Card> returnedCards = hatchingGround.getAdjacentCards(mockedCards[1][0]);
+        List<Card> returnedCards =
+                hatchingGround.getAdjacentCards(mockedCards[1][0]);
         assertEquals(3, returnedCards.size());
         assertTrue(returnedCards.contains(mockedCards[0][0]));
         assertTrue(returnedCards.contains(mockedCards[1][1]));
@@ -48,7 +50,8 @@ public class AdjacentCardsTests {
         hatchingGround.setDimensions(4, 4);
         Card[][] mockedCards = createMockedCards();
         hatchingGround.cards = mockedCards;
-        List<Card> returnedCards = hatchingGround.getAdjacentCards(mockedCards[0][1]);
+        List<Card> returnedCards =
+                hatchingGround.getAdjacentCards(mockedCards[0][1]);
         assertEquals(3, returnedCards.size());
         assertTrue(returnedCards.contains(mockedCards[0][0]));
         assertTrue(returnedCards.contains(mockedCards[1][1]));
@@ -62,7 +65,8 @@ public class AdjacentCardsTests {
         hatchingGround.setDimensions(4, 4);
         Card[][] mockedCards = createMockedCards();
         hatchingGround.cards = mockedCards;
-        List<Card> returnedCards = hatchingGround.getAdjacentCards(mockedCards[3][1]);
+        List<Card> returnedCards =
+                hatchingGround.getAdjacentCards(mockedCards[3][1]);
         assertEquals(3, returnedCards.size());
         assertTrue(returnedCards.contains(mockedCards[3][0]));
         assertTrue(returnedCards.contains(mockedCards[2][1]));
@@ -76,7 +80,8 @@ public class AdjacentCardsTests {
         hatchingGround.setDimensions(4, 4);
         Card[][] mockedCards = createMockedCards();
         hatchingGround.cards = mockedCards;
-        List<Card> returnedCards = hatchingGround.getAdjacentCards(mockedCards[1][3]);
+        List<Card> returnedCards =
+                hatchingGround.getAdjacentCards(mockedCards[1][3]);
         assertEquals(3, returnedCards.size());
         assertTrue(returnedCards.contains(mockedCards[0][3]));
         assertTrue(returnedCards.contains(mockedCards[1][2]));
@@ -92,7 +97,8 @@ public class AdjacentCardsTests {
         Card[][] mockedCards = createMockedCards();
         hatchingGround.cards = mockedCards;
 
-        Point cardCoordinates = hatchingGround.getCardCoordinates(mockedCards[0][0]);
+        Point cardCoordinates =
+                hatchingGround.getCardCoordinates(mockedCards[0][0]);
         assertEquals(0, cardCoordinates.x);
         assertEquals(0, cardCoordinates.y);
     }
@@ -105,7 +111,8 @@ public class AdjacentCardsTests {
         Card[][] mockedCards = createMockedCards();
         hatchingGround.cards = mockedCards;
 
-        Point cardCoordinates = hatchingGround.getCardCoordinates(mockedCards[1][0]);
+        Point cardCoordinates =
+                hatchingGround.getCardCoordinates(mockedCards[1][0]);
         assertEquals(1, cardCoordinates.y);
         assertEquals(0, cardCoordinates.x);
     }
@@ -118,7 +125,8 @@ public class AdjacentCardsTests {
         Card[][] mockedCards = createMockedCards();
         hatchingGround.cards = mockedCards;
 
-        Point cardCoordinates = hatchingGround.getCardCoordinates(mockedCards[0][1]);
+        Point cardCoordinates =
+                hatchingGround.getCardCoordinates(mockedCards[0][1]);
         assertEquals(0, cardCoordinates.y);
         assertEquals(1, cardCoordinates.x);
     }
@@ -131,7 +139,8 @@ public class AdjacentCardsTests {
         Card[][] mockedCards = createMockedCards();
         hatchingGround.cards = mockedCards;
 
-        Point cardCoordinates = hatchingGround.getCardCoordinates(mockedCards[1][3]);
+        Point cardCoordinates =
+                hatchingGround.getCardCoordinates(mockedCards[1][3]);
         assertEquals(1, cardCoordinates.y);
         assertEquals(3, cardCoordinates.x);
     }
@@ -144,7 +153,8 @@ public class AdjacentCardsTests {
         Card[][] mockedCards = createMockedCards();
         hatchingGround.cards = mockedCards;
 
-        Point cardCoordinates = hatchingGround.getCardCoordinates(mockedCards[3][1]);
+        Point cardCoordinates =
+                hatchingGround.getCardCoordinates(mockedCards[3][1]);
         assertEquals(3, cardCoordinates.y);
         assertEquals(1, cardCoordinates.x);
     }
@@ -157,7 +167,8 @@ public class AdjacentCardsTests {
         Card[][] mockedCards = createMockedCards();
         hatchingGround.cards = mockedCards;
 
-        Point cardCoordinates = hatchingGround.getCardCoordinates(mockedCards[1][1]);
+        Point cardCoordinates =
+                hatchingGround.getCardCoordinates(mockedCards[1][1]);
         assertEquals(1, cardCoordinates.y);
         assertEquals(1, cardCoordinates.x);
     }

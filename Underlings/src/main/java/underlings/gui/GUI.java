@@ -19,17 +19,19 @@ public class GUI {
         this.display = display;
     }
 
-    public DrawChoice getDrawChoice(List<ElementGiver> elementGivers, int playerId) {
-        ElementGiver elementGiver =
-                this.promptHandler.promptChoice("Choose an Element Giver", elementGivers, playerId);
+    public DrawChoice getDrawChoice(List<ElementGiver> elementGivers,
+            int playerId) {
+        ElementGiver elementGiver = this.promptHandler.promptChoice(
+                "Choose an Element Giver", elementGivers, playerId);
         elementGivers.remove(elementGiver);
-        return this.promptHandler.promptChoice("Choose a Draw Choice", elementGiver.drawChoices,
-                playerId);
+        return this.promptHandler.promptChoice("Choose a Draw Choice",
+                elementGiver.drawChoices, playerId);
     }
 
-    public HandlerDecision getHandlerDecision(List<Handler> handlers, int playerId,
-            HatchingGround hatchingGround) {
-        Handler handler = this.promptHandler.promptChoice("Choose a Handler", handlers, playerId);
+    public HandlerDecision getHandlerDecision(List<Handler> handlers,
+            int playerId, HatchingGround hatchingGround) {
+        Handler handler = this.promptHandler.promptChoice("Choose a Handler",
+                handlers, playerId);
         handlers.remove(handler);
 
         List<HandlerChoice> possibleChoices = handler.getPossibleChoices();
@@ -38,19 +40,21 @@ public class GUI {
             possibleChoices.remove(HandlerChoice.CARD);
         }
 
-        HandlerChoice handlerChoice = this.promptHandler
-                .promptChoice("Choose a movement for " + handler, possibleChoices, playerId);
+        HandlerChoice handlerChoice = this.promptHandler.promptChoice(
+                "Choose a movement for " + handler, possibleChoices, playerId);
 
         return new HandlerDecision(handler, handlerChoice);
     }
 
     public Card getCard(List<Card> cards, int playerId) {
-        Card card = this.promptHandler.promptChoice("Choose a card", cards, playerId);
+        Card card = this.promptHandler.promptChoice("Choose a card", cards,
+                playerId);
         return card;
     }
 
     public void notifyAction(int playerId, String message) {
-        this.promptHandler.displayMessage(message, playerId, JOptionPane.PLAIN_MESSAGE);
+        this.promptHandler.displayMessage(message, playerId,
+                JOptionPane.PLAIN_MESSAGE);
     }
 
     public int getFieldSpace() {
@@ -58,7 +62,8 @@ public class GUI {
     }
 
     public int getPlayerCount(int minPlayers, int maxPlayers) {
-        return this.promptHandler.promptInt("Enter Player Count", minPlayers, maxPlayers);
+        return this.promptHandler.promptInt("Enter Player Count", minPlayers,
+                maxPlayers);
     }
 
 }

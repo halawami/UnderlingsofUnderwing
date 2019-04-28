@@ -37,15 +37,18 @@ public class ElementSpaceLogic {
         recipeMap = new HashMap<ElementColor, List<List<ElementColor>>>();
 
         try {
-            BufferedReader br = new BufferedReader(new FileReader("docs\\DefaultRecipeList.txt"));
+            BufferedReader br = new BufferedReader(
+                    new FileReader("docs\\DefaultRecipeList.txt"));
 
             String line = br.readLine();
             while (line != null) {
                 ElementColor color = ElementColor.valueOf(line.split(":")[0]);
                 String[] recipes = line.split(":")[1].split(" ");
-                List<List<ElementColor>> recipeList = new ArrayList<List<ElementColor>>();
+                List<List<ElementColor>> recipeList =
+                        new ArrayList<List<ElementColor>>();
                 for (String recipe : recipes) {
-                    List<ElementColor> constructedRecipe = new ArrayList<ElementColor>();
+                    List<ElementColor> constructedRecipe =
+                            new ArrayList<ElementColor>();
                     for (String ingredient : recipe.split(",")) {
                         constructedRecipe.add(ElementColor.valueOf(ingredient));
                     }
@@ -61,7 +64,8 @@ public class ElementSpaceLogic {
         }
     }
 
-    public boolean isValidRecipe(List<ElementColor> recipe, ElementSpace space) {
+    public boolean isValidRecipe(List<ElementColor> recipe,
+            ElementSpace space) {
         recipe = new ArrayList<ElementColor>(recipe);
         for (ElementColor color : space.elements) {
             if (recipe.contains(color))
@@ -93,7 +97,8 @@ public class ElementSpaceLogic {
         return new ArrayList<ElementColor>(validAdditions);
     }
 
-    public List<ElementSpace> getPlayableSpaces(Card card, List<Element> elements) {
+    public List<ElementSpace> getPlayableSpaces(Card card,
+            List<Element> elements) {
         List<ElementSpace> spaces = new ArrayList<ElementSpace>();
         for (ElementSpace space : card.elementSpaces) {
             for (Element element : elements)
@@ -105,7 +110,8 @@ public class ElementSpaceLogic {
         return spaces;
     }
 
-    public List<ElementSpace> getPlayableSpaces(List<ElementColor> elementColors, Card card) {
+    public List<ElementSpace> getPlayableSpaces(
+            List<ElementColor> elementColors, Card card) {
         List<ElementSpace> spaces = new ArrayList<>();
         for (ElementSpace space : card.elementSpaces) {
             for (ElementColor color : elementColors)

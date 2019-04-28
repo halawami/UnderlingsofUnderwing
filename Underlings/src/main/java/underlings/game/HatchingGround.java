@@ -71,7 +71,8 @@ public class HatchingGround implements Iterable<Card> {
                 int distanceFromCard = Math.abs(xDiff) + Math.abs(yDiff);
                 int adjacentCardY = cardCoordinates.y + yDiff;
                 int adjacentCardX = cardCoordinates.x + xDiff;
-                if (distanceFromCard == 1 && coordinatesInBounds(adjacentCardY, adjacentCardX)) {
+                if (distanceFromCard == 1
+                        && coordinatesInBounds(adjacentCardY, adjacentCardX)) {
                     cardsToReturn.add(this.cards[adjacentCardY][adjacentCardX]);
                 }
             }
@@ -108,7 +109,8 @@ public class HatchingGround implements Iterable<Card> {
 
             @Override
             public Card next() {
-                Card card = HatchingGround.this.cards[this.row - 1][this.col - 1];
+                Card card =
+                        HatchingGround.this.cards[this.row - 1][this.col - 1];
                 if (this.col == HatchingGround.this.width) {
                     this.col = 1;
                     this.row++;

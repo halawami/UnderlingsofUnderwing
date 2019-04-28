@@ -21,21 +21,25 @@ public class HandlerPhaseTest {
 
         GUI gui = EasyMock.mock(GUI.class);
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
-        HandlerMovementLogic handlerMovementLogic = EasyMock.mock(HandlerMovementLogic.class);
+        HandlerMovementLogic handlerMovementLogic =
+                EasyMock.mock(HandlerMovementLogic.class);
         Player player = new Player(6, new HandlerFactory(), 0);
 
         List<Player> players = new ArrayList<Player>();
         players.add(player);
 
-        HandlerDecision handlerDecision =
-                new HandlerDecision(player.getHandlers().get(0), HandlerChoice.CARD);
+        HandlerDecision handlerDecision = new HandlerDecision(
+                player.getHandlers().get(0), HandlerChoice.CARD);
 
-        EasyMock.expect(gui.getHandlerDecision(player.getHandlers(), 0, hatchingGround))
+        EasyMock.expect(
+                gui.getHandlerDecision(player.getHandlers(), 0, hatchingGround))
                 .andReturn(handlerDecision);
-        handlerMovementLogic.move(handlerDecision.handler, handlerDecision.choice, 0);
+        handlerMovementLogic.move(handlerDecision.handler,
+                handlerDecision.choice, 0);
 
-        Phase handlerPhase = new HandlerPhase(players, gui, null, hatchingGround, () -> {
-        }, null, handlerMovementLogic);
+        Phase handlerPhase =
+                new HandlerPhase(players, gui, null, hatchingGround, () -> {
+                }, null, handlerMovementLogic);
 
         EasyMock.replay(gui, handlerMovementLogic, hatchingGround);
 

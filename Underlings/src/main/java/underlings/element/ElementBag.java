@@ -54,7 +54,8 @@ public class ElementBag {
         ElementColor selectedElement = possibilities.get(selectionNumber);
 
 
-        this.elementCount.put(selectedElement, this.elementCount.get(selectedElement) - 1);
+        this.elementCount.put(selectedElement,
+                this.elementCount.get(selectedElement) - 1);
 
         return this.elementFactory.createElement(selectedElement);
     }
@@ -64,13 +65,14 @@ public class ElementBag {
     }
 
     public Element drawRandomElement() {
-        return this.drawElementFromList(ElementColor.BLUE, ElementColor.RED, ElementColor.YELLOW,
-                ElementColor.PURPLE, ElementColor.GREEN, ElementColor.ORANGE, ElementColor.WHITE,
-                ElementColor.BLACK);
+        return this.drawElementFromList(ElementColor.BLUE, ElementColor.RED,
+                ElementColor.YELLOW, ElementColor.PURPLE, ElementColor.GREEN,
+                ElementColor.ORANGE, ElementColor.WHITE, ElementColor.BLACK);
     }
 
     public Element drawRandomPrimaryElement() {
-        return this.drawElementFromList(ElementColor.BLUE, ElementColor.RED, ElementColor.YELLOW);
+        return this.drawElementFromList(ElementColor.BLUE, ElementColor.RED,
+                ElementColor.YELLOW);
     }
 
     public Element drawRandomSecondayElement() {
@@ -79,11 +81,13 @@ public class ElementBag {
     }
 
     public Element drawCoolElement() {
-        return this.drawElementFromList(ElementColor.BLUE, ElementColor.GREEN, ElementColor.PURPLE);
+        return this.drawElementFromList(ElementColor.BLUE, ElementColor.GREEN,
+                ElementColor.PURPLE);
     }
 
     public Element drawWarmElement() {
-        return this.drawElementFromList(ElementColor.RED, ElementColor.YELLOW, ElementColor.ORANGE);
+        return this.drawElementFromList(ElementColor.RED, ElementColor.YELLOW,
+                ElementColor.ORANGE);
     }
 
     public Element drawElement(DrawChoice drawChoice) {
