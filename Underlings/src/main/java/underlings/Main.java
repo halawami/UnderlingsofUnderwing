@@ -3,7 +3,6 @@ package underlings;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
 import underlings.card.construction.CardFactory;
 import underlings.element.ElementBag;
 import underlings.element.ElementFactory;
@@ -40,21 +39,21 @@ public class Main {
 		FieldSpaceFactory fieldSpaceFactory = new FieldSpaceFactory();
 		Field field = new Field(fieldSpaceFactory);
 		HandlerMovementLogic handlerMovementLogic = new HandlerMovementLogic(hatchingGround, gui, field);
-		
+
 		ElementFactory elementFactory = new ElementFactory();
 		Random random = new Random();
 		ElementBag elementBag = new ElementBag(elementFactory, random);
-		
+
 		Game game = new Game(gui, hatchingGround, playerFactory, elementBag);
-		
+
 		List<Phase> phases = new ArrayList<>();
 		phases.add(new DrawingPhase(game.getPlayers(), gui, elementBag, hatchingGround, () -> {game.display();}, field));
 		phases.add(new HandlerPhase(game.getPlayers(), gui, elementBag, hatchingGround, () -> {game.display();}, field, handlerMovementLogic));
 		phases.add(new PlacementPhase(game.getPlayers(), gui, elementBag, hatchingGround, () -> {game.display();}, field));
 		phases.add(new DragonPhase(game.getPlayers(), gui, elementBag, hatchingGround, () -> {game.display();}, field));
-		
+
 		Phase finalPhase = new FinalPhase(game.getPlayers(), gui, elementBag, hatchingGround, () -> {game.display();}, field);
-		
+
 		game.start(phases, finalPhase);
 		
 	}

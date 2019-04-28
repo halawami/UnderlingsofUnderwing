@@ -45,6 +45,7 @@ public class AdjacentCardsTests {
   public void testGetCardCoordinatesFirstCard() {
     Deck stubDeck = EasyMock.niceMock(Deck.class);
     HatchingGround hatchingGround = new HatchingGround(stubDeck);
+    hatchingGround.setDimensions(4, 4);
     Card[][] mockedCards = createMockedCards();
     hatchingGround.cards = mockedCards;
 
@@ -54,15 +55,16 @@ public class AdjacentCardsTests {
   }
 
   @Test
-  public void testGetCardCoordinatesTopEdge() {
+  public void testGetCardCoordinatesLeftEdge() {
     Deck stubDeck = EasyMock.niceMock(Deck.class);
     HatchingGround hatchingGround = new HatchingGround(stubDeck);
+    hatchingGround.setDimensions(4, 4);
     Card[][] mockedCards = createMockedCards();
     hatchingGround.cards = mockedCards;
 
-    Point cardCoordinates = hatchingGround.getCardCoordinates(mockedCards[0][1]);
-    assertEquals(0, cardCoordinates.x);
-    assertEquals(1, cardCoordinates.y);
+    Point cardCoordinates = hatchingGround.getCardCoordinates(mockedCards[1][0]);
+    assertEquals(1, cardCoordinates.x);
+    assertEquals(0, cardCoordinates.y);
   }
 
 
@@ -70,7 +72,7 @@ public class AdjacentCardsTests {
     Card[][] mockedCards = new Card[4][4];
     for (int i = 0; i < mockedCards.length; i++) {
       for (int j = 0; j < mockedCards[i].length; j++) {
-        EasyMock.mock(Card.class);
+        mockedCards[i][j] = EasyMock.mock(Card.class);
       }
     }
     return mockedCards;
