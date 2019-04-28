@@ -97,7 +97,6 @@ public class PlacementPhaseTests {
 	@Test
 	public void testOneWildEffect(){
 		Player player = EasyMock.createMock(Player.class);
-		ElementBag bag = EasyMock.mock(ElementBag.class);
 		List<Player> players = Arrays.asList(player);
 		ElementSpaceLogic logic = EasyMock.mock(ElementSpaceLogic.class);
 		player.elementSpaceLogic = logic;
@@ -147,21 +146,22 @@ public class PlacementPhaseTests {
 		player.removeElement(blue1);
 		runnable.run();
 		EasyMock.expectLastCall().anyTimes();
+//		HatchingGround mockedHatchingGround = EasyMock.mock(HatchingGround.class);
 		EasyMock.expect(logic.getValidAdditions(blueSpace)).andReturn(Arrays.asList(ElementColor.BLUE));
 		EasyMock.expect(promptHandler.promptDecision("Would you like to place another element?", 1)).andReturn(false);
 		EasyMock.expect(logic.isComplete(card)).andReturn(true);
-		EasyMock.expect(card.wildEffects[0].on(bag)).andReturn(card.wildEffects[0]);
-		EasyMock.expect(card.wildEffects[0].on(hatchingGround)).andReturn(card.wildEffects[0]);
-		EasyMock.expect(card.wildEffects[0].on(logic)).andReturn(card.wildEffects[0]);
-		EasyMock.expect(card.wildEffects[0].on(player)).andReturn(card.wildEffects[0]);
+		EasyMock.expect(card.wildEffects[0].on(elementBag)).andReturn(card.wildEffects[0]).anyTimes();
+		EasyMock.expect(card.wildEffects[0].on(hatchingGround)).andReturn(card.wildEffects[0]).anyTimes();
+		EasyMock.expect(card.wildEffects[0].on(logic)).andReturn(card.wildEffects[0]).anyTimes();
+		EasyMock.expect(card.wildEffects[0].on(player)).andReturn(card.wildEffects[0]).anyTimes();
 		card.wildEffects[0].apply();
 		
 		// assert expected actions occurred
-		EasyMock.replay(player, promptHandler, display, elementBag, runnable, bag);
+		EasyMock.replay(player, promptHandler, display, elementBag, runnable);
 		EasyMock.replay(logic, redSpace, blueSpace, greenSpace, whiteSpace, card.wildEffects[0]);
 		Phase phase = new PlacementPhase(players, gui, elementBag, hatchingGround, runnable, null);
 		phase.execute(1);
-		EasyMock.verify(player, promptHandler, display, elementBag, runnable, bag);
+		EasyMock.verify(player, promptHandler, display, elementBag, runnable);
 		EasyMock.verify(logic, redSpace, blueSpace, greenSpace, whiteSpace,card.wildEffects[0]);
 	}
 	
