@@ -90,8 +90,9 @@ public class HatchingGround implements Iterable<Card> {
         }
       }
     }
-    return null;
+    return new Point(-2, -2);
   }
+
 
   @Override
   public Iterator<Card> iterator() {
