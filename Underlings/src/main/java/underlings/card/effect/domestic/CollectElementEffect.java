@@ -24,6 +24,11 @@ public class CollectElementEffect extends ElementEffect {
 	
 	@Override
 	public String toString() {
-		return "Collect one of the following elements randomly: [" + this.elementChoices.toString() + "]";
+		StringBuilder elements = new StringBuilder();
+		for (ElementColor color : this.elementChoices) {
+			elements.append(color);
+			elements.append(" ");
+		}
+		return "Collect one of the following elements randomly: [ " + elements + "]";
 	}
 }

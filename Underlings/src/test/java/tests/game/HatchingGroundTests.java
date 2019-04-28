@@ -15,6 +15,7 @@ import underlings.game.Deck;
 import underlings.game.HatchingGround;
 import underlings.handler.Handler;
 import underlings.handler.HandlerState;
+import underlings.handler.WildHandler;
 
 public class HatchingGroundTests {
 
@@ -244,6 +245,7 @@ public class HatchingGroundTests {
     	Deck deck = EasyMock.strictMock(Deck.class);
     	Card card = new Card();
     	Card fakeCard = new Card();
+    	card.handler = WildHandler.getInstance();
     	ElementSpace[] spaces = {new ElementSpace(ElementColor.PURPLE), new ElementSpace(ElementColor.BLACK)};
         card.elementSpaces = spaces;
         spaces[0].elements = Arrays.asList(ElementColor.PURPLE);

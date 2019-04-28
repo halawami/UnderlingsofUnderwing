@@ -4,6 +4,7 @@ import underlings.card.Card;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
+import underlings.element.utilities.ElementSpaceLogic;
 import underlings.field.Field;
 import underlings.game.HatchingGround;
 import underlings.gui.GUI;
