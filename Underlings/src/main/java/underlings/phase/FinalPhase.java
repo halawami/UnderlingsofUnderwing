@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.swing.JOptionPane;
+
 import underlings.element.ElementBag;
 import underlings.field.Field;
 import underlings.game.HatchingGround;
@@ -33,7 +35,7 @@ public class FinalPhase implements Phase {
 			this.turn(player);
 		}
 		
-		this.gui.promptHandler.displayMessage("Game Over!", 0);
+		this.gui.promptHandler.displayMessage("Game Over!", 0, JOptionPane.PLAIN_MESSAGE);
 		
 		Map<Player, Integer> scores = new ScoreUtils().calculateScores(this.players);
 		
@@ -48,10 +50,10 @@ public class FinalPhase implements Phase {
 				maxPlayers.add(player);
 				maxScore = scores.get(player);
 			}
-			this.gui.promptHandler.displayMessage(player + ": " + scores.get(player) + " points", player.getPlayerId());
+			this.gui.promptHandler.displayMessage(player + ": " + scores.get(player) + " points", player.getPlayerId(), JOptionPane.PLAIN_MESSAGE);
 		}
 		
-		this.gui.promptHandler.displayMessage("Winner(s): " + maxPlayers, 0);
+		this.gui.promptHandler.displayMessage("Winner(s): " + maxPlayers, 0, JOptionPane.PLAIN_MESSAGE);
 
 	}
 
