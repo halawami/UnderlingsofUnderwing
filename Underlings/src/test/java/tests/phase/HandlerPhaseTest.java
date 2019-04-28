@@ -1,6 +1,7 @@
 package tests.phase;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.easymock.EasyMock;
@@ -34,14 +35,14 @@ public class HandlerPhaseTest {
 		EasyMock.expect(gui.getHandlerDecision(player.getHandlers(), 0, hatchingGround)).andReturn(handlerDecision);
 		handlerMovementLogic.move(handlerDecision.handler, handlerDecision.choice, 0);
 
-		Phase handlerPhase = new HandlerPhase(players, gui, null, null, () -> {}, null, handlerMovementLogic);
+		Phase handlerPhase = new HandlerPhase(players, gui, null, hatchingGround, () -> {}, null, handlerMovementLogic);
 		
-		EasyMock.replay(gui, handlerMovementLogic);
+		EasyMock.replay(gui, handlerMovementLogic, hatchingGround);
 
 		handlerPhase.setup();
 		handlerPhase.turn(player);
 
-		EasyMock.verify(gui, handlerMovementLogic);
+		EasyMock.verify(gui, handlerMovementLogic, hatchingGround);
 
 	}
 
