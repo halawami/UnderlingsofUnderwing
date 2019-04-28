@@ -102,10 +102,7 @@ public class PlacementPhaseTests {
 		ElementSpaceLogic logic = EasyMock.mock(ElementSpaceLogic.class);
 		player.elementSpaceLogic = logic;
 		EasyMock.expect(player.getHandlerCount()).andReturn(1).anyTimes();
-		EasyMock.expect(player.getPlayerId()).andReturn(1).anyTimes();
-
-		
-		
+		EasyMock.expect(player.getPlayerId()).andReturn(1).anyTimes();		
 
 		List<Element> playerElements = new ArrayList<Element>();
 		Element blue1 = new Element(ElementColor.BLUE);
