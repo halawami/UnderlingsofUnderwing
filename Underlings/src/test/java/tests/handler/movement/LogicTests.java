@@ -1,6 +1,7 @@
 package tests.handler.movement;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Collections;
@@ -33,6 +34,24 @@ public class LogicTests {
 		this.gui = EasyMock.mock(GUI.class);
 		this.field = new Field(new FieldSpaceFactory());
 		this.logic = new HandlerMovementLogic(this.hatchingGround, this.gui, this.field);
+	}
+	
+	@Test
+	public void testCardBreakRoom() {
+	
+		Card card = new Card();
+		Handler handler = new Handler(HandlerState.CARD);
+		
+		card.handler = handler;
+		
+		EasyMock.expect(this.hatchingGround.findCard(handler)).andReturn(card);
+		EasyMock.replay(this.hatchingGround, this.gui);
+		
+		this.logic.move(handler, HandlerChoice.BREAK_ROOM, 0);
+		
+		EasyMock.verify(this.hatchingGround, this.gui);
+		assertNull(card.handler);
+		
 	}
 	
 	@Test
@@ -96,7 +115,8 @@ public class LogicTests {
 	
 	@Test
 	public void testBreakRoom() {
-		Handler handler = new Handler(HandlerState.CARD);
+		
+		Handler handler = new Handler(HandlerState.FIELD);
 		
 		EasyMock.replay(this.hatchingGround, this.gui);
 		

@@ -18,8 +18,14 @@ public class HandlerMovementLogic {
 	}
 	
 	public void move(Handler handler, HandlerChoice choice, int playerId) {
-		
 		switch (choice) {
+		case BREAK_ROOM:
+			if (handler.getState() == HandlerState.CARD) {
+				Card card = this.hatchingGround.findCard(handler);
+				card.handler = null;
+			}
+			handler.moveToState(choice.getState());
+			break;
 		case CARD:
 			handler.moveToState(choice.getState());
 			Card chosenCard = this.gui.getCard(this.hatchingGround.getUnclaimedEggs(), playerId);
