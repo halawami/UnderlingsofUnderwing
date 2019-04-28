@@ -72,7 +72,7 @@ public class PlacementPhase extends RotationPhase {
 				card.handler = WildHandler.getInstance();
 				System.out.println("puzzel");
 				card.wildEffects[0].on(this.elementBag).on(this.hatchingGround).on(player.elementSpaceLogic).on(player).apply();
-				System.out.println("puzzel");
+				System.out.println("puzzel1");
 				
 				boolean gameOver = true;
 				for (Card groundCard : this.hatchingGround) {
@@ -80,10 +80,10 @@ public class PlacementPhase extends RotationPhase {
 						gameOver = false;
 					}
 				}
-				if (gameOver) {
-					this.gui.promptHandler.displayMessage("All dragons hatched wild! You lose!", -1, JOptionPane.WARNING_MESSAGE);
-					System.exit(0);
-				}
+//				if (gameOver) {
+//					this.gui.promptHandler.displayMessage("All dragons hatched wild! You lose!", -1, JOptionPane.WARNING_MESSAGE);
+//					System.exit(0);
+//				}
 				
 			}
 			

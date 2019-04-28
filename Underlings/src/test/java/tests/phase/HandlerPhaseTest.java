@@ -6,6 +6,7 @@ import java.util.List;
 import org.easymock.EasyMock;
 import org.junit.Test;
 
+import underlings.game.HatchingGround;
 import underlings.gui.GUI;
 import underlings.handler.HandlerChoice;
 import underlings.handler.HandlerDecision;
@@ -21,6 +22,7 @@ public class HandlerPhaseTest {
 	public void testTurn() {
 
 		GUI gui = EasyMock.mock(GUI.class);
+		HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
 		HandlerMovementLogic handlerMovementLogic = EasyMock.mock(HandlerMovementLogic.class);
 		Player player = new Player(6, new HandlerFactory(), 0);
 
@@ -29,7 +31,7 @@ public class HandlerPhaseTest {
 		
 		HandlerDecision handlerDecision = new HandlerDecision(player.getHandlers().get(0), HandlerChoice.CARD);
 
-		EasyMock.expect(gui.getHandlerDecision(player.getHandlers(), 0)).andReturn(handlerDecision);
+		EasyMock.expect(gui.getHandlerDecision(player.getHandlers(), 0, hatchingGround)).andReturn(handlerDecision);
 		handlerMovementLogic.move(handlerDecision.handler, handlerDecision.choice, 0);
 
 		Phase handlerPhase = new HandlerPhase(players, gui, null, null, () -> {}, null, handlerMovementLogic);
