@@ -33,9 +33,6 @@ public class DragonPhase extends SequentialPhase {
 		}
 	}
 
-	// hatch incubated eggs
-	// send the handler to the ready room
-	// run the positive effects
 	@Override
 	public void turn(Player player) {
 		for(Card unhatchedEgg : player.unhatchedCards) {
