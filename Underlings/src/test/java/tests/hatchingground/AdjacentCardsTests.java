@@ -3,6 +3,7 @@ package tests.hatchingground;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.awt.Point;
 import java.util.List;
 import org.easymock.EasyMock;
 import org.junit.Test;
@@ -37,6 +38,19 @@ public class AdjacentCardsTests {
     assertTrue(returnedCards.contains(mockedCards[0][0]));
     assertTrue(returnedCards.contains(mockedCards[1][1]));
     assertTrue(returnedCards.contains(mockedCards[2][0]));
+  }
+
+
+  @Test
+  public void testGetCardCoordinatesFirstCard() {
+    Deck stubDeck = EasyMock.niceMock(Deck.class);
+    HatchingGround hatchingGround = new HatchingGround(stubDeck);
+    Card[][] mockedCards = createMockedCards();
+    hatchingGround.cards = mockedCards;
+
+    Point cardCoordinates = hatchingGround.getCardCoordinates(mockedCards[0][0]);
+    assertEquals(0, cardCoordinates.x);
+    assertEquals(0, cardCoordinates.y);
   }
 
 
