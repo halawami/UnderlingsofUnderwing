@@ -19,6 +19,7 @@ import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.handler.Handler;
+import underlings.handler.WildHandler;
 import underlings.player.Player;
 
 public class LameGUI implements Display {
@@ -90,24 +91,29 @@ public class LameGUI implements Display {
 		this.g.setColor(Color.BLACK);
 		this.g.drawString(card.name, (int) (ratio * (30 + xOffset + (width + xGap) * col)),
 				(int) (-25 + ratio * (height / 2 + yOffset + (height + yGap) * row)));
-		this.g.drawString(card.points+"", (int) (ratio * (30 + xOffset + (width + xGap) * col)) + 118,
+		this.g.drawString(card.points + "", (int) (ratio * (30 + xOffset + (width + xGap) * col)) + 118,
 				(int) (-25 + ratio * (height / 2 + yOffset + (height + yGap) * row)));
 		int spaceNum = 0;
-		for (ElementSpace space : card.elementSpaces) {
-			this.g.setColor(this.colorMap.get(space.color));
-			this.g.fillRect((int) (ratio * (30 + xOffset + (width + xGap) * col)),
-					(int) (spaceNum * 20 - 5 + ratio * (height / 2 + yOffset + (height + yGap) * row)), 5, 5);
-			this.g.setColor(Color.BLACK);
-			String s = "";
-			if (space.elements.isEmpty())
-				s = "Empty";
-			for (int i = 0; i < space.elements.size(); i++) {
-				String elementName = space.elements.get(i).name();
-				s += "" + elementName.charAt(0) + elementName.charAt(elementName.length() - 1) + " ";
+		if (card.handler == WildHandler.getInstance()) {
+			this.g.drawString("HATCHED WILD", (int) (ratio * (30 + xOffset + (width + xGap) * col)),
+						(int) (spaceNum * 20 - 5 + ratio * (height / 2 + yOffset + (height + yGap) * row)));
+		} else {
+			for (ElementSpace space : card.elementSpaces) {
+				this.g.setColor(this.colorMap.get(space.color));
+				this.g.fillRect((int) (ratio * (30 + xOffset + (width + xGap) * col)),
+						(int) (spaceNum * 20 - 5 + ratio * (height / 2 + yOffset + (height + yGap) * row)), 5, 5);
+				this.g.setColor(Color.BLACK);
+				String s = "";
+				if (space.elements.isEmpty())
+					s = "Empty";
+				for (int i = 0; i < space.elements.size(); i++) {
+					String elementName = space.elements.get(i).name();
+					s += "" + elementName.charAt(0) + elementName.charAt(elementName.length() - 1) + " ";
+				}
+				this.g.drawString(s, (int) (ratio * (40 + xOffset + (width + xGap) * col)),
+						(int) (spaceNum * 20 - 5 + ratio * (height / 2 + yOffset + (height + yGap) * row)));
+				spaceNum++;
 			}
-			this.g.drawString(s, (int) (ratio * (40 + xOffset + (width + xGap) * col)),
-					(int) (spaceNum * 20 - 5 + ratio * (height / 2 + yOffset + (height + yGap) * row)));
-			spaceNum++;
 		}
 	}
 
@@ -152,7 +158,7 @@ public class LameGUI implements Display {
 			elements += e.getColor() + " ";
 		}
 		this.g.setColor(Color.BLACK);
-		this.g.drawString("Player " + (playerNumber+ 1), (int) (ratio * (xOffset + (width + xGap) * col)) + 5,
+		this.g.drawString("Player " + (playerNumber + 1), (int) (ratio * (xOffset + (width + xGap) * col)) + 5,
 				(int) (ratio * (yOffset + (height + yGap) * row)) + 15);
 		this.g.drawString(elements, (int) (ratio * (30 + xOffset + (width + xGap) * col)),
 				(int) (-25 + ratio * (height / 2 + yOffset + (height + yGap) * row)));

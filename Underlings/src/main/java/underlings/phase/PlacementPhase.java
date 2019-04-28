@@ -15,6 +15,7 @@ import underlings.field.Field;
 import underlings.game.HatchingGround;
 import underlings.gui.GUI;
 import underlings.gui.PromptHandler;
+import underlings.handler.WildHandler;
 import underlings.player.Player;
 
 public class PlacementPhase extends RotationPhase {
@@ -40,7 +41,7 @@ public class PlacementPhase extends RotationPhase {
 		int playerNum = player.getPlayerId();
 
 		ElementSpaceLogic logic = player.getElementSpaceLogic();
-		List<Card> cards = getPlayableCards(logic, player.getElements());
+		List<Card> cards = this.getPlayableCards(logic, player.getElements());
 
 		if (cards.isEmpty()) {
 			prompts.displayMessage("Player has no valid placements", playerNum, JOptionPane.WARNING_MESSAGE);
@@ -66,6 +67,12 @@ public class PlacementPhase extends RotationPhase {
 				else
 					moreMoves = prompts.promptDecision("Would you like to place another element?", playerNum);
 			}
+			
+			if (logic.isComplete(card) && card.handler == null) {
+				card.handler = WildHandler.getInstance();
+				// TODO: Apply Effect
+			}
+			
 		}
 		if(--this.turnCount == 0)
 			this.phaseComplete = true;

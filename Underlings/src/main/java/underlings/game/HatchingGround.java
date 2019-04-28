@@ -9,6 +9,7 @@ import underlings.card.Card;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.gui.GUI;
 import underlings.handler.Handler;
+import underlings.handler.WildHandler;
 
 public class HatchingGround implements Iterable<Card> {
 
@@ -107,7 +108,7 @@ public class HatchingGround implements Iterable<Card> {
 		for (int row = 0; row < this.height; row++) {
 			for (int col = 0; col < this.width; col++) {
 				Card currentCard = this.cards[row][col]; 
-				if(elementSpaceLogic.isComplete(currentCard) && currentCard.handler != null){
+				if(elementSpaceLogic.isComplete(currentCard) && currentCard.handler != WildHandler.getInstance()){
 					completeEggs.add(this.cards[row][col]);
 					this.cards[row][col] = this.deck.draw();
 				}
