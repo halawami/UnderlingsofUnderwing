@@ -65,6 +65,16 @@ public class HatchingGround implements Iterable<Card> {
   public List<Card> getAdjacentCards(Card centerCard) {
     Point cardCoordinates = this.getCardCoordinates(centerCard);
     List<Card> cardsToReturn = new LinkedList<>();
+
+    for (int yDiff = -1; yDiff <= 1; yDiff++) {
+      for (int xDiff = -1; xDiff <= 1; xDiff++) {
+        int distanceFromCard = Math.abs(xDiff) + Math.abs(yDiff);
+        if (distanceFromCard == 1) {
+          cardsToReturn.add(this.cards[cardCoordinates.y + yDiff][cardCoordinates.x + xDiff]);
+        }
+      }
+    }
+
     cardsToReturn.add(this.cards[0][1]);
     cardsToReturn.add(this.cards[1][0]);
     cardsToReturn.add(this.cards[1][2]);
@@ -74,9 +84,10 @@ public class HatchingGround implements Iterable<Card> {
 
   public Point getCardCoordinates(Card centerCard) {
     for (int row = 0; row < this.height; row++) {
-      for(int col =0; col < this.width; col++)
-      if (centerCard == this.cards[row][col]) {
-        return new Point(row, col);
+      for (int col = 0; col < this.width; col++) {
+        if (centerCard == this.cards[row][col]) {
+          return new Point(col, row);
+        }
       }
     }
     return null;

@@ -63,8 +63,8 @@ public class AdjacentCardsTests {
     hatchingGround.cards = mockedCards;
 
     Point cardCoordinates = hatchingGround.getCardCoordinates(mockedCards[1][0]);
-    assertEquals(1, cardCoordinates.x);
-    assertEquals(0, cardCoordinates.y);
+    assertEquals(1, cardCoordinates.y);
+    assertEquals(0, cardCoordinates.x);
   }
 
   @Test
@@ -76,8 +76,8 @@ public class AdjacentCardsTests {
     hatchingGround.cards = mockedCards;
 
     Point cardCoordinates = hatchingGround.getCardCoordinates(mockedCards[0][1]);
-    assertEquals(0, cardCoordinates.x);
-    assertEquals(1, cardCoordinates.y);
+    assertEquals(0, cardCoordinates.y);
+    assertEquals(1, cardCoordinates.x);
   }
 
   @Test
@@ -89,8 +89,8 @@ public class AdjacentCardsTests {
     hatchingGround.cards = mockedCards;
 
     Point cardCoordinates = hatchingGround.getCardCoordinates(mockedCards[1][3]);
-    assertEquals(1, cardCoordinates.x);
-    assertEquals(3, cardCoordinates.y);
+    assertEquals(1, cardCoordinates.y);
+    assertEquals(3, cardCoordinates.x);
   }
 
   @Test
@@ -102,8 +102,8 @@ public class AdjacentCardsTests {
     hatchingGround.cards = mockedCards;
 
     Point cardCoordinates = hatchingGround.getCardCoordinates(mockedCards[3][1]);
-    assertEquals(3, cardCoordinates.x);
-    assertEquals(1, cardCoordinates.y);
+    assertEquals(3, cardCoordinates.y);
+    assertEquals(1, cardCoordinates.x);
   }
 
   @Test
@@ -115,8 +115,21 @@ public class AdjacentCardsTests {
     hatchingGround.cards = mockedCards;
 
     Point cardCoordinates = hatchingGround.getCardCoordinates(mockedCards[1][1]);
-    assertEquals(1, cardCoordinates.x);
     assertEquals(1, cardCoordinates.y);
+    assertEquals(1, cardCoordinates.x);
+  }
+
+  @Test
+  public void testGetCardCoordinatesInvalidCard() {
+    Deck stubDeck = EasyMock.niceMock(Deck.class);
+    HatchingGround hatchingGround = new HatchingGround(stubDeck);
+    hatchingGround.setDimensions(4, 4);
+    Card[][] mockedCards = createMockedCards();
+    hatchingGround.cards = mockedCards;
+
+    Point cardCoordinates = hatchingGround.getCardCoordinates(new Card());
+    assertEquals(-2, cardCoordinates.y);
+    assertEquals(-2, cardCoordinates.x);
   }
 
 
