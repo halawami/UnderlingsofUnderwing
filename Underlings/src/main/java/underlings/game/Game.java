@@ -71,10 +71,9 @@ public class Game {
 
 		while (this.roundsLeft > 0) {
 			
-			this.display();
-			
 			for (Phase phase : phases) {
 				this.currentPhase++;
+				this.display();
 				phase.execute(this.turnLeader);
 			}
 			this.currentPhase = 0;
