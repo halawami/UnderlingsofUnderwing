@@ -35,6 +35,7 @@ public class DragonPhase extends SequentialPhase {
 	}
 
 	@Override
+	// TODO fix the problem with builder pattern, call all possible parameters 
 	public void turn(Player player) {
 		for(Card unhatchedEgg : player.unhatchedCards) {
 			for(int i = 0; i < unhatchedEgg.domesticEffects.length; i++) {
