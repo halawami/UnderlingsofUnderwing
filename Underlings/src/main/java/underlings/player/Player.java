@@ -20,10 +20,10 @@ public class Player {
 	private boolean reached25Points;
 	private HandlerFactory handlerFactory;
 	private List<Element> elements;
-	private ElementSpaceLogic logic;
 	private int playerId;
 	public List<Card> hatchedCards;
 	public List<Card> unhatchedCards;
+	public ElementSpaceLogic elementSpaceLogic;
 
 	public Player(int maxHandlers, HandlerFactory handlerFactory, int playerId) {
 		this.handlers = new ArrayList<>();
@@ -37,7 +37,6 @@ public class Player {
 		this.points = 0;
 		this.reached12Points = false;
 		this.reached25Points = false;
-		this.logic = new ElementSpaceLogic();
 		this.playerId = playerId;
 	}
 
@@ -97,10 +96,6 @@ public class Player {
 
 	public void removeElement(Element elementToRemove) {
 		this.elements.remove(elementToRemove);
-	}
-
-	public ElementSpaceLogic getElementSpaceLogic() {
-		return this.logic;
 	}
 
 	public List<ElementGiver> getElementGivers() {
