@@ -69,9 +69,11 @@ public class PlacementPhase extends RotationPhase {
 			}
 			
 			if (logic.isComplete(card) && card.handler == null) {
-				System.out.println("puzzel");
 				card.handler = WildHandler.getInstance();
+				System.out.println("puzzel");
+//				card.wildEffects[0].on(elementBag).apply();
 				card.wildEffects[0].on(elementBag).on(hatchingGround).on(player.getElementSpaceLogic()).on(player).apply();
+				System.out.println("puzzel");
 			}
 			
 		}
