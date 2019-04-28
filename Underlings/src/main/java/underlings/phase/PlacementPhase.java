@@ -40,7 +40,7 @@ public class PlacementPhase extends RotationPhase {
 		PromptHandler prompts = this.gui.promptHandler;
 		int playerNum = player.getPlayerId();
 
-		ElementSpaceLogic logic = player.getElementSpaceLogic();
+		ElementSpaceLogic logic = player.elementSpaceLogic;
 		List<Card> cards = this.getPlayableCards(logic, player.getElements());
 
 		if (cards.isEmpty()) {
@@ -69,9 +69,10 @@ public class PlacementPhase extends RotationPhase {
 			}
 			
 			if (logic.isComplete(card) && card.handler == null) {
-				System.out.println("puzzel");
 				card.handler = WildHandler.getInstance();
-				card.wildEffects[0].on(this.elementBag).on(this.hatchingGround).on(player.getElementSpaceLogic()).on(player).apply();
+				System.out.println("puzzel");
+				card.wildEffects[0].on(elementBag).on(hatchingGround).on(player.elementSpaceLogic).on(player).apply();
+				System.out.println("puzzel");
 			}
 			
 		}
