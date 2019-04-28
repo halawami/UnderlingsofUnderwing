@@ -2,13 +2,10 @@ package tests.game;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
-
 import java.util.Stack;
-
 import org.junit.Before;
 import org.junit.Test;
-
-import underlings.game.Card;
+import underlings.card.Card;
 import underlings.game.Deck;
 
 public class DeckTests {
@@ -46,6 +43,5 @@ public class DeckTests {
         this.deck = new Deck(cards);
         assertThrows(IllegalStateException.class, () -> this.deck.draw());
     }
-
 
 }

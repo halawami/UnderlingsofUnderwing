@@ -268,7 +268,6 @@ The definition of done is created by examining and applying BVA on the rules.
 
 #### Handler Movement States ```tests.handler.movement.StateTests```
 
-
 - [x] When the handler is in the Ready Room
   - ```tests.handler.movement.StateTest.testReadyRoomPossibleStates()```
   - The handler state can change to card
@@ -325,7 +324,20 @@ The definition of done is created by examining and applying BVA on the rules.
     - ```tests.handler.StringTests.testToStringFieldBlue()```
     - ```tests.handler.StringTests.testToStringFieldRed()```
 
-#### Handler Choices ```tests.handler.movement.ChoiceTests()```
+#### Handler Choices ```tests.handler.movement.ChoiceTests```
+
+- [x] Handlers in the Ready Room can: Stay, Field Whitespace, Field, or Card
+  - ```tests.handler.movement.ChoiceTests.testReadyRoom()```
+- [x] Handlers in the Break Room can: Ready Room
+  - ```tests.handler.movement.ChoiceTests.testBreakRoom()```
+- [x] Handlers on the Field Whitespace can: Break Room
+  - ```tests.handler.movement.ChoiceTests.testFieldWhitespace()```
+- [x] Handlers in the Field can: Stay, Break Room
+  - ```tests.handlers.movement.ChoiceTests.testField()```
+- [x] Handlers in Incubation can: Stay
+  - ```tests.handlers.movement.ChoiceTests.testIncubation()```
+- [x] Handlers on a Card can: Stay, Break Room
+  - ```tests.handlers.movement.ChoiceTests.testCard()```
 
 ### Placing Elements on Eggs (Phase 3)
 
@@ -495,53 +507,61 @@ The definition of done is created by examining and applying BVA on the rules.
 
 ## BVA of Cards (Dragons)
 
+## Effect Tests ```tests.effect```
 
-- [ ] BVA of Adjacent Eggs        
-   - [ ] Egg is in the corner of the hatching grounds
-   - [ ] Egg is on the edge of the hatching grounds
-   - [ ] Egg is surrounded by Eggs 
+### Player Tests ```tests.effect.PlayerTests```
+
+#### Gain One Handler
+
+- Abyssal Wyrm
+- Aeon Wyrm
+- Nebula Wyrm
+- Opalescent Whelp
+- Water Wyvern
+- Sky Wyvern
+- Blood Wyvern
+- Water Wyrm
+- Sky Wyrm
+- Blood Wyrm
+- Electric Drake
+- Steam Drake
+- Chromatic Drake
+- Nature Drake
+- Vadrenox
+- Blood Whelp
+- Water Whelp
+- Water Drake
+- Blood Drake
+- Sky Drake
+- Sky Whelp
+- Sunstone Drake
+- Brimstone Drake
+- Undine Drake
+- Twilight Drake
+- Harvest Drake
+- Ethereal Drake
+- Arbor Drake
+- Void Drake
+- Storm Drake
+
+- [x] The player gains one handler
+   - ```tests.effect.PlayerTests.testGainOneHandler()```
+   
+### Player Tests ```tests.effect.ElementTests```
+
+#### Collect 1 Primary Element
+
+- Chromatic Whelp
+
+- [ ] The player gains one primary element
+  - ```tests.effect.ElementTests.testGainPrimaryElement()```
 
 
-### Positive Effects:
-- [ ] Gain +1 Handler
-   - [ ] BVA
-      - [ ] Follows BVA of gaining handlers and handler deficiency
-   - [ ] Dragons
-      - [ ] Abyssal Wyrm
-      - [ ] Aeon Wyrm
-      - [ ] Nebula Wyrm
-      - [ ] Opalescent Whelp
-      - [ ] Water Wyvern
-      - [ ] Sky Wyvern
-      - [ ] Blood Wyvern
-      - [ ] Water Wyrm
-      - [ ] Sky Wyrm
-      - [ ] Blood Wyrm
-      - [ ] Electric Drake
-      - [ ] Steam Drake
-      - [ ] Chromatic Drake
-      - [ ] Nature Drake
-      - [ ] Vadrenox
-      - [ ] Blood Whelp
-      - [ ] Water Whelp
-      - [ ] Water Drake
-      - [ ] Blood Drake
-      - [ ] Sky Drake
-      - [ ] Sky Whelp
-      - [ ] Sunstone Drake
-      - [ ] Brimstone Drake
-      - [ ] Undine Drake
-      - [ ] Twilight Drake
-      - [ ] Harvest Drake
-      - [ ] Ethereal Drake
-      - [ ] Arbor Drake
-      - [ ] Void Drake
-      - [ ] Storm Drake
 - [ ] Collect 1 Primary Element
    - [ ] BVA
       - [ ] Follows BVA of Element Collection
    - [ ] Dragons
-      - [ ] Chromatic Whelp
+      
 - [ ] Collect and Hatch any 5 point or fewer unclaimed Egg
    - [ ] BVA
       - [ ] No 5 point of fewer unclaimed Egg
@@ -739,6 +759,7 @@ The definition of done is created by examining and applying BVA on the rules.
       - [ ] Follows BVA of gaining handlers and handler deficiency
    - [ ] Dragons
       - [ ] Kel’Droth
+            
 ###Negative Effects:
 - [ ] Hatch ALL unclaimed adjacent Eggs
    - [ ] BVA

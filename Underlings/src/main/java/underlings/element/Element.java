@@ -1,15 +1,22 @@
 package underlings.element;
 
-public class Element {
+import underlings.gui.Choice;
 
-	private ElementColor elementColor;
-	
-	public Element(ElementColor elementColor) {
-		this.elementColor = elementColor;
-	}
+public class Element implements Choice {
 
-	public ElementColor getColor() {
-		return this.elementColor;
-	}
+    private ElementColor elementColor;
+
+    public Element(ElementColor elementColor) {
+        this.elementColor = elementColor;
+    }
+
+    public ElementColor getColor() {
+        return this.elementColor;
+    }
+
+    @Override
+    public String toString() {
+        return elementColor.toString();
+    }
 
 }

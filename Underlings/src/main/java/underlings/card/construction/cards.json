@@ -1,0 +1,861 @@
+[
+  {
+    "name": "SKY WHELP",
+    "points": 5,
+    "temperature": "WARM",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "YELLOW",
+        "position": "L3_2"
+      },
+      {
+        "color": "WHITE",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainOneHandlerEffect"
+      },
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": ["YELLOW"]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["WHITE"]
+      }
+    ]
+  },
+  {
+    "name": "WATER WHELP",
+    "points": 5,
+    "temperature": "COOL",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "BLUE",
+        "position": "L3_2"
+      },
+      {
+        "color": "BLACK",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainOneHandlerEffect"
+      },
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": ["BLUE"]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["BLACK"]
+      }
+    ]
+  },
+  {
+    "name": "ARBOR WHELP",
+    "points": 6,
+    "temperature": "COOL",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "GREEN",
+        "position": "L3_2"
+      },
+      {
+        "color": "WHITE",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": ["YELLOW", "BLUE"]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["GREEN"]
+      }
+    ]
+  },
+  {
+    "name": "BLOOD WHELP",
+    "points": 5,
+    "temperature": "WARM",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_2"
+      },
+      {
+        "color": "WHITE",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": ["RED"]
+      },
+      {
+        "effect": "GainOneHandlerEffect"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["WHITE"]
+      }
+    ]
+  },
+  {
+    "name": "BRIMSTONE WHELP",
+    "points": 3,
+    "temperature": "WARM",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_2"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": ["RED", "ORANGE"]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["ORANGE"]
+      }
+    ]
+  },
+  {
+    "name": "ELECTRIC WHELP",
+    "points": 3,
+    "temperature": "NEUTRAL",
+    "family": "COMPLEMENTARY",
+    "elementSpaces": [
+      {
+        "color": "YELLOW",
+        "position": "L3_2"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": ["PURPLE", "YELLOW"]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["PURPLE"]
+      }
+    ]
+  },
+  {
+    "name": "TWILIGHT WHELP",
+    "points": 3,
+    "temperature": "COOL",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_2"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": ["PURPLE", "RED"]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["RED"]
+      }
+    ]
+  },
+  {
+    "name": "HARVEST WHELP",
+    "points": 6,
+    "temperature": "WARM",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "ORANGE",
+        "position": "L3_2"
+      },
+      {
+        "color": "WHITE",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": ["YELLOW", "RED"]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["ORANGE"]
+      }
+    ]
+  },
+  {
+    "name": "VOID WHELP",
+    "points": 3,
+    "temperature": "COOL",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "BLUE",
+        "position": "L3_2"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": ["PURPLE", "BLUE"]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["PURPLE"]
+      }
+    ]
+  },
+  {
+    "name": "UNDINE WHELP",
+    "points": 3,
+    "temperature": "COOL",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "BLUE",
+        "position": "L3_2"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": ["BLUE", "GREEN"]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["BLUE"]
+      }
+    ]
+  },
+  {
+    "name": "SUNSTONE WHELP",
+    "points": 3,
+    "temperature": "WARM",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "YELLOW",
+        "position": "L3_2"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": ["YELLOW", "ORANGE"]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["YELLOW"]
+      }
+    ]
+  },
+  {
+    "name": "STORM WHELP",
+    "points": 6,
+    "temperature": "BLUE",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "PURPLE",
+        "position": "L3_2"
+      },
+      {
+        "color": "BLACK",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": ["BLUE", "RED"]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["PURPLE"]
+      }
+    ]
+  },
+  {
+    "name": "STEAM WHELP",
+    "points": 3,
+    "temperature": "WARM",
+    "family": "COMPLEMENTARY",
+    "elementSpaces": [
+      {
+        "color": "BLUE",
+        "position": "L3_2"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": ["BLUE", "ORANGE"]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["ORANGE"]
+      }
+    ]
+  },
+  {
+    "name": "NATURE WHELP",
+    "points": 3,
+    "temperature": "NEUTRAL",
+    "family": "COMPLEMENTARY",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_2"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": ["RED", "GREEN"]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["GREEN"]
+      }
+    ]
+  },
+  {
+    "name": "ETHEREAL WHELP",
+    "points": 3,
+    "temperature": "COOL",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_2"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": ["YELLOW", "GREEN"]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["GREEN"]
+      }
+    ]
+  },
+  {
+    "name": "ETHEREAL DRAKE",
+    "points": 5,
+    "temperature": "COOL",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "YELLOW",
+        "position": "L3_2"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainOneHandlerEffect"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["GREEN"]
+      },
+	  {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["BLUE"]
+      }
+    ]
+  },
+  {
+    "name": "BLOOD DRAKE",
+    "points": 9,
+    "temperature": "WARM",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_2"
+      },
+      {
+        "color": "WHITE",
+        "position": "R3_1"
+      },
+      {
+        "color": "WHITE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainOneHandlerEffect"
+      },{
+        "effect": "CollectElementEffect",
+        "elementChoices": ["YELLOW", "GREEN", "BLUE", "RED", "PURPLE", "WHITE", "BLACK", "ORANGE"]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["WHITE"]
+      },
+	  {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["RED"]
+      }
+    ]
+  },
+  {
+    "name": "SKY DRAKE",
+    "points": 9,
+    "temperature": "WARM",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "YELLOW",
+        "position": "L3_2"
+      },
+      {
+        "color": "WHITE",
+        "position": "R3_1"
+      },
+      {
+        "color": "WHITE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainOneHandlerEffect"
+      },{
+        "effect": "CollectElementEffect",
+        "elementChoices": ["YELLOW", "GREEN", "BLUE", "RED", "PURPLE", "WHITE", "BLACK", "ORANGE"]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["WHITE"]
+      },
+	  {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["YELLOW"]
+      }
+    ]
+  },
+  {
+    "name": "STORM DRAKE",
+    "points": 9,
+    "temperature": "COOL",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "BLACK",
+        "position": "L3_2"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_1"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainOneHandlerEffect"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["PURPLE"]
+      },
+	  {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["PURPLE"]
+      }
+    ]
+  },
+  {
+    "name": "WATER DRAKE",
+    "points": 9,
+    "temperature": "COOL",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "BLUE",
+        "position": "L3_2"
+      },
+      {
+        "color": "BLACK",
+        "position": "R3_1"
+      },
+      {
+        "color": "BLACK",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainOneHandlerEffect"
+      },{
+        "effect": "CollectElementEffect",
+        "elementChoices": ["YELLOW", "GREEN", "BLUE", "RED", "PURPLE", "WHITE", "BLACK", "ORANGE"]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["BLUE"]
+      },
+	  {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["BLACK"]
+      }
+    ]
+  },
+  {
+    "name": "UNDINE DRAKE",
+    "points": 5,
+    "temperature": "COOL",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "BLUE",
+        "position": "L3_2"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainOneHandlerEffect"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["BLUE"]
+      },
+	  {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["GREEN"]
+      }
+    ]
+  },
+  {
+    "name": "BRIMSTONE DRAKE",
+    "points": 5,
+    "temperature": "WARM",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_2"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_1"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainOneHandlerEffect"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["ORANGE"]
+      },
+	  {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["RED"]
+      }
+    ]
+  },
+  {
+    "name": "VOID DRAKE",
+    "points": 5,
+    "temperature": "COOL",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "BLUE",
+        "position": "L3_2"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_1"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainOneHandlerEffect"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["PURPLE"]
+      },
+	  {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["RED"]
+      }
+    ]
+  },
+  {
+    "name": "ARBOR DRAKE",
+    "points": 9,
+    "temperature": "COOL",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "WHITE",
+        "position": "L3_2"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainOneHandlerEffect"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["GREEN"]
+      },
+	  {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["GREEM"]
+      }
+    ]
+  },
+  {
+    "name": "HARVEST DRAKE",
+    "points": 9,
+    "temperature": "WARM",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "WHITE",
+        "position": "L3_2"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_1"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainOneHandlerEffect"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["ORANGE"]
+      },
+	  {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["ORANGE"]
+      }
+    ]
+  },
+  {
+    "name": "SUNSTONE DRAKE",
+    "points": 5,
+    "temperature": "WARM",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "YELLOW",
+        "position": "L3_2"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_1"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainOneHandlerEffect"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["YELLOW"]
+      },
+	  {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["ORANGE"]
+      }
+    ]
+  },
+  {
+    "name": "TWILIGHT DRAKE",
+    "points": 5,
+    "temperature": "COOL",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_2"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_1"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainOneHandlerEffect"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["RED"]
+      },
+	  {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["PURPLE"]
+      }
+    ]
+  }
+
+]

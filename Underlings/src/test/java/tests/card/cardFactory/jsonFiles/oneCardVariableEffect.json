@@ -1,0 +1,10 @@
+[
+  {
+    "wildEffects": [
+      {
+        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "elementColors": ["WHITE"]
+      }
+    ]
+  }
+]

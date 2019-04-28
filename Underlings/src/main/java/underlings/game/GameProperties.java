@@ -1,14 +1,13 @@
 package underlings.game;
 
 public enum GameProperties {
-    TWO_PLAYERS,
-    THREE_PLAYERS,
-    FOUR_TO_SIX_PLAYERS;
+    TWO_PLAYERS, THREE_PLAYERS, FOUR_TO_SIX_PLAYERS;
 
     static {
         TWO_PLAYERS.haveRoundsOf(15).hatchingGroundOfWidth(3).andHeight(2).andMaxHandlers(4);
         THREE_PLAYERS.haveRoundsOf(13).hatchingGroundOfWidth(4).andHeight(3).andMaxHandlers(5);
-        FOUR_TO_SIX_PLAYERS.haveRoundsOf(12).hatchingGroundOfWidth(4).andHeight(4).andMaxHandlers(6);
+        FOUR_TO_SIX_PLAYERS.haveRoundsOf(12).hatchingGroundOfWidth(4).andHeight(4)
+                .andMaxHandlers(6);
     }
 
     public int numberOfRounds;

@@ -1,0 +1,28 @@
+[
+  {
+    "name": "test",
+    "points": 1,
+    "temperature": "COOL",
+    "family": "TRIADIC",
+    "domesticEffects": [
+      {
+        "effect": "GainOneHandlerEffect"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "CollectPrimaryElementEffect"
+      }
+    ],
+    "elementSpaces": [
+      {
+        "color": "BLUE",
+        "position" : "L3_2"
+      },
+      {
+        "color": "RED",
+        "position" : "R3_2"
+      }
+    ]
+  }
+]

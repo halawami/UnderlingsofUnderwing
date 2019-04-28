@@ -4,60 +4,63 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import underlings.element.ElementBag;
-import underlings.game.Card;
-import underlings.game.Handler;
-import underlings.game.HandlerState;
+import underlings.field.Field;
 import underlings.game.HatchingGround;
 import underlings.gui.GUI;
+import underlings.handler.Handler;
+import underlings.handler.HandlerDecision;
+import underlings.handler.HandlerMovementLogic;
+import underlings.handler.HandlerState;
 import underlings.player.Player;
 
-public class HandlerPhase implements Phase {
+public class HandlerPhase extends RotationPhase {
 
-	@Override
-	public void execute(List<Player> players, GUI gui, ElementBag elementBag, HatchingGround hatchingGround,
-			Runnable displayMethod) {
+    public HandlerPhase(List<Player> players, GUI gui, ElementBag elementBag,
+            HatchingGround hatchingGround, Runnable displayMethod, Field field,
+            HandlerMovementLogic handlerMovementLogic) {
+        super(players, gui, elementBag, hatchingGround, displayMethod, field);
+        this.handlerMovementLogic = handlerMovementLogic;
+    }
 
-		Map<Player, List<Handler>> unmovedHandlers = new HashMap<>();
+    private Map<Player, List<Handler>> unmovedHandlers;
+    private HandlerMovementLogic handlerMovementLogic;
 
-		for (Player player : players) {
-			unmovedHandlers.put(player, new ArrayList<>(player.getHandlers()));
-		}
+    @Override
+    public void setup() {
 
-		boolean allHandlersPlayed = false;
-		
-		while (!allHandlersPlayed) {
-			allHandlersPlayed = true;
-			for (Player player : players) {
-				
-				List<Handler> playersHandlers = unmovedHandlers.get(player);
-				
-				if (!playersHandlers.isEmpty()) {
-					allHandlersPlayed = false;
-					
-					Handler chosenHandler = gui.promptHandler.promptHandler(playersHandlers);
-					
-					List<HandlerState> possibleStates = chosenHandler.getPossibleStates();
-					
-					HandlerState chosenState = gui.promptHandler.promptHandlerState(possibleStates);
-					
-					List<Card> unclaimedEggs = hatchingGround.getUnclaimedEggs();
-					
-					Card chosenCard = gui.promptHandler.promptCardSelection(unclaimedEggs);
-					
-					chosenHandler.moveToState(chosenState); // TODO: Refactor into setHandler
-					chosenCard.handler = chosenHandler;
-					chosenHandler.setLocation(chosenCard.name);
-					
-					playersHandlers.remove(chosenHandler);
-					displayMethod.run();
-					
-				}
-			
-			}
-		}
+        this.unmovedHandlers = new HashMap<>();
 
-	}
+        for (Player player : this.players) {
+            this.unmovedHandlers.put(player, new ArrayList<>(player.getHandlers()));
+
+            for (Handler handler : this.unmovedHandlers.get(player)) {
+                if (handler.getState() == HandlerState.BREAK_ROOM) {
+                    handler.moveToState(HandlerState.READY_ROOM);
+                }
+            }
+
+        }
+
+        this.displayMethod.run();
+
+    }
+
+    @Override
+    public boolean turn(Player player) {
+
+        List<Handler> playersHandlers = this.unmovedHandlers.get(player);
+
+        if (playersHandlers.size() != 0) {
+
+            HandlerDecision decision = this.gui.getHandlerDecision(playersHandlers,
+                    player.getPlayerId(), this.hatchingGround);
+            this.handlerMovementLogic.move(decision.handler, decision.choice, player.getPlayerId());
+            this.phaseComplete = false;
+
+        }
+
+        return false;
+    }
 
 }

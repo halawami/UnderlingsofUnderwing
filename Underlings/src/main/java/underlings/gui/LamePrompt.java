@@ -1,54 +1,52 @@
 package underlings.gui;
 
 import java.util.List;
-
 import javax.swing.JOptionPane;
-
-import underlings.element.ElementGiver;
-import underlings.game.Card;
-import underlings.game.Handler;
-import underlings.game.HandlerState;
 
 public class LamePrompt implements PromptHandler {
 
-	@Override
-	public int promptPlayerCount(int minPlayers, int maxPlayers) {
-		// TODO: Input Validation
-		return Integer.parseInt(JOptionPane.showInputDialog("How many players? [" + minPlayers + ", " + maxPlayers + "]"));
-	}
+    @Override
+    public <T extends Choice> T promptChoice(String prompt, List<T> choices, int playerId) {
+        int index = this.displayOptions(choices.toArray(), "Player " + playerId, prompt);
+        return choices.get(index);
+    }
 
-	@Override
-	public ElementGiver promptElementGiver(List<ElementGiver> elementGivers) {
-		int index = this.displayOptions(elementGivers.toArray(), "Drawing Elements", "Select a drawing option");
-		return elementGivers.get(index);
-	}
+    private int displayOptions(Object[] options, String title, String message) {
+        int value = JOptionPane.showOptionDialog(null, message, title, JOptionPane.DEFAULT_OPTION,
+                JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+        if (value == -1) {
+            System.exit(0);
+        }
 
-	@Override
-	public DrawChoice promptElementDrawChoice(List<DrawChoice> elementDrawChoices) {
-		int index = this.displayOptions(elementDrawChoices.toArray(), "Drawing Elements", "Select a drawing option");
-		return elementDrawChoices.get(index);
-	}
+        return value;
+    }
 
-	@Override
-	public HandlerState promptHandlerState(List<HandlerState> possibleStates) {
-		int index = this.displayOptions(possibleStates.toArray(), "Moving Handlers", "Select a state");
-		return possibleStates.get(index);
-	}
+    @Override
+    public boolean promptDecision(String question, int playerId) {
+        int option = JOptionPane.showConfirmDialog(null, question, "Player " + playerId,
+                JOptionPane.YES_NO_OPTION);
+        return option == JOptionPane.YES_OPTION;
+    }
 
-	@Override
-	public Card promptCardSelection(List<Card> unclaimedEggs) {
-		int index = this.displayOptions(unclaimedEggs.toArray(), "Moving Handlers", "Select a card");
-		return unclaimedEggs.get(index);
-	}
+    @Override
+    public void displayMessage(String message, int playerId, int icon) {
+        JOptionPane.showMessageDialog(null, message, "Player " + playerId, icon);
+    }
 
-	@Override
-	public Handler promptHandler(List<Handler> playersHandlers) {
-		int index = this.displayOptions(playersHandlers.toArray(), "Moving Handlers", "Select a handler");
-		return playersHandlers.get(index);
-	}
+    @Override
+    public int promptInt(String prompt, int min, int max) {
+        int result = 0;
+        do {
+            try {
+                result = Integer.parseInt(
+                        JOptionPane.showInputDialog(prompt + " [" + min + ", " + max + "]"));
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null,
+                        "Please enter a number in [" + min + ", " + max + "].");
+            }
+        } while (result > max || result < min);
 
-	private int displayOptions(Object[] options, String title, String message) {
-		return JOptionPane.showOptionDialog(null, message, title, JOptionPane.DEFAULT_OPTION,
-				JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
-	}
+        return result;
+    }
+
 }

@@ -2,23 +2,14 @@ package underlings.gui;
 
 import java.util.List;
 
-import underlings.element.ElementGiver;
-import underlings.game.Card;
-import underlings.game.Handler;
-import underlings.game.HandlerState;
-
 public interface PromptHandler {
-	
-	int promptPlayerCount(int minPlayers, int maxPlayers);
-	
-	ElementGiver promptElementGiver(List<ElementGiver> elementGivers);
-	
-	DrawChoice promptElementDrawChoice(List<DrawChoice> possibleElementDrawChoices);
 
-	HandlerState promptHandlerState(List<HandlerState> possibleStates);
+    int promptInt(String prompt, int min, int max);
 
-	Card promptCardSelection(List<Card> unclaimedEggs);
+    <T extends Choice> T promptChoice(String prompt, List<T> choices, int playerId);
 
-	Handler promptHandler(List<Handler> playersHandlers);
-		
+    boolean promptDecision(String question, int playerId);
+
+    void displayMessage(String message, int playerId, int icon);
+
 }
