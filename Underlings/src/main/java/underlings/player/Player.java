@@ -113,4 +113,10 @@ public class Player {
 	public int getPlayerId() {
 		return this.playerId;
 	}
+	
+	@Override
+	public String toString() {
+		return "Player " + this.getPlayerId();
+	}
+	
 }
