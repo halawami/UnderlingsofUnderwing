@@ -169,7 +169,7 @@ public class PlacementPhaseTests {
 		EasyMock.replay(player, promptHandler, display, elementBag, runnable, gui);
 		EasyMock.replay(logic, redSpace, blueSpace, greenSpace, whiteSpace, card.wildEffects[0]);
 		Phase phase = new PlacementPhase(players, gui, elementBag, hatchingGround, runnable, null);
-		phase.execute(1);
+		phase.turn(player);
 		EasyMock.verify(player, promptHandler, display, elementBag, runnable, gui);
 		EasyMock.verify(logic, redSpace, blueSpace, greenSpace, whiteSpace,card.wildEffects[0]);
 	}
@@ -254,7 +254,7 @@ public class PlacementPhaseTests {
 		EasyMock.replay(player, promptHandler, display, elementBag, runnable, gui);
 		EasyMock.replay(logic, redSpace, blueSpace, greenSpace, whiteSpace, card.wildEffects[0], card.wildEffects[1]);
 		Phase phase = new PlacementPhase(players, gui, elementBag, hatchingGround, runnable, null);
-		phase.execute(1);
+		phase.turn(player);
 		EasyMock.verify(player, promptHandler, display, elementBag, runnable, gui);
 		EasyMock.verify(logic, redSpace, blueSpace, greenSpace, whiteSpace,card.wildEffects[0], card.wildEffects[1]);
 	}
