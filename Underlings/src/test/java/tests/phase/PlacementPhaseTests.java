@@ -153,9 +153,9 @@ public class PlacementPhaseTests {
 		EasyMock.expect(promptHandler.promptDecision("Would you like to place another element?", 1)).andReturn(false);
 		EasyMock.expect(logic.isComplete(card)).andReturn(true);
 		EasyMock.expect(card.wildEffects[0].on(bag)).andReturn(card.wildEffects[0]);
-//		EasyMock.expect(card.wildEffects[0].on(hatchingGround)).andReturn(card.wildEffects[0]);
-//		EasyMock.expect(card.wildEffects[0].on(logic)).andReturn(card.wildEffects[0]);
-//		EasyMock.expect(card.wildEffects[0].on(player)).andReturn(card.wildEffects[0]);
+		EasyMock.expect(card.wildEffects[0].on(hatchingGround)).andReturn(card.wildEffects[0]);
+		EasyMock.expect(card.wildEffects[0].on(logic)).andReturn(card.wildEffects[0]);
+		EasyMock.expect(card.wildEffects[0].on(player)).andReturn(card.wildEffects[0]);
 		card.wildEffects[0].apply();
 		
 		// assert expected actions occurred

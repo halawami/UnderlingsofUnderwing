@@ -1,37 +1,30 @@
 package tests.effect;
 
+import static org.junit.Assert.assertEquals;
+
 import org.easymock.EasyMock;
 import org.junit.Test;
-import underlings.card.effect.Effect;
+
 import underlings.card.effect.domestic.CollectElementEffect;
-import underlings.card.effect.domestic.CollectPrimaryElementEffect;
 import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.player.Player;
 
-public class ElementTests {
+public class CollectElementEffectTests {
 
+	@Test
+	public void testToString() {
+		CollectElementEffect elementEffect = new CollectElementEffect();
+		
+		elementEffect.elementChoices = new ElementColor[]{ElementColor.BLACK, ElementColor.WHITE};
+		
+		assertEquals("Collect one of the following elements randomly: [ BLACK WHITE ]", elementEffect.toString());
+		
+	}
+	
     @Test
-    public void testGainPrimaryElement() {
-        Player player = EasyMock.mock(Player.class);
-        ElementBag elementBag = EasyMock.mock(ElementBag.class);
-        Element element = new Element(ElementColor.BLUE);
-
-        Effect gainPrimaryElement = new CollectPrimaryElementEffect();
-        gainPrimaryElement.on(player).on(elementBag);
-
-        EasyMock.expect(elementBag.drawRandomPrimaryElement()).andReturn(element);
-        player.addElement(element);
-
-        EasyMock.replay(player, elementBag);
-
-        gainPrimaryElement.apply();
-        EasyMock.verify(player, elementBag);
-    }
-
-    @Test
-    public void testCollectElementOneColor() {
+    public void testOneColor() {
         Player player = EasyMock.mock(Player.class);
         ElementBag elementBag = EasyMock.mock(ElementBag.class);
         Element blueElement = new Element(ElementColor.BLUE);
@@ -51,7 +44,7 @@ public class ElementTests {
     }
 
     @Test
-    public void testCollectElementTwoColors() {
+    public void testTwoColors() {
         Player player = EasyMock.mock(Player.class);
         ElementBag elementBag = EasyMock.mock(ElementBag.class);
         Element blueElement = new Element(ElementColor.BLUE);
@@ -69,5 +62,5 @@ public class ElementTests {
         collectElementEffect.apply();
         EasyMock.verify(player, elementBag);
     }
-
+	
 }
