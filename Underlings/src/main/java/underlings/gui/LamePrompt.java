@@ -2,7 +2,6 @@ package underlings.gui;
 
 import java.util.List;
 
-import javax.swing.Icon;
 import javax.swing.JOptionPane;
 
 public class LamePrompt implements PromptHandler {
@@ -14,8 +13,13 @@ public class LamePrompt implements PromptHandler {
 	}
 	
 	private int displayOptions(Object[] options, String title, String message) {
-		return JOptionPane.showOptionDialog(null, message, title, JOptionPane.DEFAULT_OPTION,
+		int value = JOptionPane.showOptionDialog(null, message, title, JOptionPane.DEFAULT_OPTION,
 				JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+		if (value == -1) {
+			System.exit(0);
+		}
+	
+		return value;
 	}
 
 	@Override
