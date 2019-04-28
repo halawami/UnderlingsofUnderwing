@@ -16,4 +16,9 @@ public class CollectPrimaryElementEffect extends ElementEffect {
 			player.addElement(element);
 		}
 	}
+	
+	@Override
+	public String toString() {
+		return "Collect a random primary element";
+	}
 }
