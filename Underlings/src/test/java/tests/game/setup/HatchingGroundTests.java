@@ -1,16 +1,19 @@
 package tests.game.setup;
 
 import static org.junit.Assert.assertEquals;
+
 import java.util.Stack;
+
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
-import underlings.element.ElementBag;
+
 import underlings.card.Card;
+import underlings.element.ElementBag;
 import underlings.game.Deck;
 import underlings.game.Game;
 import underlings.game.HatchingGround;
-import underlings.gui.GUI;
+import underlings.gui.Gui;
 import underlings.handler.HandlerFactory;
 import underlings.player.PlayerFactory;
 
@@ -29,7 +32,7 @@ public class HatchingGroundTests {
         }
 
         this.hatchingGround = new HatchingGround(new Deck(this.cards));
-        this.game = new Game(EasyMock.mock(GUI.class), this.hatchingGround,
+        this.game = new Game(EasyMock.mock(Gui.class), this.hatchingGround,
                 new PlayerFactory(new HandlerFactory()),
                 EasyMock.mock(ElementBag.class));
 

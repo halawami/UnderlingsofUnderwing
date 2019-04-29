@@ -2,6 +2,7 @@ package underlings.field;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import underlings.gui.DrawChoice;
 
 public class FieldSpaceFactory {

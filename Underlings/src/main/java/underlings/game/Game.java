@@ -2,15 +2,17 @@ package underlings.game;
 
 import java.util.LinkedList;
 import java.util.List;
+
 import underlings.element.ElementBag;
-import underlings.gui.GUI;
+import underlings.gui.Gui;
 import underlings.handler.Handler;
 import underlings.phase.Phase;
 import underlings.player.Player;
 import underlings.player.PlayerFactory;
 
 public class Game {
-    private final static int MIN_PLAYERS = 2, MAX_PLAYERS = 6;
+    private static final int MIN_PLAYERS = 2;
+    private static final int MAX_PLAYERS = 6;
 
     private int maxHandlers;
     private int numberOfPlayers;
@@ -18,13 +20,13 @@ public class Game {
     private int currentPhase = 0;
     private int turnLeader = 0;
     private HatchingGround hatchingGround;
-    private GUI gui;
+    private Gui gui;
     private PlayerFactory playerFactory;
     private ElementBag elementBag;
 
     private List<Player> players = new LinkedList<>();
 
-    public Game(GUI gui, HatchingGround hatchingGround,
+    public Game(Gui gui, HatchingGround hatchingGround,
             PlayerFactory playerFactory, ElementBag elementBag) {
         this.gui = gui;
         this.hatchingGround = hatchingGround;

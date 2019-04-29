@@ -1,10 +1,13 @@
 package tests.game;
 
 import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import org.easymock.EasyMock;
 import org.junit.Test;
+
 import underlings.card.Card;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
@@ -95,8 +98,8 @@ public class HatchingGroundTests {
 
     @Test
     public void testPullAndReplaceOneCompleteEggs() {
-        Deck deck = EasyMock.strictMock(Deck.class);
-        Card card = new Card();
+        final Deck deck = EasyMock.strictMock(Deck.class);
+        final Card card = new Card();
         Card card2 = new Card();
         Card fakeCard = new Card();
         ElementSpace[] fakeSpaces = {new ElementSpace(ElementColor.PURPLE)};
@@ -128,8 +131,8 @@ public class HatchingGroundTests {
 
     @Test
     public void testPullAndReplaceTwoCompleteEggs() {
-        Deck deck = EasyMock.strictMock(Deck.class);
-        Card card = new Card();
+        final Deck deck = EasyMock.strictMock(Deck.class);
+        final Card card = new Card();
         Card card2 = new Card();
         Card fakeCard = new Card();
         ElementSpace[] fakeSpaces = {new ElementSpace(ElementColor.PURPLE)};
@@ -177,8 +180,8 @@ public class HatchingGroundTests {
 
     @Test
     public void testPullAndReplaceOneCompleteEggsWithTwoElementSpacesFail() {
-        Deck deck = EasyMock.strictMock(Deck.class);
-        Card card = new Card();
+        final Deck deck = EasyMock.strictMock(Deck.class);
+        final Card card = new Card();
         Card card2 = new Card();
         Card fakeCard = new Card();
         ElementSpace[] fakeSpaces = {new ElementSpace(ElementColor.PURPLE)};
@@ -187,7 +190,7 @@ public class HatchingGroundTests {
         card2.elementSpaces[0].elements = new ArrayList<>();
         fakeCard.elementSpaces[0].elements = new ArrayList<>();
         card2.name = "temp";
-        Handler handler = EasyMock.mock(Handler.class);
+        final Handler handler = EasyMock.mock(Handler.class);
         ElementSpace[] spaces = {new ElementSpace(ElementColor.PURPLE),
                 new ElementSpace(ElementColor.BLACK)};
         card.elementSpaces = spaces;
@@ -210,8 +213,8 @@ public class HatchingGroundTests {
 
     @Test
     public void testPullAndReplaceOneCompleteEggsWithTwoElementSpacesPass() {
-        Deck deck = EasyMock.strictMock(Deck.class);
-        Card card = new Card();
+        final Deck deck = EasyMock.strictMock(Deck.class);
+        final Card card = new Card();
         Card card2 = new Card();
         Card fakeCard = new Card();
         ElementSpace[] fakeSpaces = {new ElementSpace(ElementColor.PURPLE)};
@@ -220,7 +223,7 @@ public class HatchingGroundTests {
         card2.elementSpaces[0].elements = new ArrayList<>();
         fakeCard.elementSpaces[0].elements = new ArrayList<>();
         card2.name = "temp";
-        Handler handler = EasyMock.mock(Handler.class);
+        final Handler handler = EasyMock.mock(Handler.class);
         ElementSpace[] spaces = {new ElementSpace(ElementColor.PURPLE),
                 new ElementSpace(ElementColor.BLACK)};
         card.elementSpaces = spaces;
@@ -245,9 +248,9 @@ public class HatchingGroundTests {
 
     @Test
     public void testPullAndReplaceOneCompleteWildEgg() {
-        Deck deck = EasyMock.strictMock(Deck.class);
+        final Deck deck = EasyMock.strictMock(Deck.class);
+        final Card fakeCard = new Card();
         Card card = new Card();
-        Card fakeCard = new Card();
         card.handler = WildHandler.getInstance();
         ElementSpace[] spaces = {new ElementSpace(ElementColor.PURPLE),
                 new ElementSpace(ElementColor.BLACK)};

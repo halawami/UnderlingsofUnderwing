@@ -1,10 +1,13 @@
 package tests.gui;
 
 import static org.junit.Assert.assertEquals;
+
 import java.util.Random;
+
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.card.Card;
 import underlings.element.ElementBag;
 import underlings.element.ElementFactory;
@@ -12,16 +15,16 @@ import underlings.game.Deck;
 import underlings.game.Game;
 import underlings.game.HatchingGround;
 import underlings.gui.Display;
-import underlings.gui.GUI;
+import underlings.gui.Gui;
 import underlings.gui.PromptHandler;
 import underlings.handler.HandlerFactory;
 import underlings.player.PlayerFactory;
 
-public class GUITests {
+public class GuiTests {
 
     private Game game;
     private HatchingGround hatchingGround;
-    private GUI gui;
+    private Gui gui;
     private Deck deck;
 
     @Before
@@ -29,7 +32,7 @@ public class GUITests {
         PromptHandler promptHandler = EasyMock.mock(PromptHandler.class);
         Display display = EasyMock.mock(Display.class);
 
-        this.gui = new GUI(promptHandler, display);
+        this.gui = new Gui(promptHandler, display);
 
         this.deck = EasyMock.mock(Deck.class);
         EasyMock.expect(this.deck.draw()).andStubReturn(new Card());

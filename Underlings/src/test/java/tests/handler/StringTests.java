@@ -1,7 +1,9 @@
 package tests.handler;
 
 import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
+
 import underlings.field.FieldSpace;
 import underlings.gui.DrawChoice;
 import underlings.handler.Handler;

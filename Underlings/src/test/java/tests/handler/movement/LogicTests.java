@@ -3,16 +3,19 @@ package tests.handler.movement;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+
 import java.util.Collections;
+
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.card.Card;
 import underlings.field.Field;
 import underlings.field.FieldSpaceFactory;
 import underlings.game.HatchingGround;
 import underlings.gui.DrawChoice;
-import underlings.gui.GUI;
+import underlings.gui.Gui;
 import underlings.handler.Handler;
 import underlings.handler.HandlerChoice;
 import underlings.handler.HandlerMovementLogic;
@@ -21,14 +24,14 @@ import underlings.handler.HandlerState;
 public class LogicTests {
 
     private HatchingGround hatchingGround;
-    private GUI gui;
+    private Gui gui;
     private Field field;
     private HandlerMovementLogic logic;
 
     @Before
     public void init() {
         this.hatchingGround = EasyMock.mock(HatchingGround.class);
-        this.gui = EasyMock.mock(GUI.class);
+        this.gui = EasyMock.mock(Gui.class);
         this.field = new Field(new FieldSpaceFactory());
         this.logic = new HandlerMovementLogic(this.hatchingGround, this.gui,
                 this.field);
@@ -83,7 +86,6 @@ public class LogicTests {
 
     @Test
     public void testCard() {
-        Handler handler = new Handler(HandlerState.READY_ROOM);
         Card card = new Card();
 
         EasyMock.expect(this.hatchingGround.getUnclaimedEggs())
@@ -92,6 +94,7 @@ public class LogicTests {
                 .andReturn(card);
         EasyMock.replay(this.hatchingGround, this.gui);
 
+        Handler handler = new Handler(HandlerState.READY_ROOM);
         this.logic.move(handler, HandlerChoice.CARD, 0);
 
         EasyMock.verify(this.hatchingGround, this.gui);

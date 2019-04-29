@@ -2,8 +2,10 @@ package tests.elementspace.combo;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;

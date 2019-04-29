@@ -5,15 +5,17 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+
 import underlings.card.Card;
 import underlings.element.utilities.ElementSpaceLogic;
-import underlings.gui.GUI;
+import underlings.gui.Gui;
 import underlings.handler.Handler;
 import underlings.handler.WildHandler;
 
 public class HatchingGround implements Iterable<Card> {
 
-    private int height, width;
+    private int height;
+    private int width;
     public Card[][] cards;
     private Deck deck;
 
@@ -43,7 +45,7 @@ public class HatchingGround implements Iterable<Card> {
         }
     }
 
-    public void display(GUI gui) {
+    public void display(Gui gui) {
         for (int row = 0; row < this.height; row++) {
             for (int col = 0; col < this.width; col++) {
                 gui.display.displayCard(row, col, this.cards[row][col]);
@@ -66,11 +68,11 @@ public class HatchingGround implements Iterable<Card> {
         Point cardCoordinates = this.getCardCoordinates(centerCard);
         List<Card> cardsToReturn = new LinkedList<>();
 
-        for (int yDiff = -1; yDiff <= 1; yDiff++) {
-            for (int xDiff = -1; xDiff <= 1; xDiff++) {
-                int distanceFromCard = Math.abs(xDiff) + Math.abs(yDiff);
-                int adjacentCardY = cardCoordinates.y + yDiff;
-                int adjacentCardX = cardCoordinates.x + xDiff;
+        for (int diffY = -1; diffY <= 1; diffY++) {
+            for (int diffX = -1; diffX <= 1; diffX++) {
+                int distanceFromCard = Math.abs(diffX) + Math.abs(diffY);
+                int adjacentCardY = cardCoordinates.y + diffY;
+                int adjacentCardX = cardCoordinates.x + diffX;
                 if (distanceFromCard == 1
                         && coordinatesInBounds(adjacentCardY, adjacentCardX)) {
                     cardsToReturn.add(this.cards[adjacentCardY][adjacentCardX]);
@@ -100,7 +102,8 @@ public class HatchingGround implements Iterable<Card> {
     public Iterator<Card> iterator() {
         return new Iterator<Card>() {
 
-            int row = 1, col = 1;
+            int row = 1;
+            int col = 1;
 
             @Override
             public boolean hasNext() {

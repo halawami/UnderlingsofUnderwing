@@ -1,9 +1,22 @@
-package tests.card.cardFactory;
+package tests.card.factory;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.typeadapters.RuntimeTypeAdapterFactory;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.Test;
+
 import underlings.card.Card;
 import underlings.card.Family;
 import underlings.card.Temperature;
@@ -14,15 +27,6 @@ import underlings.card.effect.wild.AddElementsToAllAdjacentEggsEffect;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.ElementSpacePosition;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.List;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 public class GsonLearningTests {
 
@@ -88,8 +92,6 @@ public class GsonLearningTests {
         assertEquals(ElementColor.PURPLE, secondCardSecondElementSpace.color);
         assertEquals(ElementSpacePosition.R3_3,
                 secondCardSecondElementSpace.position);
-
-
     }
 
     @Test
@@ -161,9 +163,10 @@ public class GsonLearningTests {
         RuntimeTypeAdapterFactory<Effect> effectsTypeAdapter =
                 RuntimeTypeAdapterFactory.of(Effect.class, "effect");
 
-        for (Class<? extends Effect> effectClass : effectClasses)
+        for (Class<? extends Effect> effectClass : effectClasses) {
             effectsTypeAdapter =
                     effectsTypeAdapter.registerSubtype(effectClass);
+        }
 
         return new GsonBuilder().registerTypeAdapterFactory(effectsTypeAdapter)
                 .create();
@@ -173,8 +176,7 @@ public class GsonLearningTests {
     private File getFile(String fileName) {
         String workingDirectory = Paths.get("").toAbsolutePath().toString();
         return new File(workingDirectory
-                + "\\src\\test\\java\\tests\\card\\cardFactory\\jsonFiles\\"
-                + fileName);
+                + "\\src\\test\\java\\tests\\card\\factory\\json\\" + fileName);
     }
 
 

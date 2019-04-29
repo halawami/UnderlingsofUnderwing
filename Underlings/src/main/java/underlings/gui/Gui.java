@@ -2,7 +2,9 @@ package underlings.gui;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.swing.JOptionPane;
+
 import underlings.card.Card;
 import underlings.element.ElementGiver;
 import underlings.game.HatchingGround;
@@ -10,11 +12,11 @@ import underlings.handler.Handler;
 import underlings.handler.HandlerChoice;
 import underlings.handler.HandlerDecision;
 
-public class GUI {
+public class Gui {
     public PromptHandler promptHandler;
     public Display display;
 
-    public GUI(PromptHandler promptHandler, Display display) {
+    public Gui(PromptHandler promptHandler, Display display) {
         this.promptHandler = promptHandler;
         this.display = display;
     }

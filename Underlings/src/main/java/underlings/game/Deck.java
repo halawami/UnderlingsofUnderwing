@@ -1,8 +1,9 @@
 package underlings.game;
 
-import underlings.card.Card;
 import java.util.List;
 import java.util.Stack;
+
+import underlings.card.Card;
 
 public class Deck {
 

@@ -3,11 +3,13 @@ package underlings.phase;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
 import javax.swing.JOptionPane;
+
 import underlings.element.ElementBag;
 import underlings.field.Field;
 import underlings.game.HatchingGround;
-import underlings.gui.GUI;
+import underlings.gui.Gui;
 import underlings.player.Player;
 import underlings.scoring.ScoreUtils;
 
@@ -15,9 +17,9 @@ public class FinalPhase implements Phase {
 
     private List<Player> players;
     private Phase dragonPhase;
-    private GUI gui;
+    private Gui gui;
 
-    public FinalPhase(List<Player> players, GUI gui, ElementBag elementBag,
+    public FinalPhase(List<Player> players, Gui gui, ElementBag elementBag,
             HatchingGround hatchingGround, Runnable displayMethod,
             Field field) {
         this.players = players;

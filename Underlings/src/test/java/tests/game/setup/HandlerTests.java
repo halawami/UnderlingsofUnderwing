@@ -1,13 +1,15 @@
 package tests.game.setup;
 
 import static org.junit.Assert.assertEquals;
+
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.element.ElementBag;
 import underlings.game.Game;
 import underlings.game.HatchingGround;
-import underlings.gui.GUI;
+import underlings.gui.Gui;
 import underlings.handler.Handler;
 import underlings.handler.HandlerFactory;
 import underlings.handler.HandlerState;
@@ -20,7 +22,7 @@ public class HandlerTests {
 
     @Before
     public void init() {
-        this.game = new Game(EasyMock.mock(GUI.class),
+        this.game = new Game(EasyMock.mock(Gui.class),
                 EasyMock.mock(HatchingGround.class),
                 new PlayerFactory(new HandlerFactory()),
                 EasyMock.mock(ElementBag.class));

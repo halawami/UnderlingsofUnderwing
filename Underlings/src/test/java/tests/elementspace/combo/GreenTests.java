@@ -2,8 +2,10 @@ package tests.elementspace.combo;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
@@ -12,7 +14,8 @@ import underlings.element.utilities.ElementSpaceLogic;
 public class GreenTests {
 
     private ElementSpace elementSpace;
-    private Element elementOne, elementTwo;
+    private Element elementOne;
+    private Element elementTwo;
 
     private ElementColor desired = ElementColor.GREEN;
     private ElementColor elementOneColor = ElementColor.BLUE;

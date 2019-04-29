@@ -1,7 +1,9 @@
 package tests.field;
 
 import static org.junit.Assert.assertTrue;
+
 import org.junit.Test;
+
 import underlings.field.Field;
 import underlings.field.FieldSpaceFactory;
 import underlings.gui.DrawChoice;

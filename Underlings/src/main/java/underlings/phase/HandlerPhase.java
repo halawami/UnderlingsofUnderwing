@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import underlings.element.ElementBag;
 import underlings.field.Field;
 import underlings.game.HatchingGround;
-import underlings.gui.GUI;
+import underlings.gui.Gui;
 import underlings.handler.Handler;
 import underlings.handler.HandlerDecision;
 import underlings.handler.HandlerMovementLogic;
@@ -16,7 +17,7 @@ import underlings.player.Player;
 
 public class HandlerPhase extends RotationPhase {
 
-    public HandlerPhase(List<Player> players, GUI gui, ElementBag elementBag,
+    public HandlerPhase(List<Player> players, Gui gui, ElementBag elementBag,
             HatchingGround hatchingGround, Runnable displayMethod, Field field,
             HandlerMovementLogic handlerMovementLogic) {
         super(players, gui, elementBag, hatchingGround, displayMethod, field);

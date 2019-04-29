@@ -3,15 +3,15 @@ package underlings.handler;
 import underlings.card.Card;
 import underlings.field.Field;
 import underlings.game.HatchingGround;
-import underlings.gui.GUI;
+import underlings.gui.Gui;
 
 public class HandlerMovementLogic {
 
     private HatchingGround hatchingGround;
-    private GUI gui;
+    private Gui gui;
     private Field field;
 
-    public HandlerMovementLogic(HatchingGround hatchingGround, GUI gui,
+    public HandlerMovementLogic(HatchingGround hatchingGround, Gui gui,
             Field field) {
         this.hatchingGround = hatchingGround;
         this.gui = gui;
