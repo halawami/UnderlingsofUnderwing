@@ -20,7 +20,7 @@ import underlings.gui.PromptHandler;
 import underlings.handler.HandlerFactory;
 import underlings.player.PlayerFactory;
 
-public class GUITests {
+public class GuiTests {
 
     private Game game;
     private HatchingGround hatchingGround;

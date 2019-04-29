@@ -14,7 +14,8 @@ import underlings.element.utilities.ElementSpaceLogic;
 public class OrangeTests {
 
     private ElementSpace elementSpace;
-    private Element elementOne, elementTwo;
+    private Element elementOne;
+    private Element elementTwo;
 
     private ElementColor desired = ElementColor.ORANGE;
     private ElementColor elementOneColor = ElementColor.RED;

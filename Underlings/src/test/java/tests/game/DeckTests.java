@@ -14,7 +14,7 @@ import underlings.game.Deck;
 public class DeckTests {
 
     private Deck deck;
-    private final static int DECK_SIZE = 50;
+    private static final int DECK_SIZE = 50;
 
     @Before
     public void init() {
