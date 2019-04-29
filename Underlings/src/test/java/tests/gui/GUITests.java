@@ -1,10 +1,13 @@
 package tests.gui;
 
 import static org.junit.Assert.assertEquals;
+
 import java.util.Random;
+
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.card.Card;
 import underlings.element.ElementBag;
 import underlings.element.ElementFactory;

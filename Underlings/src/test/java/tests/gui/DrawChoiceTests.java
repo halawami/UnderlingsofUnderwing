@@ -1,10 +1,13 @@
 package tests.gui;
 
 import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import org.easymock.EasyMock;
 import org.junit.Test;
+
 import underlings.element.ElementGiver;
 import underlings.gui.Display;
 import underlings.gui.DrawChoice;

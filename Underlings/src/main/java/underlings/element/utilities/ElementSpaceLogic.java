@@ -1,12 +1,18 @@
 package underlings.element.utilities;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
+
 import underlings.card.Card;
 import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.util.*;
 
 /**
  * TODO: Give each player their own ElementSpaceLogic That way when they are able to create white

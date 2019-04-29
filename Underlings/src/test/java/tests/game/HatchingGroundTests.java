@@ -1,10 +1,13 @@
 package tests.game;
 
 import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import org.easymock.EasyMock;
 import org.junit.Test;
+
 import underlings.card.Card;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;

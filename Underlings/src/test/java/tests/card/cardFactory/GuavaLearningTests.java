@@ -1,11 +1,14 @@
 package tests.card.cardFactory;
 
+import static org.junit.Assert.assertEquals;
+
 import com.google.common.reflect.ClassPath;
-import org.junit.Test;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
 
 public class GuavaLearningTests {
 

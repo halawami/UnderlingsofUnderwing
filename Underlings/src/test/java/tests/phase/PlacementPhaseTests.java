@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
+
 import javax.swing.JOptionPane;
+
 import org.easymock.EasyMock;
 import org.junit.Test;
+
 import underlings.card.Card;
 import underlings.card.effect.Effect;
 import underlings.element.Element;
@@ -204,6 +207,7 @@ public class PlacementPhaseTests {
                 card.wildEffects[0]);
         Phase phase = new PlacementPhase(players, gui, elementBag,
                 hatchingGround, runnable, null);
+        phase.setup();
         phase.turn(player);
         EasyMock.verify(player, promptHandler, display, elementBag, runnable,
                 gui);
@@ -319,6 +323,7 @@ public class PlacementPhaseTests {
                 card.wildEffects[0], card.wildEffects[1]);
         Phase phase = new PlacementPhase(players, gui, elementBag,
                 hatchingGround, runnable, null);
+        phase.setup();
         phase.turn(player);
         EasyMock.verify(player, promptHandler, display, elementBag, runnable,
                 gui);

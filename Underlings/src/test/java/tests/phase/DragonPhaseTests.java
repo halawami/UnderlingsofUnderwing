@@ -3,9 +3,11 @@ package tests.phase;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.card.Card;
 import underlings.card.effect.Effect;
 import underlings.element.ElementBag;

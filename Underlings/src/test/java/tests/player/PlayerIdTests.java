@@ -1,7 +1,9 @@
 package tests.player;
 
 import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
+
 import underlings.handler.HandlerFactory;
 import underlings.player.Player;
 

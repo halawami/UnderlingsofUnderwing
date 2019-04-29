@@ -1,11 +1,14 @@
 package tests.scoring;
 
 import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.card.Card;
 import underlings.card.Temperature;
 import underlings.handler.HandlerFactory;

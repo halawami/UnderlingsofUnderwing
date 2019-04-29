@@ -1,12 +1,14 @@
 package tests.card.elementPlacement;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import org.easymock.EasyMock;
 import org.junit.Test;
+
 import underlings.card.Card;
 import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 public class isCompleteTests {
 

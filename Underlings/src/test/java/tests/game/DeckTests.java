@@ -2,9 +2,12 @@ package tests.game;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
+
 import java.util.Stack;
+
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.card.Card;
 import underlings.game.Deck;
 

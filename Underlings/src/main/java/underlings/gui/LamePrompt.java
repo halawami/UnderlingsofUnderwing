@@ -1,6 +1,7 @@
 package underlings.gui;
 
 import java.util.List;
+
 import javax.swing.JOptionPane;
 
 public class LamePrompt implements PromptHandler {

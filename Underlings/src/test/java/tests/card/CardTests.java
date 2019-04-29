@@ -1,7 +1,9 @@
 package tests.card;
 
 import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
+
 import underlings.card.Card;
 
 public class CardTests {

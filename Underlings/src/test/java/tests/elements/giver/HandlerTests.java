@@ -2,8 +2,11 @@ package tests.elements.giver;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+
 import java.util.List;
+
 import org.junit.Test;
+
 import underlings.element.ElementGiver;
 import underlings.field.FieldSpace;
 import underlings.gui.DrawChoice;

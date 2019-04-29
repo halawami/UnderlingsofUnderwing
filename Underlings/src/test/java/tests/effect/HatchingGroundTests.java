@@ -2,8 +2,10 @@ package tests.effect;
 
 import java.util.Arrays;
 import java.util.List;
+
 import org.easymock.EasyMock;
 import org.junit.Test;
+
 import underlings.card.Card;
 import underlings.card.effect.wild.AddElementsToAllAdjacentEggsEffect;
 import underlings.element.Element;

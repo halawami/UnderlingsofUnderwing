@@ -1,5 +1,7 @@
 package underlings.phase;
 
+import java.util.List;
+
 import underlings.card.Card;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
@@ -9,7 +11,6 @@ import underlings.game.HatchingGround;
 import underlings.gui.GUI;
 import underlings.handler.HandlerState;
 import underlings.player.Player;
-import java.util.List;
 
 public class DragonPhase extends SequentialPhase {
 

@@ -1,11 +1,14 @@
 package tests.card.cardFactory;
 
+import static org.junit.Assert.assertEquals;
+
+import java.util.List;
+
 import org.junit.Test;
+
 import underlings.card.Card;
 import underlings.card.construction.CardFactory;
 import underlings.card.effect.Effect;
-import java.util.List;
-import static org.junit.Assert.assertEquals;
 
 public class getCardsTests {
 

@@ -1,10 +1,13 @@
 package tests.phase;
 
 import static org.junit.Assert.assertTrue;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import org.easymock.EasyMock;
 import org.junit.Test;
+
 import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;

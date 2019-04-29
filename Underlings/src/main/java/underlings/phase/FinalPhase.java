@@ -3,7 +3,9 @@ package underlings.phase;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
 import javax.swing.JOptionPane;
+
 import underlings.element.ElementBag;
 import underlings.field.Field;
 import underlings.game.HatchingGround;
