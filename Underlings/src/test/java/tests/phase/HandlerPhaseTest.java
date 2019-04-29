@@ -7,7 +7,7 @@ import org.easymock.EasyMock;
 import org.junit.Test;
 
 import underlings.game.HatchingGround;
-import underlings.gui.GUI;
+import underlings.gui.Gui;
 import underlings.handler.HandlerChoice;
 import underlings.handler.HandlerDecision;
 import underlings.handler.HandlerFactory;
@@ -21,7 +21,7 @@ public class HandlerPhaseTest {
     @Test
     public void testTurn() {
 
-        GUI gui = EasyMock.mock(GUI.class);
+        Gui gui = EasyMock.mock(Gui.class);
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         HandlerMovementLogic handlerMovementLogic =
                 EasyMock.mock(HandlerMovementLogic.class);

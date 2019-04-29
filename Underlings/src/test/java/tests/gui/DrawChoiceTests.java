@@ -11,7 +11,7 @@ import org.junit.Test;
 import underlings.element.ElementGiver;
 import underlings.gui.Display;
 import underlings.gui.DrawChoice;
-import underlings.gui.GUI;
+import underlings.gui.Gui;
 import underlings.gui.PromptHandler;
 
 public class DrawChoiceTests {
@@ -25,7 +25,7 @@ public class DrawChoiceTests {
         PromptHandler promptHandler = EasyMock.mock(PromptHandler.class);
         Display display = EasyMock.mock(Display.class);
 
-        GUI gui = new GUI(promptHandler, display);
+        Gui gui = new Gui(promptHandler, display);
 
         EasyMock.expect(promptHandler.promptChoice("Choose an Element Giver",
                 elementGivers, 0)).andReturn(elementGiver);

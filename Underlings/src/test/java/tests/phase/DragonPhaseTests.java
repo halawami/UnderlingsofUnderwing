@@ -14,7 +14,7 @@ import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.game.HatchingGround;
-import underlings.gui.GUI;
+import underlings.gui.Gui;
 import underlings.handler.Handler;
 import underlings.handler.HandlerState;
 import underlings.phase.DragonPhase;
@@ -142,7 +142,7 @@ public class DragonPhaseTests {
 
     @Test
     public void testOneUnhatchedEgg() {
-        GUI gui = EasyMock.mock(GUI.class);
+        Gui gui = EasyMock.mock(Gui.class);
         card.name = "tempName";
         int playerId = 1;
         String message = card.name + " is going to incubation state";
@@ -171,7 +171,7 @@ public class DragonPhaseTests {
 
     @Test
     public void testTwoUnhatchedEggsSamePlayer() {
-        GUI gui = EasyMock.mock(GUI.class);
+        Gui gui = EasyMock.mock(Gui.class);
         int playerId = 1;
         card.name = "tempName";
         String message = card.name + " has been applied";
@@ -203,7 +203,7 @@ public class DragonPhaseTests {
 
     @Test
     public void testOneUnhatchedEggWithTwoEffects() {
-        GUI gui = EasyMock.mock(GUI.class);
+        Gui gui = EasyMock.mock(Gui.class);
         EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs())
                 .andReturn(Arrays.asList());
         int playerId = 1;
@@ -241,7 +241,7 @@ public class DragonPhaseTests {
 
     @Test
     public void testTwoUnhatchedEggsDifferentPlayers() {
-        GUI gui = EasyMock.mock(GUI.class);
+        Gui gui = EasyMock.mock(Gui.class);
         card.name = "tempName";
         int playerId = 0;
         String message = card.name + " is going to incubation state";
@@ -312,7 +312,7 @@ public class DragonPhaseTests {
 
     @Test
     public void testOneUncompletedEgg() {
-        GUI gui = EasyMock.mock(GUI.class);
+        Gui gui = EasyMock.mock(Gui.class);
         card.domesticEffects = new Effect[0];
         card.name = "tempName";
         int playerId = 0;
@@ -337,7 +337,7 @@ public class DragonPhaseTests {
     @Test
     public void testTwoUncompletedEgg() {
         Card card2 = new Card();
-        GUI gui = EasyMock.mock(GUI.class);
+        Gui gui = EasyMock.mock(Gui.class);
         int playerId = 1;
         card.name = "tempName";
         String message = card.name + " is going to incubation state";
@@ -368,7 +368,7 @@ public class DragonPhaseTests {
 
     @Test
     public void testTwoUncompletedDifferentPlayerEgg() {
-        GUI gui = EasyMock.mock(GUI.class);
+        Gui gui = EasyMock.mock(Gui.class);
         card.name = "tempName";
         int playerId = 0;
         String message = card.name + " is going to incubation state";

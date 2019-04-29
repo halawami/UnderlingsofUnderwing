@@ -20,7 +20,7 @@ import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.Deck;
 import underlings.game.HatchingGround;
 import underlings.gui.Display;
-import underlings.gui.GUI;
+import underlings.gui.Gui;
 import underlings.gui.PromptHandler;
 import underlings.handler.Handler;
 import underlings.phase.Phase;
@@ -72,7 +72,7 @@ public class PlacementPhaseTests {
         // create other fields
         PromptHandler promptHandler = EasyMock.mock(PromptHandler.class);
         Display display = EasyMock.mock(Display.class);
-        GUI gui = new GUI(promptHandler, display);
+        Gui gui = new Gui(promptHandler, display);
         ElementBag elementBag = EasyMock.createMock(ElementBag.class);
         Runnable runnable = EasyMock.mock(Runnable.class);
 
@@ -154,7 +154,7 @@ public class PlacementPhaseTests {
         // create other fields
         PromptHandler promptHandler = EasyMock.mock(PromptHandler.class);
         Display display = EasyMock.mock(Display.class);
-        GUI gui = EasyMock.mock(GUI.class);
+        Gui gui = EasyMock.mock(Gui.class);
         gui.display = display;
         gui.promptHandler = promptHandler;
         ElementBag elementBag = EasyMock.createMock(ElementBag.class);
@@ -259,7 +259,7 @@ public class PlacementPhaseTests {
         // create other fields
         PromptHandler promptHandler = EasyMock.mock(PromptHandler.class);
         Display display = EasyMock.mock(Display.class);
-        GUI gui = EasyMock.mock(GUI.class);
+        Gui gui = EasyMock.mock(Gui.class);
         gui.display = display;
         gui.promptHandler = promptHandler;
         ElementBag elementBag = EasyMock.createMock(ElementBag.class);

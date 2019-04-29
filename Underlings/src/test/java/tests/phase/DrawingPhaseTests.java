@@ -12,7 +12,7 @@ import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.gui.DrawChoice;
-import underlings.gui.GUI;
+import underlings.gui.Gui;
 import underlings.handler.HandlerFactory;
 import underlings.phase.DrawingPhase;
 import underlings.phase.Phase;
@@ -23,7 +23,7 @@ public class DrawingPhaseTests {
     @Test
     public void testTurn() {
 
-        GUI gui = EasyMock.mock(GUI.class);
+        Gui gui = EasyMock.mock(Gui.class);
         ElementBag elementBag = EasyMock.mock(ElementBag.class);
 
         Player player = new Player(6, new HandlerFactory(), 0);

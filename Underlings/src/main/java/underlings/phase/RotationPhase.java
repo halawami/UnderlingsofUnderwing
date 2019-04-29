@@ -5,13 +5,13 @@ import java.util.List;
 import underlings.element.ElementBag;
 import underlings.field.Field;
 import underlings.game.HatchingGround;
-import underlings.gui.GUI;
+import underlings.gui.Gui;
 import underlings.player.Player;
 
 public abstract class RotationPhase implements Phase {
 
     protected List<Player> players;
-    public GUI gui;
+    public Gui gui;
     protected ElementBag elementBag;
     protected HatchingGround hatchingGround;
     protected Runnable displayMethod;
@@ -19,7 +19,7 @@ public abstract class RotationPhase implements Phase {
 
     protected boolean phaseComplete;
 
-    public RotationPhase(List<Player> players, GUI gui, ElementBag elementBag,
+    public RotationPhase(List<Player> players, Gui gui, ElementBag elementBag,
             HatchingGround hatchingGround, Runnable displayMethod,
             Field field) {
         this.players = players;

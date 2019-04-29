@@ -27,10 +27,8 @@ public class TestPrompt extends LamePrompt {
 
     @Override
     public void displayMessage(String message, int playerId, int icon) {
-        if (message.contains("placements") || message.contains("incubation")
-                || message.contains("applied")) {
-
-        } else {
+        if (!(message.contains("placements") || message.contains("incubation")
+                || message.contains("applied"))) {
             super.displayMessage(message, playerId, icon);
         }
     }

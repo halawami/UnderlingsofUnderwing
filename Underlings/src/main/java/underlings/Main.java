@@ -12,8 +12,8 @@ import underlings.field.FieldSpaceFactory;
 import underlings.game.Deck;
 import underlings.game.Game;
 import underlings.game.HatchingGround;
-import underlings.gui.GUI;
-import underlings.gui.LameGUI;
+import underlings.gui.Gui;
+import underlings.gui.LameGui;
 import underlings.gui.LamePrompt;
 import underlings.handler.HandlerFactory;
 import underlings.handler.HandlerMovementLogic;
@@ -27,12 +27,12 @@ import underlings.player.PlayerFactory;
 
 public class Main {
 
-    private final static String CARDS_JSON_FILE_PATH =
+    private static final String CARDS_JSON_FILE_PATH =
             "\\src\\main\\java\\underlings\\card\\construction\\cards.json";
 
     public static void main(String[] args) {
 
-        GUI gui = new GUI(new LamePrompt(), new LameGUI());
+        Gui gui = new Gui(new LamePrompt(), new LameGui());
         CardFactory cardFactory = new CardFactory(CARDS_JSON_FILE_PATH);
         Deck deck = new Deck(cardFactory.getCards());
         HatchingGround hatchingGround = new HatchingGround(deck);

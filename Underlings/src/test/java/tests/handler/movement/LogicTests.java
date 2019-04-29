@@ -15,7 +15,7 @@ import underlings.field.Field;
 import underlings.field.FieldSpaceFactory;
 import underlings.game.HatchingGround;
 import underlings.gui.DrawChoice;
-import underlings.gui.GUI;
+import underlings.gui.Gui;
 import underlings.handler.Handler;
 import underlings.handler.HandlerChoice;
 import underlings.handler.HandlerMovementLogic;
@@ -24,14 +24,14 @@ import underlings.handler.HandlerState;
 public class LogicTests {
 
     private HatchingGround hatchingGround;
-    private GUI gui;
+    private Gui gui;
     private Field field;
     private HandlerMovementLogic logic;
 
     @Before
     public void init() {
         this.hatchingGround = EasyMock.mock(HatchingGround.class);
-        this.gui = EasyMock.mock(GUI.class);
+        this.gui = EasyMock.mock(Gui.class);
         this.field = new Field(new FieldSpaceFactory());
         this.logic = new HandlerMovementLogic(this.hatchingGround, this.gui,
                 this.field);

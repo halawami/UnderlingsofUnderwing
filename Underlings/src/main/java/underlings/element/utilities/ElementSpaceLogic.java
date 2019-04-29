@@ -14,11 +14,6 @@ import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 
-/**
- * TODO: Give each player their own ElementSpaceLogic That way when they are able to create white
- * from all primary and secondary elements you can change the logic for that one player
- */
-
 public class ElementSpaceLogic {
     private Map<ElementColor, List<List<ElementColor>>> recipeMap;
 
@@ -74,10 +69,11 @@ public class ElementSpaceLogic {
             ElementSpace space) {
         recipe = new ArrayList<ElementColor>(recipe);
         for (ElementColor color : space.elements) {
-            if (recipe.contains(color))
+            if (recipe.contains(color)) {
                 recipe.remove(color);
-            else
+            } else {
                 return false;
+            }
         }
         return true;
     }
@@ -86,8 +82,9 @@ public class ElementSpaceLogic {
         Set<ElementColor> validAdditions = new TreeSet<ElementColor>();
 
         for (List<ElementColor> recipe : recipeMap.get(elementSpace.color)) {
-            if (!isValidRecipe(recipe, elementSpace))
+            if (!isValidRecipe(recipe, elementSpace)) {
                 continue;
+            }
 
             List<ElementColor> remaining = new ArrayList<ElementColor>(recipe);
             elementSpace.elements.forEach((color) -> remaining.remove(color));
@@ -107,11 +104,12 @@ public class ElementSpaceLogic {
             List<Element> elements) {
         List<ElementSpace> spaces = new ArrayList<ElementSpace>();
         for (ElementSpace space : card.elementSpaces) {
-            for (Element element : elements)
+            for (Element element : elements) {
                 if (getValidAdditions(space).contains(element.getColor())) {
                     spaces.add(space);
                     break;
                 }
+            }
         }
         return spaces;
     }
@@ -120,11 +118,12 @@ public class ElementSpaceLogic {
             List<ElementColor> elementColors, Card card) {
         List<ElementSpace> spaces = new ArrayList<>();
         for (ElementSpace space : card.elementSpaces) {
-            for (ElementColor color : elementColors)
+            for (ElementColor color : elementColors) {
                 if (getValidAdditions(space).contains(color)) {
                     spaces.add(space);
                     break;
                 }
+            }
         }
         return spaces;
     }

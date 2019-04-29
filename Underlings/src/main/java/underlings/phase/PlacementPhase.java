@@ -15,7 +15,7 @@ import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.field.Field;
 import underlings.game.HatchingGround;
-import underlings.gui.GUI;
+import underlings.gui.Gui;
 import underlings.gui.PromptHandler;
 import underlings.handler.WildHandler;
 import underlings.player.Player;
@@ -24,7 +24,7 @@ public class PlacementPhase extends RotationPhase {
 
     private Map<Player, Integer> turnCounts;
 
-    public PlacementPhase(List<Player> players, GUI gui, ElementBag elementBag,
+    public PlacementPhase(List<Player> players, Gui gui, ElementBag elementBag,
             HatchingGround hatchingGround, Runnable displayMethod,
             Field field) {
         super(players, gui, elementBag, hatchingGround, displayMethod, field);
@@ -33,8 +33,9 @@ public class PlacementPhase extends RotationPhase {
     @Override
     public void setup() {
         this.turnCounts = new HashMap<Player, Integer>();
-        for (Player player : this.players)
+        for (Player player : this.players) {
             this.turnCounts.put(player, player.getHandlerCount());
+        }
     }
 
     @Override
@@ -79,12 +80,13 @@ public class PlacementPhase extends RotationPhase {
                     choices = this.playableElements(
                             logic.getValidAdditions(space),
                             player.getElements());
-                    if (choices.isEmpty())
+                    if (choices.isEmpty()) {
                         moreMoves = false;
-                    else
+                    } else {
                         moreMoves = prompts.promptDecision(
                                 "Would you like to place another element?",
                                 playerNum);
+                    }
                 }
 
                 if (logic.isComplete(card) && card.handler == null) {
@@ -120,9 +122,11 @@ public class PlacementPhase extends RotationPhase {
     public List<Element> playableElements(List<ElementColor> list,
             List<Element> elements) {
         elements = new ArrayList<Element>(elements);
-        for (int i = 0; i < elements.size(); i++)
-            if (!list.contains(elements.get(i).getColor()))
+        for (int i = 0; i < elements.size(); i++) {
+            if (!list.contains(elements.get(i).getColor())) {
                 elements.remove(i--);
+            }
+        }
         return elements;
     }
 
@@ -130,8 +134,9 @@ public class PlacementPhase extends RotationPhase {
             List<Element> elements) {
         List<Card> cards = new ArrayList<Card>();
         for (Card card : this.hatchingGround) {
-            if (!logic.getPlayableSpaces(card, elements).isEmpty())
+            if (!logic.getPlayableSpaces(card, elements).isEmpty()) {
                 cards.add(card);
+            }
         }
         return cards;
     }

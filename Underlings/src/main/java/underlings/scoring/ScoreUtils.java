@@ -14,7 +14,8 @@ public class ScoreUtils {
     public Map<Player, Integer> calculateScores(List<Player> players) {
         Map<Player, Integer> scores = new HashMap<>();
 
-        int warmest = 0, coolest = 0;
+        int warmest = 0;
+        int coolest = 0;
 
         List<Player> warmestPlayers = new ArrayList<>();
         List<Player> coolestPlayers = new ArrayList<>();
