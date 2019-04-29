@@ -1,4 +1,4 @@
-package tests.card.cardFactory;
+package tests.card.factory;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -92,8 +92,6 @@ public class GsonLearningTests {
         assertEquals(ElementColor.PURPLE, secondCardSecondElementSpace.color);
         assertEquals(ElementSpacePosition.R3_3,
                 secondCardSecondElementSpace.position);
-
-
     }
 
     @Test
@@ -165,9 +163,10 @@ public class GsonLearningTests {
         RuntimeTypeAdapterFactory<Effect> effectsTypeAdapter =
                 RuntimeTypeAdapterFactory.of(Effect.class, "effect");
 
-        for (Class<? extends Effect> effectClass : effectClasses)
+        for (Class<? extends Effect> effectClass : effectClasses) {
             effectsTypeAdapter =
                     effectsTypeAdapter.registerSubtype(effectClass);
+        }
 
         return new GsonBuilder().registerTypeAdapterFactory(effectsTypeAdapter)
                 .create();

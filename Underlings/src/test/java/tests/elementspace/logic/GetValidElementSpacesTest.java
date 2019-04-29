@@ -1,4 +1,4 @@
-package tests.elementSpaceLogic;
+package tests.elementspace.logic;
 
 import static org.junit.Assert.assertEquals;
 

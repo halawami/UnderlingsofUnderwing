@@ -1,4 +1,4 @@
-package tests.card.cardFactory;
+package tests.card.factory;
 
 import static org.junit.Assert.assertEquals;
 

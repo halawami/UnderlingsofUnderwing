@@ -1,4 +1,4 @@
-package tests.card.elementPlacement;
+package tests.card.element.placement;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
