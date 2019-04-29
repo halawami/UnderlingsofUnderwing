@@ -20,17 +20,12 @@ public class GuavaLearningTests {
                 Thread.currentThread().getContextClassLoader();
 
         for (ClassPath.ClassInfo info : ClassPath.from(loader)
-                .getTopLevelClassesRecursive(
-                        "tests.card.cardFactory.testClasses")) {
-            // Class<?> retrievedClass = Class.forName(info.getName());
+                .getTopLevelClassesRecursive("tests.card.factory.samples")) {
             retrievedClasses.add(info.load());
         }
 
         assertEquals(2, retrievedClasses.size());
-
-        assertEquals("testClassOne", retrievedClasses.get(0).getSimpleName());
-        assertEquals("testClassTwo", retrievedClasses.get(1).getSimpleName());
-
-
+        assertEquals("TestClassOne", retrievedClasses.get(0).getSimpleName());
+        assertEquals("TestClassTwo", retrievedClasses.get(1).getSimpleName());
     }
 }

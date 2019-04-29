@@ -86,7 +86,6 @@ public class LogicTests {
 
     @Test
     public void testCard() {
-        Handler handler = new Handler(HandlerState.READY_ROOM);
         Card card = new Card();
 
         EasyMock.expect(this.hatchingGround.getUnclaimedEggs())
@@ -95,6 +94,7 @@ public class LogicTests {
                 .andReturn(card);
         EasyMock.replay(this.hatchingGround, this.gui);
 
+        Handler handler = new Handler(HandlerState.READY_ROOM);
         this.logic.move(handler, HandlerChoice.CARD, 0);
 
         EasyMock.verify(this.hatchingGround, this.gui);

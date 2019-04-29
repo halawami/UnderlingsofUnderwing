@@ -142,10 +142,10 @@ public class DragonPhaseTests {
 
     @Test
     public void testOneUnhatchedEgg() {
-        Gui gui = EasyMock.mock(Gui.class);
+        final Gui gui = EasyMock.mock(Gui.class);
+        final int playerId = 1;
         card.name = "tempName";
-        int playerId = 1;
-        String message = card.name + " is going to incubation state";
+        final String message = card.name + " is going to incubation state";
         EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs())
                 .andReturn(Arrays.asList());
         player.unhatchedCards.add(card);
@@ -171,10 +171,10 @@ public class DragonPhaseTests {
 
     @Test
     public void testTwoUnhatchedEggsSamePlayer() {
-        Gui gui = EasyMock.mock(Gui.class);
-        int playerId = 1;
+        final Gui gui = EasyMock.mock(Gui.class);
+        final int playerId = 1;
         card.name = "tempName";
-        String message = card.name + " has been applied";
+        final String message = card.name + " has been applied";
         EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs())
                 .andReturn(Arrays.asList());
         player.unhatchedCards.add(card);
@@ -203,12 +203,12 @@ public class DragonPhaseTests {
 
     @Test
     public void testOneUnhatchedEggWithTwoEffects() {
-        Gui gui = EasyMock.mock(Gui.class);
+        final Gui gui = EasyMock.mock(Gui.class);
+        final int playerId = 1;
+        card.name = "tempName";
+        final String message = card.name + " has been applied";
         EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs())
                 .andReturn(Arrays.asList());
-        int playerId = 1;
-        card.name = "tempName";
-        String message = card.name + " has been applied";
         card.domesticEffects = new Effect[2];
         card.domesticEffects[0] = EasyMock.mock(Effect.class);
         card.domesticEffects[1] = EasyMock.mock(Effect.class);
@@ -241,10 +241,10 @@ public class DragonPhaseTests {
 
     @Test
     public void testTwoUnhatchedEggsDifferentPlayers() {
-        Gui gui = EasyMock.mock(Gui.class);
+        final Gui gui = EasyMock.mock(Gui.class);
+        final int playerId = 0;
         card.name = "tempName";
-        int playerId = 0;
-        String message = card.name + " is going to incubation state";
+        final String message = card.name + " is going to incubation state";
         Player player2 = EasyMock.mock(Player.class);
         players = Arrays.asList(player, player2);
         player2.hatchedCards = new ArrayList<>();
@@ -260,8 +260,8 @@ public class DragonPhaseTests {
         card2.domesticEffects[0] = EasyMock.mock(Effect.class);
         player2.unhatchedCards = new ArrayList<>();
         card2.name = "tempName";
-        int player2Id = 0;
-        String message2 = card2.name + " is going to incubation state";
+        final int player2Id = 0;
+        final String message2 = card2.name + " is going to incubation state";
         player.unhatchedCards.add(card);
         player2.unhatchedCards.add(card2);
         EasyMock.expect(player2.getHandlerCount()).andReturn(1).anyTimes();
@@ -312,11 +312,11 @@ public class DragonPhaseTests {
 
     @Test
     public void testOneUncompletedEgg() {
-        Gui gui = EasyMock.mock(Gui.class);
-        card.domesticEffects = new Effect[0];
+        final Gui gui = EasyMock.mock(Gui.class);
+        final int playerId = 0;
         card.name = "tempName";
-        int playerId = 0;
-        String message = card.name + " is going to incubation state";
+        final String message = card.name + " is going to incubation state";
+        card.domesticEffects = new Effect[0];
         bag.putElement(ElementColor.BLUE);
         bag.putElement(ElementColor.RED);
         EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs())
@@ -336,11 +336,11 @@ public class DragonPhaseTests {
 
     @Test
     public void testTwoUncompletedEgg() {
-        Card card2 = new Card();
-        Gui gui = EasyMock.mock(Gui.class);
-        int playerId = 1;
+        final Gui gui = EasyMock.mock(Gui.class);
+        final int playerId = 1;
         card.name = "tempName";
-        String message = card.name + " is going to incubation state";
+        final String message = card.name + " is going to incubation state";
+        Card card2 = new Card();
         card2.elementSpaces = spaces;
         card2.handler = handler;
         card2.domesticEffects = new Effect[0];
@@ -368,10 +368,10 @@ public class DragonPhaseTests {
 
     @Test
     public void testTwoUncompletedDifferentPlayerEgg() {
-        Gui gui = EasyMock.mock(Gui.class);
+        final Gui gui = EasyMock.mock(Gui.class);
+        final int playerId = 0;
         card.name = "tempName";
-        int playerId = 0;
-        String message = card.name + " is going to incubation state";
+        final String message = card.name + " is going to incubation state";
         Player player2 = EasyMock.mock(Player.class);
         players = Arrays.asList(player, player2);
         player2.hatchedCards = new ArrayList<>();
@@ -387,8 +387,8 @@ public class DragonPhaseTests {
         card2.domesticEffects[0] = EasyMock.mock(Effect.class);
         card2.name = "tempName";
         player2.unhatchedCards = new ArrayList<>();
-        int player2Id = 0;
-        String message2 = card2.name + " is going to incubation state";
+        final int player2Id = 0;
+        final String message2 = card2.name + " is going to incubation state";
         EasyMock.expect(player2.getHandlerCount()).andReturn(1).anyTimes();
         EasyMock.expect(player2.getHandlers())
                 .andReturn(Arrays.asList(handler2)).anyTimes();

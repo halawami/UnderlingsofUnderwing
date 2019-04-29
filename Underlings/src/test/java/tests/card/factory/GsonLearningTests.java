@@ -176,8 +176,7 @@ public class GsonLearningTests {
     private File getFile(String fileName) {
         String workingDirectory = Paths.get("").toAbsolutePath().toString();
         return new File(workingDirectory
-                + "\\src\\test\\java\\tests\\card\\cardFactory\\jsonFiles\\"
-                + fileName);
+                + "\\src\\test\\java\\tests\\card\\factory\\json\\" + fileName);
     }
 
 

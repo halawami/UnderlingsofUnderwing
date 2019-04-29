@@ -15,7 +15,7 @@ public class GetCardsTests {
     @Test
     public void testGetOneCard() {
         CardFactory cardFactory = new CardFactory(
-                "\\src\\test\\java\\tests\\card\\cardFactory\\jsonFiles\\sky_whelp.json");
+                "\\src\\test\\java\\tests\\card\\factory\\json\\sky_whelp.json");
         List<Card> cards = cardFactory.getCards();
         assertEquals(1, cards.size());
 

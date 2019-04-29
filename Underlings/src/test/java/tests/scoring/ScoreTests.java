@@ -26,52 +26,52 @@ public class ScoreTests {
 
     @Before
     public void init() {
-
         this.scoreUtils = new ScoreUtils();
+        List<Card> p1c = new ArrayList<>();
 
         Card p1c1 = new Card();
-        Card p1c2 = new Card();
-        Card p1c3 = new Card();
-        Card p1c4 = new Card();
-        Card p1c5 = new Card();
-
         p1c1.points = 12;
-        p1c2.points = 3;
-        p1c3.points = 6;
-        p1c4.points = 19;
-        p1c5.points = 3;
-
         p1c1.temperature = Temperature.WARM;
-        p1c2.temperature = Temperature.WARM;
-        p1c3.temperature = Temperature.NEUTRAL;
-        p1c4.temperature = Temperature.WARM;
-        p1c5.temperature = Temperature.COOL;
-
-        List<Card> p1c = new ArrayList<>();
         p1c.add(p1c1);
+
+        Card p1c2 = new Card();
+        p1c2.points = 3;
+        p1c2.temperature = Temperature.WARM;
         p1c.add(p1c2);
+
+        Card p1c3 = new Card();
+        p1c3.points = 6;
+        p1c3.temperature = Temperature.NEUTRAL;
         p1c.add(p1c3);
+
+        Card p1c4 = new Card();
+        p1c4.points = 19;
+        p1c4.temperature = Temperature.WARM;
         p1c.add(p1c4);
+
+        Card p1c5 = new Card();
+        p1c5.points = 3;
+        p1c5.temperature = Temperature.COOL;
         p1c.add(p1c5);
 
         this.player1 = new Player(6, new HandlerFactory(), 1);
         this.player1.hatchedCards = p1c;
 
-        Card p2c1 = new Card();
-        Card p2c2 = new Card();
-        Card p2c3 = new Card();
-
-        p2c1.points = 16;
-        p2c2.points = 19;
-        p2c3.points = 10;
-
-        p2c1.temperature = Temperature.WARM;
-        p2c2.temperature = Temperature.COOL;
-        p2c3.temperature = Temperature.NEUTRAL;
-
         List<Card> p2c = new ArrayList<>();
+
+        Card p2c1 = new Card();
+        p2c1.points = 16;
+        p2c1.temperature = Temperature.WARM;
         p2c.add(p2c1);
+
+        Card p2c2 = new Card();
+        p2c2.points = 19;
+        p2c2.temperature = Temperature.COOL;
         p2c.add(p2c2);
+
+        Card p2c3 = new Card();
+        p2c3.points = 10;
+        p2c3.temperature = Temperature.NEUTRAL;
         p2c.add(p2c3);
 
         this.player2 = new Player(6, new HandlerFactory(), 2);
@@ -82,38 +82,35 @@ public class ScoreTests {
         this.player3 = new Player(6, new HandlerFactory(), 3);
         this.player3.hatchedCards = p3c;
 
-        Card p4c1 = new Card();
-        Card p4c2 = new Card();
-
-        p4c1.points = 3;
-        p4c2.points = 10;
-
-        p4c1.temperature = Temperature.COOL;
-        p4c2.temperature = Temperature.COOL;
-
         List<Card> p4c = new ArrayList<>();
+
+        Card p4c1 = new Card();
+        p4c1.points = 3;
+        p4c1.temperature = Temperature.COOL;
         p4c.add(p4c1);
+
+        Card p4c2 = new Card();
+        p4c2.points = 10;
+        p4c2.temperature = Temperature.COOL;
         p4c.add(p4c2);
 
         this.player4 = new Player(6, new HandlerFactory(), 4);
         this.player4.hatchedCards = p4c;
 
-        Card p5c1 = new Card();
-        Card p5c2 = new Card();
-
-        p5c1.points = 3;
-        p5c2.points = 3;
-
-        p5c1.temperature = Temperature.WARM;
-        p5c2.temperature = Temperature.WARM;
-
         List<Card> p5c = new ArrayList<>();
+
+        Card p5c1 = new Card();
+        p5c1.points = 3;
+        p5c1.temperature = Temperature.WARM;
         p5c.add(p5c1);
+
+        Card p5c2 = new Card();
+        p5c2.points = 3;
+        p5c2.temperature = Temperature.WARM;
         p5c.add(p5c2);
 
         this.player5 = new Player(6, new HandlerFactory(), 5);
         this.player5.hatchedCards = p5c;
-
     }
 
     @Test

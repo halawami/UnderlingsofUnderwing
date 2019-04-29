@@ -19,13 +19,14 @@ public class HatchingGroundTests {
 
     @Test
     public void testAddElementsToAllAdjacentEggsEffectOneColor() {
-        HatchingGround mockHatchingGround = EasyMock.mock(HatchingGround.class);
+        final HatchingGround mockHatchingGround =
+                EasyMock.mock(HatchingGround.class);
 
-        Card card = new Card();
-        ElementSpaceLogic mockElementSpaceLogic =
+        final Card card = new Card();
+        final ElementSpaceLogic mockElementSpaceLogic =
                 EasyMock.mock(ElementSpaceLogic.class);
 
-        Card adjacentCard = new Card();
+        final Card adjacentCard = new Card();
         ElementSpace firstMockElementSpace =
                 EasyMock.partialMockBuilder(ElementSpace.class)
                         .addMockedMethod("addElements").createMock();
@@ -35,7 +36,7 @@ public class HatchingGroundTests {
                         .addMockedMethod("addElements").createMock();
         secondMockElementSpace.color = ElementColor.BLUE;
 
-        Card secondAdjacentCard = new Card();
+        final Card secondAdjacentCard = new Card();
         ElementSpace secondCardFirstElementSpace =
                 EasyMock.partialMockBuilder(ElementSpace.class)
                         .addMockedMethod("addElements").createMock();
@@ -52,7 +53,7 @@ public class HatchingGroundTests {
         List<Card> mockAdjacentCards =
                 Arrays.asList(adjacentCard, secondAdjacentCard);
 
-        Element mockElement = EasyMock.mock(Element.class);
+        final Element mockElement = EasyMock.mock(Element.class);
         ElementBag mockElementBag = EasyMock.mock(ElementBag.class);
 
         AddElementsToAllAdjacentEggsEffect addElementsEffect =

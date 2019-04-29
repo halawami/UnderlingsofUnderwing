@@ -34,7 +34,7 @@ public class PlacementPhaseTests {
     public void basicTest() {
         // create players and define actions
         Player player = EasyMock.createMock(Player.class);
-        List<Player> players = Arrays.asList(player);
+        final List<Player> players = Arrays.asList(player);
 
         EasyMock.expect(player.getHandlerCount()).andReturn(1).anyTimes();
         EasyMock.expect(player.getPlayerId()).andReturn(1).anyTimes();
@@ -70,11 +70,10 @@ public class PlacementPhaseTests {
         card.elementSpaces = spaces;
 
         // create other fields
-        PromptHandler promptHandler = EasyMock.mock(PromptHandler.class);
-        Display display = EasyMock.mock(Display.class);
-        Gui gui = new Gui(promptHandler, display);
-        ElementBag elementBag = EasyMock.createMock(ElementBag.class);
-        Runnable runnable = EasyMock.mock(Runnable.class);
+        final PromptHandler promptHandler = EasyMock.mock(PromptHandler.class);
+        final Display display = EasyMock.mock(Display.class);
+        final ElementBag elementBag = EasyMock.createMock(ElementBag.class);
+        final Runnable runnable = EasyMock.mock(Runnable.class);
 
         // define expected flow of activity
         EasyMock.expect(logic.getPlayableSpaces(EasyMock.anyObject(Card.class),
@@ -106,6 +105,7 @@ public class PlacementPhaseTests {
         // assert expected actions occurred
         EasyMock.replay(player, promptHandler, display, elementBag, runnable);
         EasyMock.replay(logic, redSpace, blueSpace, greenSpace, whiteSpace);
+        Gui gui = new Gui(promptHandler, display);
         Phase phase = new PlacementPhase(players, gui, elementBag,
                 hatchingGround, runnable, null);
         phase.execute(1);
@@ -117,7 +117,7 @@ public class PlacementPhaseTests {
     @Test
     public void testOneWildEffect() {
         Player player = EasyMock.createMock(Player.class);
-        List<Player> players = Arrays.asList(player);
+        final List<Player> players = Arrays.asList(player);
         ElementSpaceLogic logic = EasyMock.mock(ElementSpaceLogic.class);
         player.elementSpaceLogic = logic;
         EasyMock.expect(player.getHandlerCount()).andReturn(1).anyTimes();
@@ -154,11 +154,11 @@ public class PlacementPhaseTests {
         // create other fields
         PromptHandler promptHandler = EasyMock.mock(PromptHandler.class);
         Display display = EasyMock.mock(Display.class);
-        Gui gui = EasyMock.mock(Gui.class);
+        final Gui gui = EasyMock.mock(Gui.class);
         gui.display = display;
         gui.promptHandler = promptHandler;
-        ElementBag elementBag = EasyMock.createMock(ElementBag.class);
-        Runnable runnable = EasyMock.mock(Runnable.class);
+        final ElementBag elementBag = EasyMock.createMock(ElementBag.class);
+        final Runnable runnable = EasyMock.mock(Runnable.class);
 
         // define expected flow of activity
         EasyMock.expect(logic.getPlayableSpaces(EasyMock.anyObject(Card.class),
@@ -219,7 +219,7 @@ public class PlacementPhaseTests {
     @Test
     public void testMultipleWildEffect() {
         Player player = EasyMock.createMock(Player.class);
-        List<Player> players = Arrays.asList(player);
+        final List<Player> players = Arrays.asList(player);
 
         EasyMock.expect(player.getHandlerCount()).andReturn(1).anyTimes();
         EasyMock.expect(player.getPlayerId()).andReturn(1).anyTimes();
@@ -262,8 +262,8 @@ public class PlacementPhaseTests {
         Gui gui = EasyMock.mock(Gui.class);
         gui.display = display;
         gui.promptHandler = promptHandler;
-        ElementBag elementBag = EasyMock.createMock(ElementBag.class);
-        Runnable runnable = EasyMock.mock(Runnable.class);
+        final ElementBag elementBag = EasyMock.createMock(ElementBag.class);
+        final Runnable runnable = EasyMock.mock(Runnable.class);
 
         // define expected flow of activity
         EasyMock.expect(logic.getPlayableSpaces(EasyMock.anyObject(Card.class),

@@ -16,7 +16,6 @@ public class PointTests {
     @Test
     public void testEmpty() {
         ScoreUtils scoreUtils = new ScoreUtils();
-
         int points = scoreUtils.calculatePoints(Collections.emptyList());
 
         assertEquals(0, points);
@@ -24,15 +23,13 @@ public class PointTests {
 
     @Test
     public void testOneCard() {
-        ScoreUtils scoreUtils = new ScoreUtils();
-
         Card cardOne = new Card();
-
         cardOne.points = 10;
 
         List<Card> cards = new ArrayList<>();
         cards.add(cardOne);
 
+        ScoreUtils scoreUtils = new ScoreUtils();
         int points = scoreUtils.calculatePoints(cards);
 
         assertEquals(10, points);
@@ -41,18 +38,17 @@ public class PointTests {
 
     @Test
     public void testTwoCards() {
-        ScoreUtils scoreUtils = new ScoreUtils();
-
         Card cardOne = new Card();
-        Card cardTwo = new Card();
-
         cardOne.points = 13;
+
+        Card cardTwo = new Card();
         cardTwo.points = 16;
 
         List<Card> cards = new ArrayList<>();
         cards.add(cardOne);
         cards.add(cardTwo);
 
+        ScoreUtils scoreUtils = new ScoreUtils();
         int points = scoreUtils.calculatePoints(cards);
 
         assertEquals(29, points);
