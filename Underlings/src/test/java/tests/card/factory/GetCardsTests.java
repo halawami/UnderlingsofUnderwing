@@ -10,7 +10,7 @@ import underlings.card.Card;
 import underlings.card.construction.CardFactory;
 import underlings.card.effect.Effect;
 
-public class getCardsTests {
+public class GetCardsTests {
 
     @Test
     public void testGetOneCard() {

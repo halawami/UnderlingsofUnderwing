@@ -10,7 +10,7 @@ import underlings.card.Card;
 import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
 
-public class isCompleteTests {
+public class IsCompleteTests {
 
     @Test
     public void testCompleteCardOneElementSpace() {
