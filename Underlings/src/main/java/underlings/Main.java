@@ -48,29 +48,22 @@ public class Main {
         ElementBag elementBag = new ElementBag(elementFactory, random);
 
         Game game = new Game(gui, hatchingGround, playerFactory, elementBag);
+        Runnable gameDisplay = () -> {
+            game.display();
+        };
 
         List<Phase> phases = new ArrayList<>();
         phases.add(new DrawingPhase(game.getPlayers(), gui, elementBag,
-                hatchingGround, () -> {
-                    game.display();
-                }, field));
+                hatchingGround, gameDisplay, field));
         phases.add(new HandlerPhase(game.getPlayers(), gui, elementBag,
-                hatchingGround, () -> {
-                    game.display();
-                }, field, handlerMovementLogic));
+                hatchingGround, gameDisplay, field, handlerMovementLogic));
         phases.add(new PlacementPhase(game.getPlayers(), gui, elementBag,
-                hatchingGround, () -> {
-                    game.display();
-                }, field));
+                hatchingGround, gameDisplay, field));
         phases.add(new DragonPhase(game.getPlayers(), gui, elementBag,
-                hatchingGround, () -> {
-                    game.display();
-                }, field));
+                hatchingGround, gameDisplay, field));
 
         Phase finalPhase = new FinalPhase(game.getPlayers(), gui, elementBag,
-                hatchingGround, () -> {
-                    game.display();
-                }, field);
+                hatchingGround, gameDisplay, field);
 
         game.start(phases, finalPhase);
 
