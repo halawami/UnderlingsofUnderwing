@@ -2,7 +2,7 @@ package tests.card.factory;
 
 import org.junit.Test;
 import underlings.card.Card;
-import underlings.card.construction.CardFactory;
+import underlings.card.CardFactory;
 import underlings.card.effect.Effect;
 
 import java.util.List;
