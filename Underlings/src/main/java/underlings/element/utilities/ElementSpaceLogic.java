@@ -1,18 +1,13 @@
 package underlings.element.utilities;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
-
+import com.google.common.base.Charsets;
+import com.google.common.io.Resources;
 import underlings.card.Card;
 import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
+
+import java.util.*;
 
 public class ElementSpaceLogic {
     private Map<ElementColor, List<List<ElementColor>>> recipeMap;
@@ -38,11 +33,9 @@ public class ElementSpaceLogic {
         recipeMap = new HashMap<ElementColor, List<List<ElementColor>>>();
 
         try {
-            BufferedReader br = new BufferedReader(
-                    new FileReader("docs\\DefaultRecipeList.txt"));
+            List<String> recipeLines = Resources.readLines(Resources.getResource("DefaultRecipeList.txt"), Charsets.UTF_8);
 
-            String line = br.readLine();
-            while (line != null) {
+            for(String line : recipeLines){
                 ElementColor color = ElementColor.valueOf(line.split(":")[0]);
                 String[] recipes = line.split(":")[1].split(" ");
                 List<List<ElementColor>> recipeList =
@@ -57,9 +50,7 @@ public class ElementSpaceLogic {
                 }
                 recipeMap.put(color, recipeList);
 
-                line = br.readLine();
             }
-            br.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
