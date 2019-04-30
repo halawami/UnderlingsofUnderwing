@@ -7,6 +7,8 @@ import underlings.element.ElementColor;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.HatchingGround;
 
+import java.util.List;
+
 public class AddElementsToAllAdjacentEggsEffect extends HatchingGroundEffect {
 
     public ElementColor[] elementColors;
@@ -14,20 +16,14 @@ public class AddElementsToAllAdjacentEggsEffect extends HatchingGroundEffect {
     @Override
     protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag,
                          ElementSpaceLogic elementSpaceLogic) {
-
-    }
-
-    public void addElementToCard(ElementColor elementColor, Card card, ElementSpaceLogic elementSpaceLogic) {
-
-    }
-
-    private boolean elementColorsContains(ElementColor elementColor) {
-        for (int i = 0; i < this.elementColors.length; i++) {
-            if (this.elementColors[i] == elementColor) {
-                return true;
-            }
+        List<Card> adjacentCards = hatchingGround.getAdjacentCards(centerCard);
+        for (Card adjacentCard : adjacentCards) {
+            addElementToCard(this.elementColors[0], adjacentCard, elementSpaceLogic, elementBag);
         }
-        return false;
+    }
+
+    public void addElementToCard(ElementColor elementColor, Card card, ElementSpaceLogic elementSpaceLogic, ElementBag elementBag) {
+
     }
 
     @Override

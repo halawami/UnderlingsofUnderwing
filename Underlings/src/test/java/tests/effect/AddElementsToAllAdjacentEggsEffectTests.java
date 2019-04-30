@@ -28,7 +28,7 @@ public class AddElementsToAllAdjacentEggsEffectTests {
         List<Card> mockedCards = getMockedCards(2);
         EasyMock.expect(hatchingGround.getAdjacentCards(centerCard)).andReturn(mockedCards);
         for (Card mockedCard : mockedCards) {
-            testedEffect.addElementToCard(ElementColor.BLUE, mockedCard, elementSpaceLogic);
+            testedEffect.addElementToCard(ElementColor.BLUE, mockedCard, elementSpaceLogic, elementBag);
         }
 
         EasyMock.replay(centerCard, hatchingGround, elementBag, elementSpaceLogic, testedEffect);
