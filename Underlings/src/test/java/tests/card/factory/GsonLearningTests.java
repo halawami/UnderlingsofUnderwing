@@ -1,22 +1,11 @@
 package tests.card.factory;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
+import com.google.common.base.Charsets;
+import com.google.common.io.Resources;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.typeadapters.RuntimeTypeAdapterFactory;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.List;
-
 import org.junit.Test;
-
 import underlings.card.Card;
 import underlings.card.Family;
 import underlings.card.Temperature;
@@ -28,14 +17,19 @@ import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.ElementSpacePosition;
 
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 public class GsonLearningTests {
 
     @Test
     public void testOneCardNoEffects() throws IOException {
         Gson gson = new Gson();
-        FileReader fileReader =
-                new FileReader(getFile("oneCardNoEffects.json"));
-        Card[] cards = gson.fromJson(fileReader, Card[].class);
+        Card[] cards = gson.fromJson(getJsonAsString("oneCardNoEffects.json"), Card[].class);
 
         assertEquals(1, cards.length);
 
@@ -59,9 +53,7 @@ public class GsonLearningTests {
     @Test
     public void testTwoCardsNoEffects() throws IOException {
         Gson gson = new Gson();
-        FileReader fileReader =
-                new FileReader(getFile("twoCardsNoEffects.json"));
-        Card[] cards = gson.fromJson(fileReader, Card[].class);
+        Card[] cards = gson.fromJson(getJsonAsString("twoCardsNoEffects.json"), Card[].class);
 
         assertEquals(2, cards.length);
 
@@ -97,9 +89,7 @@ public class GsonLearningTests {
     @Test
     public void testOneCardSimpleEffects() throws IOException {
         Gson gson = getGsonWithSimpleCardEffects();
-        FileReader fileReader =
-                new FileReader(getFile("oneCardSimpleEffect.json"));
-        Card[] cards = gson.fromJson(fileReader, Card[].class);
+        Card[] cards = gson.fromJson(getJsonAsString("oneCardSimpleEffect.json"), Card[].class);
 
         Card testCard = cards[0];
         Effect[] domesticEffects = testCard.domesticEffects;
@@ -118,10 +108,7 @@ public class GsonLearningTests {
                 GainOneHandlerEffect.class, CollectPrimaryElementEffect.class);
         Gson gson = getGsonWithComplexCardEffects(effectClasses);
 
-        FileReader fileReader =
-                new FileReader(getFile("oneCardComplexEffect.json"));
-
-        Card[] cards = gson.fromJson(fileReader, Card[].class);
+        Card[] cards = gson.fromJson(getJsonAsString("oneCardComplexEffect.json"), Card[].class);
 
         Card testCard = cards[0];
         Effect[] domesticEffects = testCard.domesticEffects;
@@ -130,15 +117,12 @@ public class GsonLearningTests {
     }
 
     @Test
-    public void testOneCardVariableEffect() throws FileNotFoundException {
+    public void testOneCardVariableEffect() throws IOException {
         List<Class<? extends Effect>> effectClasses =
                 Arrays.asList(AddElementsToAllAdjacentEggsEffect.class);
         Gson gson = getGsonWithComplexCardEffects(effectClasses);
 
-        FileReader fileReader =
-                new FileReader(getFile("oneCardVariableEffect.json"));
-
-        Card[] cards = gson.fromJson(fileReader, Card[].class);
+        Card[] cards = gson.fromJson(getJsonAsString("oneCardVariableEffect.json"), Card[].class);
 
         Card testCard = cards[0];
         Effect wildEffect = testCard.wildEffects[0];
@@ -173,10 +157,8 @@ public class GsonLearningTests {
     }
 
 
-    private File getFile(String fileName) {
-        String workingDirectory = Paths.get("").toAbsolutePath().toString();
-        return new File(workingDirectory
-                + "\\src\\test\\java\\tests\\card\\factory\\json\\" + fileName);
+    private String getJsonAsString(String fileName) throws IOException {
+        return Resources.toString(Resources.getResource(fileName), Charsets.UTF_8);
     }
 
 
