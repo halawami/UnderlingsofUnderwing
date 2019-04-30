@@ -1,32 +1,24 @@
-package underlings.card.construction;
+package underlings.card;
 
+import com.google.common.base.Charsets;
+import com.google.common.io.Resources;
 import com.google.common.reflect.ClassPath;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.typeadapters.RuntimeTypeAdapterFactory;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
-
-import underlings.card.Card;
 import underlings.card.effect.Effect;
 
+import java.io.IOException;
+import java.util.*;
+
 public class CardFactory {
-    private String cardsFilePath;
+    private String cardsFileName;
     private Gson gson;
     private List<Class<? extends Effect>> effectClasses;
 
 
-    public CardFactory(String cardsFilePath) {
-        this.cardsFilePath = cardsFilePath;
+    public CardFactory(String cardsFileName) {
+        this.cardsFileName = cardsFileName;
         this.effectClasses = this.getEffectClasses();
         this.gson = this.getGson();
     }
@@ -90,17 +82,15 @@ public class CardFactory {
     }
 
     private Card[] constructCards() {
-        try {
-            FileReader fileReader = new FileReader(this.getCardsFile());
-            return this.gson.fromJson(fileReader, Card[].class);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            return new Card[0];
-        }
+        return this.gson.fromJson(this.getCardsAsString(), Card[].class);
     }
 
-    private File getCardsFile() {
-        String workingDirectory = Paths.get("").toAbsolutePath().toString();
-        return new File(workingDirectory + this.cardsFilePath);
+    private String getCardsAsString() {
+        try {
+            return Resources.toString(Resources.getResource(this.cardsFileName), Charsets.UTF_8);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "";
+        }
     }
 }
