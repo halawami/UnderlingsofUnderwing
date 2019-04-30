@@ -19,7 +19,7 @@
         "effect": "GainOneHandlerEffect"
       },
       {
-        "effect": "CollectPrimaryElementEffect"
+        "effect": "CollectElementEffect"
       }
     ],
     "wildEffects": [

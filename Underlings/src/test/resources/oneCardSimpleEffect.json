@@ -11,7 +11,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "CollectPrimaryElementEffect"
+        "effect": "CollectElementEffect"
       }
     ],
     "elementSpaces": [
