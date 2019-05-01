@@ -26,10 +26,10 @@ public class AddElementsToAllAdjacentEggsEffect extends HatchingGroundEffect {
         }
     }
 
-    public void addElementToCard(ElementColor elementColor, Card card, ElementSpaceLogic elementSpaceLogic, ElementBag elementBag) {
-        List<ElementSpace> playableSpaces = elementSpaceLogic.getPlayableSpaces(card, elementColor);
+    public void addElementToCard(ElementColor elementColorToAdd, Card card, ElementSpaceLogic elementSpaceLogic, ElementBag elementBag) {
+        List<ElementSpace> playableSpaces = elementSpaceLogic.getPlayableSpaces(card, elementColorToAdd);
         if (!playableSpaces.isEmpty()){
-            Element elementToAdd = elementBag.drawElementFromList(elementColor);
+            Element elementToAdd = elementBag.drawElementFromList(elementColorToAdd);
             playableSpaces.get(0).addElements(elementToAdd);
         }
     }
