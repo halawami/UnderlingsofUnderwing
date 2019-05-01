@@ -18,7 +18,9 @@ public class AddElementsToAllAdjacentEggsEffect extends HatchingGroundEffect {
                          ElementSpaceLogic elementSpaceLogic) {
         List<Card> adjacentCards = hatchingGround.getAdjacentCards(centerCard);
         for (Card adjacentCard : adjacentCards) {
-            addElementToCard(this.elementColors[0], adjacentCard, elementSpaceLogic, elementBag);
+            for (ElementColor elementColorToAdd : this.elementColors) {
+                addElementToCard(elementColorToAdd, adjacentCard, elementSpaceLogic, elementBag);
+            }
         }
     }
 
