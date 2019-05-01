@@ -12,6 +12,7 @@ import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.HatchingGround;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -106,7 +107,7 @@ public class AddElementsToAllAdjacentEggsEffectTests {
 
         AddElementsToAllAdjacentEggsEffect testedEffect = new AddElementsToAllAdjacentEggsEffect();
 
-        EasyMock.expect(elementSpaceLogic.getPlayableSpaces(mockedCard, blue)).andReturn(Collections.emptyList());
+        EasyMock.expect(elementSpaceLogic.getPlayableSpaces(mockedCard, blue)).andReturn(Arrays.asList(mockedPlayableSpace));
         EasyMock.expect(elementBag.drawElementFromList(blue)).andReturn(stubElement);
         mockedPlayableSpace.addElements(stubElement);
 

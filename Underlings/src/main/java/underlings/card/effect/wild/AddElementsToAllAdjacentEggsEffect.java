@@ -2,6 +2,7 @@ package underlings.card.effect.wild;
 
 import underlings.card.Card;
 import underlings.card.effect.HatchingGroundEffect;
+import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
@@ -27,7 +28,10 @@ public class AddElementsToAllAdjacentEggsEffect extends HatchingGroundEffect {
 
     public void addElementToCard(ElementColor elementColor, Card card, ElementSpaceLogic elementSpaceLogic, ElementBag elementBag) {
         List<ElementSpace> playableSpaces = elementSpaceLogic.getPlayableSpaces(card, elementColor);
-
+        if (!playableSpaces.isEmpty()){
+            Element elementToAdd = elementBag.drawElementFromList(elementColor);
+            playableSpaces.get(0).addElements(elementToAdd);
+        }
     }
 
     @Override
