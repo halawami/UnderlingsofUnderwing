@@ -18,12 +18,12 @@ public class destroyAllElementsOnAllAdjacentEggsEffect extends HatchingGroundEff
         List<Card> adjacentCards = hatchingGround.getAdjacentCards(centerCard);
         for (Card adjacentCard : adjacentCards) {
             for (ElementColor elementColorToDestroy : this.elementColors) {
-                destroyAllElementsOfColorOnCard(elementColorToDestroy, adjacentCard);
+                destroyAllElementsOfColorOnCard(elementColorToDestroy, adjacentCard, elementSpaceLogic);
             }
         }
     }
 
-    public void destroyAllElementsOfColorOnCard(ElementColor elementColorToDestroy, Card card) {
+    public void destroyAllElementsOfColorOnCard(ElementColor elementColorToDestroy, Card card, ElementSpaceLogic elementSpaceLogic) {
 
     }
 }
