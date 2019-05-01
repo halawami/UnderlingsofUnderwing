@@ -35,7 +35,7 @@ public class ElementSpaceLogic {
         try {
             List<String> recipeLines = Resources.readLines(Resources.getResource("DefaultRecipeList.txt"), Charsets.UTF_8);
 
-            for(String line : recipeLines){
+            for (String line : recipeLines) {
                 ElementColor color = ElementColor.valueOf(line.split(":")[0]);
                 String[] recipes = line.split(":")[1].split(" ");
                 List<List<ElementColor>> recipeList =
@@ -57,7 +57,7 @@ public class ElementSpaceLogic {
     }
 
     public boolean isValidRecipe(List<ElementColor> recipe,
-            ElementSpace space) {
+                                 ElementSpace space) {
         recipe = new ArrayList<ElementColor>(recipe);
         for (ElementColor color : space.elements) {
             if (recipe.contains(color)) {
@@ -92,7 +92,7 @@ public class ElementSpaceLogic {
     }
 
     public List<ElementSpace> getPlayableSpaces(Card card,
-            List<Element> elements) {
+                                                List<Element> elements) {
         List<ElementSpace> spaces = new ArrayList<ElementSpace>();
         for (ElementSpace space : card.elementSpaces) {
             for (Element element : elements) {
@@ -105,15 +105,13 @@ public class ElementSpaceLogic {
         return spaces;
     }
 
-    public List<ElementSpace> getPlayableSpaces(
-            List<ElementColor> elementColors, Card card) {
+    //TODO: merge this method and the one on top
+    public List<ElementSpace> getPlayableSpaces(Card card, ElementColor elementColor) {
         List<ElementSpace> spaces = new ArrayList<>();
         for (ElementSpace space : card.elementSpaces) {
-            for (ElementColor color : elementColors) {
-                if (getValidAdditions(space).contains(color)) {
-                    spaces.add(space);
-                    break;
-                }
+            if (getValidAdditions(space).contains(elementColor)) {
+                spaces.add(space);
+                break;
             }
         }
         return spaces;
