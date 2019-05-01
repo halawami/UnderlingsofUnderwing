@@ -1,4 +1,4 @@
-package tests.effect;
+package tests.effect.hatchingground;
 
 import org.easymock.EasyMock;
 import org.junit.Test;
@@ -119,7 +119,7 @@ public class AddElementsToAllAdjacentEggsEffectTests {
     }
 
     @Test
-    public void testAddElementToCardEightPlayableSpace() {
+    public void testAddElementToCardEightPlayableSpaces() {
         ElementColor blue = ElementColor.BLUE;
         Card mockedCard = EasyMock.mock(Card.class);
         ElementSpaceLogic elementSpaceLogic = EasyMock.mock(ElementSpaceLogic.class);

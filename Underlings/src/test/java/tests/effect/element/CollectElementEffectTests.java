@@ -1,15 +1,14 @@
-package tests.effect;
-
-import static org.junit.Assert.assertEquals;
+package tests.effect.element;
 
 import org.easymock.EasyMock;
 import org.junit.Test;
-
 import underlings.card.effect.domestic.CollectElementEffect;
 import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.player.Player;
+
+import static org.junit.Assert.assertEquals;
 
 public class CollectElementEffectTests {
 

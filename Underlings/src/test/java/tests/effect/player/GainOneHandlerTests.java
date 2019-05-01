@@ -1,13 +1,12 @@
-package tests.effect;
-
-import static org.junit.Assert.assertEquals;
+package tests.effect.player;
 
 import org.easymock.EasyMock;
 import org.junit.Test;
-
 import underlings.card.effect.Effect;
 import underlings.card.effect.domestic.GainOneHandlerEffect;
 import underlings.player.Player;
+
+import static org.junit.Assert.assertEquals;
 
 public class GainOneHandlerTests {
 
