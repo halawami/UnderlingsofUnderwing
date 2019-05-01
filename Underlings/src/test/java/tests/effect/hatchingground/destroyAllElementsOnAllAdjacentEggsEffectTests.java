@@ -34,6 +34,32 @@ public class destroyAllElementsOnAllAdjacentEggsEffectTests {
         EasyMock.verify(centerCard, hatchingGround, testedEffect);
     }
 
+    @Test
+    public void testApplyTwoElementColor() {
+        Card centerCard = EasyMock.mock(Card.class);
+        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
+        destroyAllElementsOnAllAdjacentEggsEffect testedEffect = EasyMock.partialMockBuilder(destroyAllElementsOnAllAdjacentEggsEffect.class)
+                .addMockedMethod("destroyAllElementsOfColorOnCard").createMock();
+        testedEffect.on(centerCard).on(hatchingGround);
+        testedEffect.elementColors = new ElementColor[]{ElementColor.BLUE, ElementColor.RED};
+
+        List<Card> mockedCards = getMockedCards(2);
+        EasyMock.expect(hatchingGround.getAdjacentCards(centerCard)).andReturn(mockedCards);
+        for (Card mockedCard : mockedCards) {
+            testedEffect.destroyAllElementsOfColorOnCard(ElementColor.BLUE, mockedCard);
+        }
+        for (Card mockedCard : mockedCards) {
+            testedEffect.destroyAllElementsOfColorOnCard(ElementColor.RED, mockedCard);
+        }
+
+
+        EasyMock.replay(centerCard, hatchingGround, testedEffect);
+
+        testedEffect.apply();
+
+        EasyMock.verify(centerCard, hatchingGround, testedEffect);
+    }
+
     private List<Card> getMockedCards(int numberOfCards) {
         List<Card> mockedCards = new ArrayList<>();
         for (int i = 0; i < numberOfCards; i++) {
