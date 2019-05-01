@@ -4,6 +4,7 @@ import underlings.card.Card;
 import underlings.card.effect.HatchingGroundEffect;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
+import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.HatchingGround;
 
@@ -24,6 +25,6 @@ public class destroyAllElementsOnAllAdjacentEggsEffect extends HatchingGroundEff
     }
 
     public void destroyAllElementsOfColorOnCard(ElementColor elementColorToDestroy, Card card, ElementSpaceLogic elementSpaceLogic) {
-
+        List<ElementSpace> destroyableElementSpaces = elementSpaceLogic.getDestroyableSpaces(card, elementColorToDestroy);
     }
 }
