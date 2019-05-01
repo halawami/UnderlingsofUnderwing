@@ -43,7 +43,7 @@ public class AddElementsToAllAdjacentEggsEffectTests {
     }
 
     @Test
-    public void testApplyTwoElementColor() {
+    public void testApplyTwoDifferentElementColor() {
         Card centerCard = EasyMock.mock(Card.class);
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         ElementBag elementBag = EasyMock.mock(ElementBag.class);
@@ -60,6 +60,34 @@ public class AddElementsToAllAdjacentEggsEffectTests {
         }
         for (Card mockedCard : mockedCards) {
             testedEffect.addElementToCard(ElementColor.RED, mockedCard, elementSpaceLogic, elementBag);
+        }
+
+
+        EasyMock.replay(centerCard, hatchingGround, elementBag, elementSpaceLogic, testedEffect);
+
+        testedEffect.apply();
+
+        EasyMock.verify(centerCard, hatchingGround, elementBag, elementSpaceLogic, testedEffect);
+    }
+
+    @Test
+    public void testApplyTwoSameElementColor() {
+        Card centerCard = EasyMock.mock(Card.class);
+        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
+        ElementBag elementBag = EasyMock.mock(ElementBag.class);
+        ElementSpaceLogic elementSpaceLogic = EasyMock.mock(ElementSpaceLogic.class);
+        AddElementsToAllAdjacentEggsEffect testedEffect = EasyMock.partialMockBuilder(AddElementsToAllAdjacentEggsEffect.class)
+                .addMockedMethod("addElementToCard").createMock();
+        testedEffect.on(centerCard).on(hatchingGround).on(elementBag).on(elementSpaceLogic);
+        testedEffect.elementColors = new ElementColor[]{ElementColor.BLUE, ElementColor.BLUE};
+
+        List<Card> mockedCards = getMockedCards(2);
+        EasyMock.expect(hatchingGround.getAdjacentCards(centerCard)).andReturn(mockedCards);
+        for (Card mockedCard : mockedCards) {
+            testedEffect.addElementToCard(ElementColor.BLUE, mockedCard, elementSpaceLogic, elementBag);
+        }
+        for (Card mockedCard : mockedCards) {
+            testedEffect.addElementToCard(ElementColor.BLUE, mockedCard, elementSpaceLogic, elementBag);
         }
 
 

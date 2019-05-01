@@ -748,7 +748,7 @@
       },
 	  {
         "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["GREEM"]
+        "elementColors" : ["GREEN"]
       }
     ]
   },
