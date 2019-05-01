@@ -17,7 +17,9 @@ public class destroyAllElementsOnAllAdjacentEggsEffect extends HatchingGroundEff
     protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag, ElementSpaceLogic elementSpaceLogic) {
         List<Card> adjacentCards = hatchingGround.getAdjacentCards(centerCard);
         for (Card adjacentCard : adjacentCards) {
-            destroyAllElementsOfColorOnCard(elementColors[0], adjacentCard);
+            for (ElementColor elementColorToDestroy : this.elementColors) {
+                destroyAllElementsOfColorOnCard(elementColorToDestroy, adjacentCard);
+            }
         }
     }
 
