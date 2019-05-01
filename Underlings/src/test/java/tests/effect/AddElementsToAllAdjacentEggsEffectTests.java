@@ -118,4 +118,40 @@ public class AddElementsToAllAdjacentEggsEffectTests {
         EasyMock.verify(mockedCard, elementSpaceLogic, elementBag, mockedPlayableSpace);
     }
 
+    @Test
+    public void testAddElementToCardEightPlayableSpace() {
+        ElementColor blue = ElementColor.BLUE;
+        Card mockedCard = EasyMock.mock(Card.class);
+        ElementSpaceLogic elementSpaceLogic = EasyMock.mock(ElementSpaceLogic.class);
+        ElementBag elementBag = EasyMock.mock(ElementBag.class);
+        Element stubElement = EasyMock.niceMock(Element.class);
+        List<ElementSpace> mockedPlayableSpaces = getMockedPlayableSpaces(8);
+
+        AddElementsToAllAdjacentEggsEffect testedEffect = new AddElementsToAllAdjacentEggsEffect();
+
+        EasyMock.expect(elementSpaceLogic.getPlayableSpaces(mockedCard, blue)).andReturn(mockedPlayableSpaces);
+        EasyMock.expect(elementBag.drawElementFromList(blue)).andReturn(stubElement);
+        mockedPlayableSpaces.get(0).addElements(stubElement);
+
+        EasyMock.replay(mockedCard, elementSpaceLogic, elementBag);
+        for (ElementSpace mockedPlayableSpace : mockedPlayableSpaces) {
+            EasyMock.replay(mockedPlayableSpace);
+        }
+
+        testedEffect.addElementToCard(blue, mockedCard, elementSpaceLogic, elementBag);
+
+        EasyMock.verify(mockedCard, elementSpaceLogic, elementBag);
+        for (ElementSpace mockedPlayableSpace : mockedPlayableSpaces) {
+            EasyMock.verify(mockedPlayableSpace);
+        }
+    }
+
+    private List<ElementSpace> getMockedPlayableSpaces(int numberOfSpaces) {
+        List<ElementSpace> mockedPlayableSpaces = new ArrayList<>();
+        for (int i = 0; i < numberOfSpaces; i++) {
+            mockedPlayableSpaces.add(EasyMock.mock(ElementSpace.class));
+        }
+        return mockedPlayableSpaces;
+    }
+
 }
