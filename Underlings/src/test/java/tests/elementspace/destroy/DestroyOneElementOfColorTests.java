@@ -72,8 +72,9 @@ public class DestroyOneElementOfColorTests {
 
         elementSpace.destroyOneElementOfColor(ElementColor.BLUE);
 
-        Assert.assertEquals(2, elementSpace.elements.size());
+        Assert.assertEquals(3, elementSpace.elements.size());
         Assert.assertEquals(ElementColor.RED, elementSpace.elements.get(0));
-        Assert.assertEquals(ElementColor.YELLOW, elementSpace.elements.get(1));
+        Assert.assertEquals(ElementColor.BLUE, elementSpace.elements.get(1));
+        Assert.assertEquals(ElementColor.YELLOW, elementSpace.elements.get(2));
     }
 }
