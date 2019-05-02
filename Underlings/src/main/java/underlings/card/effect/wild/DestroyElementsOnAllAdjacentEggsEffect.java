@@ -10,7 +10,7 @@ import underlings.game.HatchingGround;
 
 import java.util.List;
 
-public class destroyAllElementsOnAllAdjacentEggsEffect extends HatchingGroundEffect {
+public abstract class DestroyElementsOnAllAdjacentEggsEffect extends HatchingGroundEffect {
 
     public ElementColor[] elementColors;
 
@@ -28,8 +28,10 @@ public class destroyAllElementsOnAllAdjacentEggsEffect extends HatchingGroundEff
         List<ElementSpace> destroyableElementSpaces = elementSpaceLogic.getDestroyableSpaces(card, elementColorToDestroy);
         if (!destroyableElementSpaces.isEmpty()) {
             for (ElementSpace destroyableSpace : destroyableElementSpaces) {
-                destroyableSpace.destroyAllElementsOfColor(elementColorToDestroy);
+                destroyElementsOfColorOnSpace(destroyableSpace, elementColorToDestroy);
             }
         }
     }
+
+    public abstract void destroyElementsOfColorOnSpace(ElementSpace destroyableSpace, ElementColor elementColorToDestroy);
 }
