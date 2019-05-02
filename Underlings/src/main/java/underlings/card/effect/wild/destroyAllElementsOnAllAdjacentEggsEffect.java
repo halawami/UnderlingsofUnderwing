@@ -27,7 +27,9 @@ public class destroyAllElementsOnAllAdjacentEggsEffect extends HatchingGroundEff
     public void destroyAllElementsOfColorOnCard(ElementColor elementColorToDestroy, Card card, ElementSpaceLogic elementSpaceLogic) {
         List<ElementSpace> destroyableElementSpaces = elementSpaceLogic.getDestroyableSpaces(card, elementColorToDestroy);
         if (!destroyableElementSpaces.isEmpty()) {
-            destroyableElementSpaces.get(0).destroyAllElementsOfColor(elementColorToDestroy);
+            for (ElementSpace destroyableSpace : destroyableElementSpaces) {
+                destroyableSpace.destroyAllElementsOfColor(elementColorToDestroy);
+            }
         }
     }
 }

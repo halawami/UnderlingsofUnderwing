@@ -133,7 +133,7 @@ public class destroyAllElementsOnAllAdjacentEggsEffectTests {
 
         EasyMock.verify(mockedCard, elementSpaceLogic);
         for (ElementSpace destroyableSpace : mockedDestroyableSpaces) {
-            EasyMock.replay(destroyableSpace);
+            EasyMock.verify(destroyableSpace);
         }
     }
 
