@@ -1,15 +1,14 @@
-package tests.elementspace.combo;
-
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+package tests.elementspace.add.combo;
 
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class BlackTests {
 

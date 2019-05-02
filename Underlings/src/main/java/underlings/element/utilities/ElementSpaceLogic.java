@@ -117,7 +117,6 @@ public class ElementSpaceLogic {
         return spaces;
     }
 
-
     public List<ElementSpace> getDestroyableSpaces(Card card, ElementColor elementColor) {
         return null;
     }

@@ -1,15 +1,14 @@
-package tests.elementspace.single;
-
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+package tests.elementspace.add.single;
 
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class DoneTests {
 

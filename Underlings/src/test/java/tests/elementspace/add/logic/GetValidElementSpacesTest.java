@@ -1,18 +1,17 @@
-package tests.elementspace.logic;
-
-import static org.junit.Assert.assertEquals;
-
-import java.util.Arrays;
-import java.util.List;
+package tests.elementspace.add.logic;
 
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.card.Card;
 import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
+
+import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 public class GetValidElementSpacesTest {
 

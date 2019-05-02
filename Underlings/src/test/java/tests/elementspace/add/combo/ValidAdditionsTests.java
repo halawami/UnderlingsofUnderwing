@@ -1,19 +1,18 @@
-package tests.elementspace.combo;
+package tests.elementspace.add.combo;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import org.junit.Before;
+import org.junit.Test;
+import underlings.element.Element;
+import underlings.element.ElementColor;
+import underlings.element.ElementSpace;
+import underlings.element.utilities.ElementSpaceLogic;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
-
-import underlings.element.Element;
-import underlings.element.ElementColor;
-import underlings.element.ElementSpace;
-import underlings.element.utilities.ElementSpaceLogic;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class ValidAdditionsTests {
 
