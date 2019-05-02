@@ -36,6 +36,20 @@ public class GetDestroyableSpacesTests {
     }
 
     @Test
+    public void testOneDestroyableSpacesDifferentElements() {
+        Card card = new Card();
+        card.elementSpaces = getElementSpaces(8);
+        card.elementSpaces[0].elements.add(ElementColor.RED);
+        card.elementSpaces[0].elements.add(ElementColor.BLUE);
+        ElementSpaceLogic elementSpaceLogic = new ElementSpaceLogic();
+
+        List<ElementSpace> destroyableSpaces = elementSpaceLogic.getDestroyableSpaces(card, ElementColor.BLUE);
+
+        Assert.assertEquals(1, destroyableSpaces.size());
+        Assert.assertEquals(card.elementSpaces[0], destroyableSpaces.get(0));
+    }
+
+    @Test
     public void testSevenDestroyableSpaces() {
         Card card = new Card();
         card.elementSpaces = getElementSpaces(8);
