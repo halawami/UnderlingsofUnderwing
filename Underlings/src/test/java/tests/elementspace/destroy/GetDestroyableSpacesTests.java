@@ -35,6 +35,22 @@ public class GetDestroyableSpacesTests {
         Assert.assertEquals(card.elementSpaces[0], destroyableSpaces.get(0));
     }
 
+    @Test
+    public void testSevenDestroyableSpaces() {
+        Card card = new Card();
+        card.elementSpaces = getElementSpaces(8);
+        for (int i = 0; i <= 7; i++) {
+            card.elementSpaces[i].elements.add(ElementColor.BLUE);
+        }
+        ElementSpaceLogic elementSpaceLogic = new ElementSpaceLogic();
+
+        List<ElementSpace> destroyableSpaces = elementSpaceLogic.getDestroyableSpaces(card, ElementColor.BLUE);
+
+        Assert.assertEquals(7, destroyableSpaces.size());
+        for (int i = 0; i <= 7; i++) {
+            Assert.assertEquals(card.elementSpaces[i], destroyableSpaces.get(i));
+        }
+    }
 
 
     private ElementSpace[] getElementSpaces(int numberOfSpaces) {
