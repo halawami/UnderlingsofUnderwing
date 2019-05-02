@@ -35,6 +35,8 @@ public class GetDestroyableSpacesTests {
         Assert.assertEquals(card.elementSpaces[0], destroyableSpaces.get(0));
     }
 
+
+
     private ElementSpace[] getElementSpaces(int numberOfSpaces) {
         ElementSpace[] elementSpaces = new ElementSpace[numberOfSpaces];
         for (int i = 0; i < numberOfSpaces; i++) {
