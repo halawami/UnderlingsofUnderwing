@@ -30,6 +30,10 @@ public class ElementSpace implements Choice {
         this.elements.removeIf(colorOfElementsToDestroy::equals);
     }
 
+    public void destroyOneElementOfColor(ElementColor colorOfElementsToDestroy) {
+
+    }
+
     @Override
     public String toString() {
         return color + " Element Space";
