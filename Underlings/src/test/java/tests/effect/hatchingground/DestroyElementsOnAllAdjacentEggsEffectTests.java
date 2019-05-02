@@ -5,6 +5,7 @@ import org.junit.Test;
 import underlings.card.Card;
 import underlings.card.effect.wild.DestroyAllElementsOnAllAdjacentEggsEffect;
 import underlings.card.effect.wild.DestroyElementsOnAllAdjacentEggsEffect;
+import underlings.card.effect.wild.DestroyOneElementsOnAllAdjacentEggsEffect;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
@@ -58,7 +59,6 @@ public class DestroyElementsOnAllAdjacentEggsEffectTests {
         for (Card mockedCard : mockedCards) {
             testedEffect.destroyElementsOfColorOnCard(ElementColor.RED, mockedCard, elementSpaceLogic);
         }
-
 
         EasyMock.replay(centerCard, hatchingGround, testedEffect);
 
@@ -180,6 +180,5 @@ public class DestroyElementsOnAllAdjacentEggsEffectTests {
         }
         return mockedPlayableSpaces;
     }
-
 
 }
