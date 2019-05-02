@@ -31,8 +31,10 @@ public class ElementSpace implements Choice {
     }
 
     public void destroyOneElementOfColor(ElementColor colorOfElementsToDestroy) {
-        if (this.elements.size() == 3){
-            this.elements.remove(0);
+        for (ElementColor element : this.elements) {
+            if (element == colorOfElementsToDestroy) {
+                this.elements.remove(element);
+            }
         }
     }
 
