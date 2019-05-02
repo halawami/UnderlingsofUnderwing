@@ -26,8 +26,8 @@ public class ElementSpace implements Choice {
         }
     }
 
-    public void destroyAllElementsOfColor(ElementColor colorOfElementsToDestroy){
-
+    public void destroyAllElementsOfColor(ElementColor colorOfElementsToDestroy) {
+        this.elements.removeIf(colorOfElementsToDestroy::equals);
     }
 
     @Override
