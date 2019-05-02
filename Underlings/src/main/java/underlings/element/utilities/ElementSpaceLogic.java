@@ -118,6 +118,14 @@ public class ElementSpaceLogic {
     }
 
     public List<ElementSpace> getDestroyableSpaces(Card card, ElementColor elementColor) {
-        return Arrays.asList(card.elementSpaces[0]);
+        List<ElementSpace> destroyableSpaces = new ArrayList<>();
+        for (ElementSpace elementSpace : card.elementSpaces) {
+            if (!elementSpace.elements.isEmpty()) {
+                if (elementSpace.elements.get(0) == ElementColor.BLUE) {
+                    destroyableSpaces.add(elementSpace);
+                }
+            }
+        }
+        return destroyableSpaces;
     }
 }

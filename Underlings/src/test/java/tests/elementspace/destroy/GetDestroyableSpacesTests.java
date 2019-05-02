@@ -39,7 +39,7 @@ public class GetDestroyableSpacesTests {
     public void testSevenDestroyableSpaces() {
         Card card = new Card();
         card.elementSpaces = getElementSpaces(8);
-        for (int i = 0; i <= 7; i++) {
+        for (int i = 0; i < 7; i++) {
             card.elementSpaces[i].elements.add(ElementColor.BLUE);
         }
         ElementSpaceLogic elementSpaceLogic = new ElementSpaceLogic();
@@ -47,7 +47,7 @@ public class GetDestroyableSpacesTests {
         List<ElementSpace> destroyableSpaces = elementSpaceLogic.getDestroyableSpaces(card, ElementColor.BLUE);
 
         Assert.assertEquals(7, destroyableSpaces.size());
-        for (int i = 0; i <= 7; i++) {
+        for (int i = 0; i < 7; i++) {
             Assert.assertEquals(card.elementSpaces[i], destroyableSpaces.get(i));
         }
     }
