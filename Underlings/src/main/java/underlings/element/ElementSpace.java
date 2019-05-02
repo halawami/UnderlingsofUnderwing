@@ -1,9 +1,9 @@
 package underlings.element;
 
+import underlings.gui.Choice;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import underlings.gui.Choice;
 
 public class ElementSpace implements Choice {
 
@@ -24,6 +24,10 @@ public class ElementSpace implements Choice {
         for (Element element : elementsToAdd) {
             this.elements.add(element.getColor());
         }
+    }
+
+    public void destroyAllElementsOfColor(ElementColor colorOfElementsToDestroy){
+
     }
 
     @Override

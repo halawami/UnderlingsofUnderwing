@@ -5,10 +5,12 @@ import org.junit.Test;
 import underlings.card.Card;
 import underlings.card.effect.wild.destroyAllElementsOnAllAdjacentEggsEffect;
 import underlings.element.ElementColor;
+import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.HatchingGround;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -87,6 +89,25 @@ public class destroyAllElementsOnAllAdjacentEggsEffectTests {
         testedEffect.destroyAllElementsOfColorOnCard(blue, mockedCard, elementSpaceLogic);
 
         EasyMock.verify(mockedCard, elementSpaceLogic);
+    }
+
+    @Test
+    public void testDestroyElementOnCardOneDestroyableSpace() {
+        ElementColor blue = ElementColor.BLUE;
+        Card mockedCard = EasyMock.mock(Card.class);
+        ElementSpaceLogic elementSpaceLogic = EasyMock.mock(ElementSpaceLogic.class);
+        ElementSpace mockedPlayableSpace = EasyMock.mock(ElementSpace.class);
+
+        destroyAllElementsOnAllAdjacentEggsEffect testedEffect = new destroyAllElementsOnAllAdjacentEggsEffect();
+
+        EasyMock.expect(elementSpaceLogic.getDestroyableSpaces(mockedCard, blue)).andReturn(Arrays.asList(mockedPlayableSpace));
+        mockedPlayableSpace.destroyAllElementsOfColor(blue);
+
+        EasyMock.replay(mockedCard, elementSpaceLogic, mockedPlayableSpace);
+
+        testedEffect.destroyAllElementsOfColorOnCard(blue, mockedCard, elementSpaceLogic);
+
+        EasyMock.verify(mockedCard, elementSpaceLogic, mockedPlayableSpace);
     }
 
 }
