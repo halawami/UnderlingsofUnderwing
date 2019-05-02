@@ -31,7 +31,9 @@ public class ElementSpace implements Choice {
     }
 
     public void destroyOneElementOfColor(ElementColor colorOfElementsToDestroy) {
-
+        if (this.elements.size() == 3){
+            this.elements.remove(0);
+        }
     }
 
     @Override
