@@ -120,7 +120,7 @@ public class ElementSpaceLogic {
     public List<ElementSpace> getDestroyableSpaces(Card card, ElementColor elementColor) {
         List<ElementSpace> destroyableSpaces = new ArrayList<>();
         for (ElementSpace elementSpace : card.elementSpaces) {
-            if (elementSpace.elements.contains(ElementColor.BLUE)) {
+            if (elementSpace.elements.contains(elementColor)) {
                 destroyableSpaces.add(elementSpace);
             }
         }
