@@ -47,7 +47,7 @@ public class CardFactory {
         try {
 
             ClassLoader loader = Thread.currentThread().getContextClassLoader();
-            return ClassPath.from(loader).getTopLevelClassesRecursive("underlings.card.effect");
+            return ClassPath.from(loader).getTopLevelClassesRecursive("card.effect");
 
         } catch (IOException e) {
             e.printStackTrace();
