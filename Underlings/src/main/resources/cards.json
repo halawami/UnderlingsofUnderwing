@@ -1610,7 +1610,7 @@
     ]
   },
   {
-    "name": "CHROMATIC WYVERN",
+    "name": "CHROMATIC WYVERN_R",
     "points": 9,
     "temperature": "NEUTRAL",
     "family": "TRIADIC",
@@ -1642,19 +1642,19 @@
     ],
     "domesticEffects": [
       {
-        "effect": "CollectElementEachPhaseOneEffect",
-        "elementChoices": ["YELLOW"]
+        "effect": "CollectOneElementFromAnyEggInPlayEffect",
+        "elementChoices": ["RED"]
       }
     ],
     "wildEffects": [
       {
-        "effect": "hatchAllUnclaimedAdjacentEggsEffect",
-        "elementColors" : ["COMPLEMENTARY"]
+        "effect": "AddALLElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["RED", "BLUE", "YELLOW"]
       }
     ]
   },
   {
-    "name": "CHROMATIC WYVERN",
+    "name": "CHROMATIC WYVERN_Y",
     "points": 9,
     "temperature": "NEUTRAL",
     "family": "TRIADIC",
@@ -1664,28 +1664,80 @@
         "position": "L3_1"
       },
 	  {
-        "color": "BLACK",
+        "color": "YELLOW",
+        "position": "L3_1"
+      },
+	  {
+        "color": "YELLOW",
         "position": "L3_3"
       },
+	  {
+        "color": "RED",
+        "position": "L3_1"
+      },
       {
-        "color": "PURPLE",
+        "color": "BLUE",
         "position": "R3_1"
       },
       {
-        "color": "PURPLE",
+        "color": "WHITE",
         "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "CollectElementEachPhaseOneEffect",
+        "effect": "CollectOneElementFromAnyEggInPlayEffect",
         "elementChoices": ["YELLOW"]
       }
     ],
     "wildEffects": [
       {
-        "effect": "hatchAllUnclaimedAdjacentEggsEffect",
-        "elementColors" : ["COMPLEMENTARY"]
+        "effect": "AddALLElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["RED", "BLUE", "YELLOW"]
+      }
+    ]
+  },
+  {
+    "name": "CHROMATIC WYVERN_B",
+    "points": 9,
+    "temperature": "NEUTRAL",
+    "family": "TRIADIC",
+    "elementSpaces": [
+	  {
+        "color": "BLUE",
+        "position": "L3_1"
+      },
+	  {
+        "color": "BLUE",
+        "position": "L3_1"
+      },
+	  {
+        "color": "BLUE",
+        "position": "L3_3"
+      },
+	  {
+        "color": "RED",
+        "position": "L3_1"
+      },
+      {
+        "color": "YELLOW",
+        "position": "R3_1"
+      },
+      {
+        "color": "BLACK",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectOneElementFromAnyEggInPlayEffect",
+        "elementChoices": ["BLUE"]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddALLElementsToAllAdjacentEggsEffect",
+        "elementColors" : ["RED", "BLUE", "YELLOW"]
       }
     ]
   }
