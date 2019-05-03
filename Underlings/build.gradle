@@ -56,7 +56,7 @@ findbugs {
 }
 
 pitest {
-    targetClasses = ['underlings.*', 'tests.*']
+    targetClasses = ['underlings.*']
     threads = 4
     outputFormats = ['XML', 'HTML']
     timestampedReports = false
