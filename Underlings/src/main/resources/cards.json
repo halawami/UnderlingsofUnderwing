@@ -888,7 +888,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "destroyAllElementsOnAllAdjacentEggsEffect",
+        "effect": "DestroyAllElementsOnAllAdjacentEggsEffect",
         "elementColors" : ["RED", "GREEN"]
       }
     ]
@@ -920,7 +920,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "destroyAllElementsOnAllAdjacentEggsEffect",
+        "effect": "DestroyAllElementsOnAllAdjacentEggsEffect",
         "elementColors" : ["RED", "YELLOW", "ORANGE"]
       }
     ]
@@ -956,7 +956,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "destroyAllElementsOnAllAdjacentEggsEffect",
+        "effect": "DestroyAllElementsOnAllAdjacentEggsEffect",
         "elementColors" : ["BLUE", "ORANGE"]
       }
     ]
@@ -992,7 +992,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "destroyAllElementsOnAllAdjacentEggsEffect",
+        "effect": "DestroyAllElementsOnAllAdjacentEggsEffect",
         "elementColors" : ["YELLOW", "PURPLE"]
       }
     ]
@@ -1024,7 +1024,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "destroyAllElementsOnAllAdjacentEggsEffect",
+        "effect": "DestroyAllElementsOnAllAdjacentEggsEffect",
         "elementColors" : ["PURPLE", "GREEN", "BLUE"]
       }
     ]
