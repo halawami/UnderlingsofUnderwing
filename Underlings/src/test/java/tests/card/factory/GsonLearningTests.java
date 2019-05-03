@@ -67,11 +67,11 @@ public class GsonLearningTests {
         ElementSpace firstCardFirstElementSpace = firstCard.elementSpaces[0];
         assertEquals(ElementColor.BLUE, firstCardFirstElementSpace.color);
         assertEquals(ElementSpacePosition.L3_2,
-            firstCardFirstElementSpace.position);
+                firstCardFirstElementSpace.position);
         ElementSpace firstCardSecondElementSpace = firstCard.elementSpaces[1];
         assertEquals(ElementColor.RED, firstCardSecondElementSpace.color);
         assertEquals(ElementSpacePosition.R3_2,
-            firstCardSecondElementSpace.position);
+                firstCardSecondElementSpace.position);
 
         Card secondCard = cards[1];
         assertEquals("second", secondCard.name);
@@ -81,11 +81,11 @@ public class GsonLearningTests {
         ElementSpace secondCardFirstElementSpace = secondCard.elementSpaces[0];
         assertEquals(ElementColor.GREEN, secondCardFirstElementSpace.color);
         assertEquals(ElementSpacePosition.L3_3,
-            secondCardFirstElementSpace.position);
+                secondCardFirstElementSpace.position);
         ElementSpace secondCardSecondElementSpace = secondCard.elementSpaces[1];
         assertEquals(ElementColor.PURPLE, secondCardSecondElementSpace.color);
         assertEquals(ElementSpacePosition.R3_3,
-            secondCardSecondElementSpace.position);
+                secondCardSecondElementSpace.position);
     }
 
     @Test
@@ -107,7 +107,7 @@ public class GsonLearningTests {
     @Test
     public void testOneCardComplexEffects() throws IOException {
         List<Class<? extends Effect>> effectClasses = Arrays.asList(
-            GainOneHandlerEffect.class, CollectElementEffect.class);
+                GainOneHandlerEffect.class, CollectElementEffect.class);
         Gson gson = getGsonWithComplexCardEffects(effectClasses);
 
         Card[] cards = gson.fromJson(getJsonAsString("oneCardComplexEffect.json"), Card[].class);
@@ -121,7 +121,7 @@ public class GsonLearningTests {
     @Test
     public void testOneCardVariableEffect() throws IOException {
         List<Class<? extends Effect>> effectClasses =
-            Arrays.asList(AddElementsToAllAdjacentEggsEffect.class);
+                Arrays.asList(AddElementsToAllAdjacentEggsEffect.class);
         Gson gson = getGsonWithComplexCardEffects(effectClasses);
 
         Card[] cards = gson.fromJson(getJsonAsString("oneCardVariableEffect.json"), Card[].class);
@@ -131,31 +131,31 @@ public class GsonLearningTests {
 
         assertTrue(wildEffect instanceof AddElementsToAllAdjacentEggsEffect);
         assertEquals(ElementColor.WHITE,
-            ((AddElementsToAllAdjacentEggsEffect) wildEffect).elementColors[0]);
+                ((AddElementsToAllAdjacentEggsEffect) wildEffect).elementColors[0]);
     }
 
     private Gson getGsonWithSimpleCardEffects() {
         RuntimeTypeAdapterFactory<Effect> effectsTypeAdapter =
-            RuntimeTypeAdapterFactory.of(Effect.class, "effect")
-                .registerSubtype(GainOneHandlerEffect.class)
-                .registerSubtype(CollectElementEffect.class);
+                RuntimeTypeAdapterFactory.of(Effect.class, "effect")
+                        .registerSubtype(GainOneHandlerEffect.class)
+                        .registerSubtype(CollectElementEffect.class);
 
         return new GsonBuilder().registerTypeAdapterFactory(effectsTypeAdapter)
-            .create();
+                .create();
     }
 
     private Gson getGsonWithComplexCardEffects(
-        List<Class<? extends Effect>> effectClasses) {
+            List<Class<? extends Effect>> effectClasses) {
         RuntimeTypeAdapterFactory<Effect> effectsTypeAdapter =
-            RuntimeTypeAdapterFactory.of(Effect.class, "effect");
+                RuntimeTypeAdapterFactory.of(Effect.class, "effect");
 
         for (Class<? extends Effect> effectClass : effectClasses) {
             effectsTypeAdapter =
-                effectsTypeAdapter.registerSubtype(effectClass);
+                    effectsTypeAdapter.registerSubtype(effectClass);
         }
 
         return new GsonBuilder().registerTypeAdapterFactory(effectsTypeAdapter)
-            .create();
+                .create();
     }
 
 

@@ -18,11 +18,11 @@ public class CollectElementEffectTests {
         CollectElementEffect elementEffect = new CollectElementEffect();
 
         elementEffect.elementChoices =
-            new ElementColor[]{ElementColor.BLACK, ElementColor.WHITE};
+                new ElementColor[]{ElementColor.BLACK, ElementColor.WHITE};
 
         assertEquals(
-            "Collect one of the following elements randomly: [ BLACK WHITE ]",
-            elementEffect.toString());
+                "Collect one of the following elements randomly: [ BLACK WHITE ]",
+                elementEffect.toString());
 
     }
 
@@ -38,7 +38,7 @@ public class CollectElementEffectTests {
         collectElementEffect.elementChoices = elementChoices;
 
         EasyMock.expect(elementBag.drawElementFromList(elementChoices))
-            .andReturn(blueElement);
+                .andReturn(blueElement);
         player.addElement(blueElement);
 
         EasyMock.replay(player, elementBag);
@@ -56,11 +56,11 @@ public class CollectElementEffectTests {
         CollectElementEffect collectElementEffect = new CollectElementEffect();
         collectElementEffect.on(player).on(elementBag);
         ElementColor[] elementChoices =
-            new ElementColor[]{ElementColor.BLUE, ElementColor.RED};
+                new ElementColor[]{ElementColor.BLUE, ElementColor.RED};
         collectElementEffect.elementChoices = elementChoices;
 
         EasyMock.expect(elementBag.drawElementFromList(elementChoices))
-            .andReturn(blueElement);
+                .andReturn(blueElement);
         player.addElement(blueElement);
 
         EasyMock.replay(player, elementBag);

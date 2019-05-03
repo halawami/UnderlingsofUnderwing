@@ -23,18 +23,18 @@ public class Gui {
     }
 
     public DrawChoice getDrawChoice(List<ElementGiver> elementGivers,
-        int playerId) {
+            int playerId) {
         ElementGiver elementGiver = this.promptHandler.promptChoice(
-            "Choose an Element Giver", elementGivers, playerId);
+                "Choose an Element Giver", elementGivers, playerId);
         elementGivers.remove(elementGiver);
         return this.promptHandler.promptChoice("Choose a Draw Choice",
-            elementGiver.drawChoices, playerId);
+                elementGiver.drawChoices, playerId);
     }
 
     public HandlerDecision getHandlerDecision(List<Handler> handlers,
-        int playerId, HatchingGround hatchingGround) {
+            int playerId, HatchingGround hatchingGround) {
         Handler handler = this.promptHandler.promptChoice("Choose a Handler",
-            handlers, playerId);
+                handlers, playerId);
         handlers.remove(handler);
 
         List<HandlerChoice> possibleChoices = handler.getPossibleChoices();
@@ -44,20 +44,20 @@ public class Gui {
         }
 
         HandlerChoice handlerChoice = this.promptHandler.promptChoice(
-            "Choose a movement for " + handler, possibleChoices, playerId);
+                "Choose a movement for " + handler, possibleChoices, playerId);
 
         return new HandlerDecision(handler, handlerChoice);
     }
 
     public Card getCard(List<Card> cards, int playerId) {
         Card card = this.promptHandler.promptChoice("Choose a card", cards,
-            playerId);
+                playerId);
         return card;
     }
 
     public void notifyAction(int playerId, String message) {
         this.promptHandler.displayMessage(message, playerId,
-            JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.PLAIN_MESSAGE);
     }
 
     public int getFieldSpace() {
@@ -66,7 +66,7 @@ public class Gui {
 
     public int getPlayerCount(int minPlayers, int maxPlayers) {
         return this.promptHandler.promptInt("Enter Player Count", minPlayers,
-            maxPlayers);
+                maxPlayers);
     }
 
 }

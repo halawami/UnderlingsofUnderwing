@@ -41,16 +41,16 @@ public class ElementSpaceLogic {
 
         try {
             List<String> recipeLines = Resources
-                .readLines(Resources.getResource("DefaultRecipeList.txt"), Charsets.UTF_8);
+                    .readLines(Resources.getResource("DefaultRecipeList.txt"), Charsets.UTF_8);
 
             for (String line : recipeLines) {
                 ElementColor color = ElementColor.valueOf(line.split(":")[0]);
                 String[] recipes = line.split(":")[1].split(" ");
                 List<List<ElementColor>> recipeList =
-                    new ArrayList<List<ElementColor>>();
+                        new ArrayList<List<ElementColor>>();
                 for (String recipe : recipes) {
                     List<ElementColor> constructedRecipe =
-                        new ArrayList<ElementColor>();
+                            new ArrayList<ElementColor>();
                     for (String ingredient : recipe.split(",")) {
                         constructedRecipe.add(ElementColor.valueOf(ingredient));
                     }
@@ -65,7 +65,7 @@ public class ElementSpaceLogic {
     }
 
     public boolean isValidRecipe(List<ElementColor> recipe,
-        ElementSpace space) {
+            ElementSpace space) {
         recipe = new ArrayList<ElementColor>(recipe);
         for (ElementColor color : space.elements) {
             if (recipe.contains(color)) {
@@ -100,7 +100,7 @@ public class ElementSpaceLogic {
     }
 
     public List<ElementSpace> getPlayableSpaces(Card card,
-        List<Element> elements) {
+            List<Element> elements) {
         List<ElementSpace> spaces = new ArrayList<ElementSpace>();
         for (ElementSpace space : card.elementSpaces) {
             for (Element element : elements) {

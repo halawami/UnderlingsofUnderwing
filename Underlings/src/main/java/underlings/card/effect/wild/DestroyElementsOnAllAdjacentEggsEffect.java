@@ -16,7 +16,7 @@ public abstract class DestroyElementsOnAllAdjacentEggsEffect extends HatchingGro
 
     @Override
     protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag,
-        ElementSpaceLogic elementSpaceLogic) {
+            ElementSpaceLogic elementSpaceLogic) {
         List<Card> adjacentCards = hatchingGround.getAdjacentCards(centerCard);
         for (Card adjacentCard : adjacentCards) {
             for (ElementColor elementColorToDestroy : this.elementColors) {
@@ -26,9 +26,9 @@ public abstract class DestroyElementsOnAllAdjacentEggsEffect extends HatchingGro
     }
 
     public void destroyElementsOfColorOnCard(ElementColor elementColorToDestroy, Card card,
-        ElementSpaceLogic elementSpaceLogic) {
+            ElementSpaceLogic elementSpaceLogic) {
         List<ElementSpace> destroyableElementSpaces = elementSpaceLogic
-            .getDestroyableSpaces(card, elementColorToDestroy);
+                .getDestroyableSpaces(card, elementColorToDestroy);
         if (!destroyableElementSpaces.isEmpty()) {
             for (ElementSpace destroyableSpace : destroyableElementSpaces) {
                 destroyElementsOfColorOnSpace(destroyableSpace, elementColorToDestroy);
@@ -37,5 +37,5 @@ public abstract class DestroyElementsOnAllAdjacentEggsEffect extends HatchingGro
     }
 
     public abstract void destroyElementsOfColorOnSpace(ElementSpace destroyableSpace,
-        ElementColor elementColorToDestroy);
+            ElementColor elementColorToDestroy);
 }

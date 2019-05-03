@@ -5,11 +5,11 @@ public enum GameProperties {
 
     static {
         TWO_PLAYERS.haveRoundsOf(15).hatchingGroundOfWidth(3).andHeight(2)
-            .andMaxHandlers(4);
+                .andMaxHandlers(4);
         THREE_PLAYERS.haveRoundsOf(13).hatchingGroundOfWidth(4).andHeight(3)
-            .andMaxHandlers(5);
+                .andMaxHandlers(5);
         FOUR_TO_SIX_PLAYERS.haveRoundsOf(12).hatchingGroundOfWidth(4)
-            .andHeight(4).andMaxHandlers(6);
+                .andHeight(4).andMaxHandlers(6);
     }
 
     public int numberOfRounds;

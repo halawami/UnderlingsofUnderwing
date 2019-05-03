@@ -20,12 +20,12 @@ public class FinalPhase implements Phase {
     private Gui gui;
 
     public FinalPhase(List<Player> players, Gui gui, ElementBag elementBag,
-        HatchingGround hatchingGround, Runnable displayMethod,
-        Field field) {
+            HatchingGround hatchingGround, Runnable displayMethod,
+            Field field) {
         this.players = players;
         this.gui = gui;
         this.dragonPhase = new DragonPhase(players, gui, elementBag,
-            hatchingGround, displayMethod, field);
+                hatchingGround, displayMethod, field);
     }
 
     @Override
@@ -38,10 +38,10 @@ public class FinalPhase implements Phase {
         }
 
         this.gui.promptHandler.displayMessage("Game Over!", 0,
-            JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.PLAIN_MESSAGE);
 
         Map<Player, Integer> scores =
-            new ScoreUtils().calculateScores(this.players);
+                new ScoreUtils().calculateScores(this.players);
 
         List<Player> maxPlayers = new ArrayList<>();
         int maxScore = 0;
@@ -55,12 +55,12 @@ public class FinalPhase implements Phase {
                 maxScore = scores.get(player);
             }
             this.gui.promptHandler.displayMessage(
-                player + ": " + scores.get(player) + " points",
-                player.getPlayerId(), JOptionPane.PLAIN_MESSAGE);
+                    player + ": " + scores.get(player) + " points",
+                    player.getPlayerId(), JOptionPane.PLAIN_MESSAGE);
         }
 
         this.gui.promptHandler.displayMessage("Winner(s): " + maxPlayers, 0,
-            JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.PLAIN_MESSAGE);
 
     }
 

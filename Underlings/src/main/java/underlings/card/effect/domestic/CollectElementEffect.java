@@ -25,6 +25,6 @@ public class CollectElementEffect extends ElementEffect {
             elements.append(" ");
         }
         return "Collect one of the following elements randomly: [ " + elements
-            + "]";
+                + "]";
     }
 }

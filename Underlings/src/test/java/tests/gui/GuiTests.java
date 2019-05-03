@@ -40,8 +40,8 @@ public class GuiTests {
 
         this.hatchingGround = new HatchingGround(this.deck);
         this.game = new Game(this.gui, this.hatchingGround,
-            new PlayerFactory(new HandlerFactory()),
-            new ElementBag(new ElementFactory(), new Random()));
+                new PlayerFactory(new HandlerFactory()),
+                new ElementBag(new ElementFactory(), new Random()));
     }
 
     @Test
@@ -49,8 +49,8 @@ public class GuiTests {
 
         // RECORD
         EasyMock.expect(
-            this.gui.promptHandler.promptInt("Enter Player Count", 2, 6))
-            .andReturn(2);
+                this.gui.promptHandler.promptInt("Enter Player Count", 2, 6))
+                .andReturn(2);
 
         // REPLAY
         EasyMock.replay(this.gui.promptHandler, this.gui.display);
@@ -67,8 +67,8 @@ public class GuiTests {
 
         // RECORD
         EasyMock.expect(
-            this.gui.promptHandler.promptInt("Enter Player Count", 2, 6))
-            .andReturn(6);
+                this.gui.promptHandler.promptInt("Enter Player Count", 2, 6))
+                .andReturn(6);
 
         // REPLAY
         EasyMock.replay(this.gui.promptHandler, this.gui.display);
@@ -86,9 +86,9 @@ public class GuiTests {
 
         // RECORD
         EasyMock.expect(this.gui.promptHandler
-            .promptInt("Enter Player Count [2, 6]", 2, 6)).andStubReturn(2);
+                .promptInt("Enter Player Count [2, 6]", 2, 6)).andStubReturn(2);
         this.gui.display.displayCard(EasyMock.anyInt(), EasyMock.anyInt(),
-            EasyMock.anyObject(Card.class));
+                EasyMock.anyObject(Card.class));
         EasyMock.expectLastCall().times(6);
 
         // REPLAY
@@ -106,9 +106,9 @@ public class GuiTests {
 
         // RECORD
         EasyMock.expect(this.gui.promptHandler
-            .promptInt("Enter Player Count [2, 6]", 2, 6)).andStubReturn(2);
+                .promptInt("Enter Player Count [2, 6]", 2, 6)).andStubReturn(2);
         this.gui.display.displayCard(EasyMock.anyInt(), EasyMock.anyInt(),
-            EasyMock.anyObject(Card.class));
+                EasyMock.anyObject(Card.class));
         EasyMock.expectLastCall().times(12);
 
         // REPLAY
@@ -126,9 +126,9 @@ public class GuiTests {
 
         // RECORD
         EasyMock.expect(this.gui.promptHandler
-            .promptInt("Enter Player Count [2, 6]", 2, 6)).andStubReturn(4);
+                .promptInt("Enter Player Count [2, 6]", 2, 6)).andStubReturn(4);
         this.gui.display.displayCard(EasyMock.anyInt(), EasyMock.anyInt(),
-            EasyMock.anyObject(Card.class));
+                EasyMock.anyObject(Card.class));
         EasyMock.expectLastCall().times(16);
 
         // REPLAY
@@ -146,9 +146,9 @@ public class GuiTests {
 
         // RECORD
         EasyMock.expect(this.gui.promptHandler
-            .promptInt("Enter Player Count [2, 6]", 2, 6)).andStubReturn(6);
+                .promptInt("Enter Player Count [2, 6]", 2, 6)).andStubReturn(6);
         this.gui.display.displayCard(EasyMock.anyInt(), EasyMock.anyInt(),
-            EasyMock.anyObject(Card.class));
+                EasyMock.anyObject(Card.class));
         EasyMock.expectLastCall().times(16);
 
         // REPLAY

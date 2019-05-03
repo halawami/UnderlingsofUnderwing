@@ -34,14 +34,14 @@ public class CardFactory {
 
         Set<ClassPath.ClassInfo> effectClassInfos = this.loadEffectClassInfos();
         effectClassInfos.forEach(effectClassInfo -> effectClasses
-            .add(this.getClassFromClassInfo(effectClassInfo)));
+                .add(this.getClassFromClassInfo(effectClassInfo)));
 
         return effectClasses;
     }
 
     @SuppressWarnings("unchecked")
     private Class<? extends Effect> getClassFromClassInfo(
-        ClassPath.ClassInfo effectClassInfo) {
+            ClassPath.ClassInfo effectClassInfo) {
         return (Class<? extends Effect>) effectClassInfo.load();
     }
 
@@ -50,7 +50,7 @@ public class CardFactory {
 
             ClassLoader loader = Thread.currentThread().getContextClassLoader();
             return ClassPath.from(loader)
-                .getTopLevelClassesRecursive("underlings.card.effect");
+                    .getTopLevelClassesRecursive("underlings.card.effect");
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -60,18 +60,18 @@ public class CardFactory {
 
     private Gson getGson() {
         RuntimeTypeAdapterFactory<Effect> effectsTypeAdapter =
-            this.getEffectTypeAdapter();
+                this.getEffectTypeAdapter();
         return new GsonBuilder().registerTypeAdapterFactory(effectsTypeAdapter)
-            .create();
+                .create();
     }
 
     private RuntimeTypeAdapterFactory<Effect> getEffectTypeAdapter() {
         RuntimeTypeAdapterFactory<Effect> effectsTypeAdapter =
-            RuntimeTypeAdapterFactory.of(Effect.class, "effect");
+                RuntimeTypeAdapterFactory.of(Effect.class, "effect");
 
         for (Class<? extends Effect> effectClass : this.effectClasses) {
             effectsTypeAdapter =
-                effectsTypeAdapter.registerSubtype(effectClass);
+                    effectsTypeAdapter.registerSubtype(effectClass);
         }
 
         return effectsTypeAdapter;

@@ -20,5 +20,5 @@ public interface Display {
     void update();
 
     void displayStats(ElementBag elementBag, int roundsLeft, int currentPhase,
-        int leadTurn);
+            int leadTurn);
 }

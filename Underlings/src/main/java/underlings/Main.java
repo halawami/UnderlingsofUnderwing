@@ -40,7 +40,7 @@ public class Main {
         FieldSpaceFactory fieldSpaceFactory = new FieldSpaceFactory();
         Field field = new Field(fieldSpaceFactory);
         HandlerMovementLogic handlerMovementLogic =
-            new HandlerMovementLogic(hatchingGround, gui, field);
+                new HandlerMovementLogic(hatchingGround, gui, field);
 
         ElementFactory elementFactory = new ElementFactory();
         Random random = new Random();
@@ -53,16 +53,16 @@ public class Main {
 
         List<Phase> phases = new ArrayList<>();
         phases.add(new DrawingPhase(game.getPlayers(), gui, elementBag,
-            hatchingGround, gameDisplay, field));
+                hatchingGround, gameDisplay, field));
         phases.add(new HandlerPhase(game.getPlayers(), gui, elementBag,
-            hatchingGround, gameDisplay, field, handlerMovementLogic));
+                hatchingGround, gameDisplay, field, handlerMovementLogic));
         phases.add(new PlacementPhase(game.getPlayers(), gui, elementBag,
-            hatchingGround, gameDisplay, field));
+                hatchingGround, gameDisplay, field));
         phases.add(new DragonPhase(game.getPlayers(), gui, elementBag,
-            hatchingGround, gameDisplay, field));
+                hatchingGround, gameDisplay, field));
 
         Phase finalPhase = new FinalPhase(game.getPlayers(), gui, elementBag,
-            hatchingGround, gameDisplay, field);
+                hatchingGround, gameDisplay, field);
 
         game.start(phases, finalPhase);
 

@@ -25,8 +25,8 @@ public class PlacementPhase extends RotationPhase {
     private Map<Player, Integer> turnCounts;
 
     public PlacementPhase(List<Player> players, Gui gui, ElementBag elementBag,
-        HatchingGround hatchingGround, Runnable displayMethod,
-        Field field) {
+            HatchingGround hatchingGround, Runnable displayMethod,
+            Field field) {
         super(players, gui, elementBag, hatchingGround, displayMethod, field);
     }
 
@@ -49,43 +49,43 @@ public class PlacementPhase extends RotationPhase {
 
             ElementSpaceLogic logic = player.elementSpaceLogic;
             List<Card> cards =
-                this.getPlayableCards(logic, player.getElements());
+                    this.getPlayableCards(logic, player.getElements());
 
             if (cards.isEmpty()) {
                 prompts.displayMessage("Player has no valid placements",
-                    playerNum, JOptionPane.WARNING_MESSAGE);
+                        playerNum, JOptionPane.WARNING_MESSAGE);
             } else {
                 this.phaseComplete = false;
                 Card card = prompts.promptChoice(
-                    "Pick a card to place an element on.", cards,
-                    playerNum);
+                        "Pick a card to place an element on.", cards,
+                        playerNum);
                 List<ElementSpace> spaces =
-                    logic.getPlayableSpaces(card, player.getElements());
+                        logic.getPlayableSpaces(card, player.getElements());
                 ElementSpace space = prompts.promptChoice(
-                    "Pick an element space to place an element on.", spaces,
-                    playerNum);
+                        "Pick an element space to place an element on.", spaces,
+                        playerNum);
 
                 boolean moreMoves = true;
                 while (moreMoves) {
                     List<Element> choices = this.playableElements(
-                        logic.getValidAdditions(space),
-                        player.getElements());
+                            logic.getValidAdditions(space),
+                            player.getElements());
                     Element element = prompts.promptChoice(
-                        "Pick an element to place", choices, playerNum);
+                            "Pick an element to place", choices, playerNum);
 
                     space.addElements(element);
                     player.removeElement(element);
                     this.displayMethod.run();
 
                     choices = this.playableElements(
-                        logic.getValidAdditions(space),
-                        player.getElements());
+                            logic.getValidAdditions(space),
+                            player.getElements());
                     if (choices.isEmpty()) {
                         moreMoves = false;
                     } else {
                         moreMoves = prompts.promptDecision(
-                            "Would you like to place another element?",
-                            playerNum);
+                                "Would you like to place another element?",
+                                playerNum);
                     }
                 }
 
@@ -93,11 +93,11 @@ public class PlacementPhase extends RotationPhase {
                     card.handler = WildHandler.getInstance();
                     for (int i = 0; i < card.wildEffects.length; i++) {
                         card.wildEffects[i].on(this.elementBag)
-                            .on(this.hatchingGround)
-                            .on(player.elementSpaceLogic).on(player)
-                            .apply();
+                                .on(this.hatchingGround)
+                                .on(player.elementSpaceLogic).on(player)
+                                .apply();
                         this.gui.notifyAction(-1, card.wildEffects[i].toString()
-                            + " has been applied");
+                                + " has been applied");
                     }
 
                     boolean gameOver = true;
@@ -108,8 +108,8 @@ public class PlacementPhase extends RotationPhase {
                     }
                     if (gameOver) {
                         this.gui.promptHandler.displayMessage(
-                            "All dragons hatched wild! You lose!", -1,
-                            JOptionPane.WARNING_MESSAGE);
+                                "All dragons hatched wild! You lose!", -1,
+                                JOptionPane.WARNING_MESSAGE);
                         return true;
                     }
                 }
@@ -120,7 +120,7 @@ public class PlacementPhase extends RotationPhase {
     }
 
     public List<Element> playableElements(List<ElementColor> list,
-        List<Element> elements) {
+            List<Element> elements) {
         elements = new ArrayList<Element>(elements);
         for (int i = 0; i < elements.size(); i++) {
             if (!list.contains(elements.get(i).getColor())) {
@@ -131,7 +131,7 @@ public class PlacementPhase extends RotationPhase {
     }
 
     public List<Card> getPlayableCards(ElementSpaceLogic logic,
-        List<Element> elements) {
+            List<Element> elements) {
         List<Card> cards = new ArrayList<Card>();
         for (Card card : this.hatchingGround) {
             if (!logic.getPlayableSpaces(card, elements).isEmpty()) {

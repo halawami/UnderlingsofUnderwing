@@ -17,7 +17,7 @@ public class AddElementsToAllAdjacentEggsEffect extends HatchingGroundEffect {
 
     @Override
     protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag,
-        ElementSpaceLogic elementSpaceLogic) {
+            ElementSpaceLogic elementSpaceLogic) {
         List<Card> adjacentCards = hatchingGround.getAdjacentCards(centerCard);
         for (Card adjacentCard : adjacentCards) {
             for (ElementColor elementColorToAdd : this.elementColors) {
@@ -27,7 +27,7 @@ public class AddElementsToAllAdjacentEggsEffect extends HatchingGroundEffect {
     }
 
     public void addElementToCard(ElementColor elementColorToAdd, Card card, ElementSpaceLogic elementSpaceLogic,
-        ElementBag elementBag) {
+            ElementBag elementBag) {
         List<ElementSpace> playableSpaces = elementSpaceLogic.getPlayableSpaces(card, elementColorToAdd);
         if (!playableSpaces.isEmpty()) {
             Element elementToAdd = elementBag.drawElementFromList(elementColorToAdd);

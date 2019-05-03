@@ -26,9 +26,9 @@ public class DrawChoiceTests {
         Display display = EasyMock.mock(Display.class);
 
         EasyMock.expect(promptHandler.promptChoice("Choose an Element Giver",
-            elementGivers, 0)).andReturn(elementGiver);
+                elementGivers, 0)).andReturn(elementGiver);
         EasyMock.expect(promptHandler.promptChoice("Choose a Draw Choice",
-            elementGiver.drawChoices, 0)).andReturn(DrawChoice.RANDOM);
+                elementGiver.drawChoices, 0)).andReturn(DrawChoice.RANDOM);
 
         EasyMock.replay(promptHandler, display);
 
