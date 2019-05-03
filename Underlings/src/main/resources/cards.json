@@ -1419,7 +1419,7 @@
     "wildEffects": [
       {
         "effect": "HatchAllUnclaimedAdjacentEggsEffect",
-        "dragonFamilies" : []
+        "dragonFamilies" : ["TETRADIC", "MONOCHROMATIC", "COMPLEMENTARY", "HARMONIC", "TERTIARY", "LEGENDARY", "TRIADIC"]
       }
     ]
   },
@@ -1776,7 +1776,7 @@
     "wildEffects": [
       {
         "effect": "HatchAllUnclaimedAdjacentEggsEffect",
-        "dragonFamilies" : []
+        "dragonFamilies" : ["TETRADIC", "MONOCHROMATIC", "COMPLEMENTARY", "HARMONIC", "TERTIARY", "LEGENDARY", "TRIADIC"]
       }
     ]
   },
