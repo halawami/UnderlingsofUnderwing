@@ -1,0 +1,35 @@
+package field;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import element.ElementGiver;
+import gui.DrawChoice;
+import handler.Handler;
+
+public class FieldSpace {
+
+    private DrawChoice color;
+    private List<Handler> handlers;
+
+    public FieldSpace(DrawChoice color) {
+        this.color = color;
+        this.handlers = new ArrayList<>();
+    }
+
+    public void addHandler(Handler handler) {
+        this.handlers.add(handler);
+        handler.setLocation(this.color + " Field Space");
+        handler.elementGiver =
+                new ElementGiver("Handler on " + this.color.name() + " Field Space", DrawChoice.RANDOM, this.color);
+    }
+
+    public boolean contains(Handler handler) {
+        return this.handlers.contains(handler);
+    }
+
+    public void remove(Handler handler) {
+        this.handlers.remove(handler);
+    }
+
+}
