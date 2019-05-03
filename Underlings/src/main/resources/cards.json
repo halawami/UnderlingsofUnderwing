@@ -965,7 +965,7 @@
     "name": "ABYSSAL WHELP",
     "points": 6,
     "temperature": "NEUTRAL",
-    "family": "TETRADIC",
+    "family": "MONOCHROMATIC",
     "elementSpaces": [
 	  {
         "color": "RED",
@@ -986,7 +986,7 @@
     ],
     "domesticEffects": [
       {
-        "effect": "CollectTwoElementEffect",
+        "effect": "CollectElementEffect",
         "elementChoices": ["PURPLE", "YELLOW"]
       }
     ],
@@ -1621,7 +1621,7 @@
       },
 	  {
         "color": "RED",
-        "position": "L3_1"
+        "position": "L3_2"
       },
 	  {
         "color": "RED",
@@ -1629,11 +1629,11 @@
       },
 	  {
         "color": "YELLOW",
-        "position": "L3_1"
+        "position": "R3_1"
       },
       {
         "color": "BLUE",
-        "position": "R3_1"
+        "position": "R3_2"
       },
       {
         "color": "WHITE",
@@ -1665,7 +1665,7 @@
       },
 	  {
         "color": "YELLOW",
-        "position": "L3_1"
+        "position": "L3_2"
       },
 	  {
         "color": "YELLOW",
@@ -1673,11 +1673,11 @@
       },
 	  {
         "color": "RED",
-        "position": "L3_1"
+        "position": "R3_1"
       },
       {
         "color": "BLUE",
-        "position": "R3_1"
+        "position": "R3_2"
       },
       {
         "color": "WHITE",
@@ -1709,7 +1709,7 @@
       },
 	  {
         "color": "BLUE",
-        "position": "L3_1"
+        "position": "L3_2"
       },
 	  {
         "color": "BLUE",
@@ -1717,11 +1717,11 @@
       },
 	  {
         "color": "RED",
-        "position": "L3_1"
+        "position": "R3_1"
       },
       {
         "color": "YELLOW",
-        "position": "R3_1"
+        "position": "R3_2"
       },
       {
         "color": "BLACK",
@@ -1738,6 +1738,137 @@
       {
         "effect": "AddALLElementsToAllAdjacentEggsEffect",
         "elementColors" : ["RED", "BLUE", "YELLOW"]
+      }
+    ]
+  },
+  {
+    "name": "ETHEREAL WYRM",
+    "points": 13,
+    "temperature": "COOL",
+    "family": "TERTIARY",
+    "elementSpaces": [
+	  {
+        "color": "WHITE",
+        "position": "L3_1"
+      },
+	  {
+        "color": "YELLOW",
+        "position": "L3_2"
+      },
+	  {
+        "color": "WHITE",
+        "position": "L3_3"
+      },
+	  {
+        "color": "GREEN",
+        "position": "R3_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectAndHatchAnyFivePointsOrFewerUnclaimedEggEffect"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "hatchAllUnclaimedAdjacentEggsEffect",
+        "elementColors" : []
+      }
+    ]
+  },
+  {
+    "name": "APIARA",
+    "points": 15,
+    "temperature": "WARM",
+    "family": "LEGENDARY",
+    "elementSpaces": [
+	  {
+        "color": "BLACK",
+        "position": "L3_1"
+      },
+	  {
+        "color": "WHITE",
+        "position": "L3_2"
+      },
+	  {
+        "color": "BLACK",
+        "position": "L3_3"
+      },
+	  {
+        "color": "YELLOW",
+        "position": "R3_1"
+      },
+	  {
+        "color": "YELLOW",
+        "position": "R3_2"
+      },
+      {
+        "color": "YELLOW",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "UpToTwoHandlersCanOccupyTheSameSpaceOnFieldEffect"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "ReshuffleIntoDeckEffect"
+      }
+    ]
+  },
+  {
+    "name": "CORDATH",
+    "points": 20,
+    "temperature": "COOL",
+    "family": "LEGENDARY",
+    "elementSpaces": [
+	  {
+        "color": "GREEN",
+        "position": "L4_1"
+      },
+	  {
+        "color": "GREEN",
+        "position": "L4_2"
+      },
+	  {
+        "color": "GREEN",
+        "position": "L4_3"
+      },
+	  {
+        "color": "BLACK",
+        "position": "L4_4"
+      },
+	  {
+        "color": "PURPLE",
+        "position": "R4_1"
+      },
+	  {
+        "color": "PURPLE",
+        "position": "R4_2"
+      },
+	  {
+        "color": "PURPLE",
+        "position": "R4_3"
+      },
+      {
+        "color": "BLACK",
+        "position": "R4_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "HatchOneUnclaimedEggAsWildDragonEffect"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "TradeDragonsEffect"
       }
     ]
   }
