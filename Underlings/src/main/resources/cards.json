@@ -1056,7 +1056,7 @@
     "wildEffects": [
       {
         "effect": "HatchAllUnclaimedAdjacentEggsEffect",
-        "elementColors" : ["TRIADIC"]
+        "dragonFamilies" : ["TRIADIC"]
       }
     ]
   },
@@ -1088,7 +1088,7 @@
     "wildEffects": [
       {
         "effect": "HatchAllUnclaimedAdjacentEggsEffect",
-        "elementColors" : ["TRIADIC"]
+        "dragonFamilies" : ["TRIADIC"]
       }
     ]
   },
@@ -1300,7 +1300,7 @@
     "wildEffects": [
       {
         "effect": "HatchAllUnclaimedAdjacentEggsEffect",
-        "elementColors" : ["TERTIARY"]
+        "dragonFamilies" : ["TERTIARY"]
       }
     ]
   },
@@ -1336,7 +1336,7 @@
     "wildEffects": [
       {
         "effect": "HatchAllUnclaimedAdjacentEggsEffect",
-        "elementColors" : ["TERTIARY"]
+        "dragonFamilies" : ["TERTIARY"]
       }
     ]
   },
@@ -1375,7 +1375,7 @@
     "wildEffects": [
       {
         "effect": "HatchAllUnclaimedAdjacentEggsEffect",
-        "elementColors" : ["MONOCHROMATIC"]
+        "dragonFamilies" : ["MONOCHROMATIC"]
       }
     ]
   },
@@ -1419,7 +1419,7 @@
     "wildEffects": [
       {
         "effect": "HatchAllUnclaimedAdjacentEggsEffect",
-        "elementColors" : []
+        "dragonFamilies" : []
       }
     ]
   },
@@ -1458,7 +1458,7 @@
     "wildEffects": [
       {
         "effect": "HatchAllUnclaimedAdjacentEggsEffect",
-        "elementColors" : ["MONOCHROMATIC"]
+        "dragonFamilies" : ["MONOCHROMATIC"]
       }
     ]
   },
@@ -1494,7 +1494,7 @@
     "wildEffects": [
       {
         "effect": "HatchAllUnclaimedAdjacentEggsEffect",
-        "elementColors" : ["TERTIARY"]
+        "dragonFamilies" : ["TERTIARY"]
       }
     ]
   },
@@ -1530,7 +1530,7 @@
     "wildEffects": [
       {
         "effect": "HatchAllUnclaimedAdjacentEggsEffect",
-        "elementColors" : ["TERTIARY"]
+        "dragonFamilies" : ["TERTIARY"]
       }
     ]
   },
@@ -1569,7 +1569,7 @@
     "wildEffects": [
       {
         "effect": "HatchAllUnclaimedAdjacentEggsEffect",
-        "elementColors" : ["MONOCHROMATIC"]
+        "dragonFamilies" : ["MONOCHROMATIC"]
       }
     ]
   },
@@ -1605,7 +1605,7 @@
     "wildEffects": [
       {
         "effect": "HatchAllUnclaimedAdjacentEggsEffect",
-        "elementColors" : ["COMPLEMENTARY"]
+        "dragonFamilies" : ["COMPLEMENTARY"]
       }
     ]
   },
@@ -1776,7 +1776,7 @@
     "wildEffects": [
       {
         "effect": "HatchAllUnclaimedAdjacentEggsEffect",
-        "elementColors" : []
+        "dragonFamilies" : []
       }
     ]
   },
