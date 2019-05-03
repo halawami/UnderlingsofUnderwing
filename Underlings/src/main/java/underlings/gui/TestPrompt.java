@@ -4,22 +4,27 @@ import java.util.List;
 import java.util.Random;
 
 public class TestPrompt extends LamePrompt {
+    Random rand;
+
+    public TestPrompt() {
+        rand = new Random();
+    }
 
     @Override
     public <T extends Choice> T promptChoice(String prompt, List<T> choices, int playerId) {
-        return choices.get(new Random().nextInt(choices.size()));
+        return choices.get(rand.nextInt(choices.size()));
     }
 
     @Override
     public boolean promptDecision(String question, int playerId) {
-        return (new Random().nextBoolean());
+        return rand.nextBoolean();
     }
 
     @Override
     public int promptInt(String prompt, int min, int max) {
         int val = 0;
         do {
-            val = new Random().nextInt(max);
+            val = rand.nextInt(max);
         } while (val < min || val > max);
         return val;
     }
