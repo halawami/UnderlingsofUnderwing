@@ -22,10 +22,8 @@ public class HandlerTests {
 
     @Before
     public void init() {
-        this.game = new Game(EasyMock.mock(Gui.class),
-                EasyMock.mock(HatchingGround.class),
-                new PlayerFactory(new HandlerFactory()),
-                EasyMock.mock(ElementBag.class));
+        this.game = new Game(EasyMock.mock(Gui.class), EasyMock.mock(HatchingGround.class),
+                new PlayerFactory(new HandlerFactory()), EasyMock.mock(ElementBag.class));
     }
 
     @Test

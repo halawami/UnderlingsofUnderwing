@@ -15,27 +15,23 @@ public class ChoiceTests {
 
     @Test
     public void testReadyRoom() {
-        this.testPossibilities(HandlerState.READY_ROOM, HandlerChoice.STAY,
-                HandlerChoice.FIELD_WHITESPACE, HandlerChoice.FIELD,
-                HandlerChoice.CARD);
+        this.testPossibilities(HandlerState.READY_ROOM, HandlerChoice.STAY, HandlerChoice.FIELD_WHITESPACE,
+                HandlerChoice.FIELD, HandlerChoice.CARD);
     }
 
     @Test
     public void testBreakRoom() {
-        this.testPossibilities(HandlerState.BREAK_ROOM,
-                HandlerChoice.READY_ROOM);
+        this.testPossibilities(HandlerState.BREAK_ROOM, HandlerChoice.READY_ROOM);
     }
 
     @Test
     public void testFieldWhitespace() {
-        this.testPossibilities(HandlerState.FIELD_WHITESPACE,
-                HandlerChoice.BREAK_ROOM);
+        this.testPossibilities(HandlerState.FIELD_WHITESPACE, HandlerChoice.BREAK_ROOM);
     }
 
     @Test
     public void testField() {
-        this.testPossibilities(HandlerState.FIELD, HandlerChoice.STAY,
-                HandlerChoice.BREAK_ROOM);
+        this.testPossibilities(HandlerState.FIELD, HandlerChoice.STAY, HandlerChoice.BREAK_ROOM);
     }
 
     @Test
@@ -45,12 +41,10 @@ public class ChoiceTests {
 
     @Test
     public void testCard() {
-        this.testPossibilities(HandlerState.CARD, HandlerChoice.STAY,
-                HandlerChoice.BREAK_ROOM);
+        this.testPossibilities(HandlerState.CARD, HandlerChoice.STAY, HandlerChoice.BREAK_ROOM);
     }
 
-    private void testPossibilities(HandlerState state,
-            HandlerChoice... possibilities) {
+    private void testPossibilities(HandlerState state, HandlerChoice... possibilities) {
         Handler handler = new Handler(state);
         List<HandlerChoice> possibleStates = handler.getPossibleChoices();
         assertEquals(possibilities.length, possibleStates.size());

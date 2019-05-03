@@ -38,8 +38,7 @@ public class GetValidElementSpacesTest {
         testCard.elementSpaces = cardSpaces;
 
         ElementSpaceLogic logic = new ElementSpaceLogic();
-        List<ElementSpace> actual =
-                logic.getPlayableSpaces(testCard, Arrays.asList());
+        List<ElementSpace> actual = logic.getPlayableSpaces(testCard, Arrays.asList());
         assertEquals(Arrays.asList(), actual);
     }
 
@@ -51,8 +50,7 @@ public class GetValidElementSpacesTest {
         testCard.elementSpaces = cardSpaces;
 
         ElementSpaceLogic logic = new ElementSpaceLogic();
-        List<ElementSpace> actual =
-                logic.getPlayableSpaces(testCard, Arrays.asList(redElement));
+        List<ElementSpace> actual = logic.getPlayableSpaces(testCard, Arrays.asList(redElement));
         assertEquals(Arrays.asList(redSpace), actual);
     }
 
@@ -64,8 +62,7 @@ public class GetValidElementSpacesTest {
         testCard.elementSpaces = cardSpaces;
 
         ElementSpaceLogic logic = new ElementSpaceLogic();
-        List<ElementSpace> actual =
-                logic.getPlayableSpaces(testCard, Arrays.asList(blueElement));
+        List<ElementSpace> actual = logic.getPlayableSpaces(testCard, Arrays.asList(blueElement));
         assertEquals(Arrays.asList(blueSpace), actual);
     }
 
@@ -77,8 +74,7 @@ public class GetValidElementSpacesTest {
         testCard.elementSpaces = cardSpaces;
 
         ElementSpaceLogic logic = new ElementSpaceLogic();
-        List<ElementSpace> actual = logic.getPlayableSpaces(testCard,
-                Arrays.asList(blueElement, redElement));
+        List<ElementSpace> actual = logic.getPlayableSpaces(testCard, Arrays.asList(blueElement, redElement));
         assertEquals(Arrays.asList(redSpace, blueSpace), actual);
     }
 
@@ -96,8 +92,8 @@ public class GetValidElementSpacesTest {
 
         ElementSpaceLogic logic = new ElementSpaceLogic();
         List<ElementSpace> expected = Arrays.asList(space2, space4);
-        List<ElementSpace> actual = logic.getPlayableSpaces(testCard,
-                Arrays.asList(blueElement, new Element(ElementColor.WHITE)));
+        List<ElementSpace> actual =
+                logic.getPlayableSpaces(testCard, Arrays.asList(blueElement, new Element(ElementColor.WHITE)));
         assertEquals(expected, actual);
     }
 }

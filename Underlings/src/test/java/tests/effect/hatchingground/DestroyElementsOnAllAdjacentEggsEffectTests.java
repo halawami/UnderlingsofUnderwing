@@ -24,11 +24,11 @@ public class DestroyElementsOnAllAdjacentEggsEffectTests {
         Card centerCard = EasyMock.mock(Card.class);
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         ElementSpaceLogic elementSpaceLogic = EasyMock.mock(ElementSpaceLogic.class);
-        DestroyElementsOnAllAdjacentEggsEffect testedEffect = EasyMock
-                .partialMockBuilder(DestroyElementsOnAllAdjacentEggsEffect.class)
-                .addMockedMethod("destroyElementsOfColorOnCard").createMock();
+        DestroyElementsOnAllAdjacentEggsEffect testedEffect =
+                EasyMock.partialMockBuilder(DestroyElementsOnAllAdjacentEggsEffect.class)
+                        .addMockedMethod("destroyElementsOfColorOnCard").createMock();
         testedEffect.on(centerCard).on(hatchingGround).on(elementSpaceLogic);
-        testedEffect.elementColors = new ElementColor[]{ElementColor.BLUE};
+        testedEffect.elementColors = new ElementColor[] {ElementColor.BLUE};
 
         List<Card> mockedCards = getMockedCards(2);
         EasyMock.expect(hatchingGround.getAdjacentCards(centerCard)).andReturn(mockedCards);
@@ -48,11 +48,11 @@ public class DestroyElementsOnAllAdjacentEggsEffectTests {
         Card centerCard = EasyMock.mock(Card.class);
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         ElementSpaceLogic elementSpaceLogic = EasyMock.mock(ElementSpaceLogic.class);
-        DestroyElementsOnAllAdjacentEggsEffect testedEffect = EasyMock
-                .partialMockBuilder(DestroyElementsOnAllAdjacentEggsEffect.class)
-                .addMockedMethod("destroyElementsOfColorOnCard").createMock();
+        DestroyElementsOnAllAdjacentEggsEffect testedEffect =
+                EasyMock.partialMockBuilder(DestroyElementsOnAllAdjacentEggsEffect.class)
+                        .addMockedMethod("destroyElementsOfColorOnCard").createMock();
         testedEffect.on(centerCard).on(hatchingGround).on(elementSpaceLogic);
-        testedEffect.elementColors = new ElementColor[]{ElementColor.BLUE, ElementColor.RED};
+        testedEffect.elementColors = new ElementColor[] {ElementColor.BLUE, ElementColor.RED};
 
         List<Card> mockedCards = getMockedCards(2);
         EasyMock.expect(hatchingGround.getAdjacentCards(centerCard)).andReturn(mockedCards);
@@ -84,9 +84,9 @@ public class DestroyElementsOnAllAdjacentEggsEffectTests {
         Card mockedCard = EasyMock.mock(Card.class);
         ElementSpaceLogic elementSpaceLogic = EasyMock.mock(ElementSpaceLogic.class);
 
-        DestroyElementsOnAllAdjacentEggsEffect testedEffect = EasyMock
-                .partialMockBuilder(DestroyElementsOnAllAdjacentEggsEffect.class)
-                .addMockedMethod("destroyElementsOfColorOnSpace").createMock();
+        DestroyElementsOnAllAdjacentEggsEffect testedEffect =
+                EasyMock.partialMockBuilder(DestroyElementsOnAllAdjacentEggsEffect.class)
+                        .addMockedMethod("destroyElementsOfColorOnSpace").createMock();
 
         EasyMock.expect(elementSpaceLogic.getDestroyableSpaces(mockedCard, blue)).andReturn(Collections.emptyList());
 
@@ -104,9 +104,9 @@ public class DestroyElementsOnAllAdjacentEggsEffectTests {
         ElementSpaceLogic elementSpaceLogic = EasyMock.mock(ElementSpaceLogic.class);
         ElementSpace mockedDestroyableSpace = EasyMock.mock(ElementSpace.class);
 
-        DestroyElementsOnAllAdjacentEggsEffect testedEffect = EasyMock
-                .partialMockBuilder(DestroyElementsOnAllAdjacentEggsEffect.class)
-                .addMockedMethod("destroyElementsOfColorOnSpace").createMock();
+        DestroyElementsOnAllAdjacentEggsEffect testedEffect =
+                EasyMock.partialMockBuilder(DestroyElementsOnAllAdjacentEggsEffect.class)
+                        .addMockedMethod("destroyElementsOfColorOnSpace").createMock();
 
         EasyMock.expect(elementSpaceLogic.getDestroyableSpaces(mockedCard, blue))
                 .andReturn(Arrays.asList(mockedDestroyableSpace));
@@ -126,9 +126,9 @@ public class DestroyElementsOnAllAdjacentEggsEffectTests {
         ElementSpaceLogic elementSpaceLogic = EasyMock.mock(ElementSpaceLogic.class);
         List<ElementSpace> mockedDestroyableSpaces = getMockedDestroyableSpaces(8);
 
-        DestroyElementsOnAllAdjacentEggsEffect testedEffect = EasyMock
-                .partialMockBuilder(DestroyElementsOnAllAdjacentEggsEffect.class)
-                .addMockedMethod("destroyElementsOfColorOnSpace").createMock();
+        DestroyElementsOnAllAdjacentEggsEffect testedEffect =
+                EasyMock.partialMockBuilder(DestroyElementsOnAllAdjacentEggsEffect.class)
+                        .addMockedMethod("destroyElementsOfColorOnSpace").createMock();
 
         EasyMock.expect(elementSpaceLogic.getDestroyableSpaces(mockedCard, blue)).andReturn(mockedDestroyableSpaces);
         for (ElementSpace destroyableSpace : mockedDestroyableSpaces) {

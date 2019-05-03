@@ -9,7 +9,6 @@ public abstract class HatchingGroundEffect extends Effect {
 
 
     @Override
-    protected abstract void apply(Card centerCard,
-            HatchingGround hatchingGround, ElementBag elementBag,
+    protected abstract void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag,
             ElementSpaceLogic elementSpaceLogic);
 }

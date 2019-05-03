@@ -13,11 +13,9 @@ import org.junit.Test;
 public class GuavaLearningTests {
 
     @Test
-    public void testLoadClassFromPackage()
-            throws IOException, ClassNotFoundException {
+    public void testLoadClassFromPackage() throws IOException, ClassNotFoundException {
         List<Class<?>> retrievedClasses = new ArrayList<>();
-        final ClassLoader loader =
-                Thread.currentThread().getContextClassLoader();
+        final ClassLoader loader = Thread.currentThread().getContextClassLoader();
 
         for (ClassPath.ClassInfo info : ClassPath.from(loader)
                 .getTopLevelClassesRecursive("tests.card.factory.samples")) {

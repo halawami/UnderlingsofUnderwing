@@ -27,8 +27,7 @@ public class RandomTests {
 
     @Test
     public void testCompletlyRandomRed() {
-        EasyMock.expect(this.random.nextInt(EasyMock.anyInt()))
-                .andStubReturn(30);
+        EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(30);
         EasyMock.replay(this.random);
 
         Element drawnElement = this.elementBag.drawRandomElement();
@@ -37,8 +36,7 @@ public class RandomTests {
 
     @Test
     public void testCompletlyRandomBlue() {
-        EasyMock.expect(this.random.nextInt(EasyMock.anyInt()))
-                .andStubReturn(10);
+        EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(10);
         EasyMock.replay(this.random);
 
         Element drawnElement = this.elementBag.drawRandomElement();
@@ -47,8 +45,7 @@ public class RandomTests {
 
     @Test
     public void testCompletlyRandomYellow() {
-        EasyMock.expect(this.random.nextInt(EasyMock.anyInt()))
-                .andStubReturn(50);
+        EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(50);
         EasyMock.replay(this.random);
 
         Element drawnElement = this.elementBag.drawRandomElement();
@@ -57,8 +54,7 @@ public class RandomTests {
 
     @Test
     public void testCompletlyRandomPurple() {
-        EasyMock.expect(this.random.nextInt(EasyMock.anyInt()))
-                .andStubReturn(65);
+        EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(65);
         EasyMock.replay(this.random);
 
         Element drawnElement = this.elementBag.drawRandomElement();
@@ -67,8 +63,7 @@ public class RandomTests {
 
     @Test
     public void testCompletlyRandomGreen() {
-        EasyMock.expect(this.random.nextInt(EasyMock.anyInt()))
-                .andStubReturn(75);
+        EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(75);
         EasyMock.replay(this.random);
 
         Element drawnElement = this.elementBag.drawRandomElement();
@@ -77,8 +72,7 @@ public class RandomTests {
 
     @Test
     public void testCompletlyRandomOrange() {
-        EasyMock.expect(this.random.nextInt(EasyMock.anyInt()))
-                .andStubReturn(85);
+        EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(85);
         EasyMock.replay(this.random);
 
         Element drawnElement = this.elementBag.drawRandomElement();
@@ -87,8 +81,7 @@ public class RandomTests {
 
     @Test
     public void testCompletlyRandomBlack() {
-        EasyMock.expect(this.random.nextInt(EasyMock.anyInt()))
-                .andStubReturn(97);
+        EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(97);
         EasyMock.replay(this.random);
 
         Element drawnElement = this.elementBag.drawRandomElement();
@@ -97,8 +90,7 @@ public class RandomTests {
 
     @Test
     public void testCompletlyRandomWhite() {
-        EasyMock.expect(this.random.nextInt(EasyMock.anyInt()))
-                .andStubReturn(92);
+        EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(92);
         EasyMock.replay(this.random);
 
         Element drawnElement = this.elementBag.drawRandomElement();
@@ -107,8 +99,7 @@ public class RandomTests {
 
     @Test
     public void testPrimaryRandomRed() {
-        EasyMock.expect(this.random.nextInt(EasyMock.anyInt()))
-                .andStubReturn(30);
+        EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(30);
         EasyMock.replay(this.random);
 
         Element drawnElement = this.elementBag.drawRandomPrimaryElement();
@@ -117,8 +108,7 @@ public class RandomTests {
 
     @Test
     public void testPrimaryRandomBlue() {
-        EasyMock.expect(this.random.nextInt(EasyMock.anyInt()))
-                .andStubReturn(10);
+        EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(10);
         EasyMock.replay(this.random);
 
         Element drawnElement = this.elementBag.drawRandomPrimaryElement();
@@ -127,8 +117,7 @@ public class RandomTests {
 
     @Test
     public void testPrimaryRandomYellow() {
-        EasyMock.expect(this.random.nextInt(EasyMock.anyInt()))
-                .andStubReturn(50);
+        EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(50);
         EasyMock.replay(this.random);
 
         Element drawnElement = this.elementBag.drawRandomPrimaryElement();
@@ -137,8 +126,7 @@ public class RandomTests {
 
     @Test
     public void testSecondaryRandomPurple() {
-        EasyMock.expect(this.random.nextInt(EasyMock.anyInt()))
-                .andStubReturn(5);
+        EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(5);
         EasyMock.replay(this.random);
 
         Element drawnElement = this.elementBag.drawRandomSecondayElement();
@@ -147,8 +135,7 @@ public class RandomTests {
 
     @Test
     public void testSecondaryRandomGreen() {
-        EasyMock.expect(this.random.nextInt(EasyMock.anyInt()))
-                .andStubReturn(15);
+        EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(15);
         EasyMock.replay(this.random);
 
         Element drawnElement = this.elementBag.drawRandomSecondayElement();
@@ -157,8 +144,7 @@ public class RandomTests {
 
     @Test
     public void testSecondaryRandomOrange() {
-        EasyMock.expect(this.random.nextInt(EasyMock.anyInt()))
-                .andStubReturn(25);
+        EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(25);
         EasyMock.replay(this.random);
 
         Element drawnElement = this.elementBag.drawRandomSecondayElement();
@@ -167,8 +153,7 @@ public class RandomTests {
 
     @Test
     public void testCoolRandomBlue() {
-        EasyMock.expect(this.random.nextInt(EasyMock.anyInt()))
-                .andStubReturn(5);
+        EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(5);
         EasyMock.replay(this.random);
 
         Element drawnElement = this.elementBag.drawCoolElement();
@@ -177,8 +162,7 @@ public class RandomTests {
 
     @Test
     public void testCoolRandomGreen() {
-        EasyMock.expect(this.random.nextInt(EasyMock.anyInt()))
-                .andStubReturn(25);
+        EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(25);
         EasyMock.replay(this.random);
 
         Element drawnElement = this.elementBag.drawCoolElement();
@@ -187,8 +171,7 @@ public class RandomTests {
 
     @Test
     public void testCoolRandomPurple() {
-        EasyMock.expect(this.random.nextInt(EasyMock.anyInt()))
-                .andStubReturn(35);
+        EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(35);
         EasyMock.replay(this.random);
 
         Element drawnElement = this.elementBag.drawCoolElement();
@@ -197,8 +180,7 @@ public class RandomTests {
 
     @Test
     public void testWarmRandomRed() {
-        EasyMock.expect(this.random.nextInt(EasyMock.anyInt()))
-                .andStubReturn(10);
+        EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(10);
         EasyMock.replay(this.random);
 
         Element drawnElement = this.elementBag.drawWarmElement();
@@ -207,8 +189,7 @@ public class RandomTests {
 
     @Test
     public void testWarmRandomYellow() {
-        EasyMock.expect(this.random.nextInt(EasyMock.anyInt()))
-                .andStubReturn(25);
+        EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(25);
         EasyMock.replay(this.random);
 
         Element drawnElement = this.elementBag.drawWarmElement();
@@ -217,8 +198,7 @@ public class RandomTests {
 
     @Test
     public void testWarmRandomOrange() {
-        EasyMock.expect(this.random.nextInt(EasyMock.anyInt()))
-                .andStubReturn(45);
+        EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(45);
         EasyMock.replay(this.random);
 
         Element drawnElement = this.elementBag.drawWarmElement();

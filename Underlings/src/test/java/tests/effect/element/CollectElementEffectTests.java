@@ -17,12 +17,9 @@ public class CollectElementEffectTests {
     public void testToString() {
         CollectElementEffect elementEffect = new CollectElementEffect();
 
-        elementEffect.elementChoices =
-                new ElementColor[]{ElementColor.BLACK, ElementColor.WHITE};
+        elementEffect.elementChoices = new ElementColor[] {ElementColor.BLACK, ElementColor.WHITE};
 
-        assertEquals(
-                "Collect one of the following elements randomly: [ BLACK WHITE ]",
-                elementEffect.toString());
+        assertEquals("Collect one of the following elements randomly: [ BLACK WHITE ]", elementEffect.toString());
 
     }
 
@@ -34,11 +31,10 @@ public class CollectElementEffectTests {
 
         CollectElementEffect collectElementEffect = new CollectElementEffect();
         collectElementEffect.on(player).on(elementBag);
-        ElementColor[] elementChoices = new ElementColor[]{ElementColor.BLUE};
+        ElementColor[] elementChoices = new ElementColor[] {ElementColor.BLUE};
         collectElementEffect.elementChoices = elementChoices;
 
-        EasyMock.expect(elementBag.drawElementFromList(elementChoices))
-                .andReturn(blueElement);
+        EasyMock.expect(elementBag.drawElementFromList(elementChoices)).andReturn(blueElement);
         player.addElement(blueElement);
 
         EasyMock.replay(player, elementBag);
@@ -55,12 +51,10 @@ public class CollectElementEffectTests {
 
         CollectElementEffect collectElementEffect = new CollectElementEffect();
         collectElementEffect.on(player).on(elementBag);
-        ElementColor[] elementChoices =
-                new ElementColor[]{ElementColor.BLUE, ElementColor.RED};
+        ElementColor[] elementChoices = new ElementColor[] {ElementColor.BLUE, ElementColor.RED};
         collectElementEffect.elementChoices = elementChoices;
 
-        EasyMock.expect(elementBag.drawElementFromList(elementChoices))
-                .andReturn(blueElement);
+        EasyMock.expect(elementBag.drawElementFromList(elementChoices)).andReturn(blueElement);
         player.addElement(blueElement);
 
         EasyMock.replay(player, elementBag);

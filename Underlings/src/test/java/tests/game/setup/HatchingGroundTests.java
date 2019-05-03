@@ -32,8 +32,7 @@ public class HatchingGroundTests {
         }
 
         this.hatchingGround = new HatchingGround(new Deck(this.cards));
-        this.game = new Game(EasyMock.mock(Gui.class), this.hatchingGround,
-                new PlayerFactory(new HandlerFactory()),
+        this.game = new Game(EasyMock.mock(Gui.class), this.hatchingGround, new PlayerFactory(new HandlerFactory()),
                 EasyMock.mock(ElementBag.class));
 
     }

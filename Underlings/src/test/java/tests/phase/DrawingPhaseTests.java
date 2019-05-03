@@ -33,13 +33,10 @@ public class DrawingPhaseTests {
 
         Element element = new Element(ElementColor.BLUE);
 
-        EasyMock.expect(gui.getDrawChoice(player.getElementGivers(), 0))
-                .andReturn(DrawChoice.RANDOM);
-        EasyMock.expect(elementBag.drawElement(DrawChoice.RANDOM))
-                .andReturn(element);
+        EasyMock.expect(gui.getDrawChoice(player.getElementGivers(), 0)).andReturn(DrawChoice.RANDOM);
+        EasyMock.expect(elementBag.drawElement(DrawChoice.RANDOM)).andReturn(element);
 
-        Phase drawingPhase =
-                new DrawingPhase(players, gui, elementBag, null, null, null);
+        Phase drawingPhase = new DrawingPhase(players, gui, elementBag, null, null, null);
 
         EasyMock.replay(gui, elementBag);
 

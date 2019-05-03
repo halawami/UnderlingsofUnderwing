@@ -6,8 +6,7 @@ import java.util.Random;
 public class TestPrompt extends LamePrompt {
 
     @Override
-    public <T extends Choice> T promptChoice(String prompt, List<T> choices,
-            int playerId) {
+    public <T extends Choice> T promptChoice(String prompt, List<T> choices, int playerId) {
         return choices.get(new Random().nextInt(choices.size()));
     }
 
@@ -27,8 +26,7 @@ public class TestPrompt extends LamePrompt {
 
     @Override
     public void displayMessage(String message, int playerId, int icon) {
-        if (!(message.contains("placements") || message.contains("incubation")
-                || message.contains("applied"))) {
+        if (!(message.contains("placements") || message.contains("incubation") || message.contains("applied"))) {
             super.displayMessage(message, playerId, icon);
         }
     }

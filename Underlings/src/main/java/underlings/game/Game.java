@@ -27,8 +27,7 @@ public class Game {
 
     private List<Player> players = new LinkedList<>();
 
-    public Game(Gui gui, HatchingGround hatchingGround,
-            PlayerFactory playerFactory, ElementBag elementBag) {
+    public Game(Gui gui, HatchingGround hatchingGround, PlayerFactory playerFactory, ElementBag elementBag) {
         this.gui = gui;
         this.hatchingGround = hatchingGround;
         this.playerFactory = playerFactory;
@@ -42,12 +41,10 @@ public class Game {
     }
 
     private void setUpProperties(int numberOfPlayers) {
-        GameProperties correspondingProps =
-                GameProperties.getPropertiesOf(numberOfPlayers);
+        GameProperties correspondingProps = GameProperties.getPropertiesOf(numberOfPlayers);
 
         this.roundsLeft = correspondingProps.numberOfRounds;
-        this.hatchingGround.setDimensions(
-                correspondingProps.hatchingGroundWidth,
+        this.hatchingGround.setDimensions(correspondingProps.hatchingGroundWidth,
                 correspondingProps.hatchingGroundHeight);
         this.maxHandlers = correspondingProps.maxHandlers;
     }
@@ -92,8 +89,7 @@ public class Game {
     }
 
     public void promptPlayerCount() {
-        this.numberOfPlayers =
-                this.gui.getPlayerCount(MIN_PLAYERS, MAX_PLAYERS);
+        this.numberOfPlayers = this.gui.getPlayerCount(MIN_PLAYERS, MAX_PLAYERS);
     }
 
     public int getPlayerCount() {
@@ -104,15 +100,13 @@ public class Game {
         this.gui.display.displayBackground();
         this.hatchingGround.display(this.gui);
         this.displayPlayers();
-        this.gui.display.displayStats(this.elementBag, this.roundsLeft,
-                this.currentPhase, this.turnLeader + 1);
+        this.gui.display.displayStats(this.elementBag, this.roundsLeft, this.currentPhase, this.turnLeader + 1);
 
         this.gui.display.update();
     }
 
     public void displayPlayers() {
-        for (int playerNumber = 0; playerNumber < this.players
-                .size(); playerNumber++) {
+        for (int playerNumber = 0; playerNumber < this.players.size(); playerNumber++) {
             Player player = this.players.get(playerNumber);
             this.gui.display.displayPlayer(playerNumber, player);
             List<Handler> handlers = player.getHandlers();
