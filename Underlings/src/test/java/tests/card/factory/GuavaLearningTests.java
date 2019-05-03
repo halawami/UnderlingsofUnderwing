@@ -14,13 +14,13 @@ public class GuavaLearningTests {
 
     @Test
     public void testLoadClassFromPackage()
-            throws IOException, ClassNotFoundException {
+        throws IOException, ClassNotFoundException {
         List<Class<?>> retrievedClasses = new ArrayList<>();
         final ClassLoader loader =
-                Thread.currentThread().getContextClassLoader();
+            Thread.currentThread().getContextClassLoader();
 
         for (ClassPath.ClassInfo info : ClassPath.from(loader)
-                .getTopLevelClassesRecursive("tests.card.factory.samples")) {
+            .getTopLevelClassesRecursive("tests.card.factory.samples")) {
             retrievedClasses.add(info.load());
         }
 

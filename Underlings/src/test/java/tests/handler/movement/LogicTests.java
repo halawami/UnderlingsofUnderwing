@@ -34,7 +34,7 @@ public class LogicTests {
         this.gui = EasyMock.mock(Gui.class);
         this.field = new Field(new FieldSpaceFactory());
         this.logic = new HandlerMovementLogic(this.hatchingGround, this.gui,
-                this.field);
+            this.field);
     }
 
     @Test
@@ -89,9 +89,9 @@ public class LogicTests {
         Card card = new Card();
 
         EasyMock.expect(this.hatchingGround.getUnclaimedEggs())
-                .andReturn(Collections.emptyList());
+            .andReturn(Collections.emptyList());
         EasyMock.expect(this.gui.getCard(Collections.emptyList(), 0))
-                .andReturn(card);
+            .andReturn(card);
         EasyMock.replay(this.hatchingGround, this.gui);
 
         Handler handler = new Handler(HandlerState.READY_ROOM);

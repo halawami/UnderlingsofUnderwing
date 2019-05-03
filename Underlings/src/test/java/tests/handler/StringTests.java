@@ -10,6 +10,7 @@ import underlings.handler.Handler;
 import underlings.handler.HandlerState;
 
 public class StringTests {
+
     @Test
     public void testToStringReadyRoom() {
         Handler handler = new Handler(HandlerState.READY_ROOM);

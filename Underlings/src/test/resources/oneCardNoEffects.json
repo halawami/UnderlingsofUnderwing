@@ -7,11 +7,11 @@
     "elementSpaces": [
       {
         "color": "BLUE",
-        "position" : "L3_2"
+        "position": "L3_2"
       },
       {
         "color": "RED",
-        "position" : "R3_2"
+        "position": "R3_2"
       }
     ]
   }

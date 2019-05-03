@@ -23,7 +23,7 @@ public class Handler implements Choice {
     public void moveToState(HandlerState state) {
         this.state = state;
         this.elementGiver = new ElementGiver("Handler " + state.displayString,
-                DrawChoice.RANDOM);
+            DrawChoice.RANDOM);
     }
 
     public List<HandlerState> getPossibleStates() {
@@ -37,7 +37,7 @@ public class Handler implements Choice {
     @Override
     public String toString() {
         if (this.state == HandlerState.CARD || this.state == HandlerState.FIELD
-                || this.state == HandlerState.FIELD_WHITESPACE) {
+            || this.state == HandlerState.FIELD_WHITESPACE) {
             return "Handler on " + this.location;
         }
         return "Handler " + this.state.displayString;

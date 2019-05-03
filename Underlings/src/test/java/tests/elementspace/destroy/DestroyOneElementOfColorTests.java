@@ -2,6 +2,7 @@ package tests.elementspace.destroy;
 
 import org.junit.Assert;
 import org.junit.Test;
+
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 

@@ -15,8 +15,8 @@ public class StateTests {
     @Test
     public void testReadyRoomPossibleStates() {
         this.testPossibilities(HandlerState.READY_ROOM, HandlerState.CARD,
-                HandlerState.READY_ROOM, HandlerState.FIELD,
-                HandlerState.FIELD_WHITESPACE);
+            HandlerState.READY_ROOM, HandlerState.FIELD,
+            HandlerState.FIELD_WHITESPACE);
     }
 
     @Test
@@ -42,7 +42,7 @@ public class StateTests {
     @Test
     public void testFieldPossibleStates() {
         this.testPossibilities(HandlerState.FIELD, HandlerState.FIELD,
-                HandlerState.BREAK_ROOM);
+            HandlerState.BREAK_ROOM);
     }
 
     @Test
@@ -58,7 +58,7 @@ public class StateTests {
     @Test
     public void testCardPossibleStates() {
         this.testPossibilities(HandlerState.CARD, HandlerState.CARD,
-                HandlerState.BREAK_ROOM);
+            HandlerState.BREAK_ROOM);
     }
 
     @Test
@@ -74,7 +74,7 @@ public class StateTests {
     @Test
     public void testBreakRoomPossibleStates() {
         this.testPossibilities(HandlerState.BREAK_ROOM,
-                HandlerState.READY_ROOM);
+            HandlerState.READY_ROOM);
     }
 
     @Test
@@ -85,7 +85,7 @@ public class StateTests {
     @Test
     public void testFieldWhiteSpacePossibleStates() {
         this.testPossibilities(HandlerState.FIELD_WHITESPACE,
-                HandlerState.BREAK_ROOM);
+            HandlerState.BREAK_ROOM);
     }
 
     @Test
@@ -96,7 +96,7 @@ public class StateTests {
     @Test
     public void testIncubationPossibleStates() {
         this.testPossibilities(HandlerState.INCUBATION, HandlerState.INCUBATION,
-                HandlerState.READY_ROOM);
+            HandlerState.READY_ROOM);
     }
 
     @Test
@@ -110,7 +110,7 @@ public class StateTests {
     }
 
     private void testPossibilities(HandlerState state,
-            HandlerState... possibilities) {
+        HandlerState... possibilities) {
         Handler handler = new Handler(state);
         List<HandlerState> possibleStates = handler.getPossibleStates();
         assertEquals(possibilities.length, possibleStates.size());

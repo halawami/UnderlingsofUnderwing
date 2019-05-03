@@ -20,13 +20,17 @@
       },
       {
         "effect": "CollectElementEffect",
-        "elementChoices": ["YELLOW"]
+        "elementChoices": [
+          "YELLOW"
+        ]
       }
     ],
     "wildEffects": [
       {
         "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["WHITE"]
+        "elementColors": [
+          "WHITE"
+        ]
       }
     ]
   },
@@ -51,13 +55,17 @@
       },
       {
         "effect": "CollectElementEffect",
-        "elementChoices": ["BLUE"]
+        "elementChoices": [
+          "BLUE"
+        ]
       }
     ],
     "wildEffects": [
       {
         "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["BLACK"]
+        "elementColors": [
+          "BLACK"
+        ]
       }
     ]
   },
@@ -79,13 +87,18 @@
     "domesticEffects": [
       {
         "effect": "CollectElementEffect",
-        "elementChoices": ["YELLOW", "BLUE"]
+        "elementChoices": [
+          "YELLOW",
+          "BLUE"
+        ]
       }
     ],
     "wildEffects": [
       {
         "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["GREEN"]
+        "elementColors": [
+          "GREEN"
+        ]
       }
     ]
   },
@@ -107,7 +120,9 @@
     "domesticEffects": [
       {
         "effect": "CollectElementEffect",
-        "elementChoices": ["RED"]
+        "elementChoices": [
+          "RED"
+        ]
       },
       {
         "effect": "GainOneHandlerEffect"
@@ -116,7 +131,9 @@
     "wildEffects": [
       {
         "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["WHITE"]
+        "elementColors": [
+          "WHITE"
+        ]
       }
     ]
   },
@@ -138,13 +155,18 @@
     "domesticEffects": [
       {
         "effect": "CollectElementEffect",
-        "elementChoices": ["RED", "ORANGE"]
+        "elementChoices": [
+          "RED",
+          "ORANGE"
+        ]
       }
     ],
     "wildEffects": [
       {
         "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["ORANGE"]
+        "elementColors": [
+          "ORANGE"
+        ]
       }
     ]
   },
@@ -166,13 +188,18 @@
     "domesticEffects": [
       {
         "effect": "CollectElementEffect",
-        "elementChoices": ["PURPLE", "YELLOW"]
+        "elementChoices": [
+          "PURPLE",
+          "YELLOW"
+        ]
       }
     ],
     "wildEffects": [
       {
         "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["PURPLE"]
+        "elementColors": [
+          "PURPLE"
+        ]
       }
     ]
   },
@@ -194,13 +221,18 @@
     "domesticEffects": [
       {
         "effect": "CollectElementEffect",
-        "elementChoices": ["PURPLE", "RED"]
+        "elementChoices": [
+          "PURPLE",
+          "RED"
+        ]
       }
     ],
     "wildEffects": [
       {
         "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["RED"]
+        "elementColors": [
+          "RED"
+        ]
       }
     ]
   },
@@ -222,13 +254,18 @@
     "domesticEffects": [
       {
         "effect": "CollectElementEffect",
-        "elementChoices": ["YELLOW", "RED"]
+        "elementChoices": [
+          "YELLOW",
+          "RED"
+        ]
       }
     ],
     "wildEffects": [
       {
         "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["ORANGE"]
+        "elementColors": [
+          "ORANGE"
+        ]
       }
     ]
   },
@@ -250,13 +287,18 @@
     "domesticEffects": [
       {
         "effect": "CollectElementEffect",
-        "elementChoices": ["PURPLE", "BLUE"]
+        "elementChoices": [
+          "PURPLE",
+          "BLUE"
+        ]
       }
     ],
     "wildEffects": [
       {
         "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["PURPLE"]
+        "elementColors": [
+          "PURPLE"
+        ]
       }
     ]
   },
@@ -278,13 +320,18 @@
     "domesticEffects": [
       {
         "effect": "CollectElementEffect",
-        "elementChoices": ["BLUE", "GREEN"]
+        "elementChoices": [
+          "BLUE",
+          "GREEN"
+        ]
       }
     ],
     "wildEffects": [
       {
         "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["BLUE"]
+        "elementColors": [
+          "BLUE"
+        ]
       }
     ]
   },
@@ -306,13 +353,18 @@
     "domesticEffects": [
       {
         "effect": "CollectElementEffect",
-        "elementChoices": ["YELLOW", "ORANGE"]
+        "elementChoices": [
+          "YELLOW",
+          "ORANGE"
+        ]
       }
     ],
     "wildEffects": [
       {
         "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["YELLOW"]
+        "elementColors": [
+          "YELLOW"
+        ]
       }
     ]
   },
@@ -334,13 +386,18 @@
     "domesticEffects": [
       {
         "effect": "CollectElementEffect",
-        "elementChoices": ["BLUE", "RED"]
+        "elementChoices": [
+          "BLUE",
+          "RED"
+        ]
       }
     ],
     "wildEffects": [
       {
         "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["PURPLE"]
+        "elementColors": [
+          "PURPLE"
+        ]
       }
     ]
   },
@@ -362,13 +419,18 @@
     "domesticEffects": [
       {
         "effect": "CollectElementEffect",
-        "elementChoices": ["BLUE", "ORANGE"]
+        "elementChoices": [
+          "BLUE",
+          "ORANGE"
+        ]
       }
     ],
     "wildEffects": [
       {
         "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["ORANGE"]
+        "elementColors": [
+          "ORANGE"
+        ]
       }
     ]
   },
@@ -390,13 +452,18 @@
     "domesticEffects": [
       {
         "effect": "CollectElementEffect",
-        "elementChoices": ["RED", "GREEN"]
+        "elementChoices": [
+          "RED",
+          "GREEN"
+        ]
       }
     ],
     "wildEffects": [
       {
         "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["GREEN"]
+        "elementColors": [
+          "GREEN"
+        ]
       }
     ]
   },
@@ -418,13 +485,18 @@
     "domesticEffects": [
       {
         "effect": "CollectElementEffect",
-        "elementChoices": ["YELLOW", "GREEN"]
+        "elementChoices": [
+          "YELLOW",
+          "GREEN"
+        ]
       }
     ],
     "wildEffects": [
       {
         "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["GREEN"]
+        "elementColors": [
+          "GREEN"
+        ]
       }
     ]
   },
@@ -455,11 +527,15 @@
     "wildEffects": [
       {
         "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["GREEN"]
+        "elementColors": [
+          "GREEN"
+        ]
       },
-	  {
+      {
         "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["BLUE"]
+        "elementColors": [
+          "BLUE"
+        ]
       }
     ]
   },
@@ -485,19 +561,33 @@
     "domesticEffects": [
       {
         "effect": "GainOneHandlerEffect"
-      },{
+      },
+      {
         "effect": "CollectElementEffect",
-        "elementChoices": ["YELLOW", "GREEN", "BLUE", "RED", "PURPLE", "WHITE", "BLACK", "ORANGE"]
+        "elementChoices": [
+          "YELLOW",
+          "GREEN",
+          "BLUE",
+          "RED",
+          "PURPLE",
+          "WHITE",
+          "BLACK",
+          "ORANGE"
+        ]
       }
     ],
     "wildEffects": [
       {
         "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["WHITE"]
+        "elementColors": [
+          "WHITE"
+        ]
       },
-	  {
+      {
         "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["RED"]
+        "elementColors": [
+          "RED"
+        ]
       }
     ]
   },
@@ -523,19 +613,33 @@
     "domesticEffects": [
       {
         "effect": "GainOneHandlerEffect"
-      },{
+      },
+      {
         "effect": "CollectElementEffect",
-        "elementChoices": ["YELLOW", "GREEN", "BLUE", "RED", "PURPLE", "WHITE", "BLACK", "ORANGE"]
+        "elementChoices": [
+          "YELLOW",
+          "GREEN",
+          "BLUE",
+          "RED",
+          "PURPLE",
+          "WHITE",
+          "BLACK",
+          "ORANGE"
+        ]
       }
     ],
     "wildEffects": [
       {
         "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["WHITE"]
+        "elementColors": [
+          "WHITE"
+        ]
       },
-	  {
+      {
         "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["YELLOW"]
+        "elementColors": [
+          "YELLOW"
+        ]
       }
     ]
   },
@@ -566,11 +670,15 @@
     "wildEffects": [
       {
         "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["PURPLE"]
+        "elementColors": [
+          "PURPLE"
+        ]
       },
-	  {
+      {
         "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["PURPLE"]
+        "elementColors": [
+          "PURPLE"
+        ]
       }
     ]
   },
@@ -596,19 +704,33 @@
     "domesticEffects": [
       {
         "effect": "GainOneHandlerEffect"
-      },{
+      },
+      {
         "effect": "CollectElementEffect",
-        "elementChoices": ["YELLOW", "GREEN", "BLUE", "RED", "PURPLE", "WHITE", "BLACK", "ORANGE"]
+        "elementChoices": [
+          "YELLOW",
+          "GREEN",
+          "BLUE",
+          "RED",
+          "PURPLE",
+          "WHITE",
+          "BLACK",
+          "ORANGE"
+        ]
       }
     ],
     "wildEffects": [
       {
         "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["BLUE"]
+        "elementColors": [
+          "BLUE"
+        ]
       },
-	  {
+      {
         "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["BLACK"]
+        "elementColors": [
+          "BLACK"
+        ]
       }
     ]
   },
@@ -639,11 +761,15 @@
     "wildEffects": [
       {
         "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["BLUE"]
+        "elementColors": [
+          "BLUE"
+        ]
       },
-	  {
+      {
         "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["GREEN"]
+        "elementColors": [
+          "GREEN"
+        ]
       }
     ]
   },
@@ -674,11 +800,15 @@
     "wildEffects": [
       {
         "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["ORANGE"]
+        "elementColors": [
+          "ORANGE"
+        ]
       },
-	  {
+      {
         "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["RED"]
+        "elementColors": [
+          "RED"
+        ]
       }
     ]
   },
@@ -709,11 +839,15 @@
     "wildEffects": [
       {
         "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["PURPLE"]
+        "elementColors": [
+          "PURPLE"
+        ]
       },
-	  {
+      {
         "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["RED"]
+        "elementColors": [
+          "RED"
+        ]
       }
     ]
   },
@@ -744,11 +878,15 @@
     "wildEffects": [
       {
         "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["GREEN"]
+        "elementColors": [
+          "GREEN"
+        ]
       },
-	  {
+      {
         "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["GREEN"]
+        "elementColors": [
+          "GREEN"
+        ]
       }
     ]
   },
@@ -779,11 +917,15 @@
     "wildEffects": [
       {
         "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["ORANGE"]
+        "elementColors": [
+          "ORANGE"
+        ]
       },
-	  {
+      {
         "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["ORANGE"]
+        "elementColors": [
+          "ORANGE"
+        ]
       }
     ]
   },
@@ -814,11 +956,15 @@
     "wildEffects": [
       {
         "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["YELLOW"]
+        "elementColors": [
+          "YELLOW"
+        ]
       },
-	  {
+      {
         "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["ORANGE"]
+        "elementColors": [
+          "ORANGE"
+        ]
       }
     ]
   },
@@ -849,11 +995,15 @@
     "wildEffects": [
       {
         "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["RED"]
+        "elementColors": [
+          "RED"
+        ]
       },
-	  {
+      {
         "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["PURPLE"]
+        "elementColors": [
+          "PURPLE"
+        ]
       }
     ]
   },
@@ -867,7 +1017,7 @@
         "color": "YELLOW",
         "position": "L3_1"
       },
-	  {
+      {
         "color": "ORANGE",
         "position": "L3_3"
       },
@@ -883,13 +1033,19 @@
     "domesticEffects": [
       {
         "effect": "CollectElementEffect",
-        "elementChoices": ["GREEN", "RED"]
+        "elementChoices": [
+          "GREEN",
+          "RED"
+        ]
       }
     ],
     "wildEffects": [
       {
         "effect": "DestroyAllElementsOnAllAdjacentEggsEffect",
-        "elementColors" : ["RED", "GREEN"]
+        "elementColors": [
+          "RED",
+          "GREEN"
+        ]
       }
     ]
   },
@@ -899,7 +1055,7 @@
     "temperature": "COOL",
     "family": "HARMONIC",
     "elementSpaces": [
-	  {
+      {
         "color": "GREEN",
         "position": "L3_2"
       },
@@ -915,13 +1071,21 @@
     "domesticEffects": [
       {
         "effect": "DestroyUpToTwoElementsOnAnyEggInPlayEffect",
-        "elementChoices": ["RED", "YELLOW", "ORANGE"]
+        "elementChoices": [
+          "RED",
+          "YELLOW",
+          "ORANGE"
+        ]
       }
     ],
     "wildEffects": [
       {
         "effect": "DestroyAllElementsOnAllAdjacentEggsEffect",
-        "elementColors" : ["RED", "YELLOW", "ORANGE"]
+        "elementColors": [
+          "RED",
+          "YELLOW",
+          "ORANGE"
+        ]
       }
     ]
   },
@@ -931,11 +1095,11 @@
     "temperature": "NEUTRAL",
     "family": "TETRADIC",
     "elementSpaces": [
-	  {
+      {
         "color": "RED",
         "position": "L3_1"
       },
-	  {
+      {
         "color": "YELLOW",
         "position": "L3_3"
       },
@@ -951,13 +1115,19 @@
     "domesticEffects": [
       {
         "effect": "CollectElementEffect",
-        "elementChoices": ["BLUE", "ORANGE"]
+        "elementChoices": [
+          "BLUE",
+          "ORANGE"
+        ]
       }
     ],
     "wildEffects": [
       {
         "effect": "DestroyAllElementsOnAllAdjacentEggsEffect",
-        "elementColors" : ["BLUE", "ORANGE"]
+        "elementColors": [
+          "BLUE",
+          "ORANGE"
+        ]
       }
     ]
   },
@@ -967,11 +1137,11 @@
     "temperature": "NEUTRAL",
     "family": "MONOCHROMATIC",
     "elementSpaces": [
-	  {
+      {
         "color": "RED",
         "position": "L3_1"
       },
-	  {
+      {
         "color": "ORANGE",
         "position": "L3_3"
       },
@@ -987,13 +1157,19 @@
     "domesticEffects": [
       {
         "effect": "CollectElementEffect",
-        "elementChoices": ["PURPLE", "YELLOW"]
+        "elementChoices": [
+          "PURPLE",
+          "YELLOW"
+        ]
       }
     ],
     "wildEffects": [
       {
         "effect": "DestroyAllElementsOnAllAdjacentEggsEffect",
-        "elementColors" : ["YELLOW", "PURPLE"]
+        "elementColors": [
+          "YELLOW",
+          "PURPLE"
+        ]
       }
     ]
   },
@@ -1003,7 +1179,7 @@
     "temperature": "WARM",
     "family": "HARMONIC",
     "elementSpaces": [
-	  {
+      {
         "color": "RED",
         "position": "L3_2"
       },
@@ -1019,13 +1195,21 @@
     "domesticEffects": [
       {
         "effect": "DestroyUpToTwoElementsOnAnyEggInPlayEffect",
-        "elementChoices": ["PURPLE", "GREEN", "BLUE"]
+        "elementChoices": [
+          "PURPLE",
+          "GREEN",
+          "BLUE"
+        ]
       }
     ],
     "wildEffects": [
       {
         "effect": "DestroyAllElementsOnAllAdjacentEggsEffect",
-        "elementColors" : ["PURPLE", "GREEN", "BLUE"]
+        "elementColors": [
+          "PURPLE",
+          "GREEN",
+          "BLUE"
+        ]
       }
     ]
   },
@@ -1035,11 +1219,11 @@
     "temperature": "NEUTRAL",
     "family": "TRIADIC",
     "elementSpaces": [
-	  {
+      {
         "color": "GREEN",
         "position": "L3_1"
       },
-	  {
+      {
         "color": "PURPLE",
         "position": "L3_3"
       },
@@ -1056,7 +1240,9 @@
     "wildEffects": [
       {
         "effect": "HatchAllUnclaimedAdjacentEggsEffect",
-        "dragonFamilies" : ["TRIADIC"]
+        "dragonFamilies": [
+          "TRIADIC"
+        ]
       }
     ]
   },
@@ -1066,11 +1252,11 @@
     "temperature": "NEUTRAL",
     "family": "TRIADIC",
     "elementSpaces": [
-	  {
+      {
         "color": "RED",
         "position": "L3_1"
       },
-	  {
+      {
         "color": "YELLOW",
         "position": "L3_3"
       },
@@ -1082,13 +1268,19 @@
     "domesticEffects": [
       {
         "effect": "CollectElementEffect",
-        "elementChoices": ["RED", "YELLOW", "BLUE"]
+        "elementChoices": [
+          "RED",
+          "YELLOW",
+          "BLUE"
+        ]
       }
     ],
     "wildEffects": [
       {
         "effect": "HatchAllUnclaimedAdjacentEggsEffect",
-        "dragonFamilies" : ["TRIADIC"]
+        "dragonFamilies": [
+          "TRIADIC"
+        ]
       }
     ]
   },
@@ -1098,7 +1290,7 @@
     "temperature": "WARM",
     "family": "COMPLEMENTARY",
     "elementSpaces": [
-	  {
+      {
         "color": "BLUE",
         "position": "L3_2"
       },
@@ -1119,7 +1311,9 @@
     "wildEffects": [
       {
         "effect": "DestroyOneElementOnAllAdjacentEggsEffect",
-        "elementColors" : ["PURPLE"]
+        "elementColors": [
+          "PURPLE"
+        ]
       }
     ]
   },
@@ -1129,7 +1323,7 @@
     "temperature": "NEUTRAL",
     "family": "COMPLEMENTARY",
     "elementSpaces": [
-	  {
+      {
         "color": "YELLOW",
         "position": "L3_2"
       },
@@ -1150,7 +1344,9 @@
     "wildEffects": [
       {
         "effect": "DestroyOneElementOnAllAdjacentEggsEffect",
-        "elementColors" : ["ORANGE"]
+        "elementColors": [
+          "ORANGE"
+        ]
       }
     ]
   },
@@ -1160,15 +1356,15 @@
     "temperature": "NEUTRAL",
     "family": "TRIADIC",
     "elementSpaces": [
-	  {
+      {
         "color": "RED",
         "position": "L3_1"
       },
-	  {
+      {
         "color": "YELLOW",
         "position": "L3_2"
       },
-	  {
+      {
         "color": "YELLOW",
         "position": "L3_3"
       },
@@ -1176,7 +1372,7 @@
         "color": "RED",
         "position": "R3_1"
       },
-	  {
+      {
         "color": "BLUE",
         "position": "R3_2"
       },
@@ -1188,7 +1384,11 @@
     "domesticEffects": [
       {
         "effect": "CollectElementEffect",
-        "elementChoices": ["RED", "YELLOW", "BLUE"]
+        "elementChoices": [
+          "RED",
+          "YELLOW",
+          "BLUE"
+        ]
       },
       {
         "effect": "GainOneHandlerEffect"
@@ -1197,7 +1397,11 @@
     "wildEffects": [
       {
         "effect": "destroyOneOfEachElementOnAllAdjacentEggs",
-        "elementColors" : ["RED", "YELLOW", "BLUE"]
+        "elementColors": [
+          "RED",
+          "YELLOW",
+          "BLUE"
+        ]
       }
     ]
   },
@@ -1207,7 +1411,7 @@
     "temperature": "NEUTRAL",
     "family": "COMPLEMENTARY",
     "elementSpaces": [
-	  {
+      {
         "color": "RED",
         "position": "L3_2"
       },
@@ -1228,7 +1432,9 @@
     "wildEffects": [
       {
         "effect": "DestroyOneElementOnAllAdjacentEggsEffect",
-        "elementColors" : ["GREEN"]
+        "elementColors": [
+          "GREEN"
+        ]
       }
     ]
   },
@@ -1238,11 +1444,11 @@
     "temperature": "NEUTRAL",
     "family": "TRIADIC",
     "elementSpaces": [
-	  {
+      {
         "color": "GREEN",
         "position": "L3_1"
       },
-	  {
+      {
         "color": "PURPLE",
         "position": "L3_3"
       },
@@ -1258,13 +1464,21 @@
     "domesticEffects": [
       {
         "effect": "CollectElementEffect",
-        "elementChoices": ["PURPLE", "ORANGE", "GREEN"]
+        "elementChoices": [
+          "PURPLE",
+          "ORANGE",
+          "GREEN"
+        ]
       }
     ],
     "wildEffects": [
       {
         "effect": "DestroyOneElementOnAllAdjacentEggsEffect",
-        "elementColors" : ["PURPLE", "ORANGE", "GREEN"]
+        "elementColors": [
+          "PURPLE",
+          "ORANGE",
+          "GREEN"
+        ]
       }
     ]
   },
@@ -1274,11 +1488,11 @@
     "temperature": "COOL",
     "family": "TERTIARY",
     "elementSpaces": [
-	  {
+      {
         "color": "BLUE",
         "position": "L3_1"
       },
-	  {
+      {
         "color": "BLACK",
         "position": "L3_3"
       },
@@ -1294,13 +1508,17 @@
     "domesticEffects": [
       {
         "effect": "CollectElementEachPhaseOneEffect",
-        "elementChoices": ["BLUE"]
+        "elementChoices": [
+          "BLUE"
+        ]
       }
     ],
     "wildEffects": [
       {
         "effect": "HatchAllUnclaimedAdjacentEggsEffect",
-        "dragonFamilies" : ["TERTIARY"]
+        "dragonFamilies": [
+          "TERTIARY"
+        ]
       }
     ]
   },
@@ -1310,11 +1528,11 @@
     "temperature": "COOL",
     "family": "TERTIARY",
     "elementSpaces": [
-	  {
+      {
         "color": "BLUE",
         "position": "L3_1"
       },
-	  {
+      {
         "color": "BLACK",
         "position": "L3_3"
       },
@@ -1330,13 +1548,17 @@
     "domesticEffects": [
       {
         "effect": "CollectElementEachPhaseOneEffect",
-        "elementChoices": ["BLUE"]
+        "elementChoices": [
+          "BLUE"
+        ]
       }
     ],
     "wildEffects": [
       {
         "effect": "HatchAllUnclaimedAdjacentEggsEffect",
-        "dragonFamilies" : ["TERTIARY"]
+        "dragonFamilies": [
+          "TERTIARY"
+        ]
       }
     ]
   },
@@ -1346,11 +1568,11 @@
     "temperature": "WARM",
     "family": "MONOCHROMATIC",
     "elementSpaces": [
-	  {
+      {
         "color": "YELLOW",
         "position": "L3_1"
       },
-	  {
+      {
         "color": "WHITE",
         "position": "L3_3"
       },
@@ -1369,13 +1591,17 @@
       },
       {
         "effect": "CollectElementEffect",
-        "elementChoices": ["WHITE"]
+        "elementChoices": [
+          "WHITE"
+        ]
       }
     ],
     "wildEffects": [
       {
         "effect": "HatchAllUnclaimedAdjacentEggsEffect",
-        "dragonFamilies" : ["MONOCHROMATIC"]
+        "dragonFamilies": [
+          "MONOCHROMATIC"
+        ]
       }
     ]
   },
@@ -1385,15 +1611,15 @@
     "temperature": "WARM",
     "family": "HARMONIC",
     "elementSpaces": [
-	  {
+      {
         "color": "RED",
         "position": "L3_1"
       },
-	  {
+      {
         "color": "ORANGE",
         "position": "L3_2"
       },
-	  {
+      {
         "color": "YELLOW",
         "position": "L3_3"
       },
@@ -1401,7 +1627,7 @@
         "color": "RED",
         "position": "R3_1"
       },
-	  {
+      {
         "color": "ORANGE",
         "position": "L3_3"
       },
@@ -1413,13 +1639,25 @@
     "domesticEffects": [
       {
         "effect": "collectUpToTwoElementsFromAnyEggInPlayEffect",
-        "elementChoices": ["PURPLE", "GREEN", "BLUE"]
+        "elementChoices": [
+          "PURPLE",
+          "GREEN",
+          "BLUE"
+        ]
       }
     ],
     "wildEffects": [
       {
         "effect": "HatchAllUnclaimedAdjacentEggsEffect",
-        "dragonFamilies" : ["TETRADIC", "MONOCHROMATIC", "COMPLEMENTARY", "HARMONIC", "TERTIARY", "LEGENDARY", "TRIADIC"]
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
       }
     ]
   },
@@ -1429,11 +1667,11 @@
     "temperature": "WARM",
     "family": "MONOCHROMATIC",
     "elementSpaces": [
-	  {
+      {
         "color": "RED",
         "position": "L3_1"
       },
-	  {
+      {
         "color": "WHITE",
         "position": "L3_3"
       },
@@ -1452,13 +1690,17 @@
       },
       {
         "effect": "CollectElementEffect",
-        "elementChoices": ["WHITE"]
+        "elementChoices": [
+          "WHITE"
+        ]
       }
     ],
     "wildEffects": [
       {
         "effect": "HatchAllUnclaimedAdjacentEggsEffect",
-        "dragonFamilies" : ["MONOCHROMATIC"]
+        "dragonFamilies": [
+          "MONOCHROMATIC"
+        ]
       }
     ]
   },
@@ -1468,11 +1710,11 @@
     "temperature": "COOL",
     "family": "TERTIARY",
     "elementSpaces": [
-	  {
+      {
         "color": "YELLOW",
         "position": "L3_1"
       },
-	  {
+      {
         "color": "WHITE",
         "position": "L3_3"
       },
@@ -1488,13 +1730,17 @@
     "domesticEffects": [
       {
         "effect": "CollectElementEachPhaseOneEffect",
-        "elementChoices": ["YELLOW"]
+        "elementChoices": [
+          "YELLOW"
+        ]
       }
     ],
     "wildEffects": [
       {
         "effect": "HatchAllUnclaimedAdjacentEggsEffect",
-        "dragonFamilies" : ["TERTIARY"]
+        "dragonFamilies": [
+          "TERTIARY"
+        ]
       }
     ]
   },
@@ -1504,11 +1750,11 @@
     "temperature": "WARM",
     "family": "TERTIARY",
     "elementSpaces": [
-	  {
+      {
         "color": "YELLOW",
         "position": "L3_1"
       },
-	  {
+      {
         "color": "WHITE",
         "position": "L3_3"
       },
@@ -1524,13 +1770,17 @@
     "domesticEffects": [
       {
         "effect": "CollectElementEachPhaseOneEffect",
-        "elementChoices": ["YELLOW"]
+        "elementChoices": [
+          "YELLOW"
+        ]
       }
     ],
     "wildEffects": [
       {
         "effect": "HatchAllUnclaimedAdjacentEggsEffect",
-        "dragonFamilies" : ["TERTIARY"]
+        "dragonFamilies": [
+          "TERTIARY"
+        ]
       }
     ]
   },
@@ -1540,11 +1790,11 @@
     "temperature": "COOL",
     "family": "MONOCHROMATIC",
     "elementSpaces": [
-	  {
+      {
         "color": "BLUE",
         "position": "L3_1"
       },
-	  {
+      {
         "color": "BLACK",
         "position": "L3_3"
       },
@@ -1563,13 +1813,17 @@
       },
       {
         "effect": "CollectElementEffect",
-        "elementChoices": ["BLACK"]
+        "elementChoices": [
+          "BLACK"
+        ]
       }
     ],
     "wildEffects": [
       {
         "effect": "HatchAllUnclaimedAdjacentEggsEffect",
-        "dragonFamilies" : ["MONOCHROMATIC"]
+        "dragonFamilies": [
+          "MONOCHROMATIC"
+        ]
       }
     ]
   },
@@ -1579,11 +1833,11 @@
     "temperature": "NEUTRAL",
     "family": "COMPLEMENTARY",
     "elementSpaces": [
-	  {
+      {
         "color": "YELLOW",
         "position": "L3_1"
       },
-	  {
+      {
         "color": "BLACK",
         "position": "L3_3"
       },
@@ -1599,13 +1853,17 @@
     "domesticEffects": [
       {
         "effect": "CollectElementEachPhaseOneEffect",
-        "elementChoices": ["YELLOW"]
+        "elementChoices": [
+          "YELLOW"
+        ]
       }
     ],
     "wildEffects": [
       {
         "effect": "HatchAllUnclaimedAdjacentEggsEffect",
-        "dragonFamilies" : ["COMPLEMENTARY"]
+        "dragonFamilies": [
+          "COMPLEMENTARY"
+        ]
       }
     ]
   },
@@ -1615,19 +1873,19 @@
     "temperature": "NEUTRAL",
     "family": "TRIADIC",
     "elementSpaces": [
-	  {
+      {
         "color": "RED",
         "position": "L3_1"
       },
-	  {
+      {
         "color": "RED",
         "position": "L3_2"
       },
-	  {
+      {
         "color": "RED",
         "position": "L3_3"
       },
-	  {
+      {
         "color": "YELLOW",
         "position": "R3_1"
       },
@@ -1643,13 +1901,19 @@
     "domesticEffects": [
       {
         "effect": "CollectOneElementFromAnyEggInPlayEffect",
-        "elementChoices": ["RED"]
+        "elementChoices": [
+          "RED"
+        ]
       }
     ],
     "wildEffects": [
       {
         "effect": "AddALLElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["RED", "BLUE", "YELLOW"]
+        "elementColors": [
+          "RED",
+          "BLUE",
+          "YELLOW"
+        ]
       }
     ]
   },
@@ -1659,19 +1923,19 @@
     "temperature": "NEUTRAL",
     "family": "TRIADIC",
     "elementSpaces": [
-	  {
+      {
         "color": "YELLOW",
         "position": "L3_1"
       },
-	  {
+      {
         "color": "YELLOW",
         "position": "L3_2"
       },
-	  {
+      {
         "color": "YELLOW",
         "position": "L3_3"
       },
-	  {
+      {
         "color": "RED",
         "position": "R3_1"
       },
@@ -1687,13 +1951,19 @@
     "domesticEffects": [
       {
         "effect": "CollectOneElementFromAnyEggInPlayEffect",
-        "elementChoices": ["YELLOW"]
+        "elementChoices": [
+          "YELLOW"
+        ]
       }
     ],
     "wildEffects": [
       {
         "effect": "AddALLElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["RED", "BLUE", "YELLOW"]
+        "elementColors": [
+          "RED",
+          "BLUE",
+          "YELLOW"
+        ]
       }
     ]
   },
@@ -1703,19 +1973,19 @@
     "temperature": "NEUTRAL",
     "family": "TRIADIC",
     "elementSpaces": [
-	  {
+      {
         "color": "BLUE",
         "position": "L3_1"
       },
-	  {
+      {
         "color": "BLUE",
         "position": "L3_2"
       },
-	  {
+      {
         "color": "BLUE",
         "position": "L3_3"
       },
-	  {
+      {
         "color": "RED",
         "position": "R3_1"
       },
@@ -1731,13 +2001,19 @@
     "domesticEffects": [
       {
         "effect": "CollectOneElementFromAnyEggInPlayEffect",
-        "elementChoices": ["BLUE"]
+        "elementChoices": [
+          "BLUE"
+        ]
       }
     ],
     "wildEffects": [
       {
         "effect": "AddALLElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["RED", "BLUE", "YELLOW"]
+        "elementColors": [
+          "RED",
+          "BLUE",
+          "YELLOW"
+        ]
       }
     ]
   },
@@ -1747,19 +2023,19 @@
     "temperature": "COOL",
     "family": "TERTIARY",
     "elementSpaces": [
-	  {
+      {
         "color": "WHITE",
         "position": "L3_1"
       },
-	  {
+      {
         "color": "YELLOW",
         "position": "L3_2"
       },
-	  {
+      {
         "color": "WHITE",
         "position": "L3_3"
       },
-	  {
+      {
         "color": "GREEN",
         "position": "R3_1"
       },
@@ -1776,7 +2052,15 @@
     "wildEffects": [
       {
         "effect": "HatchAllUnclaimedAdjacentEggsEffect",
-        "dragonFamilies" : ["TETRADIC", "MONOCHROMATIC", "COMPLEMENTARY", "HARMONIC", "TERTIARY", "LEGENDARY", "TRIADIC"]
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
       }
     ]
   },
@@ -1786,23 +2070,23 @@
     "temperature": "WARM",
     "family": "LEGENDARY",
     "elementSpaces": [
-	  {
+      {
         "color": "BLACK",
         "position": "L3_1"
       },
-	  {
+      {
         "color": "WHITE",
         "position": "L3_2"
       },
-	  {
+      {
         "color": "BLACK",
         "position": "L3_3"
       },
-	  {
+      {
         "color": "YELLOW",
         "position": "R3_1"
       },
-	  {
+      {
         "color": "YELLOW",
         "position": "R3_2"
       },
@@ -1828,31 +2112,31 @@
     "temperature": "COOL",
     "family": "LEGENDARY",
     "elementSpaces": [
-	  {
+      {
         "color": "GREEN",
         "position": "L4_1"
       },
-	  {
+      {
         "color": "GREEN",
         "position": "L4_2"
       },
-	  {
+      {
         "color": "GREEN",
         "position": "L4_3"
       },
-	  {
+      {
         "color": "BLACK",
         "position": "L4_4"
       },
-	  {
+      {
         "color": "PURPLE",
         "position": "R4_1"
       },
-	  {
+      {
         "color": "PURPLE",
         "position": "R4_2"
       },
-	  {
+      {
         "color": "PURPLE",
         "position": "R4_3"
       },
@@ -1872,5 +2156,4 @@
       }
     ]
   }
-
 ]

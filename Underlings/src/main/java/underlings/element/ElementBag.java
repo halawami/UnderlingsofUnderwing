@@ -46,7 +46,7 @@ public class ElementBag {
 
         for (ElementColor color : colors) {
             for (int numberRemaining = 0; numberRemaining < this.elementCount
-                    .get(color); numberRemaining++) {
+                .get(color); numberRemaining++) {
                 possibilities.add(color);
             }
         }
@@ -54,9 +54,8 @@ public class ElementBag {
         int selectionNumber = this.random.nextInt(possibilities.size());
         ElementColor selectedElement = possibilities.get(selectionNumber);
 
-
         this.elementCount.put(selectedElement,
-                this.elementCount.get(selectedElement) - 1);
+            this.elementCount.get(selectedElement) - 1);
 
         return this.elementFactory.createElement(selectedElement);
     }
@@ -67,28 +66,28 @@ public class ElementBag {
 
     public Element drawRandomElement() {
         return this.drawElementFromList(ElementColor.BLUE, ElementColor.RED,
-                ElementColor.YELLOW, ElementColor.PURPLE, ElementColor.GREEN,
-                ElementColor.ORANGE, ElementColor.WHITE, ElementColor.BLACK);
+            ElementColor.YELLOW, ElementColor.PURPLE, ElementColor.GREEN,
+            ElementColor.ORANGE, ElementColor.WHITE, ElementColor.BLACK);
     }
 
     public Element drawRandomPrimaryElement() {
         return this.drawElementFromList(ElementColor.BLUE, ElementColor.RED,
-                ElementColor.YELLOW);
+            ElementColor.YELLOW);
     }
 
     public Element drawRandomSecondayElement() {
         return this.drawElementFromList(ElementColor.PURPLE, ElementColor.GREEN,
-                ElementColor.ORANGE);
+            ElementColor.ORANGE);
     }
 
     public Element drawCoolElement() {
         return this.drawElementFromList(ElementColor.BLUE, ElementColor.GREEN,
-                ElementColor.PURPLE);
+            ElementColor.PURPLE);
     }
 
     public Element drawWarmElement() {
         return this.drawElementFromList(ElementColor.RED, ElementColor.YELLOW,
-                ElementColor.ORANGE);
+            ElementColor.ORANGE);
     }
 
     public Element drawElement(DrawChoice drawChoice) {

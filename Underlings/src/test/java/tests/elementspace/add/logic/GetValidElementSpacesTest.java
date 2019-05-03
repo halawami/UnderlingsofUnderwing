@@ -1,17 +1,18 @@
 package tests.elementspace.add.logic;
 
+import static org.junit.Assert.assertEquals;
+
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.card.Card;
 import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
-
-import java.util.Arrays;
-import java.util.List;
-
-import static org.junit.Assert.assertEquals;
 
 public class GetValidElementSpacesTest {
 
@@ -38,7 +39,7 @@ public class GetValidElementSpacesTest {
 
         ElementSpaceLogic logic = new ElementSpaceLogic();
         List<ElementSpace> actual =
-                logic.getPlayableSpaces(testCard, Arrays.asList());
+            logic.getPlayableSpaces(testCard, Arrays.asList());
         assertEquals(Arrays.asList(), actual);
     }
 
@@ -51,7 +52,7 @@ public class GetValidElementSpacesTest {
 
         ElementSpaceLogic logic = new ElementSpaceLogic();
         List<ElementSpace> actual =
-                logic.getPlayableSpaces(testCard, Arrays.asList(redElement));
+            logic.getPlayableSpaces(testCard, Arrays.asList(redElement));
         assertEquals(Arrays.asList(redSpace), actual);
     }
 
@@ -64,7 +65,7 @@ public class GetValidElementSpacesTest {
 
         ElementSpaceLogic logic = new ElementSpaceLogic();
         List<ElementSpace> actual =
-                logic.getPlayableSpaces(testCard, Arrays.asList(blueElement));
+            logic.getPlayableSpaces(testCard, Arrays.asList(blueElement));
         assertEquals(Arrays.asList(blueSpace), actual);
     }
 
@@ -77,7 +78,7 @@ public class GetValidElementSpacesTest {
 
         ElementSpaceLogic logic = new ElementSpaceLogic();
         List<ElementSpace> actual = logic.getPlayableSpaces(testCard,
-                Arrays.asList(blueElement, redElement));
+            Arrays.asList(blueElement, redElement));
         assertEquals(Arrays.asList(redSpace, blueSpace), actual);
     }
 
@@ -96,7 +97,7 @@ public class GetValidElementSpacesTest {
         ElementSpaceLogic logic = new ElementSpaceLogic();
         List<ElementSpace> expected = Arrays.asList(space2, space4);
         List<ElementSpace> actual = logic.getPlayableSpaces(testCard,
-                Arrays.asList(blueElement, new Element(ElementColor.WHITE)));
+            Arrays.asList(blueElement, new Element(ElementColor.WHITE)));
         assertEquals(expected, actual);
     }
 }

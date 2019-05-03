@@ -16,8 +16,8 @@ public class FieldSpaceFactory {
     private static final DrawChoice BLACK = DrawChoice.BLACK;
 
     private static final DrawChoice[] fieldColors = {RED, BLUE, YELLOW, ORANGE,
-            BLUE, RED, YELLOW, PURPLE, YELLOW, BLUE, RED, BLACK, ORANGE, RED,
-            BLUE, YELLOW, GREEN, BLUE, RED, YELLOW, PURPLE, GREEN};
+        BLUE, RED, YELLOW, PURPLE, YELLOW, BLUE, RED, BLACK, ORANGE, RED,
+        BLUE, YELLOW, GREEN, BLUE, RED, YELLOW, PURPLE, GREEN};
 
     public FieldSpace createFieldSpace(DrawChoice color) {
         return new FieldSpace(color);

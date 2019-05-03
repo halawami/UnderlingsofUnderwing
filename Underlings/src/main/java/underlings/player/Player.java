@@ -26,7 +26,7 @@ public class Player {
     public ElementSpaceLogic elementSpaceLogic;
 
     public Player(int maxHandlers, HandlerFactory handlerFactory,
-            int playerId) {
+        int playerId) {
         this.handlers = new ArrayList<>();
         this.elements = new ArrayList<>();
         this.hatchedCards = new ArrayList<>();

@@ -15,7 +15,7 @@ public class PlayerFactory {
 
     public Player createPlayer(int maxHandlers) {
         Player player = new Player(maxHandlers, this.handlerFactory,
-                ++this.playerCount);
+            ++this.playerCount);
         player.elementSpaceLogic = new ElementSpaceLogic();
         return player;
     }

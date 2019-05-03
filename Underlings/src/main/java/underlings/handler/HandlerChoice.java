@@ -12,7 +12,7 @@ public enum HandlerChoice implements Choice {
 
     private HandlerState state;
     private static HashMap<HandlerState, List<HandlerChoice>> movementChoices =
-            new HashMap<>();
+        new HashMap<>();
 
     static {
         canMoveTo(HandlerState.READY_ROOM, STAY, FIELD_WHITESPACE, FIELD, CARD);
@@ -31,7 +31,7 @@ public enum HandlerChoice implements Choice {
 
 
     private static void canMoveTo(HandlerState handlerState,
-            HandlerChoice... choices) {
+        HandlerChoice... choices) {
         movementChoices.put(handlerState, Arrays.asList(choices));
     }
 

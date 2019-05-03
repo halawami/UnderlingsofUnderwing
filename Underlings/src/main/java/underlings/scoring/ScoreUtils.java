@@ -50,8 +50,8 @@ public class ScoreUtils {
                 score += (warmestPlayers.contains(player)) ? 15 : 0;
                 score += (coolestPlayers.contains(player)) ? 15 : 0;
                 score += (this.calculateTemperature(player.hatchedCards)) == 0
-                        ? 20
-                        : 0;
+                    ? 20
+                    : 0;
             }
 
             score += this.calculatePoints(player.hatchedCards);
@@ -78,7 +78,7 @@ public class ScoreUtils {
         for (Card card : cards) {
             Temperature temp = card.temperature;
             balance += (temp == Temperature.WARM) ? 1
-                    : (temp == Temperature.COOL) ? -1 : 0;
+                : (temp == Temperature.COOL) ? -1 : 0;
         }
 
         return balance;

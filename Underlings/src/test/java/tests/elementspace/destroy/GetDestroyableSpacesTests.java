@@ -1,13 +1,14 @@
 package tests.elementspace.destroy;
 
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Test;
+
 import underlings.card.Card;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
-
-import java.util.List;
 
 public class GetDestroyableSpacesTests {
 

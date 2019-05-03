@@ -12,7 +12,7 @@ public class HandlerMovementLogic {
     private Field field;
 
     public HandlerMovementLogic(HatchingGround hatchingGround, Gui gui,
-            Field field) {
+        Field field) {
         this.hatchingGround = hatchingGround;
         this.gui = gui;
         this.field = field;
@@ -30,7 +30,7 @@ public class HandlerMovementLogic {
             case CARD:
                 handler.moveToState(choice.getState());
                 Card chosenCard = this.gui.getCard(
-                        this.hatchingGround.getUnclaimedEggs(), playerId);
+                    this.hatchingGround.getUnclaimedEggs(), playerId);
                 chosenCard.handler = handler;
                 handler.setLocation(chosenCard.name);
                 break;

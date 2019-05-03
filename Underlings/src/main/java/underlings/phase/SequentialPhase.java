@@ -20,8 +20,8 @@ public abstract class SequentialPhase implements Phase {
     protected boolean phaseComplete;
 
     public SequentialPhase(List<Player> players, Gui gui, ElementBag elementBag,
-            HatchingGround hatchingGround, Runnable displayMethod,
-            Field field) {
+        HatchingGround hatchingGround, Runnable displayMethod,
+        Field field) {
         this.players = players;
         this.gui = gui;
         this.elementBag = elementBag;

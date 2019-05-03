@@ -21,8 +21,8 @@ public class FieldSpace {
         this.handlers.add(handler);
         handler.setLocation(this.color + " Field Space");
         handler.elementGiver = new ElementGiver(
-                "Handler on " + this.color.name() + " Field Space",
-                DrawChoice.RANDOM, this.color);
+            "Handler on " + this.color.name() + " Field Space",
+            DrawChoice.RANDOM, this.color);
     }
 
     public boolean contains(Handler handler) {
