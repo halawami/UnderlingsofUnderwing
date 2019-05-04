@@ -1,15 +1,18 @@
 package underlings.player;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import underlings.card.Card;
+import underlings.card.effect.Effect;
 import underlings.element.Element;
 import underlings.element.ElementGiver;
 import underlings.element.NullElement;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.handler.Handler;
 import underlings.handler.HandlerFactory;
+import underlings.handler.HandlerState;
 
 public class Player {
 
@@ -110,6 +113,28 @@ public class Player {
 
     public int getPlayerId() {
         return this.playerId;
+    }
+
+    public List<Effect> getAllEffects() {
+        List<Effect> effectsToApply = new LinkedList<>();
+        for (Card unhatchedEgg : this.unhatchedCards) {
+            for (int i = 0; i < unhatchedEgg.domesticEffects.length; i++) {
+                effectsToApply.add(unhatchedEgg.domesticEffects[i]);
+            }
+            unhatchedEgg.handler.moveToState(HandlerState.READY_ROOM);
+            this.hatchedCards.add(unhatchedEgg);
+        }
+        this.unhatchedCards.clear();
+        return effectsToApply;
+    }
+
+    public boolean hasCard(Card card) {
+        if (this.getHandlers().contains(card.handler)) {
+            this.unhatchedCards.add(card);
+            card.handler.moveToState(HandlerState.INCUBATION);
+            return true;
+        }
+        return false;
     }
 
     @Override
