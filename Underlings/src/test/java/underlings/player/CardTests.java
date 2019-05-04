@@ -39,4 +39,24 @@ public class CardTests {
         assertEquals(1, player.unhatchedCards.size());
         assertEquals(card, player.unhatchedCards.get(0));
     }
+
+    @Test
+    public void testTwoCompletedEggs() {
+        Player player = new Player(6, new HandlerFactory(), 0);
+        Card card = EasyMock.mock(Card.class);
+        card.handler = player.getHandlers().get(0);
+        Card card2 = EasyMock.mock(Card.class);
+        card2.handler = player.getHandlers().get(1);
+        card.handler.moveToState(HandlerState.INCUBATION);
+        card2.handler.moveToState(HandlerState.INCUBATION);
+
+        EasyMock.replay(card, card2);
+
+        EasyMock.verify(card, card2);
+        assertTrue(player.hasCard(card));
+        assertTrue(player.hasCard(card2));
+        assertEquals(2, player.unhatchedCards.size());
+        assertEquals(card, player.unhatchedCards.get(0));
+        assertEquals(card2, player.unhatchedCards.get(1));
+    }
 }
