@@ -2097,7 +2097,7 @@
     ],
     "domesticEffects": [
       {
-        "effect": "UpToTwoHandlersCanOccupyTheSameSpaceOnFieldEffect"
+        "effect": "TwoHandlersOnSameFieldSpaceEffect"
       }
     ],
     "wildEffects": [
@@ -2147,7 +2147,7 @@
     ],
     "domesticEffects": [
       {
-        "effect": "HatchOneUnclaimedEggAsWildDragonEffect"
+        "effect": "HatchEggAsWDEffect"
       }
     ],
     "wildEffects": [
