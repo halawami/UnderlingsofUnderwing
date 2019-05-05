@@ -46,12 +46,12 @@ public class EffectTests {
 
     @Test
     public void testTwoUnHatchedEggs() {
-        Player player = new Player(6, new HandlerFactory(), 0);
         Card card = EasyMock.mock(Card.class);
         Handler handler = EasyMock.mock(Handler.class);
         handler.moveToState(HandlerState.READY_ROOM);
         EasyMock.expectLastCall().times(2);
         card.handler = handler;
+        Player player = new Player(6, new HandlerFactory(), 0);
         player.unhatchedCards.add(card);
         player.unhatchedCards.add(card);
         card.domesticEffects = new Effect[1];
