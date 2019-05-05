@@ -3,7 +3,7 @@ package underlings.gui;
 import java.util.List;
 import java.util.Random;
 
-public class TestPrompt extends LamePrompt {
+public class TestPrompt extends ConcretePrompt {
     Random rand;
 
     public TestPrompt() {

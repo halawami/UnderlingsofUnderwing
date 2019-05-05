@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-public class LamePrompt implements PromptHandler {
+public class ConcretePrompt implements PromptHandler {
 
     @Override
     public <T extends Choice> T promptChoice(String prompt, List<T> choices, int playerId) {
