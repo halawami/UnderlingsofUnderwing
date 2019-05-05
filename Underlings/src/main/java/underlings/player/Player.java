@@ -17,6 +17,7 @@ import underlings.handler.HandlerState;
 public class Player {
 
     private List<Handler> handlers;
+    public List<ElementGiver> effectElementGiver;
     private int maxHandlers;
     private int points;
     private boolean reached12Points;
@@ -27,6 +28,7 @@ public class Player {
     public List<Card> hatchedCards;
     public List<Card> unhatchedCards;
     public ElementSpaceLogic elementSpaceLogic;
+
 
     public Player(int maxHandlers, HandlerFactory handlerFactory, int playerId) {
         this.handlers = new ArrayList<>();
@@ -88,6 +90,7 @@ public class Player {
             this.elements.add(elementToAdd);
         }
     }
+
 
     public List<Element> getElements() {
         return this.elements;

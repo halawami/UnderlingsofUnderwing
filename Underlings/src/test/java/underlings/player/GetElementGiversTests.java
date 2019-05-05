@@ -60,4 +60,27 @@ public class GetElementGiversTests {
         EasyMock.verify(mockHandlerFactory, handler.elementGiver);
     }
 
+    @Test
+    public void testTwoHandlersOneEffectElementGivers() {
+        HandlerFactory mockHandlerFactory = EasyMock.mock(HandlerFactory.class);
+        Handler handler = new Handler(HandlerState.BREAK_ROOM);
+        handler.elementGiver = EasyMock.mock(ElementGiver.class);
+        ElementGiver mockEffectElementGiver = EasyMock.mock(ElementGiver.class);
+
+        EasyMock.expect(mockHandlerFactory.createHandler()).andReturn(handler).times(2);
+        EasyMock.replay(mockHandlerFactory, handler.elementGiver, mockEffectElementGiver);
+
+        Player testedPlayer = new Player(6, mockHandlerFactory, 0);
+        List<ElementGiver> elementGivers = testedPlayer.getElementGivers();
+
+        testedPlayer.effectElementGiver.add(mockEffectElementGiver);
+
+        Assert.assertEquals(3, elementGivers.size());
+        for (ElementGiver elementGiver : elementGivers) {
+            Assert.assertEquals(handler.elementGiver, elementGiver);
+        }
+
+        EasyMock.verify(mockHandlerFactory, handler.elementGiver, mockEffectElementGiver);
+    }
+
 }
