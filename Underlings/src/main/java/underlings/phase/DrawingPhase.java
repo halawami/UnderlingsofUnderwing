@@ -16,35 +16,34 @@ import underlings.player.Player;
 
 public class DrawingPhase extends SequentialPhase {
 
-    public DrawingPhase(List<Player> players, Gui gui, ElementBag elementBag, HatchingGround hatchingGround,
-            Runnable displayMethod, Field field) {
-        super(players, gui, elementBag, hatchingGround, displayMethod, field);
-    }
+	public DrawingPhase(List<Player> players, Gui gui, ElementBag elementBag, HatchingGround hatchingGround,
+			Runnable displayMethod, Field field) {
+		super(players, gui, elementBag, hatchingGround, displayMethod, field);
+	}
 
-    Map<Player, List<ElementGiver>> elementGivers;
+	Map<Player, List<ElementGiver>> elementGivers;
 
-    @Override
-    public boolean turn(Player player) {
+	@Override
+	public void turn(Player player) {
 
-        DrawChoice drawChoice = this.gui.getDrawChoice(this.elementGivers.get(player), player.getPlayerId());
+		DrawChoice drawChoice = this.gui.getDrawChoice(this.elementGivers.get(player), player.getPlayerId());
 
-        Element element = this.elementBag.drawElement(drawChoice);
+		Element element = this.elementBag.drawElement(drawChoice);
 
-        if (element != NullElement.getInstance()) {
-            player.addElement(element);
-        }
+		if (element != NullElement.getInstance()) {
+			player.addElement(element);
+		}
 
-        this.phaseComplete = this.elementGivers.get(player).isEmpty();
-        return false;
-    }
+		this.phaseComplete = this.elementGivers.get(player).isEmpty();
+	}
 
-    @Override
-    public void setup() {
-        this.elementGivers = new HashMap<>();
+	@Override
+	public void setup() {
+		this.elementGivers = new HashMap<>();
 
-        for (Player player : this.players) {
-            this.elementGivers.put(player, player.getElementGivers());
-        }
-    }
+		for (Player player : this.players) {
+			this.elementGivers.put(player, player.getElementGivers());
+		}
+	}
 
 }
