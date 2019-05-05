@@ -111,7 +111,7 @@ public class Player {
         for (Handler handler : this.getHandlers()) {
             elementGivers.add(handler.elementGiver);
         }
-        elementGivers.add(this.effectElementGiver.get(0));
+        elementGivers.addAll(this.effectElementGiver);
 
         return elementGivers;
     }
