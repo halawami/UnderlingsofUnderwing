@@ -18,6 +18,7 @@ public abstract class Phase {
 	protected Field field;
 
 	protected boolean phaseComplete;
+	protected boolean gameComplete;
 
 	public Phase(List<Player> players, Gui gui, ElementBag elementBag, HatchingGround hatchingGround,
 			Runnable displayMethod, Field field) {
