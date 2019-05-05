@@ -60,6 +60,10 @@ public class Player {
         }
     }
 
+    public void gainEffectElementGiver(ElementGiver effectElementGiver) {
+        this.effectElementGiver.add(effectElementGiver);
+    }
+
     public int getMaxHandlers() {
         return this.maxHandlers;
     }
@@ -146,5 +150,6 @@ public class Player {
     public String toString() {
         return "Player " + this.getPlayerId();
     }
+
 
 }

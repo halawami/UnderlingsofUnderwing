@@ -45,7 +45,7 @@ public class GetElementGiversTests {
         EasyMock.replay(mockHandlerFactory, handler.elementGiver, mockEffectElementGiver);
 
         Player testedPlayer = new Player(6, mockHandlerFactory, 0);
-        testedPlayer.effectElementGiver.add(mockEffectElementGiver);
+        testedPlayer.gainEffectElementGiver(mockEffectElementGiver);
 
         List<ElementGiver> elementGivers = testedPlayer.getElementGivers();
 
@@ -69,8 +69,8 @@ public class GetElementGiversTests {
         EasyMock.replay(mockHandlerFactory, handler.elementGiver, mockEffectElementGiver);
 
         Player testedPlayer = new Player(6, mockHandlerFactory, 0);
-        testedPlayer.effectElementGiver.add(mockEffectElementGiver);
-        testedPlayer.effectElementGiver.add(mockEffectElementGiver);
+        testedPlayer.gainEffectElementGiver(mockEffectElementGiver);
+        testedPlayer.gainEffectElementGiver(mockEffectElementGiver);
 
         List<ElementGiver> elementGivers = testedPlayer.getElementGivers();
 

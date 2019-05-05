@@ -31,5 +31,4 @@ public class GainOneHandlerTests {
         assertEquals("Gain one handler", gainOneHandler.toString());
     }
 
-
 }
