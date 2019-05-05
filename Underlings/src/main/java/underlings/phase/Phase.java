@@ -11,14 +11,14 @@ import underlings.player.Player;
 public abstract class Phase {
 
 	protected List<Player> players;
-	public Gui gui;
+	protected Gui gui;
 	protected ElementBag elementBag;
 	protected HatchingGround hatchingGround;
 	protected Runnable displayMethod;
 	protected Field field;
 
 	protected boolean phaseComplete;
-	protected boolean gameComplete;
+	public boolean gameComplete;
 
 	public Phase(List<Player> players, Gui gui, ElementBag elementBag, HatchingGround hatchingGround,
 			Runnable displayMethod, Field field) {
