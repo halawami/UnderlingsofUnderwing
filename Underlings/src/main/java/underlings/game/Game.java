@@ -6,6 +6,7 @@ import java.util.List;
 import underlings.element.ElementBag;
 import underlings.gui.Gui;
 import underlings.handler.Handler;
+import underlings.phase.FinalPhase;
 import underlings.phase.Phase;
 import underlings.player.Player;
 import underlings.player.PlayerFactory;
@@ -67,7 +68,7 @@ public class Game {
 		return this.players;
 	}
 
-	public void start(List<Phase> phases, Phase finalPhase) {
+	public void start(List<Phase> phases, FinalPhase finalPhase) {
 		this.promptPlayerCount();
 		this.setUp(this.numberOfPlayers);
 
@@ -78,7 +79,7 @@ public class Game {
 				this.currentPhase++;
 				this.display();
 				phase.execute(this.turnLeader);
-				gameOver = phase.gameComplete;
+				gameOver = phase.isGameComplete();
 				if (gameOver) {
 					break;
 				}
@@ -89,7 +90,7 @@ public class Game {
 			this.roundsLeft--;
 		}
 
-		finalPhase.execute(this.turnLeader);
+		finalPhase.execute();
 
 	}
 

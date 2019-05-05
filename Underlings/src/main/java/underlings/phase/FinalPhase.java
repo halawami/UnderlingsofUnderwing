@@ -6,25 +6,23 @@ import java.util.Map;
 
 import javax.swing.JOptionPane;
 
-import underlings.element.ElementBag;
-import underlings.field.Field;
-import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.player.Player;
 import underlings.scoring.ScoreUtils;
 
-public class FinalPhase extends Phase {
+public class FinalPhase {
 
 	private Phase dragonPhase;
+	private Gui gui;
+	private List<Player> players;
 
-	public FinalPhase(List<Player> players, Gui gui, ElementBag elementBag, HatchingGround hatchingGround,
-			Runnable displayMethod, Field field) {
-		super(players, gui, elementBag, hatchingGround, displayMethod, field);
-		this.dragonPhase = new DragonPhase(players, gui, elementBag, hatchingGround, displayMethod, field);
+	public FinalPhase(List<Player> players, Gui gui, Phase dragonPhase) {
+		this.players = players;
+		this.gui = gui;
+		this.dragonPhase = dragonPhase;
 	}
 
-	@Override
-	public void execute(int turnLeader) {
+	public void execute() {
 
 		this.dragonPhase.setup();
 
@@ -55,12 +53,6 @@ public class FinalPhase extends Phase {
 
 	}
 
-	@Override
-	public void setup() {
-
-	}
-
-	@Override
 	public void turn(Player player) {
 		this.dragonPhase.turn(player);
 		this.dragonPhase.turn(player);
