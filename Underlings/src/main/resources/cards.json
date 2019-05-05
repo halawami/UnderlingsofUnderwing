@@ -1908,7 +1908,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddALLElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsToAllAdjacentEggsEffect",
         "elementColors": [
           "RED",
           "BLUE",
@@ -1958,7 +1958,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddALLElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsToAllAdjacentEggsEffect",
         "elementColors": [
           "RED",
           "BLUE",
@@ -2008,7 +2008,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddALLElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsToAllAdjacentEggsEffect",
         "elementColors": [
           "RED",
           "BLUE",
