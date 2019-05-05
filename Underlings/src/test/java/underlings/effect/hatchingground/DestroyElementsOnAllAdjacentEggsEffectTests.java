@@ -11,7 +11,7 @@ import org.junit.Test;
 import underlings.card.Card;
 import underlings.card.effect.wild.DestroyAllElementsOnAllAdjacentEggsEffect;
 import underlings.card.effect.wild.DestroyElementsOnAllAdjacentEggsEffect;
-import underlings.card.effect.wild.DestroyOneElementsOnAllAdjacentEggsEffect;
+import underlings.card.effect.wild.DestroyOneElementOnAllAdjacentEggsEffect;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
@@ -169,7 +169,7 @@ public class DestroyElementsOnAllAdjacentEggsEffectTests {
         ElementColor blue = ElementColor.BLUE;
         ElementSpace mockElementSpace = EasyMock.mock(ElementSpace.class);
 
-        DestroyOneElementsOnAllAdjacentEggsEffect testedEffect = new DestroyOneElementsOnAllAdjacentEggsEffect();
+        DestroyOneElementOnAllAdjacentEggsEffect testedEffect = new DestroyOneElementOnAllAdjacentEggsEffect();
 
         mockElementSpace.destroyOneElementOfColor(blue);
 

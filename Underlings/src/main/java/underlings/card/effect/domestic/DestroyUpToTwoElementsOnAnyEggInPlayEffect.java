@@ -1,8 +1,19 @@
 package underlings.card.effect.domestic;
 
+import underlings.card.Card;
+import underlings.card.effect.HatchingGroundEffect;
+import underlings.element.ElementBag;
 import underlings.element.ElementColor;
+import underlings.element.utilities.ElementSpaceLogic;
+import underlings.game.HatchingGround;
 
-public class DestroyUpToTwoElementsOnAnyEggInPlayEffect {
+public class DestroyUpToTwoElementsOnAnyEggInPlayEffect extends HatchingGroundEffect {
 
-    ElementColor[] elementChoices;
+    public ElementColor[] elementChoices;
+
+    @Override
+    protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag,
+            ElementSpaceLogic elementSpaceLogic) {
+
+    }
 }
