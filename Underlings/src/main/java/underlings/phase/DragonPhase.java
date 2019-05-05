@@ -39,7 +39,7 @@ public class DragonPhase extends SequentialPhase {
 
 	@Override
 	// TODO fix the problem with builder pattern, call all possible parameters
-	public boolean turn(Player player) {
+	public void turn(Player player) {
 		for (Effect domesticEffect : player.getAllEffects()) {
 			domesticEffect.on(elementBag).on(player).apply();
 			this.gui.notifyAction(player.getPlayerId(), domesticEffect.toString() + " has been applied");
@@ -50,7 +50,6 @@ public class DragonPhase extends SequentialPhase {
 			}
 		}
 		this.phaseComplete = true;
-		return false;
 	}
 
 }

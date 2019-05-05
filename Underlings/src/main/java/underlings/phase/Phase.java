@@ -34,6 +34,6 @@ public abstract class Phase {
 
 	public abstract void setup();
 
-	public abstract boolean turn(Player player);
+	public abstract void turn(Player player);
 
 }

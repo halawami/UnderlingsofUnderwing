@@ -61,11 +61,9 @@ public class FinalPhase extends Phase {
 	}
 
 	@Override
-	public boolean turn(Player player) {
+	public void turn(Player player) {
 		this.dragonPhase.turn(player);
 		this.dragonPhase.turn(player);
-
-		return false;
 	}
 
 }
