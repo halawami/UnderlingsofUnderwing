@@ -71,14 +71,15 @@ public class GetElementGiversTests {
         EasyMock.replay(mockHandlerFactory, handler.elementGiver, mockEffectElementGiver);
 
         Player testedPlayer = new Player(6, mockHandlerFactory, 0);
-        List<ElementGiver> elementGivers = testedPlayer.getElementGivers();
-
         testedPlayer.effectElementGiver.add(mockEffectElementGiver);
 
+        List<ElementGiver> elementGivers = testedPlayer.getElementGivers();
+
         Assert.assertEquals(3, elementGivers.size());
-        for (ElementGiver elementGiver : elementGivers) {
-            Assert.assertEquals(handler.elementGiver, elementGiver);
+        for (int i = 0; i < 2; i++) {
+            Assert.assertEquals(handler.elementGiver, elementGivers.get(i));
         }
+        Assert.assertEquals(mockEffectElementGiver, elementGivers.get(2));
 
         EasyMock.verify(mockHandlerFactory, handler.elementGiver, mockEffectElementGiver);
     }

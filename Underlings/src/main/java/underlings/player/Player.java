@@ -32,6 +32,7 @@ public class Player {
 
     public Player(int maxHandlers, HandlerFactory handlerFactory, int playerId) {
         this.handlers = new ArrayList<>();
+        this.effectElementGiver = new ArrayList<>();
         this.elements = new ArrayList<>();
         this.hatchedCards = new ArrayList<>();
         this.unhatchedCards = new ArrayList<>();
@@ -110,6 +111,7 @@ public class Player {
         for (Handler handler : this.getHandlers()) {
             elementGivers.add(handler.elementGiver);
         }
+        elementGivers.add(this.effectElementGiver.get(0));
 
         return elementGivers;
     }
