@@ -9,7 +9,6 @@ import java.util.List;
 import org.junit.Test;
 
 import underlings.card.Card;
-import underlings.scoring.ScoreUtils;
 
 public class PointTests {
 

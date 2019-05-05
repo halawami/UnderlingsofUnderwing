@@ -12,8 +12,6 @@ import underlings.handler.HandlerChoice;
 import underlings.handler.HandlerDecision;
 import underlings.handler.HandlerFactory;
 import underlings.handler.HandlerMovementLogic;
-import underlings.phase.HandlerPhase;
-import underlings.phase.Phase;
 import underlings.player.Player;
 
 public class HandlerPhaseTest {

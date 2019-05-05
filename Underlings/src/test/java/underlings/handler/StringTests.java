@@ -6,8 +6,6 @@ import org.junit.Test;
 
 import underlings.field.FieldSpace;
 import underlings.gui.DrawChoice;
-import underlings.handler.Handler;
-import underlings.handler.HandlerState;
 
 public class StringTests {
 

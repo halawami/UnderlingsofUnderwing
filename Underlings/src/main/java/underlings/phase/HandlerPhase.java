@@ -17,48 +17,48 @@ import underlings.player.Player;
 
 public class HandlerPhase extends RotationPhase {
 
-	public HandlerPhase(List<Player> players, Gui gui, ElementBag elementBag, HatchingGround hatchingGround,
-			Runnable displayMethod, Field field, HandlerMovementLogic handlerMovementLogic) {
-		super(players, gui, elementBag, hatchingGround, displayMethod, field);
-		this.handlerMovementLogic = handlerMovementLogic;
-	}
+    public HandlerPhase(List<Player> players, Gui gui, ElementBag elementBag, HatchingGround hatchingGround,
+            Runnable displayMethod, Field field, HandlerMovementLogic handlerMovementLogic) {
+        super(players, gui, elementBag, hatchingGround, displayMethod, field);
+        this.handlerMovementLogic = handlerMovementLogic;
+    }
 
-	private Map<Player, List<Handler>> unmovedHandlers;
-	private HandlerMovementLogic handlerMovementLogic;
+    private Map<Player, List<Handler>> unmovedHandlers;
+    private HandlerMovementLogic handlerMovementLogic;
 
-	@Override
-	public void setup() {
+    @Override
+    public void setup() {
 
-		this.unmovedHandlers = new HashMap<>();
+        this.unmovedHandlers = new HashMap<>();
 
-		for (Player player : this.players) {
-			this.unmovedHandlers.put(player, new ArrayList<>(player.getHandlers()));
+        for (Player player : this.players) {
+            this.unmovedHandlers.put(player, new ArrayList<>(player.getHandlers()));
 
-			for (Handler handler : this.unmovedHandlers.get(player)) {
-				if (handler.getState() == HandlerState.BREAK_ROOM) {
-					handler.moveToState(HandlerState.READY_ROOM);
-				}
-			}
+            for (Handler handler : this.unmovedHandlers.get(player)) {
+                if (handler.getState() == HandlerState.BREAK_ROOM) {
+                    handler.moveToState(HandlerState.READY_ROOM);
+                }
+            }
 
-		}
+        }
 
-		this.displayMethod.run();
+        this.displayMethod.run();
 
-	}
+    }
 
-	@Override
-	public void turn(Player player) {
+    @Override
+    public void turn(Player player) {
 
-		List<Handler> playersHandlers = this.unmovedHandlers.get(player);
+        List<Handler> playersHandlers = this.unmovedHandlers.get(player);
 
-		if (playersHandlers.size() != 0) {
+        if (playersHandlers.size() != 0) {
 
-			HandlerDecision decision = this.gui.getHandlerDecision(playersHandlers, player.getPlayerId(),
-					this.hatchingGround);
-			this.handlerMovementLogic.move(decision.handler, decision.choice, player.getPlayerId());
-			this.phaseComplete = false;
+            HandlerDecision decision =
+                    this.gui.getHandlerDecision(playersHandlers, player.getPlayerId(), this.hatchingGround);
+            this.handlerMovementLogic.move(decision.handler, decision.choice, player.getPlayerId());
+            this.phaseComplete = false;
 
-		}
-	}
+        }
+    }
 
 }

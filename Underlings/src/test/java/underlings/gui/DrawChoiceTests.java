@@ -9,10 +9,6 @@ import org.easymock.EasyMock;
 import org.junit.Test;
 
 import underlings.element.ElementGiver;
-import underlings.gui.Display;
-import underlings.gui.DrawChoice;
-import underlings.gui.Gui;
-import underlings.gui.PromptHandler;
 
 public class DrawChoiceTests {
 

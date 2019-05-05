@@ -11,8 +11,6 @@ import org.junit.Test;
 import underlings.card.Card;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
-import underlings.game.Deck;
-import underlings.game.HatchingGround;
 import underlings.handler.Handler;
 import underlings.handler.HandlerState;
 import underlings.handler.WildHandler;

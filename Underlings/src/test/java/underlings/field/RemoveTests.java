@@ -4,8 +4,6 @@ import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
 
-import underlings.field.Field;
-import underlings.field.FieldSpaceFactory;
 import underlings.handler.Handler;
 import underlings.handler.HandlerState;
 

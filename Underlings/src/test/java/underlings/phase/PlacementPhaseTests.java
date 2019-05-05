@@ -23,8 +23,6 @@ import underlings.gui.Display;
 import underlings.gui.Gui;
 import underlings.gui.PromptHandler;
 import underlings.handler.Handler;
-import underlings.phase.Phase;
-import underlings.phase.PlacementPhase;
 import underlings.player.Player;
 
 public class PlacementPhaseTests {

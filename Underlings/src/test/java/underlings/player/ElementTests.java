@@ -9,7 +9,6 @@ import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.NullElement;
 import underlings.handler.HandlerFactory;
-import underlings.player.Player;
 
 public class ElementTests {
 

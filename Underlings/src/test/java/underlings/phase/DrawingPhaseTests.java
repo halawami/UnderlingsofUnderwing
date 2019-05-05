@@ -14,8 +14,6 @@ import underlings.element.ElementColor;
 import underlings.gui.DrawChoice;
 import underlings.gui.Gui;
 import underlings.handler.HandlerFactory;
-import underlings.phase.DrawingPhase;
-import underlings.phase.Phase;
 import underlings.player.Player;
 
 public class DrawingPhaseTests {
