@@ -10,7 +10,7 @@ import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.HatchingGround;
 
-public abstract class DestroyElementsOnAllAdjacentEggsEffect extends HatchingGroundEffect {
+public abstract class ElementsOnAllAdjacentEggsEffect extends HatchingGroundEffect {
 
     public ElementColor[] elementColors;
 
