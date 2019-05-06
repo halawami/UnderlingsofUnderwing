@@ -10,7 +10,7 @@ public class HandlerChoiceStringTests {
     public void testStayString() {
         HandlerChoice choice = HandlerChoice.STAY;
 
-        assertEquals("STAY", choice.toString());
+        assertEquals("Stay", choice.toString());
     }
 
     @Test
