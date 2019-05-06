@@ -21,9 +21,10 @@ public class GetElementGiverTests {
     }
 
     @Test
-    public void testOneElementGivers() {
+    public void testOneElementGiversFirst() {
         ElementGiverEffect elementGiverEffect = new ElementGiverEffect();
         ElementGiver testElementGiver = new ElementGiver("test", DrawChoice.RED);
+        elementGiverEffect.elementGiver = testElementGiver;
         Card testedCard = new Card();
         testedCard.domesticEffects = new Effect[]{elementGiverEffect};
         List<ElementGiver> elementGivers = testedCard.getElementGivers();
