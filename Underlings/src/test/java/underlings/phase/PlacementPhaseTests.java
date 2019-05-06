@@ -157,6 +157,7 @@ public class PlacementPhaseTests {
         blueSpace.addElements(blue1);
         player.removeElement(blue1);
         runnable.run();
+        EasyMock.expectLastCall().anyTimes();
         EasyMock.expect(promptHandler.promptDecision("Would you like to place another element?", 1)).andReturn(false);
         EasyMock.expectLastCall().anyTimes();
         EasyMock.expect(logic.getValidAdditions(blueSpace)).andReturn(Arrays.asList(ElementColor.BLUE));
@@ -175,9 +176,7 @@ public class PlacementPhaseTests {
         EasyMock.replay(player, promptHandler, display, elementBag, runnable, gui);
         EasyMock.replay(logic, redSpace, blueSpace, greenSpace, whiteSpace, card.wildEffects[0]);
         Phase phase = new PlacementPhase(players, gui, elementBag, hatchingGround, runnable, null);
-        phase.setup();
-        phase.turn(player);
-        // phase.execute(1);
+        phase.execute(1);
         EasyMock.verify(player, promptHandler, display, elementBag, runnable, gui);
         EasyMock.verify(logic, redSpace, blueSpace, greenSpace, whiteSpace, card.wildEffects[0]);
     }
