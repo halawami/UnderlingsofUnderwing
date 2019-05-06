@@ -37,6 +37,34 @@ public class HatchAllUnclaimedAdjacentEggsEffectTests {
         mockedCards.forEach(EasyMock::verify);
     }
 
+    @Test
+    public void testApplyOneHatchableEgg() {
+        Card centerCard = EasyMock.mock(Card.class);
+        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
+        ElementSpaceLogic elementSpaceLogic = EasyMock.mock(ElementSpaceLogic.class);
+        List<Card> mockedCards = getMockedCards(2);
+        List<Card> hatchableEggs = mockedCards.subList(0, 1);
+        HatchAllUnclaimedAdjacentEggsEffect testedEffect =
+                EasyMock.partialMockBuilder(HatchAllUnclaimedAdjacentEggsEffect.class)
+                        .addMockedMethod("getHatchableEggs")
+                        .addMockedMethod("hatchEgg").createMock();
+        testedEffect.on(centerCard).on(hatchingGround).on(elementSpaceLogic);
+
+        EasyMock.expect(hatchingGround.getAdjacentCards(centerCard)).andReturn(mockedCards);
+        EasyMock.expect(testedEffect.getHatchableEggs(mockedCards)).andReturn(hatchableEggs);
+        for (Card hatchableEgg : hatchableEggs) {
+            testedEffect.hatchEgg(hatchableEgg);
+        }
+
+        EasyMock.replay(centerCard, hatchingGround, testedEffect, elementSpaceLogic);
+        mockedCards.forEach(EasyMock::replay);
+
+        testedEffect.apply();
+
+        EasyMock.verify(centerCard, hatchingGround, testedEffect, elementSpaceLogic);
+        mockedCards.forEach(EasyMock::verify);
+    }
+
     private List<Card> getMockedCards(int numberOfCards) {
         List<Card> mockedCards = new ArrayList<>();
         for (int i = 0; i < numberOfCards; i++) {

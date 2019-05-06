@@ -24,4 +24,8 @@ public class HatchAllUnclaimedAdjacentEggsEffect extends HatchingGroundEffect {
     public List<Card> getHatchableEggs(List<Card> adjacentCards) {
         return null;
     }
+
+    public void hatchEgg(Card hatchableEgg) {
+
+    }
 }
