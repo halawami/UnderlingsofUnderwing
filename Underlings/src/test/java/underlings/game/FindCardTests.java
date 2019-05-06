@@ -1,0 +1,68 @@
+package underlings.game;
+
+import static org.junit.Assert.assertEquals;
+
+import org.easymock.EasyMock;
+import org.junit.Test;
+
+import underlings.card.Card;
+import underlings.handler.Handler;
+import underlings.handler.HandlerState;
+
+public class FindCardTests {
+
+    @Test
+    public void testFindCardEmpty() {
+        HatchingGround ground = new HatchingGround(null);
+        ground.setDimensions(0, 0);
+        ground.populate();
+        Card foundCard = ground.findCard(new Handler(HandlerState.CARD));
+
+        assertEquals(null, foundCard);
+    }
+
+    @Test
+    public void testFindCardSuccessful() {
+        Card card1 = new Card();
+        card1.name = "card1";
+        Card card2 = new Card();
+        card2.handler = new Handler(HandlerState.CARD);
+        card2.name = "card2";
+        Deck mockedDeck = EasyMock.strictMock(Deck.class);
+
+        EasyMock.expect(mockedDeck.draw()).andReturn(card2).times(2);
+        EasyMock.expect(mockedDeck.draw()).andReturn(card1);
+        EasyMock.expect(mockedDeck.draw()).andReturn(card2);
+
+        EasyMock.replay(mockedDeck);
+
+        HatchingGround ground = new HatchingGround(mockedDeck);
+        ground.setDimensions(2, 2);
+        ground.populate();
+        Card foundCard = ground.findCard(card1.handler);
+
+        EasyMock.verify(mockedDeck);
+
+        assertEquals(card1, foundCard);
+    }
+
+    @Test
+    public void testFindCardUnsuccessful() {
+        Card card1 = new Card();
+        card1.name = "card1";
+        Deck mockedDeck = EasyMock.strictMock(Deck.class);
+
+        EasyMock.expect(mockedDeck.draw()).andReturn(card1).times(4);
+
+        EasyMock.replay(mockedDeck);
+
+        HatchingGround ground = new HatchingGround(mockedDeck);
+        ground.setDimensions(2, 2);
+        ground.populate();
+        Card foundCard = ground.findCard(new Handler(HandlerState.CARD));
+
+        EasyMock.verify(mockedDeck);
+
+        assertEquals(null, foundCard);
+    }
+}
