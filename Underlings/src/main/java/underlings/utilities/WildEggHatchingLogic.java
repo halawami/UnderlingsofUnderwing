@@ -2,7 +2,6 @@ package underlings.utilities;
 
 import underlings.card.Card;
 import underlings.element.ElementBag;
-import underlings.field.Field;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.handler.WildHandler;
@@ -14,15 +13,12 @@ public class WildEggHatchingLogic {
     private Gui gui;
     private ElementBag elementBag;
     private HatchingGround hatchingGround;
-    private Field field;
 
-    public WildEggHatchingLogic(Player player, Gui gui, ElementBag elementBag, HatchingGround hatchingGround,
-            Field field) {
+    public WildEggHatchingLogic(Player player, Gui gui, ElementBag elementBag, HatchingGround hatchingGround) {
         this.player = player;
         this.gui = gui;
         this.elementBag = elementBag;
         this.hatchingGround = hatchingGround;
-        this.field = field;
     }
 
     public void hatchWildEgg(Card card) {

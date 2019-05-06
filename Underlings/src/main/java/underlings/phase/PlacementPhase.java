@@ -81,7 +81,7 @@ public class PlacementPhase extends RotationPhase {
 
     public void hatchWildDragon(Card card, Player player) {
         WildEggHatchingLogic wildEggHatchingLogic =
-                new WildEggHatchingLogic(player, this.gui, this.elementBag, this.hatchingGround, this.field);
+                new WildEggHatchingLogic(player, this.gui, this.elementBag, this.hatchingGround);
         wildEggHatchingLogic.hatchWildEgg(card);
         this.gameComplete = true;
         this.phaseComplete = true;
