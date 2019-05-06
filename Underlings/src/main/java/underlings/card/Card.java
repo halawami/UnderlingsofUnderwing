@@ -28,7 +28,11 @@ public class Card implements Choice {
 
     public List<ElementGiver> getElementGivers() {
         List<ElementGiver> elementGivers = new ArrayList<>();
-        elementGivers.add(((ElementGiverEffect) domesticEffects[0]).elementGiver);
+        for (Effect domesticEffect : this.domesticEffects) {
+            if (domesticEffect instanceof ElementGiverEffect) {
+                elementGivers.add(((ElementGiverEffect) domesticEffect).elementGiver);
+            }
+        }
         return elementGivers;
     }
 }
