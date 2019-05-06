@@ -10,7 +10,6 @@ import org.junit.Test;
 
 import underlings.card.Card;
 import underlings.card.Temperature;
-import underlings.scoring.ScoreUtils;
 
 public class TemperatureTests {
 
