@@ -13,6 +13,14 @@ import underlings.handler.HandlerFactory;
 import underlings.handler.HandlerState;
 
 public class CardTests {
+    @Test
+    public void testNoCompletedEggs() {
+        Card card = new Card();
+        Handler handler = new HandlerFactory().createHandler();
+        card.handler = handler;
+        Player player = new Player(6, new HandlerFactory(), 0);
+        assertFalse(player.hasCard(card));
+    }
 
     @Test
     public void testOneCompletedEggs() {
