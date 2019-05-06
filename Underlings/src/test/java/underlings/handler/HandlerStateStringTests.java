@@ -7,7 +7,7 @@ import org.junit.Test;
 import underlings.field.FieldSpace;
 import underlings.gui.DrawChoice;
 
-public class StringTests {
+public class HandlerStateStringTests {
 
     @Test
     public void testToStringReadyRoom() {
