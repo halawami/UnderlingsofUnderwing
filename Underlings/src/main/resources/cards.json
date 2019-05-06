@@ -1507,10 +1507,13 @@
     ],
     "domesticEffects": [
       {
-        "effect": "CollectElementEachPhaseOneEffect",
-        "elementChoices": [
-          "BLUE"
-        ]
+        "effect": "ElementGiverEffect",
+        "elementGiver": {
+          "drawChoices": [
+            "BLUE"
+          ],
+          "display": "UNDINE WYVERN's Effect "
+        }
       }
     ],
     "wildEffects": [
@@ -1547,10 +1550,13 @@
     ],
     "domesticEffects": [
       {
-        "effect": "CollectElementEachPhaseOneEffect",
-        "elementChoices": [
-          "BLUE"
-        ]
+        "effect": "ElementGiverEffect",
+        "elementGiver": {
+          "drawChoices": [
+            "BLUE"
+          ],
+          "display": "VOID WYVERN's Effect "
+        }
       }
     ],
     "wildEffects": [
@@ -1729,10 +1735,13 @@
     ],
     "domesticEffects": [
       {
-        "effect": "CollectElementEachPhaseOneEffect",
-        "elementChoices": [
-          "YELLOW"
-        ]
+        "effect": "ElementGiverEffect",
+        "elementGiver": {
+          "drawChoices": [
+            "YELLOW"
+          ],
+          "display": "ETHEREAL WYVERN's Effect "
+        }
       }
     ],
     "wildEffects": [
@@ -1769,10 +1778,13 @@
     ],
     "domesticEffects": [
       {
-        "effect": "CollectElementEachPhaseOneEffect",
-        "elementChoices": [
-          "YELLOW"
-        ]
+        "effect": "ElementGiverEffect",
+        "elementGiver": {
+          "drawChoices": [
+            "YELLOW"
+          ],
+          "display": "SUNSTONE WYVERN's Effect "
+        }
       }
     ],
     "wildEffects": [
@@ -1852,10 +1864,13 @@
     ],
     "domesticEffects": [
       {
-        "effect": "CollectElementEachPhaseOneEffect",
-        "elementChoices": [
-          "YELLOW"
-        ]
+        "effect": "ElementGiverEffect",
+        "elementGiver": {
+          "drawChoices": [
+            "YELLOW"
+          ],
+          "display": "ELECTRIC WYVERN's Effect "
+        }
       }
     ],
     "wildEffects": [
