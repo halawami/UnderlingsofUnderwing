@@ -111,6 +111,7 @@ public class Player {
         for (Handler handler : this.getHandlers()) {
             elementGivers.add(handler.elementGiver);
         }
+        elementGivers.addAll(this.hatchedCards.get(0).getElementGivers());
 
         return elementGivers;
     }

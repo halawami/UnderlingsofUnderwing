@@ -46,7 +46,7 @@ public class GetElementGiversTests {
 
         EasyMock.expect(mockHandlerFactory.createHandler()).andReturn(handler).times(2);
         EasyMock.expect(elementGiverCard.getElementGivers()).andReturn(Arrays.asList(mockElementGiver));
-        EasyMock.replay(mockHandlerFactory, handler.elementGiver, mockElementGiver);
+        EasyMock.replay(mockHandlerFactory, handler.elementGiver, mockElementGiver, elementGiverCard);
 
         Player testedPlayer = new Player(6, mockHandlerFactory, 0);
         testedPlayer.hatchedCards.add(elementGiverCard);
@@ -59,7 +59,7 @@ public class GetElementGiversTests {
         }
         Assert.assertEquals(mockElementGiver, elementGivers.get(2));
 
-        EasyMock.verify(mockHandlerFactory, handler.elementGiver, mockElementGiver);
+        EasyMock.verify(mockHandlerFactory, handler.elementGiver, mockElementGiver, elementGiverCard);
     }
 
 //    @Test
