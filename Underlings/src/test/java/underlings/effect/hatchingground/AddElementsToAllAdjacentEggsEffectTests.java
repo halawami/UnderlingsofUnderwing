@@ -1,5 +1,7 @@
 package underlings.effect.hatchingground;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -183,6 +185,12 @@ public class AddElementsToAllAdjacentEggsEffectTests {
             mockedPlayableSpaces.add(EasyMock.mock(ElementSpace.class));
         }
         return mockedPlayableSpaces;
+    }
+
+    @Test
+    public void testToString() {
+        AddElementsToAllAdjacentEggsEffect testedEffect = new AddElementsToAllAdjacentEggsEffect();
+        assertEquals("Add elements to adjacent cards", testedEffect.toString());
     }
 
 }
