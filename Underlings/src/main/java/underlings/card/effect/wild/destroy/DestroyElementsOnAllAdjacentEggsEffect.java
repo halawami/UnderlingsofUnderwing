@@ -29,10 +29,8 @@ public abstract class DestroyElementsOnAllAdjacentEggsEffect extends HatchingGro
             ElementSpaceLogic elementSpaceLogic) {
         List<ElementSpace> destroyableElementSpaces =
                 elementSpaceLogic.getDestroyableSpaces(card, elementColorToDestroy);
-        if (!destroyableElementSpaces.isEmpty()) {
-            for (ElementSpace destroyableSpace : destroyableElementSpaces) {
-                destroyElementsOfColorOnSpace(destroyableSpace, elementColorToDestroy);
-            }
+        for (ElementSpace destroyableSpace : destroyableElementSpaces) {
+            destroyElementsOfColorOnSpace(destroyableSpace, elementColorToDestroy);
         }
     }
 
