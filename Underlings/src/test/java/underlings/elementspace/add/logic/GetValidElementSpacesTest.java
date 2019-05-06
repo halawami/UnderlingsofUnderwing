@@ -1,6 +1,7 @@
 package underlings.elementspace.add.logic;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
 import java.util.List;
@@ -28,6 +29,18 @@ public class GetValidElementSpacesTest {
 
         redElement = new Element(ElementColor.RED);
         blueElement = new Element(ElementColor.BLUE);
+    }
+
+    @Test
+    public void noSpaces() {
+        ElementSpace[] cardSpaces = {};
+
+        Card testCard = new Card();
+        testCard.elementSpaces = cardSpaces;
+
+        ElementSpaceLogic logic = new ElementSpaceLogic();
+        List<ElementSpace> actual = logic.getPlayableSpaces(testCard, ElementColor.RED);
+        assertEquals(Arrays.asList(), actual);
     }
 
     @Test
@@ -75,7 +88,9 @@ public class GetValidElementSpacesTest {
 
         ElementSpaceLogic logic = new ElementSpaceLogic();
         List<ElementSpace> actual = logic.getPlayableSpaces(testCard, Arrays.asList(blueElement, redElement));
-        assertEquals(Arrays.asList(redSpace, blueSpace), actual);
+        assertEquals(2, actual.size());
+        assertTrue(actual.contains(redSpace));
+        assertTrue(actual.contains(blueSpace));
     }
 
     @Test
@@ -91,9 +106,10 @@ public class GetValidElementSpacesTest {
         testCard.elementSpaces = cardSpaces;
 
         ElementSpaceLogic logic = new ElementSpaceLogic();
-        List<ElementSpace> expected = Arrays.asList(space4, space2);
         List<ElementSpace> actual =
                 logic.getPlayableSpaces(testCard, Arrays.asList(blueElement, new Element(ElementColor.WHITE)));
-        assertEquals(expected, actual);
+        assertEquals(2, actual.size());
+        assertTrue(actual.contains(space2));
+        assertTrue(actual.contains(space4));
     }
 }
