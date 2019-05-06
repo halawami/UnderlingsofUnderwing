@@ -18,6 +18,7 @@ public class HatchAllUnclaimedAdjacentEggsEffect extends HatchingGroundEffect {
             ElementSpaceLogic elementSpaceLogic) {
         List<Card> adjacentCards = hatchingGround.getAdjacentCards(centerCard);
         List<Card> hatchableEggs = getHatchableEggs(adjacentCards);
+        hatchEgg(hatchableEggs.get(0));
 
     }
 
