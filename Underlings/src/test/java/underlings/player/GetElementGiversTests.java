@@ -41,12 +41,12 @@ public class GetElementGiversTests {
         HandlerFactory mockHandlerFactory = EasyMock.mock(HandlerFactory.class);
         Handler handler = new Handler(HandlerState.BREAK_ROOM);
         handler.elementGiver = EasyMock.mock(ElementGiver.class);
-        ElementGiver mockElementGiver = EasyMock.mock(ElementGiver.class);
+        ElementGiver mockEffectElementGiver = EasyMock.mock(ElementGiver.class);
         Card elementGiverCard = EasyMock.mock(Card.class);
 
         EasyMock.expect(mockHandlerFactory.createHandler()).andReturn(handler).times(2);
-        EasyMock.expect(elementGiverCard.getElementGivers()).andReturn(Arrays.asList(mockElementGiver));
-        EasyMock.replay(mockHandlerFactory, handler.elementGiver, mockElementGiver, elementGiverCard);
+        EasyMock.expect(elementGiverCard.getElementGivers()).andReturn(Arrays.asList(mockEffectElementGiver));
+        EasyMock.replay(mockHandlerFactory, handler.elementGiver, mockEffectElementGiver, elementGiverCard);
 
         Player testedPlayer = new Player(6, mockHandlerFactory, 0);
         testedPlayer.hatchedCards.add(elementGiverCard);
@@ -57,35 +57,36 @@ public class GetElementGiversTests {
         for (int i = 0; i < 2; i++) {
             Assert.assertEquals(handler.elementGiver, elementGivers.get(i));
         }
-        Assert.assertEquals(mockElementGiver, elementGivers.get(2));
+        Assert.assertEquals(mockEffectElementGiver, elementGivers.get(2));
 
-        EasyMock.verify(mockHandlerFactory, handler.elementGiver, mockElementGiver, elementGiverCard);
+        EasyMock.verify(mockHandlerFactory, handler.elementGiver, mockEffectElementGiver, elementGiverCard);
     }
 
-//    @Test
-//    public void testTwoHandlersTwoEffectElementGivers() {
-//        HandlerFactory mockHandlerFactory = EasyMock.mock(HandlerFactory.class);
-//        Handler handler = new Handler(HandlerState.BREAK_ROOM);
-//        handler.elementGiver = EasyMock.mock(ElementGiver.class);
-//        ElementGiver mockEffectElementGiver = EasyMock.mock(ElementGiver.class);
-//
-//        EasyMock.expect(mockHandlerFactory.createHandler()).andReturn(handler).times(2);
-//        EasyMock.replay(mockHandlerFactory, handler.elementGiver, mockEffectElementGiver);
-//
-//        Player testedPlayer = new Player(6, mockHandlerFactory, 0);
-//        testedPlayer.gainEffectElementGiver(mockEffectElementGiver);
-//        testedPlayer.gainEffectElementGiver(mockEffectElementGiver);
-//
-//        List<ElementGiver> elementGivers = testedPlayer.getElementGivers();
-//
-//        Assert.assertEquals(4, elementGivers.size());
-//        for (int i = 0; i < 2; i++) {
-//            Assert.assertEquals(handler.elementGiver, elementGivers.get(i));
-//        }
-//        Assert.assertEquals(mockEffectElementGiver, elementGivers.get(2));
-//        Assert.assertEquals(mockEffectElementGiver, elementGivers.get(3));
-//
-//        EasyMock.verify(mockHandlerFactory, handler.elementGiver, mockEffectElementGiver);
-//    }
+    @Test
+    public void testTwoHandlersTwoElementGiversOneCard() {
+        HandlerFactory mockHandlerFactory = EasyMock.mock(HandlerFactory.class);
+        Handler handler = new Handler(HandlerState.BREAK_ROOM);
+        handler.elementGiver = EasyMock.mock(ElementGiver.class);
+        ElementGiver mockEffectElementGiver = EasyMock.mock(ElementGiver.class);
+        Card elementGiverCard = EasyMock.mock(Card.class);
+
+        EasyMock.expect(mockHandlerFactory.createHandler()).andReturn(handler).times(2);
+        EasyMock.expect(elementGiverCard.getElementGivers()).andReturn(Arrays.asList(mockEffectElementGiver, mockEffectElementGiver));
+        EasyMock.replay(mockHandlerFactory, handler.elementGiver, mockEffectElementGiver, elementGiverCard);
+
+        Player testedPlayer = new Player(6, mockHandlerFactory, 0);
+        testedPlayer.hatchedCards.add(elementGiverCard);
+
+        List<ElementGiver> elementGivers = testedPlayer.getElementGivers();
+
+        Assert.assertEquals(4, elementGivers.size());
+        for (int i = 0; i < 2; i++) {
+            Assert.assertEquals(handler.elementGiver, elementGivers.get(i));
+        }
+        Assert.assertEquals(mockEffectElementGiver, elementGivers.get(2));
+        Assert.assertEquals(mockEffectElementGiver, elementGivers.get(3));
+
+        EasyMock.verify(mockHandlerFactory, handler.elementGiver, mockEffectElementGiver, elementGiverCard);
+    }
 
 }
