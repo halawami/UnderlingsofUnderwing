@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.swing.JOptionPane;
 
 import underlings.card.Card;
+import underlings.card.effect.Effect;
 import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
@@ -79,13 +80,10 @@ public class PlacementPhase extends RotationPhase {
     }
 
     public void hatchWildDragon(Card card, Player player) {
-        card.handler = WildHandler.getInstance();
-        for (int i = 0; i < card.wildEffects.length; i++) {
-            card.wildEffects[i].on(this.elementBag).on(this.hatchingGround).on(player.elementSpaceLogic).on(player)
-                    .apply();
-            this.gui.notifyAction(-1, card.wildEffects[i].toString() + " has been applied");
+        for (Effect wildEffect : this.hatchingGround.getWildEffects(card)) {
+            wildEffect.on(this.elementBag).on(this.hatchingGround).on(player.elementSpaceLogic).on(player).apply();
+            this.gui.notifyAction(-1, wildEffect.toString() + " has been applied");
         }
-
         this.gameComplete = true;
         this.phaseComplete = true;
         for (Card groundCard : this.hatchingGround) {

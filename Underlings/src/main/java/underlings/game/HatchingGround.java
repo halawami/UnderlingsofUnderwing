@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import underlings.card.Card;
+import underlings.card.effect.Effect;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.gui.Gui;
 import underlings.handler.Handler;
@@ -147,5 +148,14 @@ public class HatchingGround implements Iterable<Card> {
             }
         }
         return null;
+    }
+
+    public List<Effect> getWildEffects(Card card) {
+        List<Effect> wildEffects = new LinkedList<>();
+        card.handler = WildHandler.getInstance();
+        for (int i = 0; i < card.wildEffects.length; i++) {
+            wildEffects.add(card.wildEffects[i]);
+        }
+        return wildEffects;
     }
 }
