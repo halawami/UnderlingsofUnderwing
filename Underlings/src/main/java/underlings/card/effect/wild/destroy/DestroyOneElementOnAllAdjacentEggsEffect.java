@@ -1,4 +1,4 @@
-package underlings.card.effect.wild;
+package underlings.card.effect.wild.destroy;
 
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
