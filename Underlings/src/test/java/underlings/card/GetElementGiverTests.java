@@ -5,7 +5,10 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
+import underlings.card.effect.Effect;
+import underlings.card.effect.domestic.ElementGiverEffect;
 import underlings.element.ElementGiver;
+import underlings.gui.DrawChoice;
 
 public class GetElementGiverTests {
 
@@ -15,6 +18,18 @@ public class GetElementGiverTests {
         List<ElementGiver> elementGivers = testedCard.getElementGivers();
 
         Assert.assertEquals(0, elementGivers.size());
+    }
+
+    @Test
+    public void testOneElementGivers() {
+        ElementGiverEffect elementGiverEffect = new ElementGiverEffect();
+        ElementGiver testElementGiver = new ElementGiver("test", DrawChoice.RED);
+        Card testedCard = new Card();
+        testedCard.domesticEffects = new Effect[]{elementGiverEffect};
+        List<ElementGiver> elementGivers = testedCard.getElementGivers();
+
+        Assert.assertEquals(1, elementGivers.size());
+        Assert.assertEquals(testElementGiver, elementGivers.get(0));
     }
 
 }
