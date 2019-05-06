@@ -1,5 +1,7 @@
 package underlings.card.effect.wild;
 
+import java.util.List;
+
 import underlings.card.Card;
 import underlings.card.Family;
 import underlings.card.effect.HatchingGroundEffect;
@@ -17,4 +19,7 @@ public class HatchAllUnclaimedAdjacentEggsEffect extends HatchingGroundEffect {
 
     }
 
+    public List<Card> getHatchableEggs(List<Card> adjacentCards) {
+        return null;
+    }
 }
