@@ -1,5 +1,6 @@
 package underlings.card;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import underlings.card.effect.Effect;
@@ -25,6 +26,6 @@ public class Card implements Choice {
     }
 
     public List<ElementGiver> getElementGivers() {
-        return null;
+        return new ArrayList<>();
     }
 }
