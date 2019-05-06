@@ -1,7 +1,6 @@
 package underlings.game;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThrows;
 
 import java.util.Stack;
 
@@ -9,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import underlings.card.Card;
+import underlings.card.EmptyCard;
 
 public class DeckTests {
 
@@ -43,7 +43,8 @@ public class DeckTests {
     public void testDrawEmpty() {
         Stack<Card> cards = new Stack<>();
         this.deck = new Deck(cards);
-        assertThrows(IllegalStateException.class, () -> this.deck.draw());
+        assertEquals(EmptyCard.getInstance(), this.deck.draw());
+        // assertThrows(IllegalStateException.class, () -> this.deck.draw());
     }
 
 }
