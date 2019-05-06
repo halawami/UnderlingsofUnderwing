@@ -16,6 +16,8 @@ public class HatchAllUnclaimedAdjacentEggsEffect extends HatchingGroundEffect {
     @Override
     protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag,
             ElementSpaceLogic elementSpaceLogic) {
+        List<Card> adjacentCards = hatchingGround.getAdjacentCards(centerCard);
+        List<Card> hatchableEggs = getHatchableEggs(adjacentCards);
 
     }
 
