@@ -28,6 +28,13 @@ public class Gui {
         return this.promptHandler.promptChoice("Choose a Draw Choice", elementGiver.drawChoices, playerId);
     }
 
+    public boolean getMoreMovesDecision(int choiceNum, int playerId) {
+        if (choiceNum == 0)
+            return false;
+
+        return this.promptHandler.promptDecision("Would you like to place another element?", playerId);
+    }
+
     public HandlerDecision getHandlerDecision(List<Handler> handlers, int playerId, HatchingGround hatchingGround) {
         Handler handler = this.promptHandler.promptChoice("Choose a Handler", handlers, playerId);
         handlers.remove(handler);

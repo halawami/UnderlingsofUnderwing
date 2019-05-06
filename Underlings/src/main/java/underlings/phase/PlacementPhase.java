@@ -16,7 +16,6 @@ import underlings.element.utilities.ElementSpaceLogic;
 import underlings.field.Field;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
-import underlings.gui.PromptHandler;
 import underlings.handler.WildHandler;
 import underlings.player.Player;
 
@@ -37,67 +36,63 @@ public class PlacementPhase extends RotationPhase {
         }
     }
 
+
     @Override
     public void turn(Player player) {
-        int playerTurns = turnCounts.get(player);
-        if (playerTurns <= 0) {
+        if (!checkAndDecrementTurnCount(player)) {
             return;
-        } else {
-            PromptHandler prompts = this.gui.promptHandler;
-            int playerNum = player.getPlayerId();
+        }
 
-            ElementSpaceLogic logic = player.elementSpaceLogic;
-            List<Card> cards = this.getPlayableCards(logic, player.getElements());
+        int playerNum = player.getPlayerId();
 
-            if (cards.isEmpty()) {
-                prompts.displayMessage("Player has no valid placements", playerNum, JOptionPane.WARNING_MESSAGE);
-            } else {
+        ElementSpaceLogic logic = player.elementSpaceLogic;
+        List<Card> cards = this.getPlayableCards(logic, player.getElements());
+
+        if (cards.isEmpty()) {
+            this.gui.promptHandler.displayMessage("Player has no valid placements", playerNum,
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        this.phaseComplete = false;
+        Card card = this.gui.promptHandler.promptChoice("Pick a card to place an element on.", cards, playerNum);
+        List<ElementSpace> spaces = logic.getPlayableSpaces(card, player.getElements());
+        ElementSpace space =
+                this.gui.promptHandler.promptChoice("Pick an element space to place an element on.", spaces, playerNum);
+
+        List<Element> choices = this.playableElements(logic.getValidAdditions(space), player.getElements());
+        boolean moreMoves = true;
+        while (moreMoves) {
+            Element element = this.gui.promptHandler.promptChoice("Pick an element to place", choices, playerNum);
+
+            space.addElements(element);
+            player.removeElement(element);
+            this.displayMethod.run();
+
+            choices = this.playableElements(logic.getValidAdditions(space), player.getElements());
+            moreMoves = this.gui.getMoreMovesDecision(choices.size(), playerNum);
+        }
+
+        if (logic.isComplete(card) && card.handler == null) {
+            hatchWildDragon(card, player);
+        }
+    }
+
+    public void hatchWildDragon(Card card, Player player) {
+        card.handler = WildHandler.getInstance();
+        for (int i = 0; i < card.wildEffects.length; i++) {
+            card.wildEffects[i].on(this.elementBag).on(this.hatchingGround).on(player.elementSpaceLogic).on(player)
+                    .apply();
+            this.gui.notifyAction(-1, card.wildEffects[i].toString() + " has been applied");
+        }
+
+        this.gameComplete = true;
+        this.phaseComplete = true;
+        for (Card groundCard : this.hatchingGround) {
+            if (groundCard.handler != WildHandler.getInstance()) {
+                this.gameComplete = false;
                 this.phaseComplete = false;
-                Card card = prompts.promptChoice("Pick a card to place an element on.", cards, playerNum);
-                List<ElementSpace> spaces = logic.getPlayableSpaces(card, player.getElements());
-                ElementSpace space =
-                        prompts.promptChoice("Pick an element space to place an element on.", spaces, playerNum);
-
-                boolean moreMoves = true;
-                while (moreMoves) {
-                    List<Element> choices = this.playableElements(logic.getValidAdditions(space), player.getElements());
-                    Element element = prompts.promptChoice("Pick an element to place", choices, playerNum);
-
-                    space.addElements(element);
-                    player.removeElement(element);
-                    this.displayMethod.run();
-
-                    choices = this.playableElements(logic.getValidAdditions(space), player.getElements());
-                    if (choices.isEmpty()) {
-                        moreMoves = false;
-                    } else {
-                        moreMoves = prompts.promptDecision("Would you like to place another element?", playerNum);
-                    }
-                }
-
-                if (logic.isComplete(card) && card.handler == null) {
-                    card.handler = WildHandler.getInstance();
-                    for (int i = 0; i < card.wildEffects.length; i++) {
-                        card.wildEffects[i].on(this.elementBag).on(this.hatchingGround).on(player.elementSpaceLogic)
-                                .on(player).apply();
-                        this.gui.notifyAction(-1, card.wildEffects[i].toString() + " has been applied");
-                    }
-
-                    boolean gameOver = true;
-                    for (Card groundCard : this.hatchingGround) {
-                        if (groundCard.handler != WildHandler.getInstance()) {
-                            gameOver = false;
-                        }
-                    }
-                    if (gameOver) {
-                        this.gui.promptHandler.displayMessage("All dragons hatched wild! You lose!", -1,
-                                JOptionPane.WARNING_MESSAGE);
-                        this.gameComplete = true;
-                        return;
-                    }
-                }
             }
-            this.turnCounts.put(player, playerTurns - 1);
         }
     }
 
@@ -121,4 +116,13 @@ public class PlacementPhase extends RotationPhase {
         return cards;
     }
 
+    private boolean checkAndDecrementTurnCount(Player player) {
+        int playerTurns = turnCounts.get(player);
+        if (playerTurns <= 0) {
+            return false;
+        }
+
+        this.turnCounts.put(player, playerTurns - 1);
+        return true;
+    }
 }

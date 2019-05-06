@@ -5,8 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
 
-import javax.swing.JOptionPane;
-
 import org.easymock.EasyMock;
 import org.junit.Test;
 
@@ -161,7 +159,7 @@ public class PlacementPhaseTests {
         runnable.run();
         EasyMock.expectLastCall().anyTimes();
         EasyMock.expect(logic.getValidAdditions(blueSpace)).andReturn(Arrays.asList(ElementColor.BLUE));
-        EasyMock.expect(promptHandler.promptDecision("Would you like to place another element?", 1)).andReturn(false);
+        EasyMock.expect(gui.getMoreMovesDecision(2, 1)).andReturn(false);
         EasyMock.expect(logic.isComplete(card)).andReturn(true).anyTimes();
         EasyMock.expect(card.wildEffects[0].on(elementBag)).andReturn(card.wildEffects[0]).anyTimes();
         EasyMock.expect(card.wildEffects[0].on(hatchingGround)).andReturn(card.wildEffects[0]).anyTimes();
@@ -169,7 +167,8 @@ public class PlacementPhaseTests {
         EasyMock.expect(card.wildEffects[0].on(player)).andReturn(card.wildEffects[0]).anyTimes();
         card.wildEffects[0].apply();
         gui.notifyAction(-1, card.wildEffects[0].toString() + " has been applied");
-        gui.promptHandler.displayMessage("All dragons hatched wild! You lose!", -1, JOptionPane.WARNING_MESSAGE);
+        // gui.promptHandler.displayMessage("All dragons hatched wild! You lose!", -1,
+        // JOptionPane.WARNING_MESSAGE);
 
         // assert expected actions occurred
         EasyMock.replay(player, promptHandler, display, elementBag, runnable, gui);
@@ -245,7 +244,7 @@ public class PlacementPhaseTests {
         runnable.run();
         EasyMock.expectLastCall().anyTimes();
         EasyMock.expect(logic.getValidAdditions(blueSpace)).andReturn(Arrays.asList(ElementColor.BLUE));
-        EasyMock.expect(promptHandler.promptDecision("Would you like to place another element?", 1)).andReturn(false);
+        EasyMock.expect(gui.getMoreMovesDecision(2, 1)).andReturn(false);
         EasyMock.expect(logic.isComplete(card)).andReturn(true).anyTimes();
         EasyMock.expect(card.wildEffects[0].on(elementBag)).andReturn(card.wildEffects[0]).anyTimes();
         EasyMock.expect(card.wildEffects[0].on(hatchingGround)).andReturn(card.wildEffects[0]).anyTimes();
@@ -259,7 +258,8 @@ public class PlacementPhaseTests {
         EasyMock.expect(card.wildEffects[1].on(player)).andReturn(card.wildEffects[1]).anyTimes();
         card.wildEffects[1].apply();
         gui.notifyAction(-1, card.wildEffects[1].toString() + " has been applied");
-        gui.promptHandler.displayMessage("All dragons hatched wild! You lose!", -1, JOptionPane.WARNING_MESSAGE);
+        // gui.promptHandler.displayMessage("All dragons hatched wild! You lose!", -1,
+        // JOptionPane.WARNING_MESSAGE);
 
         // assert expected actions occurred
         EasyMock.replay(player, promptHandler, display, elementBag, runnable, gui);
