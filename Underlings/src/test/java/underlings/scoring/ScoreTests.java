@@ -193,13 +193,15 @@ public class ScoreTests {
     @Test
     public void testTwoSameNetCool() {
         List<Player> players = new ArrayList<>();
+        players.add(this.player1);
         players.add(this.player4);
         players.add(this.player6);
 
         Map<Player, Integer> scores = this.scoreUtils.calculateScores(players);
 
-        assertEquals(13, (int) (scores.get(this.player4)));
-        assertEquals(13, (int) (scores.get(this.player6)));
+        assertEquals(58, (int) (scores.get(this.player1)));
+        assertEquals(28, (int) (scores.get(this.player4)));
+        assertEquals(28, (int) (scores.get(this.player6)));
     }
 
 }

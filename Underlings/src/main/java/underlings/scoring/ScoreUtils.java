@@ -24,19 +24,19 @@ public class ScoreUtils {
             int temp = this.calculateTemperature(player.hatchedCards);
 
             if (temp != 0) {
-                if (temp == warmest) {
-                    warmestPlayers.add(player);
-                } else if (temp > warmest) {
+                if (temp > warmest) {
                     warmest = temp;
                     warmestPlayers = new ArrayList<>();
                     warmestPlayers.add(player);
+                } else if (temp == warmest) {
+                    warmestPlayers.add(player);
                 }
 
-                if (temp == coolest) {
-                    coolestPlayers.add(player);
-                } else if (temp < coolest) {
+                if (temp < coolest) {
                     coolest = temp;
                     coolestPlayers = new ArrayList<>();
+                    coolestPlayers.add(player);
+                } else if (temp == coolest) {
                     coolestPlayers.add(player);
                 }
             }
