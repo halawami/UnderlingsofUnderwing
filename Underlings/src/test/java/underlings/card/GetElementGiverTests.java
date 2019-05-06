@@ -72,4 +72,26 @@ public class GetElementGiverTests {
         Assert.assertEquals(testElementGiver, elementGivers.get(0));
     }
 
+    @Test
+    public void testTwoElementGivers() {
+        Effect mockEffect1 = EasyMock.mock(Effect.class);
+
+        ElementGiverEffect elementGiverEffect1 = new ElementGiverEffect();
+        ElementGiver testElementGiver1 = new ElementGiver("test", DrawChoice.RED);
+        elementGiverEffect1.elementGiver = testElementGiver1;
+
+        ElementGiverEffect elementGiverEffect2 = new ElementGiverEffect();
+        ElementGiver testElementGiver2 = new ElementGiver("test2", DrawChoice.RED);
+        elementGiverEffect2.elementGiver = testElementGiver2;
+
+        Card testedCard = new Card();
+        testedCard.domesticEffects = new Effect[]{mockEffect1, elementGiverEffect1, elementGiverEffect2};
+
+        List<ElementGiver> elementGivers = testedCard.getElementGivers();
+
+        Assert.assertEquals(2, elementGivers.size());
+        Assert.assertEquals(testElementGiver1, elementGivers.get(0));
+        Assert.assertEquals(testElementGiver2, elementGivers.get(1));
+    }
+
 }
