@@ -44,7 +44,6 @@ public class DeckTests {
         Stack<Card> cards = new Stack<>();
         this.deck = new Deck(cards);
         assertEquals(EmptyCard.getInstance(), this.deck.draw());
-        // assertThrows(IllegalStateException.class, () -> this.deck.draw());
     }
 
 }

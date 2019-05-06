@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Stack;
 
 import underlings.card.Card;
+import underlings.card.EmptyCard;
 
 public class Deck {
 
@@ -16,7 +17,7 @@ public class Deck {
 
     public Card draw() {
         if (cards.isEmpty()) {
-            throw new IllegalStateException("Can't draw from an empty deck");
+            return EmptyCard.getInstance();
         }
         return cards.pop();
     }
