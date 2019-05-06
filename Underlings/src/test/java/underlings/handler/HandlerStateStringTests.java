@@ -49,4 +49,11 @@ public class HandlerStateStringTests {
         fieldSpace.addHandler(handler);
         assertEquals("Handler on RED Element Field Space", handler.toString());
     }
+
+    @Test
+    public void testToStringFieldWhiteSpace() {
+        Handler handler = new Handler(HandlerState.FIELD_WHITESPACE);
+        handler.setLocation("Field White Space");
+        assertEquals("Handler on Field White Space", handler.toString());
+    }
 }
