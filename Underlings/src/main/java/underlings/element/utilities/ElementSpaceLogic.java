@@ -5,6 +5,7 @@ import com.google.common.io.Resources;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -97,19 +98,13 @@ public class ElementSpaceLogic {
     }
 
     public List<ElementSpace> getPlayableSpaces(Card card, List<Element> elements) {
-        List<ElementSpace> spaces = new ArrayList<ElementSpace>();
-        for (ElementSpace space : card.elementSpaces) {
-            for (Element element : elements) {
-                if (getValidAdditions(space).contains(element.getColor())) {
-                    spaces.add(space);
-                    break;
-                }
-            }
+        Set<ElementSpace> spaces = new HashSet<>();
+        for (Element element : elements) {
+            spaces.addAll(getPlayableSpaces(card, element.getColor()));
         }
-        return spaces;
+        return new ArrayList<>(spaces);
     }
 
-    // TODO: merge this method and the one on top
     public List<ElementSpace> getPlayableSpaces(Card card, ElementColor elementColor) {
         List<ElementSpace> spaces = new ArrayList<>();
         for (ElementSpace space : card.elementSpaces) {
