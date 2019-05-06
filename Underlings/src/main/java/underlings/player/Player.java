@@ -60,10 +60,6 @@ public class Player {
         }
     }
 
-    public void gainEffectElementGiver(ElementGiver effectElementGiver) {
-        this.effectElementGiver.add(effectElementGiver);
-    }
-
     public int getMaxHandlers() {
         return this.maxHandlers;
     }
@@ -115,7 +111,6 @@ public class Player {
         for (Handler handler : this.getHandlers()) {
             elementGivers.add(handler.elementGiver);
         }
-        elementGivers.addAll(this.effectElementGiver);
 
         return elementGivers;
     }
