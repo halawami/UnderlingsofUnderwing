@@ -16,6 +16,7 @@ public class GetElementGiverTests {
     @Test
     public void testNoElementGivers() {
         Card testedCard = new Card();
+        testedCard.domesticEffects = new Effect[0];
 
         List<ElementGiver> elementGivers = testedCard.getElementGivers();
 
