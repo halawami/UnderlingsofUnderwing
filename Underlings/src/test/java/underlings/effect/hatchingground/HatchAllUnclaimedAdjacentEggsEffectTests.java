@@ -8,7 +8,6 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import underlings.card.Card;
-import underlings.card.Family;
 import underlings.card.effect.Effect;
 import underlings.card.effect.wild.HatchAllUnclaimedAdjacentEggsEffect;
 import underlings.element.ElementBag;
@@ -27,20 +26,17 @@ public class HatchAllUnclaimedAdjacentEggsEffectTests {
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         List<Card> mockedCards = getMockedCards(1);
         Handler handler = EasyMock.mock(Handler.class);
-        mockedCards.get(0).family = Family.TRIADIC;
         mockedCards.get(0).wildEffects = new Effect[1];
         Effect effect = EasyMock.mock(Effect.class);
         mockedCards.get(0).wildEffects[0] = effect;
         HatchAllUnclaimedAdjacentEggsEffect hatchAllUnclaimedAdjacentEggsEffect =
                 new HatchAllUnclaimedAdjacentEggsEffect();
-        hatchAllUnclaimedAdjacentEggsEffect.dragonFamilies = new Family[] {Family.TRIADIC};
         EasyMock.expect(hatchingGround.getAdjacentCards(centerCard)).andReturn(mockedCards);
         ElementBag elementBag = EasyMock.mock(ElementBag.class);
         Player fakePlayer = FakePlayer.getInstance();
         Gui gui = EasyMock.mock(Gui.class);
         mockedCards.get(0).wildEffects[0].on(centerCard).on(hatchingGround).on(elementBag)
                 .on(fakePlayer.elementSpaceLogic).on(fakePlayer).apply();
-
 
         EasyMock.replay(centerCard, hatchingGround, handler, elementBag, effect, gui);
 
