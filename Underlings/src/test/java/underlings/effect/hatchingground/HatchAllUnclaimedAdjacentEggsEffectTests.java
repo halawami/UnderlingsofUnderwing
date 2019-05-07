@@ -25,10 +25,8 @@ public class HatchAllUnclaimedAdjacentEggsEffectTests {
     public void testHatchOneAdjacentUnclaimedEgg() {
         Card centerCard = EasyMock.mock(Card.class);
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
-        List<Card> mockedCards = getMockedCards(2);
+        List<Card> mockedCards = getMockedCards(1);
         Handler handler = EasyMock.mock(Handler.class);
-        mockedCards.get(1).handler = handler;
-        mockedCards.get(1).family = Family.MONOCHROMATIC;
         mockedCards.get(0).family = Family.TRIADIC;
         mockedCards.get(0).wildEffects = new Effect[1];
         Effect effect = EasyMock.mock(Effect.class);
