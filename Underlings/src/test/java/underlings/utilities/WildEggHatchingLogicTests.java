@@ -24,7 +24,6 @@ public class WildEggHatchingLogicTests {
         Player player = EasyMock.mock(Player.class);
         player.elementSpaceLogic = new ElementSpaceLogic();
         EasyMock.expect(card.wildEffects[0].on(elementBag)).andReturn(card.wildEffects[0]);
-        EasyMock.expect(card.wildEffects[0].on(card)).andReturn(card.wildEffects[0]);
         EasyMock.expect(card.wildEffects[0].on(hatchingGround)).andReturn(card.wildEffects[0]);
         EasyMock.expect(card.wildEffects[0].on(player.elementSpaceLogic)).andReturn(card.wildEffects[0]);
         EasyMock.expect(card.wildEffects[0].on(player)).andReturn(card.wildEffects[0]);
@@ -52,7 +51,6 @@ public class WildEggHatchingLogicTests {
         Player player = EasyMock.mock(Player.class);
         player.elementSpaceLogic = new ElementSpaceLogic();
         EasyMock.expect(card.wildEffects[0].on(elementBag)).andReturn(card.wildEffects[0]).times(2);
-        EasyMock.expect(card.wildEffects[0].on(card)).andReturn(card.wildEffects[0]).times(2);
         EasyMock.expect(card.wildEffects[0].on(hatchingGround)).andReturn(card.wildEffects[0]).times(2);
         EasyMock.expect(card.wildEffects[0].on(player.elementSpaceLogic)).andReturn(card.wildEffects[0]).times(2);
         EasyMock.expect(card.wildEffects[0].on(player)).andReturn(card.wildEffects[0]).times(2);

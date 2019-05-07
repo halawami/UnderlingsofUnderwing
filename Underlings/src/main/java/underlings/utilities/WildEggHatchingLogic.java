@@ -25,8 +25,8 @@ public class WildEggHatchingLogic {
     public void hatchWildEgg(Card card) {
         card.handler = WildHandler.getInstance();
         for (int i = 0; i < card.wildEffects.length; i++) {
-            card.wildEffects[i].on(card).on(this.elementBag).on(this.hatchingGround).on(player.elementSpaceLogic)
-                    .on(this.player).on(this.gui).apply();
+            card.wildEffects[i].on(this.elementBag).on(this.hatchingGround).on(player.elementSpaceLogic).on(this.player)
+                    .on(this.gui).apply();
             this.gui.notifyAction(-1, card.wildEffects[i].toString() + " has been applied");
         }
     }
