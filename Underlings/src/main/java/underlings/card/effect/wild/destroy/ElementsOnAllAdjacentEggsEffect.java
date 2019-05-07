@@ -9,14 +9,15 @@ import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.HatchingGround;
+import underlings.gui.Gui;
 
-public abstract class DestroyElementsOnAllAdjacentEggsEffect extends HatchingGroundEffect {
+public abstract class ElementsOnAllAdjacentEggsEffect extends HatchingGroundEffect {
 
     public ElementColor[] elementColors;
 
     @Override
     protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag,
-            ElementSpaceLogic elementSpaceLogic) {
+            ElementSpaceLogic elementSpaceLogic, Gui gui) {
         List<Card> adjacentCards = hatchingGround.getAdjacentCards(centerCard);
         for (Card adjacentCard : adjacentCards) {
             for (ElementColor elementColorToDestroy : this.elementColors) {
@@ -29,10 +30,8 @@ public abstract class DestroyElementsOnAllAdjacentEggsEffect extends HatchingGro
             ElementSpaceLogic elementSpaceLogic) {
         List<ElementSpace> destroyableElementSpaces =
                 elementSpaceLogic.getDestroyableSpaces(card, elementColorToDestroy);
-        if (!destroyableElementSpaces.isEmpty()) {
-            for (ElementSpace destroyableSpace : destroyableElementSpaces) {
-                destroyElementsOfColorOnSpace(destroyableSpace, elementColorToDestroy);
-            }
+        for (ElementSpace destroyableSpace : destroyableElementSpaces) {
+            destroyElementsOfColorOnSpace(destroyableSpace, elementColorToDestroy);
         }
     }
 

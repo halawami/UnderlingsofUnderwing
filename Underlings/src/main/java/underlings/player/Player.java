@@ -29,6 +29,9 @@ public class Player {
     public List<Card> unhatchedCards;
     public ElementSpaceLogic elementSpaceLogic;
 
+    public Player() {
+
+    }
 
     public Player(int maxHandlers, HandlerFactory handlerFactory, int playerId) {
         this.handlers = new ArrayList<>();
