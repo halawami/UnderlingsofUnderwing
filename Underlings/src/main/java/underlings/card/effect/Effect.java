@@ -4,6 +4,7 @@ import underlings.card.Card;
 import underlings.element.ElementBag;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.HatchingGround;
+import underlings.gui.Gui;
 import underlings.player.Player;
 
 public abstract class Effect {
@@ -47,13 +48,13 @@ public abstract class Effect {
     }
 
     protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag,
-            ElementSpaceLogic elementSpaceLogic) {
-    }
+            ElementSpaceLogic elementSpaceLogic) {}
 
-    protected void apply(Player player, ElementBag elementBag) {
-    }
+    protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag,
+            ElementSpaceLogic elementSpaceLogic, Gui gui) {}
 
-    protected void apply(Player player) {
-    }
-    
+    protected void apply(Player player, ElementBag elementBag) {}
+
+    protected void apply(Player player) {}
+
 }
