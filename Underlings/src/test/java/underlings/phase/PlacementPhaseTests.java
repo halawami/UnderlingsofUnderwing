@@ -163,10 +163,11 @@ public class PlacementPhaseTests {
         EasyMock.expect(logic.getValidAdditions(blueSpace)).andReturn(Arrays.asList(ElementColor.BLUE));
         EasyMock.expect(gui.getMoreMovesDecision(2, 1)).andReturn(false);
         EasyMock.expect(logic.isComplete(card)).andReturn(true).anyTimes();
-        EasyMock.expect(card.wildEffects[0].on(elementBag)).andReturn(card.wildEffects[0]).anyTimes();
-        EasyMock.expect(card.wildEffects[0].on(hatchingGround)).andReturn(card.wildEffects[0]).anyTimes();
-        EasyMock.expect(card.wildEffects[0].on(logic)).andReturn(card.wildEffects[0]).anyTimes();
-        EasyMock.expect(card.wildEffects[0].on(player)).andReturn(card.wildEffects[0]).anyTimes();
+        EasyMock.expect(card.wildEffects[0].on(elementBag)).andReturn(card.wildEffects[0]);
+        EasyMock.expect(card.wildEffects[0].on(hatchingGround)).andReturn(card.wildEffects[0]);
+        EasyMock.expect(card.wildEffects[0].on(logic)).andReturn(card.wildEffects[0]);
+        EasyMock.expect(card.wildEffects[0].on(player)).andReturn(card.wildEffects[0]);
+        EasyMock.expect(card.wildEffects[0].on(gui)).andReturn(card.wildEffects[0]);
         card.wildEffects[0].apply();
         gui.notifyAction(-1, card.wildEffects[0].toString() + " has been applied");
         // gui.promptHandler.displayMessage("All dragons hatched wild! You lose!", -1,
