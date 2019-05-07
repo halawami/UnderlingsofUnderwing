@@ -9,6 +9,7 @@ import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.HatchingGround;
+import underlings.gui.Gui;
 
 public abstract class ElementsOnAllAdjacentEggsEffect extends HatchingGroundEffect {
 
@@ -16,7 +17,7 @@ public abstract class ElementsOnAllAdjacentEggsEffect extends HatchingGroundEffe
 
     @Override
     protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag,
-            ElementSpaceLogic elementSpaceLogic) {
+            ElementSpaceLogic elementSpaceLogic, Gui gui) {
         List<Card> adjacentCards = hatchingGround.getAdjacentCards(centerCard);
         for (Card adjacentCard : adjacentCards) {
             for (ElementColor elementColorToDestroy : this.elementColors) {

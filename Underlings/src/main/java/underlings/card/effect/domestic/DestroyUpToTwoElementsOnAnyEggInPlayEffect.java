@@ -6,6 +6,7 @@ import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.HatchingGround;
+import underlings.gui.Gui;
 
 public class DestroyUpToTwoElementsOnAnyEggInPlayEffect extends HatchingGroundEffect {
 
@@ -13,7 +14,7 @@ public class DestroyUpToTwoElementsOnAnyEggInPlayEffect extends HatchingGroundEf
 
     @Override
     protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag,
-            ElementSpaceLogic elementSpaceLogic) {
+            ElementSpaceLogic elementSpaceLogic, Gui gui) {
 
     }
 }
