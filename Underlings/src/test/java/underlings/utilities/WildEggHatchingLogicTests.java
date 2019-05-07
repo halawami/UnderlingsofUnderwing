@@ -65,6 +65,7 @@ public class WildEggHatchingLogicTests {
         EasyMock.expectLastCall().times(2);
 
         EasyMock.replay(effect, elementBag, hatchingGround, player, gui);
+
         WildEggHatchingLogic wildEggHatchingLogic = new WildEggHatchingLogic(gui, elementBag, hatchingGround, player);
         wildEggHatchingLogic.hatchWildEgg(card);
 
