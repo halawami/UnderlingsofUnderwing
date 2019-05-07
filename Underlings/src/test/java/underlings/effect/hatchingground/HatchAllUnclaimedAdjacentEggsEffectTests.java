@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import underlings.card.Card;
 import underlings.card.effect.Effect;
-import underlings.card.effect.wild.HatchAllUnclaimedAdjacentEggsEffect;
+import underlings.card.effect.wild.adjacenteggs.HatchAllUnclaimedAdjacentEggsEffect;
 import underlings.element.ElementBag;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;

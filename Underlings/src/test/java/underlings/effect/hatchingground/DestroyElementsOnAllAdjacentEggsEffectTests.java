@@ -9,9 +9,9 @@ import org.easymock.EasyMock;
 import org.junit.Test;
 
 import underlings.card.Card;
-import underlings.card.effect.wild.destroy.AllElementsOnAllAdjacentEggsEffect;
-import underlings.card.effect.wild.destroy.ElementsOnAllAdjacentEggsEffect;
-import underlings.card.effect.wild.destroy.OneElementOnAllAdjacentEggsEffect;
+import underlings.card.effect.wild.adjacenteggs.destroy.AllElementsOnAllAdjacentEggsEffect;
+import underlings.card.effect.wild.adjacenteggs.destroy.ElementsOnAllAdjacentEggsEffect;
+import underlings.card.effect.wild.adjacenteggs.destroy.OneElementOnAllAdjacentEggsEffect;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;

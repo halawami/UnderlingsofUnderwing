@@ -1,29 +1,26 @@
-package underlings.card.effect.wild;
+package underlings.card.effect.wild.adjacenteggs;
 
 import java.util.List;
 
 import underlings.card.Card;
-import underlings.card.effect.HatchingGroundEffect;
 import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
-import underlings.game.HatchingGround;
-import underlings.gui.Gui;
 
-public class AddElementsToAllAdjacentEggsEffect extends HatchingGroundEffect {
+public class AddElementsToAllAdjacentEggsEffect extends AdjacentEggsEffect {
 
     public ElementColor[] elementColors;
 
     @Override
-    protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag,
-            ElementSpaceLogic elementSpaceLogic, Gui gui) {
-        List<Card> adjacentCards = hatchingGround.getAdjacentCards(centerCard);
-        for (Card adjacentCard : adjacentCards) {
-            for (ElementColor elementColorToAdd : this.elementColors) {
-                addElementToCard(elementColorToAdd, adjacentCard, elementSpaceLogic, elementBag);
-            }
+    protected void applyOnAdjacentEgg(Card adjacentEgg, ElementBag elementBag, ElementSpaceLogic elementSpaceLogic) {
+        this.addElementsToAdjacentEgg(adjacentEgg, elementBag, elementSpaceLogic);
+    }
+
+    public void addElementsToAdjacentEgg(Card adjacentEgg, ElementBag elementBag, ElementSpaceLogic elementSpaceLogic) {
+        for (ElementColor elementColorToAdd : this.elementColors) {
+            addElementToCard(elementColorToAdd, adjacentEgg, elementSpaceLogic, elementBag);
         }
     }
 

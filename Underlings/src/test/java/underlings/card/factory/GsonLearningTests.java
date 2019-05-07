@@ -21,7 +21,7 @@ import underlings.card.Temperature;
 import underlings.card.effect.Effect;
 import underlings.card.effect.domestic.CollectElementEffect;
 import underlings.card.effect.domestic.GainOneHandlerEffect;
-import underlings.card.effect.wild.AddElementsToAllAdjacentEggsEffect;
+import underlings.card.effect.wild.adjacenteggs.AddElementsToAllAdjacentEggsEffect;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.ElementSpacePosition;

@@ -11,7 +11,7 @@ import org.easymock.EasyMock;
 import org.junit.Test;
 
 import underlings.card.Card;
-import underlings.card.effect.wild.AddElementsToAllAdjacentEggsEffect;
+import underlings.card.effect.wild.adjacenteggs.AddElementsToAllAdjacentEggsEffect;
 import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;

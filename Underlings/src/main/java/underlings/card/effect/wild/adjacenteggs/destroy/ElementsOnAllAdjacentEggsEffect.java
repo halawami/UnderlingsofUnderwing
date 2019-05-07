@@ -1,4 +1,4 @@
-package underlings.card.effect.wild.destroy;
+package underlings.card.effect.wild.adjacenteggs.destroy;
 
 import java.util.List;
 
