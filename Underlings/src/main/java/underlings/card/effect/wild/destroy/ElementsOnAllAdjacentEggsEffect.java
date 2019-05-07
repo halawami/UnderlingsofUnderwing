@@ -34,7 +34,7 @@ public abstract class ElementsOnAllAdjacentEggsEffect extends HatchingGroundEffe
             destroyElementsOfColorOnSpace(destroyableSpace, elementColorToDestroy);
         }
     }
-
+    
     public abstract void destroyElementsOfColorOnSpace(ElementSpace destroyableSpace,
             ElementColor elementColorToDestroy);
 }
