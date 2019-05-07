@@ -23,12 +23,13 @@ public class WildEggHatchingLogicTests {
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         Player player = EasyMock.mock(Player.class);
         player.elementSpaceLogic = new ElementSpaceLogic();
-        EasyMock.expect(card.wildEffects[0].on(elementBag)).andReturn(card.wildEffects[0]).anyTimes();
-        EasyMock.expect(card.wildEffects[0].on(hatchingGround)).andReturn(card.wildEffects[0]).anyTimes();
-        EasyMock.expect(card.wildEffects[0].on(player.elementSpaceLogic)).andReturn(card.wildEffects[0]).anyTimes();
-        EasyMock.expect(card.wildEffects[0].on(player)).andReturn(card.wildEffects[0]).anyTimes();
+        EasyMock.expect(card.wildEffects[0].on(elementBag)).andReturn(card.wildEffects[0]);
+        EasyMock.expect(card.wildEffects[0].on(card)).andReturn(card.wildEffects[0]);
+        EasyMock.expect(card.wildEffects[0].on(hatchingGround)).andReturn(card.wildEffects[0]);
+        EasyMock.expect(card.wildEffects[0].on(player.elementSpaceLogic)).andReturn(card.wildEffects[0]);
+        EasyMock.expect(card.wildEffects[0].on(player)).andReturn(card.wildEffects[0]);
         Gui gui = EasyMock.mock(Gui.class);
-        EasyMock.expect(card.wildEffects[0].on(gui)).andReturn(card.wildEffects[0]).anyTimes();
+        EasyMock.expect(card.wildEffects[0].on(gui)).andReturn(card.wildEffects[0]);
         card.wildEffects[0].apply();
         gui.notifyAction(-1, card.wildEffects[0].toString() + " has been applied");
 
@@ -51,12 +52,15 @@ public class WildEggHatchingLogicTests {
         Player player = EasyMock.mock(Player.class);
         player.elementSpaceLogic = new ElementSpaceLogic();
         EasyMock.expect(card.wildEffects[0].on(elementBag)).andReturn(card.wildEffects[0]).times(2);
+        EasyMock.expect(card.wildEffects[0].on(card)).andReturn(card.wildEffects[0]).times(2);
         EasyMock.expect(card.wildEffects[0].on(hatchingGround)).andReturn(card.wildEffects[0]).times(2);
         EasyMock.expect(card.wildEffects[0].on(player.elementSpaceLogic)).andReturn(card.wildEffects[0]).times(2);
         EasyMock.expect(card.wildEffects[0].on(player)).andReturn(card.wildEffects[0]).times(2);
+        Gui gui = EasyMock.mock(Gui.class);
+        EasyMock.expect(card.wildEffects[0].on(gui)).andReturn(card.wildEffects[0]).times(2);
         card.wildEffects[0].apply();
         EasyMock.expectLastCall().times(2);
-        Gui gui = EasyMock.mock(Gui.class);
+
         gui.notifyAction(-1, card.wildEffects[0].toString() + " has been applied");
         EasyMock.expectLastCall().times(2);
 
