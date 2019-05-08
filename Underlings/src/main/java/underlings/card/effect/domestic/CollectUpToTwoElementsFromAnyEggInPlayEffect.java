@@ -7,7 +7,7 @@ import underlings.player.Player;
 public class CollectUpToTwoElementsFromAnyEggInPlayEffect extends UptoTwoElementsFromAnyEggInPlayEffect {
 
     @Override
-    protected void applyOnSelectedElement(Element selectedElement, ElementSpace selectedSpace, Player currentPlayer) {
+    public void applyOnSelectedElement(Element selectedElement, ElementSpace selectedSpace, Player currentPlayer) {
         selectedSpace.destroyOneElementOfColor(selectedElement.getColor());
         currentPlayer.addElement(selectedElement);
     }

@@ -28,6 +28,6 @@ public abstract class UptoTwoElementsFromAnyEggInPlayEffect extends HatchingGrou
         }
     }
 
-    protected abstract void applyOnSelectedElement(Element selectedElement, ElementSpace selectedSpace,
+    public abstract void applyOnSelectedElement(Element selectedElement, ElementSpace selectedSpace,
             Player currentPlayer);
 }
