@@ -24,7 +24,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect"
+        "effect": "AddElementsEffect"
       }
     ]
   }
