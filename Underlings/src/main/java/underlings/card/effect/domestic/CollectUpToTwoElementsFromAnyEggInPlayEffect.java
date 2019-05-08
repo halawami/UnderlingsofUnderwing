@@ -1,35 +1,13 @@
 package underlings.card.effect.domestic;
 
-import java.util.List;
-
-import underlings.card.Card;
-import underlings.card.effect.HatchingGroundEffect;
 import underlings.element.Element;
-import underlings.element.ElementBag;
-import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
-import underlings.element.utilities.ElementSpaceLogic;
-import underlings.game.HatchingGround;
-import underlings.gui.Gui;
 import underlings.player.Player;
 
-public class CollectUpToTwoElementsFromAnyEggInPlayEffect extends HatchingGroundEffect {
-
-    public ElementColor[] elementChoices;
+public class CollectUpToTwoElementsFromAnyEggInPlayEffect extends UptoTwoElementsFromAnyEggInPlayEffect {
 
     @Override
-    protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag,
-            ElementSpaceLogic elementSpaceLogic, Gui gui, Player currentPlayer) {
-        List<Card> allCards = hatchingGround.getAllCards();
-        for (int i = 0; i < 2; i++) {
-            ElementSpace selectedSpace = gui.getElementSpaceContainingElementOfColors(allCards, this.elementChoices);
-            Element selectedElement = gui.getElementOfColorsFromSpace(this.elementChoices, selectedSpace);
-            giveElementToPlayer(selectedElement, selectedSpace, currentPlayer);
-        }
-    }
-
-    private void giveElementToPlayer(Element selectedElement, ElementSpace selectedSpace,
-            Player currentPlayer) {
+    protected void applyOnSelectedElement(Element selectedElement, ElementSpace selectedSpace, Player currentPlayer) {
         selectedSpace.destroyOneElementOfColor(selectedElement.getColor());
         currentPlayer.addElement(selectedElement);
     }
