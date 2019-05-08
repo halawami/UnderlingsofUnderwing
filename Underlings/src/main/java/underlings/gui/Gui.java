@@ -6,7 +6,9 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import underlings.card.Card;
+import underlings.element.ElementColor;
 import underlings.element.ElementGiver;
+import underlings.element.ElementSpace;
 import underlings.game.HatchingGround;
 import underlings.handler.Handler;
 import underlings.handler.HandlerChoice;
@@ -29,8 +31,9 @@ public class Gui {
     }
 
     public boolean getMoreMovesDecision(int choiceNum, int playerId) {
-        if (choiceNum == 0)
+        if (choiceNum == 0) {
             return false;
+        }
 
         return this.promptHandler.promptDecision("Would you like to place another element?", playerId);
     }
@@ -68,4 +71,13 @@ public class Gui {
         return this.promptHandler.promptInt("Enter Player Count", minPlayers, maxPlayers);
     }
 
+    public ElementColor getColorFromList(ElementColor[] elementChoices) {
+        //TODO: implement this method for CollectUpToTwoElementsFromAnyEggInPlayEffect, ask Mohammad for information
+        return null;
+    }
+
+    public ElementSpace getElementSpaceContainingElementOfColor(List<Card> cards, ElementColor selectedColor) {
+        //TODO: implement this method for CollectUpToTwoElementsFromAnyEggInPlayEffect, ask Mohammad for information
+        return null;
+    }
 }

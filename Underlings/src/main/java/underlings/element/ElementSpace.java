@@ -39,4 +39,7 @@ public class ElementSpace implements Choice {
         return color + " Element Space";
     }
 
+    public Element getElementOfColor(ElementColor elementColor) {
+        return null;
+    }
 }

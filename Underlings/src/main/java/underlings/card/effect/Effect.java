@@ -48,16 +48,20 @@ public abstract class Effect {
     }
 
     public void apply() {
-        this.apply(this.centerCard, this.hatchingGround, this.elementBag, this.elementSpaceLogic, this.gui);
+        this.apply(this.centerCard, this.hatchingGround, this.elementBag, this.elementSpaceLogic, this.gui,
+                this.player);
         this.apply(this.player, elementBag);
         this.apply(this.player);
     }
 
     protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag,
-            ElementSpaceLogic elementSpaceLogic, Gui gui) {}
+            ElementSpaceLogic elementSpaceLogic, Gui gui, Player currentPlayer) {
+    }
 
-    protected void apply(Player player, ElementBag elementBag) {}
+    protected void apply(Player player, ElementBag elementBag) {
+    }
 
-    protected void apply(Player player) {}
+    protected void apply(Player player) {
+    }
 
 }
