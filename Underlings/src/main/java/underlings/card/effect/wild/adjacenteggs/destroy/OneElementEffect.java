@@ -3,10 +3,10 @@ package underlings.card.effect.wild.adjacenteggs.destroy;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 
-public class AllElementsOnAllAdjacentEggsEffect extends ElementsOnAllAdjacentEggsEffect {
+public class OneElementEffect extends ElementsEffect {
 
     @Override
     public void destroyElementsOfColorOnSpace(ElementSpace destroyableSpace, ElementColor elementColorToDestroy) {
-        destroyableSpace.destroyAllElementsOfColor(elementColorToDestroy);
+        destroyableSpace.destroyOneElementOfColor(elementColorToDestroy);
     }
 }

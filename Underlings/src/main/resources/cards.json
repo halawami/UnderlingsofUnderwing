@@ -27,7 +27,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsEffect",
         "elementColors": [
           "WHITE"
         ]
@@ -62,7 +62,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsEffect",
         "elementColors": [
           "BLACK"
         ]
@@ -95,7 +95,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsEffect",
         "elementColors": [
           "GREEN"
         ]
@@ -130,7 +130,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsEffect",
         "elementColors": [
           "WHITE"
         ]
@@ -163,7 +163,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsEffect",
         "elementColors": [
           "ORANGE"
         ]
@@ -196,7 +196,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsEffect",
         "elementColors": [
           "PURPLE"
         ]
@@ -229,7 +229,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsEffect",
         "elementColors": [
           "RED"
         ]
@@ -262,7 +262,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsEffect",
         "elementColors": [
           "ORANGE"
         ]
@@ -295,7 +295,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsEffect",
         "elementColors": [
           "PURPLE"
         ]
@@ -328,7 +328,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsEffect",
         "elementColors": [
           "BLUE"
         ]
@@ -361,7 +361,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsEffect",
         "elementColors": [
           "YELLOW"
         ]
@@ -394,7 +394,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsEffect",
         "elementColors": [
           "PURPLE"
         ]
@@ -427,7 +427,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsEffect",
         "elementColors": [
           "ORANGE"
         ]
@@ -460,7 +460,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsEffect",
         "elementColors": [
           "GREEN"
         ]
@@ -493,7 +493,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsEffect",
         "elementColors": [
           "GREEN"
         ]
@@ -526,13 +526,13 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsEffect",
         "elementColors": [
           "GREEN"
         ]
       },
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsEffect",
         "elementColors": [
           "BLUE"
         ]
@@ -578,13 +578,13 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsEffect",
         "elementColors": [
           "WHITE"
         ]
       },
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsEffect",
         "elementColors": [
           "RED"
         ]
@@ -630,13 +630,13 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsEffect",
         "elementColors": [
           "WHITE"
         ]
       },
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsEffect",
         "elementColors": [
           "YELLOW"
         ]
@@ -669,13 +669,13 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsEffect",
         "elementColors": [
           "PURPLE"
         ]
       },
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsEffect",
         "elementColors": [
           "PURPLE"
         ]
@@ -721,13 +721,13 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsEffect",
         "elementColors": [
           "BLUE"
         ]
       },
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsEffect",
         "elementColors": [
           "BLACK"
         ]
@@ -760,13 +760,13 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsEffect",
         "elementColors": [
           "BLUE"
         ]
       },
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsEffect",
         "elementColors": [
           "GREEN"
         ]
@@ -799,13 +799,13 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsEffect",
         "elementColors": [
           "ORANGE"
         ]
       },
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsEffect",
         "elementColors": [
           "RED"
         ]
@@ -838,13 +838,13 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsEffect",
         "elementColors": [
           "PURPLE"
         ]
       },
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsEffect",
         "elementColors": [
           "RED"
         ]
@@ -877,13 +877,13 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsEffect",
         "elementColors": [
           "GREEN"
         ]
       },
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsEffect",
         "elementColors": [
           "GREEN"
         ]
@@ -916,13 +916,13 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsEffect",
         "elementColors": [
           "ORANGE"
         ]
       },
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsEffect",
         "elementColors": [
           "ORANGE"
         ]
@@ -955,13 +955,13 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsEffect",
         "elementColors": [
           "YELLOW"
         ]
       },
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsEffect",
         "elementColors": [
           "ORANGE"
         ]
@@ -994,13 +994,13 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsEffect",
         "elementColors": [
           "RED"
         ]
       },
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsEffect",
         "elementColors": [
           "PURPLE"
         ]
@@ -1041,7 +1041,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "DestroyAllElementsOnAllAdjacentEggsEffect",
+        "effect": "AllElementsEffect",
         "elementColors": [
           "RED",
           "GREEN"
@@ -1080,7 +1080,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "DestroyAllElementsOnAllAdjacentEggsEffect",
+        "effect": "AllElementsEffect",
         "elementColors": [
           "RED",
           "YELLOW",
@@ -1123,7 +1123,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "DestroyAllElementsOnAllAdjacentEggsEffect",
+        "effect": "AllElementsEffect",
         "elementColors": [
           "BLUE",
           "ORANGE"
@@ -1165,7 +1165,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "DestroyAllElementsOnAllAdjacentEggsEffect",
+        "effect": "AllElementsEffect",
         "elementColors": [
           "YELLOW",
           "PURPLE"
@@ -1204,7 +1204,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "DestroyAllElementsOnAllAdjacentEggsEffect",
+        "effect": "AllElementsEffect",
         "elementColors": [
           "PURPLE",
           "GREEN",
@@ -1239,7 +1239,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "HatchAllUnclaimedAdjacentEggsEffect",
+        "effect": "HatchAllUnclaimedEffect",
         "dragonFamilies": [
           "TRIADIC"
         ]
@@ -1277,7 +1277,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "HatchAllUnclaimedAdjacentEggsEffect",
+        "effect": "HatchAllUnclaimedEffect",
         "dragonFamilies": [
           "TRIADIC"
         ]
@@ -1310,7 +1310,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "DestroyOneElementOnAllAdjacentEggsEffect",
+        "effect": "OneElementEffect",
         "elementColors": [
           "PURPLE"
         ]
@@ -1343,7 +1343,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "DestroyOneElementOnAllAdjacentEggsEffect",
+        "effect": "OneElementEffect",
         "elementColors": [
           "ORANGE"
         ]
@@ -1396,7 +1396,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "DestroyOneElementOnAllAdjacentEggsEffect",
+        "effect": "OneElementEffect",
         "elementColors": [
           "RED",
           "YELLOW",
@@ -1431,7 +1431,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "DestroyOneElementOnAllAdjacentEggsEffect",
+        "effect": "OneElementEffect",
         "elementColors": [
           "GREEN"
         ]
@@ -1473,7 +1473,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "DestroyOneElementOnAllAdjacentEggsEffect",
+        "effect": "OneElementEffect",
         "elementColors": [
           "PURPLE",
           "ORANGE",
@@ -1518,7 +1518,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "HatchAllUnclaimedAdjacentEggsEffect",
+        "effect": "HatchAllUnclaimedEffect",
         "dragonFamilies": [
           "TERTIARY"
         ]
@@ -1561,7 +1561,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "HatchAllUnclaimedAdjacentEggsEffect",
+        "effect": "HatchAllUnclaimedEffect",
         "dragonFamilies": [
           "TERTIARY"
         ]
@@ -1604,7 +1604,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "HatchAllUnclaimedAdjacentEggsEffect",
+        "effect": "HatchAllUnclaimedEffect",
         "dragonFamilies": [
           "MONOCHROMATIC"
         ]
@@ -1654,7 +1654,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "HatchAllUnclaimedAdjacentEggsEffect",
+        "effect": "HatchAllUnclaimedEffect",
         "dragonFamilies": [
           "TETRADIC",
           "MONOCHROMATIC",
@@ -1703,7 +1703,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "HatchAllUnclaimedAdjacentEggsEffect",
+        "effect": "HatchAllUnclaimedEffect",
         "dragonFamilies": [
           "MONOCHROMATIC"
         ]
@@ -1746,7 +1746,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "HatchAllUnclaimedAdjacentEggsEffect",
+        "effect": "HatchAllUnclaimedEffect",
         "dragonFamilies": [
           "TERTIARY"
         ]
@@ -1789,7 +1789,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "HatchAllUnclaimedAdjacentEggsEffect",
+        "effect": "HatchAllUnclaimedEffect",
         "dragonFamilies": [
           "TERTIARY"
         ]
@@ -1832,7 +1832,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "HatchAllUnclaimedAdjacentEggsEffect",
+        "effect": "HatchAllUnclaimedEffect",
         "dragonFamilies": [
           "MONOCHROMATIC"
         ]
@@ -1875,7 +1875,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "HatchAllUnclaimedAdjacentEggsEffect",
+        "effect": "HatchAllUnclaimedEffect",
         "dragonFamilies": [
           "COMPLEMENTARY"
         ]
@@ -1923,7 +1923,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsEffect",
         "elementColors": [
           "RED",
           "BLUE",
@@ -1973,7 +1973,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsEffect",
         "elementColors": [
           "RED",
           "BLUE",
@@ -2023,7 +2023,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
+        "effect": "AddElementsEffect",
         "elementColors": [
           "RED",
           "BLUE",

@@ -8,13 +8,16 @@ import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
+import underlings.game.HatchingGround;
+import underlings.gui.Gui;
 
-public class AddElementsToAllAdjacentEggsEffect extends AdjacentEggsEffect {
+public class AddElementsEffect extends AdjacentEggsEffect {
 
     public ElementColor[] elementColors;
 
     @Override
-    public void applyOnAdjacentEgg(Card adjacentEgg, ElementBag elementBag, ElementSpaceLogic elementSpaceLogic) {
+    public void applyOnAdjacentEgg(Card adjacentEgg, ElementBag elementBag, ElementSpaceLogic elementSpaceLogic,
+            HatchingGround hatchingGround, Gui gui) {
         for (ElementColor elementColorToAdd : this.elementColors) {
             addElementToCard(elementColorToAdd, adjacentEgg, elementSpaceLogic, elementBag);
         }

@@ -16,10 +16,10 @@ public abstract class AdjacentEggsEffect extends HatchingGroundEffect {
             ElementSpaceLogic elementSpaceLogic, Gui gui) {
         List<Card> adjacentCards = hatchingGround.getAdjacentCards(centerCard);
         for (Card adjacentCard : adjacentCards) {
-            applyOnAdjacentEgg(adjacentCard, elementBag, elementSpaceLogic);
+            applyOnAdjacentEgg(adjacentCard, elementBag, elementSpaceLogic, hatchingGround, gui);
         }
     }
 
     public abstract void applyOnAdjacentEgg(Card adjacentEgg, ElementBag elementBag,
-            ElementSpaceLogic elementSpaceLogic);
+            ElementSpaceLogic elementSpaceLogic, HatchingGround hatchingGround, Gui gui);
 }

@@ -11,12 +11,14 @@ import org.easymock.EasyMock;
 import org.junit.Test;
 
 import underlings.card.Card;
-import underlings.card.effect.wild.adjacenteggs.AddElementsToAllAdjacentEggsEffect;
+import underlings.card.effect.wild.adjacenteggs.AddElementsEffect;
 import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
+import underlings.game.HatchingGround;
+import underlings.gui.Gui;
 
 public class AddElementsToAllAdjacentEggsEffectTests {
 
@@ -25,18 +27,18 @@ public class AddElementsToAllAdjacentEggsEffectTests {
         ElementBag elementBag = EasyMock.mock(ElementBag.class);
         ElementSpaceLogic elementSpaceLogic = EasyMock.mock(ElementSpaceLogic.class);
         Card adjacentCard = EasyMock.mock(Card.class);
-        AddElementsToAllAdjacentEggsEffect testedEffect =
-                EasyMock.partialMockBuilder(AddElementsToAllAdjacentEggsEffect.class)
-                        .addMockedMethod("addElementToCard").createMock();
-        testedEffect.elementColors = new ElementColor[]{ElementColor.BLUE};
+        AddElementsEffect testedEffect =
+                EasyMock.partialMockBuilder(AddElementsEffect.class).addMockedMethod("addElementToCard").createMock();
+        testedEffect.elementColors = new ElementColor[] {ElementColor.BLUE};
 
         testedEffect.addElementToCard(ElementColor.BLUE, adjacentCard, elementSpaceLogic, elementBag);
+        Gui gui = EasyMock.mock(Gui.class);
+        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
+        EasyMock.replay(elementBag, adjacentCard, elementSpaceLogic, testedEffect, gui, hatchingGround);
 
-        EasyMock.replay(elementBag, adjacentCard, elementSpaceLogic, testedEffect);
+        testedEffect.applyOnAdjacentEgg(adjacentCard, elementBag, elementSpaceLogic, hatchingGround, gui);
 
-        testedEffect.applyOnAdjacentEgg(adjacentCard, elementBag, elementSpaceLogic);
-
-        EasyMock.verify(elementBag, adjacentCard, elementSpaceLogic, testedEffect);
+        EasyMock.verify(elementBag, adjacentCard, elementSpaceLogic, testedEffect, gui, hatchingGround);
     }
 
     @Test
@@ -44,19 +46,19 @@ public class AddElementsToAllAdjacentEggsEffectTests {
         ElementBag elementBag = EasyMock.mock(ElementBag.class);
         ElementSpaceLogic elementSpaceLogic = EasyMock.mock(ElementSpaceLogic.class);
         Card adjacentCard = EasyMock.mock(Card.class);
-        AddElementsToAllAdjacentEggsEffect testedEffect =
-                EasyMock.partialMockBuilder(AddElementsToAllAdjacentEggsEffect.class)
-                        .addMockedMethod("addElementToCard").createMock();
-        testedEffect.elementColors = new ElementColor[]{ElementColor.BLUE, ElementColor.RED};
+        AddElementsEffect testedEffect =
+                EasyMock.partialMockBuilder(AddElementsEffect.class).addMockedMethod("addElementToCard").createMock();
+        testedEffect.elementColors = new ElementColor[] {ElementColor.BLUE, ElementColor.RED};
 
         testedEffect.addElementToCard(ElementColor.BLUE, adjacentCard, elementSpaceLogic, elementBag);
         testedEffect.addElementToCard(ElementColor.RED, adjacentCard, elementSpaceLogic, elementBag);
+        Gui gui = EasyMock.mock(Gui.class);
+        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
+        EasyMock.replay(elementBag, adjacentCard, elementSpaceLogic, testedEffect, gui, hatchingGround);
 
-        EasyMock.replay(elementBag, adjacentCard, elementSpaceLogic, testedEffect);
+        testedEffect.applyOnAdjacentEgg(adjacentCard, elementBag, elementSpaceLogic, hatchingGround, gui);
 
-        testedEffect.applyOnAdjacentEgg(adjacentCard, elementBag, elementSpaceLogic);
-
-        EasyMock.verify(elementBag, adjacentCard, elementSpaceLogic, testedEffect);
+        EasyMock.verify(elementBag, adjacentCard, elementSpaceLogic, testedEffect, gui, hatchingGround);
     }
 
     @Test
@@ -64,19 +66,19 @@ public class AddElementsToAllAdjacentEggsEffectTests {
         ElementBag elementBag = EasyMock.mock(ElementBag.class);
         ElementSpaceLogic elementSpaceLogic = EasyMock.mock(ElementSpaceLogic.class);
         Card adjacentCard = EasyMock.mock(Card.class);
-        AddElementsToAllAdjacentEggsEffect testedEffect =
-                EasyMock.partialMockBuilder(AddElementsToAllAdjacentEggsEffect.class)
-                        .addMockedMethod("addElementToCard").createMock();
-        testedEffect.elementColors = new ElementColor[]{ElementColor.BLUE, ElementColor.BLUE};
+        AddElementsEffect testedEffect =
+                EasyMock.partialMockBuilder(AddElementsEffect.class).addMockedMethod("addElementToCard").createMock();
+        testedEffect.elementColors = new ElementColor[] {ElementColor.BLUE, ElementColor.BLUE};
 
         testedEffect.addElementToCard(ElementColor.BLUE, adjacentCard, elementSpaceLogic, elementBag);
         testedEffect.addElementToCard(ElementColor.BLUE, adjacentCard, elementSpaceLogic, elementBag);
+        Gui gui = EasyMock.mock(Gui.class);
+        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
+        EasyMock.replay(elementBag, adjacentCard, elementSpaceLogic, testedEffect, gui, hatchingGround);
 
-        EasyMock.replay(elementBag, adjacentCard, elementSpaceLogic, testedEffect);
+        testedEffect.applyOnAdjacentEgg(adjacentCard, elementBag, elementSpaceLogic, hatchingGround, gui);
 
-        testedEffect.applyOnAdjacentEgg(adjacentCard, elementBag, elementSpaceLogic);
-
-        EasyMock.verify(elementBag, adjacentCard, elementSpaceLogic, testedEffect);
+        EasyMock.verify(elementBag, adjacentCard, elementSpaceLogic, testedEffect, gui, hatchingGround);
     }
 
     private List<Card> getMockedCards(int numberOfCards) {
@@ -94,7 +96,7 @@ public class AddElementsToAllAdjacentEggsEffectTests {
         ElementSpaceLogic elementSpaceLogic = EasyMock.mock(ElementSpaceLogic.class);
         ElementBag elementBag = EasyMock.mock(ElementBag.class);
 
-        AddElementsToAllAdjacentEggsEffect testedEffect = new AddElementsToAllAdjacentEggsEffect();
+        AddElementsEffect testedEffect = new AddElementsEffect();
 
         EasyMock.expect(elementSpaceLogic.getPlayableSpaces(mockedCard, blue)).andReturn(Collections.emptyList());
 
@@ -121,7 +123,7 @@ public class AddElementsToAllAdjacentEggsEffectTests {
 
         EasyMock.replay(mockedCard, elementSpaceLogic, elementBag, mockedPlayableSpace);
 
-        AddElementsToAllAdjacentEggsEffect testedEffect = new AddElementsToAllAdjacentEggsEffect();
+        AddElementsEffect testedEffect = new AddElementsEffect();
         testedEffect.addElementToCard(blue, mockedCard, elementSpaceLogic, elementBag);
 
         EasyMock.verify(mockedCard, elementSpaceLogic, elementBag, mockedPlayableSpace);
@@ -145,7 +147,7 @@ public class AddElementsToAllAdjacentEggsEffectTests {
             EasyMock.replay(mockedPlayableSpace);
         }
 
-        AddElementsToAllAdjacentEggsEffect testedEffect = new AddElementsToAllAdjacentEggsEffect();
+        AddElementsEffect testedEffect = new AddElementsEffect();
         testedEffect.addElementToCard(blue, mockedCard, elementSpaceLogic, elementBag);
 
         EasyMock.verify(mockedCard, elementSpaceLogic, elementBag);
@@ -164,7 +166,7 @@ public class AddElementsToAllAdjacentEggsEffectTests {
 
     @Test
     public void testToString() {
-        AddElementsToAllAdjacentEggsEffect testedEffect = new AddElementsToAllAdjacentEggsEffect();
+        AddElementsEffect testedEffect = new AddElementsEffect();
         assertEquals("Add elements to adjacent cards", testedEffect.toString());
     }
 
