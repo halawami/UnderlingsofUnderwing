@@ -9,7 +9,7 @@ import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
 
-public abstract class ElementsOnAllAdjacentEggsEffect extends AdjacentEggsEffect {
+public abstract class ElementsEffect extends AdjacentEggsEffect {
 
     public ElementColor[] elementColors;
 

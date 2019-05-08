@@ -5,7 +5,7 @@ import underlings.card.Family;
 import underlings.element.ElementBag;
 import underlings.element.utilities.ElementSpaceLogic;
 
-public class HatchAllUnclaimedAdjacentEggsEffect extends AdjacentEggsEffect {
+public class HatchAllUnclaimedEffect extends AdjacentEggsEffect {
 
     public Family[] dragonFamilies;
 

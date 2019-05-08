@@ -4,12 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.easymock.EasyMock;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import underlings.card.Card;
 import underlings.card.effect.Effect;
-import underlings.card.effect.wild.adjacenteggs.HatchAllUnclaimedAdjacentEggsEffect;
+import underlings.card.effect.wild.adjacenteggs.HatchAllUnclaimedEffect;
 import underlings.element.ElementBag;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
@@ -20,7 +19,7 @@ import underlings.player.Player;
 public class HatchAllUnclaimedAdjacentEggsEffectTests {
 
     @Test
-    @Ignore
+    // @Ignore
     public void testHatchOneAdjacentUnclaimedEgg() {
         Card centerCard = EasyMock.mock(Card.class);
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
@@ -29,8 +28,8 @@ public class HatchAllUnclaimedAdjacentEggsEffectTests {
         mockedCards.get(0).wildEffects = new Effect[1];
         Effect effect = EasyMock.mock(Effect.class);
         mockedCards.get(0).wildEffects[0] = effect;
-        HatchAllUnclaimedAdjacentEggsEffect hatchAllUnclaimedAdjacentEggsEffect =
-                new HatchAllUnclaimedAdjacentEggsEffect();
+        HatchAllUnclaimedEffect hatchAllUnclaimedAdjacentEggsEffect =
+                new HatchAllUnclaimedEffect();
         EasyMock.expect(hatchingGround.getAdjacentCards(centerCard)).andReturn(mockedCards);
         ElementBag elementBag = EasyMock.mock(ElementBag.class);
         Player fakePlayer = FakePlayer.getInstance();
