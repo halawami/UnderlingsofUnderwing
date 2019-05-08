@@ -11,6 +11,7 @@ import underlings.card.effect.wild.adjacenteggs.AdjacentEggsEffect;
 import underlings.element.ElementBag;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.HatchingGround;
+import underlings.gui.Gui;
 
 public class AdjacentEggsEffectTests {
 
@@ -23,19 +24,20 @@ public class AdjacentEggsEffectTests {
         AdjacentEggsEffect testedEffect = EasyMock.partialMockBuilder(AdjacentEggsEffect.class)
                 .addMockedMethod("applyOnAdjacentEgg").createMock();
 
-        testedEffect.on(centerCard).on(hatchingGround).on(elementSpaceLogic).on(elementBag);
+        Gui gui = EasyMock.mock(Gui.class);
+        testedEffect.on(centerCard).on(hatchingGround).on(elementSpaceLogic).on(elementBag).on(gui);
 
         List<Card> mockedCards = getMockedCards(2);
         EasyMock.expect(hatchingGround.getAdjacentCards(centerCard)).andReturn(mockedCards);
         for (Card mockedCard : mockedCards) {
-            testedEffect.applyOnAdjacentEgg(mockedCard, elementBag, elementSpaceLogic);
+            testedEffect.applyOnAdjacentEgg(mockedCard, elementBag, elementSpaceLogic, hatchingGround, gui);
         }
 
-        EasyMock.replay(centerCard, hatchingGround, elementBag, elementSpaceLogic, testedEffect);
+        EasyMock.replay(centerCard, hatchingGround, elementBag, elementSpaceLogic, testedEffect, gui);
 
         testedEffect.apply();
 
-        EasyMock.verify(centerCard, hatchingGround, elementBag, elementSpaceLogic, testedEffect);
+        EasyMock.verify(centerCard, hatchingGround, elementBag, elementSpaceLogic, testedEffect, gui);
 
 
     }
