@@ -23,7 +23,6 @@ public class HatchAllUnclaimedAdjacentEggsEffect extends HatchingGroundEffect {
         WildEggHatchingLogic wildEggHatchingLogic =
                 new WildEggHatchingLogic(gui, elementBag, hatchingGround, FakePlayer.getInstance());
         wildEggHatchingLogic.hatchWildEgg(adjacentCards.get(0));
-
     }
 
 }

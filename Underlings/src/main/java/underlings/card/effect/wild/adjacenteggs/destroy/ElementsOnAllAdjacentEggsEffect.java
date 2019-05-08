@@ -3,38 +3,35 @@ package underlings.card.effect.wild.adjacenteggs.destroy;
 import java.util.List;
 
 import underlings.card.Card;
-import underlings.card.effect.HatchingGroundEffect;
+import underlings.card.effect.wild.adjacenteggs.AdjacentEggsEffect;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
-import underlings.game.HatchingGround;
-import underlings.gui.Gui;
 
-public abstract class ElementsOnAllAdjacentEggsEffect extends HatchingGroundEffect {
+public abstract class ElementsOnAllAdjacentEggsEffect extends AdjacentEggsEffect {
 
     public ElementColor[] elementColors;
 
     @Override
-    protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag,
-            ElementSpaceLogic elementSpaceLogic, Gui gui) {
-        List<Card> adjacentCards = hatchingGround.getAdjacentCards(centerCard);
-        for (Card adjacentCard : adjacentCards) {
-            for (ElementColor elementColorToDestroy : this.elementColors) {
-                destroyElementsOfColorOnCard(elementColorToDestroy, adjacentCard, elementSpaceLogic);
-            }
+    protected void applyOnAdjacentEgg(Card adjacentEgg, ElementBag elementBag, ElementSpaceLogic elementSpaceLogic) {
+        this.destroyElementsOnAdjacentEgg(adjacentEgg, elementSpaceLogic);
+    }
+
+    public void destroyElementsOnAdjacentEgg(Card adjacentEgg, ElementSpaceLogic elementSpaceLogic) {
+        for (ElementColor elementColorToDestroy : this.elementColors) {
+            destroyElementsOfColorOnCard(elementColorToDestroy, adjacentEgg, elementSpaceLogic);
         }
     }
 
     public void destroyElementsOfColorOnCard(ElementColor elementColorToDestroy, Card card,
             ElementSpaceLogic elementSpaceLogic) {
-        List<ElementSpace> destroyableElementSpaces =
-                elementSpaceLogic.getDestroyableSpaces(card, elementColorToDestroy);
-        for (ElementSpace destroyableSpace : destroyableElementSpaces) {
+        List<ElementSpace> destroyableSpaces = elementSpaceLogic.getDestroyableSpaces(card, elementColorToDestroy);
+        for (ElementSpace destroyableSpace : destroyableSpaces) {
             destroyElementsOfColorOnSpace(destroyableSpace, elementColorToDestroy);
         }
     }
-    
+
     public abstract void destroyElementsOfColorOnSpace(ElementSpace destroyableSpace,
             ElementColor elementColorToDestroy);
 }
