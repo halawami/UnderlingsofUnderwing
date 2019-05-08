@@ -11,11 +11,7 @@ public class HatchAllUnclaimedAdjacentEggsEffect extends AdjacentEggsEffect {
 
     @Override
     public void applyOnAdjacentEgg(Card adjacentEgg, ElementBag elementBag, ElementSpaceLogic elementSpaceLogic) {
-        this.isHatchableEgg(adjacentEgg);
-    }
 
-    public boolean isHatchableEgg(Card adjacentEgg) {
-        return false;
     }
 
     public void hatchEgg(Card hatchableEgg) {
