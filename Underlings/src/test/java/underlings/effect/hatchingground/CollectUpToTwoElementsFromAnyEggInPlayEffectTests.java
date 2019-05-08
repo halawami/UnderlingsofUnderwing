@@ -113,6 +113,41 @@ public class CollectUpToTwoElementsFromAnyEggInPlayEffectTests {
         EasyMock.verify(currentPlayer, hatchingGround, gui, elementSpace, element);
     }
 
+    @Test
+    public void testTwoElementPicked() {
+        Player currentPlayer = EasyMock.mock(Player.class);
+        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
+        List<Card> mockedCards = getMockedCards(6);
+        Gui gui = EasyMock.mock(Gui.class);
+        ElementSpace elementSpace = EasyMock.mock(ElementSpace.class);
+        Element firstElement = EasyMock.mock(Element.class);
+        Element secondElement = EasyMock.mock(Element.class);
+        CollectUpToTwoElementsFromAnyEggInPlayEffect testedEffect = new CollectUpToTwoElementsFromAnyEggInPlayEffect();
+        testedEffect.elementChoices = new ElementColor[]{ElementColor.BLUE, ElementColor.RED};
+        testedEffect.on(gui).on(currentPlayer).on(hatchingGround);
+
+        EasyMock.expect(hatchingGround.getAllCards()).andReturn(mockedCards);
+        EasyMock.expect(gui.getElementSpaceContainingElementOfColors(mockedCards, testedEffect.elementChoices))
+                .andReturn(elementSpace).times(2);
+        EasyMock.expect(gui.getElementOfColorsFromSpace(testedEffect.elementChoices, elementSpace))
+                .andReturn(firstElement);
+        EasyMock.expect(gui.getElementOfColorsFromSpace(testedEffect.elementChoices, elementSpace))
+                .andReturn(secondElement);
+
+        currentPlayer.addElement(firstElement);
+        EasyMock.expect(firstElement.getColor()).andReturn(ElementColor.BLUE);
+        elementSpace.destroyOneElementOfColor(ElementColor.BLUE);
+        currentPlayer.addElement(secondElement);
+        EasyMock.expect(secondElement.getColor()).andReturn(ElementColor.RED);
+        elementSpace.destroyOneElementOfColor(ElementColor.RED);
+
+        EasyMock.replay(currentPlayer, hatchingGround, gui, elementSpace, firstElement, secondElement);
+
+        testedEffect.apply();
+
+        EasyMock.verify(currentPlayer, hatchingGround, gui, elementSpace, firstElement, secondElement);
+    }
+
     private List<Card> getMockedCards(int numberOfCards) {
         List<Card> mockedCards = new ArrayList<>();
         for (int i = 0; i < numberOfCards; i++) {
