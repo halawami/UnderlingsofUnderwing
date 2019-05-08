@@ -14,4 +14,11 @@ public class HatchAllUnclaimedAdjacentEggsEffect extends AdjacentEggsEffect {
 
     }
 
+    public boolean isHatchableEgg(Card adjacentEgg) {
+        return false;
+    }
+
+    public void hatchEgg(Card hatchableEgg) {
+
+    }
 }
