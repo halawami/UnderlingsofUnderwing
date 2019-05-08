@@ -1,8 +1,5 @@
 package underlings.effect.hatchingground;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.easymock.EasyMock;
 import org.junit.Test;
 
@@ -29,11 +26,22 @@ public class HatchAllUnclaimedAdjacentEggsEffectTests {
         EasyMock.verify(adjacentEgg, testedEffect);
     }
 
-    private List<Card> getMockedCards(int numberOfCards) {
-        List<Card> mockedCards = new ArrayList<>();
-        for (int i = 0; i < numberOfCards; i++) {
-            mockedCards.add(EasyMock.niceMock(Card.class));
-        }
-        return mockedCards;
+    @Test
+    public void testHatchableAdjacentEgg() {
+        Card adjacentEgg = EasyMock.mock(Card.class);
+        HatchAllUnclaimedAdjacentEggsEffect testedEffect = EasyMock
+                .partialMockBuilder(HatchAllUnclaimedAdjacentEggsEffect.class)
+                .addMockedMethod("isHatchableEgg")
+                .addMockedMethod("hatchEgg")
+                .createMock();
+
+        EasyMock.expect(testedEffect.isHatchableEgg(adjacentEgg)).andReturn(false);
+        testedEffect.hatchEgg(adjacentEgg);
+
+        EasyMock.replay(adjacentEgg, testedEffect);
+
+        testedEffect.applyOnAdjacentEgg(adjacentEgg, null, null);
+
+        EasyMock.verify(adjacentEgg, testedEffect);
     }
 }
