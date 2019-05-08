@@ -7,10 +7,13 @@ import org.easymock.EasyMock;
 import org.junit.Test;
 
 import underlings.card.Card;
+import underlings.card.effect.domestic.CollectUpToTwoElementsFromAnyEggInPlayEffect;
+import underlings.card.effect.domestic.DestroyUpToTwoElementsOnAnyEggInPlayEffect;
 import underlings.card.effect.domestic.UptoTwoElementsFromAnyEggInPlayEffect;
 import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
+import underlings.element.NullElement;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.player.Player;
@@ -63,5 +66,74 @@ public class UptoTwoElementsFromAnyEggInPlayEffectTests {
             mockedCards.add(EasyMock.niceMock(Card.class));
         }
         return mockedCards;
+    }
+
+    @Test
+    public void testDestroyNullElementPicked() {
+        Player currentPlayer = EasyMock.mock(Player.class);
+        ElementSpace elementSpace = EasyMock.mock(ElementSpace.class);
+        Element element = NullElement.getInstance();
+        DestroyUpToTwoElementsOnAnyEggInPlayEffect testedEffect = new DestroyUpToTwoElementsOnAnyEggInPlayEffect();
+
+        elementSpace.destroyOneElementOfColor(element.getColor());
+
+        EasyMock.replay(currentPlayer, elementSpace);
+
+        testedEffect.applyOnSelectedElement(element, elementSpace, currentPlayer);
+
+        EasyMock.verify(currentPlayer, elementSpace);
+    }
+
+    @Test
+    public void testDestroyNormalElementPicked() {
+        Player currentPlayer = EasyMock.mock(Player.class);
+        ElementSpace elementSpace = EasyMock.mock(ElementSpace.class);
+        Element element = EasyMock.mock(Element.class);
+        DestroyUpToTwoElementsOnAnyEggInPlayEffect testedEffect = new DestroyUpToTwoElementsOnAnyEggInPlayEffect();
+
+        EasyMock.expect(element.getColor()).andReturn(ElementColor.BLUE);
+        elementSpace.destroyOneElementOfColor(ElementColor.BLUE);
+
+        EasyMock.replay(currentPlayer, elementSpace, element);
+
+        testedEffect.applyOnSelectedElement(element, elementSpace, currentPlayer);
+
+        EasyMock.verify(currentPlayer, elementSpace, element);
+    }
+
+    @Test
+    public void testCollectNullElementPicked() {
+        Player currentPlayer = EasyMock.mock(Player.class);
+        ElementSpace elementSpace = EasyMock.mock(ElementSpace.class);
+        Element element = NullElement.getInstance();
+        CollectUpToTwoElementsFromAnyEggInPlayEffect testedEffect = new CollectUpToTwoElementsFromAnyEggInPlayEffect();
+
+        currentPlayer.addElement(element);
+        elementSpace.destroyOneElementOfColor(element.getColor());
+
+        EasyMock.replay(currentPlayer, elementSpace);
+
+        testedEffect.applyOnSelectedElement(element, elementSpace, currentPlayer);
+
+        EasyMock.verify(currentPlayer, elementSpace);
+    }
+
+
+    @Test
+    public void testCollectNormalElementPicked() {
+        Player currentPlayer = EasyMock.mock(Player.class);
+        ElementSpace elementSpace = EasyMock.mock(ElementSpace.class);
+        Element element = EasyMock.mock(Element.class);
+        CollectUpToTwoElementsFromAnyEggInPlayEffect testedEffect = new CollectUpToTwoElementsFromAnyEggInPlayEffect();
+
+        currentPlayer.addElement(element);
+        EasyMock.expect(element.getColor()).andReturn(ElementColor.BLUE);
+        elementSpace.destroyOneElementOfColor(ElementColor.BLUE);
+
+        EasyMock.replay(currentPlayer, elementSpace, element);
+
+        testedEffect.applyOnSelectedElement(element, elementSpace, currentPlayer);
+
+        EasyMock.verify(currentPlayer, elementSpace, element);
     }
 }
