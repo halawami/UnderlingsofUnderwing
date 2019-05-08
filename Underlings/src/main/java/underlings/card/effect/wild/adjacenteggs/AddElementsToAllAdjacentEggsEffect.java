@@ -15,10 +15,6 @@ public class AddElementsToAllAdjacentEggsEffect extends AdjacentEggsEffect {
 
     @Override
     public void applyOnAdjacentEgg(Card adjacentEgg, ElementBag elementBag, ElementSpaceLogic elementSpaceLogic) {
-        this.addElementsToAdjacentEgg(adjacentEgg, elementBag, elementSpaceLogic);
-    }
-
-    public void addElementsToAdjacentEgg(Card adjacentEgg, ElementBag elementBag, ElementSpaceLogic elementSpaceLogic) {
         for (ElementColor elementColorToAdd : this.elementColors) {
             addElementToCard(elementColorToAdd, adjacentEgg, elementSpaceLogic, elementBag);
         }
