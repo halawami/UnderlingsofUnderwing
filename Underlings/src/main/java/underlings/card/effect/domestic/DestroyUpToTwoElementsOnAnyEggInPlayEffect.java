@@ -8,6 +8,6 @@ public class DestroyUpToTwoElementsOnAnyEggInPlayEffect extends UptoTwoElementsF
 
     @Override
     public void applyOnSelectedElement(Element selectedElement, ElementSpace selectedSpace, Player currentPlayer) {
-
+        selectedSpace.destroyOneElementOfColor(selectedElement.getColor());
     }
 }
