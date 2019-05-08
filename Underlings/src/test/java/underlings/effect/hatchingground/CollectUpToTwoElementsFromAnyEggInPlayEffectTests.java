@@ -28,11 +28,13 @@ public class CollectUpToTwoElementsFromAnyEggInPlayEffectTests {
         testedEffect.elementChoices = new ElementColor[]{ElementColor.BLUE};
         testedEffect.on(gui).on(currentPlayer).on(hatchingGround);
 
-        EasyMock.expect(gui.getColorFromList(testedEffect.elementChoices)).andReturn(ElementColor.BLUE);
+        EasyMock.expect(hatchingGround.getAllCards()).andReturn(mockedCards);
+        EasyMock.expect(gui.getColorFromList(testedEffect.elementChoices)).andReturn(ElementColor.BLUE).times(2);
         EasyMock.expect(gui.getElementSpaceContainingElementOfColor(mockedCards, ElementColor.BLUE))
-                .andReturn(elementSpace);
+                .andReturn(elementSpace).times(2);
 
-        EasyMock.expect(elementSpace.getElementOfColor(ElementColor.BLUE)).andReturn(NullElement.getInstance());
+        EasyMock.expect(elementSpace.getElementOfColor(ElementColor.BLUE)).andReturn(NullElement.getInstance())
+                .times(2);
 
         EasyMock.replay(currentPlayer, hatchingGround, gui, elementSpace);
 

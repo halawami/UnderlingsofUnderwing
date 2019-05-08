@@ -149,4 +149,7 @@ public class HatchingGround implements Iterable<Card> {
         return null;
     }
 
+    public List<Card> getAllCards() {
+        return null;
+    }
 }
