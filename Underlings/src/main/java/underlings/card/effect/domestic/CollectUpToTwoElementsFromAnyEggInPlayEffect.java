@@ -22,9 +22,15 @@ public class CollectUpToTwoElementsFromAnyEggInPlayEffect extends HatchingGround
             ElementSpaceLogic elementSpaceLogic, Gui gui, Player currentPlayer) {
         List<Card> allCards = hatchingGround.getAllCards();
         for (int i = 0; i < 2; i++) {
-            ElementColor selectedColor = gui.getColorFromList(this.elementChoices);
-            ElementSpace selectedSpace = gui.getElementSpaceContainingElementOfColor(allCards, selectedColor);
-            Element selectedElement = selectedSpace.getElementOfColor(selectedColor);
+            ElementSpace selectedSpace = gui.getElementSpaceContainingElementOfColors(allCards, this.elementChoices);
+            Element selectedElement = gui.getElementOfColorsFromSpace(this.elementChoices, selectedSpace);
+            giveElementToPlayer(selectedElement, selectedSpace, currentPlayer);
         }
+    }
+
+    private void giveElementToPlayer(Element selectedElement, ElementSpace selectedSpace,
+            Player currentPlayer) {
+        selectedSpace.destroyOneElementOfColor(selectedElement.getColor());
+        currentPlayer.addElement(selectedElement);
     }
 }

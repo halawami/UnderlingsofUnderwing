@@ -6,6 +6,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import underlings.card.Card;
+import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementGiver;
 import underlings.element.ElementSpace;
@@ -71,12 +72,12 @@ public class Gui {
         return this.promptHandler.promptInt("Enter Player Count", minPlayers, maxPlayers);
     }
 
-    public ElementColor getColorFromList(ElementColor[] elementChoices) {
+    public ElementSpace getElementSpaceContainingElementOfColors(List<Card> cards, ElementColor[] colorChoices) {
         //TODO: implement this method for CollectUpToTwoElementsFromAnyEggInPlayEffect, ask Mohammad for information
         return null;
     }
 
-    public ElementSpace getElementSpaceContainingElementOfColor(List<Card> cards, ElementColor selectedColor) {
+    public Element getElementOfColorsFromSpace(ElementColor[] elementChoices, ElementSpace elementSpace) {
         //TODO: implement this method for CollectUpToTwoElementsFromAnyEggInPlayEffect, ask Mohammad for information
         return null;
     }
