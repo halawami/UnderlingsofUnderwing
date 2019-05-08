@@ -29,13 +29,13 @@ public class DestroyElementsOnAllAdjacentEggsEffectTests {
         testedEffect.elementColors = new ElementColor[] {ElementColor.BLUE};
 
         testedEffect.destroyElementsOfColorOnCard(ElementColor.BLUE, adjacentCard, elementSpaceLogic);
-
-        EasyMock.replay(testedEffect, elementSpaceLogic, adjacentCard);
         Gui gui = EasyMock.mock(Gui.class);
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
+        EasyMock.replay(testedEffect, elementSpaceLogic, adjacentCard, gui, hatchingGround);
+
         testedEffect.applyOnAdjacentEgg(adjacentCard, null, elementSpaceLogic, hatchingGround, gui);
 
-        EasyMock.verify(testedEffect, elementSpaceLogic, adjacentCard);
+        EasyMock.verify(testedEffect, elementSpaceLogic, adjacentCard, gui, hatchingGround);
     }
 
     @Test
@@ -48,14 +48,14 @@ public class DestroyElementsOnAllAdjacentEggsEffectTests {
 
         testedEffect.destroyElementsOfColorOnCard(ElementColor.BLUE, adjacentCard, elementSpaceLogic);
         testedEffect.destroyElementsOfColorOnCard(ElementColor.RED, adjacentCard, elementSpaceLogic);
-
-        EasyMock.replay(testedEffect, elementSpaceLogic, adjacentCard);
-
         Gui gui = EasyMock.mock(Gui.class);
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
+
+        EasyMock.replay(testedEffect, elementSpaceLogic, adjacentCard, gui, hatchingGround);
+
         testedEffect.applyOnAdjacentEgg(adjacentCard, null, elementSpaceLogic, hatchingGround, gui);
 
-        EasyMock.verify(testedEffect, elementSpaceLogic, adjacentCard);
+        EasyMock.verify(testedEffect, elementSpaceLogic, adjacentCard, gui, hatchingGround);
     }
 
     private List<Card> getMockedCards(int numberOfCards) {
