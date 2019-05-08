@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import underlings.card.Card;
 import underlings.card.effect.domestic.CollectUpToTwoElementsFromAnyEggInPlayEffect;
+import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.NullElement;
@@ -44,6 +45,39 @@ public class CollectUpToTwoElementsFromAnyEggInPlayEffectTests {
         testedEffect.apply();
 
         EasyMock.verify(currentPlayer, hatchingGround, gui, elementSpace);
+    }
+
+    @Test
+    public void testFirstElementPicked() {
+        Player currentPlayer = EasyMock.mock(Player.class);
+        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
+        List<Card> mockedCards = getMockedCards(6);
+        Gui gui = EasyMock.mock(Gui.class);
+        ElementSpace elementSpace = EasyMock.mock(ElementSpace.class);
+        Element element = EasyMock.mock(Element.class);
+        CollectUpToTwoElementsFromAnyEggInPlayEffect testedEffect = new CollectUpToTwoElementsFromAnyEggInPlayEffect();
+        testedEffect.elementChoices = new ElementColor[]{ElementColor.BLUE};
+        testedEffect.on(gui).on(currentPlayer).on(hatchingGround);
+
+        EasyMock.expect(hatchingGround.getAllCards()).andReturn(mockedCards);
+        EasyMock.expect(gui.getElementSpaceContainingElementOfColors(mockedCards, testedEffect.elementChoices))
+                .andReturn(elementSpace).times(2);
+        EasyMock.expect(gui.getElementOfColorsFromSpace(testedEffect.elementChoices, elementSpace))
+                .andReturn(element);
+        EasyMock.expect(gui.getElementOfColorsFromSpace(testedEffect.elementChoices, elementSpace))
+                .andReturn(NullElement.getInstance());
+
+        currentPlayer.addElement(element);
+        EasyMock.expect(element.getColor()).andReturn(ElementColor.BLUE);
+        elementSpace.destroyOneElementOfColor(ElementColor.BLUE);
+        currentPlayer.addElement(NullElement.getInstance());
+        elementSpace.destroyOneElementOfColor(NullElement.getInstance().getColor());
+
+        EasyMock.replay(currentPlayer, hatchingGround, gui, elementSpace, element);
+
+        testedEffect.apply();
+
+        EasyMock.verify(currentPlayer, hatchingGround, gui, elementSpace, element);
     }
 
     private List<Card> getMockedCards(int numberOfCards) {
