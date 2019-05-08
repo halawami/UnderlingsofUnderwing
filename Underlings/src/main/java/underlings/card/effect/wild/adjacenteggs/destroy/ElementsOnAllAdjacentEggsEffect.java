@@ -14,7 +14,7 @@ public abstract class ElementsOnAllAdjacentEggsEffect extends AdjacentEggsEffect
     public ElementColor[] elementColors;
 
     @Override
-    protected void applyOnAdjacentEgg(Card adjacentEgg, ElementBag elementBag, ElementSpaceLogic elementSpaceLogic) {
+    public void applyOnAdjacentEgg(Card adjacentEgg, ElementBag elementBag, ElementSpaceLogic elementSpaceLogic) {
         this.destroyElementsOnAdjacentEgg(adjacentEgg, elementSpaceLogic);
     }
 

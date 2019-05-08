@@ -20,6 +20,6 @@ public abstract class AdjacentEggsEffect extends HatchingGroundEffect {
         }
     }
 
-    protected abstract void applyOnAdjacentEgg(Card adjacentEgg, ElementBag elementBag,
+    public abstract void applyOnAdjacentEgg(Card adjacentEgg, ElementBag elementBag,
             ElementSpaceLogic elementSpaceLogic);
 }

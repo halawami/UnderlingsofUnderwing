@@ -10,7 +10,7 @@ public class HatchAllUnclaimedAdjacentEggsEffect extends AdjacentEggsEffect {
     public Family[] dragonFamilies;
 
     @Override
-    protected void applyOnAdjacentEgg(Card adjacentEgg, ElementBag elementBag, ElementSpaceLogic elementSpaceLogic) {
+    public void applyOnAdjacentEgg(Card adjacentEgg, ElementBag elementBag, ElementSpaceLogic elementSpaceLogic) {
 
     }
 
