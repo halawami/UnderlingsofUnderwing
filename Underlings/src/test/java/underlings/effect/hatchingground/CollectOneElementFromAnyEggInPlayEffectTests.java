@@ -35,14 +35,14 @@ public class CollectOneElementFromAnyEggInPlayEffectTests {
                 .andReturn(elementSpace);
         EasyMock.expect(gui.getElementOfColorsFromSpace(testedEffect.elementChoices, elementSpace))
                 .andReturn(element);
-
+        EasyMock.expect(element.getColor()).andReturn(ElementColor.BLUE);
         elementSpace.destroyOneElementOfColor(ElementColor.BLUE);
 
-        EasyMock.replay(currentPlayer, hatchingGround, gui, elementSpace);
+        EasyMock.replay(currentPlayer, hatchingGround, gui, elementSpace, element);
 
         testedEffect.apply();
 
-        EasyMock.verify(currentPlayer, hatchingGround, gui, elementSpace);
+        EasyMock.verify(currentPlayer, hatchingGround, gui, elementSpace, element);
 
     }
 
