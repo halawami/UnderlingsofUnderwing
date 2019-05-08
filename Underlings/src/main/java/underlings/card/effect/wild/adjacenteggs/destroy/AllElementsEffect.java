@@ -9,4 +9,5 @@ public class AllElementsEffect extends ElementsEffect {
     public void destroyElementsOfColorOnSpace(ElementSpace destroyableSpace, ElementColor elementColorToDestroy) {
         destroyableSpace.destroyAllElementsOfColor(elementColorToDestroy);
     }
+
 }
