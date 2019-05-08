@@ -36,6 +36,7 @@ public class CollectOneElementFromAnyEggInPlayEffectTests {
         EasyMock.expect(gui.getElementOfColorsFromSpace(testedEffect.elementChoices, elementSpace))
                 .andReturn(NullElement.getInstance());
         elementSpace.destroyOneElementOfColor(ElementColor.NULL);
+        currentPlayer.addElement(NullElement.getInstance());
 
         EasyMock.replay(currentPlayer, hatchingGround, gui, elementSpace);
 
@@ -65,6 +66,7 @@ public class CollectOneElementFromAnyEggInPlayEffectTests {
                 .andReturn(element);
         EasyMock.expect(element.getColor()).andReturn(ElementColor.BLUE);
         elementSpace.destroyOneElementOfColor(ElementColor.BLUE);
+        currentPlayer.addElement(element);
 
         EasyMock.replay(currentPlayer, hatchingGround, gui, elementSpace, element);
 

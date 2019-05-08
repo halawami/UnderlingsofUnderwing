@@ -23,7 +23,13 @@ public class CollectOneElementFromAnyEggInPlayEffect extends HatchingGroundEffec
         List<Card> allCards = hatchingGround.getAllCards();
         ElementSpace selectedSpace = gui.getElementSpaceContainingElementOfColors(allCards, this.elementChoices);
         Element selectedElement = gui.getElementOfColorsFromSpace(this.elementChoices, selectedSpace);
-        selectedSpace.destroyOneElementOfColor(selectedElement.getColor());
+        giveElementToPlayer(selectedElement, selectedSpace, currentPlayer);
 
+    }
+
+    private void giveElementToPlayer(Element selectedElement, ElementSpace selectedSpace,
+            Player currentPlayer) {
+        selectedSpace.destroyOneElementOfColor(selectedElement.getColor());
+        currentPlayer.addElement(selectedElement);
     }
 }
