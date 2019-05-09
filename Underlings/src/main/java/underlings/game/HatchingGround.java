@@ -38,7 +38,7 @@ public class HatchingGround implements Iterable<Card> {
     }
 
     public Dimension getDimensions() {
-        return new Dimension(0, 0);
+        return new Dimension(this.width, this.height);
     }
 
     public void populate() {
