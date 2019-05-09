@@ -1,5 +1,7 @@
 package underlings.hatchingground;
 
+import static org.junit.Assert.assertEquals;
+
 import java.awt.Dimension;
 
 import org.junit.Test;
