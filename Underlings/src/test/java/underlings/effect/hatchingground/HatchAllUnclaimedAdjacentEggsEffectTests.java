@@ -14,6 +14,7 @@ import underlings.element.ElementBag;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.handler.Handler;
+import underlings.player.FakePlayer;
 import underlings.player.Player;
 
 public class HatchAllUnclaimedAdjacentEggsEffectTests {
@@ -33,7 +34,7 @@ public class HatchAllUnclaimedAdjacentEggsEffectTests {
         EasyMock.expect(mockedCards.get(0).wildEffects[0].on(elementBag)).andReturn(mockedCards.get(0).wildEffects[0]);
         EasyMock.expect(mockedCards.get(0).wildEffects[0].on(hatchingGround))
                 .andReturn(mockedCards.get(0).wildEffects[0]);
-        Player fakePlayer = EasyMock.mock(Player.class);
+        Player fakePlayer = FakePlayer.getInstance();
         EasyMock.expect(mockedCards.get(0).wildEffects[0].on(fakePlayer.elementSpaceLogic))
                 .andReturn(mockedCards.get(0).wildEffects[0]);
         EasyMock.expect(mockedCards.get(0).wildEffects[0].on(fakePlayer)).andReturn(mockedCards.get(0).wildEffects[0]);

@@ -1,15 +1,10 @@
 package underlings.player;
 
-import underlings.element.utilities.ElementSpaceLogic;
 import underlings.handler.HandlerFactory;
 
 public class FakePlayer extends Player {
 
-    public static Player instance = new FakePlayer();
-
-    private FakePlayer() {
-        this.elementSpaceLogic = new ElementSpaceLogic();
-    }
+    public static Player instance = new FakePlayer(1, new HandlerFactory(), -1);
 
     private FakePlayer(int maxHandlers, HandlerFactory handlerFactory, int playerId) {
         super(maxHandlers, handlerFactory, playerId);
