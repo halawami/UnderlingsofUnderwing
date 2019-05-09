@@ -3,7 +3,7 @@ package underlings.scoring;
 import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 import java.util.Map;
 
 import org.junit.Before;
@@ -16,192 +16,117 @@ import underlings.player.Player;
 
 public class ScoreTests {
 
-    private ScoreUtils scoreUtils;
-    private Player player1;
-    private Player player2;
-    private Player player3;
-    private Player player4;
-    private Player player5;
-    private Player player6;
+	private ScoreUtils scoreUtils;
+	private Player[] players;
 
-    @Before
-    public void init() {
-        this.scoreUtils = new ScoreUtils();
-        List<Card> p1c = new ArrayList<>();
+	@SuppressWarnings("serial")
+	@Before
+	public void init() {
+		this.scoreUtils = new ScoreUtils();
+		this.players = new Player[6];
 
-        Card p1c1 = new Card();
-        p1c1.points = 12;
-        p1c1.temperature = Temperature.WARM;
-        p1c.add(p1c1);
+		this.players[0] = new Player(6, new HandlerFactory(), 1);
+		this.players[0].hatchedCards = new ArrayList<Card>() {
+			{
+				this.add(ScoreTests.this.createCard(12, Temperature.WARM));
+				this.add(ScoreTests.this.createCard(3, Temperature.WARM));
+				this.add(ScoreTests.this.createCard(6, Temperature.NEUTRAL));
+				this.add(ScoreTests.this.createCard(19, Temperature.WARM));
+				this.add(ScoreTests.this.createCard(3, Temperature.COOL));
+			}
+		};
 
-        Card p1c2 = new Card();
-        p1c2.points = 3;
-        p1c2.temperature = Temperature.WARM;
-        p1c.add(p1c2);
+		this.players[1] = new Player(6, new HandlerFactory(), 2);
+		this.players[1].hatchedCards = new ArrayList<Card>() {
+			{
+				this.add(ScoreTests.this.createCard(16, Temperature.WARM));
+				this.add(ScoreTests.this.createCard(19, Temperature.COOL));
+				this.add(ScoreTests.this.createCard(10, Temperature.NEUTRAL));
+			}
+		};
 
-        Card p1c3 = new Card();
-        p1c3.points = 6;
-        p1c3.temperature = Temperature.NEUTRAL;
-        p1c.add(p1c3);
+		this.players[2] = new Player(6, new HandlerFactory(), 3);
+		this.players[2].hatchedCards = new ArrayList<Card>();
 
-        Card p1c4 = new Card();
-        p1c4.points = 19;
-        p1c4.temperature = Temperature.WARM;
-        p1c.add(p1c4);
+		this.players[3] = new Player(6, new HandlerFactory(), 4);
+		this.players[3].hatchedCards = new ArrayList<Card>() {
+			{
+				this.add(ScoreTests.this.createCard(3, Temperature.COOL));
+				this.add(ScoreTests.this.createCard(10, Temperature.COOL));
+			}
+		};
 
-        Card p1c5 = new Card();
-        p1c5.points = 3;
-        p1c5.temperature = Temperature.COOL;
-        p1c.add(p1c5);
+		this.players[4] = new Player(6, new HandlerFactory(), 5);
+		this.players[4].hatchedCards = new ArrayList<Card>() {
+			{
+				this.add(ScoreTests.this.createCard(3, Temperature.WARM));
+				this.add(ScoreTests.this.createCard(3, Temperature.WARM));
+			}
+		};
 
-        this.player1 = new Player(6, new HandlerFactory(), 1);
-        this.player1.hatchedCards = p1c;
+		this.players[5] = new Player(6, new HandlerFactory(), 6);
+		this.players[5].hatchedCards = new ArrayList<Card>() {
+			{
+				this.add(ScoreTests.this.createCard(3, Temperature.COOL));
+				this.add(ScoreTests.this.createCard(10, Temperature.COOL));
+			}
+		};
+	}
 
-        List<Card> p2c = new ArrayList<>();
+	@Test
+	public void testTwoPlayers() {
+		Map<Player, Integer> scores = this.scoreUtils.calculateScores(Arrays.asList(this.players), false);
 
-        Card p2c1 = new Card();
-        p2c1.points = 16;
-        p2c1.temperature = Temperature.WARM;
-        p2c.add(p2c1);
+		assertEquals(43, (int) (scores.get(this.players[0])));
+		assertEquals(45, (int) (scores.get(this.players[1])));
+	}
 
-        Card p2c2 = new Card();
-        p2c2.points = 19;
-        p2c2.temperature = Temperature.COOL;
-        p2c.add(p2c2);
+	@Test
+	public void testOneEmpty() {
+		Map<Player, Integer> scores = this.scoreUtils.calculateScores(Arrays.asList(this.players), true);
 
-        Card p2c3 = new Card();
-        p2c3.points = 10;
-        p2c3.temperature = Temperature.NEUTRAL;
-        p2c.add(p2c3);
+		assertEquals(58, (int) (scores.get(this.players[0])));
+		assertEquals(65, (int) (scores.get(this.players[1])));
+		assertEquals(20, (int) (scores.get(this.players[2])));
 
-        this.player2 = new Player(6, new HandlerFactory(), 2);
-        this.player2.hatchedCards = p2c;
+	}
 
-        List<Card> p3c = new ArrayList<>();
+	@Test
+	public void testOneNeutralWarmCool() {
+		Map<Player, Integer> scores = this.scoreUtils.calculateScores(Arrays.asList(this.players), true);
 
-        this.player3 = new Player(6, new HandlerFactory(), 3);
-        this.player3.hatchedCards = p3c;
+		assertEquals(58, (int) (scores.get(this.players[0])));
+		assertEquals(65, (int) (scores.get(this.players[1])));
+		assertEquals(20, (int) (scores.get(this.players[2])));
+		assertEquals(28, (int) (scores.get(this.players[3])));
 
-        List<Card> p4c = new ArrayList<>();
+	}
 
-        Card p4c1 = new Card();
-        p4c1.points = 3;
-        p4c1.temperature = Temperature.COOL;
-        p4c.add(p4c1);
+	@Test
+	public void testTwoSameNetWarm() {
+		Map<Player, Integer> scores = this.scoreUtils.calculateScores(Arrays.asList(this.players), true);
 
-        Card p4c2 = new Card();
-        p4c2.points = 10;
-        p4c2.temperature = Temperature.COOL;
-        p4c.add(p4c2);
+		assertEquals(58, (int) (scores.get(this.players[0])));
+		assertEquals(65, (int) (scores.get(this.players[1])));
+		assertEquals(20, (int) (scores.get(this.players[2])));
+		assertEquals(28, (int) (scores.get(this.players[3])));
+		assertEquals(21, (int) (scores.get(this.players[4])));
+	}
 
-        this.player4 = new Player(6, new HandlerFactory(), 4);
-        this.player4.hatchedCards = p4c;
+	@Test
+	public void testTwoSameNetCool() {
+		Map<Player, Integer> scores = this.scoreUtils.calculateScores(Arrays.asList(this.players), true);
 
-        List<Card> p5c = new ArrayList<>();
+		assertEquals(58, (int) (scores.get(this.players[0])));
+		assertEquals(28, (int) (scores.get(this.players[3])));
+		assertEquals(28, (int) (scores.get(this.players[5])));
+	}
 
-        Card p5c1 = new Card();
-        p5c1.points = 3;
-        p5c1.temperature = Temperature.WARM;
-        p5c.add(p5c1);
-
-        Card p5c2 = new Card();
-        p5c2.points = 3;
-        p5c2.temperature = Temperature.WARM;
-        p5c.add(p5c2);
-
-        this.player5 = new Player(6, new HandlerFactory(), 5);
-        this.player5.hatchedCards = p5c;
-
-        List<Card> p6c = new ArrayList<>();
-
-        Card p6c1 = new Card();
-        p6c1.points = 3;
-        p6c1.temperature = Temperature.COOL;
-        p6c.add(p6c1);
-
-        Card p6c2 = new Card();
-        p6c2.points = 10;
-        p6c2.temperature = Temperature.COOL;
-        p6c.add(p6c2);
-
-        this.player6 = new Player(6, new HandlerFactory(), 6);
-        this.player6.hatchedCards = p6c;
-    }
-
-    @Test
-    public void testTwoPlayers() {
-        List<Player> players = new ArrayList<>();
-        players.add(this.player1);
-        players.add(this.player2);
-
-        Map<Player, Integer> scores = this.scoreUtils.calculateScores(players);
-
-        assertEquals(43, (int) (scores.get(this.player1)));
-        assertEquals(45, (int) (scores.get(this.player2)));
-    }
-
-    @Test
-    public void testOneEmpty() {
-        List<Player> players = new ArrayList<>();
-        players.add(this.player1);
-        players.add(this.player2);
-        players.add(this.player3);
-
-        Map<Player, Integer> scores = this.scoreUtils.calculateScores(players);
-
-        assertEquals(58, (int) (scores.get(this.player1)));
-        assertEquals(65, (int) (scores.get(this.player2)));
-        assertEquals(20, (int) (scores.get(this.player3)));
-
-    }
-
-    @Test
-    public void testOneNeutralWarmCool() {
-        List<Player> players = new ArrayList<>();
-        players.add(this.player1);
-        players.add(this.player2);
-        players.add(this.player3);
-        players.add(this.player4);
-
-        Map<Player, Integer> scores = this.scoreUtils.calculateScores(players);
-
-        assertEquals(58, (int) (scores.get(this.player1)));
-        assertEquals(65, (int) (scores.get(this.player2)));
-        assertEquals(20, (int) (scores.get(this.player3)));
-        assertEquals(28, (int) (scores.get(this.player4)));
-
-    }
-
-    @Test
-    public void testTwoSameNetWarm() {
-        List<Player> players = new ArrayList<>();
-        players.add(this.player1);
-        players.add(this.player2);
-        players.add(this.player3);
-        players.add(this.player4);
-        players.add(this.player5);
-
-        Map<Player, Integer> scores = this.scoreUtils.calculateScores(players);
-
-        assertEquals(58, (int) (scores.get(this.player1)));
-        assertEquals(65, (int) (scores.get(this.player2)));
-        assertEquals(20, (int) (scores.get(this.player3)));
-        assertEquals(28, (int) (scores.get(this.player4)));
-        assertEquals(21, (int) (scores.get(this.player5)));
-    }
-
-    @Test
-    public void testTwoSameNetCool() {
-        List<Player> players = new ArrayList<>();
-        players.add(this.player1);
-        players.add(this.player4);
-        players.add(this.player6);
-
-        Map<Player, Integer> scores = this.scoreUtils.calculateScores(players);
-
-        assertEquals(58, (int) (scores.get(this.player1)));
-        assertEquals(28, (int) (scores.get(this.player4)));
-        assertEquals(28, (int) (scores.get(this.player6)));
-    }
+	public Card createCard(int points, Temperature temperature) {
+		Card toReturn = new Card();
+		toReturn.points = points;
+		toReturn.temperature = temperature;
+		return toReturn;
+	}
 
 }
