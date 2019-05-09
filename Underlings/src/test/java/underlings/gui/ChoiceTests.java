@@ -55,4 +55,22 @@ public class ChoiceTests {
 		assertEquals(0, fieldSpace);
 	}
 
+	@Test
+	public void testFieldSpace21() {
+		PromptHandler promptHandler = EasyMock.mock(PromptHandler.class);
+		Display display = EasyMock.mock(Display.class);
+
+		Gui gui = new Gui(promptHandler, display);
+
+		EasyMock.expect(promptHandler.promptInt("Enter Field Space", 0, 21)).andReturn(21);
+
+		EasyMock.replay(promptHandler, display);
+
+		int fieldSpace = gui.getFieldSpace();
+
+		EasyMock.verify(promptHandler, display);
+
+		assertEquals(21, fieldSpace);
+	}
+
 }
