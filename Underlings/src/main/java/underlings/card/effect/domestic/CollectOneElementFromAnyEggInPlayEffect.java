@@ -12,6 +12,7 @@ import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.player.Player;
+import underlings.utilities.EggHatchingLogic;
 
 public class CollectOneElementFromAnyEggInPlayEffect extends HatchingGroundEffect {
 
@@ -19,7 +20,7 @@ public class CollectOneElementFromAnyEggInPlayEffect extends HatchingGroundEffec
 
     @Override
     protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag,
-            ElementSpaceLogic elementSpaceLogic, Gui gui, Player currentPlayer) {
+            ElementSpaceLogic elementSpaceLogic, Gui gui, Player currentPlayer, EggHatchingLogic eggHatchingLogic) {
         List<Card> allCards = hatchingGround.getAllCards();
         ElementSpace selectedSpace = gui.getElementSpaceContainingElementOfColors(allCards, this.elementChoices);
         Element selectedElement = gui.getElementOfColorsFromSpace(this.elementChoices, selectedSpace);
@@ -27,8 +28,7 @@ public class CollectOneElementFromAnyEggInPlayEffect extends HatchingGroundEffec
 
     }
 
-    private void giveElementToPlayer(Element selectedElement, ElementSpace selectedSpace,
-            Player currentPlayer) {
+    private void giveElementToPlayer(Element selectedElement, ElementSpace selectedSpace, Player currentPlayer) {
         selectedSpace.destroyOneElementOfColor(selectedElement.getColor());
         currentPlayer.addElement(selectedElement);
     }

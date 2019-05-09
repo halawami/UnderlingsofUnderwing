@@ -9,18 +9,20 @@ import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.player.Player;
+import underlings.utilities.EggHatchingLogic;
 
 public abstract class AdjacentEggsEffect extends HatchingGroundEffect {
 
     @Override
     protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag,
-            ElementSpaceLogic elementSpaceLogic, Gui gui, Player currentPlayer) {
+            ElementSpaceLogic elementSpaceLogic, Gui gui, Player currentPlayer, EggHatchingLogic eggHatchingLogic) {
         List<Card> adjacentCards = hatchingGround.getAdjacentCards(centerCard);
         for (Card adjacentCard : adjacentCards) {
-            applyOnAdjacentEgg(adjacentCard, elementBag, elementSpaceLogic, hatchingGround, gui);
+            applyOnAdjacentEgg(adjacentCard, elementBag, elementSpaceLogic, hatchingGround, gui, eggHatchingLogic);
         }
     }
 
     public abstract void applyOnAdjacentEgg(Card adjacentEgg, ElementBag elementBag,
-            ElementSpaceLogic elementSpaceLogic, HatchingGround hatchingGround, Gui gui);
+            ElementSpaceLogic elementSpaceLogic, HatchingGround hatchingGround, Gui gui,
+            EggHatchingLogic eggHatchingLogic);
 }

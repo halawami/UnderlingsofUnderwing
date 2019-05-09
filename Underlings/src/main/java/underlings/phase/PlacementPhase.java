@@ -23,10 +23,12 @@ import underlings.utilities.EggHatchingLogic;
 public class PlacementPhase extends RotationPhase {
 
     private Map<Player, Integer> turnCounts;
+    private EggHatchingLogic wildEggHatchingLogic;
 
     public PlacementPhase(List<Player> players, Gui gui, ElementBag elementBag, HatchingGround hatchingGround,
-            Runnable displayMethod, Field field) {
+            Runnable displayMethod, Field field, EggHatchingLogic eggHatchingLogic) {
         super(players, gui, elementBag, hatchingGround, displayMethod, field);
+        this.wildEggHatchingLogic = eggHatchingLogic;
     }
 
     @Override
@@ -80,9 +82,7 @@ public class PlacementPhase extends RotationPhase {
     }
 
     public void hatchWildDragon(Card card, Player player) {
-        EggHatchingLogic wildEggHatchingLogic =
-                new EggHatchingLogic(this.gui, this.elementBag, this.hatchingGround, player);
-        wildEggHatchingLogic.hatchEgg(card, true);
+        this.wildEggHatchingLogic.hatchEgg(card, true);
         this.gameComplete = true;
         this.phaseComplete = true;
         for (Card groundCard : this.hatchingGround) {

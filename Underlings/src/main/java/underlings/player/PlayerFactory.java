@@ -19,4 +19,8 @@ public class PlayerFactory {
         return player;
     }
 
+    public Player createFakePlayer() {
+        return FakePlayer.getInstance();
+    }
+
 }

@@ -13,10 +13,12 @@ import underlings.utilities.EggHatchingLogic;
 public class DragonPhase extends SequentialPhase {
 
     private List<Card> completeEggs;
+    private EggHatchingLogic domesticEggHatchingLogic;
 
     public DragonPhase(List<Player> players, Gui gui, ElementBag elementBag, HatchingGround hatchingGround,
-            Runnable displayMethod, Field field) {
+            Runnable displayMethod, Field field, EggHatchingLogic eggHatchingLogic) {
         super(players, gui, elementBag, hatchingGround, displayMethod, field);
+        this.domesticEggHatchingLogic = eggHatchingLogic;
     }
 
     @Override
@@ -26,12 +28,11 @@ public class DragonPhase extends SequentialPhase {
 
     @Override
     public void turn(Player player) {
-        EggHatchingLogic domesticEggHatchingLogic = new EggHatchingLogic(gui, elementBag, hatchingGround, player);
         for (Card card : player.unhatchedCards) {
-            domesticEggHatchingLogic.hatchEgg(card, false);
+            this.domesticEggHatchingLogic.hatchEgg(card, false);
         }
         for (Card completeCard : this.completeEggs) {
-            domesticEggHatchingLogic.returnElementsToBag(completeCard);
+            this.domesticEggHatchingLogic.returnElementsToBag(completeCard);
             if (player.hasCard(completeCard)) {
                 this.gui.notifyAction(player.getPlayerId(), completeCard.name + " is going to incubation state");
             }
