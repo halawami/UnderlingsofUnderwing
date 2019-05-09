@@ -26,12 +26,12 @@ public class DragonPhase extends SequentialPhase {
 
     @Override
     public void turn(Player player) {
-        EggHatchingLogic eggHatchingLogic = new EggHatchingLogic(gui, elementBag, hatchingGround, player);
+        EggHatchingLogic domesticEggHatchingLogic = new EggHatchingLogic(gui, elementBag, hatchingGround, player);
         for (Card card : player.unhatchedCards) {
-            eggHatchingLogic.hatchEgg(card, false);
+            domesticEggHatchingLogic.hatchEgg(card, false);
         }
         for (Card completeCard : this.completeEggs) {
-            eggHatchingLogic.returnElementsToBag(completeCard);
+            domesticEggHatchingLogic.returnElementsToBag(completeCard);
             if (player.hasCard(completeCard)) {
                 this.gui.notifyAction(player.getPlayerId(), completeCard.name + " is going to incubation state");
             }
