@@ -2,10 +2,10 @@ package underlings.scoring;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import underlings.card.Card;
@@ -13,85 +13,55 @@ import underlings.card.Temperature;
 
 public class TemperatureTests {
 
-    @Test
-    public void testEmpty() {
-        ScoreUtils scoreUtils = new ScoreUtils();
-        int balance = scoreUtils.calculateTemperature(Collections.emptyList());
+	private ScoreUtils scoreUtils;
+	private Card[] cards;
 
-        assertEquals(0, balance);
-    }
+	@Before
+	public void init() {
+		this.scoreUtils = new ScoreUtils();
+		this.cards = new Card[] { new Card(), new Card(), new Card(), new Card() };
+	}
 
-    @Test
-    public void testPerfectBalance() {
-        Card cardOne = new Card();
-        Card cardTwo = new Card();
-        Card cardThree = new Card();
+	@Test
+	public void testEmpty() {
+		int balance = this.scoreUtils.calculateTemperature(Collections.emptyList());
 
-        cardOne.temperature = Temperature.WARM;
-        cardTwo.temperature = Temperature.COOL;
-        cardThree.temperature = Temperature.NEUTRAL;
+		assertEquals(0, balance);
+	}
 
-        List<Card> cards = new ArrayList<>();
-        cards.add(cardOne);
-        cards.add(cardTwo);
-        cards.add(cardThree);
+	@Test
+	public void testPerfectBalance() {
+		this.cards[0].temperature = Temperature.WARM;
+		this.cards[1].temperature = Temperature.COOL;
+		this.cards[2].temperature = Temperature.NEUTRAL;
 
-        ScoreUtils scoreUtils = new ScoreUtils();
-        int balance = scoreUtils.calculateTemperature(cards);
+		int balance = this.scoreUtils.calculateTemperature(Arrays.asList(this.cards));
 
-        assertEquals(0, balance);
-    }
+		assertEquals(0, balance);
+	}
 
-    @Test
-    public void testWarmBalance() {
-        List<Card> cards = new ArrayList<>();
+	@Test
+	public void testWarmBalance() {
+		this.cards[0].temperature = Temperature.WARM;
+		this.cards[1].temperature = Temperature.COOL;
+		this.cards[2].temperature = Temperature.NEUTRAL;
+		this.cards[3].temperature = Temperature.WARM;
 
-        Card cardOne = new Card();
-        cardOne.temperature = Temperature.WARM;
-        cards.add(cardOne);
+		int balance = this.scoreUtils.calculateTemperature(Arrays.asList(this.cards));
 
-        Card cardTwo = new Card();
-        cardTwo.temperature = Temperature.COOL;
-        cards.add(cardTwo);
+		assertEquals(1, balance);
+	}
 
-        Card cardThree = new Card();
-        cardThree.temperature = Temperature.NEUTRAL;
-        cards.add(cardThree);
+	@Test
+	public void testCoolBalance() {
+		this.cards[0].temperature = Temperature.WARM;
+		this.cards[1].temperature = Temperature.COOL;
+		this.cards[2].temperature = Temperature.NEUTRAL;
+		this.cards[3].temperature = Temperature.COOL;
 
-        Card cardFour = new Card();
-        cardFour.temperature = Temperature.WARM;
-        cards.add(cardFour);
+		int balance = this.scoreUtils.calculateTemperature(Arrays.asList(this.cards));
 
-        ScoreUtils scoreUtils = new ScoreUtils();
-        int balance = scoreUtils.calculateTemperature(cards);
-
-        assertEquals(1, balance);
-    }
-
-    @Test
-    public void testCoolBalance() {
-        List<Card> cards = new ArrayList<>();
-
-        Card cardOne = new Card();
-        cardOne.temperature = Temperature.WARM;
-        cards.add(cardOne);
-
-        Card cardTwo = new Card();
-        cardTwo.temperature = Temperature.COOL;
-        cards.add(cardTwo);
-
-        Card cardThree = new Card();
-        cardThree.temperature = Temperature.NEUTRAL;
-        cards.add(cardThree);
-
-        Card cardFour = new Card();
-        cardFour.temperature = Temperature.COOL;
-        cards.add(cardFour);
-
-        ScoreUtils scoreUtils = new ScoreUtils();
-        int balance = scoreUtils.calculateTemperature(cards);
-
-        assertEquals(-1, balance);
-    }
+		assertEquals(-1, balance);
+	}
 
 }
