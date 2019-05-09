@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import java.util.Arrays;
 
 import org.easymock.EasyMock;
+import org.junit.Before;
 import org.junit.Test;
 
 import underlings.card.Card;
@@ -22,177 +23,162 @@ import underlings.player.PlayerFactory;
 
 public class EggHatchingLogicTests {
 
+    private Card card;
+    private Effect effect;
+    private ElementBag elementBag;
+    private HatchingGround hatchingGround;
+    private PlayerFactory playerFactory;
+    private Player player;
+    private Gui gui;
+
+    @Before
+    public void init() {
+        this.card = new Card();
+        this.card.elementSpaces = new ElementSpace[1];
+        this.card.wildEffects = new Effect[1];
+        this.effect = EasyMock.mock(Effect.class);
+        this.card.wildEffects[0] = effect;
+        this.elementBag = EasyMock.mock(ElementBag.class);
+        this.hatchingGround = EasyMock.mock(HatchingGround.class);
+        this.playerFactory = new PlayerFactory(new HandlerFactory());
+        this.player = this.playerFactory.createFakePlayer();
+        this.gui = EasyMock.mock(Gui.class);
+        this.card.domesticEffects = new Effect[1];
+        this.card.domesticEffects[0] = effect;
+    }
+
     @Test
     public void testOneWildEffect() {
-        Card card = new Card();
-        card.wildEffects = new Effect[1];
-        Effect effect = EasyMock.mock(Effect.class);
-        card.wildEffects[0] = effect;
-        ElementBag elementBag = EasyMock.mock(ElementBag.class);
-        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
-        PlayerFactory playerFactory = new PlayerFactory(new HandlerFactory());
-        Player player = playerFactory.createFakePlayer();
-        EasyMock.expect(card.wildEffects[0].on(elementBag)).andReturn(card.wildEffects[0]);
-        EasyMock.expect(card.wildEffects[0].on(hatchingGround)).andReturn(card.wildEffects[0]);
-        EasyMock.expect(card.wildEffects[0].on(player)).andReturn(card.wildEffects[0]);
-        EasyMock.expect(card.wildEffects[0].on(player.elementSpaceLogic)).andReturn(card.wildEffects[0]);
-        Gui gui = EasyMock.mock(Gui.class);
-        EasyMock.expect(card.wildEffects[0].on(gui)).andReturn(card.wildEffects[0]);
+        EasyMock.expect(effect.on(elementBag)).andReturn(effect);
+        EasyMock.expect(effect.on(hatchingGround)).andReturn(effect);
+        EasyMock.expect(effect.on(player)).andReturn(effect);
+        EasyMock.expect(effect.on(player.elementSpaceLogic)).andReturn(effect);
+        EasyMock.expect(effect.on(gui)).andReturn(effect);
         EggHatchingLogic wildEggHatchingLogic = new EggHatchingLogic(gui, elementBag, hatchingGround, playerFactory);
-        EasyMock.expect(card.wildEffects[0].on(wildEggHatchingLogic)).andReturn(card.wildEffects[0]);
-        card.wildEffects[0].apply();
-        gui.notifyAction(-1, card.wildEffects[0].toString() + " has been applied");
+        EasyMock.expect(effect.on(wildEggHatchingLogic)).andReturn(effect);
+        effect.apply();
+        gui.notifyAction(-1, effect.toString() + " has been applied");
 
         EasyMock.replay(effect, elementBag, hatchingGround, gui);
+
         wildEggHatchingLogic.hatchEgg(card, true, player);
         assertEquals(WildHandler.getInstance(), card.handler);
+
         EasyMock.verify(effect, elementBag, hatchingGround, gui);
     }
 
     @Test
     public void testTwoWildEffects() {
-        Card card = new Card();
         card.wildEffects = new Effect[2];
-        Effect effect = EasyMock.mock(Effect.class);
         card.wildEffects[0] = effect;
         card.wildEffects[1] = effect;
-        ElementBag elementBag = EasyMock.mock(ElementBag.class);
-        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
-        PlayerFactory playerFactory = new PlayerFactory(new HandlerFactory());
-        Player player = playerFactory.createFakePlayer();
-        EasyMock.expect(card.wildEffects[0].on(elementBag)).andReturn(card.wildEffects[0]).times(2);
-        EasyMock.expect(card.wildEffects[0].on(hatchingGround)).andReturn(card.wildEffects[0]).times(2);
-        EasyMock.expect(card.wildEffects[0].on(player.elementSpaceLogic)).andReturn(card.wildEffects[0]).times(2);
-        EasyMock.expect(card.wildEffects[0].on(player)).andReturn(card.wildEffects[0]).times(2);
-        Gui gui = EasyMock.mock(Gui.class);
-        EasyMock.expect(card.wildEffects[0].on(gui)).andReturn(card.wildEffects[0]).times(2);
+        EasyMock.expect(effect.on(elementBag)).andReturn(effect).times(2);
+        EasyMock.expect(effect.on(hatchingGround)).andReturn(effect).times(2);
+        EasyMock.expect(effect.on(player.elementSpaceLogic)).andReturn(effect).times(2);
+        EasyMock.expect(effect.on(player)).andReturn(effect).times(2);
+        EasyMock.expect(effect.on(gui)).andReturn(effect).times(2);
         EggHatchingLogic wildEggHatchingLogic = new EggHatchingLogic(gui, elementBag, hatchingGround, playerFactory);
-        EasyMock.expect(card.wildEffects[0].on(wildEggHatchingLogic)).andReturn(card.wildEffects[0]).times(2);
-        card.wildEffects[0].apply();
+        EasyMock.expect(effect.on(wildEggHatchingLogic)).andReturn(effect).times(2);
+        effect.apply();
         EasyMock.expectLastCall().times(2);
 
-        gui.notifyAction(-1, card.wildEffects[0].toString() + " has been applied");
+        gui.notifyAction(-1, effect + " has been applied");
         EasyMock.expectLastCall().times(2);
 
         EasyMock.replay(effect, elementBag, hatchingGround, gui);
 
         wildEggHatchingLogic.hatchEgg(card, true, player);
         assertEquals(WildHandler.getInstance(), card.handler);
+
         EasyMock.verify(effect, elementBag, hatchingGround, gui);
     }
 
     @Test
     public void testOneDomesticEffect() {
-        Card card = new Card();
-        card.domesticEffects = new Effect[1];
-        Effect effect = EasyMock.mock(Effect.class);
-        card.domesticEffects[0] = effect;
         Handler handler = EasyMock.mock(Handler.class);;
         card.handler = handler;
-        ElementBag elementBag = EasyMock.mock(ElementBag.class);
-        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
-        PlayerFactory playerFactory = new PlayerFactory(new HandlerFactory());
-        Player player = playerFactory.createPlayer(2);
-        EasyMock.expect(card.domesticEffects[0].on(elementBag)).andReturn(card.domesticEffects[0]);
-        EasyMock.expect(card.domesticEffects[0].on(hatchingGround)).andReturn(card.domesticEffects[0]);
-        EasyMock.expect(card.domesticEffects[0].on(player.elementSpaceLogic)).andReturn(card.domesticEffects[0]);
-        EasyMock.expect(card.domesticEffects[0].on(player)).andReturn(card.domesticEffects[0]);
-        Gui gui = EasyMock.mock(Gui.class);
-        EasyMock.expect(card.domesticEffects[0].on(gui)).andReturn(card.domesticEffects[0]);
+        player = playerFactory.createPlayer(2);
+        EasyMock.expect(effect.on(elementBag)).andReturn(effect);
+        EasyMock.expect(effect.on(hatchingGround)).andReturn(effect);
+        EasyMock.expect(effect.on(player.elementSpaceLogic)).andReturn(effect);
+        EasyMock.expect(effect.on(player)).andReturn(effect);
+        EasyMock.expect(effect.on(gui)).andReturn(effect);
         EggHatchingLogic domesticEggHatchingLogic =
                 new EggHatchingLogic(gui, elementBag, hatchingGround, playerFactory);
-        EasyMock.expect(card.domesticEffects[0].on(domesticEggHatchingLogic)).andReturn(card.domesticEffects[0]);
-        card.domesticEffects[0].apply();
-        gui.notifyAction(1, card.domesticEffects[0].toString() + " has been applied");
+        EasyMock.expect(effect.on(domesticEggHatchingLogic)).andReturn(effect);
+        effect.apply();
+        gui.notifyAction(1, effect.toString() + " has been applied");
 
         EasyMock.replay(effect, elementBag, hatchingGround, gui, handler);
+
         domesticEggHatchingLogic.hatchEgg(card, false, player);
         assertEquals(handler, card.handler);
+
         EasyMock.verify(effect, elementBag, hatchingGround, gui, handler);
     }
 
     @Test
     public void testReturnNoElements() {
-        Card card = new Card();
-        card.elementSpaces = new ElementSpace[1];
         card.elementSpaces[0] = new ElementSpace(ElementColor.PURPLE);
-        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
-        PlayerFactory playerFactory = new PlayerFactory(new HandlerFactory());
-        Gui gui = EasyMock.mock(Gui.class);
-        ElementBag bag = EasyMock.mock(ElementBag.class);
-        EasyMock.replay(hatchingGround, bag, gui);
 
-        EggHatchingLogic eggHatchingLogic = new EggHatchingLogic(gui, bag, hatchingGround, playerFactory);
+        EasyMock.replay(hatchingGround, elementBag, gui);
+
+        EggHatchingLogic eggHatchingLogic = new EggHatchingLogic(gui, elementBag, hatchingGround, playerFactory);
         eggHatchingLogic.returnElementsToBag(card);
 
-        EasyMock.verify(hatchingGround, bag, gui);
+        EasyMock.verify(hatchingGround, elementBag, gui);
     }
 
     @Test
     public void testReturnPurpleComboElements() {
-        Card card = new Card();
-        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
-        card.elementSpaces = new ElementSpace[1];
         card.elementSpaces[0] = new ElementSpace(ElementColor.PURPLE);
         card.elementSpaces[0].elements = Arrays.asList(ElementColor.RED, ElementColor.BLUE);
         PlayerFactory playerFactory = new PlayerFactory(new HandlerFactory());
-        Gui gui = EasyMock.mock(Gui.class);
-        ElementBag bag = EasyMock.mock(ElementBag.class);
-        bag.putElement(ElementColor.RED);
-        bag.putElement(ElementColor.BLUE);
-        EasyMock.replay(hatchingGround, bag, gui);
+        elementBag.putElement(ElementColor.RED);
+        elementBag.putElement(ElementColor.BLUE);
+        EasyMock.replay(hatchingGround, elementBag, gui);
 
-        EggHatchingLogic eggHatchingLogic = new EggHatchingLogic(gui, bag, hatchingGround, playerFactory);
+        EggHatchingLogic eggHatchingLogic = new EggHatchingLogic(gui, elementBag, hatchingGround, playerFactory);
         eggHatchingLogic.returnElementsToBag(card);
 
-        EasyMock.verify(hatchingGround, bag, gui);
+        EasyMock.verify(hatchingGround, elementBag, gui);
     }
 
     @Test
     public void testReturnOrangeComboElements() {
-        Card card = new Card();
-        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
-        card.elementSpaces = new ElementSpace[1];
         card.elementSpaces[0] = new ElementSpace(ElementColor.ORANGE);
         card.elementSpaces[0].elements = Arrays.asList(ElementColor.RED, ElementColor.YELLOW);
-        PlayerFactory playerFactory = new PlayerFactory(new HandlerFactory());
-        Gui gui = EasyMock.mock(Gui.class);
-        ElementBag bag = EasyMock.mock(ElementBag.class);
-        bag.putElement(ElementColor.RED);
-        bag.putElement(ElementColor.YELLOW);
-        EasyMock.replay(hatchingGround, bag, gui);
+        elementBag.putElement(ElementColor.RED);
+        elementBag.putElement(ElementColor.YELLOW);
 
-        EggHatchingLogic eggHatchingLogic = new EggHatchingLogic(gui, bag, hatchingGround, playerFactory);
+        EasyMock.replay(hatchingGround, elementBag, gui);
+
+        EggHatchingLogic eggHatchingLogic = new EggHatchingLogic(gui, elementBag, hatchingGround, playerFactory);
         eggHatchingLogic.returnElementsToBag(card);
 
-        EasyMock.verify(hatchingGround, bag, gui);
+        EasyMock.verify(hatchingGround, elementBag, gui);
     }
 
     @Test
     public void testMultiReturnComboElements() {
-        Card card = new Card();
-        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
-        card.elementSpaces = new ElementSpace[1];
         card.elementSpaces[0] = new ElementSpace(ElementColor.ORANGE);
         card.elementSpaces[0].elements = Arrays.asList(ElementColor.RED, ElementColor.YELLOW);
         Card card2 = new Card();
         card2.elementSpaces = new ElementSpace[1];
         card2.elementSpaces[0] = new ElementSpace(ElementColor.PURPLE);
         card2.elementSpaces[0].elements = Arrays.asList(ElementColor.RED, ElementColor.BLUE);
-        PlayerFactory playerFactory = new PlayerFactory(new HandlerFactory());
-        Gui gui = EasyMock.mock(Gui.class);
-        ElementBag bag = EasyMock.mock(ElementBag.class);
-        bag.putElement(ElementColor.RED);
-        bag.putElement(ElementColor.YELLOW);
-        bag.putElement(ElementColor.RED);
-        bag.putElement(ElementColor.BLUE);
-        EasyMock.replay(hatchingGround, bag, gui);
+        elementBag.putElement(ElementColor.RED);
+        elementBag.putElement(ElementColor.YELLOW);
+        elementBag.putElement(ElementColor.RED);
+        elementBag.putElement(ElementColor.BLUE);
 
-        EggHatchingLogic eggHatchingLogic = new EggHatchingLogic(gui, bag, hatchingGround, playerFactory);
+        EasyMock.replay(hatchingGround, elementBag, gui);
+
+        EggHatchingLogic eggHatchingLogic = new EggHatchingLogic(gui, elementBag, hatchingGround, playerFactory);
         eggHatchingLogic.returnElementsToBag(card);
         eggHatchingLogic.returnElementsToBag(card2);
 
-        EasyMock.verify(hatchingGround, bag, gui);
+        EasyMock.verify(hatchingGround, elementBag, gui);
     }
 
 }
