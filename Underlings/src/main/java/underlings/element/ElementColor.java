@@ -1,11 +1,13 @@
 package underlings.element;
 
-public enum ElementColor {
-    BLUE, RED, GREEN, YELLOW, ORANGE, PURPLE, WHITE, BLACK, NULL;
+import underlings.utilities.LocaleWrap;
 
-    @Override
-    public String toString() {
-        return this.name();
-    }
+public enum ElementColor {
+	BLUE, RED, GREEN, YELLOW, ORANGE, PURPLE, WHITE, BLACK, NULL;
+
+	@Override
+	public String toString() {
+		return LocaleWrap.get(this.name());
+	}
 
 }
