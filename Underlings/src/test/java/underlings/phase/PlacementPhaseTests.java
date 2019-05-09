@@ -21,7 +21,9 @@ import underlings.gui.Display;
 import underlings.gui.Gui;
 import underlings.gui.PromptHandler;
 import underlings.handler.Handler;
+import underlings.player.FakePlayer;
 import underlings.player.Player;
+import underlings.utilities.EggHatchingLogic;
 
 public class PlacementPhaseTests {
 
@@ -69,6 +71,7 @@ public class PlacementPhaseTests {
         final Display display = EasyMock.mock(Display.class);
         final ElementBag elementBag = EasyMock.createMock(ElementBag.class);
         final Runnable runnable = EasyMock.mock(Runnable.class);
+        final EggHatchingLogic eggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
 
         // define expected flow of activity
         EasyMock.expect(logic.getPlayableSpaces(EasyMock.anyObject(Card.class), EasyMock.anyObject(List.class)))
@@ -90,12 +93,12 @@ public class PlacementPhaseTests {
 
         // assert expected actions occurred
         EasyMock.replay(player, promptHandler, display, elementBag, runnable);
-        EasyMock.replay(logic, redSpace, blueSpace, greenSpace, whiteSpace);
+        EasyMock.replay(logic, redSpace, blueSpace, greenSpace, whiteSpace, eggHatchingLogic);
         Gui gui = new Gui(promptHandler, display);
-        Phase phase = new PlacementPhase(players, gui, elementBag, hatchingGround, runnable, null);
+        Phase phase = new PlacementPhase(players, gui, elementBag, hatchingGround, runnable, null, eggHatchingLogic);
         phase.execute(1);
         EasyMock.verify(player, promptHandler, display, elementBag, runnable);
-        EasyMock.verify(logic, redSpace, blueSpace, greenSpace, whiteSpace);
+        EasyMock.verify(logic, redSpace, blueSpace, greenSpace, whiteSpace, eggHatchingLogic);
     }
 
     @SuppressWarnings("unchecked")
@@ -143,8 +146,10 @@ public class PlacementPhaseTests {
         gui.promptHandler = promptHandler;
         final ElementBag elementBag = EasyMock.createMock(ElementBag.class);
         final Runnable runnable = EasyMock.mock(Runnable.class);
+        final EggHatchingLogic eggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
 
         // define expected flow of activity
+        eggHatchingLogic.hatchEgg(card, true, FakePlayer.getInstance());
         EasyMock.expect(logic.getPlayableSpaces(EasyMock.anyObject(Card.class), EasyMock.anyObject(List.class)))
                 .andReturn(Arrays.asList(blueSpace, greenSpace, whiteSpace)).anyTimes();
         EasyMock.expect(promptHandler.promptChoice("Pick a card to place an element on.", Arrays.asList(card), 1))
@@ -163,22 +168,13 @@ public class PlacementPhaseTests {
         EasyMock.expect(logic.getValidAdditions(blueSpace)).andReturn(Arrays.asList(ElementColor.BLUE));
         EasyMock.expect(gui.getMoreMovesDecision(2, 1)).andReturn(false);
         EasyMock.expect(logic.isComplete(card)).andReturn(true).anyTimes();
-        EasyMock.expect(card.wildEffects[0].on(elementBag)).andReturn(card.wildEffects[0]);
-        EasyMock.expect(card.wildEffects[0].on(hatchingGround)).andReturn(card.wildEffects[0]);
-        EasyMock.expect(card.wildEffects[0].on(logic)).andReturn(card.wildEffects[0]);
-        EasyMock.expect(card.wildEffects[0].on(player)).andReturn(card.wildEffects[0]);
-        EasyMock.expect(card.wildEffects[0].on(gui)).andReturn(card.wildEffects[0]);
-        card.wildEffects[0].apply();
-        gui.notifyAction(-1, card.wildEffects[0].toString() + " has been applied");
-        // gui.promptHandler.displayMessage("All dragons hatched wild! You lose!", -1,
-        // JOptionPane.WARNING_MESSAGE);
 
         // assert expected actions occurred
-        EasyMock.replay(player, promptHandler, display, elementBag, runnable, gui);
+        EasyMock.replay(player, promptHandler, display, elementBag, runnable, gui, eggHatchingLogic);
         EasyMock.replay(logic, redSpace, blueSpace, greenSpace, whiteSpace, card.wildEffects[0]);
-        Phase phase = new PlacementPhase(players, gui, elementBag, hatchingGround, runnable, null);
+        Phase phase = new PlacementPhase(players, gui, elementBag, hatchingGround, runnable, null, eggHatchingLogic);
         phase.execute(1);
-        EasyMock.verify(player, promptHandler, display, elementBag, runnable, gui);
+        EasyMock.verify(player, promptHandler, display, elementBag, runnable, gui, eggHatchingLogic);
         EasyMock.verify(logic, redSpace, blueSpace, greenSpace, whiteSpace, card.wildEffects[0]);
     }
 
