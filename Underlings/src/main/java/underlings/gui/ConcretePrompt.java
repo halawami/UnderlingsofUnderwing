@@ -1,8 +1,13 @@
 package underlings.gui;
 
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.util.List;
 
+import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 public class ConcretePrompt implements PromptHandler {
 
@@ -10,6 +15,34 @@ public class ConcretePrompt implements PromptHandler {
     public <T extends Choice> T promptChoice(String prompt, List<T> choices, int playerId) {
         int index = this.displayOptions(choices.toArray(), "Player " + playerId, prompt);
         return choices.get(index);
+    }
+
+    @Override
+    public <T extends Choice> T promptChoice(String prompt, List<T> choices, int playerId, Dimension dim) {
+        JOptionPane optionPane = new JOptionPane();
+        optionPane.setMessage(prompt);
+        optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        optionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(dim.width, dim.height));
+
+        for (T choice : choices) {
+            JButton button = new JButton(choice.toString());
+            panel.add(button);
+        }
+        optionPane.add(panel, 1);
+
+        JDialog dialog = optionPane.createDialog(null, "Player " + playerId);
+        dialog.setVisible(true);
+
+        int value = JOptionPane.showOptionDialog(null, prompt, "Player " + playerId, JOptionPane.DEFAULT_OPTION,
+                JOptionPane.INFORMATION_MESSAGE, null, choices.toArray(), choices.get(0));
+        if (value == -1) {
+            System.exit(0);
+        }
+
+        return choices.get(value);
     }
 
     private int displayOptions(Object[] options, String title, String message) {

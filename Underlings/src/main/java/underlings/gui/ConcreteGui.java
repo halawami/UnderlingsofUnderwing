@@ -104,11 +104,15 @@ public class ConcreteGui implements Display {
                 (int) (-25 + ratio * (height / 2 + offsetY + (height + gapY) * row)));
         this.gr.drawString(card.points + "", (int) (ratio * (30 + offsetX + (width + gapX) * col)) + 118,
                 (int) (-25 + ratio * (height / 2 + offsetY + (height + gapY) * row)));
+
         int spaceNum = 0;
         for (ElementSpace space : card.elementSpaces) {
+            int x = (int) ((ratio * (40 + offsetX + (width + gapX) * col)) + 255 * ratio * (spaceNum % 2));
+            int y = (int) (spaceNum / 2 * 15 - 5 + ratio * (height / 2 + offsetY + (height + gapY) * row));
+
             this.gr.setColor(this.colorMap.get(space.color));
-            this.gr.fillRect((int) (ratio * (30 + offsetX + (width + gapX) * col)),
-                    (int) (spaceNum * 20 - 5 + ratio * (height / 2 + offsetY + (height + gapY) * row)), 5, 5);
+            this.gr.fillRect(x - 5, y - 5, 5, 5);
+
             this.gr.setColor(Color.BLACK);
             String s = "";
             if (space.elements.isEmpty()) {
@@ -118,8 +122,9 @@ public class ConcreteGui implements Display {
                 String elementName = space.elements.get(i).name();
                 s += "" + elementName.charAt(0) + elementName.charAt(elementName.length() - 1) + " ";
             }
-            this.gr.drawString(s, (int) (ratio * (40 + offsetX + (width + gapX) * col)),
-                    (int) (spaceNum * 20 - 5 + ratio * (height / 2 + offsetY + (height + gapY) * row)));
+
+            this.gr.drawString(s, x, y);
+
             spaceNum++;
         }
     }

@@ -1,5 +1,6 @@
 package underlings.gui;
 
+import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,7 +57,7 @@ public class Gui {
         return new HandlerDecision(handler, handlerChoice);
     }
 
-    public Card getCard(List<Card> cards, int playerId) {
+    public Card getCard(List<Card> cards, int playerId, Dimension dim) {
         Card card = this.promptHandler.promptChoice("Choose a card", cards, playerId);
         return card;
     }

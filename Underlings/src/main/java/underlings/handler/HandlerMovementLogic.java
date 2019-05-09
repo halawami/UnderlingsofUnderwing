@@ -28,7 +28,8 @@ public class HandlerMovementLogic {
                 break;
             case CARD:
                 handler.moveToState(choice.getState());
-                Card chosenCard = this.gui.getCard(this.hatchingGround.getUnclaimedEggs(), playerId);
+                Card chosenCard = this.gui.getCard(this.hatchingGround.getUnclaimedEggs(), playerId,
+                        hatchingGround.getDimensions());
                 chosenCard.handler = handler;
                 handler.setLocation(chosenCard.name);
                 break;

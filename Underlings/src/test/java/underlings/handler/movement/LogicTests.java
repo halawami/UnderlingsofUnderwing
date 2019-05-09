@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import java.awt.Dimension;
 import java.util.Collections;
 
 import org.easymock.EasyMock;
@@ -88,7 +89,10 @@ public class LogicTests {
         Card card = new Card();
 
         EasyMock.expect(this.hatchingGround.getUnclaimedEggs()).andReturn(Collections.emptyList());
-        EasyMock.expect(this.gui.getCard(Collections.emptyList(), 0)).andReturn(card);
+
+        Dimension groundDimensions = new Dimension(2, 2);
+        EasyMock.expect(this.hatchingGround.getDimensions()).andReturn(groundDimensions);
+        EasyMock.expect(this.gui.getCard(Collections.emptyList(), 0), groundDimensions).andReturn(card);
         EasyMock.replay(this.hatchingGround, this.gui);
 
         Handler handler = new Handler(HandlerState.READY_ROOM);
