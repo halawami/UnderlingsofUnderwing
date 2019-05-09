@@ -1,8 +1,6 @@
 package underlings.utilities;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import org.easymock.EasyMock;
 import org.junit.Test;
@@ -16,8 +14,6 @@ import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.handler.HandlerFactory;
-import underlings.phase.DragonPhase;
-import underlings.phase.Phase;
 import underlings.player.Player;
 import underlings.player.PlayerFactory;
 
@@ -118,10 +114,7 @@ public class EggHatchingLogicTests {
         card.elementSpaces[0] = new ElementSpace(ElementColor.PURPLE);
         card.elementSpaces[0].elements = Arrays.asList(ElementColor.RED, ElementColor.BLUE);
         PlayerFactory playerFactory = new PlayerFactory(new HandlerFactory());
-        Player player = playerFactory.createPlayer(2);
-        player.unhatchedCards = new ArrayList<>();
         Gui gui = EasyMock.mock(Gui.class);
-        player.elementSpaceLogic = new ElementSpaceLogic();
         ElementBag bag = EasyMock.mock(ElementBag.class);
         bag.putElement(ElementColor.RED);
         bag.putElement(ElementColor.BLUE);
@@ -136,23 +129,18 @@ public class EggHatchingLogicTests {
     @Test
     public void testReturnNoElements() {
         Card card = new Card();
-        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         card.elementSpaces = new ElementSpace[1];
         card.elementSpaces[0] = new ElementSpace(ElementColor.PURPLE);
-        card.elementSpaces[0].elements = Arrays.asList(ElementColor.RED, ElementColor.BLUE);
-        EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList());
+        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
+        PlayerFactory playerFactory = new PlayerFactory(new HandlerFactory());
+        Gui gui = EasyMock.mock(Gui.class);
         ElementBag bag = EasyMock.mock(ElementBag.class);
-        Player player = EasyMock.mock(Player.class);
-        player.unhatchedCards = new ArrayList<>();
-        List<Player> players = Arrays.asList(player);
+        EasyMock.replay(hatchingGround, bag, gui);
 
-        EggHatchingLogic eggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
-        EasyMock.replay(hatchingGround, bag, player, eggHatchingLogic);
+        EggHatchingLogic eggHatchingLogic = new EggHatchingLogic(gui, bag, hatchingGround, playerFactory);
+        eggHatchingLogic.returnElementsToBag(card);
 
-        Phase phase = new DragonPhase(players, null, bag, hatchingGround, null, null, eggHatchingLogic);
-        phase.setup();
-        phase.turn(player);
-        EasyMock.verify(hatchingGround, bag, player, eggHatchingLogic);
+        EasyMock.verify(hatchingGround, bag, gui);
     }
 
     @Test
@@ -163,10 +151,7 @@ public class EggHatchingLogicTests {
         card.elementSpaces[0] = new ElementSpace(ElementColor.ORANGE);
         card.elementSpaces[0].elements = Arrays.asList(ElementColor.RED, ElementColor.YELLOW);
         PlayerFactory playerFactory = new PlayerFactory(new HandlerFactory());
-        Player player = playerFactory.createPlayer(2);
-        player.unhatchedCards = new ArrayList<>();
         Gui gui = EasyMock.mock(Gui.class);
-        player.elementSpaceLogic = new ElementSpaceLogic();
         ElementBag bag = EasyMock.mock(ElementBag.class);
         bag.putElement(ElementColor.RED);
         bag.putElement(ElementColor.YELLOW);
@@ -190,10 +175,7 @@ public class EggHatchingLogicTests {
         card2.elementSpaces[0] = new ElementSpace(ElementColor.PURPLE);
         card2.elementSpaces[0].elements = Arrays.asList(ElementColor.RED, ElementColor.BLUE);
         PlayerFactory playerFactory = new PlayerFactory(new HandlerFactory());
-        Player player = playerFactory.createPlayer(2);
-        player.unhatchedCards = new ArrayList<>();
         Gui gui = EasyMock.mock(Gui.class);
-        player.elementSpaceLogic = new ElementSpaceLogic();
         ElementBag bag = EasyMock.mock(ElementBag.class);
         bag.putElement(ElementColor.RED);
         bag.putElement(ElementColor.YELLOW);
