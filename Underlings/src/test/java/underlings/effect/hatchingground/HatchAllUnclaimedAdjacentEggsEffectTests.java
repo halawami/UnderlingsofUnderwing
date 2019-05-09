@@ -69,7 +69,7 @@ public class HatchAllUnclaimedAdjacentEggsEffectTests {
         EasyMock.replay(hatchingGround, elementBag, effect, gui);
 
         HatchAllUnclaimedEffect hatchAllUnclaimedAdjacentEggsEffect = new HatchAllUnclaimedEffect();
-
+        hatchAllUnclaimedAdjacentEggsEffect.dragonFamilies = new Family[0];
         hatchAllUnclaimedAdjacentEggsEffect.applyOnAdjacentEgg(mockedCards.get(0), elementBag,
                 fakePlayer.elementSpaceLogic, hatchingGround, gui);
         EasyMock.verify(hatchingGround, elementBag, effect, gui);
