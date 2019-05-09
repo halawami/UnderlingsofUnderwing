@@ -9,6 +9,7 @@ import org.easymock.EasyMock;
 import org.junit.Test;
 
 import underlings.card.Card;
+import underlings.card.Family;
 import underlings.card.effect.Effect;
 import underlings.card.effect.wild.adjacenteggs.HatchAllUnclaimedEffect;
 import underlings.element.ElementBag;
@@ -53,7 +54,7 @@ public class HatchAllUnclaimedAdjacentEggsEffectTests {
     }
 
     @Test
-    public void testAttemptHatchClaimedEgg() {
+    public void testAttemptToHatchClaimedEgg() {
         Card centerCard = new Card();
         List<Card> mockedCards = getMockedCards(1);
         mockedCards.get(0).wildEffects = new Effect[1];
@@ -68,6 +69,29 @@ public class HatchAllUnclaimedAdjacentEggsEffectTests {
         EasyMock.replay(hatchingGround, elementBag, effect, gui);
 
         HatchAllUnclaimedEffect hatchAllUnclaimedAdjacentEggsEffect = new HatchAllUnclaimedEffect();
+
+        hatchAllUnclaimedAdjacentEggsEffect.applyOnAdjacentEgg(mockedCards.get(0), elementBag,
+                fakePlayer.elementSpaceLogic, hatchingGround, gui);
+        EasyMock.verify(hatchingGround, elementBag, effect, gui);
+    }
+
+    @Test
+    public void testAttemptToHatchDifferentFamilyDragon() {
+        Card centerCard = new Card();
+        List<Card> mockedCards = getMockedCards(1);
+        mockedCards.get(0).wildEffects = new Effect[1];
+        mockedCards.get(0).family = Family.TRIADIC;
+        Effect effect = EasyMock.mock(Effect.class);
+        mockedCards.get(0).wildEffects[0] = effect;
+        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
+
+        ElementBag elementBag = EasyMock.mock(ElementBag.class);
+        Player fakePlayer = FakePlayer.getInstance();
+        Gui gui = EasyMock.mock(Gui.class);
+        EasyMock.replay(hatchingGround, elementBag, effect, gui);
+
+        HatchAllUnclaimedEffect hatchAllUnclaimedAdjacentEggsEffect = new HatchAllUnclaimedEffect();
+        hatchAllUnclaimedAdjacentEggsEffect.dragonFamilies = new Family[] {Family.MONOCHROMATIC};
 
         hatchAllUnclaimedAdjacentEggsEffect.applyOnAdjacentEgg(mockedCards.get(0), elementBag,
                 fakePlayer.elementSpaceLogic, hatchingGround, gui);
