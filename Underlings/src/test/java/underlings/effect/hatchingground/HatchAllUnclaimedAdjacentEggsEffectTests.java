@@ -29,6 +29,7 @@ public class HatchAllUnclaimedAdjacentEggsEffectTests {
         mockedCards.get(0).wildEffects = new Effect[1];
         Effect effect = EasyMock.mock(Effect.class);
         mockedCards.get(0).wildEffects[0] = effect;
+        mockedCards.get(0).family = Family.MONOCHROMATIC;
         mockedCards.get(0).handler = null;
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         // EasyMock.expect(hatchingGround.getAdjacentCards(centerCard)).andReturn(mockedCards);
@@ -46,6 +47,7 @@ public class HatchAllUnclaimedAdjacentEggsEffectTests {
         EasyMock.replay(hatchingGround, elementBag, effect, gui);
 
         HatchAllUnclaimedEffect hatchAllUnclaimedAdjacentEggsEffect = new HatchAllUnclaimedEffect();
+        hatchAllUnclaimedAdjacentEggsEffect.dragonFamilies = new Family[] {Family.MONOCHROMATIC};
         // hatchAllUnclaimedAdjacentEggsEffect.apply();
         hatchAllUnclaimedAdjacentEggsEffect.applyOnAdjacentEgg(mockedCards.get(0), elementBag,
                 fakePlayer.elementSpaceLogic, hatchingGround, gui);
