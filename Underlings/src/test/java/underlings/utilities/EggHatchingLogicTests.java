@@ -40,7 +40,7 @@ public class EggHatchingLogicTests {
         gui.notifyAction(-1, card.wildEffects[0].toString() + " has been applied");
 
         EasyMock.replay(effect, elementBag, hatchingGround, gui);
-        wildEggHatchingLogic.hatchEgg(card, true);
+        wildEggHatchingLogic.hatchEgg(card, true, player);
 
         EasyMock.verify(effect, elementBag, hatchingGround, gui);
     }
@@ -55,7 +55,7 @@ public class EggHatchingLogicTests {
         ElementBag elementBag = EasyMock.mock(ElementBag.class);
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         PlayerFactory playerFactory = new PlayerFactory(new HandlerFactory());
-        Player player = playerFactory.createPlayer(2);
+        Player player = playerFactory.createFakePlayer();
         EasyMock.expect(card.wildEffects[0].on(elementBag)).andReturn(card.wildEffects[0]).times(2);
         EasyMock.expect(card.wildEffects[0].on(hatchingGround)).andReturn(card.wildEffects[0]).times(2);
         EasyMock.expect(card.wildEffects[0].on(player.elementSpaceLogic)).andReturn(card.wildEffects[0]).times(2);
@@ -72,7 +72,7 @@ public class EggHatchingLogicTests {
 
         EasyMock.replay(effect, elementBag, hatchingGround, gui);
 
-        wildEggHatchingLogic.hatchEgg(card, true);
+        wildEggHatchingLogic.hatchEgg(card, true, player);
 
         EasyMock.verify(effect, elementBag, hatchingGround, gui);
     }
