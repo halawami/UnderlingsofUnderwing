@@ -1,7 +1,5 @@
 package underlings.effect.hatchingground;
 
-import static org.junit.Assert.assertEquals;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,43 +14,33 @@ import underlings.element.ElementBag;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.handler.Handler;
-import underlings.handler.WildHandler;
 import underlings.player.FakePlayer;
 import underlings.player.Player;
+import underlings.utilities.EggHatchingLogic;
 
 public class HatchAllUnclaimedAdjacentEggsEffectTests {
 
     @Test // TODO: ask Mohammad if this is the correct way to test this class
     public void testHatchOneAdjacentUnclaimedEgg() {
-        Card centerCard = new Card();
         List<Card> mockedCards = getMockedCards(1);
         mockedCards.get(0).wildEffects = new Effect[1];
         Effect effect = EasyMock.mock(Effect.class);
         mockedCards.get(0).wildEffects[0] = effect;
         mockedCards.get(0).family = Family.MONOCHROMATIC;
-        mockedCards.get(0).handler = null;
+        EggHatchingLogic eggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
-        // EasyMock.expect(hatchingGround.getAdjacentCards(centerCard)).andReturn(mockedCards);
         ElementBag elementBag = EasyMock.mock(ElementBag.class);
-        EasyMock.expect(effect.on(elementBag)).andReturn(effect);
-        EasyMock.expect(effect.on(hatchingGround)).andReturn(effect);
         Player fakePlayer = FakePlayer.getInstance();
-        EasyMock.expect(effect.on(fakePlayer.elementSpaceLogic)).andReturn(effect);
-        EasyMock.expect(effect.on(fakePlayer)).andReturn(effect);
+        eggHatchingLogic.hatchEgg(mockedCards.get(0), true, fakePlayer);
         Gui gui = EasyMock.mock(Gui.class);
-        EasyMock.expect(effect.on(gui)).andReturn(effect);
-        effect.apply();
-        gui.notifyAction(-1, "EasyMock for class underlings.card.effect.Effect has been applied");
 
-        EasyMock.replay(hatchingGround, elementBag, effect, gui);
+        EasyMock.replay(hatchingGround, elementBag, effect, gui, eggHatchingLogic);
 
         HatchAllUnclaimedEffect hatchAllUnclaimedAdjacentEggsEffect = new HatchAllUnclaimedEffect();
         hatchAllUnclaimedAdjacentEggsEffect.dragonFamilies = new Family[] {Family.MONOCHROMATIC};
-        // hatchAllUnclaimedAdjacentEggsEffect.apply();
         hatchAllUnclaimedAdjacentEggsEffect.applyOnAdjacentEgg(mockedCards.get(0), elementBag,
-                fakePlayer.elementSpaceLogic, hatchingGround, gui);
-        assertEquals(mockedCards.get(0).handler, WildHandler.getInstance());
-        EasyMock.verify(hatchingGround, elementBag, effect, gui);
+                fakePlayer.elementSpaceLogic, hatchingGround, gui, eggHatchingLogic);
+        EasyMock.verify(hatchingGround, elementBag, effect, gui, eggHatchingLogic);
     }
 
     @Test
@@ -64,17 +52,18 @@ public class HatchAllUnclaimedAdjacentEggsEffectTests {
         mockedCards.get(0).wildEffects[0] = effect;
         mockedCards.get(0).handler = EasyMock.mock(Handler.class);
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
+        EggHatchingLogic eggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
 
         ElementBag elementBag = EasyMock.mock(ElementBag.class);
         Player fakePlayer = FakePlayer.getInstance();
         Gui gui = EasyMock.mock(Gui.class);
-        EasyMock.replay(hatchingGround, elementBag, effect, gui);
+        EasyMock.replay(hatchingGround, elementBag, effect, gui, eggHatchingLogic);
 
         HatchAllUnclaimedEffect hatchAllUnclaimedAdjacentEggsEffect = new HatchAllUnclaimedEffect();
         hatchAllUnclaimedAdjacentEggsEffect.dragonFamilies = new Family[0];
         hatchAllUnclaimedAdjacentEggsEffect.applyOnAdjacentEgg(mockedCards.get(0), elementBag,
-                fakePlayer.elementSpaceLogic, hatchingGround, gui);
-        EasyMock.verify(hatchingGround, elementBag, effect, gui);
+                fakePlayer.elementSpaceLogic, hatchingGround, gui, eggHatchingLogic);
+        EasyMock.verify(hatchingGround, elementBag, effect, gui, eggHatchingLogic);
     }
 
     @Test
@@ -86,18 +75,19 @@ public class HatchAllUnclaimedAdjacentEggsEffectTests {
         Effect effect = EasyMock.mock(Effect.class);
         mockedCards.get(0).wildEffects[0] = effect;
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
+        EggHatchingLogic eggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
 
         ElementBag elementBag = EasyMock.mock(ElementBag.class);
         Player fakePlayer = FakePlayer.getInstance();
         Gui gui = EasyMock.mock(Gui.class);
-        EasyMock.replay(hatchingGround, elementBag, effect, gui);
+        EasyMock.replay(hatchingGround, elementBag, effect, gui, eggHatchingLogic);
 
         HatchAllUnclaimedEffect hatchAllUnclaimedAdjacentEggsEffect = new HatchAllUnclaimedEffect();
         hatchAllUnclaimedAdjacentEggsEffect.dragonFamilies = new Family[] {Family.MONOCHROMATIC};
 
         hatchAllUnclaimedAdjacentEggsEffect.applyOnAdjacentEgg(mockedCards.get(0), elementBag,
-                fakePlayer.elementSpaceLogic, hatchingGround, gui);
-        EasyMock.verify(hatchingGround, elementBag, effect, gui);
+                fakePlayer.elementSpaceLogic, hatchingGround, gui, eggHatchingLogic);
+        EasyMock.verify(hatchingGround, elementBag, effect, gui, eggHatchingLogic);
     }
 
     private List<Card> getMockedCards(int numberOfCards) {
