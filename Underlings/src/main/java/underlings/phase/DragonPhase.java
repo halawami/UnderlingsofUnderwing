@@ -29,7 +29,7 @@ public class DragonPhase extends SequentialPhase {
     @Override
     public void turn(Player player) {
         for (Card card : player.unhatchedCards) {
-            this.domesticEggHatchingLogic.hatchEgg(card, false);
+            this.domesticEggHatchingLogic.hatchEgg(card, false, player);
         }
         for (Card completeCard : this.completeEggs) {
             this.domesticEggHatchingLogic.returnElementsToBag(completeCard);

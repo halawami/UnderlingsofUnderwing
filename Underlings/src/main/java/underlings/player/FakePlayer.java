@@ -4,7 +4,7 @@ import underlings.handler.HandlerFactory;
 
 public class FakePlayer extends Player {
 
-    public static Player instance = new FakePlayer(1, new HandlerFactory(), -1);
+    private static Player instance = new FakePlayer(1, new HandlerFactory(), -1);
 
     private FakePlayer(int maxHandlers, HandlerFactory handlerFactory, int playerId) {
         super(maxHandlers, handlerFactory, playerId);
