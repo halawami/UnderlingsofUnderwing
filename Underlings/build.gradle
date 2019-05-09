@@ -46,6 +46,9 @@ sourceSets {
     test {
         java.srcDirs = ['src/test/java']
     }
+	sourceSets {
+		main.resources.srcDirs += 'properties'
+	}
 }
 
 findbugs {
