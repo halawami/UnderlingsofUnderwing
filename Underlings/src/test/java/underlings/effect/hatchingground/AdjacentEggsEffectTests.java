@@ -12,6 +12,7 @@ import underlings.element.ElementBag;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
+import underlings.utilities.EggHatchingLogic;
 
 public class AdjacentEggsEffectTests {
 
@@ -25,20 +26,24 @@ public class AdjacentEggsEffectTests {
                 .addMockedMethod("applyOnAdjacentEgg").createMock();
 
         Gui gui = EasyMock.mock(Gui.class);
-        testedEffect.on(centerCard).on(hatchingGround).on(elementSpaceLogic).on(elementBag).on(gui);
+        EggHatchingLogic eggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
+        testedEffect.on(centerCard).on(hatchingGround).on(elementSpaceLogic).on(elementBag).on(gui)
+                .on(eggHatchingLogic);
 
         List<Card> mockedCards = getMockedCards(2);
         EasyMock.expect(hatchingGround.getAdjacentCards(centerCard)).andReturn(mockedCards);
         for (Card mockedCard : mockedCards) {
-            testedEffect.applyOnAdjacentEgg(mockedCard, elementBag, elementSpaceLogic, hatchingGround, gui);
+            testedEffect.applyOnAdjacentEgg(mockedCard, elementBag, elementSpaceLogic, hatchingGround, gui,
+                    eggHatchingLogic);
         }
 
         EasyMock.replay(centerCard, hatchingGround, elementBag, elementSpaceLogic, testedEffect, gui);
+        EasyMock.replay(eggHatchingLogic);
 
         testedEffect.apply();
 
         EasyMock.verify(centerCard, hatchingGround, elementBag, elementSpaceLogic, testedEffect, gui);
-
+        EasyMock.verify(eggHatchingLogic);
 
     }
 
