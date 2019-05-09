@@ -59,57 +59,6 @@ public class DragonPhaseTests {
     }
 
     @Test
-    public void testSetupWithPurple() {
-        EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(eggs);
-        bag.putElement(ElementColor.BLUE);
-        bag.putElement(ElementColor.RED);
-
-        EasyMock.replay(hatchingGround, bag, player);
-
-        Phase phase = new DragonPhase(players, null, bag, hatchingGround, null, null);
-        phase.setup();
-        EasyMock.verify(hatchingGround, bag, player);
-    }
-
-    @Test
-    public void testEmptySetup() {
-        eggs = Arrays.asList();
-        EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(eggs);
-
-        EasyMock.replay(hatchingGround, bag, player);
-
-        Phase phase = new DragonPhase(players, null, bag, hatchingGround, null, null);
-        phase.setup();
-        EasyMock.verify(hatchingGround, bag, player);
-    }
-
-    @Test
-    public void testMultiSetup() {
-        this.spaces[0] = new ElementSpace(ElementColor.ORANGE);
-        this.card.elementSpaces = this.spaces;
-        this.spaces[0].elements = Arrays.asList(ElementColor.YELLOW, ElementColor.RED);
-        Card card2 = new Card();
-        ElementSpace[] spaces2 = {new ElementSpace(ElementColor.PURPLE), new ElementSpace(ElementColor.RED)};
-        card2.elementSpaces = spaces2;
-        spaces2[0].elements = Arrays.asList(ElementColor.BLUE, ElementColor.RED);
-        spaces2[1].elements = Arrays.asList(ElementColor.RED);
-
-        List<Card> eggs = Arrays.asList(card, card2);
-
-        EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(eggs);
-        bag.putElement(ElementColor.RED);
-        EasyMock.expectLastCall().times(3);
-        bag.putElement(ElementColor.YELLOW);
-        bag.putElement(ElementColor.BLUE);
-
-        EasyMock.replay(hatchingGround, bag, player);
-
-        Phase phase = new DragonPhase(players, null, bag, hatchingGround, null, null);
-        phase.setup();
-        EasyMock.verify(hatchingGround, bag, player);
-    }
-
-    @Test
     public void testOneUnhatchedEgg() {
         final int playerId = 1;
         card.name = "tempName";
