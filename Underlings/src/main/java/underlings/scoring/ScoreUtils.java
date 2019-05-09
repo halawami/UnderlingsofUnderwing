@@ -11,74 +11,74 @@ import underlings.player.Player;
 
 public class ScoreUtils {
 
-	public Map<Player, Integer> calculateScores(List<Player> players, boolean bonus) {
-		Map<Player, Integer> scores = new HashMap<>();
+    public Map<Player, Integer> calculateScores(List<Player> players, boolean bonus) {
+        Map<Player, Integer> scores = new HashMap<>();
 
-		int warmest = 0;
-		int coolest = 0;
+        int warmest = 0;
+        int coolest = 0;
 
-		List<Player> warmestPlayers = new ArrayList<>();
-		List<Player> coolestPlayers = new ArrayList<>();
+        List<Player> warmestPlayers = new ArrayList<>();
+        List<Player> coolestPlayers = new ArrayList<>();
 
-		for (Player player : players) {
-			int temp = this.calculateTemperature(player.hatchedCards);
+        for (Player player : players) {
+            int temp = this.calculateTemperature(player.hatchedCards);
 
-			if (temp != 0) {
-				if (temp > warmest) {
-					warmest = temp;
-					warmestPlayers = new ArrayList<>();
-					warmestPlayers.add(player);
-				} else if (temp == warmest) {
-					warmestPlayers.add(player);
-				}
+            if (temp != 0) {
+                if (temp > warmest) {
+                    warmest = temp;
+                    warmestPlayers = new ArrayList<>();
+                    warmestPlayers.add(player);
+                } else if (temp == warmest) {
+                    warmestPlayers.add(player);
+                }
 
-				if (temp < coolest) {
-					coolest = temp;
-					coolestPlayers = new ArrayList<>();
-					coolestPlayers.add(player);
-				} else if (temp == coolest) {
-					coolestPlayers.add(player);
-				}
-			}
+                if (temp < coolest) {
+                    coolest = temp;
+                    coolestPlayers = new ArrayList<>();
+                    coolestPlayers.add(player);
+                } else if (temp == coolest) {
+                    coolestPlayers.add(player);
+                }
+            }
 
-		}
+        }
 
-		for (Player player : players) {
-			int score = 0;
+        for (Player player : players) {
+            int score = 0;
 
-			if (bonus) {
-				score += (warmestPlayers.contains(player)) ? 15 : 0;
-				score += (coolestPlayers.contains(player)) ? 15 : 0;
-				score += (this.calculateTemperature(player.hatchedCards)) == 0 ? 20 : 0;
-			}
+            if (bonus) {
+                score += (warmestPlayers.contains(player)) ? 15 : 0;
+                score += (coolestPlayers.contains(player)) ? 15 : 0;
+                score += (this.calculateTemperature(player.hatchedCards)) == 0 ? 20 : 0;
+            }
 
-			score += this.calculatePoints(player.hatchedCards);
+            score += this.calculatePoints(player.hatchedCards);
 
-			scores.put(player, score);
-		}
+            scores.put(player, score);
+        }
 
-		return scores;
-	}
+        return scores;
+    }
 
-	public int calculatePoints(List<Card> cards) {
-		int points = 0;
+    public int calculatePoints(List<Card> cards) {
+        int points = 0;
 
-		for (Card card : cards) {
-			points += card.points;
-		}
+        for (Card card : cards) {
+            points += card.points;
+        }
 
-		return points;
-	}
+        return points;
+    }
 
-	public int calculateTemperature(List<Card> cards) {
-		int balance = 0;
+    public int calculateTemperature(List<Card> cards) {
+        int balance = 0;
 
-		for (Card card : cards) {
-			Temperature temp = card.temperature;
-			balance += (temp == Temperature.WARM) ? 1 : (temp == Temperature.COOL) ? -1 : 0;
-		}
+        for (Card card : cards) {
+            Temperature temp = card.temperature;
+            balance += (temp == Temperature.WARM) ? 1 : (temp == Temperature.COOL) ? -1 : 0;
+        }
 
-		return balance;
-	}
+        return balance;
+    }
 
 }

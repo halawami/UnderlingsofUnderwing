@@ -8,20 +8,20 @@ import underlings.gui.DrawChoice;
 
 public class RotateTests extends FieldTests {
 
-	@Test
-	public void testStart() {
-		this.field.addHandler(0, this.handler);
-		this.field.rotate(this.handler);
+    @Test
+    public void testStart() {
+        this.field.addHandler(0, this.handler);
+        this.field.rotate(this.handler);
 
-		assertTrue(this.handler.elementGiver.drawChoices.contains(DrawChoice.BLUE));
-	}
+        assertTrue(this.handler.elementGiver.drawChoices.contains(DrawChoice.BLUE));
+    }
 
-	@Test
-	public void testEnd() {
-		this.field.addHandler(21, this.handler);
-		this.field.rotate(this.handler);
+    @Test
+    public void testEnd() {
+        this.field.addHandler(21, this.handler);
+        this.field.rotate(this.handler);
 
-		assertTrue(this.handler.elementGiver.drawChoices.contains(DrawChoice.RED));
-	}
+        assertTrue(this.handler.elementGiver.drawChoices.contains(DrawChoice.RED));
+    }
 
 }

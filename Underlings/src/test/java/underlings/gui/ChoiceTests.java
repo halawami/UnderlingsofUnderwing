@@ -14,59 +14,59 @@ import underlings.element.ElementGiver;
 
 public class ChoiceTests {
 
-	private PromptHandler promptHandler;
-	private Display display;
-	private Gui gui;
+    private PromptHandler promptHandler;
+    private Display display;
+    private Gui gui;
 
-	@Before
-	public void init() {
-		this.promptHandler = EasyMock.mock(PromptHandler.class);
-		this.display = EasyMock.mock(Display.class);
-		this.gui = new Gui(this.promptHandler, this.display);
-	}
+    @Before
+    public void init() {
+        this.promptHandler = EasyMock.mock(PromptHandler.class);
+        this.display = EasyMock.mock(Display.class);
+        this.gui = new Gui(this.promptHandler, this.display);
+    }
 
-	@After
-	public void verify() {
-		EasyMock.verify(this.promptHandler, this.display);
-	}
+    @After
+    public void verify() {
+        EasyMock.verify(this.promptHandler, this.display);
+    }
 
-	@Test
-	public void testRandomDrawChoice() {
-		List<ElementGiver> elementGivers = new ArrayList<ElementGiver>();
-		ElementGiver elementGiver = new ElementGiver("", DrawChoice.RANDOM);
-		elementGivers.add(elementGiver);
+    @Test
+    public void testRandomDrawChoice() {
+        List<ElementGiver> elementGivers = new ArrayList<ElementGiver>();
+        ElementGiver elementGiver = new ElementGiver("", DrawChoice.RANDOM);
+        elementGivers.add(elementGiver);
 
-		EasyMock.expect(this.promptHandler.promptChoice("Choose an Element Giver", elementGivers, 0))
-				.andReturn(elementGiver);
-		EasyMock.expect(this.promptHandler.promptChoice("Choose a Draw Choice", elementGiver.drawChoices, 0))
-				.andReturn(DrawChoice.RANDOM);
-		EasyMock.replay(this.promptHandler, this.display);
+        EasyMock.expect(this.promptHandler.promptChoice("Choose an Element Giver", elementGivers, 0))
+                .andReturn(elementGiver);
+        EasyMock.expect(this.promptHandler.promptChoice("Choose a Draw Choice", elementGiver.drawChoices, 0))
+                .andReturn(DrawChoice.RANDOM);
+        EasyMock.replay(this.promptHandler, this.display);
 
-		DrawChoice drawChoice = this.gui.getDrawChoice(elementGivers, 0);
+        DrawChoice drawChoice = this.gui.getDrawChoice(elementGivers, 0);
 
-		assertEquals(drawChoice, DrawChoice.RANDOM);
-		assertEquals(0, elementGivers.size());
+        assertEquals(drawChoice, DrawChoice.RANDOM);
+        assertEquals(0, elementGivers.size());
 
-	}
+    }
 
-	@Test
-	public void testFieldSpace0() {
-		EasyMock.expect(this.promptHandler.promptInt("Enter Field Space", 0, 21)).andReturn(0);
-		EasyMock.replay(this.promptHandler, this.display);
+    @Test
+    public void testFieldSpace0() {
+        EasyMock.expect(this.promptHandler.promptInt("Enter Field Space", 0, 21)).andReturn(0);
+        EasyMock.replay(this.promptHandler, this.display);
 
-		int fieldSpace = this.gui.getFieldSpace();
+        int fieldSpace = this.gui.getFieldSpace();
 
-		assertEquals(0, fieldSpace);
-	}
+        assertEquals(0, fieldSpace);
+    }
 
-	@Test
-	public void testFieldSpace21() {
-		EasyMock.expect(this.promptHandler.promptInt("Enter Field Space", 0, 21)).andReturn(21);
-		EasyMock.replay(this.promptHandler, this.display);
+    @Test
+    public void testFieldSpace21() {
+        EasyMock.expect(this.promptHandler.promptInt("Enter Field Space", 0, 21)).andReturn(21);
+        EasyMock.replay(this.promptHandler, this.display);
 
-		int fieldSpace = this.gui.getFieldSpace();
+        int fieldSpace = this.gui.getFieldSpace();
 
-		assertEquals(21, fieldSpace);
-	}
+        assertEquals(21, fieldSpace);
+    }
 
 }

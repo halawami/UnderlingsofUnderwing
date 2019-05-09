@@ -30,18 +30,16 @@ public class UptoTwoElementsFromAnyEggInPlayEffectTests {
         ElementSpace elementSpace2 = EasyMock.mock(ElementSpace.class);
         Element element1 = EasyMock.mock(Element.class);
         Element element2 = EasyMock.mock(Element.class);
-        UptoTwoElementsFromAnyEggInPlayEffect testedEffect = EasyMock
-                .partialMockBuilder(UptoTwoElementsFromAnyEggInPlayEffect.class)
-                .addMockedMethod("applyOnSelectedElement").createMock();
-        testedEffect.elementChoices = new ElementColor[]{ElementColor.BLUE};
+        UptoTwoElementsFromAnyEggInPlayEffect testedEffect =
+                EasyMock.partialMockBuilder(UptoTwoElementsFromAnyEggInPlayEffect.class)
+                        .addMockedMethod("applyOnSelectedElement").createMock();
+        testedEffect.elementChoices = new ElementColor[] {ElementColor.BLUE};
         testedEffect.on(gui).on(currentPlayer).on(hatchingGround);
 
         EasyMock.expect(hatchingGround.getAllCards()).andReturn(mockedCards);
-        EasyMock.expect(
-                gui.getElementSpaceContainingElementOfColors(mockedCards, testedEffect.elementChoices))
+        EasyMock.expect(gui.getElementSpaceContainingElementOfColors(mockedCards, testedEffect.elementChoices))
                 .andReturn(elementSpace1);
-        EasyMock.expect(
-                gui.getElementSpaceContainingElementOfColors(mockedCards, testedEffect.elementChoices))
+        EasyMock.expect(gui.getElementSpaceContainingElementOfColors(mockedCards, testedEffect.elementChoices))
                 .andReturn(elementSpace2);
         EasyMock.expect(gui.getElementOfColorsFromSpace(testedEffect.elementChoices, elementSpace1))
                 .andReturn(element1);

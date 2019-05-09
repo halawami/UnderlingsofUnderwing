@@ -11,22 +11,22 @@ import underlings.utilities.LocaleWrap;
 
 public class CollectElementEffect extends ElementEffect {
 
-	public ElementColor[] elementChoices;
+    public ElementColor[] elementChoices;
 
-	@Override
-	protected void apply(Player player, ElementBag elementBag) {
-		Element element = elementBag.drawElementFromList(this.elementChoices);
-		player.addElement(element);
+    @Override
+    protected void apply(Player player, ElementBag elementBag) {
+        Element element = elementBag.drawElementFromList(this.elementChoices);
+        player.addElement(element);
 
-	}
+    }
 
-	@Override
-	public String toString() {
-		StringBuilder elements = new StringBuilder();
-		for (ElementColor color : this.elementChoices) {
-			elements.append(color);
-			elements.append(" ");
-		}
-		return MessageFormat.format(LocaleWrap.get("collect_element_effect"), elements);
-	}
+    @Override
+    public String toString() {
+        StringBuilder elements = new StringBuilder();
+        for (ElementColor color : this.elementChoices) {
+            elements.append(color);
+            elements.append(" ");
+        }
+        return MessageFormat.format(LocaleWrap.get("collect_element_effect"), elements);
+    }
 }

@@ -29,7 +29,7 @@ public class GetElementGiverTests {
         ElementGiver testElementGiver = new ElementGiver("test", DrawChoice.RED);
         elementGiverEffect.elementGiver = testElementGiver;
         Card testedCard = new Card();
-        testedCard.domesticEffects = new Effect[]{elementGiverEffect};
+        testedCard.domesticEffects = new Effect[] {elementGiverEffect};
 
         List<ElementGiver> elementGivers = testedCard.getElementGivers();
 
@@ -47,7 +47,7 @@ public class GetElementGiverTests {
         elementGiverEffect.elementGiver = testElementGiver;
 
         Card testedCard = new Card();
-        testedCard.domesticEffects = new Effect[]{mockEffect1, elementGiverEffect, mockEffect2};
+        testedCard.domesticEffects = new Effect[] {mockEffect1, elementGiverEffect, mockEffect2};
 
         List<ElementGiver> elementGivers = testedCard.getElementGivers();
 
@@ -65,7 +65,7 @@ public class GetElementGiverTests {
         elementGiverEffect.elementGiver = testElementGiver;
 
         Card testedCard = new Card();
-        testedCard.domesticEffects = new Effect[]{mockEffect1, mockEffect2, elementGiverEffect};
+        testedCard.domesticEffects = new Effect[] {mockEffect1, mockEffect2, elementGiverEffect};
 
         List<ElementGiver> elementGivers = testedCard.getElementGivers();
 
@@ -86,7 +86,7 @@ public class GetElementGiverTests {
         elementGiverEffect2.elementGiver = testElementGiver2;
 
         Card testedCard = new Card();
-        testedCard.domesticEffects = new Effect[]{mockEffect1, elementGiverEffect1, elementGiverEffect2};
+        testedCard.domesticEffects = new Effect[] {mockEffect1, elementGiverEffect1, elementGiverEffect2};
 
         List<ElementGiver> elementGivers = testedCard.getElementGivers();
 

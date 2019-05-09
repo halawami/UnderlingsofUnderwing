@@ -13,54 +13,54 @@ import underlings.player.Player;
 
 public class CollectElementEffectTests {
 
-	@Test
-	public void testToString() {
-		CollectElementEffect elementEffect = new CollectElementEffect();
+    @Test
+    public void testToString() {
+        CollectElementEffect elementEffect = new CollectElementEffect();
 
-		elementEffect.elementChoices = new ElementColor[] { ElementColor.BLACK, ElementColor.WHITE };
+        elementEffect.elementChoices = new ElementColor[] {ElementColor.BLACK, ElementColor.WHITE};
 
-		assertEquals("Collect one of the following elements randomly: [ Black White ]", elementEffect.toString());
+        assertEquals("Collect one of the following elements randomly: [ Black White ]", elementEffect.toString());
 
-	}
+    }
 
-	@Test
-	public void testOneColor() {
-		Player player = EasyMock.mock(Player.class);
-		ElementBag elementBag = EasyMock.mock(ElementBag.class);
-		Element blueElement = new Element(ElementColor.BLUE);
+    @Test
+    public void testOneColor() {
+        Player player = EasyMock.mock(Player.class);
+        ElementBag elementBag = EasyMock.mock(ElementBag.class);
+        Element blueElement = new Element(ElementColor.BLUE);
 
-		CollectElementEffect collectElementEffect = new CollectElementEffect();
-		collectElementEffect.on(player).on(elementBag);
-		ElementColor[] elementChoices = new ElementColor[] { ElementColor.BLUE };
-		collectElementEffect.elementChoices = elementChoices;
+        CollectElementEffect collectElementEffect = new CollectElementEffect();
+        collectElementEffect.on(player).on(elementBag);
+        ElementColor[] elementChoices = new ElementColor[] {ElementColor.BLUE};
+        collectElementEffect.elementChoices = elementChoices;
 
-		EasyMock.expect(elementBag.drawElementFromList(elementChoices)).andReturn(blueElement);
-		player.addElement(blueElement);
+        EasyMock.expect(elementBag.drawElementFromList(elementChoices)).andReturn(blueElement);
+        player.addElement(blueElement);
 
-		EasyMock.replay(player, elementBag);
+        EasyMock.replay(player, elementBag);
 
-		collectElementEffect.apply();
-		EasyMock.verify(player, elementBag);
-	}
+        collectElementEffect.apply();
+        EasyMock.verify(player, elementBag);
+    }
 
-	@Test
-	public void testTwoColors() {
-		Player player = EasyMock.mock(Player.class);
-		ElementBag elementBag = EasyMock.mock(ElementBag.class);
-		Element blueElement = new Element(ElementColor.BLUE);
+    @Test
+    public void testTwoColors() {
+        Player player = EasyMock.mock(Player.class);
+        ElementBag elementBag = EasyMock.mock(ElementBag.class);
+        Element blueElement = new Element(ElementColor.BLUE);
 
-		CollectElementEffect collectElementEffect = new CollectElementEffect();
-		collectElementEffect.on(player).on(elementBag);
-		ElementColor[] elementChoices = new ElementColor[] { ElementColor.BLUE, ElementColor.RED };
-		collectElementEffect.elementChoices = elementChoices;
+        CollectElementEffect collectElementEffect = new CollectElementEffect();
+        collectElementEffect.on(player).on(elementBag);
+        ElementColor[] elementChoices = new ElementColor[] {ElementColor.BLUE, ElementColor.RED};
+        collectElementEffect.elementChoices = elementChoices;
 
-		EasyMock.expect(elementBag.drawElementFromList(elementChoices)).andReturn(blueElement);
-		player.addElement(blueElement);
+        EasyMock.expect(elementBag.drawElementFromList(elementChoices)).andReturn(blueElement);
+        player.addElement(blueElement);
 
-		EasyMock.replay(player, elementBag);
+        EasyMock.replay(player, elementBag);
 
-		collectElementEffect.apply();
-		EasyMock.verify(player, elementBag);
-	}
+        collectElementEffect.apply();
+        EasyMock.verify(player, elementBag);
+    }
 
 }

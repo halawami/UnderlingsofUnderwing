@@ -41,6 +41,7 @@ public class DragonPhaseTests {
         this.card = new Card();
         this.player.hatchedCards = new ArrayList<>();
         this.player.unhatchedCards = new ArrayList<>();
+        this.player.elementSpaceLogic = EasyMock.mock(ElementSpaceLogic.class);
         this.players = Arrays.asList(player);
         this.card.handler = this.handler;
         this.card.domesticEffects = new Effect[1];
@@ -63,14 +64,10 @@ public class DragonPhaseTests {
 
     @Test
     public void testOneUnhatchedEgg() {
-        final int playerId = 1;
-        card.name = "tempName";
-        final String message = card.name + " is going to incubation state";
         EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList());
         player.unhatchedCards.add(card);
         eggHatchingLogic.hatchEgg(card, false, player);
-        player.elementSpaceLogic = EasyMock.mock(ElementSpaceLogic.class);
-        EasyMock.expect(player.getPlayerId()).andReturn(playerId).anyTimes();
+        EasyMock.expect(player.getPlayerId()).andReturn(1).anyTimes();
 
         EasyMock.replay(hatchingGround, bag, player, card.domesticEffects[0], handler, eggHatchingLogic);
 
@@ -82,16 +79,12 @@ public class DragonPhaseTests {
 
     @Test
     public void testTwoUnhatchedEgg() {
-        final int playerId = 1;
-        card.name = "tempName";
-        final String message = card.name + " is going to incubation state";
         EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList());
         player.unhatchedCards.add(card);
         player.unhatchedCards.add(card);
         eggHatchingLogic.hatchEgg(card, false, player);
         EasyMock.expectLastCall().times(2);
-        player.elementSpaceLogic = EasyMock.mock(ElementSpaceLogic.class);
-        EasyMock.expect(player.getPlayerId()).andReturn(playerId).anyTimes();
+        EasyMock.expect(player.getPlayerId()).andReturn(1).anyTimes();
 
         EasyMock.replay(hatchingGround, bag, player, card.domesticEffects[0], handler, eggHatchingLogic);
 
@@ -176,6 +169,7 @@ public class DragonPhaseTests {
     @Test
     public void testNoUncompletedEgg() {
         EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList());
+
         EasyMock.replay(hatchingGround, bag, player, handler);
 
         Phase phase = new DragonPhase(players, null, bag, hatchingGround, null, null, null);

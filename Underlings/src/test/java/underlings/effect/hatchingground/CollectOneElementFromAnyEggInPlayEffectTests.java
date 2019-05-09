@@ -26,12 +26,11 @@ public class CollectOneElementFromAnyEggInPlayEffectTests {
         Gui gui = EasyMock.mock(Gui.class);
         ElementSpace elementSpace = EasyMock.mock(ElementSpace.class);
         CollectOneElementFromAnyEggInPlayEffect testedEffect = new CollectOneElementFromAnyEggInPlayEffect();
-        testedEffect.elementChoices = new ElementColor[]{ElementColor.BLUE};
+        testedEffect.elementChoices = new ElementColor[] {ElementColor.BLUE};
         testedEffect.on(gui).on(currentPlayer).on(hatchingGround);
 
         EasyMock.expect(hatchingGround.getAllCards()).andReturn(mockedCards);
-        EasyMock.expect(
-                gui.getElementSpaceContainingElementOfColors(mockedCards, testedEffect.elementChoices))
+        EasyMock.expect(gui.getElementSpaceContainingElementOfColors(mockedCards, testedEffect.elementChoices))
                 .andReturn(elementSpace);
         EasyMock.expect(gui.getElementOfColorsFromSpace(testedEffect.elementChoices, elementSpace))
                 .andReturn(NullElement.getInstance());
@@ -55,15 +54,13 @@ public class CollectOneElementFromAnyEggInPlayEffectTests {
         ElementSpace elementSpace = EasyMock.mock(ElementSpace.class);
         Element element = EasyMock.mock(Element.class);
         CollectOneElementFromAnyEggInPlayEffect testedEffect = new CollectOneElementFromAnyEggInPlayEffect();
-        testedEffect.elementChoices = new ElementColor[]{ElementColor.BLUE};
+        testedEffect.elementChoices = new ElementColor[] {ElementColor.BLUE};
         testedEffect.on(gui).on(currentPlayer).on(hatchingGround);
 
         EasyMock.expect(hatchingGround.getAllCards()).andReturn(mockedCards);
-        EasyMock.expect(
-                gui.getElementSpaceContainingElementOfColors(mockedCards, testedEffect.elementChoices))
+        EasyMock.expect(gui.getElementSpaceContainingElementOfColors(mockedCards, testedEffect.elementChoices))
                 .andReturn(elementSpace);
-        EasyMock.expect(gui.getElementOfColorsFromSpace(testedEffect.elementChoices, elementSpace))
-                .andReturn(element);
+        EasyMock.expect(gui.getElementOfColorsFromSpace(testedEffect.elementChoices, elementSpace)).andReturn(element);
         EasyMock.expect(element.getColor()).andReturn(ElementColor.BLUE);
         elementSpace.destroyOneElementOfColor(ElementColor.BLUE);
         currentPlayer.addElement(element);
