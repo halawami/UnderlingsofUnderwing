@@ -72,22 +72,6 @@ public class DragonPhaseTests {
     }
 
     @Test
-    public void testSetupWithOrange() {
-        this.spaces[0] = new ElementSpace(ElementColor.ORANGE);
-        this.card.elementSpaces = this.spaces;
-        this.spaces[0].elements = Arrays.asList(ElementColor.RED, ElementColor.YELLOW);
-        EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(eggs);
-        bag.putElement(ElementColor.RED);
-        bag.putElement(ElementColor.YELLOW);
-
-        EasyMock.replay(hatchingGround, bag, player);
-
-        Phase phase = new DragonPhase(players, null, bag, hatchingGround, null, null);
-        phase.setup();
-        EasyMock.verify(hatchingGround, bag, player);
-    }
-
-    @Test
     public void testEmptySetup() {
         eggs = Arrays.asList();
         EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(eggs);

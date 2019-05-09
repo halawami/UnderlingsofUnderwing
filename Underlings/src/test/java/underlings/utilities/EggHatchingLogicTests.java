@@ -106,6 +106,30 @@ public class EggHatchingLogicTests {
     }
 
     @Test
+    public void testSetupWithPurple() {
+        Card card = new Card();
+        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
+        card.elementSpaces = new ElementSpace[1];
+        card.elementSpaces[0] = new ElementSpace(ElementColor.PURPLE);
+        card.elementSpaces[0].elements = Arrays.asList(ElementColor.RED, ElementColor.BLUE);
+        EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList(card));
+        ElementBag bag = EasyMock.mock(ElementBag.class);
+        bag.putElement(ElementColor.RED);
+        bag.putElement(ElementColor.BLUE);
+        Player player = EasyMock.mock(Player.class);
+        player.unhatchedCards = new ArrayList<>();
+        List<Player> players = Arrays.asList(player);
+        EasyMock.expect(player.hasCard(card)).andReturn(false);
+
+        EasyMock.replay(hatchingGround, bag, player);
+
+        Phase phase = new DragonPhase(players, null, bag, hatchingGround, null, null);
+        phase.setup();
+        phase.turn(player);
+        EasyMock.verify(hatchingGround, bag, player);
+    }
+
+    @Test
     public void testSetupWithOrange() {
         Card card = new Card();
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
