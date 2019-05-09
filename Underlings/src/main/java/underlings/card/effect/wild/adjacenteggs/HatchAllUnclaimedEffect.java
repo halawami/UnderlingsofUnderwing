@@ -16,9 +16,11 @@ public class HatchAllUnclaimedEffect extends AdjacentEggsEffect {
     @Override
     public void applyOnAdjacentEgg(Card adjacentEgg, ElementBag elementBag, ElementSpaceLogic elementSpaceLogic,
             HatchingGround hatchingGround, Gui gui) {
-        EggHatchingLogic wildEggHatchingLogic =
-                new EggHatchingLogic(gui, elementBag, hatchingGround, FakePlayer.getInstance());
-        wildEggHatchingLogic.hatchEgg(adjacentEgg, true);
+        if (adjacentEgg.handler == null) {
+            EggHatchingLogic wildEggHatchingLogic =
+                    new EggHatchingLogic(gui, elementBag, hatchingGround, FakePlayer.getInstance());
+            wildEggHatchingLogic.hatchEgg(adjacentEgg, true);
+        }
     }
 
 }
