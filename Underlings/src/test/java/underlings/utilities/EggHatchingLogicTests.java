@@ -1,5 +1,7 @@
 package underlings.utilities;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.Arrays;
 
 import org.easymock.EasyMock;
@@ -12,7 +14,9 @@ import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
+import underlings.handler.Handler;
 import underlings.handler.HandlerFactory;
+import underlings.handler.WildHandler;
 import underlings.player.Player;
 import underlings.player.PlayerFactory;
 
@@ -41,7 +45,7 @@ public class EggHatchingLogicTests {
 
         EasyMock.replay(effect, elementBag, hatchingGround, gui);
         wildEggHatchingLogic.hatchEgg(card, true, player);
-
+        assertEquals(WildHandler.getInstance(), card.handler);
         EasyMock.verify(effect, elementBag, hatchingGround, gui);
     }
 
@@ -73,7 +77,7 @@ public class EggHatchingLogicTests {
         EasyMock.replay(effect, elementBag, hatchingGround, gui);
 
         wildEggHatchingLogic.hatchEgg(card, true, player);
-
+        assertEquals(WildHandler.getInstance(), card.handler);
         EasyMock.verify(effect, elementBag, hatchingGround, gui);
     }
 
@@ -83,6 +87,8 @@ public class EggHatchingLogicTests {
         card.domesticEffects = new Effect[1];
         Effect effect = EasyMock.mock(Effect.class);
         card.domesticEffects[0] = effect;
+        Handler handler = EasyMock.mock(Handler.class);;
+        card.handler = handler;
         ElementBag elementBag = EasyMock.mock(ElementBag.class);
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         PlayerFactory playerFactory = new PlayerFactory(new HandlerFactory());
@@ -99,10 +105,27 @@ public class EggHatchingLogicTests {
         card.domesticEffects[0].apply();
         gui.notifyAction(1, card.domesticEffects[0].toString() + " has been applied");
 
-        EasyMock.replay(effect, elementBag, hatchingGround, gui);
+        EasyMock.replay(effect, elementBag, hatchingGround, gui, handler);
         domesticEggHatchingLogic.hatchEgg(card, false, player);
+        assertEquals(handler, card.handler);
+        EasyMock.verify(effect, elementBag, hatchingGround, gui, handler);
+    }
 
-        EasyMock.verify(effect, elementBag, hatchingGround, gui);
+    @Test
+    public void testReturnNoElements() {
+        Card card = new Card();
+        card.elementSpaces = new ElementSpace[1];
+        card.elementSpaces[0] = new ElementSpace(ElementColor.PURPLE);
+        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
+        PlayerFactory playerFactory = new PlayerFactory(new HandlerFactory());
+        Gui gui = EasyMock.mock(Gui.class);
+        ElementBag bag = EasyMock.mock(ElementBag.class);
+        EasyMock.replay(hatchingGround, bag, gui);
+
+        EggHatchingLogic eggHatchingLogic = new EggHatchingLogic(gui, bag, hatchingGround, playerFactory);
+        eggHatchingLogic.returnElementsToBag(card);
+
+        EasyMock.verify(hatchingGround, bag, gui);
     }
 
     @Test
@@ -117,23 +140,6 @@ public class EggHatchingLogicTests {
         ElementBag bag = EasyMock.mock(ElementBag.class);
         bag.putElement(ElementColor.RED);
         bag.putElement(ElementColor.BLUE);
-        EasyMock.replay(hatchingGround, bag, gui);
-
-        EggHatchingLogic eggHatchingLogic = new EggHatchingLogic(gui, bag, hatchingGround, playerFactory);
-        eggHatchingLogic.returnElementsToBag(card);
-
-        EasyMock.verify(hatchingGround, bag, gui);
-    }
-
-    @Test
-    public void testReturnNoElements() {
-        Card card = new Card();
-        card.elementSpaces = new ElementSpace[1];
-        card.elementSpaces[0] = new ElementSpace(ElementColor.PURPLE);
-        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
-        PlayerFactory playerFactory = new PlayerFactory(new HandlerFactory());
-        Gui gui = EasyMock.mock(Gui.class);
-        ElementBag bag = EasyMock.mock(ElementBag.class);
         EasyMock.replay(hatchingGround, bag, gui);
 
         EggHatchingLogic eggHatchingLogic = new EggHatchingLogic(gui, bag, hatchingGround, playerFactory);
