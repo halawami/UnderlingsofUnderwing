@@ -52,7 +52,7 @@ public class Main {
             game.display();
         };
 
-        EggHatchingLogic eggHatchingLogic = new EggHatchingLogic(gui, elementBag, hatchingGround, playerFactory);
+        EggHatchingLogic eggHatchingLogic = new EggHatchingLogic(gui, elementBag, hatchingGround);
 
         List<Phase> phases = new ArrayList<>();
         phases.add(new DrawingPhase(game.getPlayers(), gui, elementBag, hatchingGround, gameDisplay, field));

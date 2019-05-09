@@ -9,7 +9,6 @@ import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.handler.WildHandler;
 import underlings.player.Player;
-import underlings.player.PlayerFactory;
 
 
 public class EggHatchingLogic {
@@ -17,14 +16,11 @@ public class EggHatchingLogic {
     private Gui gui;
     private ElementBag elementBag;
     private HatchingGround hatchingGround;
-    private PlayerFactory playerFactory;
 
-    public EggHatchingLogic(Gui gui, ElementBag elementBag, HatchingGround hatchingGround,
-            PlayerFactory playerFactory) {
+    public EggHatchingLogic(Gui gui, ElementBag elementBag, HatchingGround hatchingGround) {
         this.gui = gui;
         this.elementBag = elementBag;
         this.hatchingGround = hatchingGround;
-        this.playerFactory = playerFactory;
     }
 
     public void hatchEgg(Card card, boolean domestic, Player player) {
