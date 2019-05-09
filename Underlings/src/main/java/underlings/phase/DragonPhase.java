@@ -3,7 +3,6 @@ package underlings.phase;
 import java.util.List;
 
 import underlings.card.Card;
-import underlings.card.effect.Effect;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
@@ -11,6 +10,7 @@ import underlings.field.Field;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.player.Player;
+import underlings.utilities.EggHatchingLogic;
 
 public class DragonPhase extends SequentialPhase {
 
@@ -39,9 +39,9 @@ public class DragonPhase extends SequentialPhase {
 
     @Override
     public void turn(Player player) {
-        for (Effect domesticEffect : player.getAllEffects()) {
-            domesticEffect.on(this.elementBag).on(this.hatchingGround).on(player.elementSpaceLogic).on(player).apply();
-            this.gui.notifyAction(player.getPlayerId(), domesticEffect.toString() + " has been applied");
+        EggHatchingLogic eggHatchingLogic = new EggHatchingLogic(gui, elementBag, hatchingGround, player);
+        for (Card card : player.unhatchedCards) {
+            eggHatchingLogic.hatchEgg(card, false);
         }
         for (Card completeCard : this.completeEggs) {
             if (player.hasCard(completeCard)) {
