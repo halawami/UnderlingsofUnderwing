@@ -34,7 +34,7 @@ public class EggHatchingLogicTests {
 
         EasyMock.replay(effect, elementBag, hatchingGround, player, gui);
         EggHatchingLogic wildEggHatchingLogic = new EggHatchingLogic(gui, elementBag, hatchingGround, player);
-        wildEggHatchingLogic.hatchEgg(card);
+        wildEggHatchingLogic.hatchEgg(card, true);
 
         EasyMock.verify(effect, elementBag, hatchingGround, player, gui);
     }
