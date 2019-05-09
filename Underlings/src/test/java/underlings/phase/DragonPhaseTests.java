@@ -175,7 +175,6 @@ public class DragonPhaseTests {
         bag.putElement(ElementColor.RED);
         EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList(card));
         EasyMock.expect(player.getPlayerId()).andReturn(playerId).anyTimes();
-        EasyMock.expect(player.getAllEffects()).andReturn(Arrays.asList());
         EasyMock.expect(player.hasCard(card)).andReturn(true);
         gui.notifyAction(playerId, message);
 
