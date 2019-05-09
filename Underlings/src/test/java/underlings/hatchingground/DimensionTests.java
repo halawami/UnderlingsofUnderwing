@@ -12,14 +12,20 @@ public class DimensionTests {
 
     @Test
     public void testDimensionsEmpty() {
-
-        Dimension expected = new Dimension(0, 0);
-
         HatchingGround hatchingGround = new HatchingGround(null);
         hatchingGround.setDimensions(0, 0);
 
+        Dimension expected = new Dimension(0, 0);
         assertEquals(expected, hatchingGround.getDimensions());
+    }
 
+    @Test
+    public void testDimensionsNonempty() {
+        HatchingGround hatchingGround = new HatchingGround(null);
+        hatchingGround.setDimensions(2, 2);
+
+        Dimension expected = new Dimension(2, 2);
+        assertEquals(expected, hatchingGround.getDimensions());
     }
 
 }
