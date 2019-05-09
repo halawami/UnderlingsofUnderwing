@@ -1,5 +1,7 @@
 package underlings.effect.hatchingground;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +14,7 @@ import underlings.card.effect.wild.adjacenteggs.HatchAllUnclaimedEffect;
 import underlings.element.ElementBag;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
+import underlings.handler.WildHandler;
 import underlings.player.FakePlayer;
 import underlings.player.Player;
 
@@ -24,6 +27,7 @@ public class HatchAllUnclaimedAdjacentEggsEffectTests {
         mockedCards.get(0).wildEffects = new Effect[1];
         Effect effect = EasyMock.mock(Effect.class);
         mockedCards.get(0).wildEffects[0] = effect;
+        mockedCards.get(0).handler = null;
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         // EasyMock.expect(hatchingGround.getAdjacentCards(centerCard)).andReturn(mockedCards);
         ElementBag elementBag = EasyMock.mock(ElementBag.class);
@@ -37,14 +41,13 @@ public class HatchAllUnclaimedAdjacentEggsEffectTests {
         effect.apply();
         gui.notifyAction(-1, "EasyMock for class underlings.card.effect.Effect has been applied");
 
-
         EasyMock.replay(hatchingGround, elementBag, effect, gui);
 
         HatchAllUnclaimedEffect hatchAllUnclaimedAdjacentEggsEffect = new HatchAllUnclaimedEffect();
         // hatchAllUnclaimedAdjacentEggsEffect.apply();
         hatchAllUnclaimedAdjacentEggsEffect.applyOnAdjacentEgg(mockedCards.get(0), elementBag,
                 fakePlayer.elementSpaceLogic, hatchingGround, gui);
-
+        assertEquals(mockedCards.get(0).handler, WildHandler.getInstance());
         EasyMock.verify(hatchingGround, elementBag, effect, gui);
     }
 
