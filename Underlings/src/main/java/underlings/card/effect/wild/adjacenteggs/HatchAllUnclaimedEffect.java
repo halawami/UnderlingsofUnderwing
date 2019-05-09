@@ -19,7 +19,7 @@ public class HatchAllUnclaimedEffect extends AdjacentEggsEffect {
         EggHatchingLogic wildEggHatchingLogic =
                 new EggHatchingLogic(gui, elementBag, hatchingGround, FakePlayer.getInstance());
         System.out.println("here2");
-        wildEggHatchingLogic.hatchEgg(adjacentEgg);
+        wildEggHatchingLogic.hatchEgg(adjacentEgg, true);
     }
 
 }
