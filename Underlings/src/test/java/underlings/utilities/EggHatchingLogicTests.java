@@ -106,7 +106,7 @@ public class EggHatchingLogicTests {
     }
 
     @Test
-    public void testSetupWithPurple() {
+    public void testReturnPurpleComboElements() {
         Card card = new Card();
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         card.elementSpaces = new ElementSpace[1];
@@ -130,7 +130,7 @@ public class EggHatchingLogicTests {
     }
 
     @Test
-    public void testEmptySetup() {
+    public void testReturnNoElements() {
         Card card = new Card();
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         card.elementSpaces = new ElementSpace[1];
@@ -151,7 +151,7 @@ public class EggHatchingLogicTests {
     }
 
     @Test
-    public void testSetupWithOrange() {
+    public void testReturnOrangeComboElements() {
         Card card = new Card();
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         card.elementSpaces = new ElementSpace[1];
@@ -175,7 +175,7 @@ public class EggHatchingLogicTests {
     }
 
     @Test
-    public void testMultiSetup() {
+    public void testMultiReturnComboElements() {
         Card card = new Card();
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         card.elementSpaces = new ElementSpace[1];
