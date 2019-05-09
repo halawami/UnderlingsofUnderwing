@@ -84,10 +84,11 @@ public class EggHatchingLogicTests {
         EasyMock.expect(card.domesticEffects[0].on(hatchingGround)).andReturn(card.domesticEffects[0]);
         EasyMock.expect(card.domesticEffects[0].on(player.elementSpaceLogic)).andReturn(card.domesticEffects[0]);
         EasyMock.expect(card.domesticEffects[0].on(player)).andReturn(card.domesticEffects[0]);
+        EasyMock.expect(player.getPlayerId()).andReturn(1);
         Gui gui = EasyMock.mock(Gui.class);
         EasyMock.expect(card.domesticEffects[0].on(gui)).andReturn(card.domesticEffects[0]);
         card.domesticEffects[0].apply();
-        gui.notifyAction(-1, card.domesticEffects[0].toString() + " has been applied");
+        gui.notifyAction(1, card.domesticEffects[0].toString() + " has been applied");
 
         EasyMock.replay(effect, elementBag, hatchingGround, player, gui);
         EggHatchingLogic wildEggHatchingLogic = new EggHatchingLogic(gui, elementBag, hatchingGround, player);

@@ -1,11 +1,9 @@
 package underlings.player;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 import underlings.card.Card;
-import underlings.card.effect.Effect;
 import underlings.element.Element;
 import underlings.element.ElementGiver;
 import underlings.element.NullElement;
@@ -123,19 +121,6 @@ public class Player {
 
     public int getPlayerId() {
         return this.playerId;
-    }
-
-    public List<Effect> getAllEffects() {
-        List<Effect> effectsToApply = new LinkedList<>();
-        for (Card unhatchedEgg : this.unhatchedCards) {
-            for (int i = 0; i < unhatchedEgg.domesticEffects.length; i++) {
-                effectsToApply.add(unhatchedEgg.domesticEffects[i]);
-            }
-            unhatchedEgg.handler.moveToState(HandlerState.READY_ROOM);
-            this.hatchedCards.add(unhatchedEgg);
-        }
-        this.unhatchedCards.clear();
-        return effectsToApply;
     }
 
     public boolean hasCard(Card card) {
