@@ -28,22 +28,22 @@ public class EggHatchingLogicTests {
         ElementBag elementBag = EasyMock.mock(ElementBag.class);
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         PlayerFactory playerFactory = new PlayerFactory(new HandlerFactory());
-        Player player = playerFactory.createPlayer(2);
-        player.elementSpaceLogic = new ElementSpaceLogic();
+        Player player = playerFactory.createFakePlayer();
+        ElementSpaceLogic elementSpaceLogic = EasyMock.mock(ElementSpaceLogic.class);
         EasyMock.expect(card.wildEffects[0].on(elementBag)).andReturn(card.wildEffects[0]);
         EasyMock.expect(card.wildEffects[0].on(hatchingGround)).andReturn(card.wildEffects[0]);
-        EasyMock.expect(card.wildEffects[0].on(player.elementSpaceLogic)).andReturn(card.wildEffects[0]);
         EasyMock.expect(card.wildEffects[0].on(player)).andReturn(card.wildEffects[0]);
+        EasyMock.expect(card.wildEffects[0].on(player.elementSpaceLogic)).andReturn(card.wildEffects[0]);
         Gui gui = EasyMock.mock(Gui.class);
         EasyMock.expect(card.wildEffects[0].on(gui)).andReturn(card.wildEffects[0]);
         card.wildEffects[0].apply();
         gui.notifyAction(-1, card.wildEffects[0].toString() + " has been applied");
 
-        EasyMock.replay(effect, elementBag, hatchingGround, gui);
+        EasyMock.replay(effect, elementBag, hatchingGround, gui, elementSpaceLogic);
         EggHatchingLogic wildEggHatchingLogic = new EggHatchingLogic(gui, elementBag, hatchingGround, playerFactory);
         wildEggHatchingLogic.hatchEgg(card, true);
 
-        EasyMock.verify(effect, elementBag, hatchingGround, gui);
+        EasyMock.verify(effect, elementBag, hatchingGround, gui, elementSpaceLogic);
     }
 
     @Test
