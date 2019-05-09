@@ -162,22 +162,20 @@ public class EggHatchingLogicTests {
         card.elementSpaces = new ElementSpace[1];
         card.elementSpaces[0] = new ElementSpace(ElementColor.ORANGE);
         card.elementSpaces[0].elements = Arrays.asList(ElementColor.RED, ElementColor.YELLOW);
-        EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList(card));
+        PlayerFactory playerFactory = new PlayerFactory(new HandlerFactory());
+        Player player = playerFactory.createPlayer(2);
+        player.unhatchedCards = new ArrayList<>();
+        Gui gui = EasyMock.mock(Gui.class);
+        player.elementSpaceLogic = new ElementSpaceLogic();
         ElementBag bag = EasyMock.mock(ElementBag.class);
         bag.putElement(ElementColor.RED);
         bag.putElement(ElementColor.YELLOW);
-        Player player = EasyMock.mock(Player.class);
-        player.unhatchedCards = new ArrayList<>();
-        List<Player> players = Arrays.asList(player);
-        EasyMock.expect(player.hasCard(card)).andReturn(false);
+        EasyMock.replay(hatchingGround, bag, gui);
 
-        EggHatchingLogic eggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
-        EasyMock.replay(hatchingGround, bag, player, eggHatchingLogic);
+        EggHatchingLogic eggHatchingLogic = new EggHatchingLogic(gui, bag, hatchingGround, playerFactory);
+        eggHatchingLogic.returnElementsToBag(card);
 
-        Phase phase = new DragonPhase(players, null, bag, hatchingGround, null, null, eggHatchingLogic);
-        phase.setup();
-        phase.turn(player);
-        EasyMock.verify(hatchingGround, bag, player, eggHatchingLogic);
+        EasyMock.verify(hatchingGround, bag, gui);
     }
 
     @Test
