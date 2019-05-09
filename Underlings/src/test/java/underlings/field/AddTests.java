@@ -2,6 +2,7 @@ package underlings.field;
 
 import static org.junit.Assert.assertTrue;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import underlings.gui.DrawChoice;
@@ -10,31 +11,31 @@ import underlings.handler.HandlerState;
 
 public class AddTests {
 
-    @Test
-    public void testStart() {
-        Field field = new Field(new FieldSpaceFactory());
-        Handler handler = new Handler(HandlerState.READY_ROOM);
+	private Field field;
+	private Handler handler;
 
-        field.addHandler(0, handler);
-        assertTrue(handler.elementGiver.drawChoices.contains(DrawChoice.RED));
-    }
+	@Before
+	public void init() {
+		this.field = new Field(new FieldSpaceFactory());
+		this.handler = new Handler(HandlerState.READY_ROOM);
+	}
 
-    @Test
-    public void testEnd() {
-        Field field = new Field(new FieldSpaceFactory());
-        Handler handler = new Handler(HandlerState.READY_ROOM);
+	@Test
+	public void testStart() {
+		this.field.addHandler(0, this.handler);
+		assertTrue(this.handler.elementGiver.drawChoices.contains(DrawChoice.RED));
+	}
 
-        field.addHandler(21, handler);
-        assertTrue(handler.elementGiver.drawChoices.contains(DrawChoice.GREEN));
-    }
+	@Test
+	public void testEnd() {
+		this.field.addHandler(21, this.handler);
+		assertTrue(this.handler.elementGiver.drawChoices.contains(DrawChoice.GREEN));
+	}
 
-    @Test
-    public void testWhite() {
-        Field field = new Field(new FieldSpaceFactory());
-        Handler handler = new Handler(HandlerState.READY_ROOM);
-
-        field.addHandlerWhitespace(handler);
-        assertTrue(handler.elementGiver.drawChoices.contains(DrawChoice.WHITE));
-    }
+	@Test
+	public void testWhite() {
+		this.field.addHandlerWhitespace(this.handler);
+		assertTrue(this.handler.elementGiver.drawChoices.contains(DrawChoice.WHITE));
+	}
 
 }
