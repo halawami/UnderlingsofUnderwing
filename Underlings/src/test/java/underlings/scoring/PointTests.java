@@ -6,51 +6,56 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import underlings.card.Card;
 
 public class PointTests {
 
-    @Test
-    public void testEmpty() {
-        ScoreUtils scoreUtils = new ScoreUtils();
-        int points = scoreUtils.calculatePoints(Collections.emptyList());
+	private ScoreUtils scoreUtils;
 
-        assertEquals(0, points);
-    }
+	@Before
+	public void init() {
+		this.scoreUtils = new ScoreUtils();
+	}
 
-    @Test
-    public void testOneCard() {
-        Card cardOne = new Card();
-        cardOne.points = 10;
+	@Test
+	public void testEmpty() {
+		int points = this.scoreUtils.calculatePoints(Collections.emptyList());
 
-        List<Card> cards = new ArrayList<>();
-        cards.add(cardOne);
+		assertEquals(0, points);
+	}
 
-        ScoreUtils scoreUtils = new ScoreUtils();
-        int points = scoreUtils.calculatePoints(cards);
+	@Test
+	public void testOneCard() {
+		Card cardOne = new Card();
+		cardOne.points = 10;
 
-        assertEquals(10, points);
+		List<Card> cards = new ArrayList<>();
+		cards.add(cardOne);
 
-    }
+		int points = this.scoreUtils.calculatePoints(cards);
 
-    @Test
-    public void testTwoCards() {
-        Card cardOne = new Card();
-        cardOne.points = 13;
+		assertEquals(10, points);
 
-        Card cardTwo = new Card();
-        cardTwo.points = 16;
+	}
 
-        List<Card> cards = new ArrayList<>();
-        cards.add(cardOne);
-        cards.add(cardTwo);
+	@Test
+	public void testTwoCards() {
+		Card cardOne = new Card();
+		cardOne.points = 13;
 
-        ScoreUtils scoreUtils = new ScoreUtils();
-        int points = scoreUtils.calculatePoints(cards);
+		Card cardTwo = new Card();
+		cardTwo.points = 16;
 
-        assertEquals(29, points);
-    }
+		List<Card> cards = new ArrayList<>();
+		cards.add(cardOne);
+		cards.add(cardTwo);
+
+		int points = this.scoreUtils.calculatePoints(cards);
+
+		assertEquals(29, points);
+	}
 
 }
