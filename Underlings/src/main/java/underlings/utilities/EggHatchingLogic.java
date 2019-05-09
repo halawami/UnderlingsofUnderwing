@@ -25,17 +25,19 @@ public class EggHatchingLogic {
 
     public void hatchEgg(Card card, boolean domestic) {
         Effect[] effects;
+        int id;
         if (domestic) {
             card.handler = WildHandler.getInstance();
             effects = card.wildEffects;
+            id = -1;
         } else {
             effects = card.domesticEffects;
+            id = this.player.getPlayerId();
         }
-
         for (int i = 0; i < effects.length; i++) {
             effects[i].on(this.elementBag).on(this.hatchingGround).on(player.elementSpaceLogic).on(this.player)
                     .on(this.gui).apply();
-            this.gui.notifyAction(-1, effects[i].toString() + " has been applied");
+            this.gui.notifyAction(id, effects[i].toString() + " has been applied");
         }
     }
 }

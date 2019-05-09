@@ -127,19 +127,19 @@ public class DragonPhaseTests {
 
     @Test
     public void testOneUnhatchedEgg() {
-        final Gui gui = EasyMock.mock(Gui.class);
         final int playerId = 1;
         card.name = "tempName";
         final String message = card.name + " is going to incubation state";
         EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList());
         player.unhatchedCards.add(card);
-        EasyMock.expect(player.getAllEffects()).andReturn(Arrays.asList(card.domesticEffects[0]));
         EasyMock.expect(card.domesticEffects[0].on(bag)).andReturn(card.domesticEffects[0]).anyTimes();
         EasyMock.expect(card.domesticEffects[0].on(hatchingGround)).andReturn(card.domesticEffects[0]).anyTimes();
         player.elementSpaceLogic = EasyMock.mock(ElementSpaceLogic.class);
         EasyMock.expect(card.domesticEffects[0].on(player.elementSpaceLogic)).andReturn(card.domesticEffects[0])
                 .anyTimes();
         EasyMock.expect(card.domesticEffects[0].on(player)).andReturn(card.domesticEffects[0]).anyTimes();
+        final Gui gui = EasyMock.mock(Gui.class);
+        EasyMock.expect(card.domesticEffects[0].on(gui)).andReturn(card.domesticEffects[0]).anyTimes();
         card.domesticEffects[0].apply();
         EasyMock.expect(player.getPlayerId()).andReturn(playerId).anyTimes();
         gui.notifyAction(playerId, message);
