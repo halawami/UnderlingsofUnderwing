@@ -11,10 +11,10 @@ import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.player.Player;
 
-public class WildEggHatchingLogicTests {
+public class EggHatchingLogicTests {
 
     @Test
-    public void testOneWildEffects() {
+    public void testOneWildEffect() {
         Card card = new Card();
         card.wildEffects = new Effect[1];
         Effect effect = EasyMock.mock(Effect.class);
@@ -64,6 +64,32 @@ public class WildEggHatchingLogicTests {
 
         EasyMock.replay(effect, elementBag, hatchingGround, player, gui);
 
+        EggHatchingLogic wildEggHatchingLogic = new EggHatchingLogic(gui, elementBag, hatchingGround, player);
+        wildEggHatchingLogic.hatchEgg(card);
+
+        EasyMock.verify(effect, elementBag, hatchingGround, player, gui);
+    }
+
+    @Test
+    public void testOneDomesticEffect() {
+        Card card = new Card();
+        card.domesticEffects = new Effect[1];
+        Effect effect = EasyMock.mock(Effect.class);
+        card.domesticEffects[0] = effect;
+        ElementBag elementBag = EasyMock.mock(ElementBag.class);
+        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
+        Player player = EasyMock.mock(Player.class);
+        player.elementSpaceLogic = new ElementSpaceLogic();
+        EasyMock.expect(card.domesticEffects[0].on(elementBag)).andReturn(card.domesticEffects[0]);
+        EasyMock.expect(card.domesticEffects[0].on(hatchingGround)).andReturn(card.domesticEffects[0]);
+        EasyMock.expect(card.domesticEffects[0].on(player.elementSpaceLogic)).andReturn(card.domesticEffects[0]);
+        EasyMock.expect(card.domesticEffects[0].on(player)).andReturn(card.domesticEffects[0]);
+        Gui gui = EasyMock.mock(Gui.class);
+        EasyMock.expect(card.domesticEffects[0].on(gui)).andReturn(card.domesticEffects[0]);
+        card.domesticEffects[0].apply();
+        gui.notifyAction(-1, card.domesticEffects[0].toString() + " has been applied");
+
+        EasyMock.replay(effect, elementBag, hatchingGround, player, gui);
         EggHatchingLogic wildEggHatchingLogic = new EggHatchingLogic(gui, elementBag, hatchingGround, player);
         wildEggHatchingLogic.hatchEgg(card);
 
