@@ -4,8 +4,6 @@ import java.util.List;
 
 import underlings.card.Card;
 import underlings.element.ElementBag;
-import underlings.element.ElementColor;
-import underlings.element.ElementSpace;
 import underlings.field.Field;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
@@ -24,17 +22,6 @@ public class DragonPhase extends SequentialPhase {
     @Override
     public void setup() {
         this.completeEggs = this.hatchingGround.pullAndReplaceCompleteEggs();
-        for (Card completeEgg : this.completeEggs) {
-            returnElementsToBag(completeEgg);
-        }
-    }
-
-    private void returnElementsToBag(Card dragon) {
-        for (ElementSpace space : dragon.elementSpaces) {
-            for (ElementColor color : space.elements) {
-                this.elementBag.putElement(color);
-            }
-        }
     }
 
     @Override
@@ -44,6 +31,7 @@ public class DragonPhase extends SequentialPhase {
             eggHatchingLogic.hatchEgg(card, false);
         }
         for (Card completeCard : this.completeEggs) {
+            eggHatchingLogic.returnElementsToBag(completeCard);
             if (player.hasCard(completeCard)) {
                 this.gui.notifyAction(player.getPlayerId(), completeCard.name + " is going to incubation state");
             }

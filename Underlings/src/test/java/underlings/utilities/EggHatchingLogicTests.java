@@ -1,14 +1,22 @@
 package underlings.utilities;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.easymock.EasyMock;
 import org.junit.Test;
 
 import underlings.card.Card;
 import underlings.card.effect.Effect;
 import underlings.element.ElementBag;
+import underlings.element.ElementColor;
+import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
+import underlings.phase.DragonPhase;
+import underlings.phase.Phase;
 import underlings.player.Player;
 
 public class EggHatchingLogicTests {
@@ -95,6 +103,30 @@ public class EggHatchingLogicTests {
         wildEggHatchingLogic.hatchEgg(card, false);
 
         EasyMock.verify(effect, elementBag, hatchingGround, player, gui);
+    }
+
+    @Test
+    public void testSetupWithOrange() {
+        Card card = new Card();
+        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
+        card.elementSpaces = new ElementSpace[1];
+        card.elementSpaces[0] = new ElementSpace(ElementColor.ORANGE);
+        card.elementSpaces[0].elements = Arrays.asList(ElementColor.RED, ElementColor.YELLOW);
+        EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList(card));
+        ElementBag bag = EasyMock.mock(ElementBag.class);
+        bag.putElement(ElementColor.RED);
+        bag.putElement(ElementColor.YELLOW);
+        Player player = EasyMock.mock(Player.class);
+        player.unhatchedCards = new ArrayList<>();
+        List<Player> players = Arrays.asList(player);
+        EasyMock.expect(player.hasCard(card)).andReturn(false);
+
+        EasyMock.replay(hatchingGround, bag, player);
+
+        Phase phase = new DragonPhase(players, null, bag, hatchingGround, null, null);
+        phase.setup();
+        phase.turn(player);
+        EasyMock.verify(hatchingGround, bag, player);
     }
 
 }

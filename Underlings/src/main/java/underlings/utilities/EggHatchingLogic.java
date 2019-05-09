@@ -3,6 +3,8 @@ package underlings.utilities;
 import underlings.card.Card;
 import underlings.card.effect.Effect;
 import underlings.element.ElementBag;
+import underlings.element.ElementColor;
+import underlings.element.ElementSpace;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.handler.WildHandler;
@@ -38,6 +40,14 @@ public class EggHatchingLogic {
             effects[i].on(this.elementBag).on(this.hatchingGround).on(player.elementSpaceLogic).on(this.player)
                     .on(this.gui).apply();
             this.gui.notifyAction(id, effects[i].toString() + " has been applied");
+        }
+    }
+
+    public void returnElementsToBag(Card dragon) {
+        for (ElementSpace space : dragon.elementSpaces) {
+            for (ElementColor color : space.elements) {
+                this.elementBag.putElement(color);
+            }
         }
     }
 }
