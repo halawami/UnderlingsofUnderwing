@@ -1,6 +1,7 @@
 package underlings.utilities;
 
 import underlings.card.Card;
+import underlings.card.effect.Effect;
 import underlings.element.ElementBag;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
@@ -22,12 +23,19 @@ public class EggHatchingLogic {
         this.player = player;
     }
 
-    public void hatchEgg(Card card) {
-        card.handler = WildHandler.getInstance();
-        for (int i = 0; i < card.wildEffects.length; i++) {
-            card.wildEffects[i].on(this.elementBag).on(this.hatchingGround).on(player.elementSpaceLogic).on(this.player)
+    public void hatchEgg(Card card, boolean domestic) {
+        Effect[] effects;
+        if (domestic) {
+            card.handler = WildHandler.getInstance();
+            effects = card.wildEffects;
+        } else {
+            effects = card.domesticEffects;
+        }
+
+        for (int i = 0; i < effects.length; i++) {
+            effects[i].on(this.elementBag).on(this.hatchingGround).on(player.elementSpaceLogic).on(this.player)
                     .on(this.gui).apply();
-            this.gui.notifyAction(-1, card.wildEffects[i].toString() + " has been applied");
+            this.gui.notifyAction(-1, effects[i].toString() + " has been applied");
         }
     }
 }
