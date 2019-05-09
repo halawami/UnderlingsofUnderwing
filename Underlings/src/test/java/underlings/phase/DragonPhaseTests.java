@@ -216,6 +216,31 @@ public class DragonPhaseTests {
     }
 
     @Test
+    public void testTwoUncompletedEgg() {
+        final Gui gui = EasyMock.mock(Gui.class);
+        final int playerId = 0;
+        card.name = "tempName";
+        final String message = card.name + " is going to incubation state";
+        card.domesticEffects = new Effect[0];
+        bag.putElement(ElementColor.BLUE);
+        EasyMock.expectLastCall().times(2);
+        bag.putElement(ElementColor.RED);
+        EasyMock.expectLastCall().times(2);
+        EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList(card, card));
+        EasyMock.expect(player.getPlayerId()).andReturn(playerId).anyTimes();
+        EasyMock.expect(player.hasCard(card)).andReturn(true).times(2);
+        gui.notifyAction(playerId, message);
+        EasyMock.expectLastCall().times(2);
+
+        EasyMock.replay(hatchingGround, bag, player, handler, gui);
+
+        Phase phase = new DragonPhase(players, gui, bag, hatchingGround, null, null);
+        phase.setup();
+        phase.turn(player);
+        EasyMock.verify(hatchingGround, bag, player, handler, gui);
+    }
+
+    @Test
     public void testOneUncompletedEggNotThePlayerEgg() {
         final Gui gui = EasyMock.mock(Gui.class);
         card.domesticEffects = new Effect[0];
