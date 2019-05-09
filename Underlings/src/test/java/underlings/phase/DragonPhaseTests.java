@@ -70,13 +70,11 @@ public class DragonPhaseTests {
         player.unhatchedCards.add(card);
         eggHatchingLogic.hatchEgg(card, false, player);
         player.elementSpaceLogic = EasyMock.mock(ElementSpaceLogic.class);
-        final Gui gui = EasyMock.mock(Gui.class);
         EasyMock.expect(player.getPlayerId()).andReturn(playerId).anyTimes();
-        gui.notifyAction(playerId, message);
 
         EasyMock.replay(hatchingGround, bag, player, card.domesticEffects[0], handler, eggHatchingLogic);
 
-        Phase phase = new DragonPhase(players, gui, bag, hatchingGround, null, null, eggHatchingLogic);
+        Phase phase = new DragonPhase(players, null, bag, hatchingGround, null, null, eggHatchingLogic);
         phase.setup();
         phase.turn(player);
         EasyMock.verify(hatchingGround, bag, player, card.domesticEffects[0], handler, eggHatchingLogic);
@@ -93,13 +91,11 @@ public class DragonPhaseTests {
         eggHatchingLogic.hatchEgg(card, false, player);
         EasyMock.expectLastCall().times(2);
         player.elementSpaceLogic = EasyMock.mock(ElementSpaceLogic.class);
-        final Gui gui = EasyMock.mock(Gui.class);
         EasyMock.expect(player.getPlayerId()).andReturn(playerId).anyTimes();
-        gui.notifyAction(playerId, message);
 
         EasyMock.replay(hatchingGround, bag, player, card.domesticEffects[0], handler, eggHatchingLogic);
 
-        Phase phase = new DragonPhase(players, gui, bag, hatchingGround, null, null, eggHatchingLogic);
+        Phase phase = new DragonPhase(players, null, bag, hatchingGround, null, null, eggHatchingLogic);
         phase.setup();
         phase.turn(player);
         EasyMock.verify(hatchingGround, bag, player, card.domesticEffects[0], handler, eggHatchingLogic);
