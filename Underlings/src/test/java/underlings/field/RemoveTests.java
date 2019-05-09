@@ -4,20 +4,14 @@ import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
 
-import underlings.handler.Handler;
-import underlings.handler.HandlerState;
+public class RemoveTests extends FieldTests {
 
-public class RemoveTests {
+	@Test
+	public void testStart() {
+		this.field.addHandler(0, this.handler);
 
-    @Test
-    public void testStart() {
-
-        Field field = new Field(new FieldSpaceFactory());
-        Handler handler = new Handler(HandlerState.READY_ROOM);
-        field.addHandler(0, handler);
-
-        field.removeHandler(handler);
-        assertNull(field.findHandler(handler));
-    }
+		this.field.removeHandler(this.handler);
+		assertNull(this.field.findHandler(this.handler));
+	}
 
 }

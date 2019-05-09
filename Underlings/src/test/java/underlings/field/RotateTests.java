@@ -5,31 +5,23 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import underlings.gui.DrawChoice;
-import underlings.handler.Handler;
-import underlings.handler.HandlerState;
 
-public class RotateTests {
+public class RotateTests extends FieldTests {
 
-    @Test
-    public void testStart() {
-        Field field = new Field(new FieldSpaceFactory());
-        Handler handler = new Handler(HandlerState.READY_ROOM);
+	@Test
+	public void testStart() {
+		this.field.addHandler(0, this.handler);
+		this.field.rotate(this.handler);
 
-        field.addHandler(0, handler);
-        field.rotate(handler);
+		assertTrue(this.handler.elementGiver.drawChoices.contains(DrawChoice.BLUE));
+	}
 
-        assertTrue(handler.elementGiver.drawChoices.contains(DrawChoice.BLUE));
-    }
+	@Test
+	public void testEnd() {
+		this.field.addHandler(21, this.handler);
+		this.field.rotate(this.handler);
 
-    @Test
-    public void testEnd() {
-        Field field = new Field(new FieldSpaceFactory());
-        Handler handler = new Handler(HandlerState.READY_ROOM);
-
-        field.addHandler(21, handler);
-        field.rotate(handler);
-
-        assertTrue(handler.elementGiver.drawChoices.contains(DrawChoice.RED));
-    }
+		assertTrue(this.handler.elementGiver.drawChoices.contains(DrawChoice.RED));
+	}
 
 }
