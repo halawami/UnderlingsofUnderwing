@@ -92,7 +92,7 @@ public class LogicTests {
 
         Dimension groundDimensions = new Dimension(2, 2);
         EasyMock.expect(this.hatchingGround.getDimensions()).andReturn(groundDimensions);
-        EasyMock.expect(this.gui.getCard(Collections.emptyList(), 0), groundDimensions).andReturn(card);
+        EasyMock.expect(this.gui.getCard(Collections.emptyList(), 0, groundDimensions)).andReturn(card);
         EasyMock.replay(this.hatchingGround, this.gui);
 
         Handler handler = new Handler(HandlerState.READY_ROOM);
