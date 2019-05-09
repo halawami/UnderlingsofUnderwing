@@ -207,7 +207,6 @@ public class DragonPhaseTests {
     @Test
     public void testNoUncompletedEgg() {
         EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList());
-        EasyMock.expect(player.getAllEffects()).andReturn(Arrays.asList());
         EasyMock.replay(hatchingGround, bag, player, handler);
 
         Phase phase = new DragonPhase(players, null, bag, hatchingGround, null, null);
