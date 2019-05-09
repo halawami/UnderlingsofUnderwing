@@ -1,5 +1,8 @@
 package underlings.card.effect.wild.adjacenteggs;
 
+import java.util.Arrays;
+import java.util.List;
+
 import underlings.card.Card;
 import underlings.card.Family;
 import underlings.element.ElementBag;
@@ -16,7 +19,8 @@ public class HatchAllUnclaimedEffect extends AdjacentEggsEffect {
     @Override
     public void applyOnAdjacentEgg(Card adjacentEgg, ElementBag elementBag, ElementSpaceLogic elementSpaceLogic,
             HatchingGround hatchingGround, Gui gui) {
-        if (adjacentEgg.handler == null) {
+        List<Family> dragonFamiliesList = Arrays.asList(dragonFamilies);
+        if (adjacentEgg.handler == null && dragonFamiliesList.contains(adjacentEgg.family)) {
             EggHatchingLogic wildEggHatchingLogic =
                     new EggHatchingLogic(gui, elementBag, hatchingGround, FakePlayer.getInstance());
             wildEggHatchingLogic.hatchEgg(adjacentEgg, true);
