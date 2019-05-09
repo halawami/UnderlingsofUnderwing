@@ -18,7 +18,7 @@ import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.handler.WildHandler;
 import underlings.player.Player;
-import underlings.utilities.WildEggHatchingLogic;
+import underlings.utilities.EggHatchingLogic;
 
 public class PlacementPhase extends RotationPhase {
 
@@ -80,9 +80,9 @@ public class PlacementPhase extends RotationPhase {
     }
 
     public void hatchWildDragon(Card card, Player player) {
-        WildEggHatchingLogic wildEggHatchingLogic =
-                new WildEggHatchingLogic(this.gui, this.elementBag, this.hatchingGround, player);
-        wildEggHatchingLogic.hatchWildEgg(card);
+        EggHatchingLogic wildEggHatchingLogic =
+                new EggHatchingLogic(this.gui, this.elementBag, this.hatchingGround, player);
+        wildEggHatchingLogic.hatchEgg(card, true);
         this.gameComplete = true;
         this.phaseComplete = true;
         for (Card groundCard : this.hatchingGround) {
