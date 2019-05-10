@@ -7,6 +7,7 @@ import java.util.function.Function;
 import javax.swing.JOptionPane;
 
 import underlings.card.Card;
+import underlings.card.EmptyCard;
 import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementGiver;
@@ -15,6 +16,7 @@ import underlings.game.HatchingGround;
 import underlings.handler.Handler;
 import underlings.handler.HandlerChoice;
 import underlings.handler.HandlerDecision;
+import underlings.player.Player;
 import underlings.utilities.LocaleWrap;
 
 public class Gui {
@@ -95,8 +97,19 @@ public class Gui {
         return null;
     }
 
-    public Card getEggToHatch(List<Card> mockedCards, int maxPoints) {
-
-        return null;
+    public Card getEggToHatch(Card[][] cards, int maxPoints, Player player) {
+        Card[][] validCards = new Card[cards.length][cards[0].length];
+        int count = 0;
+        for (int row = 0; row < cards.length; row++) {
+            for (int col = 0; col < cards[row].length; col++) {
+                if (cards[row][col].points <= maxPoints && cards[row][col].handler == null) {
+                    validCards[row][col] = (cards[row][col]);
+                    count++;
+                }
+            }
+        }
+        // TODO: Ask Wesley if there is a cleaner way without count?
+        return count == 0 ? EmptyCard.getInstance()
+                : this.promptHandler.pickCard("Choose a card", validCards, player.getPlayerId());
     }
 }
