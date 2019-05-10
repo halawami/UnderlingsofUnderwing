@@ -23,6 +23,7 @@ public class EggHatchingLogic {
         this.hatchingGround = hatchingGround;
     }
 
+    // TODO: add handler logic and add to player hatched cards
     public void hatchEgg(Card card, boolean domestic, Player player) {
         Effect[] effects;
         if (domestic) {
