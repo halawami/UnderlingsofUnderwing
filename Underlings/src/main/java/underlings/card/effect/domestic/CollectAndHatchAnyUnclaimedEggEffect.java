@@ -15,6 +15,6 @@ public class CollectAndHatchAnyUnclaimedEggEffect extends HatchingGroundEffect {
     @Override
     protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag,
             ElementSpaceLogic elementSpaceLogic, Gui gui, Player currentPlayer, EggHatchingLogic eggHatchingLogic) {
-        eggHatchingLogic.hatchEgg(hatchingGround.getAllCards().get(0), false, currentPlayer);
+
     }
 }

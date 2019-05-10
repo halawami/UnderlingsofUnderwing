@@ -19,6 +19,7 @@ public class CollectAndHatchAnyUnclaimedEggEffectTests {
     @Test
     public void testOneEggToHatch() {
         Player currentPlayer = EasyMock.mock(Player.class);
+        currentPlayer.hatchedCards = new ArrayList<>();
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         List<Card> mockedCards = this.getMockedCards(6);
         Gui gui = EasyMock.mock(Gui.class);
@@ -28,12 +29,15 @@ public class CollectAndHatchAnyUnclaimedEggEffectTests {
                 new CollectAndHatchAnyUnclaimedEggEffect();
         mockedCards.get(0).points = 5;
         EasyMock.expect(hatchingGround.getAllCards()).andReturn(mockedCards);
+        EasyMock.expect(gui.getEggToHatch(mockedCards, 5)).andReturn(mockedCards.get(0));
         eggHatchingLogic.hatchEgg(mockedCards.get(0), false, currentPlayer);
         collectAndHatchAnyUnclaimedEggEffect.on(gui).on(currentPlayer).on(hatchingGround).on(eggHatchingLogic);
 
         EasyMock.replay(currentPlayer, hatchingGround, gui, elementSpace, eggHatchingLogic);
 
+        collectAndHatchAnyUnclaimedEggEffect.points = 5;
         collectAndHatchAnyUnclaimedEggEffect.apply();
+
         EasyMock.verify(currentPlayer, hatchingGround, gui, elementSpace, eggHatchingLogic);
     }
 

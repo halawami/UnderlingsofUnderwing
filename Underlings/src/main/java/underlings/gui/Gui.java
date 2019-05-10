@@ -94,4 +94,9 @@ public class Gui {
         // ask Mohammad for information
         return null;
     }
+
+    public Card getEggToHatch(List<Card> mockedCards, int maxPoints) {
+
+        return null;
+    }
 }
