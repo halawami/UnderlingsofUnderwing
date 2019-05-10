@@ -1,7 +1,10 @@
-package underlings.gui;
+package underlings;
 
 import java.util.List;
 import java.util.Random;
+
+import underlings.gui.Choice;
+import underlings.gui.ConcretePrompt;
 
 public class TestPrompt extends ConcretePrompt {
     Random rand;
