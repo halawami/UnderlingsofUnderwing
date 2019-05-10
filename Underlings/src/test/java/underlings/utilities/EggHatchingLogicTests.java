@@ -96,7 +96,7 @@ public class EggHatchingLogicTests {
 
     @Test
     public void testOneDomesticEffect() {
-        Handler handler = EasyMock.mock(Handler.class);;
+        Handler handler = new Handler(HandlerState.CARD);
         card.handler = handler;
         EasyMock.expect(effect.on(elementBag)).andReturn(effect);
         EasyMock.expect(effect.on(hatchingGround)).andReturn(effect);
@@ -105,16 +105,17 @@ public class EggHatchingLogicTests {
         EasyMock.expect(effect.on(gui)).andReturn(effect);
         EggHatchingLogic domesticEggHatchingLogic = new EggHatchingLogic(gui, elementBag, hatchingGround);
         EasyMock.expect(effect.on(domesticEggHatchingLogic)).andReturn(effect);
+        card.handler.moveToState(HandlerState.READY_ROOM);
         effect.apply();
         gui.notifyAction(player.getPlayerId(), effect.toString() + " has been applied");
 
-        EasyMock.replay(effect, elementBag, hatchingGround, gui, handler);
+        EasyMock.replay(effect, elementBag, hatchingGround, gui);
 
         domesticEggHatchingLogic.hatchEgg(card, false, player);
         assertEquals(handler, card.handler);
-        assertEquals(HandlerState.READY_ROOM, card.handler.getState());
         assertTrue(player.hatchedCards.contains(card));
-        EasyMock.verify(effect, elementBag, hatchingGround, gui, handler);
+        assertEquals(HandlerState.READY_ROOM, handler.getState());
+        EasyMock.verify(effect, elementBag, hatchingGround, gui);
     }
 
     @Test

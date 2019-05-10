@@ -7,6 +7,7 @@ import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
+import underlings.handler.HandlerState;
 import underlings.handler.WildHandler;
 import underlings.player.Player;
 
@@ -23,7 +24,6 @@ public class EggHatchingLogic {
         this.hatchingGround = hatchingGround;
     }
 
-    // TODO: add handler logic and add to player hatched cards
     public void hatchEgg(Card card, boolean domestic, Player player) {
         Effect[] effects;
         if (domestic) {
@@ -31,6 +31,8 @@ public class EggHatchingLogic {
             effects = card.wildEffects;
         } else {
             effects = card.domesticEffects;
+            card.handler.moveToState(HandlerState.READY_ROOM);
+            player.hatchedCards.add(card);
         }
         for (int i = 0; i < effects.length; i++) {
             effects[i].on(this.elementBag).on(this.hatchingGround).on(player.elementSpaceLogic).on(player).on(this.gui)
