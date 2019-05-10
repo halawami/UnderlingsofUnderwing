@@ -1,8 +1,8 @@
 package underlings.gui;
 
-import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 import javax.swing.JOptionPane;
 
@@ -57,8 +57,17 @@ public class Gui {
         return new HandlerDecision(handler, handlerChoice);
     }
 
-    public Card getCard(List<Card> cards, int playerId, Dimension dim) {
-        Card card = this.promptHandler.promptChoice("Choose a card", cards, playerId);
+    public Card getCard(int playerId, HatchingGround hatchingGround, Function<Card, Boolean> isValid) {
+        Card[][] cards = new Card[hatchingGround.getHeight()][hatchingGround.getWidth()];
+        for (int w = 0; w < cards.length; w++) {
+            for (int h = 0; h < cards[w].length; h++) {
+                if (isValid.apply(hatchingGround.cards[w][h])) {
+                    cards[w][h] = hatchingGround.cards[w][h];
+                }
+            }
+        }
+
+        Card card = this.promptHandler.pickCard("Choose a card", cards, playerId);
         return card;
     }
 

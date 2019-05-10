@@ -259,6 +259,4 @@ public class ConcreteGui implements Display {
         }
     }
 
-
-
 }

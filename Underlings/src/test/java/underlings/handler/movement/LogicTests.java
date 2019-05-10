@@ -4,8 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-import java.awt.Dimension;
-import java.util.Collections;
+import com.google.common.base.Function;
 
 import org.easymock.EasyMock;
 import org.junit.Before;
@@ -84,15 +83,13 @@ public class LogicTests {
         assertTrue(handler.elementGiver.drawChoices.contains(DrawChoice.RED));
     }
 
+    @SuppressWarnings("unchecked")
     @Test
     public void testCard() {
         Card card = new Card();
 
-        EasyMock.expect(this.hatchingGround.getUnclaimedEggs()).andReturn(Collections.emptyList());
-
-        Dimension groundDimensions = new Dimension(2, 2);
-        EasyMock.expect(this.hatchingGround.getDimensions()).andReturn(groundDimensions);
-        EasyMock.expect(this.gui.getCard(Collections.emptyList(), 0, groundDimensions)).andReturn(card);
+        EasyMock.expect(this.gui.getCard(EasyMock.anyInt(), EasyMock.anyObject(HatchingGround.class),
+                EasyMock.anyObject(Function.class))).andReturn(card);
         EasyMock.replay(this.hatchingGround, this.gui);
 
         Handler handler = new Handler(HandlerState.READY_ROOM);
