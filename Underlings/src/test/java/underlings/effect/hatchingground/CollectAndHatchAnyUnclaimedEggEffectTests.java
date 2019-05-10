@@ -12,6 +12,7 @@ import underlings.element.ElementSpace;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.player.Player;
+import underlings.utilities.EggHatchingLogic;
 
 public class CollectAndHatchAnyUnclaimedEggEffectTests {
 
@@ -22,17 +23,18 @@ public class CollectAndHatchAnyUnclaimedEggEffectTests {
         List<Card> mockedCards = this.getMockedCards(6);
         Gui gui = EasyMock.mock(Gui.class);
         ElementSpace elementSpace = EasyMock.mock(ElementSpace.class);
+        EggHatchingLogic eggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
         CollectAndHatchAnyUnclaimedEggEffect collectAndHatchAnyUnclaimedEggEffect =
                 new CollectAndHatchAnyUnclaimedEggEffect();
         mockedCards.get(0).points = 5;
-        collectAndHatchAnyUnclaimedEggEffect.on(gui).on(currentPlayer).on(hatchingGround);
         EasyMock.expect(hatchingGround.getAllCards()).andReturn(mockedCards);
+        eggHatchingLogic.hatchEgg(mockedCards.get(0), false, currentPlayer);
+        collectAndHatchAnyUnclaimedEggEffect.on(gui).on(currentPlayer).on(hatchingGround).on(eggHatchingLogic);
 
-        EasyMock.replay(currentPlayer, hatchingGround, gui, elementSpace);
+        EasyMock.replay(currentPlayer, hatchingGround, gui, elementSpace, eggHatchingLogic);
 
         collectAndHatchAnyUnclaimedEggEffect.apply();
-
-        EasyMock.verify(currentPlayer, hatchingGround, gui, elementSpace);
+        EasyMock.verify(currentPlayer, hatchingGround, gui, elementSpace, eggHatchingLogic);
     }
 
     private List<Card> getMockedCards(int numberOfCards) {
