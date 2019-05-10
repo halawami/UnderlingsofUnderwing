@@ -24,14 +24,14 @@ public class CollectAndHatchAnyUnclaimedEggEffectTests {
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         List<Card> mockedCards = this.getMockedCards(6);
         Gui gui = EasyMock.mock(Gui.class);
-        ElementSpace elementSpace = EasyMock.mock(ElementSpace.class);
         EggHatchingLogic eggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
-        CollectAndHatchAnyUnclaimedEggEffect collectAndHatchAnyUnclaimedEggEffect =
-                new CollectAndHatchAnyUnclaimedEggEffect();
         mockedCards.get(0).points = 5;
         EasyMock.expect(gui.getEggToHatch(hatchingGround.cards, 5, currentPlayer)).andReturn(mockedCards.get(0));
         eggHatchingLogic.hatchEgg(mockedCards.get(0), false, currentPlayer);
+        CollectAndHatchAnyUnclaimedEggEffect collectAndHatchAnyUnclaimedEggEffect =
+                new CollectAndHatchAnyUnclaimedEggEffect();
         collectAndHatchAnyUnclaimedEggEffect.on(gui).on(currentPlayer).on(hatchingGround).on(eggHatchingLogic);
+        ElementSpace elementSpace = EasyMock.mock(ElementSpace.class);
 
         EasyMock.replay(currentPlayer, hatchingGround, gui, elementSpace, eggHatchingLogic);
 
@@ -48,13 +48,13 @@ public class CollectAndHatchAnyUnclaimedEggEffectTests {
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         List<Card> mockedCards = this.getMockedCards(6);
         Gui gui = EasyMock.mock(Gui.class);
-        ElementSpace elementSpace = EasyMock.mock(ElementSpace.class);
         EggHatchingLogic eggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
         CollectAndHatchAnyUnclaimedEggEffect collectAndHatchAnyUnclaimedEggEffect =
                 new CollectAndHatchAnyUnclaimedEggEffect();
         mockedCards.get(0).points = 5;
         EasyMock.expect(gui.getEggToHatch(hatchingGround.cards, 5, currentPlayer)).andReturn(EmptyCard.getInstance());
         collectAndHatchAnyUnclaimedEggEffect.on(gui).on(currentPlayer).on(hatchingGround).on(eggHatchingLogic);
+        ElementSpace elementSpace = EasyMock.mock(ElementSpace.class);
 
         EasyMock.replay(currentPlayer, hatchingGround, gui, elementSpace, eggHatchingLogic);
 

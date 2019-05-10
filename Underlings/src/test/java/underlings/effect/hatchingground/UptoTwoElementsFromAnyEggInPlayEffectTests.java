@@ -26,10 +26,6 @@ public class UptoTwoElementsFromAnyEggInPlayEffectTests {
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         List<Card> mockedCards = this.getMockedCards(6);
         Gui gui = EasyMock.mock(Gui.class);
-        ElementSpace elementSpace1 = EasyMock.mock(ElementSpace.class);
-        ElementSpace elementSpace2 = EasyMock.mock(ElementSpace.class);
-        Element element1 = EasyMock.mock(Element.class);
-        Element element2 = EasyMock.mock(Element.class);
         UptoTwoElementsFromAnyEggInPlayEffect testedEffect =
                 EasyMock.partialMockBuilder(UptoTwoElementsFromAnyEggInPlayEffect.class)
                         .addMockedMethod("applyOnSelectedElement").createMock();
@@ -37,12 +33,16 @@ public class UptoTwoElementsFromAnyEggInPlayEffectTests {
         testedEffect.on(gui).on(currentPlayer).on(hatchingGround);
 
         EasyMock.expect(hatchingGround.getAllCards()).andReturn(mockedCards);
+        ElementSpace elementSpace1 = EasyMock.mock(ElementSpace.class);
         EasyMock.expect(gui.getElementSpaceContainingElementOfColors(mockedCards, testedEffect.elementChoices))
                 .andReturn(elementSpace1);
+        ElementSpace elementSpace2 = EasyMock.mock(ElementSpace.class);
         EasyMock.expect(gui.getElementSpaceContainingElementOfColors(mockedCards, testedEffect.elementChoices))
                 .andReturn(elementSpace2);
+        Element element1 = EasyMock.mock(Element.class);
         EasyMock.expect(gui.getElementOfColorsFromSpace(testedEffect.elementChoices, elementSpace1))
                 .andReturn(element1);
+        Element element2 = EasyMock.mock(Element.class);
         EasyMock.expect(gui.getElementOfColorsFromSpace(testedEffect.elementChoices, elementSpace2))
                 .andReturn(element2);
 
@@ -87,13 +87,13 @@ public class UptoTwoElementsFromAnyEggInPlayEffectTests {
         Player currentPlayer = EasyMock.mock(Player.class);
         ElementSpace elementSpace = EasyMock.mock(ElementSpace.class);
         Element element = EasyMock.mock(Element.class);
-        DestroyUpToTwoElementsOnAnyEggInPlayEffect testedEffect = new DestroyUpToTwoElementsOnAnyEggInPlayEffect();
 
         EasyMock.expect(element.getColor()).andReturn(ElementColor.BLUE);
         elementSpace.destroyOneElementOfColor(ElementColor.BLUE);
 
         EasyMock.replay(currentPlayer, elementSpace, element);
 
+        DestroyUpToTwoElementsOnAnyEggInPlayEffect testedEffect = new DestroyUpToTwoElementsOnAnyEggInPlayEffect();
         testedEffect.applyOnSelectedElement(element, elementSpace, currentPlayer);
 
         EasyMock.verify(currentPlayer, elementSpace, element);
@@ -104,13 +104,13 @@ public class UptoTwoElementsFromAnyEggInPlayEffectTests {
         Player currentPlayer = EasyMock.mock(Player.class);
         ElementSpace elementSpace = EasyMock.mock(ElementSpace.class);
         Element element = NullElement.getInstance();
-        CollectUpToTwoElementsFromAnyEggInPlayEffect testedEffect = new CollectUpToTwoElementsFromAnyEggInPlayEffect();
 
         currentPlayer.addElement(element);
         elementSpace.destroyOneElementOfColor(element.getColor());
 
         EasyMock.replay(currentPlayer, elementSpace);
 
+        CollectUpToTwoElementsFromAnyEggInPlayEffect testedEffect = new CollectUpToTwoElementsFromAnyEggInPlayEffect();
         testedEffect.applyOnSelectedElement(element, elementSpace, currentPlayer);
 
         EasyMock.verify(currentPlayer, elementSpace);
@@ -122,7 +122,6 @@ public class UptoTwoElementsFromAnyEggInPlayEffectTests {
         Player currentPlayer = EasyMock.mock(Player.class);
         ElementSpace elementSpace = EasyMock.mock(ElementSpace.class);
         Element element = EasyMock.mock(Element.class);
-        CollectUpToTwoElementsFromAnyEggInPlayEffect testedEffect = new CollectUpToTwoElementsFromAnyEggInPlayEffect();
 
         currentPlayer.addElement(element);
         EasyMock.expect(element.getColor()).andReturn(ElementColor.BLUE);
@@ -130,6 +129,7 @@ public class UptoTwoElementsFromAnyEggInPlayEffectTests {
 
         EasyMock.replay(currentPlayer, elementSpace, element);
 
+        CollectUpToTwoElementsFromAnyEggInPlayEffect testedEffect = new CollectUpToTwoElementsFromAnyEggInPlayEffect();
         testedEffect.applyOnSelectedElement(element, elementSpace, currentPlayer);
 
         EasyMock.verify(currentPlayer, elementSpace, element);
