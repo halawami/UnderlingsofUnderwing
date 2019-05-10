@@ -1,6 +1,7 @@
 package underlings.utilities;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
 
@@ -17,6 +18,7 @@ import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.handler.Handler;
 import underlings.handler.HandlerFactory;
+import underlings.handler.HandlerState;
 import underlings.handler.WildHandler;
 import underlings.player.Player;
 import underlings.player.PlayerFactory;
@@ -110,7 +112,8 @@ public class EggHatchingLogicTests {
 
         domesticEggHatchingLogic.hatchEgg(card, false, player);
         assertEquals(handler, card.handler);
-
+        assertEquals(HandlerState.READY_ROOM, card.handler.getState());
+        assertTrue(player.hatchedCards.contains(card));
         EasyMock.verify(effect, elementBag, hatchingGround, gui, handler);
     }
 
