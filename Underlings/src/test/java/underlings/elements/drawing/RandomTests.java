@@ -15,193 +15,177 @@ import underlings.element.ElementFactory;
 
 public class RandomTests {
 
-    private ElementBag elementBag;
-    private Random random;
+	private ElementBag elementBag;
+	private Random random;
 
-    @Before
-    public void init() {
-        ElementFactory elementFactory = new ElementFactory();
-        this.random = EasyMock.createMock(Random.class);
-        this.elementBag = new ElementBag(elementFactory, this.random);
-    }
+	@Before
+	public void init() {
+		ElementFactory elementFactory = new ElementFactory();
+		this.random = EasyMock.createMock(Random.class);
+		this.elementBag = new ElementBag(elementFactory, this.random);
+	}
 
-    @Test
-    public void testCompletlyRandomRed() {
-        EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(30);
-        EasyMock.replay(this.random);
+	private void randomMock(int returnValue) {
+		EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(returnValue);
+		EasyMock.replay(this.random);
+	}
 
-        Element drawnElement = this.elementBag.drawRandomElement();
-        assertEquals(ElementColor.RED, drawnElement.getColor());
-    }
+	@Test
+	public void testCompletlyRandomRed() {
+		this.randomMock(30);
 
-    @Test
-    public void testCompletlyRandomBlue() {
-        EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(10);
-        EasyMock.replay(this.random);
+		Element drawnElement = this.elementBag.drawRandomElement();
+		assertEquals(ElementColor.RED, drawnElement.getColor());
+	}
 
-        Element drawnElement = this.elementBag.drawRandomElement();
-        assertEquals(ElementColor.BLUE, drawnElement.getColor());
-    }
+	@Test
+	public void testCompletlyRandomBlue() {
+		this.randomMock(10);
 
-    @Test
-    public void testCompletlyRandomYellow() {
-        EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(50);
-        EasyMock.replay(this.random);
+		Element drawnElement = this.elementBag.drawRandomElement();
+		assertEquals(ElementColor.BLUE, drawnElement.getColor());
+	}
 
-        Element drawnElement = this.elementBag.drawRandomElement();
-        assertEquals(ElementColor.YELLOW, drawnElement.getColor());
-    }
+	@Test
+	public void testCompletlyRandomYellow() {
+		this.randomMock(50);
 
-    @Test
-    public void testCompletlyRandomPurple() {
-        EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(65);
-        EasyMock.replay(this.random);
+		Element drawnElement = this.elementBag.drawRandomElement();
+		assertEquals(ElementColor.YELLOW, drawnElement.getColor());
+	}
 
-        Element drawnElement = this.elementBag.drawRandomElement();
-        assertEquals(ElementColor.PURPLE, drawnElement.getColor());
-    }
+	@Test
+	public void testCompletlyRandomPurple() {
+		this.randomMock(65);
 
-    @Test
-    public void testCompletlyRandomGreen() {
-        EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(75);
-        EasyMock.replay(this.random);
+		Element drawnElement = this.elementBag.drawRandomElement();
+		assertEquals(ElementColor.PURPLE, drawnElement.getColor());
+	}
 
-        Element drawnElement = this.elementBag.drawRandomElement();
-        assertEquals(ElementColor.GREEN, drawnElement.getColor());
-    }
+	@Test
+	public void testCompletlyRandomGreen() {
+		this.randomMock(75);
 
-    @Test
-    public void testCompletlyRandomOrange() {
-        EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(85);
-        EasyMock.replay(this.random);
+		Element drawnElement = this.elementBag.drawRandomElement();
+		assertEquals(ElementColor.GREEN, drawnElement.getColor());
+	}
 
-        Element drawnElement = this.elementBag.drawRandomElement();
-        assertEquals(ElementColor.ORANGE, drawnElement.getColor());
-    }
+	@Test
+	public void testCompletlyRandomOrange() {
+		this.randomMock(85);
 
-    @Test
-    public void testCompletlyRandomBlack() {
-        EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(97);
-        EasyMock.replay(this.random);
+		Element drawnElement = this.elementBag.drawRandomElement();
+		assertEquals(ElementColor.ORANGE, drawnElement.getColor());
+	}
 
-        Element drawnElement = this.elementBag.drawRandomElement();
-        assertEquals(ElementColor.BLACK, drawnElement.getColor());
-    }
+	@Test
+	public void testCompletlyRandomBlack() {
+		this.randomMock(97);
+		Element drawnElement = this.elementBag.drawRandomElement();
+		assertEquals(ElementColor.BLACK, drawnElement.getColor());
+	}
 
-    @Test
-    public void testCompletlyRandomWhite() {
-        EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(92);
-        EasyMock.replay(this.random);
+	@Test
+	public void testCompletlyRandomWhite() {
+		this.randomMock(92);
 
-        Element drawnElement = this.elementBag.drawRandomElement();
-        assertEquals(ElementColor.WHITE, drawnElement.getColor());
-    }
+		Element drawnElement = this.elementBag.drawRandomElement();
+		assertEquals(ElementColor.WHITE, drawnElement.getColor());
+	}
 
-    @Test
-    public void testPrimaryRandomRed() {
-        EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(30);
-        EasyMock.replay(this.random);
+	@Test
+	public void testPrimaryRandomRed() {
+		this.randomMock(30);
 
-        Element drawnElement = this.elementBag.drawRandomPrimaryElement();
-        assertEquals(ElementColor.RED, drawnElement.getColor());
-    }
+		Element drawnElement = this.elementBag.drawRandomPrimaryElement();
+		assertEquals(ElementColor.RED, drawnElement.getColor());
+	}
 
-    @Test
-    public void testPrimaryRandomBlue() {
-        EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(10);
-        EasyMock.replay(this.random);
+	@Test
+	public void testPrimaryRandomBlue() {
+		this.randomMock(10);
 
-        Element drawnElement = this.elementBag.drawRandomPrimaryElement();
-        assertEquals(ElementColor.BLUE, drawnElement.getColor());
-    }
+		Element drawnElement = this.elementBag.drawRandomPrimaryElement();
+		assertEquals(ElementColor.BLUE, drawnElement.getColor());
+	}
 
-    @Test
-    public void testPrimaryRandomYellow() {
-        EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(50);
-        EasyMock.replay(this.random);
+	@Test
+	public void testPrimaryRandomYellow() {
+		this.randomMock(50);
 
-        Element drawnElement = this.elementBag.drawRandomPrimaryElement();
-        assertEquals(ElementColor.YELLOW, drawnElement.getColor());
-    }
+		Element drawnElement = this.elementBag.drawRandomPrimaryElement();
+		assertEquals(ElementColor.YELLOW, drawnElement.getColor());
+	}
 
-    @Test
-    public void testSecondaryRandomPurple() {
-        EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(5);
-        EasyMock.replay(this.random);
+	@Test
+	public void testSecondaryRandomPurple() {
+		this.randomMock(5);
 
-        Element drawnElement = this.elementBag.drawRandomSecondayElement();
-        assertEquals(ElementColor.PURPLE, drawnElement.getColor());
-    }
+		Element drawnElement = this.elementBag.drawRandomSecondayElement();
+		assertEquals(ElementColor.PURPLE, drawnElement.getColor());
+	}
 
-    @Test
-    public void testSecondaryRandomGreen() {
-        EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(15);
-        EasyMock.replay(this.random);
+	@Test
+	public void testSecondaryRandomGreen() {
+		this.randomMock(15);
 
-        Element drawnElement = this.elementBag.drawRandomSecondayElement();
-        assertEquals(ElementColor.GREEN, drawnElement.getColor());
-    }
+		Element drawnElement = this.elementBag.drawRandomSecondayElement();
+		assertEquals(ElementColor.GREEN, drawnElement.getColor());
+	}
 
-    @Test
-    public void testSecondaryRandomOrange() {
-        EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(25);
-        EasyMock.replay(this.random);
+	@Test
+	public void testSecondaryRandomOrange() {
+		this.randomMock(25);
 
-        Element drawnElement = this.elementBag.drawRandomSecondayElement();
-        assertEquals(ElementColor.ORANGE, drawnElement.getColor());
-    }
+		Element drawnElement = this.elementBag.drawRandomSecondayElement();
+		assertEquals(ElementColor.ORANGE, drawnElement.getColor());
+	}
 
-    @Test
-    public void testCoolRandomBlue() {
-        EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(5);
-        EasyMock.replay(this.random);
+	@Test
+	public void testCoolRandomBlue() {
+		this.randomMock(5);
 
-        Element drawnElement = this.elementBag.drawCoolElement();
-        assertEquals(ElementColor.BLUE, drawnElement.getColor());
-    }
+		Element drawnElement = this.elementBag.drawCoolElement();
+		assertEquals(ElementColor.BLUE, drawnElement.getColor());
+	}
 
-    @Test
-    public void testCoolRandomGreen() {
-        EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(25);
-        EasyMock.replay(this.random);
+	@Test
+	public void testCoolRandomGreen() {
+		this.randomMock(25);
 
-        Element drawnElement = this.elementBag.drawCoolElement();
-        assertEquals(ElementColor.GREEN, drawnElement.getColor());
-    }
+		Element drawnElement = this.elementBag.drawCoolElement();
+		assertEquals(ElementColor.GREEN, drawnElement.getColor());
+	}
 
-    @Test
-    public void testCoolRandomPurple() {
-        EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(35);
-        EasyMock.replay(this.random);
+	@Test
+	public void testCoolRandomPurple() {
+		this.randomMock(35);
 
-        Element drawnElement = this.elementBag.drawCoolElement();
-        assertEquals(ElementColor.PURPLE, drawnElement.getColor());
-    }
+		Element drawnElement = this.elementBag.drawCoolElement();
+		assertEquals(ElementColor.PURPLE, drawnElement.getColor());
+	}
 
-    @Test
-    public void testWarmRandomRed() {
-        EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(10);
-        EasyMock.replay(this.random);
+	@Test
+	public void testWarmRandomRed() {
+		this.randomMock(10);
 
-        Element drawnElement = this.elementBag.drawWarmElement();
-        assertEquals(ElementColor.RED, drawnElement.getColor());
-    }
+		Element drawnElement = this.elementBag.drawWarmElement();
+		assertEquals(ElementColor.RED, drawnElement.getColor());
+	}
 
-    @Test
-    public void testWarmRandomYellow() {
-        EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(25);
-        EasyMock.replay(this.random);
+	@Test
+	public void testWarmRandomYellow() {
+		this.randomMock(25);
 
-        Element drawnElement = this.elementBag.drawWarmElement();
-        assertEquals(ElementColor.YELLOW, drawnElement.getColor());
-    }
+		Element drawnElement = this.elementBag.drawWarmElement();
+		assertEquals(ElementColor.YELLOW, drawnElement.getColor());
+	}
 
-    @Test
-    public void testWarmRandomOrange() {
-        EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(45);
-        EasyMock.replay(this.random);
+	@Test
+	public void testWarmRandomOrange() {
+		this.randomMock(45);
 
-        Element drawnElement = this.elementBag.drawWarmElement();
-        assertEquals(ElementColor.ORANGE, drawnElement.getColor());
-    }
+		Element drawnElement = this.elementBag.drawWarmElement();
+		assertEquals(ElementColor.ORANGE, drawnElement.getColor());
+	}
 }
