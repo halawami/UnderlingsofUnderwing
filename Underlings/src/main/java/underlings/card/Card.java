@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import underlings.card.effect.Effect;
-import underlings.card.effect.domestic.ElementGiverEffect;
+import underlings.card.effect.ElementGiverEffect;
 import underlings.element.ElementGiver;
 import underlings.element.ElementSpace;
 import underlings.gui.Choice;
