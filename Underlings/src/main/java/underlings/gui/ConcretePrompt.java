@@ -55,6 +55,7 @@ public class ConcretePrompt implements PromptHandler {
             }
         }
         optionPane.add(panel, 1);
+        optionPane.remove(2);
 
         JDialog dialog = optionPane.createDialog(null, "Player " + playerId);
         dialog.setVisible(true);
