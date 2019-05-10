@@ -1,16 +1,16 @@
 package underlings.game;
 
-import underlings.card.Card;
-import underlings.element.utilities.ElementSpaceLogic;
-import underlings.gui.Gui;
-import underlings.handler.Handler;
-import underlings.handler.WildHandler;
-
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+
+import underlings.card.Card;
+import underlings.element.utilities.ElementSpaceLogic;
+import underlings.handler.Handler;
+import underlings.handler.WildHandler;
 
 public class HatchingGround implements Iterable<Card> {
 
@@ -36,19 +36,15 @@ public class HatchingGround implements Iterable<Card> {
         this.height = height;
     }
 
+    public Dimension getDimensions() {
+        return new Dimension(this.width, this.height);
+    }
+
     public void populate() {
         this.cards = new Card[this.height][this.width];
         for (int row = 0; row < this.height; row++) {
             for (int col = 0; col < this.width; col++) {
                 this.cards[row][col] = this.deck.draw();
-            }
-        }
-    }
-
-    public void display(Gui gui) {
-        for (int row = 0; row < this.height; row++) {
-            for (int col = 0; col < this.width; col++) {
-                gui.display.displayCard(row, col, this.cards[row][col]);
             }
         }
     }
@@ -73,8 +69,7 @@ public class HatchingGround implements Iterable<Card> {
                 int distanceFromCard = Math.abs(diffX) + Math.abs(diffY);
                 int adjacentCardY = cardCoordinates.y + diffY;
                 int adjacentCardX = cardCoordinates.x + diffX;
-                if (distanceFromCard == 1
-                        && coordinatesInBounds(adjacentCardY, adjacentCardX)) {
+                if (distanceFromCard == 1 && coordinatesInBounds(adjacentCardY, adjacentCardX)) {
                     cardsToReturn.add(this.cards[adjacentCardY][adjacentCardX]);
                 }
             }
@@ -112,8 +107,7 @@ public class HatchingGround implements Iterable<Card> {
 
             @Override
             public Card next() {
-                Card card =
-                        HatchingGround.this.cards[this.row - 1][this.col - 1];
+                Card card = HatchingGround.this.cards[this.row - 1][this.col - 1];
                 if (this.col == HatchingGround.this.width) {
                     this.col = 1;
                     this.row++;
@@ -133,8 +127,7 @@ public class HatchingGround implements Iterable<Card> {
         for (int row = 0; row < this.height; row++) {
             for (int col = 0; col < this.width; col++) {
                 Card currentCard = this.cards[row][col];
-                if (elementSpaceLogic.isComplete(currentCard)
-                        && currentCard.handler != WildHandler.getInstance()) {
+                if (elementSpaceLogic.isComplete(currentCard) && currentCard.handler != WildHandler.getInstance()) {
                     completeEggs.add(this.cards[row][col]);
                     this.cards[row][col] = this.deck.draw();
                 }
@@ -149,6 +142,10 @@ public class HatchingGround implements Iterable<Card> {
                 return card;
             }
         }
+        return null;
+    }
+
+    public List<Card> getAllCards() {
         return null;
     }
 }

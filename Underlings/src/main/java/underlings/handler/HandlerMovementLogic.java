@@ -1,5 +1,7 @@
 package underlings.handler;
 
+import java.util.function.Function;
+
 import underlings.card.Card;
 import underlings.field.Field;
 import underlings.game.HatchingGround;
@@ -11,8 +13,7 @@ public class HandlerMovementLogic {
     private Gui gui;
     private Field field;
 
-    public HandlerMovementLogic(HatchingGround hatchingGround, Gui gui,
-            Field field) {
+    public HandlerMovementLogic(HatchingGround hatchingGround, Gui gui, Field field) {
         this.hatchingGround = hatchingGround;
         this.gui = gui;
         this.field = field;
@@ -29,8 +30,11 @@ public class HandlerMovementLogic {
                 break;
             case CARD:
                 handler.moveToState(choice.getState());
-                Card chosenCard = this.gui.getCard(
-                        this.hatchingGround.getUnclaimedEggs(), playerId);
+
+                Function<Card, Boolean> f = (Card c) -> {
+                    return hatchingGround.getUnclaimedEggs().contains(c);
+                };
+                Card chosenCard = this.gui.getCard(playerId, this.hatchingGround, f);
                 chosenCard.handler = handler;
                 handler.setLocation(chosenCard.name);
                 break;

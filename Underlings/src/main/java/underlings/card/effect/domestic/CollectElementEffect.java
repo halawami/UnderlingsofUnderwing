@@ -1,10 +1,13 @@
 package underlings.card.effect.domestic;
 
+import java.text.MessageFormat;
+
 import underlings.card.effect.ElementEffect;
 import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.player.Player;
+import underlings.utilities.LocaleWrap;
 
 public class CollectElementEffect extends ElementEffect {
 
@@ -12,7 +15,6 @@ public class CollectElementEffect extends ElementEffect {
 
     @Override
     protected void apply(Player player, ElementBag elementBag) {
-
         Element element = elementBag.drawElementFromList(this.elementChoices);
         player.addElement(element);
 
@@ -25,7 +27,6 @@ public class CollectElementEffect extends ElementEffect {
             elements.append(color);
             elements.append(" ");
         }
-        return "Collect one of the following elements randomly: [ " + elements
-                + "]";
+        return MessageFormat.format(LocaleWrap.get("collect_element_effect"), elements);
     }
 }

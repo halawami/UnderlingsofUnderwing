@@ -19,12 +19,12 @@
         "effect": "GainOneHandlerEffect"
       },
       {
-        "effect": "CollectPrimaryElementEffect"
+        "effect": "CollectElementEffect"
       }
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect"
+        "effect": "AddElementsEffect"
       }
     ]
   }

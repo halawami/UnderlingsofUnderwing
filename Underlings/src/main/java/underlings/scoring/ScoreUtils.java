@@ -11,7 +11,7 @@ import underlings.player.Player;
 
 public class ScoreUtils {
 
-    public Map<Player, Integer> calculateScores(List<Player> players) {
+    public Map<Player, Integer> calculateScores(List<Player> players, boolean bonus) {
         Map<Player, Integer> scores = new HashMap<>();
 
         int warmest = 0;
@@ -24,19 +24,19 @@ public class ScoreUtils {
             int temp = this.calculateTemperature(player.hatchedCards);
 
             if (temp != 0) {
-                if (temp == warmest) {
-                    warmestPlayers.add(player);
-                } else if (temp > warmest) {
+                if (temp > warmest) {
                     warmest = temp;
                     warmestPlayers = new ArrayList<>();
                     warmestPlayers.add(player);
+                } else if (temp == warmest) {
+                    warmestPlayers.add(player);
                 }
 
-                if (temp == coolest) {
-                    coolestPlayers.add(player);
-                } else if (temp < coolest) {
+                if (temp < coolest) {
                     coolest = temp;
                     coolestPlayers = new ArrayList<>();
+                    coolestPlayers.add(player);
+                } else if (temp == coolest) {
                     coolestPlayers.add(player);
                 }
             }
@@ -46,12 +46,10 @@ public class ScoreUtils {
         for (Player player : players) {
             int score = 0;
 
-            if (players.size() > 2) {
+            if (bonus) {
                 score += (warmestPlayers.contains(player)) ? 15 : 0;
                 score += (coolestPlayers.contains(player)) ? 15 : 0;
-                score += (this.calculateTemperature(player.hatchedCards)) == 0
-                        ? 20
-                        : 0;
+                score += (this.calculateTemperature(player.hatchedCards)) == 0 ? 20 : 0;
             }
 
             score += this.calculatePoints(player.hatchedCards);
@@ -77,8 +75,7 @@ public class ScoreUtils {
 
         for (Card card : cards) {
             Temperature temp = card.temperature;
-            balance += (temp == Temperature.WARM) ? 1
-                    : (temp == Temperature.COOL) ? -1 : 0;
+            balance += (temp == Temperature.WARM) ? 1 : (temp == Temperature.COOL) ? -1 : 0;
         }
 
         return balance;

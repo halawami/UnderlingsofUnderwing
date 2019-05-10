@@ -1,5 +1,6 @@
 package underlings.player;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,10 +11,13 @@ import underlings.element.NullElement;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.handler.Handler;
 import underlings.handler.HandlerFactory;
+import underlings.handler.HandlerState;
+import underlings.utilities.LocaleWrap;
 
 public class Player {
 
     private List<Handler> handlers;
+    public List<ElementGiver> effectElementGiver;
     private int maxHandlers;
     private int points;
     private boolean reached12Points;
@@ -25,9 +29,9 @@ public class Player {
     public List<Card> unhatchedCards;
     public ElementSpaceLogic elementSpaceLogic;
 
-    public Player(int maxHandlers, HandlerFactory handlerFactory,
-            int playerId) {
+    public Player(int maxHandlers, HandlerFactory handlerFactory, int playerId) {
         this.handlers = new ArrayList<>();
+        this.effectElementGiver = new ArrayList<>();
         this.elements = new ArrayList<>();
         this.hatchedCards = new ArrayList<>();
         this.unhatchedCards = new ArrayList<>();
@@ -105,6 +109,9 @@ public class Player {
         for (Handler handler : this.getHandlers()) {
             elementGivers.add(handler.elementGiver);
         }
+        for (Card card : this.hatchedCards) {
+            elementGivers.addAll(card.getElementGivers());
+        }
 
         return elementGivers;
     }
@@ -113,9 +120,18 @@ public class Player {
         return this.playerId;
     }
 
+    public boolean hasCard(Card card) {
+        if (this.getHandlers().contains(card.handler)) {
+            this.unhatchedCards.add(card);
+            card.handler.moveToState(HandlerState.INCUBATION);
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
-        return "Player " + this.getPlayerId();
+        return MessageFormat.format(LocaleWrap.get("player_number"), this.getPlayerId());
     }
 
 }

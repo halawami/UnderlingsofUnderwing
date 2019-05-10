@@ -20,13 +20,17 @@
       },
       {
         "effect": "CollectElementEffect",
-        "elementChoices": ["YELLOW"]
+        "elementChoices": [
+          "YELLOW"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["WHITE"]
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "WHITE"
+        ]
       }
     ]
   },
@@ -51,13 +55,17 @@
       },
       {
         "effect": "CollectElementEffect",
-        "elementChoices": ["BLUE"]
+        "elementChoices": [
+          "BLUE"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["BLACK"]
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "BLACK"
+        ]
       }
     ]
   },
@@ -79,13 +87,18 @@
     "domesticEffects": [
       {
         "effect": "CollectElementEffect",
-        "elementChoices": ["YELLOW", "BLUE"]
+        "elementChoices": [
+          "YELLOW",
+          "BLUE"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["GREEN"]
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "GREEN"
+        ]
       }
     ]
   },
@@ -107,7 +120,9 @@
     "domesticEffects": [
       {
         "effect": "CollectElementEffect",
-        "elementChoices": ["RED"]
+        "elementChoices": [
+          "RED"
+        ]
       },
       {
         "effect": "GainOneHandlerEffect"
@@ -115,8 +130,10 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["WHITE"]
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "WHITE"
+        ]
       }
     ]
   },
@@ -138,13 +155,18 @@
     "domesticEffects": [
       {
         "effect": "CollectElementEffect",
-        "elementChoices": ["RED", "ORANGE"]
+        "elementChoices": [
+          "RED",
+          "ORANGE"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["ORANGE"]
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "ORANGE"
+        ]
       }
     ]
   },
@@ -166,13 +188,18 @@
     "domesticEffects": [
       {
         "effect": "CollectElementEffect",
-        "elementChoices": ["PURPLE", "YELLOW"]
+        "elementChoices": [
+          "PURPLE",
+          "YELLOW"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["PURPLE"]
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "PURPLE"
+        ]
       }
     ]
   },
@@ -194,13 +221,18 @@
     "domesticEffects": [
       {
         "effect": "CollectElementEffect",
-        "elementChoices": ["PURPLE", "RED"]
+        "elementChoices": [
+          "PURPLE",
+          "RED"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["RED"]
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "RED"
+        ]
       }
     ]
   },
@@ -222,13 +254,18 @@
     "domesticEffects": [
       {
         "effect": "CollectElementEffect",
-        "elementChoices": ["YELLOW", "RED"]
+        "elementChoices": [
+          "YELLOW",
+          "RED"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["ORANGE"]
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "ORANGE"
+        ]
       }
     ]
   },
@@ -250,13 +287,18 @@
     "domesticEffects": [
       {
         "effect": "CollectElementEffect",
-        "elementChoices": ["PURPLE", "BLUE"]
+        "elementChoices": [
+          "PURPLE",
+          "BLUE"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["PURPLE"]
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "PURPLE"
+        ]
       }
     ]
   },
@@ -278,13 +320,18 @@
     "domesticEffects": [
       {
         "effect": "CollectElementEffect",
-        "elementChoices": ["BLUE", "GREEN"]
+        "elementChoices": [
+          "BLUE",
+          "GREEN"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["BLUE"]
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "BLUE"
+        ]
       }
     ]
   },
@@ -306,13 +353,18 @@
     "domesticEffects": [
       {
         "effect": "CollectElementEffect",
-        "elementChoices": ["YELLOW", "ORANGE"]
+        "elementChoices": [
+          "YELLOW",
+          "ORANGE"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["YELLOW"]
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "YELLOW"
+        ]
       }
     ]
   },
@@ -334,13 +386,18 @@
     "domesticEffects": [
       {
         "effect": "CollectElementEffect",
-        "elementChoices": ["BLUE", "RED"]
+        "elementChoices": [
+          "BLUE",
+          "RED"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["PURPLE"]
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "PURPLE"
+        ]
       }
     ]
   },
@@ -362,13 +419,18 @@
     "domesticEffects": [
       {
         "effect": "CollectElementEffect",
-        "elementChoices": ["BLUE", "ORANGE"]
+        "elementChoices": [
+          "BLUE",
+          "ORANGE"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["ORANGE"]
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "ORANGE"
+        ]
       }
     ]
   },
@@ -390,13 +452,18 @@
     "domesticEffects": [
       {
         "effect": "CollectElementEffect",
-        "elementChoices": ["RED", "GREEN"]
+        "elementChoices": [
+          "RED",
+          "GREEN"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["GREEN"]
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "GREEN"
+        ]
       }
     ]
   },
@@ -418,13 +485,18 @@
     "domesticEffects": [
       {
         "effect": "CollectElementEffect",
-        "elementChoices": ["YELLOW", "GREEN"]
+        "elementChoices": [
+          "YELLOW",
+          "GREEN"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["GREEN"]
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "GREEN"
+        ]
       }
     ]
   },
@@ -454,12 +526,16 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["GREEN"]
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "GREEN"
+        ]
       },
-	  {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["BLUE"]
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "BLUE"
+        ]
       }
     ]
   },
@@ -485,19 +561,33 @@
     "domesticEffects": [
       {
         "effect": "GainOneHandlerEffect"
-      },{
+      },
+      {
         "effect": "CollectElementEffect",
-        "elementChoices": ["YELLOW", "GREEN", "BLUE", "RED", "PURPLE", "WHITE", "BLACK", "ORANGE"]
+        "elementChoices": [
+          "YELLOW",
+          "GREEN",
+          "BLUE",
+          "RED",
+          "PURPLE",
+          "WHITE",
+          "BLACK",
+          "ORANGE"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["WHITE"]
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "WHITE"
+        ]
       },
-	  {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["RED"]
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "RED"
+        ]
       }
     ]
   },
@@ -523,19 +613,33 @@
     "domesticEffects": [
       {
         "effect": "GainOneHandlerEffect"
-      },{
+      },
+      {
         "effect": "CollectElementEffect",
-        "elementChoices": ["YELLOW", "GREEN", "BLUE", "RED", "PURPLE", "WHITE", "BLACK", "ORANGE"]
+        "elementChoices": [
+          "YELLOW",
+          "GREEN",
+          "BLUE",
+          "RED",
+          "PURPLE",
+          "WHITE",
+          "BLACK",
+          "ORANGE"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["WHITE"]
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "WHITE"
+        ]
       },
-	  {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["YELLOW"]
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "YELLOW"
+        ]
       }
     ]
   },
@@ -565,12 +669,16 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["PURPLE"]
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "PURPLE"
+        ]
       },
-	  {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["PURPLE"]
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "PURPLE"
+        ]
       }
     ]
   },
@@ -596,19 +704,33 @@
     "domesticEffects": [
       {
         "effect": "GainOneHandlerEffect"
-      },{
+      },
+      {
         "effect": "CollectElementEffect",
-        "elementChoices": ["YELLOW", "GREEN", "BLUE", "RED", "PURPLE", "WHITE", "BLACK", "ORANGE"]
+        "elementChoices": [
+          "YELLOW",
+          "GREEN",
+          "BLUE",
+          "RED",
+          "PURPLE",
+          "WHITE",
+          "BLACK",
+          "ORANGE"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["BLUE"]
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "BLUE"
+        ]
       },
-	  {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["BLACK"]
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "BLACK"
+        ]
       }
     ]
   },
@@ -638,12 +760,16 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["BLUE"]
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "BLUE"
+        ]
       },
-	  {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["GREEN"]
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "GREEN"
+        ]
       }
     ]
   },
@@ -673,12 +799,16 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["ORANGE"]
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "ORANGE"
+        ]
       },
-	  {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["RED"]
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "RED"
+        ]
       }
     ]
   },
@@ -708,12 +838,16 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["PURPLE"]
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "PURPLE"
+        ]
       },
-	  {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["RED"]
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "RED"
+        ]
       }
     ]
   },
@@ -743,12 +877,16 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["GREEN"]
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "GREEN"
+        ]
       },
-	  {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["GREEM"]
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "GREEN"
+        ]
       }
     ]
   },
@@ -778,12 +916,16 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["ORANGE"]
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "ORANGE"
+        ]
       },
-	  {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["ORANGE"]
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "ORANGE"
+        ]
       }
     ]
   },
@@ -813,12 +955,16 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["YELLOW"]
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "YELLOW"
+        ]
       },
-	  {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["ORANGE"]
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "ORANGE"
+        ]
       }
     ]
   },
@@ -848,12 +994,1081 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["RED"]
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "RED"
+        ]
+      },
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "PURPLE"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "AEON WHELP",
+    "points": 6,
+    "temperature": "NEUTRAL",
+    "family": "TETRADIC",
+    "elementSpaces": [
+      {
+        "color": "YELLOW",
+        "position": "L3_1"
+      },
+      {
+        "color": "ORANGE",
+        "position": "L3_3"
+      },
+      {
+        "color": "BLUE",
+        "position": "R3_1"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "GREEN",
+          "RED"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AllElementsEffect",
+        "elementColors": [
+          "RED",
+          "GREEN"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ICESHARD WHELP",
+    "points": 5,
+    "temperature": "COOL",
+    "family": "HARMONIC",
+    "elementSpaces": [
+      {
+        "color": "GREEN",
+        "position": "L3_2"
+      },
+      {
+        "color": "BLUE",
+        "position": "R3_1"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "DestroyUpToTwoElementsOnAnyEggInPlayEffect",
+        "elementChoices": [
+          "RED",
+          "YELLOW",
+          "ORANGE"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AllElementsEffect",
+        "elementColors": [
+          "RED",
+          "YELLOW",
+          "ORANGE"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "NEBULA WHELP",
+    "points": 6,
+    "temperature": "NEUTRAL",
+    "family": "TETRADIC",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_1"
+      },
+      {
+        "color": "YELLOW",
+        "position": "L3_3"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "BLUE",
+          "ORANGE"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AllElementsEffect",
+        "elementColors": [
+          "BLUE",
+          "ORANGE"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ABYSSAL WHELP",
+    "points": 6,
+    "temperature": "NEUTRAL",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_1"
+      },
+      {
+        "color": "ORANGE",
+        "position": "L3_3"
+      },
+      {
+        "color": "BLUE",
+        "position": "R3_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "PURPLE",
+          "YELLOW"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AllElementsEffect",
+        "elementColors": [
+          "YELLOW",
+          "PURPLE"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "FLAMEWREATHED WHELP",
+    "points": 4,
+    "temperature": "WARM",
+    "family": "HARMONIC",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_2"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_1"
+      },
+      {
+        "color": "YELLOW",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "DestroyUpToTwoElementsOnAnyEggInPlayEffect",
+        "elementChoices": [
+          "PURPLE",
+          "GREEN",
+          "BLUE"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AllElementsEffect",
+        "elementColors": [
+          "PURPLE",
+          "GREEN",
+          "BLUE"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "OPALESCENT WHELP",
+    "points": 6,
+    "temperature": "NEUTRAL",
+    "family": "TRIADIC",
+    "elementSpaces": [
+      {
+        "color": "GREEN",
+        "position": "L3_1"
+      },
+      {
+        "color": "PURPLE",
+        "position": "L3_3"
+      },
+      {
+        "color": "YELLOW",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainOneHandlerEffect"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TRIADIC"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "CHROMATIC WHELP",
+    "points": 3,
+    "temperature": "NEUTRAL",
+    "family": "TRIADIC",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_1"
+      },
+      {
+        "color": "YELLOW",
+        "position": "L3_3"
+      },
+      {
+        "color": "BLUE",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "RED",
+          "YELLOW",
+          "BLUE"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TRIADIC"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "STEAM DRAKE",
+    "points": 5,
+    "temperature": "WARM",
+    "family": "COMPLEMENTARY",
+    "elementSpaces": [
+      {
+        "color": "BLUE",
+        "position": "L3_2"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_1"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainOneHandlerEffect"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "OneElementEffect",
+        "elementColors": [
+          "PURPLE"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ELECTRIC DRAKE",
+    "points": 5,
+    "temperature": "NEUTRAL",
+    "family": "COMPLEMENTARY",
+    "elementSpaces": [
+      {
+        "color": "YELLOW",
+        "position": "L3_2"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_1"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainOneHandlerEffect"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "OneElementEffect",
+        "elementColors": [
+          "ORANGE"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "CHROMATIC DRAKE",
+    "points": 6,
+    "temperature": "NEUTRAL",
+    "family": "TRIADIC",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_1"
+      },
+      {
+        "color": "YELLOW",
+        "position": "L3_2"
+      },
+      {
+        "color": "YELLOW",
+        "position": "L3_3"
+      },
+      {
+        "color": "RED",
+        "position": "R3_1"
+      },
+      {
+        "color": "BLUE",
+        "position": "R3_2"
+      },
+      {
+        "color": "BLUE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "RED",
+          "YELLOW",
+          "BLUE"
+        ]
+      },
+      {
+        "effect": "GainOneHandlerEffect"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "OneElementEffect",
+        "elementColors": [
+          "RED",
+          "YELLOW",
+          "BLUE"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "NATURE DRAKE",
+    "points": 5,
+    "temperature": "NEUTRAL",
+    "family": "COMPLEMENTARY",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_2"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainOneHandlerEffect"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "OneElementEffect",
+        "elementColors": [
+          "GREEN"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "OPALESCENT DRAKE",
+    "points": 10,
+    "temperature": "NEUTRAL",
+    "family": "TRIADIC",
+    "elementSpaces": [
+      {
+        "color": "GREEN",
+        "position": "L3_1"
+      },
+      {
+        "color": "PURPLE",
+        "position": "L3_3"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_1"
+      },
+      {
+        "color": "BLACK",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "PURPLE",
+          "ORANGE",
+          "GREEN"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "OneElementEffect",
+        "elementColors": [
+          "PURPLE",
+          "ORANGE",
+          "GREEN"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "UNDINE WYVERN",
+    "points": 9,
+    "temperature": "COOL",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "BLUE",
+        "position": "L3_1"
+      },
+      {
+        "color": "BLACK",
+        "position": "L3_3"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "ElementGiverEffect",
+        "elementGiver": {
+          "drawChoices": [
+            "BLUE"
+          ],
+          "display": "UNDINE WYVERN's Effect "
+        }
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TERTIARY"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "VOID WYVERN",
+    "points": 9,
+    "temperature": "COOL",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "BLUE",
+        "position": "L3_1"
+      },
+      {
+        "color": "BLACK",
+        "position": "L3_3"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_1"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "ElementGiverEffect",
+        "elementGiver": {
+          "drawChoices": [
+            "BLUE"
+          ],
+          "display": "VOID WYVERN's Effect "
+        }
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TERTIARY"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "SKY WYVERN",
+    "points": 10,
+    "temperature": "WARM",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "YELLOW",
+        "position": "L3_1"
+      },
+      {
+        "color": "WHITE",
+        "position": "L3_3"
+      },
+      {
+        "color": "YELLOW",
+        "position": "R3_1"
+      },
+      {
+        "color": "WHITE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainOneHandlerEffect"
+      },
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "WHITE"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "MONOCHROMATIC"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "FLAMEWREATHED WYVERN",
+    "points": 8,
+    "temperature": "WARM",
+    "family": "HARMONIC",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_1"
+      },
+      {
+        "color": "ORANGE",
+        "position": "L3_2"
+      },
+      {
+        "color": "YELLOW",
+        "position": "L3_3"
+      },
+      {
+        "color": "RED",
+        "position": "R3_1"
+      },
+      {
+        "color": "ORANGE",
+        "position": "L3_3"
+      },
+      {
+        "color": "YELLOW",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectUpToTwoElementsFromAnyEggInPlayEffect",
+        "elementChoices": [
+          "PURPLE",
+          "GREEN",
+          "BLUE"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "BLOOD WYVERN",
+    "points": 10,
+    "temperature": "WARM",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_1"
+      },
+      {
+        "color": "WHITE",
+        "position": "L3_3"
+      },
+      {
+        "color": "RED",
+        "position": "R3_1"
+      },
+      {
+        "color": "WHITE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainOneHandlerEffect"
+      },
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "WHITE"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "MONOCHROMATIC"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ETHEREAL WYVERN",
+    "points": 9,
+    "temperature": "COOL",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "YELLOW",
+        "position": "L3_1"
+      },
+      {
+        "color": "WHITE",
+        "position": "L3_3"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "ElementGiverEffect",
+        "elementGiver": {
+          "drawChoices": [
+            "YELLOW"
+          ],
+          "display": "ETHEREAL WYVERN's Effect "
+        }
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TERTIARY"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "SUNSTONE WYVERN",
+    "points": 9,
+    "temperature": "WARM",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "YELLOW",
+        "position": "L3_1"
+      },
+      {
+        "color": "WHITE",
+        "position": "L3_3"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_1"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "ElementGiverEffect",
+        "elementGiver": {
+          "drawChoices": [
+            "YELLOW"
+          ],
+          "display": "SUNSTONE WYVERN's Effect "
+        }
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TERTIARY"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "WATER WYVERN",
+    "points": 10,
+    "temperature": "COOL",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "BLUE",
+        "position": "L3_1"
+      },
+      {
+        "color": "BLACK",
+        "position": "L3_3"
+      },
+      {
+        "color": "BLUE",
+        "position": "R3_1"
+      },
+      {
+        "color": "BLACK",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainOneHandlerEffect"
+      },
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "BLACK"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "MONOCHROMATIC"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ELECTRIC WYVERN",
+    "points": 9,
+    "temperature": "NEUTRAL",
+    "family": "COMPLEMENTARY",
+    "elementSpaces": [
+      {
+        "color": "YELLOW",
+        "position": "L3_1"
+      },
+      {
+        "color": "BLACK",
+        "position": "L3_3"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_1"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "ElementGiverEffect",
+        "elementGiver": {
+          "drawChoices": [
+            "YELLOW"
+          ],
+          "display": "ELECTRIC WYVERN's Effect "
+        }
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "COMPLEMENTARY"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "CHROMATIC WYVERN_R",
+    "points": 9,
+    "temperature": "NEUTRAL",
+    "family": "TRIADIC",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_1"
+      },
+      {
+        "color": "RED",
+        "position": "L3_2"
+      },
+      {
+        "color": "RED",
+        "position": "L3_3"
+      },
+      {
+        "color": "YELLOW",
+        "position": "R3_1"
+      },
+      {
+        "color": "BLUE",
+        "position": "R3_2"
+      },
+      {
+        "color": "WHITE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectOneElementFromAnyEggInPlayEffect",
+        "elementChoices": [
+          "RED"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "RED",
+          "BLUE",
+          "YELLOW"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "CHROMATIC WYVERN_Y",
+    "points": 9,
+    "temperature": "NEUTRAL",
+    "family": "TRIADIC",
+    "elementSpaces": [
+      {
+        "color": "YELLOW",
+        "position": "L3_1"
+      },
+      {
+        "color": "YELLOW",
+        "position": "L3_2"
+      },
+      {
+        "color": "YELLOW",
+        "position": "L3_3"
+      },
+      {
+        "color": "RED",
+        "position": "R3_1"
+      },
+      {
+        "color": "BLUE",
+        "position": "R3_2"
+      },
+      {
+        "color": "WHITE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectOneElementFromAnyEggInPlayEffect",
+        "elementChoices": [
+          "YELLOW"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "RED",
+          "BLUE",
+          "YELLOW"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "CHROMATIC WYVERN_B",
+    "points": 9,
+    "temperature": "NEUTRAL",
+    "family": "TRIADIC",
+    "elementSpaces": [
+      {
+        "color": "BLUE",
+        "position": "L3_1"
+      },
+      {
+        "color": "BLUE",
+        "position": "L3_2"
+      },
+      {
+        "color": "BLUE",
+        "position": "L3_3"
+      },
+      {
+        "color": "RED",
+        "position": "R3_1"
+      },
+      {
+        "color": "YELLOW",
+        "position": "R3_2"
+      },
+      {
+        "color": "BLACK",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectOneElementFromAnyEggInPlayEffect",
+        "elementChoices": [
+          "BLUE"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "RED",
+          "BLUE",
+          "YELLOW"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ETHEREAL WYRM",
+    "points": 13,
+    "temperature": "COOL",
+    "family": "TERTIARY",
+    "elementSpaces": [
+	  {
+        "color": "WHITE",
+        "position": "L3_1"
       },
 	  {
-        "effect": "AddElementsToAllAdjacentEggsEffect",
-        "elementColors" : ["PURPLE"]
+        "color": "YELLOW",
+        "position": "L3_2"
+      },
+	  {
+        "color": "WHITE",
+        "position": "L3_3"
+      },
+	  {
+        "color": "GREEN",
+        "position": "R3_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectAndHatchAnyUnclaimedEggEffect",
+		"points": 5
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "elementColors" : []
       }
     ]
   }

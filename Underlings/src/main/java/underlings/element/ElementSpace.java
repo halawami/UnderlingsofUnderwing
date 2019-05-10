@@ -1,9 +1,11 @@
 package underlings.element;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import underlings.gui.Choice;
+import underlings.utilities.LocaleWrap;
 
 public class ElementSpace implements Choice {
 
@@ -26,9 +28,17 @@ public class ElementSpace implements Choice {
         }
     }
 
+    public void destroyAllElementsOfColor(ElementColor colorOfElementsToDestroy) {
+        this.elements.removeIf(colorOfElementsToDestroy::equals);
+    }
+
+    public void destroyOneElementOfColor(ElementColor colorOfElementsToDestroy) {
+        this.elements.remove(colorOfElementsToDestroy);
+    }
+
     @Override
     public String toString() {
-        return color + " Element Space";
+        return MessageFormat.format(LocaleWrap.get("element_space"), this.color);
     }
 
 }

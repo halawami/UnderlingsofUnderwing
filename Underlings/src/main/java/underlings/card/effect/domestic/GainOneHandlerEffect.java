@@ -2,6 +2,7 @@ package underlings.card.effect.domestic;
 
 import underlings.card.effect.PlayerEffect;
 import underlings.player.Player;
+import underlings.utilities.LocaleWrap;
 
 public class GainOneHandlerEffect extends PlayerEffect {
 
@@ -12,7 +13,7 @@ public class GainOneHandlerEffect extends PlayerEffect {
 
     @Override
     public String toString() {
-        return "Gain one handler";
+        return LocaleWrap.get("gain_one_handler_effect");
     }
 
 }

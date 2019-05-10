@@ -16,19 +16,17 @@ import underlings.player.Player;
 
 public class DrawingPhase extends SequentialPhase {
 
-    public DrawingPhase(List<Player> players, Gui gui, ElementBag elementBag,
-            HatchingGround hatchingGround, Runnable displayMethod,
-            Field field) {
+    public DrawingPhase(List<Player> players, Gui gui, ElementBag elementBag, HatchingGround hatchingGround,
+            Runnable displayMethod, Field field) {
         super(players, gui, elementBag, hatchingGround, displayMethod, field);
     }
 
     Map<Player, List<ElementGiver>> elementGivers;
 
     @Override
-    public boolean turn(Player player) {
+    public void turn(Player player) {
 
-        DrawChoice drawChoice = this.gui.getDrawChoice(
-                this.elementGivers.get(player), player.getPlayerId());
+        DrawChoice drawChoice = this.gui.getDrawChoice(this.elementGivers.get(player), player.getPlayerId());
 
         Element element = this.elementBag.drawElement(drawChoice);
 
@@ -37,7 +35,6 @@ public class DrawingPhase extends SequentialPhase {
         }
 
         this.phaseComplete = this.elementGivers.get(player).isEmpty();
-        return false;
     }
 
     @Override

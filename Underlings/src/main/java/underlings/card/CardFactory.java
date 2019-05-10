@@ -6,12 +6,18 @@ import com.google.common.reflect.ClassPath;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.typeadapters.RuntimeTypeAdapterFactory;
-import underlings.card.effect.Effect;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
+
+import underlings.card.effect.Effect;
 
 public class CardFactory {
+
     private String cardsFileName;
     private Gson gson;
     private List<Class<? extends Effect>> effectClasses;
@@ -27,15 +33,13 @@ public class CardFactory {
         List<Class<? extends Effect>> effectClasses = new ArrayList<>();
 
         Set<ClassPath.ClassInfo> effectClassInfos = this.loadEffectClassInfos();
-        effectClassInfos.forEach(effectClassInfo -> effectClasses
-                .add(this.getClassFromClassInfo(effectClassInfo)));
+        effectClassInfos.forEach(effectClassInfo -> effectClasses.add(this.getClassFromClassInfo(effectClassInfo)));
 
         return effectClasses;
     }
 
     @SuppressWarnings("unchecked")
-    private Class<? extends Effect> getClassFromClassInfo(
-            ClassPath.ClassInfo effectClassInfo) {
+    private Class<? extends Effect> getClassFromClassInfo(ClassPath.ClassInfo effectClassInfo) {
         return (Class<? extends Effect>) effectClassInfo.load();
     }
 
@@ -43,8 +47,7 @@ public class CardFactory {
         try {
 
             ClassLoader loader = Thread.currentThread().getContextClassLoader();
-            return ClassPath.from(loader)
-                    .getTopLevelClassesRecursive("underlings.card.effect");
+            return ClassPath.from(loader).getTopLevelClassesRecursive("underlings.card.effect");
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -53,19 +56,15 @@ public class CardFactory {
     }
 
     private Gson getGson() {
-        RuntimeTypeAdapterFactory<Effect> effectsTypeAdapter =
-                this.getEffectTypeAdapter();
-        return new GsonBuilder().registerTypeAdapterFactory(effectsTypeAdapter)
-                .create();
+        RuntimeTypeAdapterFactory<Effect> effectsTypeAdapter = this.getEffectTypeAdapter();
+        return new GsonBuilder().registerTypeAdapterFactory(effectsTypeAdapter).create();
     }
 
     private RuntimeTypeAdapterFactory<Effect> getEffectTypeAdapter() {
-        RuntimeTypeAdapterFactory<Effect> effectsTypeAdapter =
-                RuntimeTypeAdapterFactory.of(Effect.class, "effect");
+        RuntimeTypeAdapterFactory<Effect> effectsTypeAdapter = RuntimeTypeAdapterFactory.of(Effect.class, "effect");
 
         for (Class<? extends Effect> effectClass : this.effectClasses) {
-            effectsTypeAdapter =
-                    effectsTypeAdapter.registerSubtype(effectClass);
+            effectsTypeAdapter = effectsTypeAdapter.registerSubtype(effectClass);
         }
 
         return effectsTypeAdapter;

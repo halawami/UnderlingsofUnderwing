@@ -2,14 +2,22 @@ package underlings.element.utilities;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
+
 import underlings.card.Card;
 import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 
-import java.util.*;
-
 public class ElementSpaceLogic {
+
     private Map<ElementColor, List<List<ElementColor>>> recipeMap;
 
     public ElementSpaceLogic() {
@@ -33,16 +41,15 @@ public class ElementSpaceLogic {
         recipeMap = new HashMap<ElementColor, List<List<ElementColor>>>();
 
         try {
-            List<String> recipeLines = Resources.readLines(Resources.getResource("DefaultRecipeList.txt"), Charsets.UTF_8);
+            List<String> recipeLines =
+                    Resources.readLines(Resources.getResource("DefaultRecipeList.txt"), Charsets.UTF_8);
 
-            for(String line : recipeLines){
+            for (String line : recipeLines) {
                 ElementColor color = ElementColor.valueOf(line.split(":")[0]);
                 String[] recipes = line.split(":")[1].split(" ");
-                List<List<ElementColor>> recipeList =
-                        new ArrayList<List<ElementColor>>();
+                List<List<ElementColor>> recipeList = new ArrayList<List<ElementColor>>();
                 for (String recipe : recipes) {
-                    List<ElementColor> constructedRecipe =
-                            new ArrayList<ElementColor>();
+                    List<ElementColor> constructedRecipe = new ArrayList<ElementColor>();
                     for (String ingredient : recipe.split(",")) {
                         constructedRecipe.add(ElementColor.valueOf(ingredient));
                     }
@@ -56,8 +63,7 @@ public class ElementSpaceLogic {
         }
     }
 
-    public boolean isValidRecipe(List<ElementColor> recipe,
-            ElementSpace space) {
+    public boolean isValidRecipe(List<ElementColor> recipe, ElementSpace space) {
         recipe = new ArrayList<ElementColor>(recipe);
         for (ElementColor color : space.elements) {
             if (recipe.contains(color)) {
@@ -91,32 +97,32 @@ public class ElementSpaceLogic {
         return new ArrayList<ElementColor>(validAdditions);
     }
 
-    public List<ElementSpace> getPlayableSpaces(Card card,
-            List<Element> elements) {
-        List<ElementSpace> spaces = new ArrayList<ElementSpace>();
-        for (ElementSpace space : card.elementSpaces) {
-            for (Element element : elements) {
-                if (getValidAdditions(space).contains(element.getColor())) {
-                    spaces.add(space);
-                    break;
-                }
-            }
+    public List<ElementSpace> getPlayableSpaces(Card card, List<Element> elements) {
+        Set<ElementSpace> spaces = new HashSet<>();
+        for (Element element : elements) {
+            spaces.addAll(getPlayableSpaces(card, element.getColor()));
         }
-        return spaces;
+        return new ArrayList<>(spaces);
     }
 
-    public List<ElementSpace> getPlayableSpaces(
-            List<ElementColor> elementColors, Card card) {
+    public List<ElementSpace> getPlayableSpaces(Card card, ElementColor elementColor) {
         List<ElementSpace> spaces = new ArrayList<>();
         for (ElementSpace space : card.elementSpaces) {
-            for (ElementColor color : elementColors) {
-                if (getValidAdditions(space).contains(color)) {
-                    spaces.add(space);
-                    break;
-                }
+            if (getValidAdditions(space).contains(elementColor)) {
+                spaces.add(space);
+                break;
             }
         }
         return spaces;
     }
 
+    public List<ElementSpace> getDestroyableSpaces(Card card, ElementColor elementColor) {
+        List<ElementSpace> destroyableSpaces = new ArrayList<>();
+        for (ElementSpace elementSpace : card.elementSpaces) {
+            if (elementSpace.elements.contains(elementColor)) {
+                destroyableSpaces.add(elementSpace);
+            }
+        }
+        return destroyableSpaces;
+    }
 }
