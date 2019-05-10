@@ -36,6 +36,7 @@ public class EggHatchingLogicTests {
     public void init() {
         this.card = new Card();
         this.card.elementSpaces = new ElementSpace[1];
+        this.card.elementSpaces[0] = new ElementSpace();
         this.card.wildEffects = new Effect[1];
         this.effect = EasyMock.mock(Effect.class);
         this.card.wildEffects[0] = effect;

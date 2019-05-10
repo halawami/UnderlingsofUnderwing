@@ -29,6 +29,7 @@ public class EggHatchingLogic {
         if (domestic) {
             card.handler = WildHandler.getInstance();
             effects = card.wildEffects;
+            this.returnElementsToBag(card);
         } else {
             effects = card.domesticEffects;
             card.handler.moveToState(HandlerState.READY_ROOM);
