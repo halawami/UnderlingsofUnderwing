@@ -26,7 +26,6 @@ public class DragonPhase extends SequentialPhase {
         this.completeEggs = this.hatchingGround.pullAndReplaceCompleteEggs();
     }
 
-    // TODO: clear player unhatchedCards
     @Override
     public void turn(Player player) {
         for (Card card : player.unhatchedCards) {
