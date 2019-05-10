@@ -1,6 +1,8 @@
 package underlings.gui;
 
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -38,6 +40,16 @@ public class ConcretePrompt implements PromptHandler {
                     panel.add(new JPanel());
                 } else {
                     JButton button = new JButton(cards[w][h].toString());
+
+                    final Card returnCard = cards[w][h];
+                    button.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            JOptionPane pane = (JOptionPane) ((JButton) e.getSource()).getParent().getParent();
+                            pane.setValue(returnCard);
+                        }
+                    });
+
                     panel.add(button);
                 }
             }
@@ -47,13 +59,13 @@ public class ConcretePrompt implements PromptHandler {
         JDialog dialog = optionPane.createDialog(null, "Player " + playerId);
         dialog.setVisible(true);
 
-        int value = JOptionPane.showOptionDialog(null, prompt, "Player " + playerId, JOptionPane.DEFAULT_OPTION,
-                JOptionPane.INFORMATION_MESSAGE, null, cards[0], cards[0][0]);
-        if (value == -1) {
+        Object value = optionPane.getValue();
+
+        if (value == null || value instanceof Integer) {
             System.exit(0);
         }
 
-        return cards[0][value];
+        return (Card) value;
     }
 
     private int displayOptions(Object[] options, String title, String message) {
