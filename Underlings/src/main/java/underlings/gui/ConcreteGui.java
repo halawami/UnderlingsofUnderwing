@@ -1,6 +1,7 @@
 package underlings.gui;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -19,6 +20,7 @@ import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
+import underlings.game.HatchingGround;
 import underlings.handler.Handler;
 import underlings.handler.WildHandler;
 import underlings.player.Player;
@@ -245,5 +247,18 @@ public class ConcreteGui implements Display {
         }
 
     }
+
+    @Override
+    public void displayHatchingGround(HatchingGround hatchingGround) {
+        Dimension hgDimensions = hatchingGround.getDimensions();
+
+        for (int row = 0; row < hgDimensions.height; row++) {
+            for (int col = 0; col < hgDimensions.width; col++) {
+                displayCard(row, col, hatchingGround.cards[row][col]);
+            }
+        }
+    }
+
+
 
 }

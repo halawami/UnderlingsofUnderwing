@@ -4,6 +4,7 @@ import java.util.List;
 
 import underlings.card.Card;
 import underlings.element.ElementBag;
+import underlings.game.HatchingGround;
 import underlings.handler.Handler;
 import underlings.player.Player;
 
@@ -20,4 +21,6 @@ public interface Display {
     void update();
 
     void displayStats(ElementBag elementBag, int roundsLeft, int currentPhase, int leadTurn);
+
+    void displayHatchingGround(HatchingGround hatchingGround);
 }

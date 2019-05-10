@@ -9,7 +9,6 @@ import java.util.List;
 
 import underlings.card.Card;
 import underlings.element.utilities.ElementSpaceLogic;
-import underlings.gui.Gui;
 import underlings.handler.Handler;
 import underlings.handler.WildHandler;
 
@@ -46,14 +45,6 @@ public class HatchingGround implements Iterable<Card> {
         for (int row = 0; row < this.height; row++) {
             for (int col = 0; col < this.width; col++) {
                 this.cards[row][col] = this.deck.draw();
-            }
-        }
-    }
-
-    public void display(Gui gui) {
-        for (int row = 0; row < this.height; row++) {
-            for (int col = 0; col < this.width; col++) {
-                gui.display.displayCard(row, col, this.cards[row][col]);
             }
         }
     }

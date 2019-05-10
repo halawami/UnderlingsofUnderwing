@@ -104,7 +104,7 @@ public class Game {
 
     public void display() {
         this.gui.display.displayBackground();
-        this.hatchingGround.display(this.gui);
+        this.gui.display.displayHatchingGround(this.hatchingGround);
         this.displayPlayers();
         this.gui.display.displayStats(this.elementBag, this.roundsLeft, this.currentPhase, this.turnLeader + 1);
 

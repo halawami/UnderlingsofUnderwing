@@ -1,6 +1,5 @@
 package underlings.gui;
 
-import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.List;
 
@@ -8,6 +7,8 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import underlings.card.Card;
 
 public class ConcretePrompt implements PromptHandler {
 
@@ -18,18 +19,28 @@ public class ConcretePrompt implements PromptHandler {
     }
 
     @Override
-    public <T extends Choice> T promptChoice(String prompt, List<T> choices, int playerId, Dimension dim) {
+    public Card pickCard(String prompt, Card[][] cards, int playerId) {
+        if (cards.length == 0) {
+            return null;
+        }
+
         JOptionPane optionPane = new JOptionPane();
         optionPane.setMessage(prompt);
         optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
         optionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
 
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(dim.width, dim.height));
+        panel.setLayout(new GridLayout(cards.length, cards[0].length));
 
-        for (T choice : choices) {
-            JButton button = new JButton(choice.toString());
-            panel.add(button);
+        for (int w = 0; w < cards.length; w++) {
+            for (int h = 0; h < cards[0].length; h++) {
+                if (cards[w][h] == null) {
+                    panel.add(new JPanel());
+                } else {
+                    JButton button = new JButton(cards[w][h].toString());
+                    panel.add(button);
+                }
+            }
         }
         optionPane.add(panel, 1);
 
@@ -37,12 +48,12 @@ public class ConcretePrompt implements PromptHandler {
         dialog.setVisible(true);
 
         int value = JOptionPane.showOptionDialog(null, prompt, "Player " + playerId, JOptionPane.DEFAULT_OPTION,
-                JOptionPane.INFORMATION_MESSAGE, null, choices.toArray(), choices.get(0));
+                JOptionPane.INFORMATION_MESSAGE, null, cards[0], cards[0][0]);
         if (value == -1) {
             System.exit(0);
         }
 
-        return choices.get(value);
+        return cards[0][value];
     }
 
     private int displayOptions(Object[] options, String title, String message) {

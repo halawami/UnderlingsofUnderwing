@@ -1,7 +1,8 @@
 package underlings.gui;
 
-import java.awt.Dimension;
 import java.util.List;
+
+import underlings.card.Card;
 
 public interface PromptHandler {
 
@@ -9,7 +10,7 @@ public interface PromptHandler {
 
     <T extends Choice> T promptChoice(String prompt, List<T> choices, int playerId);
 
-    <T extends Choice> T promptChoice(String prompt, List<T> choices, int playerId, Dimension dim);
+    Card pickCard(String prompt, Card[][] cards, int playerId);
 
     boolean promptDecision(String question, int playerId);
 
