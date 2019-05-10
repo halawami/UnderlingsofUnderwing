@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 
 import javax.swing.JOptionPane;
 
@@ -23,104 +24,108 @@ import underlings.utilities.EggHatchingLogic;
 
 public class PlacementPhase extends RotationPhase {
 
-    private Map<Player, Integer> turnCounts;
-    private EggHatchingLogic wildEggHatchingLogic;
+	private Map<Player, Integer> turnCounts;
+	private EggHatchingLogic wildEggHatchingLogic;
 
-    public PlacementPhase(List<Player> players, Gui gui, ElementBag elementBag, HatchingGround hatchingGround,
-            Runnable displayMethod, Field field, EggHatchingLogic eggHatchingLogic) {
-        super(players, gui, elementBag, hatchingGround, displayMethod, field);
-        this.wildEggHatchingLogic = eggHatchingLogic;
-    }
+	public PlacementPhase(List<Player> players, Gui gui, ElementBag elementBag, HatchingGround hatchingGround,
+			Runnable displayMethod, Field field, EggHatchingLogic eggHatchingLogic) {
+		super(players, gui, elementBag, hatchingGround, displayMethod, field);
+		this.wildEggHatchingLogic = eggHatchingLogic;
+	}
 
-    @Override
-    public void setup() {
-        this.turnCounts = new HashMap<Player, Integer>();
-        for (Player player : this.players) {
-            this.turnCounts.put(player, player.getHandlerCount());
-        }
-    }
+	@Override
+	public void setup() {
+		this.turnCounts = new HashMap<Player, Integer>();
+		for (Player player : this.players) {
+			this.turnCounts.put(player, player.getHandlerCount());
+		}
+	}
 
+	@Override
+	public void turn(Player player) {
+		if (!checkAndDecrementTurnCount(player)) {
+			return;
+		}
 
-    @Override
-    public void turn(Player player) {
-        if (!checkAndDecrementTurnCount(player)) {
-            return;
-        }
+		int playerNum = player.getPlayerId();
 
-        int playerNum = player.getPlayerId();
+		ElementSpaceLogic logic = player.elementSpaceLogic;
+		List<Card> cards = this.getPlayableCards(logic, player.getElements());
 
-        ElementSpaceLogic logic = player.elementSpaceLogic;
-        List<Card> cards = this.getPlayableCards(logic, player.getElements());
+		if (cards.isEmpty()) {
+			this.gui.promptHandler.displayMessage("Player has no valid placements", playerNum,
+					JOptionPane.WARNING_MESSAGE);
+			return;
+		}
 
-        if (cards.isEmpty()) {
-            this.gui.promptHandler.displayMessage("Player has no valid placements", playerNum,
-                    JOptionPane.WARNING_MESSAGE);
-            return;
-        }
+		this.phaseComplete = false;
 
-        this.phaseComplete = false;
-        Card card = this.gui.promptHandler.promptChoice("Pick a card to place an element on.", cards, playerNum);
-        List<ElementSpace> spaces = logic.getPlayableSpaces(card, player.getElements());
-        ElementSpace space =
-                this.gui.promptHandler.promptChoice("Pick an element space to place an element on.", spaces, playerNum);
+		Function<Card, Boolean> isValid = (Card c) -> {
+			return cards.contains(c);
+		};
 
-        List<Element> choices = this.playableElements(logic.getValidAdditions(space), player.getElements());
-        boolean moreMoves = true;
-        while (moreMoves) {
-            Element element = this.gui.promptHandler.promptChoice("Pick an element to place", choices, playerNum);
+		Card card = this.gui.getCard(playerNum, "Pick a card to place an element on.", this.hatchingGround, isValid);
+		List<ElementSpace> spaces = logic.getPlayableSpaces(card, player.getElements());
+		ElementSpace space = this.gui.promptHandler.promptChoice("Pick an element space to place an element on.",
+				spaces, playerNum);
 
-            space.addElements(element);
-            player.removeElement(element);
-            this.displayMethod.run();
+		List<Element> choices = this.playableElements(logic.getValidAdditions(space), player.getElements());
+		boolean moreMoves = true;
+		while (moreMoves) {
+			Element element = this.gui.promptHandler.promptChoice("Pick an element to place", choices, playerNum);
 
-            choices = this.playableElements(logic.getValidAdditions(space), player.getElements());
-            moreMoves = this.gui.getMoreMovesDecision(choices.size(), playerNum);
-        }
+			space.addElements(element);
+			player.removeElement(element);
+			this.displayMethod.run();
 
-        if (logic.isComplete(card) && card.handler == null) {
-            hatchWildDragon(card);
-        }
-    }
+			choices = this.playableElements(logic.getValidAdditions(space), player.getElements());
+			moreMoves = this.gui.getMoreMovesDecision(choices.size(), playerNum);
+		}
 
-    public void hatchWildDragon(Card card) {
-        this.wildEggHatchingLogic.hatchEgg(card, true, FakePlayer.getInstance());
-        this.gameComplete = true;
-        this.phaseComplete = true;
-        for (Card groundCard : this.hatchingGround) {
-            if (groundCard.handler != WildHandler.getInstance()) {
-                this.gameComplete = false;
-                this.phaseComplete = false;
-            }
-        }
-    }
+		if (logic.isComplete(card) && card.handler == null) {
+			hatchWildDragon(card);
+		}
+	}
 
-    public List<Element> playableElements(List<ElementColor> list, List<Element> elements) {
-        elements = new ArrayList<Element>(elements);
-        for (int i = 0; i < elements.size(); i++) {
-            if (!list.contains(elements.get(i).getColor())) {
-                elements.remove(i--);
-            }
-        }
-        return elements;
-    }
+	public void hatchWildDragon(Card card) {
+		this.wildEggHatchingLogic.hatchEgg(card, true, FakePlayer.getInstance());
+		this.gameComplete = true;
+		this.phaseComplete = true;
+		for (Card groundCard : this.hatchingGround) {
+			if (groundCard.handler != WildHandler.getInstance()) {
+				this.gameComplete = false;
+				this.phaseComplete = false;
+			}
+		}
+	}
 
-    public List<Card> getPlayableCards(ElementSpaceLogic logic, List<Element> elements) {
-        List<Card> cards = new ArrayList<Card>();
-        for (Card card : this.hatchingGround) {
-            if (!logic.getPlayableSpaces(card, elements).isEmpty()) {
-                cards.add(card);
-            }
-        }
-        return cards;
-    }
+	public List<Element> playableElements(List<ElementColor> list, List<Element> elements) {
+		elements = new ArrayList<Element>(elements);
+		for (int i = 0; i < elements.size(); i++) {
+			if (!list.contains(elements.get(i).getColor())) {
+				elements.remove(i--);
+			}
+		}
+		return elements;
+	}
 
-    private boolean checkAndDecrementTurnCount(Player player) {
-        int playerTurns = turnCounts.get(player);
-        if (playerTurns <= 0) {
-            return false;
-        }
+	public List<Card> getPlayableCards(ElementSpaceLogic logic, List<Element> elements) {
+		List<Card> cards = new ArrayList<Card>();
+		for (Card card : this.hatchingGround) {
+			if (!logic.getPlayableSpaces(card, elements).isEmpty()) {
+				cards.add(card);
+			}
+		}
+		return cards;
+	}
 
-        this.turnCounts.put(player, playerTurns - 1);
-        return true;
-    }
+	private boolean checkAndDecrementTurnCount(Player player) {
+		int playerTurns = turnCounts.get(player);
+		if (playerTurns <= 0) {
+			return false;
+		}
+
+		this.turnCounts.put(player, playerTurns - 1);
+		return true;
+	}
 }

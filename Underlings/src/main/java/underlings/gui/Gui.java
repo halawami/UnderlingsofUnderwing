@@ -59,7 +59,7 @@ public class Gui {
 		return new HandlerDecision(handler, handlerChoice);
 	}
 
-	public Card getCard(int playerId, HatchingGround hatchingGround, Function<Card, Boolean> isValid) {
+	public Card getCard(int playerId, String prompt, HatchingGround hatchingGround, Function<Card, Boolean> isValid) {
 		Card[][] cards = new Card[hatchingGround.getHeight()][hatchingGround.getWidth()];
 		for (int w = 0; w < cards.length; w++) {
 			for (int h = 0; h < cards[w].length; h++) {
@@ -69,7 +69,7 @@ public class Gui {
 			}
 		}
 
-		Card card = this.promptHandler.pickCard("Choose a card", cards, playerId);
+		Card card = this.promptHandler.pickCard(prompt, cards, playerId);
 		return card;
 	}
 
