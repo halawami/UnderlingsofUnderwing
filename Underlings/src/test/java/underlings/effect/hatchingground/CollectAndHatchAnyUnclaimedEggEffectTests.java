@@ -7,6 +7,7 @@ import org.easymock.EasyMock;
 import org.junit.Test;
 
 import underlings.card.Card;
+import underlings.card.EmptyCard;
 import underlings.card.effect.domestic.CollectAndHatchAnyUnclaimedEggEffect;
 import underlings.element.ElementSpace;
 import underlings.game.HatchingGround;
@@ -31,6 +32,30 @@ public class CollectAndHatchAnyUnclaimedEggEffectTests {
         EasyMock.expect(hatchingGround.getAllCards()).andReturn(mockedCards);
         EasyMock.expect(gui.getEggToHatch(mockedCards, 5)).andReturn(mockedCards.get(0));
         eggHatchingLogic.hatchEgg(mockedCards.get(0), false, currentPlayer);
+        collectAndHatchAnyUnclaimedEggEffect.on(gui).on(currentPlayer).on(hatchingGround).on(eggHatchingLogic);
+
+        EasyMock.replay(currentPlayer, hatchingGround, gui, elementSpace, eggHatchingLogic);
+
+        collectAndHatchAnyUnclaimedEggEffect.points = 5;
+        collectAndHatchAnyUnclaimedEggEffect.apply();
+
+        EasyMock.verify(currentPlayer, hatchingGround, gui, elementSpace, eggHatchingLogic);
+    }
+
+    @Test
+    public void testNoEggToHatch() {
+        Player currentPlayer = EasyMock.mock(Player.class);
+        currentPlayer.hatchedCards = new ArrayList<>();
+        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
+        List<Card> mockedCards = this.getMockedCards(6);
+        Gui gui = EasyMock.mock(Gui.class);
+        ElementSpace elementSpace = EasyMock.mock(ElementSpace.class);
+        EggHatchingLogic eggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
+        CollectAndHatchAnyUnclaimedEggEffect collectAndHatchAnyUnclaimedEggEffect =
+                new CollectAndHatchAnyUnclaimedEggEffect();
+        mockedCards.get(0).points = 5;
+        EasyMock.expect(hatchingGround.getAllCards()).andReturn(mockedCards);
+        EasyMock.expect(gui.getEggToHatch(mockedCards, 5)).andReturn(EmptyCard.getInstance());
         collectAndHatchAnyUnclaimedEggEffect.on(gui).on(currentPlayer).on(hatchingGround).on(eggHatchingLogic);
 
         EasyMock.replay(currentPlayer, hatchingGround, gui, elementSpace, eggHatchingLogic);
