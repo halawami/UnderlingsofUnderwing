@@ -26,7 +26,7 @@ import underlings.handler.WildHandler;
 import underlings.player.Player;
 import underlings.utilities.LocaleWrap;
 
-public class ConcreteGui implements Display {
+public class ConcreteDisplay implements Display {
 
     private static final int WIDTH = 1266;
     private static final int HEIGHT = 950;
@@ -40,7 +40,7 @@ public class ConcreteGui implements Display {
 
     private Map<ElementColor, Color> colorMap;
 
-    public ConcreteGui() {
+    public ConcreteDisplay() {
         this.colorMap = new HashMap<ElementColor, Color>();
         this.colorMap.put(ElementColor.WHITE, Color.WHITE);
         this.colorMap.put(ElementColor.BLACK, Color.BLACK);

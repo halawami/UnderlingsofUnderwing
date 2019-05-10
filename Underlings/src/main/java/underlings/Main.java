@@ -12,7 +12,7 @@ import underlings.field.FieldSpaceFactory;
 import underlings.game.Deck;
 import underlings.game.Game;
 import underlings.game.HatchingGround;
-import underlings.gui.ConcreteGui;
+import underlings.gui.ConcreteDisplay;
 import underlings.gui.Gui;
 import underlings.handler.HandlerFactory;
 import underlings.handler.HandlerMovementLogic;
@@ -32,7 +32,7 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		Gui gui = new Gui(new TestPrompt(), new ConcreteGui());
+		Gui gui = new Gui(new TestPrompt(), new ConcreteDisplay());
 		CardFactory cardFactory = new CardFactory(CARDS_JSON_FILE_NAME);
 		Deck deck = new Deck(cardFactory.getCards());
 		HatchingGround hatchingGround = new HatchingGround(deck);
