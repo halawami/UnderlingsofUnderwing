@@ -13,66 +13,58 @@ import underlings.element.ElementFactory;
 
 public class CountTests {
 
-    private ElementBag elementBag;
+	private ElementBag elementBag;
 
-    @Before
-    public void init() {
-        ElementFactory elementFactory = new ElementFactory();
-        this.elementBag = new ElementBag(elementFactory, new Random());
-    }
+	@Before
+	public void init() {
+		ElementFactory elementFactory = new ElementFactory();
+		this.elementBag = new ElementBag(elementFactory, new Random());
+	}
 
-    @Test
-    public void testDraw20Left() {
-        assertEquals(20, this.elementBag.getNumberRemaining(ElementColor.BLUE));
-        this.elementBag.drawElementFromList(ElementColor.BLUE);
-        assertEquals(19, this.elementBag.getNumberRemaining(ElementColor.BLUE));
-    }
+	@Test
+	public void testDraw20Left() {
+		this.testDraw(ElementColor.BLUE, 1, 20, 19);
+	}
 
-    @Test
-    public void testDraw1Left() {
-        drawElements(ElementColor.BLUE, 19);
-        assertEquals(1, this.elementBag.getNumberRemaining(ElementColor.BLUE));
-        this.elementBag.drawElementFromList(ElementColor.BLUE);
-        assertEquals(0, this.elementBag.getNumberRemaining(ElementColor.BLUE));
-    }
+	@Test
+	public void testDraw1Left() {
+		this.testDraw(ElementColor.BLUE, 19, 20, 1);
+		this.testDraw(ElementColor.BLUE, 1, 1, 0);
+	}
 
-    private void drawElements(ElementColor color, int numToDraw) {
-        for (int i = 0; i < numToDraw; i++) {
-            this.elementBag.drawElementFromList(color);
-        }
-    }
+	@Test
+	public void testPutOneBlueElement() {
+		this.testDraw(ElementColor.BLUE, 5, 20, 15);
+		this.elementBag.putElement(ElementColor.BLUE);
+		assertEquals(16, this.elementBag.getNumberRemaining(ElementColor.BLUE));
+	}
 
-    @Test
-    public void testPutOneBlueElement() {
-        assertEquals(20, this.elementBag.getNumberRemaining(ElementColor.BLUE));
-        drawElements(ElementColor.BLUE, 5);
-        assertEquals(15, this.elementBag.getNumberRemaining(ElementColor.BLUE));
-        this.elementBag.putElement(ElementColor.BLUE);
-        assertEquals(16, this.elementBag.getNumberRemaining(ElementColor.BLUE));
-    }
+	@Test
+	public void testPutTwoBlueElements() {
+		this.testDraw(ElementColor.BLUE, 5, 20, 15);
+		this.elementBag.putElement(ElementColor.BLUE);
+		this.elementBag.putElement(ElementColor.BLUE);
+		assertEquals(17, this.elementBag.getNumberRemaining(ElementColor.BLUE));
+	}
 
-    @Test
-    public void testPutTwoBlueElements() {
-        assertEquals(20, this.elementBag.getNumberRemaining(ElementColor.BLUE));
-        drawElements(ElementColor.BLUE, 5);
-        assertEquals(15, this.elementBag.getNumberRemaining(ElementColor.BLUE));
-        this.elementBag.putElement(ElementColor.BLUE);
-        this.elementBag.putElement(ElementColor.BLUE);
-        assertEquals(17, this.elementBag.getNumberRemaining(ElementColor.BLUE));
-    }
+	@Test
+	public void testPutOneBlueOneRedElement() {
+		this.testDraw(ElementColor.BLUE, 5, 20, 15);
+		this.testDraw(ElementColor.RED, 3, 20, 17);
+		assertEquals(15, this.elementBag.getNumberRemaining(ElementColor.BLUE));
+		assertEquals(17, this.elementBag.getNumberRemaining(ElementColor.RED));
+		this.elementBag.putElement(ElementColor.BLUE);
+		this.elementBag.putElement(ElementColor.RED);
+		assertEquals(16, this.elementBag.getNumberRemaining(ElementColor.BLUE));
+		assertEquals(18, this.elementBag.getNumberRemaining(ElementColor.RED));
+	}
 
-    @Test
-    public void testPutOneBlueOneRedElement() {
-        assertEquals(20, this.elementBag.getNumberRemaining(ElementColor.BLUE));
-        drawElements(ElementColor.BLUE, 5);
-        assertEquals(20, this.elementBag.getNumberRemaining(ElementColor.RED));
-        drawElements(ElementColor.RED, 3);
-        assertEquals(15, this.elementBag.getNumberRemaining(ElementColor.BLUE));
-        assertEquals(17, this.elementBag.getNumberRemaining(ElementColor.RED));
-        this.elementBag.putElement(ElementColor.BLUE);
-        this.elementBag.putElement(ElementColor.RED);
-        assertEquals(16, this.elementBag.getNumberRemaining(ElementColor.BLUE));
-        assertEquals(18, this.elementBag.getNumberRemaining(ElementColor.RED));
-    }
+	private void testDraw(ElementColor color, int numToDraw, int before, int after) {
+		assertEquals(before, this.elementBag.getNumberRemaining(color));
+		for (int i = 0; i < numToDraw; i++) {
+			this.elementBag.drawElementFromList(color);
+		}
+		assertEquals(after, this.elementBag.getNumberRemaining(color));
+	}
 
 }
