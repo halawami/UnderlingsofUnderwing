@@ -1,5 +1,7 @@
 package underlings.phase;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -67,6 +69,7 @@ public class DragonPhaseTests {
         EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList());
         player.unhatchedCards.add(card);
         eggHatchingLogic.hatchEgg(card, false, player);
+        player.unhatchedCards.clear();
         EasyMock.expect(player.getPlayerId()).andReturn(1).anyTimes();
 
         EasyMock.replay(hatchingGround, bag, player, card.domesticEffects[0], handler, eggHatchingLogic);
@@ -74,6 +77,7 @@ public class DragonPhaseTests {
         Phase phase = new DragonPhase(players, null, bag, hatchingGround, null, null, eggHatchingLogic);
         phase.setup();
         phase.turn(player);
+        assertEquals(0, player.unhatchedCards);
         EasyMock.verify(hatchingGround, bag, player, card.domesticEffects[0], handler, eggHatchingLogic);
     }
 
