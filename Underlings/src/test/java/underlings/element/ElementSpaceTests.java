@@ -22,10 +22,19 @@ public class ElementSpaceTests {
     }
 
     @Test
-    public void testGetColorsNoColors() {
+    public void testGetColorsEmpty() {
         ElementSpace space = new ElementSpace(ElementColor.BLUE);
 
         List<ElementColor> expected = Arrays.asList();
+        assertEquals(expected, space.getElementColors());
+    }
+
+    @Test
+    public void testGetColorsNotEmpty() {
+        ElementSpace space = new ElementSpace(ElementColor.BLUE);
+        space.addElements(new Element(ElementColor.BLUE));
+
+        List<ElementColor> expected = Arrays.asList(ElementColor.BLUE);
         assertEquals(expected, space.getElementColors());
     }
 }
