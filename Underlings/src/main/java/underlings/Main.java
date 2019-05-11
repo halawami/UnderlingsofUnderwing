@@ -38,7 +38,7 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		Gui gui = new Gui(new ConcretePrompt(), new ConcreteDisplay());
+		Gui gui = new Gui(new TestPrompt(), new ConcreteDisplay());
 		CardFactory cardFactory = new CardFactory(CARDS_JSON_FILE_NAME);
 		Deck deck = new Deck(cardFactory.getCards());
 		HatchingGround hatchingGround = new HatchingGround(deck);
@@ -69,7 +69,7 @@ public class Main {
 				field, eggHatchingLogic);
 		phases.add(dragonPhase);
 		Map<String, FinalPhase> finalPhaseMap = new HashMap<>();
-		ScoreUtils scoreUtils = new ScoreUtils();
+		ScoreUtils scoreUtils = new ScoreUtils(game.getPlayers(), gui);
 		finalPhaseMap.put("Regular", new RegularFinalPhase(game.getPlayers(), gui, dragonPhase, scoreUtils));
 		finalPhaseMap.put("Wild", new WildFinalPhase(gui));
 
