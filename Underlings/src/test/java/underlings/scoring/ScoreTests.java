@@ -150,9 +150,11 @@ public class ScoreTests {
 		fakePlayers = Arrays.asList(players[0], players[1]);
 		this.scoreUtils = new ScoreUtils(fakePlayers, gui);
 		gui.promptHandler = EasyMock.mock(ConcretePrompt.class);
+		this.scoreUtils.scores.put(players[1], 5);
+		this.scoreUtils.scores.put(players[0], 1);
 		for (Player player : this.scoreUtils.scores.keySet()) {
-			gui.promptHandler.displayMessage(player + ": " + 2 + " points", player.getPlayerId(),
-					JOptionPane.PLAIN_MESSAGE);
+			gui.promptHandler.displayMessage(player + ": " + this.scoreUtils.scores.get(player) + " points",
+					player.getPlayerId(), JOptionPane.PLAIN_MESSAGE);
 		}
 		EasyMock.replay(gui, gui.promptHandler);
 		this.scoreUtils.displayScores();
@@ -164,10 +166,6 @@ public class ScoreTests {
 		List<Player> fakePlayers = new LinkedList<>();
 		this.scoreUtils = new ScoreUtils(fakePlayers, gui);
 		gui.promptHandler = EasyMock.mock(ConcretePrompt.class);
-		for (Player player : this.scoreUtils.scores.keySet()) {
-			gui.promptHandler.displayMessage(player + ": " + 2 + " points", player.getPlayerId(),
-					JOptionPane.PLAIN_MESSAGE);
-		}
 		EasyMock.replay(gui, gui.promptHandler);
 		this.scoreUtils.displayScores();
 		EasyMock.verify(gui, gui.promptHandler);
