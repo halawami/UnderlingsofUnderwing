@@ -109,9 +109,12 @@ public class Player {
 		for (Handler handler : this.getHandlers()) {
 			elementGivers.add(handler.elementGiver);
 		}
-		for (Card card : this.hatchedCards) {
-			elementGivers.addAll(card.getElementGivers());
-		}
+
+		// for (Card card : this.hatchedCards) {
+		// elementGivers.addAll(card.getElementGivers());
+		// }
+
+		elementGivers.addAll(effectElementGiver);
 
 		return elementGivers;
 	}
