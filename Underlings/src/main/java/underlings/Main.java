@@ -29,45 +29,45 @@ import underlings.utilities.LocaleWrap;
 
 public class Main {
 
-    private static final String CARDS_JSON_FILE_NAME = LocaleWrap.get("cards_json");
+	private static final String CARDS_JSON_FILE_NAME = LocaleWrap.get("cards_json");
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 
-        Gui gui = new Gui(new ConcretePrompt(), new ConcreteDisplay());
-        CardFactory cardFactory = new CardFactory(CARDS_JSON_FILE_NAME);
-        Deck deck = new Deck(cardFactory.getCards());
-        HatchingGround hatchingGround = new HatchingGround(deck);
-        HandlerFactory handlerFactory = new HandlerFactory();
-        PlayerFactory playerFactory = new PlayerFactory(handlerFactory);
-        FieldSpaceFactory fieldSpaceFactory = new FieldSpaceFactory();
-        Field field = new Field(fieldSpaceFactory);
-        HandlerMovementLogic handlerMovementLogic = new HandlerMovementLogic(hatchingGround, gui, field);
+		Gui gui = new Gui(new ConcretePrompt(), new ConcreteDisplay());
+		CardFactory cardFactory = new CardFactory(CARDS_JSON_FILE_NAME);
+		Deck deck = new Deck(cardFactory.getCards());
+		HatchingGround hatchingGround = new HatchingGround(deck);
+		HandlerFactory handlerFactory = new HandlerFactory();
+		PlayerFactory playerFactory = new PlayerFactory(handlerFactory);
+		FieldSpaceFactory fieldSpaceFactory = new FieldSpaceFactory();
+		Field field = new Field(fieldSpaceFactory);
+		HandlerMovementLogic handlerMovementLogic = new HandlerMovementLogic(hatchingGround, gui, field);
 
-        ElementFactory elementFactory = new ElementFactory();
-        Random random = new Random();
-        ElementBag elementBag = new ElementBag(elementFactory, random);
+		ElementFactory elementFactory = new ElementFactory();
+		Random random = new Random();
+		ElementBag elementBag = new ElementBag(elementFactory, random);
 
-        Game game = new Game(gui, hatchingGround, playerFactory, elementBag);
-        Runnable gameDisplay = () -> {
-            game.display();
-        };
+		Game game = new Game(gui, hatchingGround, playerFactory, elementBag);
+		Runnable gameDisplay = () -> {
+			game.display();
+		};
 
-        EggHatchingLogic eggHatchingLogic = new EggHatchingLogic(gui, elementBag, hatchingGround);
+		EggHatchingLogic eggHatchingLogic = new EggHatchingLogic(gui, elementBag, hatchingGround);
 
-        List<Phase> phases = new ArrayList<>();
-        phases.add(new DrawingPhase(game.getPlayers(), gui, elementBag, hatchingGround, gameDisplay, field));
-        phases.add(new HandlerPhase(game.getPlayers(), gui, elementBag, hatchingGround, gameDisplay, field,
-                handlerMovementLogic));
-        phases.add(new PlacementPhase(game.getPlayers(), gui, elementBag, hatchingGround, gameDisplay, field,
-                eggHatchingLogic));
-        DragonPhase dragonPhase = new DragonPhase(game.getPlayers(), gui, elementBag, hatchingGround, gameDisplay,
-                field, eggHatchingLogic);
-        phases.add(dragonPhase);
+		List<Phase> phases = new ArrayList<>();
+		phases.add(new DrawingPhase(game.getPlayers(), gui, elementBag, hatchingGround, gameDisplay, field));
+		phases.add(new HandlerPhase(game.getPlayers(), gui, elementBag, hatchingGround, gameDisplay, field,
+				handlerMovementLogic));
+		phases.add(new PlacementPhase(game.getPlayers(), gui, elementBag, hatchingGround, gameDisplay, field,
+				eggHatchingLogic));
+		DragonPhase dragonPhase = new DragonPhase(game.getPlayers(), gui, elementBag, hatchingGround, gameDisplay,
+				field, eggHatchingLogic);
+		phases.add(dragonPhase);
 
-        FinalPhase finalPhase = new FinalPhase(game.getPlayers(), gui, dragonPhase);
+		FinalPhase finalPhase = new FinalPhase(game.getPlayers(), gui, dragonPhase);
 
-        game.start(phases, finalPhase);
+		game.start(phases, finalPhase);
 
-    }
+	}
 
 }

@@ -10,22 +10,22 @@ import underlings.player.Player;
 
 public abstract class RotationPhase extends Phase {
 
-    public RotationPhase(List<Player> players, Gui gui, ElementBag elementBag, HatchingGround hatchingGround,
-            Runnable displayMethod, Field field) {
-        super(players, gui, elementBag, hatchingGround, displayMethod, field);
-    }
+	public RotationPhase(List<Player> players, Gui gui, ElementBag elementBag, HatchingGround hatchingGround,
+			Runnable displayMethod, Field field) {
+		super(players, gui, elementBag, hatchingGround, displayMethod, field);
+	}
 
-    @Override
-    public void execute(int turnLeader) {
-        this.phaseComplete = false;
-        this.setup();
+	@Override
+	public void execute(int turnLeader) {
+		this.phaseComplete = false;
+		this.setup();
 
-        while (!this.phaseComplete) {
-            this.phaseComplete = true;
-            for (int i = turnLeader; i < turnLeader + this.players.size(); i++) {
-                this.turn(this.players.get(i % this.players.size()));
-                this.displayMethod.run();
-            }
-        }
-    }
+		while (!this.phaseComplete) {
+			this.phaseComplete = true;
+			for (int i = turnLeader; i < turnLeader + this.players.size(); i++) {
+				this.turn(this.players.get(i % this.players.size()));
+				this.displayMethod.run();
+			}
+		}
+	}
 }
