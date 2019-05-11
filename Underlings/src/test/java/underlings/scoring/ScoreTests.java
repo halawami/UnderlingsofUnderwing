@@ -88,7 +88,8 @@ public class ScoreTests {
 
 	@Test
 	public void testOneEmpty() {
-		Map<Player, Integer> scores = this.scoreUtils.calculateScores(Arrays.asList(this.players), true);
+		this.scoreUtils = new ScoreUtils(Arrays.asList(players[0], players[1], players[2]), gui);
+		Map<Player, Integer> scores = this.scoreUtils.calculateScores();
 
 		assertEquals(58, (int) (scores.get(this.players[0])));
 		assertEquals(65, (int) (scores.get(this.players[1])));
