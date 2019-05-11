@@ -73,6 +73,7 @@ public class EggHatchingLogicTests {
 		card.wildEffects = new Effect[2];
 		card.wildEffects[0] = effect;
 		card.wildEffects[1] = effect;
+		EasyMock.expect(effect.on(card)).andReturn(effect).times(2);
 		EasyMock.expect(effect.on(elementBag)).andReturn(effect).times(2);
 		EasyMock.expect(effect.on(hatchingGround)).andReturn(effect).times(2);
 		EasyMock.expect(effect.on(player.elementSpaceLogic)).andReturn(effect).times(2);
