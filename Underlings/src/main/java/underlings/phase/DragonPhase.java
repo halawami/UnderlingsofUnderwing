@@ -29,8 +29,6 @@ public class DragonPhase extends SequentialPhase {
 	@Override
 	public void turn(Player player) {
 		for (Card card : player.unhatchedCards) {
-			System.out.println("player in dragon phase " + player);
-			System.out.println("player in dragon phase logic" + player.elementSpaceLogic);
 			this.domesticEggHatchingLogic.hatchEgg(card, false, player);
 		}
 		player.unhatchedCards.clear();

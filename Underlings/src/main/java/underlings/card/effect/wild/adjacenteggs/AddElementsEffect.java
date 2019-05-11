@@ -27,8 +27,6 @@ public class AddElementsEffect extends AdjacentEggsEffect {
 
 	public void addElementToCard(ElementColor elementColorToAdd, Card card, ElementSpaceLogic elementSpaceLogic,
 			ElementBag elementBag) {
-		System.out.println("AddElementsEffect " + card);
-		System.out.println("elementspacelogic " + elementSpaceLogic);
 		List<ElementSpace> playableSpaces = elementSpaceLogic.getPlayableSpaces(card, elementColorToAdd);
 		if (!playableSpaces.isEmpty()) {
 			Element elementToAdd = elementBag.drawElementFromList(elementColorToAdd);

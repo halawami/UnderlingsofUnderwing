@@ -30,8 +30,6 @@ public abstract class ElementsEffect extends AdjacentEggsEffect {
 
 	public void destroyElementsOfColorOnCard(ElementColor elementColorToDestroy, Card card,
 			ElementSpaceLogic elementSpaceLogic) {
-		System.out.println("ElementsEffect " + card);
-		System.out.println("elementspacelogic " + elementSpaceLogic);
 		List<ElementSpace> destroyableSpaces = elementSpaceLogic.getDestroyableSpaces(card, elementColorToDestroy);
 		for (ElementSpace destroyableSpace : destroyableSpaces) {
 			destroyElementsOfColorOnSpace(destroyableSpace, elementColorToDestroy);

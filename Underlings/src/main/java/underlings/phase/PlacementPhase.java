@@ -88,7 +88,6 @@ public class PlacementPhase extends RotationPhase {
 	}
 
 	public void hatchWildDragon(Card card) {
-		System.out.println("player in dragon phase " + FakePlayer.getInstance().elementSpaceLogic);
 		this.wildEggHatchingLogic.hatchEgg(card, true, FakePlayer.getInstance());
 		this.gameComplete = true;
 		this.phaseComplete = true;

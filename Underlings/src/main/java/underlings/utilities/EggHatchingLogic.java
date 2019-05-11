@@ -24,7 +24,6 @@ public class EggHatchingLogic {
 	}
 
 	public void hatchEgg(Card card, boolean domestic, Player player) {
-		System.out.println("player logic " + player.elementSpaceLogic);
 		Effect[] effects;
 		if (domestic) {
 			card.handler = WildHandler.getInstance();
@@ -36,8 +35,6 @@ public class EggHatchingLogic {
 			player.hatchedCards.add(card);
 		}
 		for (int i = 0; i < effects.length; i++) {
-			System.out.println("player in egg hatching " + player);
-			System.out.println("player in egg hatching logic " + player.elementSpaceLogic);
 			effects[i].on(card).on(this.elementBag).on(this.hatchingGround).on(player.elementSpaceLogic).on(player)
 					.on(this.gui).on(this).apply();
 			this.gui.notifyAction(player.getPlayerId(), effects[i].toString() + " has been applied");

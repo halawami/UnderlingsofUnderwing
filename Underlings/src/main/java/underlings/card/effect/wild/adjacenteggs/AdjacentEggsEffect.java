@@ -18,13 +18,6 @@ public abstract class AdjacentEggsEffect extends HatchingGroundEffect {
 			ElementSpaceLogic elementSpaceLogic, Gui gui, Player currentPlayer, EggHatchingLogic eggHatchingLogic) {
 		List<Card> adjacentCards = hatchingGround.getAdjacentCards(centerCard);
 		for (Card adjacentCard : adjacentCards) {
-			System.out.println("adjacent card " + adjacentCard);
-			System.out.println("hatching gruond " + hatchingGround);
-			System.out.println("element bag" + elementBag);
-			System.out.println("space logic" + elementSpaceLogic);
-			System.out.println(" gui  " + gui);
-			System.out.println(" player " + currentPlayer);
-			System.out.println("hatching logic " + eggHatchingLogic);
 			applyOnAdjacentEgg(adjacentCard, elementBag, currentPlayer.elementSpaceLogic, hatchingGround, gui,
 					eggHatchingLogic);
 		}
