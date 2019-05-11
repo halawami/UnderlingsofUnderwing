@@ -4,6 +4,7 @@ import java.util.List;
 
 import underlings.card.Card;
 import underlings.card.effect.HatchingGroundEffect;
+import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
@@ -29,6 +30,9 @@ public class AddElementToAllSpacesInPlayEffect extends HatchingGroundEffect {
     public void addElementsToCard(ElementColor color, Card cardToAddTo, ElementSpaceLogic elementSpaceLogic,
             ElementBag elementBag) {
         List<ElementSpace> playableSpaces = elementSpaceLogic.getPlayableSpaces(cardToAddTo, color);
-
+        if (!playableSpaces.isEmpty()) {
+            Element elementToAdd = elementBag.drawElementFromList(color);
+            playableSpaces.get(0).addElements(elementToAdd);
+        }
     }
 }
