@@ -18,15 +18,16 @@ public class ScoreUtils {
 	private List<Player> players;
 	private Gui gui;
 	private List<Player> winners;
+	protected Map<Player, Integer> scores;
 
 	public ScoreUtils(List<Player> players, Gui gui) {
 		this.players = players;
 		this.gui = gui;
 		this.winners = new LinkedList<>();
+		this.scores = new HashMap<>();
 	}
 
-	public Map<Player, Integer> calculateScores() {
-		Map<Player, Integer> scores = new HashMap<>();
+	public void calculateScores() {
 		boolean bonus = this.players.size() > 2;
 
 		int warmest = 0;
@@ -69,10 +70,8 @@ public class ScoreUtils {
 
 			score += this.calculatePoints(player.hatchedCards);
 
-			scores.put(player, score);
+			this.scores.put(player, score);
 		}
-
-		return scores;
 	}
 
 	public int calculatePoints(List<Card> cards) {
@@ -97,7 +96,6 @@ public class ScoreUtils {
 	}
 
 	public void displayScores() {
-		Map<Player, Integer> scores = this.calculateScores();
 		int maxScore = 0;
 
 		for (Player player : scores.keySet()) {

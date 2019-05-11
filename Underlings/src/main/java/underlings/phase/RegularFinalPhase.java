@@ -31,6 +31,7 @@ public class RegularFinalPhase implements FinalPhase {
 		}
 
 		this.gui.promptHandler.displayMessage("Game Over!", 0, JOptionPane.PLAIN_MESSAGE);
+		this.scoreUtils.calculateScores();
 		this.scoreUtils.displayScores();
 		this.scoreUtils.displayWinners();
 	}
