@@ -12,48 +12,49 @@ import underlings.element.ElementBag;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
+import underlings.player.Player;
 import underlings.utilities.EggHatchingLogic;
 
 public class AdjacentEggsEffectTests {
 
-    @Test
-    public void testApplyOnMultipleAdjacentCards() {
-        Card centerCard = EasyMock.mock(Card.class);
-        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
-        ElementSpaceLogic elementSpaceLogic = EasyMock.mock(ElementSpaceLogic.class);
-        ElementBag elementBag = EasyMock.mock(ElementBag.class);
-        AdjacentEggsEffect testedEffect = EasyMock.partialMockBuilder(AdjacentEggsEffect.class)
-                .addMockedMethod("applyOnAdjacentEgg").createMock();
+	@Test
+	public void testApplyOnMultipleAdjacentCards() {
+		Card centerCard = EasyMock.mock(Card.class);
+		HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
+		ElementSpaceLogic elementSpaceLogic = EasyMock.mock(ElementSpaceLogic.class);
+		ElementBag elementBag = EasyMock.mock(ElementBag.class);
+		Player player = EasyMock.mock(Player.class);
+		AdjacentEggsEffect testedEffect = EasyMock.partialMockBuilder(AdjacentEggsEffect.class)
+				.addMockedMethod("applyOnAdjacentEgg").createMock();
 
-        Gui gui = EasyMock.mock(Gui.class);
-        EggHatchingLogic eggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
-        testedEffect.on(centerCard).on(hatchingGround).on(elementSpaceLogic).on(elementBag).on(gui)
-                .on(eggHatchingLogic);
+		Gui gui = EasyMock.mock(Gui.class);
+		EggHatchingLogic eggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
+		testedEffect.on(centerCard).on(hatchingGround).on(elementSpaceLogic).on(elementBag).on(gui).on(eggHatchingLogic)
+				.on(player);
 
-        List<Card> mockedCards = getMockedCards(2);
-        EasyMock.expect(hatchingGround.getAdjacentCards(centerCard)).andReturn(mockedCards);
-        for (Card mockedCard : mockedCards) {
-            testedEffect.applyOnAdjacentEgg(mockedCard, elementBag, elementSpaceLogic, hatchingGround, gui,
-                    eggHatchingLogic);
-        }
+		List<Card> mockedCards = getMockedCards(2);
+		EasyMock.expect(hatchingGround.getAdjacentCards(centerCard)).andReturn(mockedCards);
+		for (Card mockedCard : mockedCards) {
+			testedEffect.applyOnAdjacentEgg(mockedCard, elementBag, elementSpaceLogic, hatchingGround, gui,
+					eggHatchingLogic);
+		}
 
-        EasyMock.replay(centerCard, hatchingGround, elementBag, elementSpaceLogic, testedEffect, gui);
-        EasyMock.replay(eggHatchingLogic);
+		EasyMock.replay(centerCard, hatchingGround, elementBag, elementSpaceLogic, testedEffect, gui);
+		EasyMock.replay(eggHatchingLogic, player);
 
-        testedEffect.apply();
+		testedEffect.apply();
 
-        EasyMock.verify(centerCard, hatchingGround, elementBag, elementSpaceLogic, testedEffect, gui);
-        EasyMock.verify(eggHatchingLogic);
+		EasyMock.verify(centerCard, hatchingGround, elementBag, elementSpaceLogic, testedEffect, gui);
+		EasyMock.verify(eggHatchingLogic, player);
 
-    }
+	}
 
-    private List<Card> getMockedCards(int numberOfCards) {
-        List<Card> mockedCards = new ArrayList<>();
-        for (int i = 0; i < numberOfCards; i++) {
-            mockedCards.add(EasyMock.niceMock(Card.class));
-        }
-        return mockedCards;
-    }
-
+	private List<Card> getMockedCards(int numberOfCards) {
+		List<Card> mockedCards = new ArrayList<>();
+		for (int i = 0; i < numberOfCards; i++) {
+			mockedCards.add(EasyMock.niceMock(Card.class));
+		}
+		return mockedCards;
+	}
 
 }
