@@ -30,9 +30,9 @@ public class AddElementToAllSpacesInPlayEffect extends HatchingGroundEffect {
     public void addElementsToCard(ElementColor color, Card cardToAddTo, ElementSpaceLogic elementSpaceLogic,
             ElementBag elementBag) {
         List<ElementSpace> playableSpaces = elementSpaceLogic.getPlayableSpaces(cardToAddTo, color);
-        if (!playableSpaces.isEmpty()) {
+        for (ElementSpace playableSpace : playableSpaces) {
             Element elementToAdd = elementBag.drawElementFromList(color);
-            playableSpaces.get(0).addElements(elementToAdd);
+            playableSpace.addElements(elementToAdd);
         }
     }
 }

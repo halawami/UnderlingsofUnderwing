@@ -115,9 +115,9 @@ public class AddElementToAllSpacesInPlayEffectTests {
         List<ElementSpace> mockedPlayableSpaces = getMockedPlayableSpaces(8);
 
         EasyMock.expect(elementSpaceLogic.getPlayableSpaces(mockedCard, blue)).andReturn(mockedPlayableSpaces);
-        EasyMock.expect(elementBag.drawElementFromList(blue)).andReturn(stubElement);
 
         for (ElementSpace mockSpace : mockedPlayableSpaces) {
+            EasyMock.expect(elementBag.drawElementFromList(blue)).andReturn(stubElement);
             mockSpace.addElements(stubElement);
         }
 
