@@ -30,7 +30,7 @@ public class AddElementsToAllAdjacentEggsEffectTests {
         Card adjacentCard = EasyMock.mock(Card.class);
         AddElementsEffect testedEffect =
                 EasyMock.partialMockBuilder(AddElementsEffect.class).addMockedMethod("addElementToCard").createMock();
-        testedEffect.elementColors = new ElementColor[] {ElementColor.BLUE};
+        testedEffect.elementColors = new ElementColor[]{ElementColor.BLUE};
         EggHatchingLogic eggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
 
         testedEffect.addElementToCard(ElementColor.BLUE, adjacentCard, elementSpaceLogic, elementBag);
@@ -53,7 +53,7 @@ public class AddElementsToAllAdjacentEggsEffectTests {
         Card adjacentCard = EasyMock.mock(Card.class);
         AddElementsEffect testedEffect =
                 EasyMock.partialMockBuilder(AddElementsEffect.class).addMockedMethod("addElementToCard").createMock();
-        testedEffect.elementColors = new ElementColor[] {ElementColor.BLUE, ElementColor.RED};
+        testedEffect.elementColors = new ElementColor[]{ElementColor.BLUE, ElementColor.RED};
 
         testedEffect.addElementToCard(ElementColor.BLUE, adjacentCard, elementSpaceLogic, elementBag);
         testedEffect.addElementToCard(ElementColor.RED, adjacentCard, elementSpaceLogic, elementBag);
@@ -77,7 +77,7 @@ public class AddElementsToAllAdjacentEggsEffectTests {
         Card adjacentCard = EasyMock.mock(Card.class);
         AddElementsEffect testedEffect =
                 EasyMock.partialMockBuilder(AddElementsEffect.class).addMockedMethod("addElementToCard").createMock();
-        testedEffect.elementColors = new ElementColor[] {ElementColor.BLUE, ElementColor.BLUE};
+        testedEffect.elementColors = new ElementColor[]{ElementColor.BLUE, ElementColor.BLUE};
 
         testedEffect.addElementToCard(ElementColor.BLUE, adjacentCard, elementSpaceLogic, elementBag);
         testedEffect.addElementToCard(ElementColor.BLUE, adjacentCard, elementSpaceLogic, elementBag);
