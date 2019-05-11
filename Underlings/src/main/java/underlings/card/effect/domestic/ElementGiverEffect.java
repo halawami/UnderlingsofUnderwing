@@ -10,5 +10,6 @@ public class ElementGiverEffect extends PlayerEffect {
 
 	@Override
 	protected void apply(Player player) {
+		player.effectElementGiver.add(elementGiver);
 	}
 }
