@@ -49,4 +49,8 @@ public class ElementSpace implements Choice {
         return MessageFormat.format(LocaleWrap.get("element_space"), this.color);
     }
 
+    public List<ElementColor> getElementColors() {
+        return Arrays.asList();
+    }
+
 }
