@@ -98,6 +98,7 @@ public class EggHatchingLogicTests {
 	public void testOneDomesticEffect() {
 		Handler handler = new Handler(HandlerState.CARD);
 		card.handler = handler;
+		EasyMock.expect(effect.on(card)).andReturn(effect);
 		EasyMock.expect(effect.on(elementBag)).andReturn(effect);
 		EasyMock.expect(effect.on(hatchingGround)).andReturn(effect);
 		EasyMock.expect(effect.on(player.elementSpaceLogic)).andReturn(effect);
