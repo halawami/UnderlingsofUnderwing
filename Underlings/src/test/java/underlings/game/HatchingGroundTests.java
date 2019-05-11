@@ -9,6 +9,7 @@ import org.easymock.EasyMock;
 import org.junit.Test;
 
 import underlings.card.Card;
+import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.handler.Handler;
@@ -109,7 +110,7 @@ public class HatchingGroundTests {
         Handler handler = EasyMock.mock(Handler.class);
         ElementSpace[] spaces = {new ElementSpace(ElementColor.PURPLE)};
         card.elementSpaces = spaces;
-        spaces[0].elements = Arrays.asList(ElementColor.PURPLE);
+        spaces[0].elements = Arrays.asList(new Element(ElementColor.PURPLE));
         card.handler = handler;
         EasyMock.expect(deck.draw()).andReturn(card);
         EasyMock.expect(deck.draw()).andReturn(fakeCard).times(15);
@@ -141,7 +142,7 @@ public class HatchingGroundTests {
         Handler handler = EasyMock.mock(Handler.class);
         ElementSpace[] spaces = {new ElementSpace(ElementColor.PURPLE)};
         card.elementSpaces = spaces;
-        spaces[0].elements = Arrays.asList(ElementColor.PURPLE);
+        spaces[0].elements = Arrays.asList(new Element(ElementColor.PURPLE));
         card.handler = handler;
         EasyMock.expect(deck.draw()).andReturn(card).times(2);
         EasyMock.expect(deck.draw()).andReturn(fakeCard).times(14);
@@ -189,8 +190,8 @@ public class HatchingGroundTests {
         final Handler handler = EasyMock.mock(Handler.class);
         ElementSpace[] spaces = {new ElementSpace(ElementColor.PURPLE), new ElementSpace(ElementColor.BLACK)};
         card.elementSpaces = spaces;
-        spaces[0].elements = Arrays.asList(ElementColor.PURPLE);
-        spaces[1].elements = Arrays.asList(ElementColor.RED);
+        spaces[0].elements = Arrays.asList(new Element(ElementColor.PURPLE));
+        spaces[1].elements = Arrays.asList(new Element(ElementColor.RED));
         card.handler = handler;
         EasyMock.expect(deck.draw()).andReturn(card);
         EasyMock.expect(deck.draw()).andReturn(fakeCard).times(15);
@@ -220,8 +221,8 @@ public class HatchingGroundTests {
         final Handler handler = EasyMock.mock(Handler.class);
         ElementSpace[] spaces = {new ElementSpace(ElementColor.PURPLE), new ElementSpace(ElementColor.BLACK)};
         card.elementSpaces = spaces;
-        spaces[0].elements = Arrays.asList(ElementColor.PURPLE);
-        spaces[1].elements = Arrays.asList(ElementColor.BLACK);
+        spaces[0].elements = Arrays.asList(new Element(ElementColor.PURPLE));
+        spaces[1].elements = Arrays.asList(new Element(ElementColor.BLACK));
         card.handler = handler;
         EasyMock.expect(deck.draw()).andReturn(card);
         EasyMock.expect(deck.draw()).andReturn(fakeCard).times(15);
@@ -246,8 +247,8 @@ public class HatchingGroundTests {
         card.handler = WildHandler.getInstance();
         ElementSpace[] spaces = {new ElementSpace(ElementColor.PURPLE), new ElementSpace(ElementColor.BLACK)};
         card.elementSpaces = spaces;
-        spaces[0].elements = Arrays.asList(ElementColor.PURPLE);
-        spaces[1].elements = Arrays.asList(ElementColor.BLACK);
+        spaces[0].elements = Arrays.asList(new Element(ElementColor.PURPLE));
+        spaces[1].elements = Arrays.asList(new Element(ElementColor.BLACK));
         ElementSpace[] fakeSpaces = {new ElementSpace(ElementColor.PURPLE)};
         fakeCard.elementSpaces = fakeSpaces;
         fakeCard.elementSpaces[0].elements = new ArrayList<>();

@@ -65,7 +65,7 @@ public class ElementSpaceLogic {
 
     public boolean isValidRecipe(List<ElementColor> recipe, ElementSpace space) {
         recipe = new ArrayList<ElementColor>(recipe);
-        for (ElementColor color : space.elements) {
+        for (ElementColor color : space.getElementColors()) {
             if (recipe.contains(color)) {
                 recipe.remove(color);
             } else {

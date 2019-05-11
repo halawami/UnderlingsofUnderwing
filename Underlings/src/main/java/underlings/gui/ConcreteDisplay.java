@@ -121,7 +121,7 @@ public class ConcreteDisplay implements Display {
                 s = LocaleWrap.get("empty");
             }
             for (int i = 0; i < space.elements.size(); i++) {
-                String elementName = space.elements.get(i).name();
+                String elementName = space.getElementColors().get(i).name();
                 s += "" + elementName.charAt(0) + elementName.charAt(elementName.length() - 1) + " ";
             }
 

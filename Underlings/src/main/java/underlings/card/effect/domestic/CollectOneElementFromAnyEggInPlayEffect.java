@@ -4,6 +4,7 @@ import java.util.List;
 
 import underlings.card.Card;
 import underlings.card.effect.HatchingGroundEffect;
+import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
@@ -21,14 +22,14 @@ public class CollectOneElementFromAnyEggInPlayEffect extends HatchingGroundEffec
             Player currentPlayer, EggHatchingLogic eggHatchingLogic) {
         List<Card> allCards = hatchingGround.getAllCards();
         ElementSpace selectedSpace = gui.getElementSpaceContainingElementOfColors(allCards, this.elementChoices);
-        ElementColor selectedElement =
+        Element selectedElement =
                 gui.getElementOfColorsFromSpace(this.elementChoices, selectedSpace, currentPlayer.getPlayerId());
         giveElementToPlayer(selectedElement, selectedSpace, currentPlayer);
 
     }
 
-    private void giveElementToPlayer(ElementColor selectedElement, ElementSpace selectedSpace, Player currentPlayer) {
-        selectedSpace.destroyOneElementOfColor(selectedElement);
+    private void giveElementToPlayer(Element selectedElement, ElementSpace selectedSpace, Player currentPlayer) {
+        selectedSpace.destroyOneElementOfColor(selectedElement.getColor());
         currentPlayer.addElement(selectedElement);
     }
 }

@@ -3,6 +3,7 @@ package underlings.elementspace.destroy;
 import org.junit.Assert;
 import org.junit.Test;
 
+import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 
@@ -11,8 +12,8 @@ public class DestroyOneElementOfColorTests {
     @Test
     public void testNoDestroyableElements() {
         ElementSpace elementSpace = new ElementSpace();
-        elementSpace.elements.add(ElementColor.BLUE);
-        elementSpace.elements.add(ElementColor.RED);
+        elementSpace.elements.add(new Element(ElementColor.BLUE));
+        elementSpace.elements.add(new Element(ElementColor.RED));
 
         elementSpace.destroyOneElementOfColor(ElementColor.GREEN);
 
@@ -24,9 +25,9 @@ public class DestroyOneElementOfColorTests {
     @Test
     public void testOneDestroyableElementsFirst() {
         ElementSpace elementSpace = new ElementSpace();
-        elementSpace.elements.add(ElementColor.BLUE);
-        elementSpace.elements.add(ElementColor.RED);
-        elementSpace.elements.add(ElementColor.YELLOW);
+        elementSpace.elements.add(new Element(ElementColor.BLUE));
+        elementSpace.elements.add(new Element(ElementColor.RED));
+        elementSpace.elements.add(new Element(ElementColor.YELLOW));
 
         elementSpace.destroyOneElementOfColor(ElementColor.BLUE);
 
@@ -38,9 +39,9 @@ public class DestroyOneElementOfColorTests {
     @Test
     public void testOneDestroyableElementsMiddle() {
         ElementSpace elementSpace = new ElementSpace();
-        elementSpace.elements.add(ElementColor.BLUE);
-        elementSpace.elements.add(ElementColor.RED);
-        elementSpace.elements.add(ElementColor.YELLOW);
+        elementSpace.elements.add(new Element(ElementColor.BLUE));
+        elementSpace.elements.add(new Element(ElementColor.RED));
+        elementSpace.elements.add(new Element(ElementColor.YELLOW));
 
         elementSpace.destroyOneElementOfColor(ElementColor.RED);
 
@@ -52,9 +53,9 @@ public class DestroyOneElementOfColorTests {
     @Test
     public void testOneDestroyableElementsLast() {
         ElementSpace elementSpace = new ElementSpace();
-        elementSpace.elements.add(ElementColor.BLUE);
-        elementSpace.elements.add(ElementColor.RED);
-        elementSpace.elements.add(ElementColor.YELLOW);
+        elementSpace.elements.add(new Element(ElementColor.BLUE));
+        elementSpace.elements.add(new Element(ElementColor.RED));
+        elementSpace.elements.add(new Element(ElementColor.YELLOW));
 
         elementSpace.destroyOneElementOfColor(ElementColor.YELLOW);
 
@@ -66,10 +67,10 @@ public class DestroyOneElementOfColorTests {
     @Test
     public void testMultipleDestroyableElements() {
         ElementSpace elementSpace = new ElementSpace();
-        elementSpace.elements.add(ElementColor.BLUE);
-        elementSpace.elements.add(ElementColor.RED);
-        elementSpace.elements.add(ElementColor.BLUE);
-        elementSpace.elements.add(ElementColor.YELLOW);
+        elementSpace.elements.add(new Element(ElementColor.BLUE));
+        elementSpace.elements.add(new Element(ElementColor.RED));
+        elementSpace.elements.add(new Element(ElementColor.BLUE));
+        elementSpace.elements.add(new Element(ElementColor.YELLOW));
 
         elementSpace.destroyOneElementOfColor(ElementColor.BLUE);
 
