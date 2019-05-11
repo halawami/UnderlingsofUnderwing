@@ -61,14 +61,6 @@ public class DestroyElementsOnAllAdjacentEggsEffectTests {
         EasyMock.verify(testedEffect, elementSpaceLogic, adjacentCard, gui, hatchingGround, eggHatchingLogic);
     }
 
-    private List<Card> getMockedCards(int numberOfCards) {
-        List<Card> mockedCards = new ArrayList<>();
-        for (int i = 0; i < numberOfCards; i++) {
-            mockedCards.add(EasyMock.niceMock(Card.class));
-        }
-        return mockedCards;
-    }
-
     @Test
     public void testDestroyElementOnCardNoDestroyableElements() {
         ElementColor blue = ElementColor.BLUE;

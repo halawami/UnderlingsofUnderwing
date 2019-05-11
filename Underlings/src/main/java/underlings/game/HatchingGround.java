@@ -8,6 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import underlings.card.Card;
+import underlings.element.Element;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.handler.Handler;
 import underlings.handler.WildHandler;
@@ -147,5 +148,15 @@ public class HatchingGround implements Iterable<Card> {
 
     public List<Card> getAllCards() {
         return null;
+    }
+
+    public List<Card> getPlayableCards(ElementSpaceLogic logic, List<Element> elements) {
+        List<Card> cards = new ArrayList<Card>();
+        for (Card card : this) {
+            if (!logic.getPlayableSpaces(card, elements).isEmpty()) {
+                cards.add(card);
+            }
+        }
+        return cards;
     }
 }
