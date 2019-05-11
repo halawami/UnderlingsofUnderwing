@@ -9,7 +9,7 @@ import underlings.utilities.EggHatchingLogic;
 
 public abstract class HatchingGroundEffect extends Effect {
 
-	@Override
-	protected abstract void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag, Gui gui,
-			Player currentPlayer, EggHatchingLogic eggHatchingLogic);
+    @Override
+    protected abstract void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag, Gui gui,
+            Player currentPlayer, EggHatchingLogic eggHatchingLogic);
 }

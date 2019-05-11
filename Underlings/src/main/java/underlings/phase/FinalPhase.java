@@ -4,8 +4,8 @@ import underlings.player.Player;
 
 public interface FinalPhase {
 
-	public void execute();
+    public void execute();
 
-	public void turn(Player player);
+    public void turn(Player player);
 
 }

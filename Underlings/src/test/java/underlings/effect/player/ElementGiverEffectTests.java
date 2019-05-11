@@ -14,34 +14,34 @@ import underlings.player.Player;
 
 public class ElementGiverEffectTests {
 
-	@Test
-	public void testApply() {
-		Player player = EasyMock.mock(Player.class);
-		player.effectElementGiver = new LinkedList<>();
-		ElementGiverEffect elementGiverEffect = new ElementGiverEffect();
-		elementGiverEffect.on(player);
-		player.effectElementGiver.add(elementGiverEffect.elementGiver);
-		EasyMock.replay(player);
+    @Test
+    public void testApply() {
+        Player player = EasyMock.mock(Player.class);
+        player.effectElementGiver = new LinkedList<>();
+        ElementGiverEffect elementGiverEffect = new ElementGiverEffect();
+        elementGiverEffect.on(player);
+        player.effectElementGiver.add(elementGiverEffect.elementGiver);
+        EasyMock.replay(player);
 
-		elementGiverEffect.elementGiver = new ElementGiver("something", DrawChoice.BLUE);
-		elementGiverEffect.apply();
+        elementGiverEffect.elementGiver = new ElementGiver("something", DrawChoice.BLUE);
+        elementGiverEffect.apply();
 
-		EasyMock.verify(player);
-		assertTrue(player.effectElementGiver.contains(elementGiverEffect.elementGiver));
-	}
+        EasyMock.verify(player);
+        assertTrue(player.effectElementGiver.contains(elementGiverEffect.elementGiver));
+    }
 
-	@Test
-	public void testApplyNoElementGiver() {
-		Player player = EasyMock.mock(Player.class);
-		player.effectElementGiver = new LinkedList<>();
-		ElementGiverEffect elementGiverEffect = new ElementGiverEffect();
-		elementGiverEffect.on(player);
-		player.effectElementGiver.add(elementGiverEffect.elementGiver);
-		EasyMock.replay(player);
+    @Test
+    public void testApplyNoElementGiver() {
+        Player player = EasyMock.mock(Player.class);
+        player.effectElementGiver = new LinkedList<>();
+        ElementGiverEffect elementGiverEffect = new ElementGiverEffect();
+        elementGiverEffect.on(player);
+        player.effectElementGiver.add(elementGiverEffect.elementGiver);
+        EasyMock.replay(player);
 
-		elementGiverEffect.apply();
+        elementGiverEffect.apply();
 
-		EasyMock.verify(player);
-	}
+        EasyMock.verify(player);
+    }
 
 }
