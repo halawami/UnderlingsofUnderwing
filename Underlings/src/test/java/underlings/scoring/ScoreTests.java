@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 import javax.swing.JOptionPane;
 
@@ -131,11 +130,11 @@ public class ScoreTests {
 	public void testTwoSameNetCool() {
 		this.scoreUtils = new ScoreUtils(
 				Arrays.asList(players[0], players[1], players[2], players[3], players[4], players[5]), gui);
-		Map<Player, Integer> scores = this.scoreUtils.calculateScores();
+		this.scoreUtils.calculateScores();
 
-		assertEquals(58, (int) (scores.get(this.players[0])));
-		assertEquals(28, (int) (scores.get(this.players[3])));
-		assertEquals(28, (int) (scores.get(this.players[5])));
+		assertEquals(58, (int) (this.scoreUtils.scores.get(this.players[0])));
+		assertEquals(28, (int) (this.scoreUtils.scores.get(this.players[3])));
+		assertEquals(28, (int) (this.scoreUtils.scores.get(this.players[5])));
 	}
 
 	public Card createCard(int points, Temperature temperature) {
