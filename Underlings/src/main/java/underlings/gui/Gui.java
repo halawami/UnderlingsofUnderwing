@@ -1,14 +1,16 @@
 package underlings.gui;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.function.Function;
 
 import javax.swing.JOptionPane;
 
 import underlings.card.Card;
 import underlings.card.EmptyCard;
-import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementGiver;
 import underlings.element.ElementSpace;
@@ -91,10 +93,20 @@ public class Gui {
         return null;
     }
 
-    public Element getElementOfColorsFromSpace(ElementColor[] elementChoices, ElementSpace elementSpace) {
-        // TODO: implement this method for CollectUpToTwoElementsFromAnyEggInPlayEffect,
-        // ask Mohammad for information
-        return null;
+    public ElementColor getElementOfColorsFromSpace(ElementColor[] elementChoices, ElementSpace elementSpace,
+            int playerNum) {
+        List<ElementColor> choices = new ArrayList<ElementColor>(Arrays.asList(elementChoices));
+        Set<ElementColor> colors = new HashSet<ElementColor>();
+
+        for (ElementColor color : elementSpace.elements) {
+            if (choices.contains(color)) {
+                colors.add(color);
+            }
+        }
+        colors.add(ElementColor.NULL);
+        choices = new ArrayList<ElementColor>(colors);
+
+        return promptHandler.promptChoice("Pick an element to collect.", choices, playerNum);
     }
 
     public Card getEggToHatch(Card[][] cards, int maxPoints, Player player) {
