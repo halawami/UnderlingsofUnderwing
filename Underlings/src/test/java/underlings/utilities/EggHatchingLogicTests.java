@@ -17,12 +17,10 @@ import underlings.element.ElementSpace;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.handler.Handler;
-import underlings.handler.HandlerFactory;
 import underlings.handler.HandlerState;
 import underlings.handler.WildHandler;
 import underlings.player.FakePlayer;
 import underlings.player.Player;
-import underlings.player.PlayerFactory;
 
 public class EggHatchingLogicTests {
 
@@ -51,6 +49,7 @@ public class EggHatchingLogicTests {
 
 	@Test
 	public void testOneWildEffect() {
+		EasyMock.expect(effect.on(card)).andReturn(effect);
 		EasyMock.expect(effect.on(elementBag)).andReturn(effect);
 		EasyMock.expect(effect.on(hatchingGround)).andReturn(effect);
 		EasyMock.expect(effect.on(player)).andReturn(effect);
