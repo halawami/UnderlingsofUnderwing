@@ -159,4 +159,18 @@ public class ScoreTests {
 		EasyMock.verify(gui, gui.promptHandler);
 	}
 
+	@Test
+	public void testDisplayScoresNoPlayers() {
+		List<Player> fakePlayers = new LinkedList<>();
+		this.scoreUtils = new ScoreUtils(fakePlayers, gui);
+		gui.promptHandler = EasyMock.mock(ConcretePrompt.class);
+		for (Player player : this.scoreUtils.scores.keySet()) {
+			gui.promptHandler.displayMessage(player + ": " + 2 + " points", player.getPlayerId(),
+					JOptionPane.PLAIN_MESSAGE);
+		}
+		EasyMock.replay(gui, gui.promptHandler);
+		this.scoreUtils.displayScores();
+		EasyMock.verify(gui, gui.promptHandler);
+	}
+
 }
