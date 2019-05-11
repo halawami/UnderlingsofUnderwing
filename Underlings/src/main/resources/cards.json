@@ -1483,49 +1483,6 @@
     ]
   },
   {
-    "name": "UNDINE WYVERN",
-    "points": 9,
-    "temperature": "COOL",
-    "family": "TERTIARY",
-    "elementSpaces": [
-      {
-        "color": "BLUE",
-        "position": "L3_1"
-      },
-      {
-        "color": "BLACK",
-        "position": "L3_3"
-      },
-      {
-        "color": "GREEN",
-        "position": "R3_1"
-      },
-      {
-        "color": "GREEN",
-        "position": "R3_3"
-      }
-    ],
-    "domesticEffects": [
-      {
-        "effect": "ElementGiverEffect",
-        "elementGiver": {
-          "drawChoices": [
-            "BLUE"
-          ],
-          "display": "UNDINE WYVERN's Effect "
-        }
-      }
-    ],
-    "wildEffects": [
-      {
-        "effect": "HatchAllUnclaimedEffect",
-        "dragonFamilies": [
-          "TERTIARY"
-        ]
-      }
-    ]
-  },
-  {
     "name": "VOID WYVERN",
     "points": 9,
     "temperature": "COOL",
