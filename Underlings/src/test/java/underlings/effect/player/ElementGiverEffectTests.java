@@ -30,4 +30,18 @@ public class ElementGiverEffectTests {
 		assertTrue(player.effectElementGiver.contains(elementGiverEffect.elementGiver));
 	}
 
+	@Test
+	public void testApplyNoElementGiver() {
+		Player player = EasyMock.mock(Player.class);
+		player.effectElementGiver = new LinkedList<>();
+		ElementGiverEffect elementGiverEffect = new ElementGiverEffect();
+		elementGiverEffect.on(player);
+		player.effectElementGiver.add(elementGiverEffect.elementGiver);
+		EasyMock.replay(player);
+
+		elementGiverEffect.apply();
+
+		EasyMock.verify(player);
+	}
+
 }
