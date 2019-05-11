@@ -17,6 +17,7 @@ import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
+import underlings.handler.Handler;
 import underlings.player.Player;
 import underlings.utilities.EggHatchingLogic;
 
@@ -118,6 +119,31 @@ public class AllEggsInPlayEffectTests {
         DestroyAllElementsOnAllEggsInPlay testedEffect = EasyMock
                 .partialMockBuilder(DestroyAllElementsOnAllEggsInPlay.class)
                 .addMockedMethod("DestroyAllElementsOnSpace").createMock();
+
+        EasyMock.replay(elementSpaceLogic, elementBag, testedEffect);
+        mockSpaces.forEach(EasyMock::replay);
+
+        testedEffect.applyOnCardInPlay(cardInPlay, elementSpaceLogic, elementBag);
+
+        EasyMock.verify(elementSpaceLogic, elementBag, testedEffect);
+        mockSpaces.forEach(EasyMock::verify);
+    }
+
+    @Test
+    public void testDestroyAllElementsOnClaimedCard() {
+        Card cardInPlay = new Card();
+        cardInPlay.handler = EasyMock.niceMock(Handler.class);
+        List<ElementSpace> mockSpaces = getMockSpaces(8);
+        cardInPlay.elementSpaces = mockSpaces.toArray(new ElementSpace[8]);
+        ElementSpaceLogic elementSpaceLogic = EasyMock.mock(ElementSpaceLogic.class);
+        ElementBag elementBag = EasyMock.mock(ElementBag.class);
+        DestroyAllElementsOnAllEggsInPlay testedEffect = EasyMock
+                .partialMockBuilder(DestroyAllElementsOnAllEggsInPlay.class)
+                .addMockedMethod("DestroyAllElementsOnSpace").createMock();
+
+        for (ElementSpace space : mockSpaces) {
+            testedEffect.DestroyAllElementsOnSpace(space, elementBag);
+        }
 
         EasyMock.replay(elementSpaceLogic, elementBag, testedEffect);
         mockSpaces.forEach(EasyMock::replay);
