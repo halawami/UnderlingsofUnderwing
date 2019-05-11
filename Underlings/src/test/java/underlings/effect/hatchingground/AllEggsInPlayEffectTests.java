@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import underlings.card.Card;
 import underlings.card.effect.wild.AddElementToAllSpacesInPlayEffect;
+import underlings.card.effect.wild.AllEggsInPlayEffect;
 import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
@@ -18,24 +19,24 @@ import underlings.gui.Gui;
 import underlings.player.Player;
 import underlings.utilities.EggHatchingLogic;
 
-public class AddElementToAllSpacesInPlayEffectTests {
+public class AllEggsInPlayEffectTests {
 
     @Test
-    public void testApplyOnNoCardsInPlay() {
-        testApplyOnCardsInPlay(0);
+    public void testApplyOnNoEggInPlay() {
+        testApplyOnCardInPlay(0);
     }
 
     @Test
-    public void testApplyOnOneCardInPlay() {
-        testApplyOnCardsInPlay(1);
+    public void testApplyOnOneEggInPlay() {
+        testApplyOnCardInPlay(1);
     }
 
     @Test
-    public void testApplyOnTwoCardsInPlay() {
-        testApplyOnCardsInPlay(2);
+    public void testApplyOnEggsInPlay() {
+        testApplyOnCardInPlay(2);
     }
 
-    public void testApplyOnCardsInPlay(int numberOfCards) {
+    public void testApplyOnCardInPlay(int numberOfCards) {
         ElementBag elementBag = EasyMock.mock(ElementBag.class);
         ElementSpaceLogic elementSpaceLogic = EasyMock.mock(ElementSpaceLogic.class);
         Card centerCard = EasyMock.mock(Card.class);
@@ -46,15 +47,14 @@ public class AddElementToAllSpacesInPlayEffectTests {
         List<Card> mockedCards = getMockedCards(numberOfCards);
         EggHatchingLogic eggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
 
-        AddElementToAllSpacesInPlayEffect testedEffect =
-                EasyMock.partialMockBuilder(AddElementToAllSpacesInPlayEffect.class)
-                        .addMockedMethod("addElementsToCard").createMock();
+        AllEggsInPlayEffect testedEffect =
+                EasyMock.partialMockBuilder(AllEggsInPlayEffect.class)
+                        .addMockedMethod("applyOnCardInPlay").createMock();
         testedEffect.on(elementBag).on(centerCard).on(hatchingGround).on(gui).on(eggHatchingLogic).on(player);
-        testedEffect.elementColor = ElementColor.BLUE;
 
         EasyMock.expect(hatchingGround.getAllCards()).andReturn(mockedCards);
         for (Card mockedCard : mockedCards) {
-            testedEffect.addElementsToCard(ElementColor.BLUE, mockedCard, elementSpaceLogic, elementBag);
+            testedEffect.applyOnCardInPlay(mockedCard, elementSpaceLogic, elementBag);
         }
         EasyMock.replay(elementBag, centerCard, elementSpaceLogic, testedEffect, gui, hatchingGround);
         EasyMock.replay(eggHatchingLogic);
@@ -100,7 +100,8 @@ public class AddElementToAllSpacesInPlayEffectTests {
         mockedPlayableSpaces.forEach(EasyMock::replay);
 
         AddElementToAllSpacesInPlayEffect testedEffect = new AddElementToAllSpacesInPlayEffect();
-        testedEffect.addElementsToCard(blue, mockedCard, elementSpaceLogic, elementBag);
+        testedEffect.elementColor = ElementColor.BLUE;
+        testedEffect.applyOnCardInPlay(mockedCard, elementSpaceLogic, elementBag);
 
         EasyMock.verify(mockedCard, elementSpaceLogic, elementBag);
         mockedPlayableSpaces.forEach(EasyMock::verify);
