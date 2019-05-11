@@ -6,6 +6,7 @@ import underlings.card.Card;
 import underlings.card.effect.HatchingGroundEffect;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
+import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
@@ -27,6 +28,7 @@ public class AddElementToAllSpacesInPlayEffect extends HatchingGroundEffect {
 
     public void addElementsToCard(ElementColor color, Card cardToAddTo, ElementSpaceLogic elementSpaceLogic,
             ElementBag elementBag) {
+        List<ElementSpace> playableSpaces = elementSpaceLogic.getPlayableSpaces(cardToAddTo, color);
 
     }
 }
