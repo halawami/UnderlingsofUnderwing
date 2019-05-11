@@ -23,7 +23,7 @@ public class UptoTwoElementsFromAnyEggInPlayEffectTests {
     @Test
     public void testApplyOnSelectedElement() {
         Player currentPlayer = EasyMock.mock(Player.class);
-        EasyMock.expect(currentPlayer.getPlayerId()).andReturn(10);
+        EasyMock.expect(currentPlayer.getPlayerId()).andReturn(10).anyTimes();
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         List<Card> mockedCards = this.getMockedCards(6);
         Gui gui = EasyMock.mock(Gui.class);
