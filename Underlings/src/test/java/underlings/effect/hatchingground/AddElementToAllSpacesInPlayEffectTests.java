@@ -1,8 +1,6 @@
 package underlings.effect.hatchingground;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import org.easymock.EasyMock;
@@ -69,50 +67,27 @@ public class AddElementToAllSpacesInPlayEffectTests {
 
     @Test
     public void testAddElementsToCardNoPlayableSpaces() {
-        ElementSpaceLogic elementSpaceLogic = EasyMock.mock(ElementSpaceLogic.class);
-        ElementBag elementBag = EasyMock.mock(ElementBag.class);
-        Card mockedCard = EasyMock.mock(Card.class);
-        ElementColor blue = ElementColor.BLUE;
-        EasyMock.expect(elementSpaceLogic.getPlayableSpaces(mockedCard, blue)).andReturn(Collections.emptyList());
-
-        EasyMock.replay(mockedCard, elementSpaceLogic, elementBag);
-
-        AddElementToAllSpacesInPlayEffect testedEffect = new AddElementToAllSpacesInPlayEffect();
-        testedEffect.addElementsToCard(blue, mockedCard, elementSpaceLogic, elementBag);
-
-        EasyMock.verify(mockedCard, elementSpaceLogic, elementBag);
+        testAddElementsToCardWithPlayableSpace(0);
     }
 
     @Test
-    public void testAddElementToCardOnePlayableSpace() {
+    public void testAddElementsToCardOnePlayableSpace() {
+        testAddElementsToCardWithPlayableSpace(1);
+    }
+
+    @Test
+    public void testAddElementsToCardEightPlayableSpace() {
+        testAddElementsToCardWithPlayableSpace(8);
+    }
+
+
+    public void testAddElementsToCardWithPlayableSpace(int numberOfPlayableSpaces) {
         ElementColor blue = ElementColor.BLUE;
         Card mockedCard = EasyMock.mock(Card.class);
         ElementSpaceLogic elementSpaceLogic = EasyMock.mock(ElementSpaceLogic.class);
         ElementBag elementBag = EasyMock.mock(ElementBag.class);
         Element stubElement = EasyMock.niceMock(Element.class);
-        ElementSpace mockedPlayableSpace = EasyMock.mock(ElementSpace.class);
-
-        EasyMock.expect(elementSpaceLogic.getPlayableSpaces(mockedCard, blue))
-                .andReturn(Arrays.asList(mockedPlayableSpace));
-        EasyMock.expect(elementBag.drawElementFromList(blue)).andReturn(stubElement);
-        mockedPlayableSpace.addElements(stubElement);
-
-        EasyMock.replay(mockedCard, elementSpaceLogic, elementBag, mockedPlayableSpace);
-
-        AddElementToAllSpacesInPlayEffect testedEffect = new AddElementToAllSpacesInPlayEffect();
-        testedEffect.addElementsToCard(blue, mockedCard, elementSpaceLogic, elementBag);
-
-        EasyMock.verify(mockedCard, elementSpaceLogic, elementBag, mockedPlayableSpace);
-    }
-
-    @Test
-    public void testAddElementToCardEightPlayableSpace() {
-        ElementColor blue = ElementColor.BLUE;
-        Card mockedCard = EasyMock.mock(Card.class);
-        ElementSpaceLogic elementSpaceLogic = EasyMock.mock(ElementSpaceLogic.class);
-        ElementBag elementBag = EasyMock.mock(ElementBag.class);
-        Element stubElement = EasyMock.niceMock(Element.class);
-        List<ElementSpace> mockedPlayableSpaces = getMockedPlayableSpaces(8);
+        List<ElementSpace> mockedPlayableSpaces = getMockedPlayableSpaces(numberOfPlayableSpaces);
 
         EasyMock.expect(elementSpaceLogic.getPlayableSpaces(mockedCard, blue)).andReturn(mockedPlayableSpaces);
 
