@@ -111,7 +111,9 @@ public class ScoreTests {
 
 	@Test
 	public void testTwoSameNetWarm() {
-		Map<Player, Integer> scores = this.scoreUtils.calculateScores(Arrays.asList(this.players), true);
+		this.scoreUtils = new ScoreUtils(Arrays.asList(players[0], players[1], players[2], players[3], players[4]),
+				gui);
+		Map<Player, Integer> scores = this.scoreUtils.calculateScores();
 
 		assertEquals(58, (int) (scores.get(this.players[0])));
 		assertEquals(65, (int) (scores.get(this.players[1])));
