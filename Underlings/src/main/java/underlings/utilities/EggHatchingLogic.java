@@ -42,7 +42,7 @@ public class EggHatchingLogic {
 
     public void returnElementsToBag(Card dragon) {
         for (ElementSpace space : dragon.elementSpaces) {
-            for (ElementColor color : space.elements) {
+            for (ElementColor color : space.getElementColors()) {
                 this.elementBag.putElement(color);
             }
         }

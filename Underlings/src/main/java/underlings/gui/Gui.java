@@ -11,9 +11,11 @@ import javax.swing.JOptionPane;
 
 import underlings.card.Card;
 import underlings.card.EmptyCard;
+import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementGiver;
 import underlings.element.ElementSpace;
+import underlings.element.NullElement;
 import underlings.game.HatchingGround;
 import underlings.handler.Handler;
 import underlings.handler.HandlerChoice;
@@ -93,19 +95,19 @@ public class Gui {
         return null;
     }
 
-    public ElementColor getElementOfColorsFromSpace(ElementColor[] elementChoices, ElementSpace elementSpace,
+    public Element getElementOfColorsFromSpace(ElementColor[] elementChoices, ElementSpace elementSpace,
             int playerNum) {
-        List<ElementColor> choices = new ArrayList<ElementColor>(Arrays.asList(elementChoices));
-        Set<ElementColor> colors = new HashSet<ElementColor>();
+        List<ElementColor> validColors = new ArrayList<>(Arrays.asList(elementChoices));
+        Set<Element> colors = new HashSet<>();
 
-        for (ElementColor color : elementSpace.elements) {
-            if (choices.contains(color)) {
-                colors.add(color);
+        for (Element element : elementSpace.elements) {
+            if (validColors.contains(element.getColor())) {
+                colors.add(element);
             }
         }
-        colors.add(ElementColor.NULL);
-        choices = new ArrayList<ElementColor>(colors);
+        colors.add(NullElement.getInstance());
 
+        List<Element> choices = new ArrayList<>(colors);
         return promptHandler.promptChoice("Pick an element to collect.", choices, playerNum);
     }
 

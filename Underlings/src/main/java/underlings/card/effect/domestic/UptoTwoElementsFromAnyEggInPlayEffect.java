@@ -23,7 +23,8 @@ public abstract class UptoTwoElementsFromAnyEggInPlayEffect extends HatchingGrou
         List<Card> allCards = hatchingGround.getAllCards();
         for (int i = 0; i < 2; i++) {
             ElementSpace selectedSpace = gui.getElementSpaceContainingElementOfColors(allCards, this.elementChoices);
-            Element selectedElement = gui.getElementOfColorsFromSpace(this.elementChoices, selectedSpace);
+            Element selectedElement =
+                    gui.getElementOfColorsFromSpace(this.elementChoices, selectedSpace, currentPlayer.getPlayerId());
             applyOnSelectedElement(selectedElement, selectedSpace, currentPlayer);
         }
     }

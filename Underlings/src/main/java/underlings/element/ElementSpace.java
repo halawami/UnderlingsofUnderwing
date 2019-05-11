@@ -2,14 +2,16 @@ package underlings.element;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.function.Predicate;
 
 import underlings.gui.Choice;
 import underlings.utilities.LocaleWrap;
 
 public class ElementSpace implements Choice {
 
-    public List<ElementColor> elements;
+    public List<Element> elements;
     public ElementColor color;
     public ElementSpacePosition position;
 
@@ -23,17 +25,23 @@ public class ElementSpace implements Choice {
     }
 
     public void addElements(Element... elementsToAdd) {
-        for (Element element : elementsToAdd) {
-            this.elements.add(element.getColor());
-        }
+        this.elements.addAll(Arrays.asList(elementsToAdd));
     }
 
     public void destroyAllElementsOfColor(ElementColor colorOfElementsToDestroy) {
-        this.elements.removeIf(colorOfElementsToDestroy::equals);
+        Predicate<Element> removeMethod = (Element e) -> {
+            return e.getColor().equals(colorOfElementsToDestroy);
+        };
+        this.elements.removeIf(removeMethod);
     }
 
     public void destroyOneElementOfColor(ElementColor colorOfElementsToDestroy) {
-        this.elements.remove(colorOfElementsToDestroy);
+        for (int i = 0; i < this.elements.size(); i++) {
+            if (this.elements.get(i).getColor().equals(colorOfElementsToDestroy)) {
+                this.elements.remove(i);
+                break;
+            }
+        }
     }
 
     @Override
