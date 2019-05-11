@@ -17,7 +17,7 @@ public class ScoreUtils {
 
 	private List<Player> players;
 	private Gui gui;
-	public List<Player> winners;
+	private List<Player> winners;
 
 	public ScoreUtils(List<Player> players, Gui gui) {
 		this.players = players;

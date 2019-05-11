@@ -4,7 +4,11 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
+
+import javax.swing.JOptionPane;
 
 import org.easymock.EasyMock;
 import org.junit.Before;
@@ -12,6 +16,7 @@ import org.junit.Test;
 
 import underlings.card.Card;
 import underlings.card.Temperature;
+import underlings.gui.ConcretePrompt;
 import underlings.gui.Gui;
 import underlings.handler.HandlerFactory;
 import underlings.player.Player;
@@ -138,6 +143,18 @@ public class ScoreTests {
 		toReturn.points = points;
 		toReturn.temperature = temperature;
 		return toReturn;
+	}
+
+	@Test
+	public void testDisplayScoresTwoPlayers() {
+		List<Player> fakePlayers = new LinkedList<>();
+		fakePlayers = Arrays.asList(players[0], players[1]);
+		this.scoreUtils = new ScoreUtils(fakePlayers, gui);
+		gui.promptHandler = EasyMock.mock(ConcretePrompt.class);
+		for (Player player : fakePlayers) {
+			gui.promptHandler.displayMessage(player + ": " + 2 + " points", player.getPlayerId(),
+					JOptionPane.PLAIN_MESSAGE);
+		}
 	}
 
 }
