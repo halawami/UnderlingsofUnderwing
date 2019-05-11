@@ -15,11 +15,12 @@ public abstract class AdjacentEggsEffect extends HatchingGroundEffect {
 
 	// TODO: get rid of elementspacelogic because player already has it.
 	@Override
-	protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag,
-			ElementSpaceLogic elementSpaceLogic, Gui gui, Player currentPlayer, EggHatchingLogic eggHatchingLogic) {
+	protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag, Gui gui,
+			Player currentPlayer, EggHatchingLogic eggHatchingLogic) {
 		List<Card> adjacentCards = hatchingGround.getAdjacentCards(centerCard);
 		for (Card adjacentCard : adjacentCards) {
-			applyOnAdjacentEgg(adjacentCard, elementBag, elementSpaceLogic, hatchingGround, gui, eggHatchingLogic);
+			applyOnAdjacentEgg(adjacentCard, elementBag, currentPlayer.elementSpaceLogic, hatchingGround, gui,
+					eggHatchingLogic);
 		}
 	}
 

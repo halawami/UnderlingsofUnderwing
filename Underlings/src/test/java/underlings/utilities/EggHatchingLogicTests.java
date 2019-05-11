@@ -53,7 +53,6 @@ public class EggHatchingLogicTests {
 		EasyMock.expect(effect.on(elementBag)).andReturn(effect);
 		EasyMock.expect(effect.on(hatchingGround)).andReturn(effect);
 		EasyMock.expect(effect.on(player)).andReturn(effect);
-		EasyMock.expect(effect.on(player.elementSpaceLogic)).andReturn(effect);
 		EasyMock.expect(effect.on(gui)).andReturn(effect);
 		EggHatchingLogic wildEggHatchingLogic = new EggHatchingLogic(gui, elementBag, hatchingGround);
 		EasyMock.expect(effect.on(wildEggHatchingLogic)).andReturn(effect);
@@ -76,7 +75,6 @@ public class EggHatchingLogicTests {
 		EasyMock.expect(effect.on(card)).andReturn(effect).times(2);
 		EasyMock.expect(effect.on(elementBag)).andReturn(effect).times(2);
 		EasyMock.expect(effect.on(hatchingGround)).andReturn(effect).times(2);
-		EasyMock.expect(effect.on(player.elementSpaceLogic)).andReturn(effect).times(2);
 		EasyMock.expect(effect.on(player)).andReturn(effect).times(2);
 		EasyMock.expect(effect.on(gui)).andReturn(effect).times(2);
 		EggHatchingLogic wildEggHatchingLogic = new EggHatchingLogic(gui, elementBag, hatchingGround);
@@ -102,7 +100,6 @@ public class EggHatchingLogicTests {
 		EasyMock.expect(effect.on(card)).andReturn(effect);
 		EasyMock.expect(effect.on(elementBag)).andReturn(effect);
 		EasyMock.expect(effect.on(hatchingGround)).andReturn(effect);
-		EasyMock.expect(effect.on(player.elementSpaceLogic)).andReturn(effect);
 		EasyMock.expect(effect.on(player)).andReturn(effect);
 		EasyMock.expect(effect.on(gui)).andReturn(effect);
 		EggHatchingLogic domesticEggHatchingLogic = new EggHatchingLogic(gui, elementBag, hatchingGround);
