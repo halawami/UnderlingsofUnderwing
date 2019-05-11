@@ -30,6 +30,7 @@ import underlings.player.PlayerFactory;
 import underlings.scoring.ScoreUtils;
 import underlings.utilities.EggHatchingLogic;
 import underlings.utilities.LocaleWrap;
+import underlings.utilities.PlacementUtilities;
 
 public class Main {
 
@@ -60,8 +61,10 @@ public class Main {
         phases.add(new DrawingPhase(game.getPlayers(), gui, elementBag, hatchingGround, gameDisplay, field));
         phases.add(new HandlerPhase(game.getPlayers(), gui, elementBag, hatchingGround, gameDisplay, field,
                 handlerMovementLogic));
-        phases.add(new PlacementPhase(game.getPlayers(), gui, elementBag, hatchingGround, gameDisplay, field,
-                eggHatchingLogic));
+
+        PlacementUtilities placementUtils = new PlacementUtilities(hatchingGround, gui, gameDisplay);
+        phases.add(new PlacementPhase(game.getPlayers(), gui, hatchingGround, gameDisplay, eggHatchingLogic,
+                placementUtils));
         DragonPhase dragonPhase = new DragonPhase(game.getPlayers(), gui, elementBag, hatchingGround, gameDisplay,
                 field, eggHatchingLogic);
         phases.add(dragonPhase);

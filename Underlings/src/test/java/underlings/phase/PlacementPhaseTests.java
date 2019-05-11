@@ -69,7 +69,6 @@ public class PlacementPhaseTests {
         // create other fields
         final PromptHandler promptHandler = EasyMock.mock(PromptHandler.class);
         final Display display = EasyMock.mock(Display.class);
-        final ElementBag elementBag = EasyMock.createMock(ElementBag.class);
         final Runnable runnable = EasyMock.mock(Runnable.class);
         final EggHatchingLogic eggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
 
@@ -92,12 +91,12 @@ public class PlacementPhaseTests {
         EasyMock.expect(logic.isComplete(card)).andReturn(true).anyTimes();
 
         // assert expected actions occurred
-        EasyMock.replay(player, promptHandler, display, elementBag, runnable);
+        EasyMock.replay(player, promptHandler, display, runnable);
         EasyMock.replay(logic, redSpace, blueSpace, greenSpace, whiteSpace, eggHatchingLogic);
         Gui gui = new Gui(promptHandler, display);
-        Phase phase = new PlacementPhase(players, gui, elementBag, hatchingGround, runnable, null, eggHatchingLogic);
+        Phase phase = new PlacementPhase(players, gui, hatchingGround, runnable, eggHatchingLogic, null);
         phase.execute(1);
-        EasyMock.verify(player, promptHandler, display, elementBag, runnable);
+        EasyMock.verify(player, promptHandler, display, runnable);
         EasyMock.verify(logic, redSpace, blueSpace, greenSpace, whiteSpace, eggHatchingLogic);
     }
 
@@ -172,7 +171,7 @@ public class PlacementPhaseTests {
         // assert expected actions occurred
         EasyMock.replay(player, promptHandler, display, elementBag, runnable, gui, eggHatchingLogic);
         EasyMock.replay(logic, redSpace, blueSpace, greenSpace, whiteSpace, card.wildEffects[0]);
-        Phase phase = new PlacementPhase(players, gui, elementBag, hatchingGround, runnable, null, eggHatchingLogic);
+        Phase phase = new PlacementPhase(players, gui, hatchingGround, runnable, eggHatchingLogic, null);
         phase.execute(1);
         EasyMock.verify(player, promptHandler, display, elementBag, runnable, gui, eggHatchingLogic);
         EasyMock.verify(logic, redSpace, blueSpace, greenSpace, whiteSpace, card.wildEffects[0]);
