@@ -20,7 +20,9 @@ public class AddElementToAllSpacesInPlayEffect extends HatchingGroundEffect {
     protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag, Gui gui,
             Player currentPlayer, EggHatchingLogic eggHatchingLogic) {
         List<Card> cardsInPlay = hatchingGround.getAllCards();
-        addElementsToCard(elementColor, cardsInPlay.get(0), currentPlayer.elementSpaceLogic, elementBag);
+        for (Card cardInPlay : cardsInPlay) {
+            this.addElementsToCard(this.elementColor, cardInPlay, currentPlayer.elementSpaceLogic, elementBag);
+        }
     }
 
     public void addElementsToCard(ElementColor color, Card cardToAddTo, ElementSpaceLogic elementSpaceLogic,
