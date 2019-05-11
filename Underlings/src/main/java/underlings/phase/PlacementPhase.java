@@ -50,7 +50,7 @@ public class PlacementPhase extends RotationPhase {
         int playerNum = player.getPlayerId();
 
         ElementSpaceLogic logic = player.elementSpaceLogic;
-        List<Card> cards = this.getPlayableCards(logic, player.getElements());
+        List<Card> cards = this.hatchingGround.getPlayableCards(logic, player.getElements());
 
         if (cards.isEmpty()) {
             this.gui.promptHandler.displayMessage("Player has no valid placements", playerNum,
@@ -107,16 +107,6 @@ public class PlacementPhase extends RotationPhase {
             }
         }
         return elements;
-    }
-
-    public List<Card> getPlayableCards(ElementSpaceLogic logic, List<Element> elements) {
-        List<Card> cards = new ArrayList<Card>();
-        for (Card card : this.hatchingGround) {
-            if (!logic.getPlayableSpaces(card, elements).isEmpty()) {
-                cards.add(card);
-            }
-        }
-        return cards;
     }
 
     private boolean checkAndDecrementTurnCount(Player player) {
