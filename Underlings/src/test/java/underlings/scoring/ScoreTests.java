@@ -186,4 +186,18 @@ public class ScoreTests {
 		assertEquals(5, finalMax);
 	}
 
+	@Test
+	public void testDecideWinnersSameScores() {
+		List<Player> fakePlayers = new LinkedList<>();
+		fakePlayers = Arrays.asList(players[0], players[1]);
+		this.scoreUtils = new ScoreUtils(fakePlayers, gui);
+		gui.promptHandler = EasyMock.mock(ConcretePrompt.class);
+		this.scoreUtils.scores.put(players[1], 1);
+		this.scoreUtils.scores.put(players[0], 1);
+		EasyMock.replay(gui, gui.promptHandler);
+		int max = this.scoreUtils.decideWinners(this.scoreUtils.scores, fakePlayers.get(0), 0);
+		int finalMax = this.scoreUtils.decideWinners(this.scoreUtils.scores, fakePlayers.get(1), max);
+		EasyMock.verify(gui, gui.promptHandler);
+		assertEquals(1, finalMax);
+	}
 }
