@@ -85,10 +85,10 @@ public class ScoreTests {
 	@Test
 	public void testTwoPlayers() {
 		this.scoreUtils = new ScoreUtils(Arrays.asList(players[0], players[1]), gui);
-		Map<Player, Integer> scores = this.scoreUtils.calculateScores();
+		this.scoreUtils.calculateScores();
 
-		assertEquals(43, (int) (scores.get(this.players[0])));
-		assertEquals(45, (int) (scores.get(this.players[1])));
+		assertEquals(43, (int) (this.scoreUtils.scores.get(this.players[0])));
+		assertEquals(45, (int) (this.scoreUtils.scores.get(this.players[1])));
 	}
 
 	@Test
