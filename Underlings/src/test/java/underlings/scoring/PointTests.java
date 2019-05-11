@@ -24,7 +24,6 @@ public class PointTests {
 		Player player = EasyMock.mock(Player.class);
 		List<Player> players = Arrays.asList(player);
 		Gui gui = EasyMock.mock(Gui.class);
-		List<Player> winners = Arrays.asList();
 		this.scoreUtils = new ScoreUtils(players, gui);
 	}
 
