@@ -17,7 +17,7 @@ public class ScoreUtils {
 
 	private List<Player> players;
 	private Gui gui;
-	private List<Player> winners;
+	protected List<Player> winners;
 	protected Map<Player, Integer> scores;
 
 	public ScoreUtils(List<Player> players, Gui gui) {

@@ -176,13 +176,12 @@ public class ScoreTests {
 		List<Player> fakePlayers = new LinkedList<>();
 		fakePlayers = Arrays.asList(players[0], players[1]);
 		this.scoreUtils = new ScoreUtils(fakePlayers, gui);
-		gui.promptHandler = EasyMock.mock(ConcretePrompt.class);
 		this.scoreUtils.scores.put(players[1], 5);
 		this.scoreUtils.scores.put(players[0], 1);
-		EasyMock.replay(gui, gui.promptHandler);
+		EasyMock.replay(gui);
 		int max = this.scoreUtils.decideWinners(this.scoreUtils.scores, fakePlayers.get(0), 0);
 		int finalMax = this.scoreUtils.decideWinners(this.scoreUtils.scores, fakePlayers.get(1), max);
-		EasyMock.verify(gui, gui.promptHandler);
+		EasyMock.verify(gui);
 		assertEquals(5, finalMax);
 	}
 
@@ -191,13 +190,28 @@ public class ScoreTests {
 		List<Player> fakePlayers = new LinkedList<>();
 		fakePlayers = Arrays.asList(players[0], players[1]);
 		this.scoreUtils = new ScoreUtils(fakePlayers, gui);
-		gui.promptHandler = EasyMock.mock(ConcretePrompt.class);
 		this.scoreUtils.scores.put(players[1], 1);
 		this.scoreUtils.scores.put(players[0], 1);
-		EasyMock.replay(gui, gui.promptHandler);
+		EasyMock.replay(gui);
 		int max = this.scoreUtils.decideWinners(this.scoreUtils.scores, fakePlayers.get(0), 0);
 		int finalMax = this.scoreUtils.decideWinners(this.scoreUtils.scores, fakePlayers.get(1), max);
-		EasyMock.verify(gui, gui.promptHandler);
+		EasyMock.verify(gui);
 		assertEquals(1, finalMax);
+	}
+
+	@Test
+	public void testDisplayOneWinner() {
+		List<Player> fakePlayers = new LinkedList<>();
+		fakePlayers = Arrays.asList(players[0], players[1]);
+		this.scoreUtils = new ScoreUtils(fakePlayers, gui);
+		gui.promptHandler = EasyMock.mock(ConcretePrompt.class);
+		this.scoreUtils.winners.add(players[0]);
+		this.gui.promptHandler.displayMessage("Winner(s): " + this.scoreUtils.winners, 0, JOptionPane.PLAIN_MESSAGE);
+
+		EasyMock.replay(gui, gui.promptHandler);
+
+		this.scoreUtils.displayWinners();
+
+		EasyMock.verify(gui, gui.promptHandler);
 	}
 }
