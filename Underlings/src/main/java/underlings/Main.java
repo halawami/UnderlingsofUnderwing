@@ -15,7 +15,6 @@ import underlings.game.Deck;
 import underlings.game.Game;
 import underlings.game.HatchingGround;
 import underlings.gui.ConcreteDisplay;
-import underlings.gui.ConcretePrompt;
 import underlings.gui.Gui;
 import underlings.handler.HandlerFactory;
 import underlings.handler.HandlerMovementLogic;
@@ -53,9 +52,7 @@ public class Main {
         ElementBag elementBag = new ElementBag(elementFactory, random);
 
         Game game = new Game(gui, hatchingGround, playerFactory, elementBag);
-        Runnable gameDisplay = () -> {
-            game.display();
-        };
+        Runnable gameDisplay = game::display;
 
         EggHatchingLogic eggHatchingLogic = new EggHatchingLogic(gui, elementBag, hatchingGround);
 
