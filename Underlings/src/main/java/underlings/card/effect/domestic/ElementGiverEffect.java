@@ -6,10 +6,10 @@ import underlings.player.Player;
 
 public class ElementGiverEffect extends PlayerEffect {
 
-	public ElementGiver elementGiver;
+    public ElementGiver elementGiver;
 
-	@Override
-	protected void apply(Player player) {
-		player.effectElementGiver.add(elementGiver);
-	}
+    @Override
+    protected void apply(Player player) {
+        player.effectElementGiver.add(elementGiver);
+    }
 }

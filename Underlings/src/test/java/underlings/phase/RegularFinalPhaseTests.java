@@ -12,21 +12,21 @@ import underlings.player.Player;
 
 public class RegularFinalPhaseTests {
 
-	@Test
-	public void testRunRegularFinalPhase() {
-		Gui gui = EasyMock.mock(Gui.class);
-		gui.promptHandler = EasyMock.mock(ConcretePrompt.class);
-		Player player = EasyMock.mock(Player.class);
+    @Test
+    public void testRunRegularFinalPhase() {
+        Gui gui = EasyMock.mock(Gui.class);
+        gui.promptHandler = EasyMock.mock(ConcretePrompt.class);
+        Player player = EasyMock.mock(Player.class);
 
-		FinalPhase finalPhase = new WildFinalPhase(gui);
-		gui.promptHandler.displayMessage("All eggs hatched wild, the game wins", -1, JOptionPane.PLAIN_MESSAGE);
+        FinalPhase finalPhase = new WildFinalPhase(gui);
+        gui.promptHandler.displayMessage("All eggs hatched wild, the game wins", -1, JOptionPane.PLAIN_MESSAGE);
 
-		EasyMock.replay(gui, gui.promptHandler);
+        EasyMock.replay(gui, gui.promptHandler);
 
-		finalPhase.execute();
-		finalPhase.turn(FakePlayer.getInstance());
+        finalPhase.execute();
+        finalPhase.turn(FakePlayer.getInstance());
 
-		EasyMock.verify(gui, gui.promptHandler);
-	}
+        EasyMock.verify(gui, gui.promptHandler);
+    }
 
 }

@@ -19,8 +19,8 @@ public class CollectOneElementFromAnyEggInPlayEffect extends HatchingGroundEffec
     public ElementColor[] elementChoices;
 
     @Override
-    protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag,
-            Gui gui, Player currentPlayer, EggHatchingLogic eggHatchingLogic) {
+    protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag, Gui gui,
+            Player currentPlayer, EggHatchingLogic eggHatchingLogic) {
         List<Card> allCards = hatchingGround.getAllCards();
         ElementSpace selectedSpace = gui.getElementSpaceContainingElementOfColors(allCards, this.elementChoices);
         Element selectedElement = gui.getElementOfColorsFromSpace(this.elementChoices, selectedSpace);

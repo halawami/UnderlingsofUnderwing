@@ -13,18 +13,18 @@ import underlings.utilities.EggHatchingLogic;
 
 public abstract class AdjacentEggsEffect extends HatchingGroundEffect {
 
-	// TODO: get rid of elementspacelogic because player already has it.
-	@Override
-	protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag, Gui gui,
-			Player currentPlayer, EggHatchingLogic eggHatchingLogic) {
-		List<Card> adjacentCards = hatchingGround.getAdjacentCards(centerCard);
-		for (Card adjacentCard : adjacentCards) {
-			applyOnAdjacentEgg(adjacentCard, elementBag, currentPlayer.elementSpaceLogic, hatchingGround, gui,
-					eggHatchingLogic);
-		}
-	}
+    // TODO: get rid of elementspacelogic because player already has it.
+    @Override
+    protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag, Gui gui,
+            Player currentPlayer, EggHatchingLogic eggHatchingLogic) {
+        List<Card> adjacentCards = hatchingGround.getAdjacentCards(centerCard);
+        for (Card adjacentCard : adjacentCards) {
+            applyOnAdjacentEgg(adjacentCard, elementBag, currentPlayer.elementSpaceLogic, hatchingGround, gui,
+                    eggHatchingLogic);
+        }
+    }
 
-	public abstract void applyOnAdjacentEgg(Card adjacentEgg, ElementBag elementBag,
-			ElementSpaceLogic elementSpaceLogic, HatchingGround hatchingGround, Gui gui,
-			EggHatchingLogic eggHatchingLogic);
+    public abstract void applyOnAdjacentEgg(Card adjacentEgg, ElementBag elementBag,
+            ElementSpaceLogic elementSpaceLogic, HatchingGround hatchingGround, Gui gui,
+            EggHatchingLogic eggHatchingLogic);
 }

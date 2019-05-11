@@ -10,14 +10,14 @@ import underlings.player.Player;
 import underlings.utilities.EggHatchingLogic;
 
 public class CollectAndHatchAnyUnclaimedEggEffect extends HatchingGroundEffect {
-	public int points;
+    public int points;
 
-	@Override
-	protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag, Gui gui,
-			Player currentPlayer, EggHatchingLogic eggHatchingLogic) {
-		Card selectedCard = gui.getEggToHatch(hatchingGround.cards, points, currentPlayer);
-		if (selectedCard != EmptyCard.getInstance()) {
-			eggHatchingLogic.hatchEgg(selectedCard, false, currentPlayer);
-		}
-	}
+    @Override
+    protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag, Gui gui,
+            Player currentPlayer, EggHatchingLogic eggHatchingLogic) {
+        Card selectedCard = gui.getEggToHatch(hatchingGround.cards, points, currentPlayer);
+        if (selectedCard != EmptyCard.getInstance()) {
+            eggHatchingLogic.hatchEgg(selectedCard, false, currentPlayer);
+        }
+    }
 }

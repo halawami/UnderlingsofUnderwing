@@ -14,28 +14,28 @@ import underlings.utilities.EggHatchingLogic;
 
 public abstract class ElementsEffect extends AdjacentEggsEffect {
 
-	public ElementColor[] elementColors;
+    public ElementColor[] elementColors;
 
-	@Override
-	public void applyOnAdjacentEgg(Card adjacentEgg, ElementBag elementBag, ElementSpaceLogic elementSpaceLogic,
-			HatchingGround hatchingGround, Gui gui, EggHatchingLogic eggHatchingLogic) {
-		this.destroyElementsOnAdjacentEgg(adjacentEgg, elementSpaceLogic);
-	}
+    @Override
+    public void applyOnAdjacentEgg(Card adjacentEgg, ElementBag elementBag, ElementSpaceLogic elementSpaceLogic,
+            HatchingGround hatchingGround, Gui gui, EggHatchingLogic eggHatchingLogic) {
+        this.destroyElementsOnAdjacentEgg(adjacentEgg, elementSpaceLogic);
+    }
 
-	public void destroyElementsOnAdjacentEgg(Card adjacentEgg, ElementSpaceLogic elementSpaceLogic) {
-		for (ElementColor elementColorToDestroy : this.elementColors) {
-			destroyElementsOfColorOnCard(elementColorToDestroy, adjacentEgg, elementSpaceLogic);
-		}
-	}
+    public void destroyElementsOnAdjacentEgg(Card adjacentEgg, ElementSpaceLogic elementSpaceLogic) {
+        for (ElementColor elementColorToDestroy : this.elementColors) {
+            destroyElementsOfColorOnCard(elementColorToDestroy, adjacentEgg, elementSpaceLogic);
+        }
+    }
 
-	public void destroyElementsOfColorOnCard(ElementColor elementColorToDestroy, Card card,
-			ElementSpaceLogic elementSpaceLogic) {
-		List<ElementSpace> destroyableSpaces = elementSpaceLogic.getDestroyableSpaces(card, elementColorToDestroy);
-		for (ElementSpace destroyableSpace : destroyableSpaces) {
-			destroyElementsOfColorOnSpace(destroyableSpace, elementColorToDestroy);
-		}
-	}
+    public void destroyElementsOfColorOnCard(ElementColor elementColorToDestroy, Card card,
+            ElementSpaceLogic elementSpaceLogic) {
+        List<ElementSpace> destroyableSpaces = elementSpaceLogic.getDestroyableSpaces(card, elementColorToDestroy);
+        for (ElementSpace destroyableSpace : destroyableSpaces) {
+            destroyElementsOfColorOnSpace(destroyableSpace, elementColorToDestroy);
+        }
+    }
 
-	public abstract void destroyElementsOfColorOnSpace(ElementSpace destroyableSpace,
-			ElementColor elementColorToDestroy);
+    public abstract void destroyElementsOfColorOnSpace(ElementSpace destroyableSpace,
+            ElementColor elementColorToDestroy);
 }
