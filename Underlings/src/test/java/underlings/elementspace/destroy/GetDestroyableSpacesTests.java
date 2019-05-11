@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import underlings.card.Card;
+import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
@@ -27,7 +28,7 @@ public class GetDestroyableSpacesTests {
     public void testOneDestroyableSpaces() {
         Card card = new Card();
         card.elementSpaces = getElementSpaces(8);
-        card.elementSpaces[0].elements.add(ElementColor.BLUE);
+        card.elementSpaces[0].elements.add(new Element(ElementColor.BLUE));
         ElementSpaceLogic elementSpaceLogic = new ElementSpaceLogic();
 
         List<ElementSpace> destroyableSpaces = elementSpaceLogic.getDestroyableSpaces(card, ElementColor.BLUE);
@@ -40,8 +41,8 @@ public class GetDestroyableSpacesTests {
     public void testOneDestroyableSpacesDifferentElements() {
         Card card = new Card();
         card.elementSpaces = getElementSpaces(8);
-        card.elementSpaces[0].elements.add(ElementColor.RED);
-        card.elementSpaces[0].elements.add(ElementColor.BLUE);
+        card.elementSpaces[0].elements.add(new Element(ElementColor.RED));
+        card.elementSpaces[0].elements.add(new Element(ElementColor.BLUE));
         ElementSpaceLogic elementSpaceLogic = new ElementSpaceLogic();
 
         List<ElementSpace> destroyableSpaces = elementSpaceLogic.getDestroyableSpaces(card, ElementColor.BLUE);
@@ -55,7 +56,7 @@ public class GetDestroyableSpacesTests {
         Card card = new Card();
         card.elementSpaces = getElementSpaces(8);
         for (int i = 0; i < 7; i++) {
-            card.elementSpaces[i].elements.add(ElementColor.RED);
+            card.elementSpaces[i].elements.add(new Element(ElementColor.RED));
         }
         ElementSpaceLogic elementSpaceLogic = new ElementSpaceLogic();
 

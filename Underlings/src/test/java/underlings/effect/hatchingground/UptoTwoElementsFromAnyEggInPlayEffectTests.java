@@ -23,6 +23,7 @@ public class UptoTwoElementsFromAnyEggInPlayEffectTests {
     @Test
     public void testApplyOnSelectedElement() {
         Player currentPlayer = EasyMock.mock(Player.class);
+        EasyMock.expect(currentPlayer.getPlayerId()).andReturn(10);
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         List<Card> mockedCards = this.getMockedCards(6);
         Gui gui = EasyMock.mock(Gui.class);
@@ -40,10 +41,10 @@ public class UptoTwoElementsFromAnyEggInPlayEffectTests {
         EasyMock.expect(gui.getElementSpaceContainingElementOfColors(mockedCards, testedEffect.elementChoices))
                 .andReturn(elementSpace2);
         Element element1 = EasyMock.mock(Element.class);
-        EasyMock.expect(gui.getElementOfColorsFromSpace(testedEffect.elementChoices, elementSpace1))
+        EasyMock.expect(gui.getElementOfColorsFromSpace(testedEffect.elementChoices, elementSpace1, 10))
                 .andReturn(element1);
         Element element2 = EasyMock.mock(Element.class);
-        EasyMock.expect(gui.getElementOfColorsFromSpace(testedEffect.elementChoices, elementSpace2))
+        EasyMock.expect(gui.getElementOfColorsFromSpace(testedEffect.elementChoices, elementSpace2, 10))
                 .andReturn(element2);
 
         testedEffect.applyOnSelectedElement(element1, elementSpace1, currentPlayer);

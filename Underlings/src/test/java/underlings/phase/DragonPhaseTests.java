@@ -12,6 +12,7 @@ import org.junit.Test;
 
 import underlings.card.Card;
 import underlings.card.effect.Effect;
+import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
@@ -30,7 +31,6 @@ public class DragonPhaseTests {
     private List<Player> players;
     private Card card;
     private ElementSpace[] spaces;
-    private List<Card> eggs;
     private EggHatchingLogic eggHatchingLogic;
     Handler handler;
 
@@ -52,8 +52,7 @@ public class DragonPhaseTests {
         this.spaces[0] = new ElementSpace(ElementColor.PURPLE);
         this.card.elementSpaces = this.spaces;
         this.eggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
-        this.spaces[0].elements = Arrays.asList(ElementColor.BLUE, ElementColor.RED);
-        this.eggs = Arrays.asList(card);
+        this.spaces[0].elements = Arrays.asList(new Element(ElementColor.BLUE), new Element(ElementColor.RED));
 
         EasyMock.expect(player.getHandlerCount()).andReturn(1).anyTimes();
         EasyMock.expect(player.getHandlers()).andReturn(Arrays.asList(handler)).anyTimes();

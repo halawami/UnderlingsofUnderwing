@@ -11,6 +11,7 @@ import org.junit.Test;
 
 import underlings.card.Card;
 import underlings.card.effect.Effect;
+import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
@@ -132,7 +133,7 @@ public class EggHatchingLogicTests {
     @Test
     public void testReturnPurpleComboElements() {
         card.elementSpaces[0] = new ElementSpace(ElementColor.PURPLE);
-        card.elementSpaces[0].elements = Arrays.asList(ElementColor.RED, ElementColor.BLUE);
+        card.elementSpaces[0].elements = Arrays.asList(new Element(ElementColor.RED), new Element(ElementColor.BLUE));
         elementBag.putElement(ElementColor.RED);
         elementBag.putElement(ElementColor.BLUE);
         EasyMock.replay(hatchingGround, elementBag, gui);
@@ -146,7 +147,7 @@ public class EggHatchingLogicTests {
     @Test
     public void testReturnOrangeComboElements() {
         card.elementSpaces[0] = new ElementSpace(ElementColor.ORANGE);
-        card.elementSpaces[0].elements = Arrays.asList(ElementColor.RED, ElementColor.YELLOW);
+        card.elementSpaces[0].elements = Arrays.asList(new Element(ElementColor.RED), new Element(ElementColor.YELLOW));
         elementBag.putElement(ElementColor.RED);
         elementBag.putElement(ElementColor.YELLOW);
 
@@ -161,11 +162,11 @@ public class EggHatchingLogicTests {
     @Test
     public void testMultiReturnComboElements() {
         card.elementSpaces[0] = new ElementSpace(ElementColor.ORANGE);
-        card.elementSpaces[0].elements = Arrays.asList(ElementColor.RED, ElementColor.YELLOW);
+        card.elementSpaces[0].elements = Arrays.asList(new Element(ElementColor.RED), new Element(ElementColor.YELLOW));
         Card card2 = new Card();
         card2.elementSpaces = new ElementSpace[1];
         card2.elementSpaces[0] = new ElementSpace(ElementColor.PURPLE);
-        card2.elementSpaces[0].elements = Arrays.asList(ElementColor.RED, ElementColor.BLUE);
+        card2.elementSpaces[0].elements = Arrays.asList(new Element(ElementColor.RED), new Element(ElementColor.BLUE));
         elementBag.putElement(ElementColor.RED);
         elementBag.putElement(ElementColor.YELLOW);
         elementBag.putElement(ElementColor.RED);
