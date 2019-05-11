@@ -50,7 +50,9 @@ public class ElementSpace implements Choice {
     }
 
     public List<ElementColor> getElementColors() {
-        return Arrays.asList();
+        List<ElementColor> colors = new ArrayList<>();
+        this.elements.forEach((element) -> colors.add(element.getColor()));
+        return colors;
     }
 
 }
