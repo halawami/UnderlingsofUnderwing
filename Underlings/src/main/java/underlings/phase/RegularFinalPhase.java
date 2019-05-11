@@ -15,11 +15,13 @@ public class RegularFinalPhase implements FinalPhase {
 	private Gui gui;
 	private List<Player> players;
 	private Phase dragonPhase;
+	private ScoreUtils scoreUtils;
 
-	public RegularFinalPhase(List<Player> players, Gui gui, Phase dragonPhase) {
+	public RegularFinalPhase(List<Player> players, Gui gui, Phase dragonPhase, ScoreUtils scoreUtils) {
 		this.players = players;
 		this.gui = gui;
 		this.dragonPhase = dragonPhase;
+		this.scoreUtils = scoreUtils;
 	}
 
 	@Override
@@ -32,7 +34,7 @@ public class RegularFinalPhase implements FinalPhase {
 
 		this.gui.promptHandler.displayMessage("Game Over!", 0, JOptionPane.PLAIN_MESSAGE);
 
-		Map<Player, Integer> scores = new ScoreUtils().calculateScores(this.players, this.players.size() > 2);
+		Map<Player, Integer> scores = this.scoreUtils.calculateScores(this.players, this.players.size() > 2);
 
 		List<Player> maxPlayers = new ArrayList<>();
 		int maxScore = 0;
