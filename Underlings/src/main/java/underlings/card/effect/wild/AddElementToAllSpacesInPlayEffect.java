@@ -1,5 +1,7 @@
 package underlings.card.effect.wild;
 
+import java.util.List;
+
 import underlings.card.Card;
 import underlings.card.effect.HatchingGroundEffect;
 import underlings.element.ElementBag;
@@ -12,12 +14,13 @@ import underlings.utilities.EggHatchingLogic;
 
 public class AddElementToAllSpacesInPlayEffect extends HatchingGroundEffect {
 
-    public ElementColor[] elementColors;
+    public ElementColor elementColor;
 
     @Override
     protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag, Gui gui,
             Player currentPlayer, EggHatchingLogic eggHatchingLogic) {
-
+        List<Card> cardsInPlay = hatchingGround.getAllCards();
+        addElementsToCard(elementColor, cardsInPlay.get(0), currentPlayer.elementSpaceLogic, elementBag);
     }
 
     public void addElementsToCard(ElementColor color, Card cardToAddTo, ElementSpaceLogic elementSpaceLogic,
