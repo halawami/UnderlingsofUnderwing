@@ -214,4 +214,21 @@ public class ScoreTests {
 
 		EasyMock.verify(gui, gui.promptHandler);
 	}
+
+	@Test
+	public void testDisplayTwoWinner() {
+		List<Player> fakePlayers = new LinkedList<>();
+		fakePlayers = Arrays.asList(players[0], players[1]);
+		this.scoreUtils = new ScoreUtils(fakePlayers, gui);
+		gui.promptHandler = EasyMock.mock(ConcretePrompt.class);
+		this.scoreUtils.winners.add(players[0]);
+		this.scoreUtils.winners.add(players[1]);
+		this.gui.promptHandler.displayMessage("Winner(s): " + this.scoreUtils.winners, 0, JOptionPane.PLAIN_MESSAGE);
+
+		EasyMock.replay(gui, gui.promptHandler);
+
+		this.scoreUtils.displayWinners();
+
+		EasyMock.verify(gui, gui.promptHandler);
+	}
 }
