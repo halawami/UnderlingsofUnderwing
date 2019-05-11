@@ -150,7 +150,7 @@ public class ScoreTests {
 		fakePlayers = Arrays.asList(players[0], players[1]);
 		this.scoreUtils = new ScoreUtils(fakePlayers, gui);
 		gui.promptHandler = EasyMock.mock(ConcretePrompt.class);
-		for (Player player : fakePlayers) {
+		for (Player player : this.scoreUtils.scores.keySet()) {
 			gui.promptHandler.displayMessage(player + ": " + 2 + " points", player.getPlayerId(),
 					JOptionPane.PLAIN_MESSAGE);
 		}
