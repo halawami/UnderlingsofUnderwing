@@ -118,13 +118,13 @@ public class ScoreTests {
 	public void testTwoSameNetWarm() {
 		this.scoreUtils = new ScoreUtils(Arrays.asList(players[0], players[1], players[2], players[3], players[4]),
 				gui);
-		Map<Player, Integer> scores = this.scoreUtils.calculateScores();
+		this.scoreUtils.calculateScores();
 
-		assertEquals(58, (int) (scores.get(this.players[0])));
-		assertEquals(65, (int) (scores.get(this.players[1])));
-		assertEquals(20, (int) (scores.get(this.players[2])));
-		assertEquals(28, (int) (scores.get(this.players[3])));
-		assertEquals(21, (int) (scores.get(this.players[4])));
+		assertEquals(58, (int) (this.scoreUtils.scores.get(this.players[0])));
+		assertEquals(65, (int) (this.scoreUtils.scores.get(this.players[1])));
+		assertEquals(20, (int) (this.scoreUtils.scores.get(this.players[2])));
+		assertEquals(28, (int) (this.scoreUtils.scores.get(this.players[3])));
+		assertEquals(21, (int) (this.scoreUtils.scores.get(this.players[4])));
 	}
 
 	@Test
@@ -155,6 +155,9 @@ public class ScoreTests {
 			gui.promptHandler.displayMessage(player + ": " + 2 + " points", player.getPlayerId(),
 					JOptionPane.PLAIN_MESSAGE);
 		}
+		EasyMock.replay(gui, gui.promptHandler);
+		this.scoreUtils.displayScores();
+		EasyMock.verify(gui, gui.promptHandler);
 	}
 
 }
