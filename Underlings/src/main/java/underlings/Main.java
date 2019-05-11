@@ -1,7 +1,9 @@
 package underlings;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import underlings.card.CardFactory;
@@ -23,6 +25,8 @@ import underlings.phase.FinalPhase;
 import underlings.phase.HandlerPhase;
 import underlings.phase.Phase;
 import underlings.phase.PlacementPhase;
+import underlings.phase.RegularFinalPhase;
+import underlings.phase.WildFinalPhase;
 import underlings.player.PlayerFactory;
 import underlings.utilities.EggHatchingLogic;
 import underlings.utilities.LocaleWrap;
@@ -63,10 +67,11 @@ public class Main {
 		DragonPhase dragonPhase = new DragonPhase(game.getPlayers(), gui, elementBag, hatchingGround, gameDisplay,
 				field, eggHatchingLogic);
 		phases.add(dragonPhase);
+		Map<String, FinalPhase> finalPhaseMap = new HashMap<>();
+		finalPhaseMap.put("Regular", new RegularFinalPhase(game.getPlayers(), gui, dragonPhase));
+		finalPhaseMap.put("Wild", new WildFinalPhase(gui));
 
-		FinalPhase finalPhase = new FinalPhase(game.getPlayers(), gui, dragonPhase);
-
-		game.start(phases, finalPhase);
+		game.start(phases, finalPhaseMap);
 
 	}
 
