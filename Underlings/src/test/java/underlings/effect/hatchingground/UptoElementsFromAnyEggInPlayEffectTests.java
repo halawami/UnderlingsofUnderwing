@@ -33,6 +33,7 @@ public class UptoElementsFromAnyEggInPlayEffectTests {
                 EasyMock.partialMockBuilder(UptoElementsFromAnyEggInPlayEffect.class)
                         .addMockedMethod("applyOnSelectedElement").createMock();
         testedEffect.elementChoices = new ElementColor[]{ElementColor.BLUE};
+        testedEffect.upTo = 2;
         testedEffect.on(gui).on(currentPlayer).on(hatchingGround);
 
         EasyMock.expect(hatchingGround.getAllCards()).andReturn(mockCards);
@@ -69,6 +70,7 @@ public class UptoElementsFromAnyEggInPlayEffectTests {
                 EasyMock.partialMockBuilder(UptoElementsFromAnyEggInPlayEffect.class)
                         .addMockedMethod("applyOnSelectedElement").createMock();
         testedEffect.elementChoices = new ElementColor[]{ElementColor.BLUE};
+        testedEffect.upTo = 3;
         testedEffect.on(gui).on(currentPlayer).on(hatchingGround);
 
         EasyMock.expect(hatchingGround.getAllCards()).andReturn(mockCards);
