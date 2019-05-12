@@ -20,8 +20,12 @@ public class HatchAnyUnclaimedEggAsWildDragon extends HatchingGroundEffect {
                 gui.promptDecision("Would you like to hatch unclaimed egg as wild dragon", currentPlayer.getPlayerId());
         if (choice) {
             List<Card> unclaimedEggs = hatchingGround.getUnclaimedEggs();
-            Card toHatch = gui.promptCard("Choose a card to hatch wildly", unclaimedEggs);
-            eggHatchingLogic.hatchEgg(toHatch, true, FakePlayer.getInstance());
+            if (unclaimedEggs.size() == 0) {
+                gui.notifyAction(currentPlayer.getPlayerId(), "No unclaimed eggs to wildly hatch");
+            } else {
+                Card toHatch = gui.promptCard("Choose a card to hatch wildly", unclaimedEggs);
+                eggHatchingLogic.hatchEgg(toHatch, true, FakePlayer.getInstance());
+            }
         }
     }
 
