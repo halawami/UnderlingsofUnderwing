@@ -1,6 +1,7 @@
 package underlings.gui;
 
 import java.awt.Dimension;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -9,9 +10,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
-
 import javax.swing.JOptionPane;
-
 import underlings.card.Card;
 import underlings.card.EmptyCard;
 import underlings.element.Element;
@@ -38,9 +37,10 @@ public class Gui {
     }
 
     public DrawChoice getDrawChoice(List<ElementGiver> elementGivers, int playerId) {
-        ElementGiver elementGiver = this.promptHandler.promptChoice("Choose an Element Giver", elementGivers, playerId);
+        ElementGiver elementGiver =
+                this.promptHandler.promptChoice(LocaleWrap.get("gui_element_giver"), elementGivers, playerId);
         elementGivers.remove(elementGiver);
-        return this.promptHandler.promptChoice("Choose a Draw Choice", elementGiver.drawChoices, playerId);
+        return this.promptHandler.promptChoice(LocaleWrap.get("gui_draw_choice"), elementGiver.drawChoices, playerId);
     }
 
     public boolean getMoreMovesDecision(int choiceNum, int playerId) {
@@ -48,7 +48,7 @@ public class Gui {
             return false;
         }
 
-        return this.promptHandler.promptDecision("Would you like to place another element?", playerId);
+        return this.promptHandler.promptDecision(LocaleWrap.get("gui_more_moves"), playerId);
     }
 
     public boolean promptDecision(String toDisplay, int playerId) {
@@ -56,7 +56,7 @@ public class Gui {
     }
 
     public HandlerDecision getHandlerDecision(List<Handler> handlers, int playerId, HatchingGround hatchingGround) {
-        Handler handler = this.promptHandler.promptChoice("Choose a Handler", handlers, playerId);
+        Handler handler = this.promptHandler.promptChoice(LocaleWrap.get("gui_handler"), handlers, playerId);
         handlers.remove(handler);
 
         List<HandlerChoice> possibleChoices = handler.getPossibleChoices();
@@ -65,8 +65,8 @@ public class Gui {
             possibleChoices.remove(HandlerChoice.CARD);
         }
 
-        HandlerChoice handlerChoice =
-                this.promptHandler.promptChoice("Choose a movement for " + handler, possibleChoices, playerId);
+        HandlerChoice handlerChoice = this.promptHandler.promptChoice(
+                MessageFormat.format(LocaleWrap.get("gui_handler_choice"), handler), possibleChoices, playerId);
 
         return new HandlerDecision(handler, handlerChoice);
     }
@@ -90,7 +90,7 @@ public class Gui {
     }
 
     public int getFieldSpace() {
-        return this.promptHandler.promptInt("Enter Field Space", 0, 21);
+        return this.promptHandler.promptInt(LocaleWrap.get("gui_field_space"), 0, 21);
     }
 
     public int getPlayerCount(int minPlayers, int maxPlayers) {
@@ -116,7 +116,7 @@ public class Gui {
         colors.add(NullElement.getInstance());
 
         List<Element> choices = new ArrayList<>(colors);
-        return this.promptHandler.promptChoice("Pick an element to collect.", choices, playerNum);
+        return this.promptHandler.promptChoice(LocaleWrap.get("gui_element_collect"), choices, playerNum);
     }
 
     public Card getEggToHatch(Card[][] cards, int maxPoints, Player player) {
@@ -135,7 +135,7 @@ public class Gui {
         if (noValidCards) {
             return EmptyCard.getInstance();
         } else {
-            Card choice = this.promptHandler.pickCard("Choose a card", validCards, player.getPlayerId());
+            Card choice = this.promptHandler.pickCard(LocaleWrap.get("gui_card"), validCards, player.getPlayerId());
             return choice;
         }
     }
@@ -146,7 +146,8 @@ public class Gui {
     }
 
     public Locale promptLocale(Locale[] locales) {
-        return this.promptHandler.promptChoiceDropdown("Choose Language", Arrays.asList(locales), Locale.ENGLISH);
+        return this.promptHandler.promptChoiceDropdown(LocaleWrap.get("choose_language"), Arrays.asList(locales),
+                Locale.ENGLISH);
     }
 
     public void displayPlayers(List<Player> players) {
