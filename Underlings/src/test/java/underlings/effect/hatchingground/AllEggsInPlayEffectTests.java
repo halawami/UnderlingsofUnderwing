@@ -116,16 +116,14 @@ public class AllEggsInPlayEffectTests {
         cardInPlay.elementSpaces = mockSpaces.toArray(new ElementSpace[8]);
         ElementSpaceLogic elementSpaceLogic = EasyMock.mock(ElementSpaceLogic.class);
         ElementBag elementBag = EasyMock.mock(ElementBag.class);
-        DestroyAllElementsOnAllEggsInPlay testedEffect = EasyMock
-                .partialMockBuilder(DestroyAllElementsOnAllEggsInPlay.class)
-                .addMockedMethod("DestroyAllElementsOnSpace").createMock();
 
-        EasyMock.replay(elementSpaceLogic, elementBag, testedEffect);
+        EasyMock.replay(elementSpaceLogic, elementBag);
         mockSpaces.forEach(EasyMock::replay);
 
+        DestroyAllElementsOnAllEggsInPlay testedEffect = new DestroyAllElementsOnAllEggsInPlay();
         testedEffect.applyOnCardInPlay(cardInPlay, elementSpaceLogic, elementBag);
 
-        EasyMock.verify(elementSpaceLogic, elementBag, testedEffect);
+        EasyMock.verify(elementSpaceLogic, elementBag);
         mockSpaces.forEach(EasyMock::verify);
     }
 
