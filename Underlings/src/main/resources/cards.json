@@ -3289,5 +3289,55 @@
         "ElementColor": "RED"
       }
     ]
+  },
+  {
+    "name": "CORDATH",
+    "points": 20,
+    "temperature": "COOL",
+    "family": "LEGENDARY",
+    "elementSpaces": [
+      {
+        "color": "GREEN",
+        "position": "L4_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "L4_2"
+      },
+      {
+        "color": "GREEN",
+        "position": "L4_3"
+      },
+      {
+        "color": "BLACK",
+        "position": "L4_4"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R4_1"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R4_2"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R4_3"
+      },
+      {
+        "color": "BLACK",
+        "position": "R4_4"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "PlayersTradeDragon"
+      }
+    ]
   }
 ]

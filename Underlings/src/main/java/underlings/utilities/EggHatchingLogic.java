@@ -23,9 +23,9 @@ public class EggHatchingLogic {
         this.hatchingGround = hatchingGround;
     }
 
-    public void hatchEgg(Card card, boolean domestic, Player player) {
+    public void hatchEgg(Card card, boolean wild, Player player) {
         Effect[] effects;
-        if (domestic) {
+        if (wild) {
             card.handler = WildHandler.getInstance();
             effects = card.wildEffects;
             this.returnElementsToBag(card);
