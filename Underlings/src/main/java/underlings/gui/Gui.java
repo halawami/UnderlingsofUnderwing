@@ -7,7 +7,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 import java.util.function.Function;
+
 import javax.swing.JOptionPane;
+
 import underlings.card.Card;
 import underlings.card.EmptyCard;
 import underlings.element.Element;
@@ -137,7 +139,13 @@ public class Gui {
     }
 
     public Card promptCard(String toDisplay, List<Card> cards) {
+        // TODO
         return EmptyCard.getInstance();
+    }
+
+    public Player promptPlayer(String toDisplay, int playerId) {
+        // TODO
+        return null;
     }
 
     public Locale promptLocale(Locale[] locales) {

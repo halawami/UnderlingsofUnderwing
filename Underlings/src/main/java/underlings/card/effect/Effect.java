@@ -4,6 +4,7 @@ import java.util.List;
 
 import underlings.card.Card;
 import underlings.element.ElementBag;
+import underlings.game.Deck;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.player.Player;
@@ -18,6 +19,7 @@ public abstract class Effect {
     private Gui gui;
     private EggHatchingLogic eggHatchingLogic;
     private List<Player> players;
+    private Deck deck;
 
     public Effect on(HatchingGround hatchingGround) {
         this.hatchingGround = hatchingGround;
@@ -54,11 +56,17 @@ public abstract class Effect {
         return this;
     }
 
+    public Effect on(Deck deck) {
+        this.deck = deck;
+        return this;
+    }
+
     public void apply() {
         this.apply(this.centerCard, this.hatchingGround, this.elementBag, this.gui, this.player, this.eggHatchingLogic);
         this.apply(this.player, this.elementBag);
         this.apply(this.player);
         this.apply(this.players, this.gui);
+        this.apply(this.players, this.deck);
     }
 
     protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag, Gui gui,
@@ -70,4 +78,5 @@ public abstract class Effect {
 
     protected void apply(List<Player> players, Gui gui) {}
 
+    protected void apply(List<Player> players, Deck deck) {}
 }

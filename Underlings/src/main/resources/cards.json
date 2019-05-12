@@ -3234,7 +3234,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementToAllSpacesInPlayEffect",
+        "effect": "AddElementToAllEggsInPlayEffect",
         "ElementColor": "RED"
       }
     ]
@@ -3285,7 +3285,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementToAllSpacesInPlayEffect",
+        "effect": "AddElementToAllEggsInPlayEffect",
         "ElementColor": "RED"
       }
     ]
@@ -3400,6 +3400,62 @@
     "wildEffects": [
       {
         "effect": "DestroyAllElementsOnAllEggsInPlay"
+      }
+    ]
+  },{
+    "name": "DRACEUTRUM",
+    "points": 14,
+    "temperature": "NEUTRAL",
+    "family": "LEGENDARY",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L4_1"
+      },
+      {
+        "color": "RED",
+        "position": "L4_2"
+      },
+      {
+        "color": "WHITE",
+        "position": "L4_3"
+      },
+      {
+        "color": "BLUE",
+        "position": "L4_4"
+      },
+      {
+        "color": "RED",
+        "position": "R4_1"
+      },
+      {
+        "color": "WHITE",
+        "position": "R4_2"
+      },
+      {
+        "color": "BLUE",
+        "position": "R4_3"
+      },
+      {
+        "color": "BLUE",
+        "position": "R4_4"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "TakeHatchedDragonFromPlayer",
+        "points": 9,
+		"temperatures":[
+			"NEUTRAL"
+		]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "ReturnAllHatchedDragonsFromPlayers",
+		"temperatures":[
+			"NEUTRAL"
+		]
       }
     ]
   }
