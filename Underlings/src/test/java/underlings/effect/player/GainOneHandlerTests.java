@@ -6,7 +6,7 @@ import org.easymock.EasyMock;
 import org.junit.Test;
 
 import underlings.card.effect.Effect;
-import underlings.card.effect.domestic.GainOneHandlerEffect;
+import underlings.card.effect.domestic.GainHandlersEffect;
 import underlings.player.Player;
 
 public class GainOneHandlerTests {
@@ -14,7 +14,8 @@ public class GainOneHandlerTests {
     @Test
     public void testApply() {
         Player player = EasyMock.mock(Player.class);
-        Effect gainOneHandler = new GainOneHandlerEffect();
+        GainHandlersEffect gainOneHandler = new GainHandlersEffect();
+        gainOneHandler.numberOfHandlers = 1;
         gainOneHandler.on(player);
         player.gainHandler();
         EasyMock.replay(player);
@@ -26,7 +27,7 @@ public class GainOneHandlerTests {
 
     @Test
     public void testToString() {
-        Effect gainOneHandler = new GainOneHandlerEffect();
+        Effect gainOneHandler = new GainHandlersEffect();
 
         assertEquals("Gain one handler", gainOneHandler.toString());
     }
