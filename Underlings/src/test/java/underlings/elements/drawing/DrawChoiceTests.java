@@ -16,8 +16,8 @@ import underlings.gui.DrawChoice;
 
 public class DrawChoiceTests {
 
-	Random random;
-	ElementBag elementBag;
+	private Random random;
+	private ElementBag elementBag;
 
 	@Before
 	public void init() {
