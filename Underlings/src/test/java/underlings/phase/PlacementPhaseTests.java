@@ -104,7 +104,7 @@ public class PlacementPhaseTests {
     public void testCheckGameover() throws Exception {
         Player player = EasyMock.mock(Player.class);
         EasyMock.expect(player.getHandlerCount()).andReturn(3).anyTimes();
-        List<Player> players = Arrays.asList(player);
+        final List<Player> players = Arrays.asList(player);
 
         Card card = new Card();
         card.handler = new Handler(HandlerState.CARD);
@@ -147,7 +147,7 @@ public class PlacementPhaseTests {
     public void testCheckGameoverLost() throws Exception {
         Player player = EasyMock.mock(Player.class);
         EasyMock.expect(player.getHandlerCount()).andReturn(3).anyTimes();
-        List<Player> players = Arrays.asList(player);
+        final List<Player> players = Arrays.asList(player);
 
         Card card = new Card();
         card.handler = WildHandler.getInstance();
