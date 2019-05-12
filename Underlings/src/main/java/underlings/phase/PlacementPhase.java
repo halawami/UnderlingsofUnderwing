@@ -43,7 +43,7 @@ public class PlacementPhase extends RotationPhase {
             return;
         }
 
-        List<Card> cards = this.hatchingGround.getPlayableCards(player.elementSpaceLogic, player.getElements());
+        List<Card> cards = this.utils.getPlayableCards(player.elementSpaceLogic, player.getElements());
         if (cards.isEmpty()) {
             this.gui.promptHandler.displayMessage("Player has no valid placements", player.getPlayerId(),
                     JOptionPane.WARNING_MESSAGE);

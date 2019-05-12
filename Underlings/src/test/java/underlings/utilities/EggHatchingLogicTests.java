@@ -3,7 +3,12 @@ package underlings.utilities;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import com.google.common.base.Charsets;
+import com.google.common.io.Resources;
+
+import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 
 import org.easymock.EasyMock;
 import org.junit.Before;
@@ -33,7 +38,7 @@ public class EggHatchingLogicTests {
     private Gui gui;
 
     @Before
-    public void init() {
+    public void init() throws IOException {
         this.card = new Card();
         this.card.elementSpaces = new ElementSpace[1];
         this.card.elementSpaces[0] = new ElementSpace(ElementColor.PURPLE);
@@ -43,6 +48,8 @@ public class EggHatchingLogicTests {
         this.card.wildEffects[0] = effect;
         this.elementBag = EasyMock.mock(ElementBag.class);
         this.hatchingGround = EasyMock.mock(HatchingGround.class);
+        List<String> recipes = Resources.readLines(Resources.getResource("DefaultRecipeList.txt"), Charsets.UTF_8);
+        FakePlayer.initPlayer(recipes);
         this.player = FakePlayer.getInstance();
         this.gui = EasyMock.mock(Gui.class);
         this.card.domesticEffects = new Effect[1];
