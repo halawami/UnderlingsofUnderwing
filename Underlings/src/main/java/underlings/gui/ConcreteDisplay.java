@@ -6,7 +6,6 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -176,7 +175,7 @@ public class ConcreteDisplay implements Display {
             elements += e.getColor() + " ";
         }
         this.gr.setColor(Color.BLACK);
-        this.gr.drawString(MessageFormat.format(LocaleWrap.get("player_number"), (playerNumber + 1)),
+        this.gr.drawString(LocaleWrap.format("player_number", (playerNumber + 1)),
                 (int) (ratio * (offsetX + (width + gapX) * col)) + 5,
                 (int) (ratio * (offsetY + (height + gapY) * row)) + 15);
         this.gr.drawString(elements, (int) (ratio * (30 + offsetX + (width + gapX) * col)),
@@ -225,12 +224,11 @@ public class ConcreteDisplay implements Display {
         stats.append(LocaleWrap.get("elements_remaining"));
         for (ElementColor color : new ElementColor[] {ElementColor.RED, ElementColor.BLUE, ElementColor.YELLOW,
                 ElementColor.GREEN, ElementColor.ORANGE, ElementColor.PURPLE, ElementColor.BLACK, ElementColor.WHITE}) {
-            stats.append(MessageFormat.format(LocaleWrap.get("color_remaining"), color.toString(),
-                    elementBag.getNumberRemaining(color)));
+            stats.append(LocaleWrap.format("color_remaining", color.toString(), elementBag.getNumberRemaining(color)));
         }
-        stats.append(MessageFormat.format(LocaleWrap.get("rounds_left"), roundsLeft));
-        stats.append(MessageFormat.format(LocaleWrap.get("current_phase"), currentPhase));
-        stats.append(MessageFormat.format(LocaleWrap.get("turn_lead"), leadTurn));
+        stats.append(LocaleWrap.format("rounds_left", roundsLeft));
+        stats.append(LocaleWrap.format("current_phase", currentPhase));
+        stats.append(LocaleWrap.format("turn_lead", leadTurn));
 
 
         int y = 15;

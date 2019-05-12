@@ -1,6 +1,5 @@
 package underlings.element;
 
-import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -42,7 +41,7 @@ public class ElementSpace {
 
     @Override
     public String toString() {
-        return MessageFormat.format(LocaleWrap.get("element_space"), this.color);
+        return LocaleWrap.format("element_space", this.color);
     }
 
     public List<ElementColor> getElementColors() {

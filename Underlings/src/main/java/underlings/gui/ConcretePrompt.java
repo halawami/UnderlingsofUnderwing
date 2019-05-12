@@ -95,10 +95,10 @@ public class ConcretePrompt implements PromptHandler {
         int result = 0;
         do {
             try {
-                result = Integer.parseInt(JOptionPane
-                        .showInputDialog(MessageFormat.format(LocaleWrap.get("prompt_int"), prompt, min, max)));
+                result = Integer
+                        .parseInt(JOptionPane.showInputDialog(LocaleWrap.format("prompt_int", prompt, min, max)));
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, MessageFormat.format(LocaleWrap.get("prompt_int_error"), min, max));
+                JOptionPane.showMessageDialog(null, LocaleWrap.format("prompt_int_error", min, max));
             }
         } while (result > max || result < min);
 
