@@ -9,7 +9,7 @@ import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
 
-public class AddElementToAllSpacesInPlayEffect extends AllEggsInPlayEffect {
+public class AddElementToAllEggsInPlayEffect extends AllEggsInPlayEffect {
 
     public ElementColor elementColor;
 

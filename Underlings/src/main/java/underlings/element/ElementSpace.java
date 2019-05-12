@@ -29,9 +29,7 @@ public class ElementSpace implements Choice {
     }
 
     public void destroyAllElementsOfColor(ElementColor colorOfElementsToDestroy) {
-        Predicate<Element> removeMethod = (Element e) -> {
-            return e.getColor().equals(colorOfElementsToDestroy);
-        };
+        Predicate<Element> removeMethod = (Element e) -> e.getColor().equals(colorOfElementsToDestroy);
         this.elements.removeIf(removeMethod);
     }
 
@@ -55,4 +53,7 @@ public class ElementSpace implements Choice {
         return colors;
     }
 
+    public void destroyAllElements() {
+
+    }
 }

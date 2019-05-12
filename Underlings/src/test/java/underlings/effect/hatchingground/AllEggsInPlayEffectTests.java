@@ -7,7 +7,7 @@ import org.easymock.EasyMock;
 import org.junit.Test;
 
 import underlings.card.Card;
-import underlings.card.effect.wild.AddElementToAllSpacesInPlayEffect;
+import underlings.card.effect.wild.AddElementToAllEggsInPlayEffect;
 import underlings.card.effect.wild.AllEggsInPlayEffect;
 import underlings.card.effect.wild.DestroyAllElementsOnAllEggsInPlay;
 import underlings.element.Element;
@@ -101,7 +101,7 @@ public class AllEggsInPlayEffectTests {
         EasyMock.replay(mockedCard, elementSpaceLogic, elementBag);
         mockedPlayableSpaces.forEach(EasyMock::replay);
 
-        AddElementToAllSpacesInPlayEffect testedEffect = new AddElementToAllSpacesInPlayEffect();
+        AddElementToAllEggsInPlayEffect testedEffect = new AddElementToAllEggsInPlayEffect();
         testedEffect.elementColor = ElementColor.BLUE;
         testedEffect.applyOnCardInPlay(mockedCard, elementSpaceLogic, elementBag);
 
@@ -137,20 +137,16 @@ public class AllEggsInPlayEffectTests {
         cardInPlay.elementSpaces = mockSpaces.toArray(new ElementSpace[8]);
         ElementSpaceLogic elementSpaceLogic = EasyMock.mock(ElementSpaceLogic.class);
         ElementBag elementBag = EasyMock.mock(ElementBag.class);
-        DestroyAllElementsOnAllEggsInPlay testedEffect = EasyMock
-                .partialMockBuilder(DestroyAllElementsOnAllEggsInPlay.class)
-                .addMockedMethod("DestroyAllElementsOnSpace").createMock();
 
-        for (ElementSpace space : mockSpaces) {
-            testedEffect.DestroyAllElementsOnSpace(space, elementBag);
-        }
+        mockSpaces.forEach(ElementSpace::destroyAllElements);
 
-        EasyMock.replay(elementSpaceLogic, elementBag, testedEffect);
+        EasyMock.replay(elementSpaceLogic, elementBag);
         mockSpaces.forEach(EasyMock::replay);
 
+        DestroyAllElementsOnAllEggsInPlay testedEffect = new DestroyAllElementsOnAllEggsInPlay();
         testedEffect.applyOnCardInPlay(cardInPlay, elementSpaceLogic, elementBag);
 
-        EasyMock.verify(elementSpaceLogic, elementBag, testedEffect);
+        EasyMock.verify(elementSpaceLogic, elementBag);
         mockSpaces.forEach(EasyMock::verify);
     }
 
