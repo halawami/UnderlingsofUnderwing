@@ -12,13 +12,13 @@ public class ReturnAllHatchedDragonsFromPlayers extends DeckEffects {
 
     @Override
     protected void apply(List<Player> players, Deck deck) {
-        for(Player player: players){
+        for (Player player : players) {
             List<Card> cardsToRemove = new LinkedList<>();
-            for (Card card : players.get(0).hatchedCards) {
+            for (Card card : player.hatchedCards) {
                 deck.addCard(card);
                 cardsToRemove.add(card);
             }
-            players.get(0).hatchedCards.removeAll(cardsToRemove);
+            player.hatchedCards.removeAll(cardsToRemove);
         }
     }
 
