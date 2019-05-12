@@ -27,4 +27,19 @@ public class DestroyAllPlayersStoredElementsTests {
         players.forEach(EasyMock::verify);
     }
 
+    @Test
+    public void testApplyOnSixPlayer() {
+        List<Player> players = EffectTestUtils.getMockObjects(Player.class, 6);
+        Effect testedEffect = new DestroyAllPlayersStoredElements();
+        testedEffect.on(players);
+
+        players.forEach(Player::destroyAllElements);
+
+        players.forEach(EasyMock::replay);
+
+        testedEffect.apply();
+
+        players.forEach(EasyMock::verify);
+    }
+
 }
