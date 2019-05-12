@@ -1,6 +1,7 @@
 package underlings.elementspace.add.combo;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
@@ -66,7 +67,9 @@ public class ValidAdditionsTests {
 
     @Test
     public void testOpenElements() {
+        assertFalse(logic.isOpenElement(ElementColor.WHITE));
         logic.setOpenElement(ElementColor.WHITE);
+        assertTrue(logic.isOpenElement(ElementColor.WHITE));
 
         ElementSpace elementSpace = new ElementSpace(ElementColor.ORANGE);
         List<ElementColor> expected =
@@ -81,7 +84,9 @@ public class ValidAdditionsTests {
 
     @Test
     public void testOpenElementsBlack() {
+        assertFalse(logic.isOpenElement(ElementColor.BLACK));
         logic.setOpenElement(ElementColor.BLACK);
+        assertTrue(logic.isOpenElement(ElementColor.BLACK));
 
         ElementSpace elementSpace = new ElementSpace(ElementColor.ORANGE);
         List<ElementColor> expected =
