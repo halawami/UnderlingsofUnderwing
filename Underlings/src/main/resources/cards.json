@@ -16,7 +16,8 @@
     ],
     "domesticEffects": [
       {
-        "effect": "GainOneHandlerEffect"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       },
       {
         "effect": "CollectElementEffect",
@@ -51,7 +52,8 @@
     ],
     "domesticEffects": [
       {
-        "effect": "GainOneHandlerEffect"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       },
       {
         "effect": "CollectElementEffect",
@@ -125,7 +127,8 @@
         ]
       },
       {
-        "effect": "GainOneHandlerEffect"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       }
     ],
     "wildEffects": [
@@ -521,7 +524,8 @@
     ],
     "domesticEffects": [
       {
-        "effect": "GainOneHandlerEffect"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       }
     ],
     "wildEffects": [
@@ -560,7 +564,8 @@
     ],
     "domesticEffects": [
       {
-        "effect": "GainOneHandlerEffect"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       },
       {
         "effect": "CollectElementEffect",
@@ -612,7 +617,8 @@
     ],
     "domesticEffects": [
       {
-        "effect": "GainOneHandlerEffect"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       },
       {
         "effect": "CollectElementEffect",
@@ -664,7 +670,8 @@
     ],
     "domesticEffects": [
       {
-        "effect": "GainOneHandlerEffect"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       }
     ],
     "wildEffects": [
@@ -703,7 +710,8 @@
     ],
     "domesticEffects": [
       {
-        "effect": "GainOneHandlerEffect"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       },
       {
         "effect": "CollectElementEffect",
@@ -755,7 +763,8 @@
     ],
     "domesticEffects": [
       {
-        "effect": "GainOneHandlerEffect"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       }
     ],
     "wildEffects": [
@@ -794,7 +803,8 @@
     ],
     "domesticEffects": [
       {
-        "effect": "GainOneHandlerEffect"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       }
     ],
     "wildEffects": [
@@ -833,7 +843,8 @@
     ],
     "domesticEffects": [
       {
-        "effect": "GainOneHandlerEffect"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       }
     ],
     "wildEffects": [
@@ -872,7 +883,8 @@
     ],
     "domesticEffects": [
       {
-        "effect": "GainOneHandlerEffect"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       }
     ],
     "wildEffects": [
@@ -911,7 +923,8 @@
     ],
     "domesticEffects": [
       {
-        "effect": "GainOneHandlerEffect"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       }
     ],
     "wildEffects": [
@@ -950,7 +963,8 @@
     ],
     "domesticEffects": [
       {
-        "effect": "GainOneHandlerEffect"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       }
     ],
     "wildEffects": [
@@ -989,7 +1003,8 @@
     ],
     "domesticEffects": [
       {
-        "effect": "GainOneHandlerEffect"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       }
     ],
     "wildEffects": [
@@ -1234,7 +1249,8 @@
     ],
     "domesticEffects": [
       {
-        "effect": "GainOneHandlerEffect"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       }
     ],
     "wildEffects": [
@@ -1305,7 +1321,8 @@
     ],
     "domesticEffects": [
       {
-        "effect": "GainOneHandlerEffect"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       }
     ],
     "wildEffects": [
@@ -1338,7 +1355,8 @@
     ],
     "domesticEffects": [
       {
-        "effect": "GainOneHandlerEffect"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       }
     ],
     "wildEffects": [
@@ -1391,7 +1409,8 @@
         ]
       },
       {
-        "effect": "GainOneHandlerEffect"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       }
     ],
     "wildEffects": [
@@ -1426,7 +1445,8 @@
     ],
     "domesticEffects": [
       {
-        "effect": "GainOneHandlerEffect"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       }
     ],
     "wildEffects": [
@@ -1563,7 +1583,8 @@
     ],
     "domesticEffects": [
       {
-        "effect": "GainOneHandlerEffect"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       },
       {
         "effect": "CollectElementEffect",
@@ -1995,7 +2016,8 @@
         ]
       },
       {
-        "effect": "GainOneHandlerEffect"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       }
     ],
     "wildEffects": [
@@ -2253,7 +2275,8 @@
         ]
       },
       {
-        "effect": "GainOneHandlerEffect"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       }
     ],
     "wildEffects": [
@@ -2306,7 +2329,8 @@
     ],
     "domesticEffects": [
       {
-        "effect": "GainOneHandlerEffect"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       }
     ],
     "wildEffects": [
@@ -2365,7 +2389,8 @@
     ],
     "domesticEffects": [
       {
-        "effect": "GainOneHandlerEffect"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       }
     ],
     "wildEffects": [
@@ -2425,7 +2450,8 @@
         }
       },
       {
-        "effect": "GainOneHandlerEffect"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       }
     ],
     "wildEffects": [
@@ -2868,7 +2894,8 @@
     ],
     "domesticEffects": [
       {
-        "effect": "GainOneHandlerEffect"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       }
     ],
     "wildEffects": [
@@ -2928,7 +2955,8 @@
         }
       },
       {
-        "effect": "GainOneHandlerEffect"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       }
     ],
     "wildEffects": [
@@ -2988,7 +3016,8 @@
         }
       },
       {
-        "effect": "GainOneHandlerEffect"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       }
     ],
     "wildEffects": [
