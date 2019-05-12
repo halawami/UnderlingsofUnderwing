@@ -8,8 +8,10 @@ public class DestroyAllElementsOnAllEggsInPlay extends AllEggsInPlayEffect {
 
     @Override
     public void applyOnCardInPlay(Card cardInPlay, ElementSpaceLogic elementSpaceLogic, ElementBag elementBag) {
-        for (int i = 0; i < cardInPlay.elementSpaces.length; i++) {
-            cardInPlay.elementSpaces[i].destroyAllElements();
+        if (cardInPlay.isClaimed()) {
+            for (int i = 0; i < cardInPlay.elementSpaces.length; i++) {
+                cardInPlay.elementSpaces[i].destroyAllElements();
+            }
         }
     }
 }
