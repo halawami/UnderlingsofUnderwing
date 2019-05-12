@@ -64,4 +64,44 @@ public class ValidAdditionsTests {
         assertTrue(logic.getValidAdditions(elementSpace).isEmpty());
     }
 
+    @Test
+    public void testOpenElements() {
+        logic.setOpenElement(ElementColor.WHITE);
+
+        ElementSpace elementSpace = new ElementSpace(ElementColor.ORANGE);
+        List<ElementColor> expected =
+                Arrays.asList(ElementColor.ORANGE, ElementColor.RED, ElementColor.YELLOW, ElementColor.WHITE);
+
+        List<ElementColor> actual = logic.getValidAdditions(elementSpace);
+        Collections.sort(expected);
+        Collections.sort(actual);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testOpenElementsBlack() {
+        logic.setOpenElement(ElementColor.BLACK);
+
+        ElementSpace elementSpace = new ElementSpace(ElementColor.ORANGE);
+        List<ElementColor> expected =
+                Arrays.asList(ElementColor.ORANGE, ElementColor.RED, ElementColor.YELLOW, ElementColor.BLACK);
+
+        List<ElementColor> actual = logic.getValidAdditions(elementSpace);
+        Collections.sort(expected);
+        Collections.sort(actual);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testOpenElementsComplete() {
+        logic.setOpenElement(ElementColor.WHITE);
+
+        ElementSpace elementSpace = new ElementSpace(ElementColor.ORANGE);
+        elementSpace.addElements(new Element(ElementColor.ORANGE));
+
+        List<ElementColor> actual = logic.getValidAdditions(elementSpace);
+        assertTrue(actual.isEmpty());
+    }
 }
