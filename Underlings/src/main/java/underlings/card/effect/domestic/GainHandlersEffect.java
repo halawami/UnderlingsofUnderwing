@@ -10,7 +10,9 @@ public class GainHandlersEffect extends PlayerEffect {
 
     @Override
     protected void apply(Player player) {
-        player.gainHandler();
+        for (int i = 0; i < this.numberOfHandlers; i++) {
+            player.gainHandler();
+        }
     }
 
     @Override
