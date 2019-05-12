@@ -10,8 +10,6 @@ public class LoseHandlerEffect extends PlayersEffect {
 
     @Override
     protected void apply(List<Player> players, Gui gui) {
-        for (int i = 0; i < 2; i++) {
-            players.get(i).loseHandler();
-        }
+        players.forEach(Player::loseHandler);
     }
 }
