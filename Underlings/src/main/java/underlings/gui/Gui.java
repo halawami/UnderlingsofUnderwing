@@ -7,7 +7,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 import java.util.function.Function;
+
 import javax.swing.JOptionPane;
+
 import underlings.card.Card;
 import underlings.card.EmptyCard;
 import underlings.element.Element;
@@ -93,7 +95,7 @@ public class Gui {
     }
 
     public ElementSpace getElementSpaceContainingElementOfColors(List<Card> cards, ElementColor[] colorChoices) {
-        // TODO: implement this method for CollectUpToTwoElementsFromAnyEggInPlayEffect,
+        // TODO: implement this method for CollectUpToElementsFromAnyEggInPlayEffect,
         // ask Mohammad for information
         return null;
     }

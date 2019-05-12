@@ -4,11 +4,10 @@ import underlings.element.Element;
 import underlings.element.ElementSpace;
 import underlings.player.Player;
 
-public class CollectUpToTwoElementsFromAnyEggInPlayEffect extends UptoTwoElementsFromAnyEggInPlayEffect {
+public class DestroyUpToElementsOnAnyEggInPlayEffect extends UptoElementsFromAnyEggInPlayEffect {
 
     @Override
     public void applyOnSelectedElement(Element selectedElement, ElementSpace selectedSpace, Player currentPlayer) {
         selectedSpace.destroyOneElementOfColor(selectedElement.getColor());
-        currentPlayer.addElement(selectedElement);
     }
 }

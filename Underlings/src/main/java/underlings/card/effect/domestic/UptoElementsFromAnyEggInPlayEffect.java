@@ -13,7 +13,7 @@ import underlings.gui.Gui;
 import underlings.player.Player;
 import underlings.utilities.EggHatchingLogic;
 
-public abstract class UptoTwoElementsFromAnyEggInPlayEffect extends HatchingGroundEffect {
+public abstract class UptoElementsFromAnyEggInPlayEffect extends HatchingGroundEffect {
 
     public ElementColor[] elementChoices;
 
@@ -28,6 +28,7 @@ public abstract class UptoTwoElementsFromAnyEggInPlayEffect extends HatchingGrou
             applyOnSelectedElement(selectedElement, selectedSpace, currentPlayer);
         }
     }
+
 
     public abstract void applyOnSelectedElement(Element selectedElement, ElementSpace selectedSpace,
             Player currentPlayer);
