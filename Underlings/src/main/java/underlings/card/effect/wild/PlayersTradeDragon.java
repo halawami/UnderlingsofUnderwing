@@ -11,12 +11,22 @@ public class PlayersTradeDragon extends PlayersEffect {
 
     @Override
     protected void apply(List<Player> players, Gui gui) {
-        Card cardToTrade = gui.promptCard("Choose a card to trade", players.get(0).hatchedCards);
-        players.get(0).hatchedCards.remove(cardToTrade);
-        players.get(1).hatchedCards.add(cardToTrade);
-        Card secondCard = gui.promptCard("Choose a card to trade", players.get(1).hatchedCards);
-        players.get(0).hatchedCards.add(secondCard);
-        players.get(1).hatchedCards.remove(secondCard);
+        Player playerWithMinCards = players.get(0);
+        for (Player player : players) {
+            if (player.hatchedCards.size() < playerWithMinCards.hatchedCards.size()) {
+                playerWithMinCards = player;
+            }
+        }
+        for (Player player : players) {
+            if (player != playerWithMinCards) {
+                Card cardToTrade = gui.promptCard("Choose a card to trade", player.hatchedCards);
+                Card secondCardToTrade = gui.promptCard("Choose a card to trade", playerWithMinCards.hatchedCards);
+                player.hatchedCards.remove(cardToTrade);
+                playerWithMinCards.hatchedCards.add(cardToTrade);
+                player.hatchedCards.add(secondCardToTrade);
+                playerWithMinCards.hatchedCards.remove(secondCardToTrade);
+            }
+        }
     }
 
 }
