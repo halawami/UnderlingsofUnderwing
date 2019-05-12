@@ -151,6 +151,6 @@ public class ElementSpaceLogic {
     }
 
     public boolean isOpenElement(ElementColor color) {
-        return false;
+        return this.openElements.contains(color);
     }
 }
