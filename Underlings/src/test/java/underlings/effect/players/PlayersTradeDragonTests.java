@@ -115,13 +115,13 @@ public class PlayersTradeDragonTests {
         Effect effect = new PlayersTradeDragon();
         player.hatchedCards = new ArrayList<>();
         player.hatchedCards.add(card);
-        player.hatchedCards.add(card2);
+        player.hatchedCards.add(card3);
         player2.hatchedCards = new ArrayList<>();
         player2.hatchedCards.add(card2);
-        player2.hatchedCards.add(card);
+        player2.hatchedCards.add(card3);
         player3.hatchedCards = new ArrayList<>();
         player3.hatchedCards.add(card3);
-        effect.on(Arrays.asList(player, player2)).on(gui);
+        effect.on(Arrays.asList(player, player2, player3)).on(gui);
         Player playerWithLeastDragons = player3;
         // TODO: this should probably be differnet than prompt card because we want to show cards
         // and points and effects
@@ -138,8 +138,8 @@ public class PlayersTradeDragonTests {
         assertFalse(player2.hatchedCards.contains(card2));
         assertTrue(player.hatchedCards.contains(card3));
         assertFalse(player.hatchedCards.contains(card));
-        assertTrue(player.hatchedCards.contains(card2));
-        assertFalse(player.hatchedCards.contains(card3));
+        assertTrue(player3.hatchedCards.contains(card2));
+        assertFalse(player3.hatchedCards.contains(card3));
         assertEquals(2, player.hatchedCards.size());
         assertEquals(2, player2.hatchedCards.size());
         assertEquals(1, player3.hatchedCards.size());
