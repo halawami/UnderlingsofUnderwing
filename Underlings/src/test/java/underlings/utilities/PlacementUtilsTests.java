@@ -55,11 +55,6 @@ public class PlacementUtilsTests {
 
     @Test
     public void testSelectElementSpace() {
-        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
-
-        PromptHandler promptHandler = EasyMock.mock(PromptHandler.class);
-        Gui gui = new Gui(promptHandler, null);
-
         Player player = EasyMock.mock(Player.class);
         EasyMock.expect(player.getPlayerId()).andReturn(10).anyTimes();
 
@@ -75,15 +70,17 @@ public class PlacementUtilsTests {
         EasyMock.expect(logic.getPlayableSpaces(card, elements)).andReturn(spaces);
         player.elementSpaceLogic = logic;
 
+        PromptHandler promptHandler = EasyMock.mock(PromptHandler.class);
+        Gui gui = new Gui(promptHandler, null);
         EasyMock.expect(gui.promptHandler.promptChoice("Pick an element space to place an element on.", spaces, 10))
                 .andReturn(card.elementSpaces[0]);
 
-        EasyMock.replay(logic, hatchingGround, promptHandler, player);
+        EasyMock.replay(logic, promptHandler, player);
 
-        PlacementUtilities utils = new PlacementUtilities(hatchingGround, gui, null);
+        PlacementUtilities utils = new PlacementUtilities(null, gui, null);
         assertEquals(card.elementSpaces[0], utils.selectElementSpace(card, player));
 
-        EasyMock.verify(logic, hatchingGround, promptHandler, player);
+        EasyMock.verify(logic, promptHandler, player);
     }
 
 }
