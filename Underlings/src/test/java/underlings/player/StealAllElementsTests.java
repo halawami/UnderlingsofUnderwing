@@ -37,5 +37,19 @@ public class StealAllElementsTests {
         assertEquals(elementsToBeStolen.get(0), stealer.elements.get(0));
     }
 
+    @Test
+    public void testStealTwoElements() {
+        Player playerToStealFrom = new Player(0, null, 0);
+        List<Element> elementsToBeStolen = EffectTestUtils.getMockObjects(Element.class, 1);
+        playerToStealFrom.elements = new ArrayList<>(elementsToBeStolen);
+        Player stealer = new Player(0, null, 0);
+
+        stealer.stealAllElementsFromPlayer(playerToStealFrom);
+
+        assertEquals(0, playerToStealFrom.elements.size());
+        assertEquals(1, stealer.elements.size());
+        assertEquals(elementsToBeStolen.get(0), stealer.elements.get(0));
+    }
+
 
 }

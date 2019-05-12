@@ -132,7 +132,7 @@ public class Player {
     }
 
     public void stealAllElementsFromPlayer(Player player) {
-        this.elements.addAll(player.elements);
+        this.elements = new ArrayList<>(player.elements);
         player.elements.clear();
     }
 }
