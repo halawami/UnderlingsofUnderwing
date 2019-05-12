@@ -2,11 +2,8 @@ package underlings.elements.giver;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
 import java.util.List;
-
 import org.junit.Test;
-
 import underlings.element.ElementGiver;
 import underlings.field.FieldSpace;
 import underlings.gui.DrawChoice;
@@ -25,42 +22,14 @@ public class HandlerTests {
     }
 
     @Test
-    public void testFieldBlue() {
+    public void testFieldAll() {
         this.testFieldColor(DrawChoice.BLUE);
-    }
-
-    @Test
-    public void testFieldRed() {
         this.testFieldColor(DrawChoice.RED);
-    }
-
-    @Test
-    public void testFieldGreen() {
         this.testFieldColor(DrawChoice.GREEN);
-    }
-
-    @Test
-    public void testFieldPurple() {
         this.testFieldColor(DrawChoice.PURPLE);
-    }
-
-    @Test
-    public void testFieldOrange() {
         this.testFieldColor(DrawChoice.ORANGE);
-    }
-
-    @Test
-    public void testFieldYellow() {
         this.testFieldColor(DrawChoice.YELLOW);
-    }
-
-    @Test
-    public void testFieldBlack() {
         this.testFieldColor(DrawChoice.BLACK);
-    }
-
-    @Test
-    public void testFieldWhite() {
         this.testFieldColor(DrawChoice.WHITE);
     }
 
@@ -104,21 +73,23 @@ public class HandlerTests {
     }
 
     @Test
-    public void testToStringFieldBlue() {
-        Handler handler = new Handler(HandlerState.FIELD);
-        FieldSpace fieldSpace = new FieldSpace(DrawChoice.BLUE);
-        fieldSpace.addHandler(handler);
-        ElementGiver elementGiver = handler.elementGiver;
-        assertEquals("Handler on BLUE Element Field Space", elementGiver.toString());
+    public void testToStringField() {
+        assertEquals("Handler on Red Field Space", this.getElementGiverString(DrawChoice.RED));
+        assertEquals("Handler on Blue Field Space", this.getElementGiverString(DrawChoice.BLUE));
+        assertEquals("Handler on Yellow Field Space", this.getElementGiverString(DrawChoice.YELLOW));
+        assertEquals("Handler on Green Field Space", this.getElementGiverString(DrawChoice.GREEN));
+        assertEquals("Handler on Orange Field Space", this.getElementGiverString(DrawChoice.ORANGE));
+        assertEquals("Handler on Purple Field Space", this.getElementGiverString(DrawChoice.PURPLE));
+        assertEquals("Handler on Black Field Space", this.getElementGiverString(DrawChoice.BLACK));
+        assertEquals("Handler on White Field Space", this.getElementGiverString(DrawChoice.WHITE));
     }
 
-    @Test
-    public void testToStringFieldRed() {
+    private String getElementGiverString(DrawChoice drawChoice) {
         Handler handler = new Handler(HandlerState.FIELD);
-        FieldSpace fieldSpace = new FieldSpace(DrawChoice.RED);
+        FieldSpace fieldSpace = new FieldSpace(drawChoice);
         fieldSpace.addHandler(handler);
         ElementGiver elementGiver = handler.elementGiver;
-        assertEquals("Handler on RED Element Field Space", elementGiver.toString());
+        return elementGiver.toString();
     }
 
 }

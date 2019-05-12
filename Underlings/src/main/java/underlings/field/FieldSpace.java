@@ -3,7 +3,6 @@ package underlings.field;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
-
 import underlings.element.ElementGiver;
 import underlings.gui.DrawChoice;
 import underlings.handler.Handler;
@@ -22,9 +21,9 @@ public class FieldSpace {
     public void addHandler(Handler handler) {
         this.handlers.add(handler);
         handler.setLocation(MessageFormat.format(LocaleWrap.get("field_space_color"), this.color));
-        handler.elementGiver =
-                new ElementGiver(MessageFormat.format(LocaleWrap.get("field_space_element_giver"), this.color),
-                        DrawChoice.RANDOM, this.color);
+        String display =
+                MessageFormat.format(LocaleWrap.get("field_space_element_giver"), LocaleWrap.get(this.color.name()));
+        handler.elementGiver = new ElementGiver(display, DrawChoice.RANDOM, this.color);
     }
 
     public boolean contains(Handler handler) {
