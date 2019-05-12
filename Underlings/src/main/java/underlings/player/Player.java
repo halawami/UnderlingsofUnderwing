@@ -131,13 +131,12 @@ public class Player {
         return MessageFormat.format(LocaleWrap.get("player_number"), this.getPlayerId());
     }
 
-    public List<Element> destroyAllElements() {
-        List<Element> destroyedElements = new ArrayList<>(this.elements);
+    public void destroyAllElements() {
         this.elements.clear();
-        return destroyedElements;
     }
 
     public void stealAllElementsFromPlayer(Player player) {
-        this.elements.addAll(player.destroyAllElements());
+        this.elements.addAll(player.elements);
+        player.destroyAllElements();
     }
 }
