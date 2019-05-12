@@ -33,25 +33,22 @@ public class HandlerStateStringTests {
     }
 
     @Test
-    public void testToStringFieldBlue() {
-        Handler handler = new Handler(HandlerState.FIELD);
-        FieldSpace fieldSpace = new FieldSpace(DrawChoice.BLUE);
-        fieldSpace.addHandler(handler);
-        assertEquals("Handler on Blue Element Field Space", handler.toString());
+    public void testToStringField() {
+        assertEquals("Handler on Blue Field Space", this.getStringField(DrawChoice.BLUE));
+        assertEquals("Handler on Red Field Space", this.getStringField(DrawChoice.RED));
+        assertEquals("Handler on Yellow Field Space", this.getStringField(DrawChoice.YELLOW));
+        assertEquals("Handler on Green Field Space", this.getStringField(DrawChoice.GREEN));
+        assertEquals("Handler on Orange Field Space", this.getStringField(DrawChoice.ORANGE));
+        assertEquals("Handler on Purple Field Space", this.getStringField(DrawChoice.PURPLE));
+        assertEquals("Handler on Black Field Space", this.getStringField(DrawChoice.BLACK));
+        assertEquals("Handler on White Field Space", this.getStringField(DrawChoice.WHITE));
     }
 
-    @Test
-    public void testToStringFieldRed() {
+    private String getStringField(DrawChoice drawChoice) {
         Handler handler = new Handler(HandlerState.FIELD);
-        FieldSpace fieldSpace = new FieldSpace(DrawChoice.RED);
+        FieldSpace fieldSpace = new FieldSpace(drawChoice);
         fieldSpace.addHandler(handler);
-        assertEquals("Handler on Red Element Field Space", handler.toString());
+        return handler.toString();
     }
 
-    @Test
-    public void testToStringFieldWhiteSpace() {
-        Handler handler = new Handler(HandlerState.FIELD_WHITESPACE);
-        handler.setLocation("Field White Space");
-        assertEquals("Handler on Field White Space", handler.toString());
-    }
 }

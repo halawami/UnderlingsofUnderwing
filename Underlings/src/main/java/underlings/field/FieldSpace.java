@@ -1,16 +1,14 @@
 package underlings.field;
 
-import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
-import underlings.element.ElementGiver;
 import underlings.gui.DrawChoice;
 import underlings.handler.Handler;
 import underlings.utilities.LocaleWrap;
 
 public class FieldSpace {
 
-    private DrawChoice color;
+    public DrawChoice color;
     private List<Handler> handlers;
 
     public FieldSpace(DrawChoice color) {
@@ -20,10 +18,8 @@ public class FieldSpace {
 
     public void addHandler(Handler handler) {
         this.handlers.add(handler);
-        handler.setLocation(MessageFormat.format(LocaleWrap.get("field_space_color"), this.color));
-        String display =
-                MessageFormat.format(LocaleWrap.get("field_space_element_giver"), LocaleWrap.get(this.color.name()));
-        handler.elementGiver = new ElementGiver(display, DrawChoice.RANDOM, this.color);
+        handler.addDrawChoice(this.color);
+        handler.setLocation(LocaleWrap.get(this.color.name()));
     }
 
     public boolean contains(Handler handler) {

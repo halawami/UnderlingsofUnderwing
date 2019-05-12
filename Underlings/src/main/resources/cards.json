@@ -1631,12 +1631,10 @@
     "domesticEffects": [
       {
         "effect": "ElementGiverEffect",
-        "elementGiver": {
-          "drawChoices": [
+         "choices": [
             "YELLOW"
-          ],
-          "display": "YELLOW ELEMENT"
-        }
+         ],
+         "display": "YELLOW ELEMENT"
       }
     ],
     "wildEffects": [
@@ -1674,12 +1672,12 @@
     "domesticEffects": [
       {
         "effect": "ElementGiverEffect",
-        "elementGiver": {
-          "drawChoices": [
+     
+          "choices": [
             "YELLOW"
           ],
           "display": "YELLOW ELEMENT"
-        }
+        
       }
     ],
     "wildEffects": [
@@ -1972,12 +1970,12 @@
     "domesticEffects": [
       {
         "effect": "ElementGiverEffect",
-        "elementGiver": {
-          "drawChoices": [
+      
+          "choices": [
             "RED"
           ],
           "display": "RED ELEMENT"
-        }
+        
       }
     ],
     "wildEffects": [
@@ -2059,12 +2057,12 @@
     "domesticEffects": [
       {
         "effect": "ElementGiverEffect",
-        "elementGiver": {
-          "drawChoices": [
+     
+          "choices": [
             "BLUE"
           ],
           "display": "BLUE ELEMENT"
-        }
+        
       }
     ],
     "wildEffects": [
@@ -2102,12 +2100,12 @@
     "domesticEffects": [
       {
         "effect": "ElementGiverEffect",
-        "elementGiver": {
-          "drawChoices": [
+      
+          "choices": [
             "YELLOW"
           ],
           "display": "YELLOW ELEMENT"
-        }
+       
       }
     ],
     "wildEffects": [
@@ -2145,12 +2143,12 @@
     "domesticEffects": [
       {
         "effect": "ElementGiverEffect",
-        "elementGiver": {
-          "drawChoices": [
+       
+          "choices": [
             "RED"
           ],
           "display": "RED ELEMENT"
-        }
+       
       }
     ],
     "wildEffects": [
@@ -2188,12 +2186,12 @@
     "domesticEffects": [
       {
         "effect": "ElementGiverEffect",
-        "elementGiver": {
-          "drawChoices": [
+    
+          "choices": [
             "BLUE"
           ],
           "display": "BLUE ELEMENT"
-        }
+       
       }
     ],
     "wildEffects": [
@@ -2231,12 +2229,12 @@
     "domesticEffects": [
       {
         "effect": "ElementGiverEffect",
-        "elementGiver": {
-          "drawChoices": [
+       
+          "choices": [
             "BLUE"
           ],
           "display": "BLUE ELEMENT"
-        }
+      
       }
     ],
     "wildEffects": [
@@ -2446,12 +2444,12 @@
     "domesticEffects": [
       {
         "effect": "ElementGiverEffect",
-        "elementGiver": {
-          "drawChoices": [
+    
+          "choices": [
             "RED"
           ],
           "display": "RED ELEMENT"
-        }
+       
       },
       {
         "effect": "GainHandlersEffect",
@@ -2951,12 +2949,12 @@
     "domesticEffects": [
       {
         "effect": "ElementGiverEffect",
-        "elementGiver": {
-          "drawChoices": [
+     
+          "choices": [
             "YELLOW"
           ],
           "display": "YELLOW ELEMENT"
-        }
+        
       },
       {
         "effect": "GainHandlersEffect",
@@ -3012,12 +3010,12 @@
     "domesticEffects": [
       {
         "effect": "ElementGiverEffect",
-        "elementGiver": {
-          "drawChoices": [
+       
+          "choices": [
             "BLUE"
           ],
           "display": "BLUE ELEMENT"
-        }
+        
       },
       {
         "effect": "GainHandlersEffect",
@@ -3255,14 +3253,14 @@
     "domesticEffects": [
       {
         "effect": "ElementGiverEffect",
-        "elementGiver": {
-          "drawChoices": [
+        
+          "choices": [
             "YELLOW",
             "RED",
             "ORANGE"
           ],
           "display": "WARM ELEMENT"
-        }
+        
       }
     ],
     "wildEffects": [
@@ -3306,14 +3304,14 @@
     "domesticEffects": [
       {
         "effect": "ElementGiverEffect",
-        "elementGiver": {
-          "drawChoices": [
+     
+          "choices": [
             "YELLOW",
             "RED",
             "ORANGE"
           ],
           "display": "WARM ELEMENT"
-        }
+       
       }
     ],
     "wildEffects": [
@@ -3415,8 +3413,8 @@
     "domesticEffects": [
       {
         "effect": "ElementGiverEffect",
-        "elementGiver": {
-          "drawChoices": [
+      
+          "choices": [
             "RED",
             "BLUE",
             "YELLOW",
@@ -3427,7 +3425,7 @@
             "BLACK"
           ],
           "display": "RANDOM ELEMENT"
-        }
+        
       }
     ],
     "wildEffects": [

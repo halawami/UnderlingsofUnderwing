@@ -5,11 +5,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
-
-import underlings.gui.Choice;
 import underlings.utilities.LocaleWrap;
 
-public class ElementSpace implements Choice {
+public class ElementSpace {
 
     public List<Element> elements;
     public ElementColor color;

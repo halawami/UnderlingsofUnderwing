@@ -3,13 +3,10 @@ package underlings.handler.movement;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
-
 import com.google.common.base.Function;
-
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.card.Card;
 import underlings.field.Field;
 import underlings.field.FieldSpaceFactory;
@@ -66,7 +63,7 @@ public class LogicTests {
 
         EasyMock.verify(this.hatchingGround, this.gui);
         assertEquals(HandlerState.FIELD, handler.getState());
-        assertTrue(handler.elementGiver.drawChoices.contains(DrawChoice.BLUE));
+        assertTrue(handler.drawChoices.contains(DrawChoice.BLUE));
     }
 
     @Test
@@ -80,7 +77,7 @@ public class LogicTests {
 
         EasyMock.verify(this.hatchingGround, this.gui);
         assertEquals(HandlerState.FIELD, handler.getState());
-        assertTrue(handler.elementGiver.drawChoices.contains(DrawChoice.RED));
+        assertTrue(handler.drawChoices.contains(DrawChoice.RED));
     }
 
     @SuppressWarnings("unchecked")
@@ -111,7 +108,7 @@ public class LogicTests {
 
         EasyMock.verify(this.hatchingGround, this.gui);
         assertEquals(HandlerState.FIELD_WHITESPACE, handler.getState());
-        assertTrue(handler.elementGiver.drawChoices.contains(DrawChoice.WHITE));
+        assertTrue(handler.drawChoices.contains(DrawChoice.WHITE));
     }
 
     @Test

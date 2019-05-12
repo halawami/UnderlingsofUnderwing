@@ -13,7 +13,7 @@ import underlings.card.Card;
 public class ConcretePrompt implements PromptHandler {
 
     @Override
-    public <T extends Choice> T promptChoice(String prompt, List<T> choices, int playerId) {
+    public <T> T promptChoice(String prompt, List<T> choices, int playerId) {
         int index = this.displayOptions(choices.toArray(), "Player " + playerId, prompt);
         return choices.get(index);
     }

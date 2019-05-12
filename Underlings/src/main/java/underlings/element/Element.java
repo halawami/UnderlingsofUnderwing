@@ -1,8 +1,6 @@
 package underlings.element;
 
-import underlings.gui.Choice;
-
-public class Element implements Choice {
+public class Element {
 
     private ElementColor elementColor;
     private ElementColor elementAlias;
@@ -18,7 +16,7 @@ public class Element implements Choice {
 
     @Override
     public String toString() {
-        return elementColor.toString();
+        return this.elementColor.toString();
     }
 
     public ElementColor getAlias() {

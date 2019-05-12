@@ -3,7 +3,6 @@ package underlings.player;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
-
 import underlings.card.Card;
 import underlings.element.Element;
 import underlings.element.ElementGiver;
@@ -104,9 +103,7 @@ public class Player {
     public List<ElementGiver> getElementGivers() {
         List<ElementGiver> elementGivers = new ArrayList<>();
 
-        for (Handler handler : this.getHandlers()) {
-            elementGivers.add(handler.elementGiver);
-        }
+        elementGivers.addAll(this.handlers);
 
         for (Card card : this.hatchedCards) {
             elementGivers.addAll(card.getElementGivers());
