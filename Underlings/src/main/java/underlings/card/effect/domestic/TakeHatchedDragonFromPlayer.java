@@ -32,6 +32,8 @@ public class TakeHatchedDragonFromPlayer extends PlayersHatchingEffect {
             }
         }
         Card toSteal = gui.promptCardToSteal("Choose a card to steal", currentPlayer.getPlayerId(), playerCards);
+
+        // TODO: is this the right behavior
         eggHatchingLogic.hatchEgg(toSteal, false, currentPlayer);
     }
 
