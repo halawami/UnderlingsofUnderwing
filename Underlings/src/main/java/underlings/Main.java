@@ -1,13 +1,20 @@
 package underlings;
 
+import com.google.common.base.Charsets;
+import com.google.common.io.Resources;
+
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+
 import underlings.card.CardFactory;
 import underlings.element.ElementBag;
 import underlings.element.ElementFactory;
+import underlings.element.utilities.ElementSpaceLogic;
 import underlings.field.Field;
 import underlings.field.FieldSpaceFactory;
 import underlings.game.Deck;
@@ -37,13 +44,20 @@ public class Main {
     private static final String CARDS_JSON_FILE_NAME = LocaleWrap.get("cards_json");
 
     public static void main(String[] args) {
+        List<String> recipes;
+        try {
+            recipes = Resources.readLines(Resources.getResource("DefaultRecipeList.txt"), Charsets.UTF_8);
+        } catch (IOException e) {
+            e.printStackTrace();
+            recipes = Arrays.asList();
+        }
 
         Gui gui = new Gui(new TestPrompt(), new ConcreteDisplay());
         CardFactory cardFactory = new CardFactory(CARDS_JSON_FILE_NAME);
         Deck deck = new Deck(cardFactory.getCards());
-        HatchingGround hatchingGround = new HatchingGround(deck);
+        HatchingGround hatchingGround = new HatchingGround(deck, new ElementSpaceLogic(recipes));
         HandlerFactory handlerFactory = new HandlerFactory();
-        PlayerFactory playerFactory = new PlayerFactory(handlerFactory);
+        PlayerFactory playerFactory = new PlayerFactory(handlerFactory, recipes);
         FieldSpaceFactory fieldSpaceFactory = new FieldSpaceFactory();
         Field field = new Field(fieldSpaceFactory);
         HandlerMovementLogic handlerMovementLogic = new HandlerMovementLogic(hatchingGround, gui, field);

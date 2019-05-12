@@ -1,5 +1,7 @@
 package underlings.player;
 
+import java.util.Arrays;
+
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.handler.HandlerFactory;
 
@@ -9,7 +11,7 @@ public class FakePlayer extends Player {
 
     private FakePlayer(int maxHandlers, HandlerFactory handlerFactory, int playerId) {
         super(maxHandlers, handlerFactory, playerId);
-        this.elementSpaceLogic = new ElementSpaceLogic();
+        this.elementSpaceLogic = new ElementSpaceLogic(Arrays.asList());
     }
 
     public static Player getInstance() {
