@@ -8,11 +8,11 @@ import underlings.gui.Gui;
 import underlings.player.Player;
 
 public class TakeHatchedDragonFromPlayer extends PlayersEffect {
-    private int points;
-    private Temperature[] temperatures;
+    public int points;
+    public Temperature[] temperatures;
 
     @Override
-    protected void apply(List<Player> players, Gui gui) {
+    protected void apply(Player currentPlayer, List<Player> players, Gui gui) {
 
     }
 

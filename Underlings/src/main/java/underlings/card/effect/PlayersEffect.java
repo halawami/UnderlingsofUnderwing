@@ -7,5 +7,5 @@ import underlings.player.Player;
 
 public abstract class PlayersEffect extends Effect {
 
-    protected abstract void apply(List<Player> players, Gui gui);
+    protected abstract void apply(Player currentPlayer, List<Player> players, Gui gui);
 }

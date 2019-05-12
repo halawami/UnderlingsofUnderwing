@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
 
@@ -178,7 +179,7 @@ public class Gui {
         }
     }
 
-    public Object promptCardToSteal(String string, int i, List<Card> asList) {
+    public Object promptCardToSteal(String toDispaly, int playerId, Map<Player, Card> playerCards) {
         // TODO
         return null;
     }
