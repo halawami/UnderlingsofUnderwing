@@ -36,7 +36,8 @@ public class EggHatchingLogicTests {
     public void init() {
         this.card = new Card();
         this.card.elementSpaces = new ElementSpace[1];
-        this.card.elementSpaces[0] = new ElementSpace();
+        this.card.elementSpaces[0] = new ElementSpace(ElementColor.PURPLE);
+        this.card.elementSpaces[0].elements = Arrays.asList(new Element(ElementColor.PURPLE));
         this.card.wildEffects = new Effect[1];
         this.effect = EasyMock.mock(Effect.class);
         this.card.wildEffects[0] = effect;
@@ -58,13 +59,13 @@ public class EggHatchingLogicTests {
         EggHatchingLogic wildEggHatchingLogic = new EggHatchingLogic(gui, elementBag, hatchingGround);
         EasyMock.expect(effect.on(wildEggHatchingLogic)).andReturn(effect);
         effect.apply();
+        this.elementBag.putElement(ElementColor.PURPLE);
         gui.notifyAction(-1, effect.toString() + " has been applied");
 
         EasyMock.replay(effect, elementBag, hatchingGround, gui);
 
         wildEggHatchingLogic.hatchEgg(card, true, player);
         assertEquals(WildHandler.getInstance(), card.handler);
-
         EasyMock.verify(effect, elementBag, hatchingGround, gui);
     }
 
@@ -82,6 +83,7 @@ public class EggHatchingLogicTests {
         EasyMock.expect(effect.on(wildEggHatchingLogic)).andReturn(effect).times(2);
         effect.apply();
         EasyMock.expectLastCall().times(2);
+        this.elementBag.putElement(ElementColor.PURPLE);
 
         gui.notifyAction(-1, effect + " has been applied");
         EasyMock.expectLastCall().times(2);
@@ -105,7 +107,6 @@ public class EggHatchingLogicTests {
         EasyMock.expect(effect.on(gui)).andReturn(effect);
         EggHatchingLogic domesticEggHatchingLogic = new EggHatchingLogic(gui, elementBag, hatchingGround);
         EasyMock.expect(effect.on(domesticEggHatchingLogic)).andReturn(effect);
-        card.handler.moveToState(HandlerState.READY_ROOM);
         effect.apply();
         gui.notifyAction(player.getPlayerId(), effect.toString() + " has been applied");
 

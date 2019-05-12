@@ -6,15 +6,20 @@ import org.junit.Test;
 
 public class ElementTests {
 
-    @Test
-    public void testToStringRed() {
-        Element element = new Element(ElementColor.RED);
-        assertEquals(ElementColor.RED.toString(), element.toString());
-    }
+	@Test
+	public void testToString() {
+		assertEquals("Red", this.getString(ElementColor.RED));
+		assertEquals("Blue", this.getString(ElementColor.BLUE));
+		assertEquals("Yellow", this.getString(ElementColor.YELLOW));
+		assertEquals("Orange", this.getString(ElementColor.ORANGE));
+		assertEquals("Purple", this.getString(ElementColor.PURPLE));
+		assertEquals("Green", this.getString(ElementColor.GREEN));
+		assertEquals("Black", this.getString(ElementColor.BLACK));
+		assertEquals("White", this.getString(ElementColor.WHITE));
+	}
 
-    @Test
-    public void testToStringBlue() {
-        Element element = new Element(ElementColor.BLUE);
-        assertEquals(ElementColor.BLUE.toString(), element.toString());
-    }
+	private String getString(ElementColor color) {
+		Element element = new Element(color);
+		return element.toString();
+	}
 }

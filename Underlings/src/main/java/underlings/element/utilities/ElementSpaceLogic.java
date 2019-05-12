@@ -128,4 +128,15 @@ public class ElementSpaceLogic {
         }
         return destroyableSpaces;
     }
+
+    public List<Element> getPlayableElements(ElementSpace space, List<Element> playerElements) {
+        List<ElementColor> validAdditions = getValidAdditions(space);
+        playerElements = new ArrayList<Element>(playerElements);
+        for (int i = 0; i < playerElements.size(); i++) {
+            if (!validAdditions.contains(playerElements.get(i).getColor())) {
+                playerElements.remove(i--);
+            }
+        }
+        return playerElements;
+    }
 }

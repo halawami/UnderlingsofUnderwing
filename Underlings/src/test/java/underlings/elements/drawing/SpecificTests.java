@@ -15,64 +15,33 @@ import underlings.element.ElementFactory;
 
 public class SpecificTests {
 
-    private ElementBag elementBag;
-    private Random random;
+	private ElementBag elementBag;
+	private Random random;
 
-    @Before
-    public void init() {
-        ElementFactory elementFactory = new ElementFactory();
-        this.random = EasyMock.createMock(Random.class);
-        this.elementBag = new ElementBag(elementFactory, this.random);
-        EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(1);
-        EasyMock.replay(this.random);
-    }
+	@Before
+	public void init() {
+		ElementFactory elementFactory = new ElementFactory();
+		this.random = EasyMock.createMock(Random.class);
+		this.elementBag = new ElementBag(elementFactory, this.random);
+		EasyMock.expect(this.random.nextInt(EasyMock.anyInt())).andStubReturn(1);
+		EasyMock.replay(this.random);
+	}
 
-    @Test
-    public void testRed() {
-        Element drawnElement = this.elementBag.drawElementFromList(ElementColor.RED);
-        assertEquals(ElementColor.RED, drawnElement.getColor());
-    }
+	@Test
+	public void testAll() {
+		assertEquals(ElementColor.RED, this.drawColor(ElementColor.RED));
+		assertEquals(ElementColor.GREEN, this.drawColor(ElementColor.GREEN));
+		assertEquals(ElementColor.BLUE, this.drawColor(ElementColor.BLUE));
+		assertEquals(ElementColor.ORANGE, this.drawColor(ElementColor.ORANGE));
+		assertEquals(ElementColor.PURPLE, this.drawColor(ElementColor.PURPLE));
+		assertEquals(ElementColor.YELLOW, this.drawColor(ElementColor.YELLOW));
+		assertEquals(ElementColor.BLACK, this.drawColor(ElementColor.BLACK));
+		assertEquals(ElementColor.WHITE, this.drawColor(ElementColor.WHITE));
+	}
 
-    @Test
-    public void testGreen() {
-        Element drawnElement = this.elementBag.drawElementFromList(ElementColor.GREEN);
-        assertEquals(ElementColor.GREEN, drawnElement.getColor());
-    }
-
-    @Test
-    public void testBlue() {
-        Element drawnElement = this.elementBag.drawElementFromList(ElementColor.BLUE);
-        assertEquals(ElementColor.BLUE, drawnElement.getColor());
-    }
-
-    @Test
-    public void testOrange() {
-        Element drawnElement = this.elementBag.drawElementFromList(ElementColor.ORANGE);
-        assertEquals(ElementColor.ORANGE, drawnElement.getColor());
-    }
-
-    @Test
-    public void testYellow() {
-        Element drawnElement = this.elementBag.drawElementFromList(ElementColor.YELLOW);
-        assertEquals(ElementColor.YELLOW, drawnElement.getColor());
-    }
-
-    @Test
-    public void testPurple() {
-        Element drawnElement = this.elementBag.drawElementFromList(ElementColor.PURPLE);
-        assertEquals(ElementColor.PURPLE, drawnElement.getColor());
-    }
-
-    @Test
-    public void testBlack() {
-        Element drawnElement = this.elementBag.drawElementFromList(ElementColor.BLACK);
-        assertEquals(ElementColor.BLACK, drawnElement.getColor());
-    }
-
-    @Test
-    public void testWhite() {
-        Element drawnElement = this.elementBag.drawElementFromList(ElementColor.WHITE);
-        assertEquals(ElementColor.WHITE, drawnElement.getColor());
-    }
+	private ElementColor drawColor(ElementColor color) {
+		Element drawnElement = this.elementBag.drawElementFromList(color);
+		return drawnElement.getColor();
+	}
 
 }

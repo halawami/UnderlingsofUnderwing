@@ -67,11 +67,11 @@ public class ElementBag {
                 ElementColor.GREEN, ElementColor.ORANGE, ElementColor.WHITE, ElementColor.BLACK);
     }
 
-    public Element drawRandomPrimaryElement() {
+    public Element drawPrimaryElement() {
         return this.drawElementFromList(ElementColor.BLUE, ElementColor.RED, ElementColor.YELLOW);
     }
 
-    public Element drawRandomSecondayElement() {
+    public Element drawSecondayElement() {
         return this.drawElementFromList(ElementColor.PURPLE, ElementColor.GREEN, ElementColor.ORANGE);
     }
 

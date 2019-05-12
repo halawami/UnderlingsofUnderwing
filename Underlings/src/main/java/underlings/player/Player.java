@@ -17,7 +17,6 @@ import underlings.utilities.LocaleWrap;
 public class Player {
 
     private List<Handler> handlers;
-    public List<ElementGiver> effectElementGiver;
     private int maxHandlers;
     private int points;
     private boolean reached12Points;
@@ -31,7 +30,6 @@ public class Player {
 
     public Player(int maxHandlers, HandlerFactory handlerFactory, int playerId) {
         this.handlers = new ArrayList<>();
-        this.effectElementGiver = new ArrayList<>();
         this.elements = new ArrayList<>();
         this.hatchedCards = new ArrayList<>();
         this.unhatchedCards = new ArrayList<>();
@@ -110,11 +108,9 @@ public class Player {
             elementGivers.add(handler.elementGiver);
         }
 
-        // for (Card card : this.hatchedCards) {
-        // elementGivers.addAll(card.getElementGivers());
-        // }
-
-        elementGivers.addAll(effectElementGiver);
+        for (Card card : this.hatchedCards) {
+            elementGivers.addAll(card.getElementGivers());
+        }
 
         return elementGivers;
     }

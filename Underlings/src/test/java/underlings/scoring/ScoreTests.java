@@ -176,8 +176,8 @@ public class ScoreTests {
         List<Player> fakePlayers = new LinkedList<>();
         fakePlayers = Arrays.asList(players[0], players[1]);
         this.scoreUtils = new ScoreUtils(fakePlayers, gui);
-        this.scoreUtils.scores.put(players[1], 5);
-        this.scoreUtils.scores.put(players[0], 1);
+        this.scoreUtils.scores.put(players[1], 1);
+        this.scoreUtils.scores.put(players[0], 5);
         EasyMock.replay(gui);
         int max = this.scoreUtils.decideWinners(this.scoreUtils.scores, fakePlayers.get(0), 0);
         int finalMax = this.scoreUtils.decideWinners(this.scoreUtils.scores, fakePlayers.get(1), max);

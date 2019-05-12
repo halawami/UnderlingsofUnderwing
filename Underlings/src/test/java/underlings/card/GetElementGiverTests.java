@@ -1,7 +1,9 @@
 package underlings.card;
 
+import java.util.List;
+
 import org.easymock.EasyMock;
-import org.junit.Ignore;
+import org.junit.Assert;
 import org.junit.Test;
 
 import underlings.card.effect.Effect;
@@ -12,18 +14,16 @@ import underlings.gui.DrawChoice;
 public class GetElementGiverTests {
 
     @Test
-    @Ignore
     public void testNoElementGivers() {
         Card testedCard = new Card();
         testedCard.domesticEffects = new Effect[0];
 
-        // List<ElementGiver> elementGivers = testedCard.getElementGivers();
+        List<ElementGiver> elementGivers = testedCard.getElementGivers();
 
-        // Assert.assertEquals(0, elementGivers.size());
+        Assert.assertEquals(0, elementGivers.size());
     }
 
     @Test
-    @Ignore
     public void testOneElementGiversFirst() {
         ElementGiverEffect elementGiverEffect = new ElementGiverEffect();
         ElementGiver testElementGiver = new ElementGiver("test", DrawChoice.RED);
@@ -31,14 +31,13 @@ public class GetElementGiverTests {
         Card testedCard = new Card();
         testedCard.domesticEffects = new Effect[] {elementGiverEffect};
 
-        // List<ElementGiver> elementGivers = testedCard.getElementGivers();
+        List<ElementGiver> elementGivers = testedCard.getElementGivers();
 
-        // Assert.assertEquals(1, elementGivers.size());
-        // Assert.assertEquals(testElementGiver, elementGivers.get(0));
+        Assert.assertEquals(1, elementGivers.size());
+        Assert.assertEquals(testElementGiver, elementGivers.get(0));
     }
 
     @Test
-    @Ignore
     public void testOneElementGiversMiddle() {
         Effect mockEffect1 = EasyMock.mock(Effect.class);
         Effect mockEffect2 = EasyMock.mock(Effect.class);
@@ -50,14 +49,13 @@ public class GetElementGiverTests {
         Card testedCard = new Card();
         testedCard.domesticEffects = new Effect[] {mockEffect1, elementGiverEffect, mockEffect2};
 
-        // List<ElementGiver> elementGivers = testedCard.getElementGivers();
+        List<ElementGiver> elementGivers = testedCard.getElementGivers();
 
-        // Assert.assertEquals(1, elementGivers.size());
-        // Assert.assertEquals(testElementGiver, elementGivers.get(0));
+        Assert.assertEquals(1, elementGivers.size());
+        Assert.assertEquals(testElementGiver, elementGivers.get(0));
     }
 
     @Test
-    @Ignore
     public void testOneElementGiversLast() {
         Effect mockEffect1 = EasyMock.mock(Effect.class);
         Effect mockEffect2 = EasyMock.mock(Effect.class);
@@ -69,14 +67,13 @@ public class GetElementGiverTests {
         Card testedCard = new Card();
         testedCard.domesticEffects = new Effect[] {mockEffect1, mockEffect2, elementGiverEffect};
 
-        // List<ElementGiver> elementGivers = testedCard.getElementGivers();
-        //
-        // Assert.assertEquals(1, elementGivers.size());
-        // Assert.assertEquals(testElementGiver, elementGivers.get(0));
+        List<ElementGiver> elementGivers = testedCard.getElementGivers();
+
+        Assert.assertEquals(1, elementGivers.size());
+        Assert.assertEquals(testElementGiver, elementGivers.get(0));
     }
 
     @Test
-    @Ignore
     public void testTwoElementGivers() {
         Effect mockEffect1 = EasyMock.mock(Effect.class);
 
@@ -91,11 +88,11 @@ public class GetElementGiverTests {
         Card testedCard = new Card();
         testedCard.domesticEffects = new Effect[] {mockEffect1, elementGiverEffect1, elementGiverEffect2};
 
-        // List<ElementGiver> elementGivers = testedCard.getElementGivers();
-        //
-        // Assert.assertEquals(2, elementGivers.size());
-        // Assert.assertEquals(testElementGiver1, elementGivers.get(0));
-        // Assert.assertEquals(testElementGiver2, elementGivers.get(1));
+        List<ElementGiver> elementGivers = testedCard.getElementGivers();
+
+        Assert.assertEquals(2, elementGivers.size());
+        Assert.assertEquals(testElementGiver1, elementGivers.get(0));
+        Assert.assertEquals(testElementGiver2, elementGivers.get(1));
     }
 
 }

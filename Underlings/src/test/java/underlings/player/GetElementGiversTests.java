@@ -1,10 +1,10 @@
 package underlings.player;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.easymock.EasyMock;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import underlings.card.Card;
@@ -37,7 +37,6 @@ public class GetElementGiversTests {
     }
 
     @Test
-    @Ignore
     public void testTwoHandlersOneEffectElementGivers() {
         HandlerFactory mockHandlerFactory = EasyMock.mock(HandlerFactory.class);
         Handler handler = new Handler(HandlerState.BREAK_ROOM);
@@ -46,7 +45,7 @@ public class GetElementGiversTests {
         Card elementGiverCard = EasyMock.mock(Card.class);
 
         EasyMock.expect(mockHandlerFactory.createHandler()).andReturn(handler).times(2);
-        // EasyMock.expect(elementGiverCard.getElementGivers()).andReturn(Arrays.asList(mockEffectElementGiver));
+        EasyMock.expect(elementGiverCard.getElementGivers()).andReturn(Arrays.asList(mockEffectElementGiver));
         EasyMock.replay(mockHandlerFactory, handler.elementGiver, mockEffectElementGiver, elementGiverCard);
 
         Player testedPlayer = new Player(6, mockHandlerFactory, 0);
@@ -64,7 +63,6 @@ public class GetElementGiversTests {
     }
 
     @Test
-    @Ignore
     public void testTwoHandlersTwoElementGiversOneCard() {
         HandlerFactory mockHandlerFactory = EasyMock.mock(HandlerFactory.class);
         Handler handler = new Handler(HandlerState.BREAK_ROOM);
@@ -73,9 +71,8 @@ public class GetElementGiversTests {
         Card elementGiverCard = EasyMock.mock(Card.class);
 
         EasyMock.expect(mockHandlerFactory.createHandler()).andReturn(handler).times(2);
-        // EasyMock.expect(elementGiverCard.getElementGivers())
-        // .andReturn(Arrays.asList(mockEffectElementGiver,
-        // mockEffectElementGiver));
+        EasyMock.expect(elementGiverCard.getElementGivers())
+                .andReturn(Arrays.asList(mockEffectElementGiver, mockEffectElementGiver));
         EasyMock.replay(mockHandlerFactory, handler.elementGiver, mockEffectElementGiver, elementGiverCard);
 
         Player testedPlayer = new Player(6, mockHandlerFactory, 0);
@@ -94,7 +91,6 @@ public class GetElementGiversTests {
     }
 
     @Test
-    @Ignore
     public void testTwoHandlersTwoElementGiversTwoCards() {
         HandlerFactory mockHandlerFactory = EasyMock.mock(HandlerFactory.class);
         Handler handler = new Handler(HandlerState.BREAK_ROOM);
@@ -105,8 +101,8 @@ public class GetElementGiversTests {
         ElementGiver effectElementGiver2 = EasyMock.mock(ElementGiver.class);
 
         EasyMock.expect(mockHandlerFactory.createHandler()).andReturn(handler).times(2);
-        // EasyMock.expect(elementGiverCard1.getElementGivers()).andReturn(Arrays.asList(effectElementGiver1));
-        // EasyMock.expect(elementGiverCard2.getElementGivers()).andReturn(Arrays.asList(effectElementGiver2));
+        EasyMock.expect(elementGiverCard1.getElementGivers()).andReturn(Arrays.asList(effectElementGiver1));
+        EasyMock.expect(elementGiverCard2.getElementGivers()).andReturn(Arrays.asList(effectElementGiver2));
 
         EasyMock.replay(mockHandlerFactory, handler.elementGiver, effectElementGiver1, effectElementGiver2,
                 elementGiverCard1, elementGiverCard2);
