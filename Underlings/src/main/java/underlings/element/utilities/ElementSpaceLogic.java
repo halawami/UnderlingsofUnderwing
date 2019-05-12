@@ -40,7 +40,7 @@ public class ElementSpaceLogic {
     }
 
     public void initMap() {
-        recipeMap = new HashMap<ElementColor, List<List<ElementColor>>>();
+        recipeMap = new HashMap<>();
 
         try {
             List<String> recipeLines =
@@ -139,7 +139,7 @@ public class ElementSpaceLogic {
         List<ElementColor> validAdditions = getValidAdditions(space);
         playerElements = new ArrayList<Element>(playerElements);
         for (int i = 0; i < playerElements.size(); i++) {
-            if (!validAdditions.contains(playerElements.get(i).getAlias())) {
+            if (!validAdditions.contains(playerElements.get(i).getColor())) {
                 playerElements.remove(i--);
             }
         }
@@ -148,5 +148,9 @@ public class ElementSpaceLogic {
 
     public void setOpenElement(ElementColor color) {
         this.openElements.add(color);
+    }
+
+    public boolean isOpenElement(ElementColor color) {
+        return this.openElements.contains(color);
     }
 }
