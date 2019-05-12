@@ -146,7 +146,11 @@ public class HatchingGround implements Iterable<Card> {
     }
 
     public List<Card> getAllCards() {
-        return null;
+        List<Card> allCards = new ArrayList<>();
+        for (Card card : this) {
+            allCards.add(card);
+        }
+        return allCards;
     }
 
     public List<Card> getPlayableCards(ElementSpaceLogic logic, List<Element> elements) {

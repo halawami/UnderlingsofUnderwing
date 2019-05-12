@@ -1,13 +1,12 @@
 package underlings.game;
 
 import static org.junit.Assert.assertEquals;
-
+import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 import java.util.Arrays;
-
+import java.util.List;
 import org.easymock.EasyMock;
 import org.junit.Test;
-
 import underlings.card.Card;
 import underlings.element.Element;
 import underlings.element.ElementColor;
@@ -263,6 +262,27 @@ public class HatchingGroundTests {
         assertEquals(Arrays.asList(), hatchingGround.pullAndReplaceCompleteEggs());
 
         EasyMock.verify(deck);
+    }
+
+    @Test
+    public void testGetAllCards() {
+        List<Card> cards = new ArrayList<>();
+        for (int i = 0; i < 6; i++) {
+            cards.add(new Card());
+        }
+        Deck deck = new Deck(cards);
+        HatchingGround hatchingGround = new HatchingGround(deck);
+        hatchingGround.setDimensions(3, 2);
+        hatchingGround.populate();
+
+        List<Card> allCards = hatchingGround.getAllCards();
+
+        assertEquals(6, allCards.size());
+
+        for (Card card : allCards) {
+            assertTrue(cards.contains(card));
+        }
+
     }
 
 }
