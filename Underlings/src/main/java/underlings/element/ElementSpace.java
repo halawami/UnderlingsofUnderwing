@@ -54,6 +54,8 @@ public class ElementSpace implements Choice {
     }
 
     public void destroyAllElements() {
-
+        if (!this.elements.isEmpty()) {
+            this.elements.remove(0);
+        }
     }
 }
