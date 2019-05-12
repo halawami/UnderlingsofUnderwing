@@ -21,6 +21,7 @@ import underlings.gui.Gui;
 import underlings.gui.PromptHandler;
 import underlings.handler.Handler;
 import underlings.handler.HandlerState;
+import underlings.handler.WildHandler;
 import underlings.player.Player;
 
 public class PlacementPhaseTests {
@@ -129,9 +130,6 @@ public class PlacementPhaseTests {
         Player player = EasyMock.mock(Player.class);
         EasyMock.expect(player.getHandlerCount()).andReturn(3).anyTimes();
         List<Player> players = Arrays.asList(player);
-
-        Card card = new Card();
-        card.handler = new Handler(HandlerState.CARD);
         HatchingGround hatchingGround = new HatchingGround(null);
 
         EasyMock.replay(player);
@@ -140,6 +138,31 @@ public class PlacementPhaseTests {
         Method gameoverMethod = getMethod(phase, "checkGameover");
         gameoverMethod.invoke(phase);
         EasyMock.verify(player);
+
+        assertTrue((boolean) getField(Phase.class, phase, "gameComplete"));
+        assertTrue((boolean) getField(Phase.class, phase, "phaseComplete"));
+    }
+
+    @Test
+    public void testCheckGameoverLost() throws Exception {
+        Player player = EasyMock.mock(Player.class);
+        EasyMock.expect(player.getHandlerCount()).andReturn(3).anyTimes();
+        List<Player> players = Arrays.asList(player);
+
+        Card card = new Card();
+        card.handler = WildHandler.getInstance();
+        Deck deck = EasyMock.mock(Deck.class);
+        EasyMock.expect(deck.draw()).andReturn(card);
+        HatchingGround hatchingGround = new HatchingGround(deck);
+
+        EasyMock.replay(player, deck);
+        hatchingGround.setDimensions(1, 1);
+        hatchingGround.populate();
+        PlacementPhase phase = new PlacementPhase(players, null, hatchingGround, null, null, null);
+        phase.setup();
+        Method gameoverMethod = getMethod(phase, "checkGameover");
+        gameoverMethod.invoke(phase);
+        EasyMock.verify(player, deck);
 
         assertTrue((boolean) getField(Phase.class, phase, "gameComplete"));
         assertTrue((boolean) getField(Phase.class, phase, "phaseComplete"));
