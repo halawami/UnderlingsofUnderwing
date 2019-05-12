@@ -21,8 +21,7 @@ public class StealAllStoredElementsTests {
         Effect testedEffect = new StealAllStoredElements();
         testedEffect.on(currentPlayer).on(players).on(gui);
 
-        EasyMock.expect(currentPlayer.getPlayerId()).andReturn(1);
-        EasyMock.expect(gui.promptPlayer("Choose a player to take all stored elements from", 1, players))
+        EasyMock.expect(gui.promptPlayer("Choose a player to take all stored elements from", currentPlayer, players))
                 .andReturn(players.get(3));
         currentPlayer.stealAllElementsFromPlayer(players.get(3));
 

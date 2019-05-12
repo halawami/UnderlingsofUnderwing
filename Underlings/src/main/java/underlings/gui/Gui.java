@@ -179,7 +179,7 @@ public class Gui {
         }
     }
 
-    public Player promptPlayer(String toDispaly, int playerId, List<Player> players) {
+    public Player promptPlayer(String toDispaly, Player currentPlayer, List<Player> players) {
         //TODO, Mohammad is using this for Ignatius's StealAllStoredElementsEffect
         return null;
     }

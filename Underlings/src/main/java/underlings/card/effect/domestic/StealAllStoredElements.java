@@ -11,7 +11,7 @@ public class StealAllStoredElements extends PlayersEffect {
     @Override
     protected void apply(Player currentPlayer, List<Player> players, Gui gui) {
         Player selectedPlayer = gui.promptPlayer("Choose a player to take all stored elements from",
-                currentPlayer.getPlayerId(),
+                currentPlayer,
                 players);
         currentPlayer.stealAllElementsFromPlayer(selectedPlayer);
     }
