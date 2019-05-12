@@ -1,6 +1,7 @@
 package underlings.player;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,21 +35,21 @@ public class StealAllElementsTests {
 
         assertEquals(0, playerToStealFrom.elements.size());
         assertEquals(1, stealer.elements.size());
-        assertEquals(elementsToBeStolen.get(0), stealer.elements.get(0));
+        assertTrue(stealer.elements.containsAll(elementsToBeStolen));
     }
 
     @Test
     public void testStealTwoElements() {
         Player playerToStealFrom = new Player(0, null, 0);
-        List<Element> elementsToBeStolen = EffectTestUtils.getMockObjects(Element.class, 1);
+        List<Element> elementsToBeStolen = EffectTestUtils.getMockObjects(Element.class, 2);
         playerToStealFrom.elements = new ArrayList<>(elementsToBeStolen);
         Player stealer = new Player(0, null, 0);
 
         stealer.stealAllElementsFromPlayer(playerToStealFrom);
 
         assertEquals(0, playerToStealFrom.elements.size());
-        assertEquals(1, stealer.elements.size());
-        assertEquals(elementsToBeStolen.get(0), stealer.elements.get(0));
+        assertEquals(2, stealer.elements.size());
+        assertTrue(stealer.elements.containsAll(elementsToBeStolen));
     }
 
 
