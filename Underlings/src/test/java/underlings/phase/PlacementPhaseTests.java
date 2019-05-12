@@ -53,7 +53,7 @@ public class PlacementPhaseTests {
     }
 
     @Test
-    public void testCheckTurn() throws Exception {
+    public void testCheckTurnTwoHandlers() throws Exception {
         Player player = EasyMock.mock(Player.class);
         EasyMock.expect(player.getHandlerCount()).andReturn(2).anyTimes();
         List<Player> players = Arrays.asList(player);
@@ -62,11 +62,36 @@ public class PlacementPhaseTests {
         PlacementPhase phase = new PlacementPhase(players, null, null, null, null, null);
         phase.setup();
         Method turnCountMethod = getMethod(phase, "checkAndDecrementTurnCount", Player.class);
-        assertTrue((boolean) (turnCountMethod.invoke(phase, player)));
-        EasyMock.verify(player);
-
         Map<Player, Integer> map = getMap(phase);
+        assertTrue((boolean) (turnCountMethod.invoke(phase, player)));
         assertEquals(new Integer(1), map.get(player));
+        assertTrue((boolean) (turnCountMethod.invoke(phase, player)));
+        assertEquals(new Integer(0), map.get(player));
+        assertFalse((boolean) (turnCountMethod.invoke(phase, player)));
+        assertEquals(new Integer(0), map.get(player));
+        EasyMock.verify(player);
+    }
+
+    @Test
+    public void testCheckTurnThreeHandlers() throws Exception {
+        Player player = EasyMock.mock(Player.class);
+        EasyMock.expect(player.getHandlerCount()).andReturn(3).anyTimes();
+        List<Player> players = Arrays.asList(player);
+
+        EasyMock.replay(player);
+        PlacementPhase phase = new PlacementPhase(players, null, null, null, null, null);
+        phase.setup();
+        Method turnCountMethod = getMethod(phase, "checkAndDecrementTurnCount", Player.class);
+        Map<Player, Integer> map = getMap(phase);
+        assertTrue((boolean) (turnCountMethod.invoke(phase, player)));
+        assertEquals(new Integer(2), map.get(player));
+        assertTrue((boolean) (turnCountMethod.invoke(phase, player)));
+        assertEquals(new Integer(1), map.get(player));
+        assertTrue((boolean) (turnCountMethod.invoke(phase, player)));
+        assertEquals(new Integer(0), map.get(player));
+        assertFalse((boolean) (turnCountMethod.invoke(phase, player)));
+        assertEquals(new Integer(0), map.get(player));
+        EasyMock.verify(player);
     }
 
     @Test
