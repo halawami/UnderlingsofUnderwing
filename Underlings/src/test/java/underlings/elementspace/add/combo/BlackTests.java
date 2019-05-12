@@ -3,6 +3,12 @@ package underlings.elementspace.add.combo;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import com.google.common.base.Charsets;
+import com.google.common.io.Resources;
+
+import java.io.IOException;
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,9 +23,10 @@ public class BlackTests {
     ElementSpaceLogic logic;
 
     @Before
-    public void init() {
+    public void init() throws IOException {
         this.blackElementSpace = new ElementSpace(ElementColor.BLACK);
-        this.logic = new ElementSpaceLogic();
+        List<String> recipes = Resources.readLines(Resources.getResource("DefaultRecipeList.txt"), Charsets.UTF_8);
+        logic = new ElementSpaceLogic(recipes);
     }
 
     @Test

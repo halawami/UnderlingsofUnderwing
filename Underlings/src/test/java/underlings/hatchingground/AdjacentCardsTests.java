@@ -18,7 +18,7 @@ public class AdjacentCardsTests {
     @Test
     public void testMiddleCard() {
         Deck stubDeck = EasyMock.niceMock(Deck.class);
-        HatchingGround hatchingGround = new HatchingGround(stubDeck);
+        HatchingGround hatchingGround = new HatchingGround(stubDeck, null);
         Card[][] mockedCards = createMockedCards();
         hatchingGround.cards = mockedCards;
         hatchingGround.setDimensions(4, 4);
@@ -33,7 +33,7 @@ public class AdjacentCardsTests {
     @Test
     public void testLeftEdgeCard() {
         Deck stubDeck = EasyMock.niceMock(Deck.class);
-        HatchingGround hatchingGround = new HatchingGround(stubDeck);
+        HatchingGround hatchingGround = new HatchingGround(stubDeck, null);
         hatchingGround.setDimensions(4, 4);
         Card[][] mockedCards = createMockedCards();
         hatchingGround.cards = mockedCards;
@@ -47,7 +47,7 @@ public class AdjacentCardsTests {
     @Test
     public void testTopEdgeCard() {
         Deck stubDeck = EasyMock.niceMock(Deck.class);
-        HatchingGround hatchingGround = new HatchingGround(stubDeck);
+        HatchingGround hatchingGround = new HatchingGround(stubDeck, null);
         hatchingGround.setDimensions(4, 4);
         Card[][] mockedCards = createMockedCards();
         hatchingGround.cards = mockedCards;
@@ -61,7 +61,7 @@ public class AdjacentCardsTests {
     @Test
     public void testBottomEdgeCard() {
         Deck stubDeck = EasyMock.niceMock(Deck.class);
-        HatchingGround hatchingGround = new HatchingGround(stubDeck);
+        HatchingGround hatchingGround = new HatchingGround(stubDeck, null);
         hatchingGround.setDimensions(4, 4);
         Card[][] mockedCards = createMockedCards();
         hatchingGround.cards = mockedCards;
@@ -75,7 +75,7 @@ public class AdjacentCardsTests {
     @Test
     public void testRightEdgeCard() {
         Deck stubDeck = EasyMock.niceMock(Deck.class);
-        HatchingGround hatchingGround = new HatchingGround(stubDeck);
+        HatchingGround hatchingGround = new HatchingGround(stubDeck, null);
         hatchingGround.setDimensions(4, 4);
         Card[][] mockedCards = createMockedCards();
         hatchingGround.cards = mockedCards;
@@ -90,7 +90,7 @@ public class AdjacentCardsTests {
     @Test
     public void testGetCardCoordinatesFirstCard() {
         Deck stubDeck = EasyMock.niceMock(Deck.class);
-        HatchingGround hatchingGround = new HatchingGround(stubDeck);
+        HatchingGround hatchingGround = new HatchingGround(stubDeck, null);
         hatchingGround.setDimensions(4, 4);
         Card[][] mockedCards = createMockedCards();
         hatchingGround.cards = mockedCards;
@@ -103,7 +103,7 @@ public class AdjacentCardsTests {
     @Test
     public void testGetCardCoordinatesLeftEdge() {
         Deck stubDeck = EasyMock.niceMock(Deck.class);
-        HatchingGround hatchingGround = new HatchingGround(stubDeck);
+        HatchingGround hatchingGround = new HatchingGround(stubDeck, null);
         hatchingGround.setDimensions(4, 4);
         Card[][] mockedCards = createMockedCards();
         hatchingGround.cards = mockedCards;
@@ -116,7 +116,7 @@ public class AdjacentCardsTests {
     @Test
     public void testGetCardCoordinatesTopEdge() {
         Deck stubDeck = EasyMock.niceMock(Deck.class);
-        HatchingGround hatchingGround = new HatchingGround(stubDeck);
+        HatchingGround hatchingGround = new HatchingGround(stubDeck, null);
         hatchingGround.setDimensions(4, 4);
         Card[][] mockedCards = createMockedCards();
         hatchingGround.cards = mockedCards;
@@ -129,7 +129,7 @@ public class AdjacentCardsTests {
     @Test
     public void testGetCardCoordinatesRightEdge() {
         Deck stubDeck = EasyMock.niceMock(Deck.class);
-        HatchingGround hatchingGround = new HatchingGround(stubDeck);
+        HatchingGround hatchingGround = new HatchingGround(stubDeck, null);
         hatchingGround.setDimensions(4, 4);
         Card[][] mockedCards = createMockedCards();
         hatchingGround.cards = mockedCards;
@@ -142,7 +142,7 @@ public class AdjacentCardsTests {
     @Test
     public void testGetCardCoordinatesBottomEdge() {
         Deck stubDeck = EasyMock.niceMock(Deck.class);
-        HatchingGround hatchingGround = new HatchingGround(stubDeck);
+        HatchingGround hatchingGround = new HatchingGround(stubDeck, null);
         hatchingGround.setDimensions(4, 4);
         Card[][] mockedCards = createMockedCards();
         hatchingGround.cards = mockedCards;
@@ -155,7 +155,7 @@ public class AdjacentCardsTests {
     @Test
     public void testGetCardCoordinatesMiddle() {
         Deck stubDeck = EasyMock.niceMock(Deck.class);
-        HatchingGround hatchingGround = new HatchingGround(stubDeck);
+        HatchingGround hatchingGround = new HatchingGround(stubDeck, null);
         hatchingGround.setDimensions(4, 4);
         Card[][] mockedCards = createMockedCards();
         hatchingGround.cards = mockedCards;
@@ -168,7 +168,7 @@ public class AdjacentCardsTests {
     @Test
     public void testGetCardCoordinatesInvalidCard() {
         Deck stubDeck = EasyMock.niceMock(Deck.class);
-        HatchingGround hatchingGround = new HatchingGround(stubDeck);
+        HatchingGround hatchingGround = new HatchingGround(stubDeck, null);
         hatchingGround.setDimensions(4, 4);
         Card[][] mockedCards = createMockedCards();
         hatchingGround.cards = mockedCards;

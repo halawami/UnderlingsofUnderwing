@@ -110,7 +110,7 @@ public class PlacementPhaseTests {
         card.handler = new Handler(HandlerState.CARD);
         Deck deck = EasyMock.mock(Deck.class);
         EasyMock.expect(deck.draw()).andReturn(card);
-        HatchingGround hatchingGround = new HatchingGround(deck);
+        HatchingGround hatchingGround = new HatchingGround(deck, null);
 
         EasyMock.replay(player, deck);
         hatchingGround.setDimensions(1, 1);
@@ -130,7 +130,7 @@ public class PlacementPhaseTests {
         Player player = EasyMock.mock(Player.class);
         EasyMock.expect(player.getHandlerCount()).andReturn(3).anyTimes();
         List<Player> players = Arrays.asList(player);
-        HatchingGround hatchingGround = new HatchingGround(null);
+        HatchingGround hatchingGround = new HatchingGround(null, null);
 
         EasyMock.replay(player);
         PlacementPhase phase = new PlacementPhase(players, null, hatchingGround, null, null, null);
@@ -153,7 +153,7 @@ public class PlacementPhaseTests {
         card.handler = WildHandler.getInstance();
         Deck deck = EasyMock.mock(Deck.class);
         EasyMock.expect(deck.draw()).andReturn(card);
-        HatchingGround hatchingGround = new HatchingGround(deck);
+        HatchingGround hatchingGround = new HatchingGround(deck, null);
 
         EasyMock.replay(player, deck);
         hatchingGround.setDimensions(1, 1);

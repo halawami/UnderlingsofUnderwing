@@ -13,7 +13,7 @@ public class FindCardTests {
 
     @Test
     public void testFindCardEmpty() {
-        HatchingGround ground = new HatchingGround(null);
+        HatchingGround ground = new HatchingGround(null, null);
         ground.setDimensions(0, 0);
         ground.populate();
         Card foundCard = ground.findCard(new Handler(HandlerState.CARD));
@@ -36,7 +36,7 @@ public class FindCardTests {
 
         EasyMock.replay(mockedDeck);
 
-        HatchingGround ground = new HatchingGround(mockedDeck);
+        HatchingGround ground = new HatchingGround(mockedDeck, null);
         ground.setDimensions(2, 2);
         ground.populate();
         Card foundCard = ground.findCard(card1.handler);
@@ -56,7 +56,7 @@ public class FindCardTests {
 
         EasyMock.replay(mockedDeck);
 
-        HatchingGround ground = new HatchingGround(mockedDeck);
+        HatchingGround ground = new HatchingGround(mockedDeck, null);
         ground.setDimensions(2, 2);
         ground.populate();
         Card foundCard = ground.findCard(new Handler(HandlerState.CARD));

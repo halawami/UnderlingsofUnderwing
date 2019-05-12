@@ -2,6 +2,7 @@ package underlings.game.setup;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.Arrays;
 import java.util.Stack;
 
 import org.easymock.EasyMock;
@@ -10,6 +11,7 @@ import org.junit.Test;
 
 import underlings.card.Card;
 import underlings.element.ElementBag;
+import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.Deck;
 import underlings.game.Game;
 import underlings.game.HatchingGround;
@@ -31,9 +33,9 @@ public class HatchingGroundTests {
             this.cards.push(new Card());
         }
 
-        this.hatchingGround = new HatchingGround(new Deck(this.cards));
-        this.game = new Game(EasyMock.mock(Gui.class), this.hatchingGround, new PlayerFactory(new HandlerFactory()),
-                EasyMock.mock(ElementBag.class));
+        this.hatchingGround = new HatchingGround(new Deck(this.cards), new ElementSpaceLogic(Arrays.asList()));
+        this.game = new Game(EasyMock.mock(Gui.class), this.hatchingGround,
+                new PlayerFactory(new HandlerFactory(), Arrays.asList()), EasyMock.mock(ElementBag.class));
 
     }
 
