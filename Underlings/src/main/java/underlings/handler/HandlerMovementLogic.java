@@ -1,7 +1,5 @@
 package underlings.handler;
 
-import java.util.function.Function;
-
 import underlings.card.Card;
 import underlings.field.Field;
 import underlings.game.HatchingGround;
@@ -31,11 +29,9 @@ public class HandlerMovementLogic {
             case CARD:
                 handler.moveToState(choice.getState());
 
-                Function<Card, Boolean> f = (Card c) -> {
-                    return hatchingGround.getUnclaimedEggs().contains(c);
-                };
-                Card chosenCard =
-                        this.gui.getCard(playerId, "Choose a card to move your handler to", this.hatchingGround, f);
+                Card chosenCard = this.gui.getCard(playerId, "Choose a card to move your handler to",
+                        this.hatchingGround, this.hatchingGround::isUnclaimed);
+
                 chosenCard.handler = handler;
                 handler.setLocation(chosenCard.name);
                 break;
