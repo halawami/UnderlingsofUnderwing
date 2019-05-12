@@ -13,21 +13,23 @@ import java.util.Map;
 import org.easymock.EasyMock;
 import org.junit.Test;
 
+import underlings.card.Card;
+import underlings.game.Deck;
+import underlings.game.HatchingGround;
 import underlings.gui.Display;
 import underlings.gui.Gui;
 import underlings.gui.PromptHandler;
+import underlings.handler.Handler;
+import underlings.handler.HandlerState;
 import underlings.player.Player;
 
 public class PlacementPhaseTests {
 
-    public Map<Player, Integer> getMap(PlacementPhase phase) throws Exception, SecurityException {
-        Field mapField = PlacementPhase.class.getDeclaredField("turnCounts");
-
-        mapField.setAccessible(true);
-
-        @SuppressWarnings("unchecked")
-        Map<Player, Integer> map = (Map<Player, Integer>) mapField.get(phase);
-        return map;
+    public <T> Object getField(Class<T> fieldClass, PlacementPhase phase, String fieldName)
+            throws Exception, SecurityException {
+        Field field = fieldClass.getDeclaredField(fieldName);
+        field.setAccessible(true);
+        return field.get(phase);
     }
 
     @SuppressWarnings("rawtypes")
@@ -48,7 +50,8 @@ public class PlacementPhaseTests {
         phase.setup();
         EasyMock.verify(player);
 
-        Map<Player, Integer> map = getMap(phase);
+        @SuppressWarnings("unchecked")
+        Map<Player, Integer> map = (Map<Player, Integer>) getField(phase.getClass(), phase, "turnCounts");
         assertEquals(new Integer(2), map.get(player));
     }
 
@@ -62,7 +65,8 @@ public class PlacementPhaseTests {
         PlacementPhase phase = new PlacementPhase(players, null, null, null, null, null);
         phase.setup();
         Method turnCountMethod = getMethod(phase, "checkAndDecrementTurnCount", Player.class);
-        Map<Player, Integer> map = getMap(phase);
+        @SuppressWarnings("unchecked")
+        Map<Player, Integer> map = (Map<Player, Integer>) getField(phase.getClass(), phase, "turnCounts");
         assertTrue((boolean) (turnCountMethod.invoke(phase, player)));
         assertEquals(new Integer(1), map.get(player));
         assertTrue((boolean) (turnCountMethod.invoke(phase, player)));
@@ -82,7 +86,8 @@ public class PlacementPhaseTests {
         PlacementPhase phase = new PlacementPhase(players, null, null, null, null, null);
         phase.setup();
         Method turnCountMethod = getMethod(phase, "checkAndDecrementTurnCount", Player.class);
-        Map<Player, Integer> map = getMap(phase);
+        @SuppressWarnings("unchecked")
+        Map<Player, Integer> map = (Map<Player, Integer>) getField(phase.getClass(), phase, "turnCounts");
         assertTrue((boolean) (turnCountMethod.invoke(phase, player)));
         assertEquals(new Integer(2), map.get(player));
         assertTrue((boolean) (turnCountMethod.invoke(phase, player)));
@@ -92,6 +97,30 @@ public class PlacementPhaseTests {
         assertFalse((boolean) (turnCountMethod.invoke(phase, player)));
         assertEquals(new Integer(0), map.get(player));
         EasyMock.verify(player);
+    }
+
+    @Test
+    public void testCheckGameover() throws Exception {
+        Player player = EasyMock.mock(Player.class);
+        EasyMock.expect(player.getHandlerCount()).andReturn(3).anyTimes();
+        List<Player> players = Arrays.asList(player);
+
+        Card card = new Card();
+        card.handler = new Handler(HandlerState.CARD);
+        Deck deck = EasyMock.mock(Deck.class);
+        EasyMock.expect(deck.draw()).andReturn(card);
+        HatchingGround hatchingGround = new HatchingGround(deck);
+
+        EasyMock.replay(player, deck);
+        hatchingGround.setDimensions(1, 1);
+        hatchingGround.populate();
+        PlacementPhase phase = new PlacementPhase(players, null, hatchingGround, null, null, null);
+        phase.setup();
+        Method gameoverMethod = getMethod(phase, "checkGameover");
+        gameoverMethod.invoke(phase);
+        assertFalse((boolean) getField(Phase.class, phase, "gameComplete"));
+        assertFalse((boolean) getField(Phase.class, phase, "phaseComplete"));
+        EasyMock.verify(player, deck);
     }
 
     @Test
