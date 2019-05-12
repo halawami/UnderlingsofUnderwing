@@ -1,5 +1,8 @@
 package underlings.effect.deck;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 import java.util.Arrays;
 import java.util.LinkedList;
 
@@ -29,6 +32,7 @@ public class ReturnAllHatchedDragonsFromPlayersTests {
 
         effect.temperatures = new Temperature[] {Temperature.NEUTRAL};
         effect.apply();
+        assertTrue(player.hatchedCards.isEmpty());
 
         EasyMock.verify(player, deck);
     }
@@ -53,6 +57,7 @@ public class ReturnAllHatchedDragonsFromPlayersTests {
 
         effect.temperatures = new Temperature[] {Temperature.NEUTRAL};
         effect.apply();
+        assertTrue(player.hatchedCards.isEmpty());
 
         EasyMock.verify(player, deck);
     }
@@ -79,6 +84,8 @@ public class ReturnAllHatchedDragonsFromPlayersTests {
 
         effect.temperatures = new Temperature[] {Temperature.NEUTRAL};
         effect.apply();
+        assertTrue(player.hatchedCards.isEmpty());
+        assertTrue(player2.hatchedCards.isEmpty());
 
         EasyMock.verify(player, deck, player2);
     }
@@ -91,10 +98,13 @@ public class ReturnAllHatchedDragonsFromPlayersTests {
         card.temperature = Temperature.COOL;
         Card card2 = new Card();
         card2.temperature = Temperature.NEUTRAL;
+        Card card3 = new Card();
+        card3.temperature = Temperature.WARM;
         player.hatchedCards = new LinkedList<>();
         player.hatchedCards.add(card);
         player2.hatchedCards = new LinkedList<>();
         player2.hatchedCards.add(card2);
+        player2.hatchedCards.add(card3);
         Deck deck = EasyMock.mock(Deck.class);
         ReturnAllHatchedDragonsFromPlayers effect = new ReturnAllHatchedDragonsFromPlayers();
         effect.on(Arrays.asList(player, player2)).on(deck);
@@ -104,6 +114,8 @@ public class ReturnAllHatchedDragonsFromPlayersTests {
 
         effect.temperatures = new Temperature[] {Temperature.NEUTRAL};
         effect.apply();
+        assertEquals(1, player2.hatchedCards.size());
+        assertTrue(player2.hatchedCards.contains(card3));
 
         EasyMock.verify(player, deck, player2);
     }
