@@ -1537,7 +1537,8 @@
     ],
     "domesticEffects": [
       {
-        "effect": "CollectUpToTwoElementsFromAnyEggInPlayEffect",
+        "effect": "CollectUpToElementsFromAnyEggInPlayEffect",
+        "upTo": 2,
         "elementChoices": [
           "PURPLE",
           "GREEN",
@@ -1921,7 +1922,8 @@
     ],
     "domesticEffects": [
       {
-        "effect": "CollectUpToTwoElementsFromAnyEggInPlayEffect",
+        "effect": "CollectUpToElementsFromAnyEggInPlayEffect",
+        "upTo": 2,
         "elementChoices": [
           "RED",
           "ORANGE",
