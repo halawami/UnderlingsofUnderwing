@@ -22,18 +22,17 @@ public class RegularFinalPhaseTests {
         Phase dragonPhase = EasyMock.mock(DragonPhase.class);
         ScoreUtils scoreUtils = EasyMock.mock(ScoreUtils.class);
 
-        FinalPhase finalPhase = new RegularFinalPhase(Arrays.asList(player), gui, dragonPhase, scoreUtils);
         dragonPhase.setup();
-        finalPhase.turn(player);
         gui.promptHandler.displayMessage("Game Over!", 0, JOptionPane.PLAIN_MESSAGE);
         scoreUtils.calculateScores();
         scoreUtils.displayScores();
         scoreUtils.displayWinners();
         dragonPhase.turn(player);
-        EasyMock.expectLastCall().times(2);
+        EasyMock.expectLastCall().times(4);
 
         EasyMock.replay(gui, gui.promptHandler, player, dragonPhase, scoreUtils);
 
+        FinalPhase finalPhase = new RegularFinalPhase(Arrays.asList(player), gui, dragonPhase, scoreUtils);
         finalPhase.execute();
         finalPhase.turn(player);
 

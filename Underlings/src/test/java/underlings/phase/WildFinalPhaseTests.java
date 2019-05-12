@@ -15,11 +15,11 @@ public class WildFinalPhaseTests {
     public void testRunWildFinalPhase() {
         Gui gui = EasyMock.mock(Gui.class);
         gui.promptHandler = EasyMock.mock(ConcretePrompt.class);
-        FinalPhase finalPhase = new WildFinalPhase(gui);
         gui.promptHandler.displayMessage("All eggs hatched wild, the game wins", -1, JOptionPane.PLAIN_MESSAGE);
 
         EasyMock.replay(gui, gui.promptHandler);
 
+        FinalPhase finalPhase = new WildFinalPhase(gui);
         finalPhase.execute();
         finalPhase.turn(FakePlayer.getInstance());
 
