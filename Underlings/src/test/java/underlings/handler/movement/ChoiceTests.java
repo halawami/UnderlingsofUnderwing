@@ -11,6 +11,20 @@ import underlings.handler.HandlerState;
 public class ChoiceTests {
 
     @Test
+    public void testToString() {
+        assertEquals("Stay", this.testToString(HandlerChoice.STAY));
+        assertEquals("Move to White Field Space", this.testToString(HandlerChoice.FIELD_WHITESPACE));
+        assertEquals("Move to Field", this.testToString(HandlerChoice.FIELD));
+        assertEquals("Move to Card", this.testToString(HandlerChoice.CARD));
+        assertEquals("Move to Ready Room", this.testToString(HandlerChoice.READY_ROOM));
+        assertEquals("Move to Break Room", this.testToString(HandlerChoice.BREAK_ROOM));
+    }
+
+    private String testToString(HandlerChoice handlerChoice) {
+        return handlerChoice.toString();
+    }
+
+    @Test
     public void testReadyRoom() {
         this.testPossibilities(HandlerState.READY_ROOM, HandlerChoice.STAY, HandlerChoice.FIELD_WHITESPACE,
                 HandlerChoice.FIELD, HandlerChoice.CARD);
