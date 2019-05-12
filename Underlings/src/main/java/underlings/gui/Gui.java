@@ -47,6 +47,10 @@ public class Gui {
         return this.promptHandler.promptDecision("Would you like to place another element?", playerId);
     }
 
+    public boolean promptDecision(String toDisplay, int playerId) {
+        return true;
+    }
+
     public HandlerDecision getHandlerDecision(List<Handler> handlers, int playerId, HatchingGround hatchingGround) {
         Handler handler = this.promptHandler.promptChoice("Choose a Handler", handlers, playerId);
         handlers.remove(handler);
@@ -130,5 +134,9 @@ public class Gui {
             Card choice = this.promptHandler.pickCard("Choose a card", validCards, player.getPlayerId());
             return choice;
         }
+    }
+
+    public Card promptCard(String toDisplay, List<Card> cards) {
+        return EmptyCard.getInstance();
     }
 }
