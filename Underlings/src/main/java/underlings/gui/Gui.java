@@ -139,4 +139,10 @@ public class Gui {
     public Card promptCard(String toDisplay, List<Card> cards) {
         return EmptyCard.getInstance();
     }
+
+    public Player promptPlayer(String toDisplay, int playerId) {
+        // TODO
+        return null;
+    }
+
 }
