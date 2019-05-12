@@ -4,7 +4,7 @@ import org.easymock.EasyMock;
 import org.junit.Test;
 
 import underlings.card.effect.PlayerEffect;
-import underlings.card.effect.wild.UseBlackOrWhiteInPlaceEffect;
+import underlings.card.effect.domestic.UseBlackOrWhiteInPlaceEffect;
 import underlings.element.ElementColor;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.player.Player;

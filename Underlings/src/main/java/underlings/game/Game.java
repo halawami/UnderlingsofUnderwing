@@ -6,7 +6,6 @@ import java.util.Locale;
 import java.util.Map;
 import underlings.element.ElementBag;
 import underlings.gui.Gui;
-import underlings.handler.Handler;
 import underlings.phase.FinalPhase;
 import underlings.phase.FinalPhase.FinalPhaseType;
 import underlings.phase.Phase;
@@ -114,20 +113,7 @@ public class Game {
     }
 
     public void display() {
-        this.gui.display.displayBackground();
-        this.gui.display.displayHatchingGround(this.hatchingGround);
-        this.displayPlayers();
-        this.gui.display.displayStats(this.elementBag, this.roundsLeft, this.currentPhase, this.turnLeader + 1);
-
-        this.gui.display.update();
-    }
-
-    public void displayPlayers() {
-        for (int playerNumber = 0; playerNumber < this.players.size(); playerNumber++) {
-            Player player = this.players.get(playerNumber);
-            this.gui.display.displayPlayer(playerNumber, player);
-            List<Handler> handlers = player.getHandlers();
-            this.gui.display.displayHandlers(playerNumber, handlers);
-        }
+        this.gui.display(this.roundsLeft, this.currentPhase, this.turnLeader, this.hatchingGround, this.players,
+                this.elementBag);
     }
 }

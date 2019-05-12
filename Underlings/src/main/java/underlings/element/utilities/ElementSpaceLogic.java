@@ -19,9 +19,11 @@ import underlings.element.ElementSpace;
 public class ElementSpaceLogic {
 
     private Map<ElementColor, List<List<ElementColor>>> recipeMap;
+    private List<ElementColor> openElements;
 
     public ElementSpaceLogic() {
         initMap();
+        openElements = new ArrayList<>();
     }
 
     public boolean isComplete(ElementSpace elementSpace) {
@@ -38,7 +40,7 @@ public class ElementSpaceLogic {
     }
 
     public void initMap() {
-        recipeMap = new HashMap<ElementColor, List<List<ElementColor>>>();
+        recipeMap = new HashMap<>();
 
         try {
             List<String> recipeLines =
@@ -133,7 +135,8 @@ public class ElementSpaceLogic {
         List<ElementColor> validAdditions = getValidAdditions(space);
         playerElements = new ArrayList<Element>(playerElements);
         for (int i = 0; i < playerElements.size(); i++) {
-            if (!validAdditions.contains(playerElements.get(i).getColor())) {
+            ElementColor color = playerElements.get(i).getColor();
+            if (!(validAdditions.contains(color) || isOpenElement(color))) {
                 playerElements.remove(i--);
             }
         }
@@ -141,6 +144,10 @@ public class ElementSpaceLogic {
     }
 
     public void setOpenElement(ElementColor color) {
-        // TODO: implement
+        this.openElements.add(color);
+    }
+
+    public boolean isOpenElement(ElementColor color) {
+        return this.openElements.contains(color);
     }
 }
