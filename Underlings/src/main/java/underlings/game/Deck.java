@@ -22,7 +22,14 @@ public class Deck {
         return cards.pop();
     }
 
+    // TODO: fix this
     public int getSize() {
         return 50;
     }
+
+    public void addCard(Card card) {
+        this.cards.add(card);
+        // TODO: shuffle here
+    }
+
 }
