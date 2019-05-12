@@ -1,6 +1,11 @@
 package underlings.effect.hatchingground;
 
+import com.google.common.base.Charsets;
+import com.google.common.io.Resources;
+
+import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 
 import org.easymock.EasyMock;
 import org.junit.Test;
@@ -18,7 +23,7 @@ import underlings.utilities.EggHatchingLogic;
 public class HatchAnyUnclaimedEggAsWildDragonTests {
 
     @Test
-    public void testApplyEffect() {
+    public void testApplyEffect() throws IOException {
         Card card = EasyMock.mock(Card.class);
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         ElementBag elementBag = EasyMock.mock(ElementBag.class);
@@ -31,6 +36,8 @@ public class HatchAnyUnclaimedEggAsWildDragonTests {
         EasyMock.expect(gui.promptDecision("Would you like to hatch unclaimed egg as wild dragon", -1)).andReturn(true);
         EasyMock.expect(hatchingGround.getUnclaimedEggs()).andReturn(Arrays.asList(card));
         EasyMock.expect(gui.promptCard("Choose a card to hatch wildly", Arrays.asList(card))).andReturn(card);
+        List<String> recipes = Resources.readLines(Resources.getResource("DefaultRecipeList.txt"), Charsets.UTF_8);
+        FakePlayer.initPlayer(recipes);
         eggHatchingLogic.hatchEgg(card, true, FakePlayer.getInstance());
 
         EasyMock.replay(card, hatchingGround, elementBag, gui, player, eggHatchingLogic);

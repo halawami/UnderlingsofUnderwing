@@ -1,8 +1,10 @@
 package underlings.gui;
 
+import java.text.MessageFormat;
 import underlings.element.ElementColor;
+import underlings.utilities.LocaleWrap;
 
-public enum DrawChoice implements Choice {
+public enum DrawChoice {
     BLUE, RED, GREEN, PURPLE, ORANGE, YELLOW, BLACK, WHITE, RANDOM, COOL, WARM;
 
     public ElementColor elementColor;
@@ -20,6 +22,6 @@ public enum DrawChoice implements Choice {
 
     @Override
     public String toString() {
-        return this.name() + " Element";
+        return MessageFormat.format(LocaleWrap.get("draw_choice"), LocaleWrap.get(this.name()));
     }
 }

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+
 import underlings.card.Card;
 import underlings.element.Element;
 import underlings.element.utilities.ElementSpaceLogic;
@@ -18,9 +19,11 @@ public class HatchingGround implements Iterable<Card> {
     private int width;
     public Card[][] cards;
     private Deck deck;
+    private ElementSpaceLogic logic;
 
-    public HatchingGround(Deck deck) {
+    public HatchingGround(Deck deck, ElementSpaceLogic logic) {
         this.deck = deck;
+        this.logic = logic;
     }
 
     public int getWidth() {
@@ -122,12 +125,10 @@ public class HatchingGround implements Iterable<Card> {
 
     public List<Card> pullAndReplaceCompleteEggs() {
         List<Card> completeEggs = new ArrayList<>();
-        ElementSpaceLogic elementSpaceLogic = new ElementSpaceLogic();
-        // call populate in the future when cards are done
         for (int row = 0; row < this.height; row++) {
             for (int col = 0; col < this.width; col++) {
                 Card currentCard = this.cards[row][col];
-                if (elementSpaceLogic.isComplete(currentCard) && currentCard.handler != WildHandler.getInstance()) {
+                if (logic.isComplete(currentCard) && currentCard.handler != WildHandler.getInstance()) {
                     completeEggs.add(this.cards[row][col]);
                     this.cards[row][col] = this.deck.draw();
                 }

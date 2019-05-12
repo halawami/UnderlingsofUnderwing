@@ -1,8 +1,5 @@
 package underlings.element.utilities;
 
-import com.google.common.base.Charsets;
-import com.google.common.io.Resources;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -21,8 +18,8 @@ public class ElementSpaceLogic {
     private Map<ElementColor, List<List<ElementColor>>> recipeMap;
     private List<ElementColor> openElements;
 
-    public ElementSpaceLogic() {
-        initMap();
+    public ElementSpaceLogic(List<String> recipes) {
+        initMap(recipes);
         openElements = new ArrayList<>();
     }
 
@@ -39,29 +36,21 @@ public class ElementSpaceLogic {
         return true;
     }
 
-    public void initMap() {
+    public void initMap(List<String> recipeLines) {
         recipeMap = new HashMap<>();
 
-        try {
-            List<String> recipeLines =
-                    Resources.readLines(Resources.getResource("DefaultRecipeList.txt"), Charsets.UTF_8);
-
-            for (String line : recipeLines) {
-                ElementColor color = ElementColor.valueOf(line.split(":")[0]);
-                String[] recipes = line.split(":")[1].split(" ");
-                List<List<ElementColor>> recipeList = new ArrayList<List<ElementColor>>();
-                for (String recipe : recipes) {
-                    List<ElementColor> constructedRecipe = new ArrayList<ElementColor>();
-                    for (String ingredient : recipe.split(",")) {
-                        constructedRecipe.add(ElementColor.valueOf(ingredient));
-                    }
-                    recipeList.add(constructedRecipe);
+        for (String line : recipeLines) {
+            ElementColor color = ElementColor.valueOf(line.split(":")[0]);
+            String[] recipes = line.split(":")[1].split(" ");
+            List<List<ElementColor>> recipeList = new ArrayList<List<ElementColor>>();
+            for (String recipe : recipes) {
+                List<ElementColor> constructedRecipe = new ArrayList<ElementColor>();
+                for (String ingredient : recipe.split(",")) {
+                    constructedRecipe.add(ElementColor.valueOf(ingredient));
                 }
-                recipeMap.put(color, recipeList);
-
+                recipeList.add(constructedRecipe);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+            recipeMap.put(color, recipeList);
         }
     }
 

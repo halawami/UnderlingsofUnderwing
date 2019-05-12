@@ -2,6 +2,12 @@ package underlings.game.setup;
 
 import static org.junit.Assert.assertEquals;
 
+import com.google.common.base.Charsets;
+import com.google.common.io.Resources;
+
+import java.io.IOException;
+import java.util.List;
+
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,9 +24,12 @@ public class GameTests {
     private Game game;
 
     @Before
-    public void init() {
-        this.game = new Game(EasyMock.mock(Gui.class), EasyMock.mock(HatchingGround.class),
-                new PlayerFactory(new HandlerFactory()), EasyMock.mock(ElementBag.class));
+    public void init() throws IOException {
+        List<String> recipes = Resources.readLines(Resources.getResource("DefaultRecipeList.txt"), Charsets.UTF_8);
+        PlayerFactory factory = new PlayerFactory(new HandlerFactory(), recipes);
+
+        this.game = new Game(EasyMock.mock(Gui.class), EasyMock.mock(HatchingGround.class), factory,
+                EasyMock.mock(ElementBag.class));
     }
 
     @Test

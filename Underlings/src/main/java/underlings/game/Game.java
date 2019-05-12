@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+
 import underlings.element.ElementBag;
 import underlings.gui.Gui;
 import underlings.phase.FinalPhase;
@@ -101,6 +102,9 @@ public class Game {
 
     public void promptLocale() {
         Locale locale = this.gui.promptLocale(Locale.getAvailableLocales());
+        if (locale == null) {
+            System.exit(0);
+        }
         LocaleWrap.locale = locale;
     }
 

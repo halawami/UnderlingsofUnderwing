@@ -12,7 +12,7 @@ public class DimensionTests {
 
     @Test
     public void testDimensionsEmpty() {
-        HatchingGround hatchingGround = new HatchingGround(null);
+        HatchingGround hatchingGround = new HatchingGround(null, null);
         hatchingGround.setDimensions(0, 0);
 
         Dimension expected = new Dimension(0, 0);
@@ -21,7 +21,7 @@ public class DimensionTests {
 
     @Test
     public void testDimensionsNonempty() {
-        HatchingGround hatchingGround = new HatchingGround(null);
+        HatchingGround hatchingGround = new HatchingGround(null, null);
         hatchingGround.setDimensions(2, 2);
 
         Dimension expected = new Dimension(2, 2);

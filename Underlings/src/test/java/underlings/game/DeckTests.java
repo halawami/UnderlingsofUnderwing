@@ -46,4 +46,20 @@ public class DeckTests {
         assertEquals(EmptyCard.getInstance(), this.deck.draw());
     }
 
+    @Test
+    public void testAddCard() {
+        Card card = new Card();
+        this.deck.addCard(card);
+        assertEquals(51, this.deck.getSize());
+    }
+
+    @Test
+    public void testAddCardEmptyDeck() {
+        Stack<Card> cards = new Stack<>();
+        this.deck = new Deck(cards);
+        Card card = new Card();
+        this.deck.addCard(card);
+        assertEquals(1, this.deck.getSize());
+    }
+
 }

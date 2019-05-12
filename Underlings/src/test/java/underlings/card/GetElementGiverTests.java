@@ -1,11 +1,9 @@
 package underlings.card;
 
 import java.util.List;
-
 import org.easymock.EasyMock;
 import org.junit.Assert;
 import org.junit.Test;
-
 import underlings.card.effect.Effect;
 import underlings.card.effect.domestic.ElementGiverEffect;
 import underlings.element.ElementGiver;
@@ -25,16 +23,14 @@ public class GetElementGiverTests {
 
     @Test
     public void testOneElementGiversFirst() {
-        ElementGiverEffect elementGiverEffect = new ElementGiverEffect();
-        ElementGiver testElementGiver = new ElementGiver("test", DrawChoice.RED);
-        elementGiverEffect.elementGiver = testElementGiver;
+        ElementGiverEffect elementGiverEffect = new ElementGiverEffect(DrawChoice.RED);
         Card testedCard = new Card();
         testedCard.domesticEffects = new Effect[] {elementGiverEffect};
 
         List<ElementGiver> elementGivers = testedCard.getElementGivers();
 
         Assert.assertEquals(1, elementGivers.size());
-        Assert.assertEquals(testElementGiver, elementGivers.get(0));
+        Assert.assertEquals(elementGiverEffect, elementGivers.get(0));
     }
 
     @Test
@@ -42,9 +38,7 @@ public class GetElementGiverTests {
         Effect mockEffect1 = EasyMock.mock(Effect.class);
         Effect mockEffect2 = EasyMock.mock(Effect.class);
 
-        ElementGiverEffect elementGiverEffect = new ElementGiverEffect();
-        ElementGiver testElementGiver = new ElementGiver("test", DrawChoice.RED);
-        elementGiverEffect.elementGiver = testElementGiver;
+        ElementGiverEffect elementGiverEffect = new ElementGiverEffect(DrawChoice.RED);
 
         Card testedCard = new Card();
         testedCard.domesticEffects = new Effect[] {mockEffect1, elementGiverEffect, mockEffect2};
@@ -52,7 +46,7 @@ public class GetElementGiverTests {
         List<ElementGiver> elementGivers = testedCard.getElementGivers();
 
         Assert.assertEquals(1, elementGivers.size());
-        Assert.assertEquals(testElementGiver, elementGivers.get(0));
+        Assert.assertEquals(elementGiverEffect, elementGivers.get(0));
     }
 
     @Test
@@ -60,9 +54,7 @@ public class GetElementGiverTests {
         Effect mockEffect1 = EasyMock.mock(Effect.class);
         Effect mockEffect2 = EasyMock.mock(Effect.class);
 
-        ElementGiverEffect elementGiverEffect = new ElementGiverEffect();
-        ElementGiver testElementGiver = new ElementGiver("test", DrawChoice.RED);
-        elementGiverEffect.elementGiver = testElementGiver;
+        ElementGiverEffect elementGiverEffect = new ElementGiverEffect(DrawChoice.RED);
 
         Card testedCard = new Card();
         testedCard.domesticEffects = new Effect[] {mockEffect1, mockEffect2, elementGiverEffect};
@@ -70,20 +62,15 @@ public class GetElementGiverTests {
         List<ElementGiver> elementGivers = testedCard.getElementGivers();
 
         Assert.assertEquals(1, elementGivers.size());
-        Assert.assertEquals(testElementGiver, elementGivers.get(0));
+        Assert.assertEquals(elementGiverEffect, elementGivers.get(0));
     }
 
     @Test
     public void testTwoElementGivers() {
         Effect mockEffect1 = EasyMock.mock(Effect.class);
 
-        ElementGiverEffect elementGiverEffect1 = new ElementGiverEffect();
-        ElementGiver testElementGiver1 = new ElementGiver("test", DrawChoice.RED);
-        elementGiverEffect1.elementGiver = testElementGiver1;
-
-        ElementGiverEffect elementGiverEffect2 = new ElementGiverEffect();
-        ElementGiver testElementGiver2 = new ElementGiver("test2", DrawChoice.RED);
-        elementGiverEffect2.elementGiver = testElementGiver2;
+        ElementGiverEffect elementGiverEffect1 = new ElementGiverEffect(DrawChoice.RED);
+        ElementGiverEffect elementGiverEffect2 = new ElementGiverEffect(DrawChoice.BLUE);
 
         Card testedCard = new Card();
         testedCard.domesticEffects = new Effect[] {mockEffect1, elementGiverEffect1, elementGiverEffect2};
@@ -91,8 +78,8 @@ public class GetElementGiverTests {
         List<ElementGiver> elementGivers = testedCard.getElementGivers();
 
         Assert.assertEquals(2, elementGivers.size());
-        Assert.assertEquals(testElementGiver1, elementGivers.get(0));
-        Assert.assertEquals(testElementGiver2, elementGivers.get(1));
+        Assert.assertEquals(elementGiverEffect1, elementGivers.get(0));
+        Assert.assertEquals(elementGiverEffect2, elementGivers.get(1));
     }
 
 }

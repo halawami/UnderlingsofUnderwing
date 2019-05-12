@@ -1,7 +1,6 @@
 package underlings.field;
 
 import java.util.List;
-
 import underlings.gui.DrawChoice;
 import underlings.handler.Handler;
 
@@ -18,7 +17,6 @@ public class Field {
 
     public void addHandler(int fieldPosition, Handler handler) {
         this.field.get(fieldPosition).addHandler(handler);
-
     }
 
     public void addHandlerWhitespace(Handler handler) {
@@ -45,6 +43,8 @@ public class Field {
 
     public void removeHandler(Handler handler) {
         this.findHandler(handler).remove(handler);
+        handler.resetDrawChoice();
+        handler.addDrawChoice(DrawChoice.RANDOM);
     }
 
 

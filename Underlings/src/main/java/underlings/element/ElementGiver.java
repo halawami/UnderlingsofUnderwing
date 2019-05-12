@@ -1,23 +1,25 @@
 package underlings.element;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import underlings.gui.Choice;
 import underlings.gui.DrawChoice;
 
-public class ElementGiver implements Choice {
+public class ElementGiver {
 
     public List<DrawChoice> drawChoices;
-    public String display;
 
-    public ElementGiver(String display, DrawChoice... drawChoices) {
-        this.drawChoices = Arrays.asList(drawChoices);
-        this.display = display;
+    public ElementGiver(DrawChoice... drawChoices) {
+        this.drawChoices = new ArrayList<DrawChoice>();
+        this.drawChoices.addAll(Arrays.asList(drawChoices));
     }
 
-    @Override
-    public String toString() {
-        return this.display;
+    public void addDrawChoice(DrawChoice drawChoice) {
+        this.drawChoices.add(drawChoice);
     }
+
+    public void resetDrawChoice() {
+        this.drawChoices = new ArrayList<DrawChoice>();
+    }
+
 }

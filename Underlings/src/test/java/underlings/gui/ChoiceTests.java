@@ -1,16 +1,15 @@
 package underlings.gui;
 
 import static org.junit.Assert.assertEquals;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import org.easymock.EasyMock;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.element.ElementGiver;
+import underlings.handler.Handler;
+import underlings.handler.HandlerState;
 
 public class ChoiceTests {
 
@@ -33,7 +32,7 @@ public class ChoiceTests {
     @Test
     public void testRandomDrawChoice() {
         List<ElementGiver> elementGivers = new ArrayList<ElementGiver>();
-        ElementGiver elementGiver = new ElementGiver("", DrawChoice.RANDOM);
+        ElementGiver elementGiver = new Handler(HandlerState.READY_ROOM);
         elementGivers.add(elementGiver);
 
         EasyMock.expect(this.promptHandler.promptChoice("Choose an Element Giver", elementGivers, 0))

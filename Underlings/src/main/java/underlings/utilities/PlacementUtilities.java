@@ -1,7 +1,6 @@
 package underlings.utilities;
 
 import java.util.List;
-import java.util.function.Function;
 
 import underlings.card.Card;
 import underlings.element.Element;
@@ -16,6 +15,7 @@ public class PlacementUtilities {
     private HatchingGround hatchingGround;
     private Gui gui;
     private Runnable displayMethod;
+    private List<Card> cards;
 
     public PlacementUtilities(HatchingGround hatchingGround, Gui gui, Runnable displayMethod) {
         this.hatchingGround = hatchingGround;
@@ -23,11 +23,14 @@ public class PlacementUtilities {
         this.displayMethod = displayMethod;
     }
 
+    public Boolean isValid(Card c) {
+        return cards.contains(c);
+    }
+
     public Card selectCard(List<Card> cards, Player player) {
-        Function<Card, Boolean> isValid = (Card c) -> {
-            return cards.contains(c);
-        };
-        return gui.getCard(player.getPlayerId(), "Pick a card to place an element on.", this.hatchingGround, isValid);
+        this.cards = cards;
+        String prompt = "Pick a card to place an element on.";
+        return gui.getCard(player.getPlayerId(), prompt, this.hatchingGround, this::isValid);
     }
 
     public ElementSpace selectElementSpace(Card card, Player player) {

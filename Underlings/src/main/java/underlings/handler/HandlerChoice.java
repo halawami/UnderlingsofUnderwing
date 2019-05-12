@@ -4,9 +4,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-import underlings.gui.Choice;
-
-public enum HandlerChoice implements Choice {
+public enum HandlerChoice {
 
     STAY, FIELD_WHITESPACE, FIELD, CARD, READY_ROOM, BREAK_ROOM;
 

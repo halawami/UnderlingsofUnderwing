@@ -1,9 +1,7 @@
 package underlings.field;
 
 import static org.junit.Assert.assertTrue;
-
 import org.junit.Test;
-
 import underlings.gui.DrawChoice;
 
 public class RotateTests extends FieldTests {
@@ -13,7 +11,7 @@ public class RotateTests extends FieldTests {
         this.field.addHandler(0, this.handler);
         this.field.rotate(this.handler);
 
-        assertTrue(this.handler.elementGiver.drawChoices.contains(DrawChoice.BLUE));
+        assertTrue(this.handler.drawChoices.contains(DrawChoice.BLUE));
     }
 
     @Test
@@ -21,7 +19,7 @@ public class RotateTests extends FieldTests {
         this.field.addHandler(21, this.handler);
         this.field.rotate(this.handler);
 
-        assertTrue(this.handler.elementGiver.drawChoices.contains(DrawChoice.RED));
+        assertTrue(this.handler.drawChoices.contains(DrawChoice.RED));
     }
 
 }

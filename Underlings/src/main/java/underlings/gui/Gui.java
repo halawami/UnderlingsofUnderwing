@@ -1,10 +1,12 @@
 package underlings.gui;
 
+import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
 
@@ -143,11 +145,6 @@ public class Gui {
         return EmptyCard.getInstance();
     }
 
-    public Player promptPlayer(String toDisplay, int playerId) {
-        // TODO
-        return null;
-    }
-
     public Locale promptLocale(Locale[] locales) {
         return this.promptHandler.promptChoiceDropdown("Choose Language", Arrays.asList(locales), Locale.ENGLISH);
     }
@@ -166,9 +163,24 @@ public class Gui {
     public void display(int roundsLeft, int currentPhase, int turnLeader, HatchingGround hatchingGround,
             List<Player> players, ElementBag elementBag) {
         this.display.displayBackground();
-        this.display.displayHatchingGround(hatchingGround);
+        this.displayHatchingGround(hatchingGround);
         this.displayPlayers(players);
         this.display.displayStats(elementBag, roundsLeft, currentPhase, turnLeader + 1);
         this.display.update();
+    }
+
+    public void displayHatchingGround(HatchingGround hatchingGround) {
+        Dimension hgDimensions = hatchingGround.getDimensions();
+
+        for (int row = 0; row < hgDimensions.height; row++) {
+            for (int col = 0; col < hgDimensions.width; col++) {
+                this.display.displayCard(row, col, hatchingGround.cards[row][col]);
+            }
+        }
+    }
+
+    public Card promptCardToSteal(String toDispaly, int playerId, Map<Player, List<Card>> playerCards) {
+        // TODO
+        return null;
     }
 }

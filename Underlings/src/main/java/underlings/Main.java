@@ -1,5 +1,8 @@
 package underlings;
 
+import com.google.common.base.Charsets;
+import com.google.common.io.Resources;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -8,12 +11,14 @@ import java.util.Random;
 import underlings.card.CardFactory;
 import underlings.element.ElementBag;
 import underlings.element.ElementFactory;
+import underlings.element.utilities.ElementSpaceLogic;
 import underlings.field.Field;
 import underlings.field.FieldSpaceFactory;
 import underlings.game.Deck;
 import underlings.game.Game;
 import underlings.game.HatchingGround;
 import underlings.gui.ConcreteDisplay;
+import underlings.gui.ConcretePrompt;
 import underlings.gui.Gui;
 import underlings.handler.HandlerFactory;
 import underlings.handler.HandlerMovementLogic;
@@ -26,6 +31,7 @@ import underlings.phase.Phase;
 import underlings.phase.PlacementPhase;
 import underlings.phase.RegularFinalPhase;
 import underlings.phase.WildFinalPhase;
+import underlings.player.FakePlayer;
 import underlings.player.PlayerFactory;
 import underlings.scoring.ScoreUtils;
 import underlings.utilities.EggHatchingLogic;
@@ -37,13 +43,21 @@ public class Main {
     private static final String CARDS_JSON_FILE_NAME = LocaleWrap.get("cards_json");
 
     public static void main(String[] args) {
+        List<String> recipes = null;
+        try {
+            recipes = Resources.readLines(Resources.getResource("DefaultRecipeList.txt"), Charsets.UTF_8);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
+        FakePlayer.initPlayer(recipes);
 
-        Gui gui = new Gui(new TestPrompt(), new ConcreteDisplay());
+        Gui gui = new Gui(new ConcretePrompt(), new ConcreteDisplay());
         CardFactory cardFactory = new CardFactory(CARDS_JSON_FILE_NAME);
         Deck deck = new Deck(cardFactory.getCards());
-        HatchingGround hatchingGround = new HatchingGround(deck);
+        HatchingGround hatchingGround = new HatchingGround(deck, new ElementSpaceLogic(recipes));
         HandlerFactory handlerFactory = new HandlerFactory();
-        PlayerFactory playerFactory = new PlayerFactory(handlerFactory);
+        PlayerFactory playerFactory = new PlayerFactory(handlerFactory, recipes);
         FieldSpaceFactory fieldSpaceFactory = new FieldSpaceFactory();
         Field field = new Field(fieldSpaceFactory);
         HandlerMovementLogic handlerMovementLogic = new HandlerMovementLogic(hatchingGround, gui, field);
