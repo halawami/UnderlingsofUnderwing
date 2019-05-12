@@ -174,4 +174,36 @@ public class PlayersTradeDragonTests {
 
         EasyMock.verify(player, player2, mockedEffect, gui);
     }
+
+    @Test
+    public void testApplyMultipleSameNumberOfDragons() {
+        Player player = EasyMock.mock(Player.class);
+        Player player2 = EasyMock.mock(Player.class);
+        Player player3 = EasyMock.mock(Player.class);
+        Gui gui = EasyMock.mock(Gui.class);
+        Card card = new Card();
+        card.points = 12;
+        card.domesticEffects = new Effect[1];
+        Effect mockedEffect = EasyMock.mock(Effect.class);
+        card.domesticEffects[0] = mockedEffect;
+        Card card2 = new Card();
+        card2.points = 12;
+        card2.domesticEffects = new Effect[] {mockedEffect};
+        Effect effect = new PlayersTradeDragon();
+        player.hatchedCards = new ArrayList<>();
+        player.hatchedCards.add(card);
+        player.hatchedCards.add(card2);
+        player2.hatchedCards = new ArrayList<>();
+        player2.hatchedCards.add(card2);
+        player3.hatchedCards = new ArrayList<>();
+        player3.hatchedCards.add(card2);
+        effect.on(Arrays.asList(player, player2, player3)).on(gui);
+        gui.notifyAction(-1, "There is no player with the least dragons");
+
+        EasyMock.replay(player, player2, mockedEffect, gui, player3);
+
+        effect.apply();
+
+        EasyMock.verify(player, player2, mockedEffect, gui, player3);
+    }
 }
