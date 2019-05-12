@@ -22,9 +22,8 @@ public class Deck {
         return cards.pop();
     }
 
-    // TODO: fix this
     public int getSize() {
-        return 50;
+        return this.cards.size();
     }
 
     public void addCard(Card card) {
