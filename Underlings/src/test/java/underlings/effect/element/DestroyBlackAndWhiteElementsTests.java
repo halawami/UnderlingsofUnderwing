@@ -30,4 +30,27 @@ public class DestroyBlackAndWhiteElementsTests {
 
         EasyMock.verify(space, logic);
     }
+
+    @Test
+    public void effectTestMultipleSpaces() {
+        ElementSpace space1 = EasyMock.mock(ElementSpace.class);
+        space1.destroyAllElementsOfColor(ElementColor.BLACK);
+        space1.destroyAllElementsOfColor(ElementColor.WHITE);
+
+        ElementSpace space2 = EasyMock.mock(ElementSpace.class);
+        space2.destroyAllElementsOfColor(ElementColor.BLACK);
+        space2.destroyAllElementsOfColor(ElementColor.WHITE);
+
+        ElementSpace[] spaces = {space1, space2};
+        Card card = new Card();
+        card.elementSpaces = spaces;
+        ElementSpaceLogic logic = EasyMock.mock(ElementSpaceLogic.class);
+
+        EasyMock.replay(space1, space2, logic);
+
+        AllEggsInPlayEffect effect = new DestroyAllBlackAndWhiteElementsEffect();
+        effect.applyOnCardInPlay(card, logic, null);
+
+        EasyMock.verify(space1, space2, logic);
+    }
 }
