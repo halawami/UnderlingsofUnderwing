@@ -19,4 +19,12 @@ public class Element implements Choice {
         return elementColor.toString();
     }
 
+    public ElementColor getAlias() {
+        return ElementColor.BLUE;
+    }
+
+    public void setAlias(ElementColor blue) {
+
+    }
+
 }
