@@ -3339,6 +3339,69 @@
         "effect": "PlayersTradeDragon"
       }
     ]
+  },
+  {
+    "name": "WHYTE",
+    "points": 17,
+    "temperature": "NEUTRAL",
+    "family": "LEGENDARY",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L4_1"
+      },
+      {
+        "color": "ORANGE",
+        "position": "L4_2"
+      },
+      {
+        "color": "YELLOW",
+        "position": "L4_3"
+      },
+      {
+        "color": "WHITE",
+        "position": "L4_4"
+      },
+      {
+        "color": "BLUE",
+        "position": "R4_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "R4_2"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R4_3"
+      },
+      {
+        "color": "BLACK",
+        "position": "R4_4"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "ElementGiverEffect",
+        "elementGiver": {
+          "drawChoices": [
+            "RED",
+            "BLUE",
+            "YELLOW",
+            "GREEN",
+            "PURPLE",
+            "ORANGE",
+            "WHITE",
+            "BLACK"
+          ],
+          "display": "RANDOM ELEMENT"
+        }
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "DestroyAllElementsOnAllEggsInPlay"
+      }
+    ]
   },{
     "name": "DRACEUTRUM",
     "points": 14,

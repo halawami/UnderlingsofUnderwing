@@ -2,8 +2,8 @@ package underlings.utilities;
 
 import underlings.card.Card;
 import underlings.card.effect.Effect;
+import underlings.element.Element;
 import underlings.element.ElementBag;
-import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
@@ -42,8 +42,8 @@ public class EggHatchingLogic {
 
     public void returnElementsToBag(Card dragon) {
         for (ElementSpace space : dragon.elementSpaces) {
-            for (ElementColor color : space.getElementColors()) {
-                this.elementBag.putElement(color);
+            for (Element element : space.elements) {
+                this.elementBag.putElement(element.getColor());
             }
         }
     }

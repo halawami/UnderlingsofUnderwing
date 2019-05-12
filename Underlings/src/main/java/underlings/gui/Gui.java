@@ -4,11 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 import java.util.function.Function;
-
 import javax.swing.JOptionPane;
-
 import underlings.card.Card;
 import underlings.card.EmptyCard;
 import underlings.element.Element;
@@ -112,7 +111,7 @@ public class Gui {
         colors.add(NullElement.getInstance());
 
         List<Element> choices = new ArrayList<>(colors);
-        return promptHandler.promptChoice("Pick an element to collect.", choices, playerNum);
+        return this.promptHandler.promptChoice("Pick an element to collect.", choices, playerNum);
     }
 
     public Card getEggToHatch(Card[][] cards, int maxPoints, Player player) {
@@ -145,4 +144,8 @@ public class Gui {
         return null;
     }
 
+
+    public Locale promptLocale(Locale[] locales) {
+        return this.promptHandler.promptChoiceDropdown("Choose Language", Arrays.asList(locales), Locale.ENGLISH);
+    }
 }

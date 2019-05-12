@@ -5,6 +5,7 @@ import java.util.function.Function;
 
 import underlings.card.Card;
 import underlings.element.Element;
+import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
@@ -42,6 +43,13 @@ public class PlacementUtilities {
         while (moreMoves) {
             Element element =
                     this.gui.promptHandler.promptChoice("Pick an element to place", choices, player.getPlayerId());
+
+            if (player.elementSpaceLogic.isOpenElement(element.getColor())) {
+                List<ElementColor> validAdditions = player.elementSpaceLogic.getValidAdditions(space);
+                ElementColor color = this.gui.promptHandler.promptChoice("Pick a color to play element as",
+                        validAdditions, player.getPlayerId());
+                element.setAlias(color);
+            }
 
             space.addElements(element);
             player.removeElement(element);
