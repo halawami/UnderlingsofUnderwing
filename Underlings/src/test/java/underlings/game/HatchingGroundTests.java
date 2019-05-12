@@ -285,4 +285,22 @@ public class HatchingGroundTests {
 
     }
 
+    @Test
+    public void testIsUnclaimedTrue() {
+        List<Card> cards = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            cards.add(new Card());
+        }
+        Card unclaimedCard = new Card();
+        cards.add(unclaimedCard);
+
+        Deck deck = new Deck(cards);
+        HatchingGround hatchingGround = new HatchingGround(deck);
+        hatchingGround.setDimensions(3, 2);
+        hatchingGround.populate();
+
+        assertTrue(hatchingGround.isUnclaimed(unclaimedCard));
+
+    }
+
 }
