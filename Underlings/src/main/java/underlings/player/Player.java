@@ -22,7 +22,7 @@ public class Player {
     private boolean reached12Points;
     private boolean reached25Points;
     private HandlerFactory handlerFactory;
-    private List<Element> elements;
+    public List<Element> elements;
     private int playerId;
     public List<Card> hatchedCards;
     public List<Card> unhatchedCards;
@@ -132,5 +132,6 @@ public class Player {
     }
 
     public void stealAllElementsFromPlayer(Player player) {
+        player.elements.clear();
     }
 }
