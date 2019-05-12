@@ -39,7 +39,7 @@ public class HandlerStateStringTests {
         Handler handler = new Handler(HandlerState.FIELD);
         FieldSpace fieldSpace = new FieldSpace(DrawChoice.BLUE);
         fieldSpace.addHandler(handler);
-        assertEquals("Handler on BLUE Element Field Space", handler.toString());
+        assertEquals("Handler on Blue Element Field Space", handler.toString());
     }
 
     @Test
@@ -47,7 +47,7 @@ public class HandlerStateStringTests {
         Handler handler = new Handler(HandlerState.FIELD);
         FieldSpace fieldSpace = new FieldSpace(DrawChoice.RED);
         fieldSpace.addHandler(handler);
-        assertEquals("Handler on RED Element Field Space", handler.toString());
+        assertEquals("Handler on Red Element Field Space", handler.toString());
     }
 
     @Test
