@@ -21,4 +21,10 @@ public class ElementAliasTests {
 
         assertEquals(ElementColor.RED, element.getAlias());
     }
+
+    @Test
+    public void testInitial() {
+        assertEquals(ElementColor.BLUE, (new Element(ElementColor.BLUE)).getAlias());
+        assertEquals(ElementColor.RED, (new Element(ElementColor.RED)).getAlias());
+    }
 }
