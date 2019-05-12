@@ -25,7 +25,7 @@ public class TakeHatchedDragonFromPlayer extends PlayersHatchingEffect {
             if (player != currentPlayer) {
                 playerCards.put(player, new LinkedList<>());
                 for (Card dragon : player.hatchedCards) {
-                    if (temperaturesList.contains(dragon.temperature)) {
+                    if (temperaturesList.contains(dragon.temperature) && dragon.points <= points) {
                         playerCards.get(player).add(dragon);
                     }
                 }
