@@ -1,12 +1,11 @@
 package underlings.phase;
 
 import java.util.List;
-
 import javax.swing.JOptionPane;
-
 import underlings.gui.Gui;
 import underlings.player.Player;
 import underlings.scoring.ScoreUtils;
+import underlings.utilities.LocaleWrap;
 
 public class RegularFinalPhase implements FinalPhase {
 
@@ -30,7 +29,7 @@ public class RegularFinalPhase implements FinalPhase {
             this.turn(player);
         }
 
-        this.gui.promptHandler.displayMessage("Game Over!", 0, JOptionPane.PLAIN_MESSAGE);
+        this.gui.promptHandler.displayMessage(LocaleWrap.get("game_over"), 0, JOptionPane.PLAIN_MESSAGE);
         this.scoreUtils.calculateScores();
         this.scoreUtils.displayScores();
         this.scoreUtils.displayWinners();

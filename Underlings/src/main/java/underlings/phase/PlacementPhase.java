@@ -3,9 +3,7 @@ package underlings.phase;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import javax.swing.JOptionPane;
-
 import underlings.card.Card;
 import underlings.element.ElementSpace;
 import underlings.game.HatchingGround;
@@ -14,6 +12,7 @@ import underlings.handler.WildHandler;
 import underlings.player.FakePlayer;
 import underlings.player.Player;
 import underlings.utilities.EggHatchingLogic;
+import underlings.utilities.LocaleWrap;
 import underlings.utilities.PlacementUtilities;
 
 public class PlacementPhase extends RotationPhase {
@@ -39,13 +38,13 @@ public class PlacementPhase extends RotationPhase {
 
     @Override
     public void turn(Player player) {
-        if (!checkAndDecrementTurnCount(player)) {
+        if (!this.checkAndDecrementTurnCount(player)) {
             return;
         }
 
-        List<Card> cards = this.hatchingGround.getPlayableCards(player.elementSpaceLogic, player.getElements());
+        List<Card> cards = this.utils.getPlayableCards(player.elementSpaceLogic, player.getElements());
         if (cards.isEmpty()) {
-            this.gui.promptHandler.displayMessage("Player has no valid placements", player.getPlayerId(),
+            this.gui.promptHandler.displayMessage(LocaleWrap.get("no_placements"), player.getPlayerId(),
                     JOptionPane.WARNING_MESSAGE);
             return;
         } else {
@@ -59,7 +58,7 @@ public class PlacementPhase extends RotationPhase {
 
         if (player.elementSpaceLogic.isComplete(card) && card.handler == null) {
             this.wildEggHatchingLogic.hatchEgg(card, true, FakePlayer.getInstance());
-            checkGameover();
+            this.checkGameover();
         }
     }
 
@@ -75,7 +74,7 @@ public class PlacementPhase extends RotationPhase {
     }
 
     private boolean checkAndDecrementTurnCount(Player player) {
-        int playerTurns = turnCounts.get(player);
+        int playerTurns = this.turnCounts.get(player);
         if (playerTurns <= 0) {
             return false;
         }

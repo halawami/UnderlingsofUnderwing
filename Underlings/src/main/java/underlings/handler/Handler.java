@@ -1,6 +1,5 @@
 package underlings.handler;
 
-import java.text.MessageFormat;
 import java.util.List;
 import underlings.element.ElementGiver;
 import underlings.gui.DrawChoice;
@@ -24,17 +23,13 @@ public class Handler extends ElementGiver {
         this.state = state;
     }
 
-    public List<HandlerState> getPossibleStates() {
-        return this.state.allowedStates;
-    }
-
     public List<HandlerChoice> getPossibleChoices() {
         return HandlerChoice.getMovements(this.state);
     }
 
     @Override
     public String toString() {
-        return MessageFormat.format(LocaleWrap.get(this.state.name()), this.location);
+        return LocaleWrap.format("HANDLER_" + this.state.name(), this.location);
     }
 
     public void setLocation(String location) {

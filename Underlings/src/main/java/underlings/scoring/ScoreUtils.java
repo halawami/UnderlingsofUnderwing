@@ -5,13 +5,12 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-
 import javax.swing.JOptionPane;
-
 import underlings.card.Card;
 import underlings.card.Temperature;
 import underlings.gui.Gui;
 import underlings.player.Player;
+import underlings.utilities.LocaleWrap;
 
 public class ScoreUtils {
 
@@ -36,7 +35,7 @@ public class ScoreUtils {
         List<Player> warmestPlayers = new ArrayList<>();
         List<Player> coolestPlayers = new ArrayList<>();
 
-        for (Player player : players) {
+        for (Player player : this.players) {
             int temp = this.calculateTemperature(player.hatchedCards);
 
             if (temp != 0) {
@@ -59,7 +58,7 @@ public class ScoreUtils {
 
         }
 
-        for (Player player : players) {
+        for (Player player : this.players) {
             int score = 0;
 
             if (bonus) {
@@ -98,11 +97,11 @@ public class ScoreUtils {
     public void displayScores() {
         int maxScore = 0;
 
-        for (Player player : scores.keySet()) {
-            maxScore = this.decideWinners(scores, player, maxScore);
+        for (Player player : this.scores.keySet()) {
+            maxScore = this.decideWinners(this.scores, player, maxScore);
 
-            gui.promptHandler.displayMessage(player + ": " + scores.get(player) + " points", player.getPlayerId(),
-                    JOptionPane.PLAIN_MESSAGE);
+            this.gui.promptHandler.displayMessage(LocaleWrap.format("player_score", player, this.scores.get(player)),
+                    player.getPlayerId(), JOptionPane.PLAIN_MESSAGE);
         }
     }
 
@@ -118,7 +117,7 @@ public class ScoreUtils {
     }
 
     public void displayWinners() {
-        this.gui.promptHandler.displayMessage("Winner(s): " + this.winners, 0, JOptionPane.PLAIN_MESSAGE);
+        this.gui.promptHandler.displayMessage(LocaleWrap.format("winners", this.winners), 0, JOptionPane.PLAIN_MESSAGE);
     }
 
 }

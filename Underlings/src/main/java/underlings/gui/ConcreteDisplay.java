@@ -6,14 +6,11 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
-
 import underlings.card.Card;
 import underlings.element.Element;
 import underlings.element.ElementBag;
@@ -100,9 +97,11 @@ public class ConcreteDisplay implements Display {
                 (int) (ratio * (offsetY + (height + gapY) * row)), (int) (ratio * width), (int) (ratio * height));
 
         this.gr.setColor(Color.BLACK);
-        this.gr.drawString(card.name, (int) (ratio * (30 + offsetX + (width + gapX) * col)),
+        this.gr.drawString(LocaleWrap.format("card_name", card.name),
+                (int) (ratio * (30 + offsetX + (width + gapX) * col)),
                 (int) (-25 + ratio * (height / 2 + offsetY + (height + gapY) * row)));
-        this.gr.drawString(card.points + "", (int) (ratio * (30 + offsetX + (width + gapX) * col)) + 118,
+        this.gr.drawString(LocaleWrap.format("card_points", card.points),
+                (int) (ratio * (30 + offsetX + (width + gapX) * col)) + 118,
                 (int) (-25 + ratio * (height / 2 + offsetY + (height + gapY) * row)));
 
         int spaceNum = 0;
@@ -119,8 +118,8 @@ public class ConcreteDisplay implements Display {
                 s = LocaleWrap.get("empty");
             }
             for (int i = 0; i < space.elements.size(); i++) {
-                String elementName = space.getElementColors().get(i).name();
-                s += "" + elementName.charAt(0) + elementName.charAt(elementName.length() - 1) + " ";
+                String elementName = "GUI_" + space.getElementColors().get(i).name();
+                s += LocaleWrap.get(elementName);
             }
 
             this.gr.drawString(s, x, y);
@@ -146,7 +145,8 @@ public class ConcreteDisplay implements Display {
                 (int) (ratio * (offsetY + (height + gapY) * row)), (int) (ratio * width), (int) (ratio * height));
 
         this.gr.setColor(Color.BLACK);
-        this.gr.drawString(card.name, (int) (ratio * (30 + offsetX + (width + gapX) * col)),
+        this.gr.drawString(LocaleWrap.format("card_name", card.name),
+                (int) (ratio * (30 + offsetX + (width + gapX) * col)),
                 (int) (-25 + ratio * (height / 2 + offsetY + (height + gapY) * row)));
 
         this.gr.drawString(LocaleWrap.get("hatched_wild"), (int) (ratio * (30 + offsetX + (width + gapX) * col)),
@@ -178,7 +178,7 @@ public class ConcreteDisplay implements Display {
             elements += e.getColor() + " ";
         }
         this.gr.setColor(Color.BLACK);
-        this.gr.drawString(MessageFormat.format(LocaleWrap.get("player_number"), (playerNumber + 1)),
+        this.gr.drawString(LocaleWrap.format("player_number", (playerNumber + 1)),
                 (int) (ratio * (offsetX + (width + gapX) * col)) + 5,
                 (int) (ratio * (offsetY + (height + gapY) * row)) + 15);
         this.gr.drawString(elements, (int) (ratio * (30 + offsetX + (width + gapX) * col)),
@@ -224,22 +224,19 @@ public class ConcreteDisplay implements Display {
         this.gr.setColor(Color.BLACK);
 
         StringBuilder stats = new StringBuilder();
-        stats.append("Elements Remaining\n");
-        stats.append("Red: " + elementBag.getNumberRemaining(ElementColor.RED) + "\n");
-        stats.append("Blue: " + elementBag.getNumberRemaining(ElementColor.BLUE) + "\n");
-        stats.append("Yellow: " + elementBag.getNumberRemaining(ElementColor.YELLOW) + "\n");
-        stats.append("Green: " + elementBag.getNumberRemaining(ElementColor.GREEN) + "\n");
-        stats.append("Orange: " + elementBag.getNumberRemaining(ElementColor.ORANGE) + "\n");
-        stats.append("Purple: " + elementBag.getNumberRemaining(ElementColor.PURPLE) + "\n");
-        stats.append("Black: " + elementBag.getNumberRemaining(ElementColor.BLACK) + "\n");
-        stats.append("White: " + elementBag.getNumberRemaining(ElementColor.WHITE) + "\n\n");
-        stats.append("Rounds Left: " + roundsLeft + "\n");
-        stats.append("Phase: " + currentPhase + "\n");
-        stats.append("Turn Leader: " + leadTurn + "\n");
+        stats.append(LocaleWrap.get("elements_remaining"));
+        for (ElementColor color : new ElementColor[] {ElementColor.RED, ElementColor.BLUE, ElementColor.YELLOW,
+                ElementColor.GREEN, ElementColor.ORANGE, ElementColor.PURPLE, ElementColor.BLACK, ElementColor.WHITE}) {
+            stats.append(LocaleWrap.format("color_remaining", color.toString(), elementBag.getNumberRemaining(color)));
+        }
+        stats.append(LocaleWrap.format("rounds_left", roundsLeft));
+        stats.append(LocaleWrap.format("current_phase", currentPhase));
+        stats.append(LocaleWrap.format("turn_lead", leadTurn));
+
 
         int y = 15;
 
-        for (String item : stats.toString().split("\n")) {
+        for (String item : stats.toString().split(LocaleWrap.get("line_break"))) {
             this.gr.drawString(item, WIDTH - 200, y);
             y += 15;
         }

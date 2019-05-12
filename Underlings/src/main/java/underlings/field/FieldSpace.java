@@ -28,6 +28,8 @@ public class FieldSpace {
 
     public void remove(Handler handler) {
         this.handlers.remove(handler);
+        handler.resetDrawChoice();
+        handler.addDrawChoice(DrawChoice.RANDOM);
     }
 
 }

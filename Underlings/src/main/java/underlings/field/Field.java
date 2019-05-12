@@ -43,8 +43,6 @@ public class Field {
 
     public void removeHandler(Handler handler) {
         this.findHandler(handler).remove(handler);
-        handler.resetDrawChoice();
-        handler.addDrawChoice(DrawChoice.RANDOM);
     }
 
 

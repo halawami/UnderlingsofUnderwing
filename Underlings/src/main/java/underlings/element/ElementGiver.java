@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import underlings.gui.DrawChoice;
 
-public class ElementGiver {
+public abstract class ElementGiver {
 
     public List<DrawChoice> drawChoices;
 

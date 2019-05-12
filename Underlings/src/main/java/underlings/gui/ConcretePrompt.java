@@ -3,18 +3,20 @@ package underlings.gui;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.MessageFormat;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import underlings.card.Card;
+import underlings.utilities.LocaleWrap;
 
 public class ConcretePrompt implements PromptHandler {
 
     @Override
     public <T> T promptChoice(String prompt, List<T> choices, int playerId) {
-        int index = this.displayOptions(choices.toArray(), "Player " + playerId, prompt);
+        int index = this.displayOptions(choices.toArray(), this.getPlayer(playerId), prompt);
         return choices.get(index);
     }
 
@@ -55,7 +57,7 @@ public class ConcretePrompt implements PromptHandler {
         optionPane.add(panel, 1);
         optionPane.remove(2);
 
-        JDialog dialog = optionPane.createDialog(null, "Player " + playerId);
+        JDialog dialog = optionPane.createDialog(null, this.getPlayer(playerId));
         dialog.setVisible(true);
 
         Object value = optionPane.getValue();
@@ -79,13 +81,13 @@ public class ConcretePrompt implements PromptHandler {
 
     @Override
     public boolean promptDecision(String question, int playerId) {
-        int option = JOptionPane.showConfirmDialog(null, question, "Player " + playerId, JOptionPane.YES_NO_OPTION);
+        int option = JOptionPane.showConfirmDialog(null, question, this.getPlayer(playerId), JOptionPane.YES_NO_OPTION);
         return option == JOptionPane.YES_OPTION;
     }
 
     @Override
     public void displayMessage(String message, int playerId, int icon) {
-        JOptionPane.showMessageDialog(null, message, "Player " + playerId, icon);
+        JOptionPane.showMessageDialog(null, message, this.getPlayer(playerId), icon);
     }
 
     @Override
@@ -93,9 +95,10 @@ public class ConcretePrompt implements PromptHandler {
         int result = 0;
         do {
             try {
-                result = Integer.parseInt(JOptionPane.showInputDialog(prompt + " [" + min + ", " + max + "]"));
+                result = Integer
+                        .parseInt(JOptionPane.showInputDialog(LocaleWrap.format("prompt_int", prompt, min, max)));
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Please enter a number in [" + min + ", " + max + "].");
+                JOptionPane.showMessageDialog(null, LocaleWrap.format("prompt_int_error", min, max));
             }
         } while (result > max || result < min);
 
@@ -112,4 +115,7 @@ public class ConcretePrompt implements PromptHandler {
         return choice;
     }
 
+    private String getPlayer(int playerId) {
+        return MessageFormat.format(LocaleWrap.get("player_number"), playerId);
+    }
 }

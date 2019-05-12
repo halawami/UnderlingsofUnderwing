@@ -1,6 +1,5 @@
 package underlings.gui;
 
-import java.text.MessageFormat;
 import underlings.element.ElementColor;
 import underlings.utilities.LocaleWrap;
 
@@ -22,6 +21,6 @@ public enum DrawChoice {
 
     @Override
     public String toString() {
-        return MessageFormat.format(LocaleWrap.get("draw_choice"), LocaleWrap.get(this.name()));
+        return LocaleWrap.format("draw_choice", LocaleWrap.get(this.name()));
     }
 }

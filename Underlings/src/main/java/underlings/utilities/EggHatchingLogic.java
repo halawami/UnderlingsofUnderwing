@@ -36,7 +36,7 @@ public class EggHatchingLogic {
         }
         for (int i = 0; i < effects.length; i++) {
             effects[i].on(card).on(this.elementBag).on(this.hatchingGround).on(player).on(this.gui).on(this).apply();
-            this.gui.notifyAction(player.getPlayerId(), effects[i].toString() + " has been applied");
+            this.gui.notifyAction(player.getPlayerId(), LocaleWrap.format("effect_applied", effects[i].toString()));
         }
     }
 
