@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-
 import underlings.card.Card;
 import underlings.element.Element;
 import underlings.element.utilities.ElementSpaceLogic;
@@ -70,7 +69,7 @@ public class HatchingGround implements Iterable<Card> {
                 int distanceFromCard = Math.abs(diffX) + Math.abs(diffY);
                 int adjacentCardY = cardCoordinates.y + diffY;
                 int adjacentCardX = cardCoordinates.x + diffX;
-                if (distanceFromCard == 1 && coordinatesInBounds(adjacentCardY, adjacentCardX)) {
+                if (distanceFromCard == 1 && this.coordinatesInBounds(adjacentCardY, adjacentCardX)) {
                     cardsToReturn.add(this.cards[adjacentCardY][adjacentCardX]);
                 }
             }
@@ -159,4 +158,9 @@ public class HatchingGround implements Iterable<Card> {
         }
         return cards;
     }
+
+    public boolean isUnclaimed(Card card) {
+        return this.getUnclaimedEggs().contains(card);
+    }
+
 }
