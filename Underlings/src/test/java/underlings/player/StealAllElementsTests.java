@@ -52,5 +52,22 @@ public class StealAllElementsTests {
         assertTrue(stealer.elements.containsAll(elementsToBeStolen));
     }
 
+    @Test
+    public void testStealTwoElementsWhileHavingTwoElements() {
+        Player playerToStealFrom = new Player(0, null, 0);
+        List<Element> elementsToBeStolen = EffectTestUtils.getMockObjects(Element.class, 2);
+        playerToStealFrom.elements = new ArrayList<>(elementsToBeStolen);
+        Player stealer = new Player(0, null, 0);
+        List<Element> stealerElementsBefore = EffectTestUtils.getMockObjects(Element.class, 2);
+        stealer.elements = new ArrayList<>(stealerElementsBefore);
+
+        stealer.stealAllElementsFromPlayer(playerToStealFrom);
+
+        assertEquals(0, playerToStealFrom.elements.size());
+        assertEquals(4, stealer.elements.size());
+        assertTrue(stealer.elements.containsAll(stealerElementsBefore));
+        assertTrue(stealer.elements.containsAll(elementsToBeStolen));
+    }
+
 
 }
