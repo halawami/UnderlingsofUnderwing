@@ -38,14 +38,17 @@ public class ReturnAllHatchedDragonsFromPlayersTests {
         Player player = EasyMock.mock(Player.class);
         Card card = new Card();
         card.temperature = Temperature.NEUTRAL;
+        Card card2 = new Card();
+        card2.temperature = Temperature.NEUTRAL;
         player.hatchedCards = new LinkedList<>();
         player.hatchedCards.add(card);
-        player.hatchedCards.add(card);
+        player.hatchedCards.add(card2);
         Deck deck = EasyMock.mock(Deck.class);
         Effect effect = new ReturnAllHatchedDragonsFromPlayers();
         effect.on(Arrays.asList(player)).on(deck);
         deck.addCard(card);
-        EasyMock.expectLastCall().times(2);
+        deck.addCard(card2);
+
         EasyMock.replay(player, deck);
 
         effect.apply();
