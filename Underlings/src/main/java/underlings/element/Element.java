@@ -20,7 +20,7 @@ public class Element implements Choice {
     }
 
     public ElementColor getAlias() {
-        return ElementColor.BLUE;
+        return this.elementColor;
     }
 
     public void setAlias(ElementColor blue) {
