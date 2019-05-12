@@ -1,9 +1,9 @@
 package underlings.phase;
 
 import javax.swing.JOptionPane;
-
 import underlings.gui.Gui;
 import underlings.player.Player;
+import underlings.utilities.LocaleWrap;
 
 public class WildFinalPhase implements FinalPhase {
 
@@ -15,7 +15,7 @@ public class WildFinalPhase implements FinalPhase {
 
     @Override
     public void execute() {
-        this.gui.promptHandler.displayMessage("All eggs hatched wild, the game wins", -1, JOptionPane.PLAIN_MESSAGE);
+        this.gui.promptHandler.displayMessage(LocaleWrap.get("wild_game_over"), -1, JOptionPane.PLAIN_MESSAGE);
     }
 
     @Override
