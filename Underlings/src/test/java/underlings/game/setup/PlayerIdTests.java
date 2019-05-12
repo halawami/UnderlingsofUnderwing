@@ -14,13 +14,16 @@ public class PlayerIdTests {
     public void testOnePlayer() {
         PlayerFactory playerFactory = new PlayerFactory(new HandlerFactory());
         Player p = playerFactory.createPlayer(2);
-        assertEquals(0, p.getPlayerId());
+        assertEquals(1, p.getPlayerId());
     }
 
     @Test
-    public void testIdTwo() {
-        Player p = new Player(2, new HandlerFactory(), 2);
-        assertEquals(2, p.getPlayerId());
+    public void testTwoPlayers() {
+        PlayerFactory playerFactory = new PlayerFactory(new HandlerFactory());
+        Player p = playerFactory.createPlayer(2);
+        assertEquals(1, p.getPlayerId());
+        Player p2 = playerFactory.createPlayer(2);
+        assertEquals(2, p2.getPlayerId());
     }
 
 }
