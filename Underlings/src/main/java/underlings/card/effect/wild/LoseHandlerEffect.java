@@ -7,6 +7,6 @@ public class LoseHandlerEffect extends PlayerEffect {
 
     @Override
     protected void apply(Player player) {
-
+        player.loseHandler();
     }
 }
