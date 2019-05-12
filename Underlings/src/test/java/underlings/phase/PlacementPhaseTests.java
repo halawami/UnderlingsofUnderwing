@@ -1,13 +1,14 @@
 package underlings.phase;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
-
 import org.easymock.EasyMock;
 import org.junit.Ignore;
-
+import org.junit.Test;
 import underlings.card.Card;
 import underlings.card.effect.Effect;
 import underlings.element.Element;
@@ -175,6 +176,36 @@ public class PlacementPhaseTests {
         phase.execute(1);
         EasyMock.verify(player, promptHandler, display, elementBag, runnable, gui, eggHatchingLogic);
         EasyMock.verify(logic, redSpace, blueSpace, greenSpace, whiteSpace, card.wildEffects[0]);
+    }
+
+    @Test
+    public void testMoreMovesNoChoices() {
+        Display display = EasyMock.mock(Display.class);
+        PromptHandler promptHandler = EasyMock.mock(PromptHandler.class);
+        Gui gui = new Gui(promptHandler, display);
+
+        EasyMock.replay(display, promptHandler);
+
+        boolean result = gui.getMoreMovesDecision(0, 0);
+
+        EasyMock.verify(display, promptHandler);
+        assertFalse(result);
+    }
+
+    @Test
+    public void testMoreMovesTrue() {
+        Display display = EasyMock.mock(Display.class);
+        PromptHandler promptHandler = EasyMock.mock(PromptHandler.class);
+        Gui gui = new Gui(promptHandler, display);
+
+        EasyMock.expect(promptHandler.promptDecision(EasyMock.anyString(), EasyMock.anyInt())).andReturn(true);
+
+        EasyMock.replay(display, promptHandler);
+
+        boolean result = gui.getMoreMovesDecision(1, 0);
+
+        EasyMock.verify(display, promptHandler);
+        assertTrue(result);
     }
 
 }
