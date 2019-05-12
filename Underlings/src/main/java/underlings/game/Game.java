@@ -3,11 +3,11 @@ package underlings.game;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-
 import underlings.element.ElementBag;
 import underlings.gui.Gui;
 import underlings.handler.Handler;
 import underlings.phase.FinalPhase;
+import underlings.phase.FinalPhase.FinalPhaseType;
 import underlings.phase.Phase;
 import underlings.player.Player;
 import underlings.player.PlayerFactory;
@@ -69,8 +69,8 @@ public class Game {
         return this.players;
     }
 
-    public void start(List<Phase> phases, Map<String, FinalPhase> finalPhaseMap) {
-        FinalPhase finalPhase = finalPhaseMap.get("Regular");
+    public void start(List<Phase> phases, Map<FinalPhaseType, FinalPhase> finalPhaseMap) {
+        FinalPhase finalPhase = finalPhaseMap.get(FinalPhaseType.REGULAR);
         this.promptPlayerCount();
         this.setUp(this.numberOfPlayers);
 
@@ -83,7 +83,7 @@ public class Game {
                 phase.execute(this.turnLeader);
                 gameOver = phase.isGameComplete();
                 if (gameOver) {
-                    finalPhase = finalPhaseMap.get("Wild");
+                    finalPhase = finalPhaseMap.get(FinalPhaseType.WILD);
                     System.out.println("here");
                     break;
                 }

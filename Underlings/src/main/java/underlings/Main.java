@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-
 import underlings.card.CardFactory;
 import underlings.element.ElementBag;
 import underlings.element.ElementFactory;
@@ -21,6 +20,7 @@ import underlings.handler.HandlerMovementLogic;
 import underlings.phase.DragonPhase;
 import underlings.phase.DrawingPhase;
 import underlings.phase.FinalPhase;
+import underlings.phase.FinalPhase.FinalPhaseType;
 import underlings.phase.HandlerPhase;
 import underlings.phase.Phase;
 import underlings.phase.PlacementPhase;
@@ -68,10 +68,11 @@ public class Main {
         DragonPhase dragonPhase = new DragonPhase(game.getPlayers(), gui, elementBag, hatchingGround, gameDisplay,
                 field, eggHatchingLogic);
         phases.add(dragonPhase);
-        Map<String, FinalPhase> finalPhaseMap = new HashMap<>();
+        Map<FinalPhaseType, FinalPhase> finalPhaseMap = new HashMap<>();
         ScoreUtils scoreUtils = new ScoreUtils(game.getPlayers(), gui);
-        finalPhaseMap.put("Regular", new RegularFinalPhase(game.getPlayers(), gui, dragonPhase, scoreUtils));
-        finalPhaseMap.put("Wild", new WildFinalPhase(gui));
+        finalPhaseMap.put(FinalPhaseType.REGULAR,
+                new RegularFinalPhase(game.getPlayers(), gui, dragonPhase, scoreUtils));
+        finalPhaseMap.put(FinalPhaseType.WILD, new WildFinalPhase(gui));
 
         game.start(phases, finalPhaseMap);
 
