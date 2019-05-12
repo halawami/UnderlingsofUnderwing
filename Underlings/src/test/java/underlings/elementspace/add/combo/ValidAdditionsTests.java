@@ -72,8 +72,7 @@ public class ValidAdditionsTests {
         assertTrue(logic.isOpenElement(ElementColor.WHITE));
 
         ElementSpace elementSpace = new ElementSpace(ElementColor.ORANGE);
-        List<ElementColor> expected =
-                Arrays.asList(ElementColor.ORANGE, ElementColor.RED, ElementColor.YELLOW, ElementColor.WHITE);
+        List<ElementColor> expected = Arrays.asList(ElementColor.ORANGE, ElementColor.RED, ElementColor.YELLOW);
 
         List<ElementColor> actual = logic.getValidAdditions(elementSpace);
         Collections.sort(expected);
@@ -89,8 +88,7 @@ public class ValidAdditionsTests {
         assertTrue(logic.isOpenElement(ElementColor.BLACK));
 
         ElementSpace elementSpace = new ElementSpace(ElementColor.ORANGE);
-        List<ElementColor> expected =
-                Arrays.asList(ElementColor.ORANGE, ElementColor.RED, ElementColor.YELLOW, ElementColor.BLACK);
+        List<ElementColor> expected = Arrays.asList(ElementColor.ORANGE, ElementColor.RED, ElementColor.YELLOW);
 
         List<ElementColor> actual = logic.getValidAdditions(elementSpace);
         Collections.sort(expected);

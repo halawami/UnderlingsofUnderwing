@@ -43,6 +43,10 @@ public class PlacementUtilities {
             Element element =
                     this.gui.promptHandler.promptChoice("Pick an element to place", choices, player.getPlayerId());
 
+            if (player.elementSpaceLogic.isOpenElement(element.getColor())) {
+
+            }
+
             space.addElements(element);
             player.removeElement(element);
             this.displayMethod.run();
