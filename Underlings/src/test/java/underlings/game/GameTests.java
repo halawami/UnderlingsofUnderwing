@@ -1,30 +1,55 @@
 package underlings.game;
 
+import static org.junit.Assert.assertEquals;
+import java.util.Locale;
 import org.easymock.EasyMock;
+import org.junit.Before;
 import org.junit.Test;
 import underlings.element.ElementBag;
 import underlings.gui.Gui;
 import underlings.player.PlayerFactory;
+import underlings.utilities.LocaleWrap;
 
 public class GameTests {
 
+    private Gui gui;
+    private HatchingGround hatchingGround;
+    private PlayerFactory playerFactory;
+    private ElementBag elementBag;
+    private Game game;
+
+    @Before
+    public void init() {
+        this.gui = EasyMock.mock(Gui.class);
+        this.hatchingGround = EasyMock.mock(HatchingGround.class);
+        this.playerFactory = EasyMock.mock(PlayerFactory.class);
+        this.elementBag = EasyMock.mock(ElementBag.class);
+
+        this.game = new Game(this.gui, this.hatchingGround, this.playerFactory, this.elementBag);
+    }
+
     @Test
     public void testDisplay() {
-        Gui gui = EasyMock.mock(Gui.class);
-        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
-        PlayerFactory playerFactory = EasyMock.mock(PlayerFactory.class);
-        ElementBag elementBag = EasyMock.mock(ElementBag.class);
+        this.gui.display(EasyMock.anyInt(), EasyMock.anyInt(), EasyMock.anyInt(), EasyMock.anyObject(),
+                EasyMock.anyObject(), EasyMock.anyObject());
 
-        Game game = new Game(gui, hatchingGround, playerFactory, elementBag);
+        EasyMock.replay(this.gui, this.hatchingGround, this.playerFactory, this.elementBag);
 
-        gui.display(EasyMock.anyInt(), EasyMock.anyInt(), EasyMock.anyInt(), EasyMock.anyObject(), EasyMock.anyObject(),
-                EasyMock.anyObject());
+        this.game.display();
 
-        EasyMock.replay(gui, hatchingGround, playerFactory, elementBag);
+        EasyMock.verify(this.gui, this.hatchingGround, this.playerFactory, this.elementBag);
+    }
 
-        game.display();
+    @Test
+    public void testPromptLocale() {
+        EasyMock.expect(this.gui.promptLocale(EasyMock.anyObject())).andReturn(Locale.FRENCH);
 
-        EasyMock.verify(gui, hatchingGround, playerFactory, elementBag);
+        EasyMock.replay(this.gui, this.hatchingGround, this.playerFactory, this.elementBag);
+
+        this.game.promptLocale();
+
+        EasyMock.verify(this.gui, this.hatchingGround, this.playerFactory, this.elementBag);
+        assertEquals(Locale.FRENCH, LocaleWrap.locale);
     }
 
 }
