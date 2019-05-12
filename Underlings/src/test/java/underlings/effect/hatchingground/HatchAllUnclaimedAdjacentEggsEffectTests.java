@@ -1,5 +1,9 @@
 package underlings.effect.hatchingground;
 
+import com.google.common.base.Charsets;
+import com.google.common.io.Resources;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +36,7 @@ public class HatchAllUnclaimedAdjacentEggsEffectTests {
 
 
     @Before
-    public void init() {
+    public void init() throws IOException {
         this.mockedCards = getMockedCards(1);
         this.mockedCards.get(0).wildEffects = new Effect[1];
         this.effect = EasyMock.mock(Effect.class);
@@ -40,6 +44,8 @@ public class HatchAllUnclaimedAdjacentEggsEffectTests {
         this.eggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
         this.hatchingGround = EasyMock.mock(HatchingGround.class);
         this.elementBag = EasyMock.mock(ElementBag.class);
+        List<String> recipes = Resources.readLines(Resources.getResource("DefaultRecipeList.txt"), Charsets.UTF_8);
+        FakePlayer.initPlayer(recipes);
         this.fakePlayer = FakePlayer.getInstance();
         this.gui = EasyMock.mock(Gui.class);
         this.hatchAllUnclaimedAdjacentEggsEffect = new HatchAllUnclaimedEffect();
