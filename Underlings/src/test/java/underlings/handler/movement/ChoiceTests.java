@@ -25,37 +25,17 @@ public class ChoiceTests {
     }
 
     @Test
-    public void testReadyRoom() {
-        this.testPossibilities(HandlerState.READY_ROOM, HandlerChoice.STAY, HandlerChoice.FIELD_WHITESPACE,
+    public void tesPossibilities() {
+        this.comparePossibilities(HandlerState.READY_ROOM, HandlerChoice.STAY, HandlerChoice.FIELD_WHITESPACE,
                 HandlerChoice.FIELD, HandlerChoice.CARD);
+        this.comparePossibilities(HandlerState.BREAK_ROOM, HandlerChoice.READY_ROOM);
+        this.comparePossibilities(HandlerState.FIELD_WHITESPACE, HandlerChoice.BREAK_ROOM);
+        this.comparePossibilities(HandlerState.FIELD, HandlerChoice.STAY, HandlerChoice.BREAK_ROOM);
+        this.comparePossibilities(HandlerState.INCUBATION, HandlerChoice.STAY);
+        this.comparePossibilities(HandlerState.CARD, HandlerChoice.STAY, HandlerChoice.BREAK_ROOM);
     }
 
-    @Test
-    public void testBreakRoom() {
-        this.testPossibilities(HandlerState.BREAK_ROOM, HandlerChoice.READY_ROOM);
-    }
-
-    @Test
-    public void testFieldWhitespace() {
-        this.testPossibilities(HandlerState.FIELD_WHITESPACE, HandlerChoice.BREAK_ROOM);
-    }
-
-    @Test
-    public void testField() {
-        this.testPossibilities(HandlerState.FIELD, HandlerChoice.STAY, HandlerChoice.BREAK_ROOM);
-    }
-
-    @Test
-    public void testIncubation() {
-        this.testPossibilities(HandlerState.INCUBATION, HandlerChoice.STAY);
-    }
-
-    @Test
-    public void testCard() {
-        this.testPossibilities(HandlerState.CARD, HandlerChoice.STAY, HandlerChoice.BREAK_ROOM);
-    }
-
-    private void testPossibilities(HandlerState state, HandlerChoice... possibilities) {
+    private void comparePossibilities(HandlerState state, HandlerChoice... possibilities) {
         Handler handler = new Handler(state);
         List<HandlerChoice> possibleStates = handler.getPossibleChoices();
         assertEquals(possibilities.length, possibleStates.size());
