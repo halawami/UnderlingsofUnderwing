@@ -47,7 +47,8 @@ public class PlayersTradeDragonTests {
         effect.apply();
         assertTrue(player2.hatchedCards.contains(card));
         assertFalse(player.hatchedCards.contains(card));
-        assertEquals(0, player.hatchedCards.size());
+        assertTrue(player.hatchedCards.contains(EmptyCard.getInstance()));
+        assertEquals(1, player.hatchedCards.size());
 
         EasyMock.verify(player, player2, mockedEffect, gui);
     }
