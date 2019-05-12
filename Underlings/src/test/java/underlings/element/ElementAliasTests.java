@@ -35,4 +35,12 @@ public class ElementAliasTests {
 
         assertEquals(ElementColor.RED, element.getAlias());
     }
+
+    @Test
+    public void testChangeRedToBlue() {
+        Element element = new Element(ElementColor.RED);
+        element.setAlias(ElementColor.BLUE);
+
+        assertEquals(ElementColor.BLUE, element.getAlias());
+    }
 }
