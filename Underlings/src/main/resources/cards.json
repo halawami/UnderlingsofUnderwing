@@ -3234,7 +3234,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementToAllSpacesInPlayEffect",
+        "effect": "AddElementToAllEggsInPlayEffect",
         "ElementColor": "RED"
       }
     ]
@@ -3285,7 +3285,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "AddElementToAllSpacesInPlayEffect",
+        "effect": "AddElementToAllEggsInPlayEffect",
         "ElementColor": "RED"
       }
     ]
