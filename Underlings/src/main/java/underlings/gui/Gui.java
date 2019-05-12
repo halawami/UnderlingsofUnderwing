@@ -139,6 +139,12 @@ public class Gui {
         return EmptyCard.getInstance();
     }
 
+    public Player promptPlayer(String toDisplay, int playerId) {
+        // TODO
+        return null;
+    }
+
+
     public Locale promptLocale(Locale[] locales) {
         return this.promptHandler.promptChoiceDropdown("Choose Language", Arrays.asList(locales), Locale.ENGLISH);
     }
