@@ -142,7 +142,7 @@ public class PlacementPhaseTests {
         PromptHandler promptHandler = EasyMock.mock(PromptHandler.class);
         Display display = EasyMock.mock(Display.class);
         final Gui gui = EasyMock.mock(Gui.class);
-        gui.display = display;
+        // gui.display = display;
         gui.promptHandler = promptHandler;
         final ElementBag elementBag = EasyMock.createMock(ElementBag.class);
         final Runnable runnable = EasyMock.mock(Runnable.class);

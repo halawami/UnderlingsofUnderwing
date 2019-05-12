@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import underlings.card.Card;
 import underlings.card.EmptyCard;
 import underlings.element.Element;
+import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementGiver;
 import underlings.element.ElementSpace;
@@ -25,7 +26,7 @@ import underlings.utilities.LocaleWrap;
 public class Gui {
 
     public PromptHandler promptHandler;
-    public Display display;
+    protected Display display;
 
     public Gui(PromptHandler promptHandler, Display display) {
         this.promptHandler = promptHandler;
@@ -141,5 +142,25 @@ public class Gui {
 
     public Locale promptLocale(Locale[] locales) {
         return this.promptHandler.promptChoiceDropdown("Choose Language", Arrays.asList(locales), Locale.ENGLISH);
+    }
+
+    public void displayPlayers(List<Player> players) {
+
+        for (int playerNumber = 0; playerNumber < players.size(); playerNumber++) {
+            Player player = players.get(playerNumber);
+            this.display.displayPlayer(playerNumber, player);
+            List<Handler> handlers = player.getHandlers();
+            this.display.displayHandlers(playerNumber, handlers);
+        }
+
+    }
+
+    public void display(int roundsLeft, int currentPhase, int turnLeader, HatchingGround hatchingGround,
+            List<Player> players, ElementBag elementBag) {
+        this.display.displayBackground();
+        this.display.displayHatchingGround(hatchingGround);
+        this.displayPlayers(players);
+        this.display.displayStats(elementBag, roundsLeft, currentPhase, turnLeader + 1);
+        this.display.update();
     }
 }
