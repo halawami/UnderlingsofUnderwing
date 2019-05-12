@@ -96,7 +96,9 @@ public class ElementSpaceLogic {
             validAdditions.addAll(remaining);
         }
 
-        validAdditions.addAll(openElements);
+        if (!validAdditions.isEmpty()) {
+            validAdditions.addAll(openElements);
+        }
 
         return new ArrayList<ElementColor>(validAdditions);
     }
