@@ -13,10 +13,14 @@ import org.easymock.EasyMock;
 import org.junit.Test;
 
 import underlings.card.Card;
+import underlings.element.Element;
+import underlings.element.ElementColor;
+import underlings.element.ElementSpace;
+import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
+import underlings.gui.PromptHandler;
 import underlings.player.Player;
-import underlings.utilities.PlacementUtilities;
 
 public class PlacementUtilsTests {
 
@@ -47,6 +51,39 @@ public class PlacementUtilsTests {
         assertTrue(utils.isValid(card1));
         assertTrue(utils.isValid(card2));
         assertFalse(utils.isValid(new Card()));
+    }
+
+    @Test
+    public void testSelectElementSpace() {
+        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
+
+        PromptHandler promptHandler = EasyMock.mock(PromptHandler.class);
+        Gui gui = new Gui(promptHandler, null);
+
+        Player player = EasyMock.mock(Player.class);
+        EasyMock.expect(player.getPlayerId()).andReturn(10).anyTimes();
+
+        List<Element> elements = Arrays.asList(new Element(ElementColor.RED));
+        EasyMock.expect(player.getElements()).andReturn(elements).anyTimes();
+
+        Card card = new Card();
+        card.elementSpaces = new ElementSpace[1];
+        card.elementSpaces[0] = new ElementSpace(ElementColor.RED);
+
+        ElementSpaceLogic logic = EasyMock.mock(ElementSpaceLogic.class);
+        List<ElementSpace> spaces = Arrays.asList(card.elementSpaces[0]);
+        EasyMock.expect(logic.getPlayableSpaces(card, elements)).andReturn(spaces);
+        player.elementSpaceLogic = logic;
+
+        EasyMock.expect(gui.promptHandler.promptChoice("Pick an element space to place an element on.", spaces, 10))
+                .andReturn(card.elementSpaces[0]);
+
+        EasyMock.replay(logic, hatchingGround, promptHandler, player);
+
+        PlacementUtilities utils = new PlacementUtilities(hatchingGround, gui, null);
+        assertEquals(card.elementSpaces[0], utils.selectElementSpace(card, player));
+
+        EasyMock.verify(logic, hatchingGround, promptHandler, player);
     }
 
 }
