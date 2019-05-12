@@ -144,11 +144,6 @@ public class Gui {
         return EmptyCard.getInstance();
     }
 
-    public Player promptPlayer(String toDisplay, int playerId) {
-        // TODO
-        return null;
-    }
-
     public Locale promptLocale(Locale[] locales) {
         return this.promptHandler.promptChoiceDropdown("Choose Language", Arrays.asList(locales), Locale.ENGLISH);
     }
@@ -181,5 +176,10 @@ public class Gui {
                 this.display.displayCard(row, col, hatchingGround.cards[row][col]);
             }
         }
+    }
+
+    public Object promptCardToSteal(String string, int i, List<Card> asList) {
+        // TODO
+        return null;
     }
 }
