@@ -1085,7 +1085,8 @@
     ],
     "domesticEffects": [
       {
-        "effect": "DestroyUpToTwoElementsOnAnyEggInPlayEffect",
+        "effect": "DestroyUpToElementsOnAnyEggInPlayEffect",
+        "upTo": 2,
         "elementChoices": [
           "RED",
           "YELLOW",
@@ -1209,7 +1210,8 @@
     ],
     "domesticEffects": [
       {
-        "effect": "DestroyUpToTwoElementsOnAnyEggInPlayEffect",
+        "effect": "DestroyUpToElementsOnAnyEggInPlayEffect",
+        "upTo": 2,
         "elementChoices": [
           "PURPLE",
           "GREEN",
