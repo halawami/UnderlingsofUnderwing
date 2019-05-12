@@ -1,5 +1,7 @@
 package underlings.card.effect;
 
+import java.util.List;
+
 import underlings.card.Card;
 import underlings.element.ElementBag;
 import underlings.game.HatchingGround;
@@ -15,6 +17,7 @@ public abstract class Effect {
     private Card centerCard;
     private Gui gui;
     private EggHatchingLogic eggHatchingLogic;
+    private List<Player> players;
 
     public Effect on(HatchingGround hatchingGround) {
         this.hatchingGround = hatchingGround;
@@ -46,10 +49,16 @@ public abstract class Effect {
         return this;
     }
 
+    public Effect on(List<Player> players) {
+        this.players = players;
+        return this;
+    }
+
     public void apply() {
         this.apply(this.centerCard, this.hatchingGround, this.elementBag, this.gui, this.player, this.eggHatchingLogic);
-        this.apply(this.player, elementBag);
+        this.apply(this.player, this.elementBag);
         this.apply(this.player);
+        this.apply(this.players, this.gui);
     }
 
     protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag, Gui gui,
@@ -58,5 +67,7 @@ public abstract class Effect {
     protected void apply(Player player, ElementBag elementBag) {}
 
     protected void apply(Player player) {}
+
+    protected void apply(List<Player> players, Gui gui) {}
 
 }
