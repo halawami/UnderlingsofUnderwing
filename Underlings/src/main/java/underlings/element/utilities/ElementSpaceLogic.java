@@ -133,14 +133,16 @@ public class ElementSpaceLogic {
 
     public List<Element> getPlayableElements(ElementSpace space, List<Element> playerElements) {
         List<ElementColor> validAdditions = getValidAdditions(space);
-        playerElements = new ArrayList<Element>(playerElements);
-        for (int i = 0; i < playerElements.size(); i++) {
-            ElementColor color = playerElements.get(i).getColor();
-            if (!(validAdditions.contains(color) || isOpenElement(color))) {
-                playerElements.remove(i--);
+        final List<Element> playableElements = new ArrayList<>();
+
+        playerElements.forEach((Element element) -> {
+            ElementColor color = element.getColor();
+            if (validAdditions.contains(color) || isOpenElement(color)) {
+                playableElements.add(element);
             }
-        }
-        return playerElements;
+        });
+
+        return playableElements;
     }
 
     public void setOpenElement(ElementColor color) {
