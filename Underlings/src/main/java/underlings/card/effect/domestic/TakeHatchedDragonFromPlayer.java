@@ -1,6 +1,8 @@
 package underlings.card.effect.domestic;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -17,8 +19,18 @@ public class TakeHatchedDragonFromPlayer extends PlayersHatchingEffect {
 
     @Override
     protected void apply(Player currentPlayer, List<Player> players, Gui gui, EggHatchingLogic eggHatchingLogic) {
+        List<Temperature> temperaturesList = Arrays.asList(temperatures);
         Map<Player, List<Card>> playerCards = new HashMap<>();
-        playerCards.put(players.get(0), players.get(0).hatchedCards);
+        for (Player player : players) {
+            if (player != currentPlayer) {
+                playerCards.put(player, new LinkedList<>());
+                for (Card dragon : player.hatchedCards) {
+                    if (temperaturesList.contains(dragon.temperature)) {
+                        playerCards.get(player).add(dragon);
+                    }
+                }
+            }
+        }
         Card toSteal = gui.promptCardToSteal("Choose a card to steal", currentPlayer.getPlayerId(), playerCards);
         eggHatchingLogic.hatchEgg(toSteal, false, currentPlayer);
     }
