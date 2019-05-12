@@ -24,6 +24,19 @@ public class LoseHandlerEffectTests {
         mockPlayers.forEach(EasyMock::verify);
     }
 
+    @Test
+    public void testLoseHandlerSixPlayers() {
+        List<Player> mockPlayers = this.getMockedObjects(Player.class, 6);
+        LoseHandlerEffect testedEffect = new LoseHandlerEffect();
+
+        mockPlayers.forEach(Player::loseHandler);
+        mockPlayers.forEach(EasyMock::replay);
+
+        testedEffect.on(mockPlayers).apply();
+
+        mockPlayers.forEach(EasyMock::verify);
+    }
+
     private <T> List<T> getMockedObjects(Class<T> objectsClass, int numberOfObjects) {
         List<T> mockedObjects = new ArrayList<>();
         for (int i = 0; i < numberOfObjects; i++) {
