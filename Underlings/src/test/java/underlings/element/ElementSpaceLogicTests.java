@@ -35,4 +35,21 @@ public class ElementSpaceLogicTests {
         assertEquals(1, actual.size());
         assertTrue(actual.contains(playerElements.get(0)));
     }
+
+    @Test
+    public void testGetPlayableElementsAlias() {
+        ElementSpaceLogic logic = new ElementSpaceLogic();
+        logic.setOpenElement(ElementColor.BLACK);
+
+        ElementSpace space = new ElementSpace(ElementColor.RED);
+        List<Element> playerElements = new ArrayList<>();
+        playerElements.add(new Element(ElementColor.BLACK));
+        playerElements.add(new Element(ElementColor.WHITE));
+        playerElements.add(new Element(ElementColor.RED));
+
+        List<Element> actual = logic.getPlayableElements(space, playerElements);
+        assertEquals(2, actual.size());
+        assertTrue(actual.contains(playerElements.get(0)));
+        assertTrue(actual.contains(playerElements.get(2)));
+    }
 }
