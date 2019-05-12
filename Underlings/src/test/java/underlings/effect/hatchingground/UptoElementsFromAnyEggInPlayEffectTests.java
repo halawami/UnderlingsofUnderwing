@@ -57,6 +57,42 @@ public class UptoElementsFromAnyEggInPlayEffectTests {
     }
 
     @Test
+    public void testApplyOnThreeSelectedElements() {
+        Player currentPlayer = EasyMock.mock(Player.class);
+        EasyMock.expect(currentPlayer.getPlayerId()).andReturn(10).anyTimes();
+        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
+        List<ElementSpace> mockSpaces = this.getMockedObjects(ElementSpace.class, 3);
+        List<Element> mockElements = this.getMockedObjects(Element.class, 3);
+        List<Card> mockCards = this.getMockedObjects(Card.class, 6);
+        Gui gui = EasyMock.mock(Gui.class);
+        UptoElementsFromAnyEggInPlayEffect testedEffect =
+                EasyMock.partialMockBuilder(UptoElementsFromAnyEggInPlayEffect.class)
+                        .addMockedMethod("applyOnSelectedElement").createMock();
+        testedEffect.elementChoices = new ElementColor[]{ElementColor.BLUE};
+        testedEffect.on(gui).on(currentPlayer).on(hatchingGround);
+
+        EasyMock.expect(hatchingGround.getAllCards()).andReturn(mockCards);
+
+        for (int i = 0; i < 3; i++) {
+            EasyMock.expect(gui.getElementSpaceContainingElementOfColors(mockCards, testedEffect.elementChoices))
+                    .andReturn(mockSpaces.get(i));
+            EasyMock.expect(gui.getElementOfColorsFromSpace(testedEffect.elementChoices, mockSpaces.get(i), 10))
+                    .andReturn(mockElements.get(i));
+            testedEffect.applyOnSelectedElement(mockElements.get(i), mockSpaces.get(i), currentPlayer);
+        }
+
+        EasyMock.replay(currentPlayer, hatchingGround, gui, testedEffect);
+        mockSpaces.forEach(EasyMock::replay);
+        mockElements.forEach(EasyMock::replay);
+
+        testedEffect.apply();
+
+        EasyMock.verify(currentPlayer, hatchingGround, gui, testedEffect);
+        mockSpaces.forEach(EasyMock::verify);
+        mockElements.forEach(EasyMock::verify);
+    }
+
+    @Test
     public void testDestroyNullElementPicked() {
         Player currentPlayer = EasyMock.mock(Player.class);
         ElementSpace elementSpace = EasyMock.mock(ElementSpace.class);
