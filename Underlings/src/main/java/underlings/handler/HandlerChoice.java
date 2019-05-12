@@ -1,8 +1,10 @@
 package underlings.handler;
 
+import java.text.MessageFormat;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import underlings.utilities.LocaleWrap;
 
 public enum HandlerChoice {
 
@@ -36,10 +38,10 @@ public enum HandlerChoice {
 
     @Override
     public String toString() {
-        if (this.name().equals("STAY")) {
-            return "Stay";
+        if (this == HandlerChoice.STAY) {
+            return LocaleWrap.get("handler_choice_stay");
         }
-        return "Move to " + this.name();
+        return MessageFormat.format(LocaleWrap.get("handler_choice_move"), LocaleWrap.get(this.name()));
     }
 
     public HandlerState getState() {

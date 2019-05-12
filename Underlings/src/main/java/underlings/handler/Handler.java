@@ -34,7 +34,7 @@ public class Handler extends ElementGiver {
 
     @Override
     public String toString() {
-        return MessageFormat.format(LocaleWrap.get(this.state.name()), this.location);
+        return MessageFormat.format(LocaleWrap.get("HANDLER_" + this.state.name()), this.location);
     }
 
     public void setLocation(String location) {
