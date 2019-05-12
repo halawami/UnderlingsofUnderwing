@@ -10,10 +10,8 @@ import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
-
 import underlings.card.Card;
 import underlings.element.Element;
 import underlings.element.ElementBag;
@@ -224,22 +222,20 @@ public class ConcreteDisplay implements Display {
         this.gr.setColor(Color.BLACK);
 
         StringBuilder stats = new StringBuilder();
-        stats.append("Elements Remaining\n");
-        stats.append("Red: " + elementBag.getNumberRemaining(ElementColor.RED) + "\n");
-        stats.append("Blue: " + elementBag.getNumberRemaining(ElementColor.BLUE) + "\n");
-        stats.append("Yellow: " + elementBag.getNumberRemaining(ElementColor.YELLOW) + "\n");
-        stats.append("Green: " + elementBag.getNumberRemaining(ElementColor.GREEN) + "\n");
-        stats.append("Orange: " + elementBag.getNumberRemaining(ElementColor.ORANGE) + "\n");
-        stats.append("Purple: " + elementBag.getNumberRemaining(ElementColor.PURPLE) + "\n");
-        stats.append("Black: " + elementBag.getNumberRemaining(ElementColor.BLACK) + "\n");
-        stats.append("White: " + elementBag.getNumberRemaining(ElementColor.WHITE) + "\n\n");
-        stats.append("Rounds Left: " + roundsLeft + "\n");
-        stats.append("Phase: " + currentPhase + "\n");
-        stats.append("Turn Leader: " + leadTurn + "\n");
+        stats.append(LocaleWrap.get("elements_remaining"));
+        for (ElementColor color : new ElementColor[] {ElementColor.RED, ElementColor.BLUE, ElementColor.YELLOW,
+                ElementColor.GREEN, ElementColor.ORANGE, ElementColor.PURPLE, ElementColor.BLACK, ElementColor.WHITE}) {
+            stats.append(MessageFormat.format(LocaleWrap.get("color_remaining"), color.toString(),
+                    elementBag.getNumberRemaining(color)));
+        }
+        stats.append(MessageFormat.format(LocaleWrap.get("rounds_left"), roundsLeft));
+        stats.append(MessageFormat.format(LocaleWrap.get("current_phase"), currentPhase));
+        stats.append(MessageFormat.format(LocaleWrap.get("turn_lead"), leadTurn));
+
 
         int y = 15;
 
-        for (String item : stats.toString().split("\n")) {
+        for (String item : stats.toString().split(LocaleWrap.get("line_break"))) {
             this.gr.drawString(item, WIDTH - 200, y);
             y += 15;
         }

@@ -24,10 +24,6 @@ public class Handler extends ElementGiver {
         this.state = state;
     }
 
-    // public List<HandlerState> getPossibleStates() {
-    // return this.state.allowedStates;
-    // }
-
     public List<HandlerChoice> getPossibleChoices() {
         return HandlerChoice.getMovements(this.state);
     }
