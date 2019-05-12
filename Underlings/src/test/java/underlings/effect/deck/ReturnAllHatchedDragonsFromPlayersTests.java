@@ -8,7 +8,6 @@ import org.junit.Test;
 
 import underlings.card.Card;
 import underlings.card.Temperature;
-import underlings.card.effect.Effect;
 import underlings.card.effect.wild.ReturnAllHatchedDragonsFromPlayers;
 import underlings.game.Deck;
 import underlings.player.Player;
@@ -23,11 +22,12 @@ public class ReturnAllHatchedDragonsFromPlayersTests {
         player.hatchedCards = new LinkedList<>();
         player.hatchedCards.add(card);
         Deck deck = EasyMock.mock(Deck.class);
-        Effect effect = new ReturnAllHatchedDragonsFromPlayers();
+        ReturnAllHatchedDragonsFromPlayers effect = new ReturnAllHatchedDragonsFromPlayers();
         effect.on(Arrays.asList(player)).on(deck);
         deck.addCard(card);
         EasyMock.replay(player, deck);
 
+        effect.temperatures = new Temperature[] {Temperature.NEUTRAL};
         effect.apply();
 
         EasyMock.verify(player, deck);
@@ -44,13 +44,14 @@ public class ReturnAllHatchedDragonsFromPlayersTests {
         player.hatchedCards.add(card);
         player.hatchedCards.add(card2);
         Deck deck = EasyMock.mock(Deck.class);
-        Effect effect = new ReturnAllHatchedDragonsFromPlayers();
+        ReturnAllHatchedDragonsFromPlayers effect = new ReturnAllHatchedDragonsFromPlayers();
         effect.on(Arrays.asList(player)).on(deck);
         deck.addCard(card);
         deck.addCard(card2);
 
         EasyMock.replay(player, deck);
 
+        effect.temperatures = new Temperature[] {Temperature.NEUTRAL};
         effect.apply();
 
         EasyMock.verify(player, deck);
@@ -69,13 +70,14 @@ public class ReturnAllHatchedDragonsFromPlayersTests {
         player2.hatchedCards = new LinkedList<>();
         player2.hatchedCards.add(card2);
         Deck deck = EasyMock.mock(Deck.class);
-        Effect effect = new ReturnAllHatchedDragonsFromPlayers();
+        ReturnAllHatchedDragonsFromPlayers effect = new ReturnAllHatchedDragonsFromPlayers();
         effect.on(Arrays.asList(player, player2)).on(deck);
         deck.addCard(card);
         deck.addCard(card2);
 
         EasyMock.replay(player, deck, player2);
 
+        effect.temperatures = new Temperature[] {Temperature.NEUTRAL};
         effect.apply();
 
         EasyMock.verify(player, deck, player2);
@@ -94,12 +96,13 @@ public class ReturnAllHatchedDragonsFromPlayersTests {
         player2.hatchedCards = new LinkedList<>();
         player2.hatchedCards.add(card2);
         Deck deck = EasyMock.mock(Deck.class);
-        Effect effect = new ReturnAllHatchedDragonsFromPlayers();
+        ReturnAllHatchedDragonsFromPlayers effect = new ReturnAllHatchedDragonsFromPlayers();
         effect.on(Arrays.asList(player, player2)).on(deck);
         deck.addCard(card2);
 
         EasyMock.replay(player, deck, player2);
 
+        effect.temperatures = new Temperature[] {Temperature.NEUTRAL};
         effect.apply();
 
         EasyMock.verify(player, deck, player2);
