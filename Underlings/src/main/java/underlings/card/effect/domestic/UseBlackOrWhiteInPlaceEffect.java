@@ -1,4 +1,4 @@
-package underlings.card.effect.wild;
+package underlings.card.effect.domestic;
 
 import underlings.card.effect.PlayerEffect;
 import underlings.element.ElementColor;

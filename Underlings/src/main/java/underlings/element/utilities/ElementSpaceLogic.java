@@ -135,7 +135,8 @@ public class ElementSpaceLogic {
         List<ElementColor> validAdditions = getValidAdditions(space);
         playerElements = new ArrayList<Element>(playerElements);
         for (int i = 0; i < playerElements.size(); i++) {
-            if (!validAdditions.contains(playerElements.get(i).getColor())) {
+            ElementColor color = playerElements.get(i).getColor();
+            if (!(validAdditions.contains(color) || isOpenElement(color))) {
                 playerElements.remove(i--);
             }
         }
