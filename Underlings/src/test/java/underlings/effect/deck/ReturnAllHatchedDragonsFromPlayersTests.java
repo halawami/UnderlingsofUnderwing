@@ -81,4 +81,28 @@ public class ReturnAllHatchedDragonsFromPlayersTests {
         EasyMock.verify(player, deck, player2);
     }
 
+    @Test
+    public void testMultipleCardsAndPlayersDifferentTemperature() {
+        Player player = EasyMock.mock(Player.class);
+        Player player2 = EasyMock.mock(Player.class);
+        Card card = new Card();
+        card.temperature = Temperature.COOL;
+        Card card2 = new Card();
+        card2.temperature = Temperature.NEUTRAL;
+        player.hatchedCards = new LinkedList<>();
+        player.hatchedCards.add(card);
+        player2.hatchedCards = new LinkedList<>();
+        player2.hatchedCards.add(card2);
+        Deck deck = EasyMock.mock(Deck.class);
+        Effect effect = new ReturnAllHatchedDragonsFromPlayers();
+        effect.on(Arrays.asList(player, player2)).on(deck);
+        deck.addCard(card2);
+
+        EasyMock.replay(player, deck, player2);
+
+        effect.apply();
+
+        EasyMock.verify(player, deck, player2);
+    }
+
 }
