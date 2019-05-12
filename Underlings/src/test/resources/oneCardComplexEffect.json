@@ -2,7 +2,7 @@
   {
     "domesticEffects": [
       {
-        "effect": "GainOneHandlerEffect"
+        "effect": "UseBlackOrWhiteInPlaceEffect"
       },
       {
         "effect": "CollectElementEffect"

@@ -20,7 +20,7 @@ import underlings.card.Family;
 import underlings.card.Temperature;
 import underlings.card.effect.Effect;
 import underlings.card.effect.domestic.CollectElementEffect;
-import underlings.card.effect.domestic.GainHandlersEffect;
+import underlings.card.effect.domestic.UseBlackOrWhiteInPlaceEffect;
 import underlings.card.effect.wild.adjacenteggs.AddElementsEffect;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
@@ -96,14 +96,14 @@ public class GsonLearningTests {
         assertEquals(1, domesticEffects.length);
         assertEquals(1, wildEffects.length);
 
-        assertTrue(domesticEffects[0] instanceof GainHandlersEffect);
+        assertTrue(domesticEffects[0] instanceof UseBlackOrWhiteInPlaceEffect);
         assertTrue(wildEffects[0] instanceof CollectElementEffect);
     }
 
     @Test
     public void testOneCardComplexEffects() throws IOException {
         List<Class<? extends Effect>> effectClasses =
-                Arrays.asList(GainHandlersEffect.class, CollectElementEffect.class);
+                Arrays.asList(UseBlackOrWhiteInPlaceEffect.class, CollectElementEffect.class);
         Gson gson = getGsonWithComplexCardEffects(effectClasses);
 
         Card[] cards = gson.fromJson(getJsonAsString("oneCardComplexEffect.json"), Card[].class);
@@ -130,7 +130,7 @@ public class GsonLearningTests {
 
     private Gson getGsonWithSimpleCardEffects() {
         RuntimeTypeAdapterFactory<Effect> effectsTypeAdapter = RuntimeTypeAdapterFactory.of(Effect.class, "effect")
-                .registerSubtype(GainHandlersEffect.class).registerSubtype(CollectElementEffect.class);
+                .registerSubtype(UseBlackOrWhiteInPlaceEffect.class).registerSubtype(CollectElementEffect.class);
 
         return new GsonBuilder().registerTypeAdapterFactory(effectsTypeAdapter).create();
     }

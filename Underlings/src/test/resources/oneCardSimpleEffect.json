@@ -6,7 +6,7 @@
     "family": "TRIADIC",
     "domesticEffects": [
       {
-        "effect": "GainOneHandlerEffect"
+        "effect": "UseBlackOrWhiteInPlaceEffect"
       }
     ],
     "wildEffects": [
