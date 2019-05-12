@@ -21,6 +21,10 @@ public class Card implements Choice {
     public Effect[] wildEffects;
     public ElementSpace[] elementSpaces;
 
+    public boolean isClaimed() {
+        return handler != null;
+    }
+
     @Override
     public String toString() {
         return this.name;

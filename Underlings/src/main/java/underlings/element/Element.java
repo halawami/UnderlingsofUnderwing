@@ -5,9 +5,11 @@ import underlings.gui.Choice;
 public class Element implements Choice {
 
     private ElementColor elementColor;
+    private ElementColor elementAlias;
 
     public Element(ElementColor elementColor) {
         this.elementColor = elementColor;
+        this.elementAlias = elementColor;
     }
 
     public ElementColor getColor() {
@@ -20,11 +22,11 @@ public class Element implements Choice {
     }
 
     public ElementColor getAlias() {
-        return this.elementColor;
+        return this.elementAlias;
     }
 
-    public void setAlias(ElementColor blue) {
-
+    public void setAlias(ElementColor newColor) {
+        this.elementAlias = newColor;
     }
 
 }

@@ -29,9 +29,7 @@ public class ElementSpace implements Choice {
     }
 
     public void destroyAllElementsOfColor(ElementColor colorOfElementsToDestroy) {
-        Predicate<Element> removeMethod = (Element e) -> {
-            return e.getColor().equals(colorOfElementsToDestroy);
-        };
+        Predicate<Element> removeMethod = (Element e) -> e.getColor().equals(colorOfElementsToDestroy);
         this.elements.removeIf(removeMethod);
     }
 
@@ -51,8 +49,11 @@ public class ElementSpace implements Choice {
 
     public List<ElementColor> getElementColors() {
         List<ElementColor> colors = new ArrayList<>();
-        this.elements.forEach((element) -> colors.add(element.getColor()));
+        this.elements.forEach((element) -> colors.add(element.getAlias()));
         return colors;
     }
 
+    public void destroyAllElements() {
+        this.elements.clear();
+    }
 }
