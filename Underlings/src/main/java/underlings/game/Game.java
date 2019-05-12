@@ -2,6 +2,7 @@ package underlings.game;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import underlings.element.ElementBag;
 import underlings.gui.Gui;
@@ -11,6 +12,7 @@ import underlings.phase.FinalPhase.FinalPhaseType;
 import underlings.phase.Phase;
 import underlings.player.Player;
 import underlings.player.PlayerFactory;
+import underlings.utilities.LocaleWrap;
 
 public class Game {
 
@@ -71,6 +73,7 @@ public class Game {
 
     public void start(List<Phase> phases, Map<FinalPhaseType, FinalPhase> finalPhaseMap) {
         FinalPhase finalPhase = finalPhaseMap.get(FinalPhaseType.REGULAR);
+        this.promptLocale();
         this.promptPlayerCount();
         this.setUp(this.numberOfPlayers);
 
@@ -95,6 +98,11 @@ public class Game {
         }
 
         finalPhase.execute();
+    }
+
+    public void promptLocale() {
+        Locale locale = this.gui.promptLocale(Locale.getAvailableLocales());
+        LocaleWrap.locale = locale;
     }
 
     public void promptPlayerCount() {
