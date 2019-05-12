@@ -1,13 +1,10 @@
 package underlings.elements.drawing;
 
 import static org.junit.Assert.assertEquals;
-
 import java.util.Random;
-
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
@@ -16,8 +13,8 @@ import underlings.gui.DrawChoice;
 
 public class DrawChoiceTests {
 
-    Random random;
-    ElementBag elementBag;
+    private Random random;
+    private ElementBag elementBag;
 
     @Before
     public void init() {
@@ -29,65 +26,24 @@ public class DrawChoiceTests {
     }
 
     @Test
-    public void testRandom() {
-        this.testDrawChoice(DrawChoice.RANDOM, ElementColor.BLUE);
+    public void testAll() {
+        assertEquals(ElementColor.BLUE, this.drawChoice(DrawChoice.RANDOM));
+        assertEquals(ElementColor.RED, this.drawChoice(DrawChoice.WARM));
+        assertEquals(ElementColor.BLUE, this.drawChoice(DrawChoice.COOL));
+        assertEquals(ElementColor.RED, this.drawChoice(DrawChoice.RED));
+        assertEquals(ElementColor.YELLOW, this.drawChoice(DrawChoice.YELLOW));
+        assertEquals(ElementColor.BLUE, this.drawChoice(DrawChoice.BLUE));
+        assertEquals(ElementColor.GREEN, this.drawChoice(DrawChoice.GREEN));
+        assertEquals(ElementColor.ORANGE, this.drawChoice(DrawChoice.ORANGE));
+        assertEquals(ElementColor.PURPLE, this.drawChoice(DrawChoice.PURPLE));
+        assertEquals(ElementColor.BLACK, this.drawChoice(DrawChoice.BLACK));
+        assertEquals(ElementColor.WHITE, this.drawChoice(DrawChoice.WHITE));
     }
 
-    @Test
-    public void testWarm() {
-        this.testDrawChoice(DrawChoice.WARM, ElementColor.RED);
-    }
-
-    @Test
-    public void testCool() {
-        this.testDrawChoice(DrawChoice.COOL, ElementColor.BLUE);
-    }
-
-    @Test
-    public void testRed() {
-        this.testDrawChoice(DrawChoice.RED, ElementColor.RED);
-    }
-
-    @Test
-    public void testYellow() {
-        this.testDrawChoice(DrawChoice.YELLOW, ElementColor.YELLOW);
-    }
-
-    @Test
-    public void testBlue() {
-        this.testDrawChoice(DrawChoice.BLUE, ElementColor.BLUE);
-    }
-
-    @Test
-    public void testGreen() {
-        this.testDrawChoice(DrawChoice.GREEN, ElementColor.GREEN);
-    }
-
-    @Test
-    public void testOrange() {
-        this.testDrawChoice(DrawChoice.ORANGE, ElementColor.ORANGE);
-    }
-
-    @Test
-    public void testPurple() {
-        this.testDrawChoice(DrawChoice.PURPLE, ElementColor.PURPLE);
-    }
-
-    @Test
-    public void testBlack() {
-        this.testDrawChoice(DrawChoice.BLACK, ElementColor.BLACK);
-    }
-
-    @Test
-    public void testWhite() {
-        this.testDrawChoice(DrawChoice.WHITE, ElementColor.WHITE);
-    }
-
-    private void testDrawChoice(DrawChoice drawChoice, ElementColor color) {
+    private ElementColor drawChoice(DrawChoice drawChoice) {
         Element element = this.elementBag.drawElement(drawChoice);
-
-        EasyMock.verify(this.random);
-        assertEquals(color, element.getColor());
+        this.init();
+        return element.getColor();
     }
 
 }
