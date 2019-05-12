@@ -139,4 +139,8 @@ public class ElementSpaceLogic {
         }
         return playerElements;
     }
+
+    public void setOpenElement(ElementColor color) {
+        // TODO: implement
+    }
 }

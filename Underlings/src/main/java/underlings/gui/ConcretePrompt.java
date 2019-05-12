@@ -4,12 +4,10 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
-
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
 import underlings.card.Card;
 
 public class ConcretePrompt implements PromptHandler {
@@ -102,6 +100,16 @@ public class ConcretePrompt implements PromptHandler {
         } while (result > max || result < min);
 
         return result;
+    }
+
+    @Override
+    public <T> T promptChoiceDropdown(String prompt, List<T> choices, T defaultChoice) {
+
+        @SuppressWarnings("unchecked")
+        T choice = (T) JOptionPane.showInputDialog(null, prompt, "", JOptionPane.QUESTION_MESSAGE, null,
+                choices.toArray(), defaultChoice);
+
+        return choice;
     }
 
 }
