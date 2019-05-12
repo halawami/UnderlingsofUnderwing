@@ -65,8 +65,9 @@ public abstract class Effect {
         this.apply(this.centerCard, this.hatchingGround, this.elementBag, this.gui, this.player, this.eggHatchingLogic);
         this.apply(this.player, this.elementBag);
         this.apply(this.player);
-        this.apply(this.player, this.players, this.gui);
+        this.apply(this.players, this.gui);
         this.apply(this.players, this.deck);
+        this.apply(this.player, this.players, this.gui, this.eggHatchingLogic);
     }
 
     protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag, Gui gui,
@@ -76,7 +77,9 @@ public abstract class Effect {
 
     protected void apply(Player player) {}
 
-    protected void apply(Player currentPlayer, List<Player> players, Gui gui) {}
+    protected void apply(List<Player> players, Gui gui) {}
 
     protected void apply(List<Player> players, Deck deck) {}
+
+    protected void apply(Player currentPlayer, List<Player> players, Gui gui, EggHatchingLogic eggHatchingLogic) {}
 }

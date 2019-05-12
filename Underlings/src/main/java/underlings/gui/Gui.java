@@ -179,7 +179,7 @@ public class Gui {
         }
     }
 
-    public Object promptCardToSteal(String toDispaly, int playerId, Map<Player, Card> playerCards) {
+    public Card promptCardToSteal(String toDispaly, int playerId, Map<Player, List<Card>> playerCards) {
         // TODO
         return null;
     }

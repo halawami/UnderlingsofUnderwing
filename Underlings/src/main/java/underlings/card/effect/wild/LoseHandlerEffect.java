@@ -9,7 +9,7 @@ import underlings.player.Player;
 public class LoseHandlerEffect extends PlayersEffect {
 
     @Override
-    protected void apply(Player currentPlayer, List<Player> players, Gui gui) {
+    protected void apply(List<Player> players, Gui gui) {
         players.forEach(Player::loseHandler);
     }
 }
