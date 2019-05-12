@@ -11,8 +11,7 @@ public class PlayersTradeDragon extends PlayersEffect {
 
     @Override
     protected void apply(List<Player> players, Gui gui) {
-        gui.promptCard("Choose a card to trade", players.get(0).hatchedCards);
-        Card cardToTrade = players.get(0).hatchedCards.get(0);
+        Card cardToTrade = gui.promptCard("Choose a card to trade", players.get(0).hatchedCards);
         players.get(0).hatchedCards.remove(cardToTrade);
         players.get(1).hatchedCards.add(cardToTrade);
         Card secondCard = gui.promptCard("Choose a card to trade", players.get(1).hatchedCards);

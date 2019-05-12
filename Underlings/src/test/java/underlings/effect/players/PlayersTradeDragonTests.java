@@ -63,10 +63,12 @@ public class PlayersTradeDragonTests {
         card.domesticEffects = new Effect[1];
         Effect mockedEffect = EasyMock.mock(Effect.class);
         card.domesticEffects[0] = mockedEffect;
+        Card card3 = new Card();
+        card3.points = 12;
+        card3.domesticEffects = new Effect[] {mockedEffect};
         Card card2 = new Card();
         card2.points = 12;
-        card2.domesticEffects = new Effect[1];
-        card2.domesticEffects[0] = mockedEffect;
+        card2.domesticEffects = new Effect[] {mockedEffect};
         Effect effect = new PlayersTradeDragon();
         player.hatchedCards = new ArrayList<>();
         player.hatchedCards.add(card);
@@ -76,17 +78,17 @@ public class PlayersTradeDragonTests {
         // TODO: this should probably be differnet than prompt card because we want to show cards
         // and points and effects
         // need to take playerid
-        EasyMock.expect(gui.promptCard("Choose a card to trade", player.hatchedCards)).andReturn(card);
+        EasyMock.expect(gui.promptCard("Choose a card to trade", player.hatchedCards)).andReturn(card3);
         EasyMock.expect(gui.promptCard("Choose a card to trade", player2.hatchedCards)).andReturn(card2);
 
         EasyMock.replay(player, player2, mockedEffect, gui);
 
         effect.apply();
-        assertTrue(player2.hatchedCards.contains(card));
-        assertFalse(player.hatchedCards.contains(card));
+        assertTrue(player2.hatchedCards.contains(card3));
+        assertFalse(player.hatchedCards.contains(card3));
         assertTrue(player.hatchedCards.contains(card2));
         assertFalse(player2.hatchedCards.contains(card2));
-        assertEquals(1, player.hatchedCards.size());
+        assertEquals(2, player.hatchedCards.size());
         assertEquals(1, player2.hatchedCards.size());
 
         EasyMock.verify(player, player2, mockedEffect, gui);
