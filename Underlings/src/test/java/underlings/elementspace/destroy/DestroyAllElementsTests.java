@@ -29,4 +29,15 @@ public class DestroyAllElementsTests {
         Assert.assertEquals(0, elementSpace.elements.size());
     }
 
+    @Test
+    public void testTwoElements() {
+        ElementSpace elementSpace = new ElementSpace();
+        elementSpace.elements.add(new Element(ElementColor.RED));
+        elementSpace.elements.add(new Element(ElementColor.BLUE));
+
+        elementSpace.destroyAllElements();
+
+        Assert.assertEquals(0, elementSpace.elements.size());
+    }
+
 }
