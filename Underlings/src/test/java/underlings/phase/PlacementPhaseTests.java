@@ -118,9 +118,31 @@ public class PlacementPhaseTests {
         phase.setup();
         Method gameoverMethod = getMethod(phase, "checkGameover");
         gameoverMethod.invoke(phase);
+        EasyMock.verify(player, deck);
+
         assertFalse((boolean) getField(Phase.class, phase, "gameComplete"));
         assertFalse((boolean) getField(Phase.class, phase, "phaseComplete"));
-        EasyMock.verify(player, deck);
+    }
+
+    @Test
+    public void testCheckGameoverNoCards() throws Exception {
+        Player player = EasyMock.mock(Player.class);
+        EasyMock.expect(player.getHandlerCount()).andReturn(3).anyTimes();
+        List<Player> players = Arrays.asList(player);
+
+        Card card = new Card();
+        card.handler = new Handler(HandlerState.CARD);
+        HatchingGround hatchingGround = new HatchingGround(null);
+
+        EasyMock.replay(player);
+        PlacementPhase phase = new PlacementPhase(players, null, hatchingGround, null, null, null);
+        phase.setup();
+        Method gameoverMethod = getMethod(phase, "checkGameover");
+        gameoverMethod.invoke(phase);
+        EasyMock.verify(player);
+
+        assertTrue((boolean) getField(Phase.class, phase, "gameComplete"));
+        assertTrue((boolean) getField(Phase.class, phase, "phaseComplete"));
     }
 
     @Test
