@@ -4,6 +4,7 @@ import underlings.card.Card;
 import underlings.field.Field;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
+import underlings.utilities.LocaleWrap;
 
 public class HandlerMovementLogic {
 
@@ -29,7 +30,7 @@ public class HandlerMovementLogic {
             case CARD:
                 handler.moveToState(choice.getState());
 
-                Card chosenCard = this.gui.getCard(playerId, "Choose a card to move your handler to",
+                Card chosenCard = this.gui.getCard(playerId, LocaleWrap.get("handler_movement_card"),
                         this.hatchingGround, this.hatchingGround::isUnclaimed);
 
                 chosenCard.handler = handler;
