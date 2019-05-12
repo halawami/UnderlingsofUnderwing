@@ -11,7 +11,7 @@ import underlings.player.Player;
 public class PlayersTradeDragon extends PlayersEffect {
 
     @Override
-    protected void apply(List<Player> players, Gui gui) {
+    protected void apply(Player currentPlayer, List<Player> players, Gui gui) {
         Player playerWithMinCards = players.get(0);
         for (Player player : players) {
             if (player.hatchedCards.size() < playerWithMinCards.hatchedCards.size()) {

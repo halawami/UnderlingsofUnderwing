@@ -179,6 +179,11 @@ public class Gui {
         }
     }
 
+    public Player promptPlayer(String toDispaly, int playerId, List<Player> players) {
+        //TODO, Mohammad is using this for Ignatius's StealAllStoredElementsEffect
+        return null;
+    }
+
     public Card promptCardToSteal(String toDispaly, int playerId, Map<Player, List<Card>> playerCards) {
         // TODO
         return null;

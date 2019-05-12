@@ -1,6 +1,7 @@
 package underlings.card.effect;
 
 import java.util.List;
+
 import underlings.card.Card;
 import underlings.element.ElementBag;
 import underlings.element.ElementGiver;
@@ -65,21 +66,27 @@ public abstract class Effect extends ElementGiver {
         this.apply(this.centerCard, this.hatchingGround, this.elementBag, this.gui, this.player, this.eggHatchingLogic);
         this.apply(this.player, this.elementBag);
         this.apply(this.player);
-        this.apply(this.players, this.gui);
+        this.apply(this.player, this.players, this.gui);
         this.apply(this.players, this.deck);
         this.apply(this.player, this.players, this.gui, this.eggHatchingLogic);
     }
 
     protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag, Gui gui,
-            Player currentPlayer, EggHatchingLogic eggHatchingLogic) {}
+            Player currentPlayer, EggHatchingLogic eggHatchingLogic) {
+    }
 
-    protected void apply(Player player, ElementBag elementBag) {}
+    protected void apply(Player player, ElementBag elementBag) {
+    }
 
-    protected void apply(Player player) {}
+    protected void apply(Player player) {
+    }
 
-    protected void apply(List<Player> players, Gui gui) {}
+    protected void apply(Player currentPlayer, List<Player> players, Gui gui) {
+    }
 
-    protected void apply(List<Player> players, Deck deck) {}
+    protected void apply(List<Player> players, Deck deck) {
+    }
 
-    protected void apply(Player currentPlayer, List<Player> players, Gui gui, EggHatchingLogic eggHatchingLogic) {}
+    protected void apply(Player currentPlayer, List<Player> players, Gui gui, EggHatchingLogic eggHatchingLogic) {
+    }
 }
