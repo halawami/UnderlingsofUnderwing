@@ -12,6 +12,7 @@ import underlings.handler.HandlerChoice;
 import underlings.handler.HandlerDecision;
 import underlings.handler.HandlerFactory;
 import underlings.handler.HandlerMovementLogic;
+import underlings.handler.HandlerState;
 import underlings.player.Player;
 
 public class HandlerPhaseTest {
@@ -27,6 +28,34 @@ public class HandlerPhaseTest {
         List<Player> players = new ArrayList<Player>();
         players.add(player);
 
+        HandlerDecision handlerDecision = new HandlerDecision(player.getHandlers().get(0), HandlerChoice.CARD);
+
+        EasyMock.expect(gui.getHandlerDecision(player.getHandlers(), 0, hatchingGround)).andReturn(handlerDecision);
+        handlerMovementLogic.move(handlerDecision.handler, handlerDecision.choice, 0);
+
+        Phase handlerPhase = new HandlerPhase(players, gui, null, hatchingGround, () -> {
+        }, null, handlerMovementLogic);
+
+        EasyMock.replay(gui, handlerMovementLogic, hatchingGround);
+
+        handlerPhase.setup();
+        handlerPhase.turn(player);
+
+        EasyMock.verify(gui, handlerMovementLogic, hatchingGround);
+
+    }
+
+    @Test
+    public void testTurnHandlerInBreakRoom() {
+
+        Gui gui = EasyMock.mock(Gui.class);
+        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
+        HandlerMovementLogic handlerMovementLogic = EasyMock.mock(HandlerMovementLogic.class);
+        Player player = new Player(6, new HandlerFactory(), 0);
+
+        List<Player> players = new ArrayList<Player>();
+        players.add(player);
+        player.getHandlers().get(0).moveToState(HandlerState.BREAK_ROOM);
         HandlerDecision handlerDecision = new HandlerDecision(player.getHandlers().get(0), HandlerChoice.CARD);
 
         EasyMock.expect(gui.getHandlerDecision(player.getHandlers(), 0, hatchingGround)).andReturn(handlerDecision);
