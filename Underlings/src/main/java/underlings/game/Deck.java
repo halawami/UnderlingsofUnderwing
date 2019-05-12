@@ -23,6 +23,12 @@ public class Deck {
     }
 
     public int getSize() {
-        return 50;
+        return this.cards.size();
     }
+
+    public void addCard(Card card) {
+        this.cards.add(card);
+        // TODO: shuffle here
+    }
+
 }

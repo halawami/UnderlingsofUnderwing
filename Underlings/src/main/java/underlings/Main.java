@@ -4,7 +4,6 @@ import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,6 +31,7 @@ import underlings.phase.Phase;
 import underlings.phase.PlacementPhase;
 import underlings.phase.RegularFinalPhase;
 import underlings.phase.WildFinalPhase;
+import underlings.player.FakePlayer;
 import underlings.player.PlayerFactory;
 import underlings.scoring.ScoreUtils;
 import underlings.utilities.EggHatchingLogic;
@@ -43,13 +43,14 @@ public class Main {
     private static final String CARDS_JSON_FILE_NAME = LocaleWrap.get("cards_json");
 
     public static void main(String[] args) {
-        List<String> recipes;
+        List<String> recipes = null;
         try {
             recipes = Resources.readLines(Resources.getResource("DefaultRecipeList.txt"), Charsets.UTF_8);
         } catch (IOException e) {
             e.printStackTrace();
-            recipes = Arrays.asList();
+            System.exit(1);
         }
+        FakePlayer.initPlayer(recipes);
 
         Gui gui = new Gui(new ConcretePrompt(), new ConcreteDisplay());
         CardFactory cardFactory = new CardFactory(CARDS_JSON_FILE_NAME);

@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
 
@@ -144,11 +145,6 @@ public class Gui {
         return EmptyCard.getInstance();
     }
 
-    public Player promptPlayer(String toDisplay, int playerId) {
-        // TODO
-        return null;
-    }
-
     public Locale promptLocale(Locale[] locales) {
         return this.promptHandler.promptChoiceDropdown("Choose Language", Arrays.asList(locales), Locale.ENGLISH);
     }
@@ -181,5 +177,10 @@ public class Gui {
                 this.display.displayCard(row, col, hatchingGround.cards[row][col]);
             }
         }
+    }
+
+    public Card promptCardToSteal(String toDispaly, int playerId, Map<Player, List<Card>> playerCards) {
+        // TODO
+        return null;
     }
 }

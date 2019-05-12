@@ -13,7 +13,6 @@ import underlings.utilities.EggHatchingLogic;
 
 public abstract class AdjacentEggsEffect extends HatchingGroundEffect {
 
-    // TODO: get rid of elementspacelogic because player already has it.
     @Override
     protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag, Gui gui,
             Player currentPlayer, EggHatchingLogic eggHatchingLogic) {
