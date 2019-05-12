@@ -84,7 +84,7 @@ public class ElementSpaceLogic {
             }
 
             List<ElementColor> remaining = new ArrayList<ElementColor>(recipe);
-            elementSpace.elements.forEach((element) -> remaining.remove(element.getColor()));
+            elementSpace.elements.forEach((element) -> remaining.remove(element.getAlias()));
 
             if (remaining.isEmpty()) {
                 validAdditions.clear();
