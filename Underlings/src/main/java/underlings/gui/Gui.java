@@ -9,9 +9,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
-
 import javax.swing.JOptionPane;
-
 import underlings.card.Card;
 import underlings.card.EmptyCard;
 import underlings.element.Element;
@@ -29,8 +27,12 @@ import underlings.utilities.LocaleWrap;
 
 public class Gui {
 
-    public PromptHandler promptHandler;
+    protected PromptHandler promptHandler;
     protected Display display;
+
+    public enum PromptType {
+        REGULAR, WARNING, ERROR;
+    }
 
     public Gui(PromptHandler promptHandler, Display display) {
         this.promptHandler = promptHandler;
@@ -195,5 +197,16 @@ public class Gui {
         return null;
     }
 
+    public void alert(String message, PromptType messageType) {
+
+    }
+
+    public void alert(String message, int playerId, PromptType messageType) {
+
+    }
+
+    public <T> T promptChoice(String prompt, List<T> choices, int playerId) {
+        return this.promptHandler.promptChoice(prompt, choices, playerId);
+    }
 
 }
