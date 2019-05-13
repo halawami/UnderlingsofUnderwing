@@ -1,13 +1,8 @@
 package underlings.phase;
 
 import java.util.ArrayList;
-import java.util.List;
 import org.easymock.EasyMock;
 import org.junit.Test;
-import underlings.element.ElementBag;
-import underlings.field.Field;
-import underlings.game.HatchingGround;
-import underlings.gui.Gui;
 import underlings.handler.HandlerFactory;
 import underlings.player.Player;
 
@@ -16,8 +11,8 @@ public class RotationPhaseTests {
 
     @Test
     public void testRotationExecute() {
-        ConcreteSequentialPhase rotation =
-                EasyMock.createMockBuilder(ConcreteSequentialPhase.class).addMockedMethod("turn").addMockedMethod("setup")
+        RotationPhase rotation =
+                EasyMock.createMockBuilder(RotationPhase.class).addMockedMethod("turn").addMockedMethod("setup")
                         .addMockedMethod("setPhaseComplete").addMockedMethod("isPhaseComplete").createMock();
 
         rotation.displayMethod = () -> {
@@ -43,21 +38,5 @@ public class RotationPhaseTests {
 
         EasyMock.verify(rotation);
     }
-
-}
-
-
-class ConcreteRotationPhase extends RotationPhase {
-
-    public ConcreteRotationPhase(List<Player> players, Gui gui, ElementBag elementBag, HatchingGround hatchingGround,
-            Runnable displayMethod, Field field) {
-        super(players, gui, elementBag, hatchingGround, displayMethod, field);
-    }
-
-    @Override
-    public void setup() {}
-
-    @Override
-    public void turn(Player player) {}
 
 }
