@@ -85,6 +85,26 @@ public class ReturnMostValuableDragonEffectTests {
         EasyMock.verify(player, deck, gui);
     }
 
+    @Test
+    public void testReturnMostValuableDragonTwoDragons() {
+        Player player = EasyMock.mock(Player.class);
+        Deck deck = EasyMock.mock(Deck.class);
+        Gui gui = EasyMock.mock(Gui.class);
+        List<Card> mostValuableDragons = TestUtils.mockListOf(Card.class).withLength(2);
+        player.hatchedCards = new ArrayList<>(mostValuableDragons);
 
+        EasyMock.expect(player.getMostValuableDragons()).andReturn(mostValuableDragons);
+        EasyMock.expect(gui.promptCard("Pick a dragon to return to deck", mostValuableDragons))
+                .andReturn(mostValuableDragons.get(1));
+        deck.addCard(mostValuableDragons.get(1));
+
+        EasyMock.replay(player, deck, gui);
+
+        ReturnMostValuableDragonEffect testedEffect = new ReturnMostValuableDragonEffect();
+        testedEffect.returnMostValuableDragon(player, deck, gui);
+
+        Assert.assertFalse(player.hatchedCards.contains(mostValuableDragons.get(1)));
+        EasyMock.verify(player, deck, gui);
+    }
 
 }
