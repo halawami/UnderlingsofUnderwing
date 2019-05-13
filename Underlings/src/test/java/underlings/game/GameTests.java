@@ -91,4 +91,43 @@ public class GameTests {
 
     }
 
+    @Test
+    public void testGameLoopRoundsCompleted() {
+
+        List<Phase> phases = new ArrayList<>();
+        Phase phaseOne = EasyMock.mock(Phase.class);
+        Phase phaseTwo = EasyMock.mock(Phase.class);
+        phases.add(phaseOne);
+        phases.add(phaseTwo);
+
+        FinalPhase finalPhase = EasyMock.mock(FinalPhase.class);
+
+        Game mockedGame = EasyMock.createMockBuilder(Game.class).addMockedMethod("display").createMock();
+
+        mockedGame.numberOfPlayers = 2;
+        mockedGame.roundsLeft = 2;
+        mockedGame.finalPhase = finalPhase;
+        mockedGame.phases = phases;
+
+        mockedGame.display();
+        phaseOne.execute(0);
+        EasyMock.expect(phaseOne.isGameComplete()).andReturn(false);
+        mockedGame.display();
+        phaseTwo.execute(0);
+        EasyMock.expect(phaseTwo.isGameComplete()).andReturn(false);
+        mockedGame.display();
+        phaseOne.execute(1);
+        EasyMock.expect(phaseOne.isGameComplete()).andReturn(false);
+        mockedGame.display();
+        phaseTwo.execute(1);
+        EasyMock.expect(phaseTwo.isGameComplete()).andReturn(false);
+
+        EasyMock.replay(phaseOne, phaseTwo, mockedGame);
+
+        mockedGame.gameLoop();
+
+        EasyMock.verify(phaseOne, phaseTwo, mockedGame);
+
+    }
+
 }
