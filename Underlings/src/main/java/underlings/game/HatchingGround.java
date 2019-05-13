@@ -153,8 +153,4 @@ public class HatchingGround implements Iterable<Card> {
         return allCards;
     }
 
-    public boolean isUnclaimed(Card card) {
-        return this.getUnclaimedEggs().contains(card);
-    }
-
 }
