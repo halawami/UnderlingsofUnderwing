@@ -3567,5 +3567,55 @@
         "effect": "DestroyAllBlackAndWhiteElementsEffect"
       }
     ]
+  },
+  {
+    "name": "IGNATIUS",
+    "points": 15,
+    "temperature": "WARM",
+    "family": "LEGENDARY",
+    "elementSpaces": [
+      {
+        "color": "YELLOW",
+        "position": "L4_1"
+      },
+      {
+        "color": "YELLOW",
+        "position": "L4_2"
+      },
+      {
+        "color": "ORANGE",
+        "position": "L4_3"
+      },
+      {
+        "color": "WHITE",
+        "position": "L4_4"
+      },
+      {
+        "color": "YELLOW",
+        "position": "R4_1"
+      },
+      {
+        "color": "YELLOW",
+        "position": "R4_2"
+      },
+      {
+        "color": "RED",
+        "position": "R4_3"
+      },
+      {
+        "color": "BLACK",
+        "position": "R4_4"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "DeclareWarOnOtherPlayerEffect"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "DeclareGlobalWarEffect"
+      }
+    ]
   }
 ]
