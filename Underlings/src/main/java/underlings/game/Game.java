@@ -27,6 +27,10 @@ public class Game {
     private Gui gui;
     private PlayerFactory playerFactory;
     private ElementBag elementBag;
+    private boolean gameOver = false;
+    private FinalPhase finalPhase;
+    private List<Phase> phases;
+    private Map<FinalPhaseType, FinalPhase> finalPhaseMap;
 
     private List<Player> players = new LinkedList<>();
 
@@ -63,31 +67,38 @@ public class Game {
     }
 
     public void start(List<Phase> phases, Map<FinalPhaseType, FinalPhase> finalPhaseMap) {
-        FinalPhase finalPhase = finalPhaseMap.get(FinalPhaseType.REGULAR);
+        this.phases = phases;
+        this.finalPhaseMap = finalPhaseMap;
+        this.finalPhase = finalPhaseMap.get(FinalPhaseType.REGULAR);
+
         this.promptLocale();
         this.promptPlayerCount();
         this.setUp(this.numberOfPlayers);
 
-        boolean gameOver = false;
-        while (this.roundsLeft > 0 && !gameOver) {
+        this.gameLoop();
 
-            for (Phase phase : phases) {
+        this.display();
+        this.finalPhase.execute();
+    }
+
+    private void gameLoop() {
+        while (this.roundsLeft > 0) {
+
+            for (Phase phase : this.phases) {
                 this.currentPhase++;
                 this.display();
                 phase.execute(this.turnLeader);
-                gameOver = phase.isGameComplete();
-                if (gameOver) {
-                    finalPhase = finalPhaseMap.get(FinalPhaseType.WILD);
+                this.gameOver = phase.isGameComplete();
+                if (this.gameOver) {
+                    this.roundsLeft = 0;
+                    this.finalPhase = this.finalPhaseMap.get(FinalPhaseType.WILD);
                     break;
                 }
             }
             this.currentPhase = 0;
-            this.turnLeader++;
-            this.turnLeader %= 4;
+            this.turnLeader = (this.turnLeader + 1) % this.numberOfPlayers;
             this.roundsLeft--;
         }
-
-        finalPhase.execute();
     }
 
     public void promptLocale() {
