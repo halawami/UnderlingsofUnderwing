@@ -8,6 +8,7 @@ import underlings.card.Card;
 import underlings.card.Temperature;
 import underlings.card.effect.DeckEffects;
 import underlings.game.Deck;
+import underlings.gui.Gui;
 import underlings.player.Player;
 
 public class ReturnAllHatchedDragonsFromPlayers extends DeckEffects {
@@ -15,7 +16,7 @@ public class ReturnAllHatchedDragonsFromPlayers extends DeckEffects {
     public Temperature[] temperatures;
 
     @Override
-    protected void apply(List<Player> players, Deck deck) {
+    protected void apply(List<Player> players, Deck deck, Gui gui) {
         List<Temperature> temperaturesList = Arrays.asList(temperatures);
         for (Player player : players) {
             List<Card> cardsToRemove = new LinkedList<>();
