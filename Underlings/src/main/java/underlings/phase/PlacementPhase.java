@@ -3,6 +3,7 @@ package underlings.phase;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import underlings.card.Card;
 import underlings.element.ElementSpace;
 import underlings.game.HatchingGround;
@@ -55,7 +56,7 @@ public class PlacementPhase extends RotationPhase {
 
         this.utils.placeElements(space, player);
 
-        if (player.elementSpaceLogic.isComplete(card) && card.handler == null) {
+        if (hatchingGround.logic.isComplete(card) && card.handler == null) {
             this.wildEggHatchingLogic.hatchEgg(card, true, FakePlayer.getInstance());
             this.checkGameover();
         }
