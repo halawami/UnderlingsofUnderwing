@@ -2,6 +2,7 @@ package underlings.utilities;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import underlings.card.Card;
 import underlings.element.Element;
 import underlings.element.ElementColor;
@@ -16,7 +17,6 @@ public class PlacementUtilities {
     private HatchingGround hatchingGround;
     private Gui gui;
     private Runnable displayMethod;
-    private List<Card> cards;
 
     public PlacementUtilities(HatchingGround hatchingGround, Gui gui, Runnable displayMethod) {
         this.hatchingGround = hatchingGround;
@@ -24,14 +24,9 @@ public class PlacementUtilities {
         this.displayMethod = displayMethod;
     }
 
-    public Boolean isValid(Card c) {
-        return this.cards.contains(c);
-    }
-
     public Card selectCard(List<Card> cards, Player player) {
-        this.cards = cards;
         String prompt = LocaleWrap.get("prompt_element_card");
-        return this.gui.getCard(player.getPlayerId(), prompt, this.hatchingGround, this::isValid);
+        return this.gui.getCard(player.getPlayerId(), prompt, this.hatchingGround, cards);
     }
 
     public ElementSpace selectElementSpace(Card card, Player player) {
