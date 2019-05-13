@@ -2,6 +2,7 @@ package underlings.player;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import underlings.card.Card;
@@ -137,6 +138,6 @@ public class Player {
     }
 
     public List<Card> getMostValuableDragons() {
-        return null;
+        return new LinkedList<>();
     }
 }
