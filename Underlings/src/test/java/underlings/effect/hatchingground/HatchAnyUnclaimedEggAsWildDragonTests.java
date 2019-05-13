@@ -19,6 +19,7 @@ import underlings.gui.Gui;
 import underlings.player.FakePlayer;
 import underlings.player.Player;
 import underlings.utilities.EggHatchingLogic;
+import underlings.utilities.LocaleWrap;
 
 public class HatchAnyUnclaimedEggAsWildDragonTests {
 
@@ -33,9 +34,10 @@ public class HatchAnyUnclaimedEggAsWildDragonTests {
         Effect effect = new HatchAnyUnclaimedEggAsWildDragon();
         effect.on(card).on(hatchingGround).on(elementBag).on(gui).on(player).on(eggHatchingLogic);
         EasyMock.expect(player.getPlayerId()).andReturn(-1);
-        EasyMock.expect(gui.promptDecision("Would you like to hatch unclaimed egg as wild dragon", -1)).andReturn(true);
+        EasyMock.expect(gui.promptDecision(LocaleWrap.get("prompt_choice_hatch_wildly"), -1)).andReturn(true);
         EasyMock.expect(hatchingGround.getUnclaimedEggs()).andReturn(Arrays.asList(card));
-        EasyMock.expect(gui.promptCard("Choose a card to hatch wildly", Arrays.asList(card))).andReturn(card);
+        EasyMock.expect(gui.promptCard(LocaleWrap.get("prompt_card_hatch_wildly"), Arrays.asList(card)))
+                .andReturn(card);
         List<String> recipes = Resources.readLines(Resources.getResource("DefaultRecipeList.txt"), Charsets.UTF_8);
         FakePlayer.initPlayer(recipes);
         eggHatchingLogic.hatchEgg(card, true, FakePlayer.getInstance());
@@ -58,8 +60,7 @@ public class HatchAnyUnclaimedEggAsWildDragonTests {
         Effect effect = new HatchAnyUnclaimedEggAsWildDragon();
         effect.on(card).on(hatchingGround).on(elementBag).on(gui).on(player).on(eggHatchingLogic);
         EasyMock.expect(player.getPlayerId()).andReturn(-1);
-        EasyMock.expect(gui.promptDecision("Would you like to hatch unclaimed egg as wild dragon", -1))
-                .andReturn(false);
+        EasyMock.expect(gui.promptDecision(LocaleWrap.get("prompt_choice_hatch_wildly"), -1)).andReturn(false);
 
         EasyMock.replay(card, hatchingGround, elementBag, gui, player, eggHatchingLogic);
 
@@ -79,9 +80,9 @@ public class HatchAnyUnclaimedEggAsWildDragonTests {
         Effect effect = new HatchAnyUnclaimedEggAsWildDragon();
         effect.on(card).on(hatchingGround).on(elementBag).on(gui).on(player).on(eggHatchingLogic);
         EasyMock.expect(player.getPlayerId()).andReturn(-1).times(2);
-        EasyMock.expect(gui.promptDecision("Would you like to hatch unclaimed egg as wild dragon", -1)).andReturn(true);
+        EasyMock.expect(gui.promptDecision(LocaleWrap.get("prompt_choice_hatch_wildly"), -1)).andReturn(true);
         EasyMock.expect(hatchingGround.getUnclaimedEggs()).andReturn(Arrays.asList());
-        gui.notifyAction(-1, "No unclaimed eggs to wildly hatch");
+        gui.notifyAction(-1, LocaleWrap.get("notify_no_unclaimed_eggs"));
 
         EasyMock.replay(card, hatchingGround, elementBag, gui, player, eggHatchingLogic);
 

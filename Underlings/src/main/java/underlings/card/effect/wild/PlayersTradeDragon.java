@@ -7,6 +7,7 @@ import underlings.card.effect.PlayersEffect;
 import underlings.gui.Gui;
 import underlings.player.FakePlayer;
 import underlings.player.Player;
+import underlings.utilities.LocaleWrap;
 
 public class PlayersTradeDragon extends PlayersEffect {
 
@@ -25,12 +26,13 @@ public class PlayersTradeDragon extends PlayersEffect {
             }
         }
         if (count > 0) {
-            gui.notifyAction(FakePlayer.getInstance().getPlayerId(), "There is no player with the least dragons");
+            gui.notifyAction(FakePlayer.getInstance().getPlayerId(), LocaleWrap.get("notify_no_player_least_dragons"));
         } else {
             for (Player player : players) {
                 if (player != playerWithMinCards) {
-                    Card cardToTrade = gui.promptCard("Choose a card to trade", player.hatchedCards);
-                    Card secondCardToTrade = gui.promptCard("Choose a card to trade", playerWithMinCards.hatchedCards);
+                    Card cardToTrade = gui.promptCard(LocaleWrap.get("prompt_card_to_trade"), player.hatchedCards);
+                    Card secondCardToTrade =
+                            gui.promptCard(LocaleWrap.get("prompt_card_to_trade"), playerWithMinCards.hatchedCards);
                     player.hatchedCards.remove(cardToTrade);
                     playerWithMinCards.hatchedCards.add(cardToTrade);
                     player.hatchedCards.add(secondCardToTrade);

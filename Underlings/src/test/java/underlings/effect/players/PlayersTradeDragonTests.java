@@ -16,6 +16,7 @@ import underlings.card.effect.Effect;
 import underlings.card.effect.wild.PlayersTradeDragon;
 import underlings.gui.Gui;
 import underlings.player.Player;
+import underlings.utilities.LocaleWrap;
 
 public class PlayersTradeDragonTests {
 
@@ -37,8 +38,8 @@ public class PlayersTradeDragonTests {
         // TODO: this should probably be differnet than prompt card because we want to show cards
         // and points and effects
         // need to take playerid
-        EasyMock.expect(gui.promptCard("Choose a card to trade", player.hatchedCards)).andReturn(card);
-        EasyMock.expect(gui.promptCard("Choose a card to trade", player2.hatchedCards))
+        EasyMock.expect(gui.promptCard(LocaleWrap.get("prompt_card_to_trade"), player.hatchedCards)).andReturn(card);
+        EasyMock.expect(gui.promptCard(LocaleWrap.get("prompt_card_to_trade"), player2.hatchedCards))
                 .andReturn(EmptyCard.getInstance());
 
         EasyMock.replay(player, player2, mockedEffect, gui);
@@ -79,8 +80,8 @@ public class PlayersTradeDragonTests {
         // and points and effects
         // need to take playerid
 
-        EasyMock.expect(gui.promptCard("Choose a card to trade", player.hatchedCards)).andReturn(card3);
-        EasyMock.expect(gui.promptCard("Choose a card to trade", player2.hatchedCards)).andReturn(card2);
+        EasyMock.expect(gui.promptCard(LocaleWrap.get("prompt_card_to_trade"), player.hatchedCards)).andReturn(card3);
+        EasyMock.expect(gui.promptCard(LocaleWrap.get("prompt_card_to_trade"), player2.hatchedCards)).andReturn(card2);
 
         EasyMock.replay(player, player2, mockedEffect, gui);
 
@@ -126,10 +127,12 @@ public class PlayersTradeDragonTests {
         // TODO: this should probably be differnet than prompt card because we want to show cards
         // and points and effects
         // need to take playerid
-        EasyMock.expect(gui.promptCard("Choose a card to trade", player.hatchedCards)).andReturn(card);
-        EasyMock.expect(gui.promptCard("Choose a card to trade", playerWithLeastDragons.hatchedCards)).andReturn(card3);
-        EasyMock.expect(gui.promptCard("Choose a card to trade", player2.hatchedCards)).andReturn(card2);
-        EasyMock.expect(gui.promptCard("Choose a card to trade", playerWithLeastDragons.hatchedCards)).andReturn(card);
+        EasyMock.expect(gui.promptCard(LocaleWrap.get("prompt_card_to_trade"), player.hatchedCards)).andReturn(card);
+        EasyMock.expect(gui.promptCard(LocaleWrap.get("prompt_card_to_trade"), playerWithLeastDragons.hatchedCards))
+                .andReturn(card3);
+        EasyMock.expect(gui.promptCard(LocaleWrap.get("prompt_card_to_trade"), player2.hatchedCards)).andReturn(card2);
+        EasyMock.expect(gui.promptCard(LocaleWrap.get("prompt_card_to_trade"), playerWithLeastDragons.hatchedCards))
+                .andReturn(card);
 
         EasyMock.replay(player, player2, mockedEffect, gui, player3);
 
@@ -166,7 +169,7 @@ public class PlayersTradeDragonTests {
         player2.hatchedCards = new ArrayList<>();
         player2.hatchedCards.add(card2);
         effect.on(Arrays.asList(player, player2)).on(gui);
-        gui.notifyAction(-1, "There is no player with the least dragons");
+        gui.notifyAction(-1, LocaleWrap.get("notify_no_player_least_dragons"));
 
         EasyMock.replay(player, player2, mockedEffect, gui);
 
@@ -198,7 +201,7 @@ public class PlayersTradeDragonTests {
         player3.hatchedCards = new ArrayList<>();
         player3.hatchedCards.add(card2);
         effect.on(Arrays.asList(player, player2, player3)).on(gui);
-        gui.notifyAction(-1, "There is no player with the least dragons");
+        gui.notifyAction(-1, LocaleWrap.get("notify_no_player_least_dragons"));
 
         EasyMock.replay(player, player2, mockedEffect, gui, player3);
 
