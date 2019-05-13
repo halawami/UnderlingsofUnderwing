@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
-import java.util.function.Function;
 
 import javax.swing.JOptionPane;
 
@@ -73,11 +72,11 @@ public class Gui {
         return new HandlerDecision(handler, handlerChoice);
     }
 
-    public Card getCard(int playerId, String prompt, HatchingGround hatchingGround, Function<Card, Boolean> isValid) {
+    public Card getCard(int playerId, String prompt, HatchingGround hatchingGround, List<Card> validCards) {
         Card[][] cards = new Card[hatchingGround.getHeight()][hatchingGround.getWidth()];
         for (int w = 0; w < cards.length; w++) {
             for (int h = 0; h < cards[w].length; h++) {
-                if (isValid.apply(hatchingGround.cards[w][h])) {
+                if (validCards.contains(hatchingGround.cards[w][h])) {
                     cards[w][h] = hatchingGround.cards[w][h];
                 }
             }

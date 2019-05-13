@@ -3,10 +3,14 @@ package underlings.handler.movement;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
-import com.google.common.base.Function;
+
+import java.util.Arrays;
+import java.util.List;
+
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.card.Card;
 import underlings.field.Field;
 import underlings.field.FieldSpaceFactory;
@@ -86,7 +90,9 @@ public class LogicTests {
         Card card = new Card();
 
         EasyMock.expect(this.gui.getCard(EasyMock.anyInt(), EasyMock.anyString(),
-                EasyMock.anyObject(HatchingGround.class), EasyMock.anyObject(Function.class))).andReturn(card);
+                EasyMock.anyObject(HatchingGround.class), EasyMock.anyObject(List.class))).andReturn(card);
+        List<Card> cardList = Arrays.asList(card);
+        EasyMock.expect(this.hatchingGround.getUnclaimedEggs()).andReturn(cardList);
         EasyMock.replay(this.hatchingGround, this.gui);
 
         Handler handler = new Handler(HandlerState.READY_ROOM);

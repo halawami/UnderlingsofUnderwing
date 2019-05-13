@@ -31,7 +31,7 @@ public class HandlerMovementLogic {
                 handler.moveToState(choice.getState());
 
                 Card chosenCard = this.gui.getCard(playerId, LocaleWrap.get("handler_movement_card"),
-                        this.hatchingGround, this.hatchingGround::isUnclaimed);
+                        this.hatchingGround, this.hatchingGround.getUnclaimedEggs());
 
                 chosenCard.handler = handler;
                 handler.setLocation(chosenCard.name);
