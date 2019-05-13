@@ -10,6 +10,7 @@ import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
+import underlings.handler.WildHandler;
 import underlings.player.Player;
 
 public class PlacementUtilities {
@@ -62,7 +63,7 @@ public class PlacementUtilities {
     public List<Card> getPlayableCards(ElementSpaceLogic logic, List<Element> elements) {
         List<Card> cards = new ArrayList<Card>();
         for (Card card : this.hatchingGround) {
-            if (!logic.getPlayableSpaces(card, elements).isEmpty()) {
+            if (card.handler != WildHandler.getInstance() && !logic.getPlayableSpaces(card, elements).isEmpty()) {
                 cards.add(card);
             }
         }

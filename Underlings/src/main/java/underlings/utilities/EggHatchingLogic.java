@@ -16,11 +16,13 @@ public class EggHatchingLogic {
     private Gui gui;
     private ElementBag elementBag;
     private HatchingGround hatchingGround;
+    private Runnable displayMethod;
 
-    public EggHatchingLogic(Gui gui, ElementBag elementBag, HatchingGround hatchingGround) {
+    public EggHatchingLogic(Gui gui, ElementBag elementBag, HatchingGround hatchingGround, Runnable displayMethod) {
         this.gui = gui;
         this.elementBag = elementBag;
         this.hatchingGround = hatchingGround;
+        this.displayMethod = displayMethod;
     }
 
     public void hatchEgg(Card card, boolean wild, Player player) {
@@ -37,6 +39,7 @@ public class EggHatchingLogic {
         for (int i = 0; i < effects.length; i++) {
             effects[i].on(card).on(this.elementBag).on(this.hatchingGround).on(player).on(this.gui).on(this).apply();
             this.gui.notifyAction(player.getPlayerId(), LocaleWrap.format("effect_applied", effects[i].toString()));
+            this.displayMethod.run();
         }
     }
 
