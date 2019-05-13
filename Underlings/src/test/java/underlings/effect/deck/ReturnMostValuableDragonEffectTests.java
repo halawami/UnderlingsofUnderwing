@@ -22,7 +22,7 @@ public class ReturnMostValuableDragonEffectTests {
                 .addMockedMethod("returnMostValueDragon").createMock();
         testedEffect.on(players).on(deck).on(gui);
 
-        players.forEach(player -> testedEffect.returnMostValueDragon(players, deck, gui));
+        players.forEach(player -> testedEffect.returnMostValueDragon(player, deck, gui));
 
         EasyMock.replay(deck, gui, testedEffect);
         players.forEach(EasyMock::replay);
@@ -42,7 +42,7 @@ public class ReturnMostValuableDragonEffectTests {
                 .addMockedMethod("returnMostValueDragon").createMock();
         testedEffect.on(players).on(deck).on(gui);
 
-        players.forEach(player -> testedEffect.returnMostValueDragon(players, deck, gui));
+        players.forEach(player -> testedEffect.returnMostValueDragon(player, deck, gui));
 
         EasyMock.replay(deck, gui, testedEffect);
         players.forEach(EasyMock::replay);
