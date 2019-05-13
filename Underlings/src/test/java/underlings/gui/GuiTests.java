@@ -1,20 +1,15 @@
 package underlings.gui;
 
 import static org.junit.Assert.assertEquals;
-
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
-
 import java.util.List;
 import java.util.Random;
-
 import javax.swing.JOptionPane;
-
 import org.easymock.EasyMock;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.card.Card;
 import underlings.element.ElementBag;
 import underlings.element.ElementFactory;
@@ -62,7 +57,7 @@ public class GuiTests {
         EasyMock.replay(this.promptHandler, this.display);
         this.game.promptPlayerCount();
 
-        assertEquals(2, this.game.getPlayerCount());
+        assertEquals(2, this.game.numberOfPlayers);
 
     }
 
@@ -73,7 +68,7 @@ public class GuiTests {
         EasyMock.replay(this.promptHandler, this.display);
         this.game.promptPlayerCount();
 
-        assertEquals(6, this.game.getPlayerCount());
+        assertEquals(6, this.game.numberOfPlayers);
     }
 
     @Test
