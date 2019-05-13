@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import underlings.element.ElementBag;
 import underlings.field.Field;
 import underlings.game.HatchingGround;
@@ -56,7 +55,7 @@ public class HandlerPhase extends RotationPhase {
             HandlerDecision decision =
                     this.gui.getHandlerDecision(playersHandlers, player.getPlayerId(), this.hatchingGround);
             this.handlerMovementLogic.move(decision.handler, decision.choice, player.getPlayerId());
-            this.phaseComplete = false;
+            this.setPhaseComplete(false);
 
         }
     }

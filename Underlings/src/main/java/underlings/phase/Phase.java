@@ -1,7 +1,6 @@
 package underlings.phase;
 
 import java.util.List;
-
 import underlings.element.ElementBag;
 import underlings.field.Field;
 import underlings.game.HatchingGround;
@@ -17,7 +16,7 @@ public abstract class Phase {
     protected Runnable displayMethod;
     protected Field field;
 
-    protected boolean phaseComplete;
+    private boolean phaseComplete;
     protected boolean gameComplete;
 
     public Phase(List<Player> players, Gui gui, ElementBag elementBag, HatchingGround hatchingGround,
@@ -37,7 +36,15 @@ public abstract class Phase {
     public abstract void turn(Player player);
 
     public boolean isGameComplete() {
-        return gameComplete;
+        return this.gameComplete;
+    }
+
+    public void setPhaseComplete(boolean phaseComplete) {
+        this.phaseComplete = phaseComplete;
+    }
+
+    public boolean isPhaseComplete() {
+        return this.phaseComplete;
     }
 
 }

@@ -38,7 +38,7 @@ public class DragonPhase extends SequentialPhase {
                 this.gui.notifyAction(player.getPlayerId(), LocaleWrap.format("incubation_state", completeCard.name));
             }
         }
-        this.phaseComplete = true;
+        this.setPhaseComplete(true);
     }
 
 }

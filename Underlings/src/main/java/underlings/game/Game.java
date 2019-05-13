@@ -95,6 +95,7 @@ public class Game {
                     break;
                 }
             }
+
             this.currentPhase = 0;
             this.turnLeader = (this.turnLeader + 1) % this.numberOfPlayers;
             this.roundsLeft--;

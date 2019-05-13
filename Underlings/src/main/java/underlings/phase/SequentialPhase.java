@@ -1,7 +1,6 @@
 package underlings.phase;
 
 import java.util.List;
-
 import underlings.element.ElementBag;
 import underlings.field.Field;
 import underlings.game.HatchingGround;
@@ -20,8 +19,8 @@ public abstract class SequentialPhase extends Phase {
         this.setup();
 
         for (int i = turnLeader; i < turnLeader + this.players.size(); i++) {
-            this.phaseComplete = false;
-            while (!this.phaseComplete) {
+            this.setPhaseComplete(false);
+            while (!this.isPhaseComplete()) {
                 this.turn(this.players.get(i % this.players.size()));
                 this.displayMethod.run();
             }

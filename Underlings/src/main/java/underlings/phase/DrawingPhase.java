@@ -3,7 +3,6 @@ package underlings.phase;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementGiver;
@@ -34,7 +33,7 @@ public class DrawingPhase extends SequentialPhase {
             player.addElement(element);
         }
 
-        this.phaseComplete = this.elementGivers.get(player).isEmpty();
+        this.setPhaseComplete(this.elementGivers.get(player).isEmpty());
     }
 
     @Override

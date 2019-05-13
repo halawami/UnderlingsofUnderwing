@@ -48,7 +48,7 @@ public class PlacementPhase extends RotationPhase {
                     JOptionPane.WARNING_MESSAGE);
             return;
         } else {
-            this.phaseComplete = false;
+            this.setPhaseComplete(false);
         }
 
         Card card = this.utils.selectCard(cards, player);
@@ -64,11 +64,11 @@ public class PlacementPhase extends RotationPhase {
 
     private void checkGameover() {
         this.gameComplete = true;
-        this.phaseComplete = true;
+        this.setPhaseComplete(true);
         for (Card groundCard : this.hatchingGround) {
             if (groundCard.handler != WildHandler.getInstance()) {
                 this.gameComplete = false;
-                this.phaseComplete = false;
+                this.setPhaseComplete(false);
             }
         }
     }
