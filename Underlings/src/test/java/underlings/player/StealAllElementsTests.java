@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.junit.Test;
 
+import underlings.TestUtils;
 import underlings.element.Element;
 
 public class StealAllElementsTests {
@@ -26,7 +27,7 @@ public class StealAllElementsTests {
     @Test
     public void testStealOneElement() {
         Player playerToStealFrom = new Player(0, null, 0);
-        List<Element> elementsToBeStolen = this.getMockObjects(Element.class, 1);
+        List<Element> elementsToBeStolen = TestUtils.mockListOf(Element.class).withLength(1);
         playerToStealFrom.elements = new ArrayList<>(elementsToBeStolen);
         Player stealer = new Player(0, null, 0);
 
@@ -40,7 +41,7 @@ public class StealAllElementsTests {
     @Test
     public void testStealTwoElements() {
         Player playerToStealFrom = new Player(0, null, 0);
-        List<Element> elementsToBeStolen = this.getMockObjects(Element.class, 2);
+        List<Element> elementsToBeStolen = TestUtils.mockListOf(Element.class).withLength(2);
         playerToStealFrom.elements = new ArrayList<>(elementsToBeStolen);
         Player stealer = new Player(0, null, 0);
 
@@ -54,10 +55,10 @@ public class StealAllElementsTests {
     @Test
     public void testStealTwoElementsWhileHavingTwoElements() {
         Player playerToStealFrom = new Player(0, null, 0);
-        List<Element> elementsToBeStolen = this.getMockObjects(Element.class, 2);
+        List<Element> elementsToBeStolen = TestUtils.mockListOf(Element.class).withLength(2);
         playerToStealFrom.elements = new ArrayList<>(elementsToBeStolen);
         Player stealer = new Player(0, null, 0);
-        List<Element> stealerElementsBefore = this.getMockObjects(Element.class, 2);
+        List<Element> stealerElementsBefore = TestUtils.mockListOf(Element.class).withLength(2);
         stealer.elements = new ArrayList<>(stealerElementsBefore);
 
         stealer.stealAllElementsFromPlayer(playerToStealFrom);

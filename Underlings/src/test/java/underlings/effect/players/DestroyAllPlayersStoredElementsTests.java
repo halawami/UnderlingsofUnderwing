@@ -14,7 +14,7 @@ public class DestroyAllPlayersStoredElementsTests {
 
     @Test
     public void testApplyOnTwoPlayer() {
-        this.testApplyOnPlayers(6);
+        this.testApplyOnPlayers(2);
     }
 
     @Test
@@ -23,7 +23,7 @@ public class DestroyAllPlayersStoredElementsTests {
     }
 
     public void testApplyOnPlayers(int numberOfPlayers) {
-        List<Player> players = TestUtils.mockListOf(Player.class).withLength(6);
+        List<Player> players = TestUtils.mockListOf(Player.class).withLength(numberOfPlayers);
         Effect testedEffect = new DestroyAllPlayersStoredElements();
         testedEffect.on(players);
 
