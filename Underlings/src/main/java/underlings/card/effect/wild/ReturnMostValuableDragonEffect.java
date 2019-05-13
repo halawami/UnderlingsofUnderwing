@@ -15,6 +15,7 @@ public class ReturnMostValuableDragonEffect extends DeckEffects {
     }
 
     public void returnMostValuableDragon(Player player, Deck deck, Gui gui) {
+        player.getMostValuableDragons();
 
     }
 }
