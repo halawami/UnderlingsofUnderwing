@@ -135,4 +135,8 @@ public class Player {
         this.elements.addAll(player.elements);
         player.destroyAllElements();
     }
+
+    public List<Card> getMostValuableDragons() {
+        return null;
+    }
 }

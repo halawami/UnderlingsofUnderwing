@@ -11,10 +11,10 @@ public class ReturnMostValuableDragonEffect extends DeckEffects {
 
     @Override
     protected void apply(List<Player> players, Deck deck, Gui gui) {
-        players.forEach(player -> this.returnMostValueDragon(player, deck, gui));
+        players.forEach(player -> this.returnMostValuableDragon(player, deck, gui));
     }
 
-    public void returnMostValueDragon(Player player, Deck deck, Gui gui) {
+    public void returnMostValuableDragon(Player player, Deck deck, Gui gui) {
 
     }
 }

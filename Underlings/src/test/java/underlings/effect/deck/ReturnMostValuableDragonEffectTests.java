@@ -1,11 +1,13 @@
 package underlings.effect.deck;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.easymock.EasyMock;
 import org.junit.Test;
 
 import underlings.TestUtils;
+import underlings.card.Card;
 import underlings.card.effect.wild.ReturnMostValuableDragonEffect;
 import underlings.game.Deck;
 import underlings.gui.Gui;
@@ -23,15 +25,15 @@ public class ReturnMostValuableDragonEffectTests {
         this.testApplyEffectOnPlayers(6);
     }
 
-    public void testApplyEffectOnPlayers(int numberOfPlayers) {
+    private void testApplyEffectOnPlayers(int numberOfPlayers) {
         List<Player> players = TestUtils.mockListOf(Player.class).withLength(numberOfPlayers);
         Deck deck = EasyMock.mock(Deck.class);
         Gui gui = EasyMock.mock(Gui.class);
         ReturnMostValuableDragonEffect testedEffect = EasyMock.partialMockBuilder(ReturnMostValuableDragonEffect.class)
-                .addMockedMethod("returnMostValueDragon").createMock();
+                .addMockedMethod("returnMostValuableDragon").createMock();
         testedEffect.on(players).on(deck).on(gui);
 
-        players.forEach(player -> testedEffect.returnMostValueDragon(player, deck, gui));
+        players.forEach(player -> testedEffect.returnMostValuableDragon(player, deck, gui));
 
         EasyMock.replay(deck, gui, testedEffect);
         players.forEach(EasyMock::replay);
@@ -40,6 +42,23 @@ public class ReturnMostValuableDragonEffectTests {
 
         EasyMock.verify(deck, gui, testedEffect);
         players.forEach(EasyMock::verify);
+    }
+
+    @Test
+    public void testReturnMostValuableDragonNoDragons() {
+        Player player = EasyMock.mock(Player.class);
+        Deck deck = EasyMock.mock(Deck.class);
+        Gui gui = EasyMock.mock(Gui.class);
+        List<Card> mostValuableDragons = Collections.emptyList();
+
+        EasyMock.expect(player.getMostValuableDragons()).andReturn(mostValuableDragons);
+
+        EasyMock.replay(player, deck, gui);
+
+        ReturnMostValuableDragonEffect testedEffect = new ReturnMostValuableDragonEffect();
+        testedEffect.returnMostValuableDragon(player, deck, gui);
+
+        EasyMock.verify(player, deck, gui);
     }
 
 }
