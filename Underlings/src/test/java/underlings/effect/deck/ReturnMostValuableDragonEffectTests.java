@@ -1,5 +1,6 @@
 package underlings.effect.deck;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -52,6 +53,27 @@ public class ReturnMostValuableDragonEffectTests {
         List<Card> mostValuableDragons = Collections.emptyList();
 
         EasyMock.expect(player.getMostValuableDragons()).andReturn(mostValuableDragons);
+
+        EasyMock.replay(player, deck, gui);
+
+        ReturnMostValuableDragonEffect testedEffect = new ReturnMostValuableDragonEffect();
+        testedEffect.returnMostValuableDragon(player, deck, gui);
+
+        EasyMock.verify(player, deck, gui);
+    }
+
+    @Test
+    public void testReturnMostValuableDragonOneDragon() {
+        Player player = EasyMock.mock(Player.class);
+        Deck deck = EasyMock.mock(Deck.class);
+        Gui gui = EasyMock.mock(Gui.class);
+        List<Card> mostValuableDragons = TestUtils.mockListOf(Card.class).withLength(1);
+        player.hatchedCards = new ArrayList<>(mostValuableDragons);
+
+        EasyMock.expect(player.getMostValuableDragons()).andReturn(mostValuableDragons);
+        EasyMock.expect(gui.promptCard("Pick a dragon to return to deck", mostValuableDragons))
+                .andReturn(mostValuableDragons.get(0));
+        deck.addCard(mostValuableDragons.get(0));
 
         EasyMock.replay(player, deck, gui);
 
