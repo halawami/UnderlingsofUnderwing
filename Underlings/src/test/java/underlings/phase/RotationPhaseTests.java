@@ -15,8 +15,8 @@ public class RotationPhaseTests {
                 EasyMock.createMockBuilder(RotationPhase.class).addMockedMethod("turn").addMockedMethod("setup")
                         .addMockedMethod("setPhaseComplete").addMockedMethod("isPhaseComplete").createMock();
 
-        rotation.displayMethod = () -> {
-        };
+        Runnable displayMethod = EasyMock.mock(Runnable.class);
+        rotation.displayMethod = displayMethod;
 
         Player playerOne = new Player(4, new HandlerFactory(), 0);
         Player playerTwo = new Player(4, new HandlerFactory(), 0);
@@ -30,13 +30,16 @@ public class RotationPhaseTests {
         EasyMock.expect(rotation.isPhaseComplete()).andReturn(false);
         rotation.setPhaseComplete(true);
         rotation.turn(playerOne);
+        displayMethod.run();
         rotation.turn(playerTwo);
+        displayMethod.run();
         EasyMock.expect(rotation.isPhaseComplete()).andReturn(true);
-        EasyMock.replay(rotation);
+
+        EasyMock.replay(rotation, displayMethod);
 
         rotation.execute(0);
 
-        EasyMock.verify(rotation);
+        EasyMock.verify(rotation, displayMethod);
     }
 
 }
