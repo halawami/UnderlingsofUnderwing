@@ -40,18 +40,23 @@ public class ElementSpaceLogic {
         recipeMap = new HashMap<>();
 
         for (String line : recipeLines) {
-            ElementColor color = ElementColor.valueOf(line.split(":")[0]);
+            ElementColor createdColor = ElementColor.valueOf(line.split(":")[0]);
+            recipeMap.put(createdColor, new ArrayList<List<ElementColor>>());
+
             String[] recipes = line.split(":")[1].split(" ");
-            List<List<ElementColor>> recipeList = new ArrayList<List<ElementColor>>();
             for (String recipe : recipes) {
-                List<ElementColor> constructedRecipe = new ArrayList<ElementColor>();
-                for (String ingredient : recipe.split(",")) {
-                    constructedRecipe.add(ElementColor.valueOf(ingredient));
-                }
-                recipeList.add(constructedRecipe);
+                addRecipe(createdColor, recipe.split(","));
             }
-            recipeMap.put(color, recipeList);
         }
+    }
+
+    public void addRecipe(ElementColor createdColor, String... ingredients) {
+        List<List<ElementColor>> recipeList = recipeMap.get(createdColor);
+        List<ElementColor> recipe = new ArrayList<ElementColor>();
+        for (String ingredient : ingredients) {
+            recipe.add(ElementColor.valueOf(ingredient));
+        }
+        recipeList.add(recipe);
     }
 
     public boolean isValidRecipe(List<ElementColor> recipe, ElementSpace space) {

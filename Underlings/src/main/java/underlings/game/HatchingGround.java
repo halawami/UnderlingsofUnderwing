@@ -18,7 +18,7 @@ public class HatchingGround implements Iterable<Card> {
     private int width;
     public Card[][] cards;
     private Deck deck;
-    private ElementSpaceLogic logic;
+    public ElementSpaceLogic logic;
 
     public HatchingGround(Deck deck, ElementSpaceLogic logic) {
         this.deck = deck;
