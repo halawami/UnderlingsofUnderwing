@@ -1,12 +1,19 @@
 package underlings.game;
 
 import static org.junit.Assert.assertEquals;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
 import underlings.element.ElementBag;
 import underlings.gui.Gui;
+import underlings.phase.FinalPhase;
+import underlings.phase.FinalPhase.FinalPhaseType;
+import underlings.phase.Phase;
 import underlings.player.PlayerFactory;
 import underlings.utilities.LocaleWrap;
 
@@ -50,6 +57,38 @@ public class GameTests {
 
         EasyMock.verify(this.gui, this.hatchingGround, this.playerFactory, this.elementBag);
         assertEquals(Locale.FRENCH, LocaleWrap.locale);
+    }
+
+    @Test
+    public void testSetup() {
+        List<Phase> phases = new ArrayList<>();
+        Map<FinalPhaseType, FinalPhase> finalPhaseMap = new HashMap<>();
+        FinalPhase finalPhase = EasyMock.mock(FinalPhase.class);
+        finalPhaseMap.put(FinalPhaseType.REGULAR, finalPhase);
+
+        Game mockedGame = EasyMock.createMockBuilder(Game.class).addMockedMethod("promptLocale")
+                .addMockedMethod("promptPlayerCount").addMockedMethod("setUp").addMockedMethod("gameLoop")
+                .addMockedMethod("display").createMock();
+
+        mockedGame.numberOfPlayers = 2;
+
+        mockedGame.promptLocale();
+        mockedGame.promptPlayerCount();
+        mockedGame.setUp(2);
+        mockedGame.gameLoop();
+        mockedGame.display();
+        finalPhase.execute();
+
+        EasyMock.replay(mockedGame, finalPhase);
+
+        mockedGame.start(phases, finalPhaseMap);
+
+        EasyMock.verify(mockedGame, finalPhase);
+
+        assertEquals(mockedGame.phases, phases);
+        assertEquals(mockedGame.finalPhaseMap, finalPhaseMap);
+        assertEquals(mockedGame.finalPhase, finalPhase);
+
     }
 
 }
