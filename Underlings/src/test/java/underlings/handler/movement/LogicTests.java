@@ -121,6 +121,7 @@ public class LogicTests {
     public void testBreakRoom() {
 
         Handler handler = new Handler(HandlerState.FIELD);
+        this.field.addHandler(0, handler);
 
         EasyMock.replay(this.hatchingGround, this.gui);
 
