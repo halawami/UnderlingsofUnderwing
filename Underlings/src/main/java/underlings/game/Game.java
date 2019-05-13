@@ -92,9 +92,6 @@ public class Game {
 
     public void promptLocale() {
         Locale locale = this.gui.promptLocale(Locale.getAvailableLocales());
-        if (locale == null) {
-            System.exit(0);
-        }
         LocaleWrap.locale = locale;
     }
 

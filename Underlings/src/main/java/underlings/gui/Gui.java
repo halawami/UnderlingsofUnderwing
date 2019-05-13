@@ -10,9 +10,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
-
 import javax.swing.JOptionPane;
-
 import underlings.card.Card;
 import underlings.card.EmptyCard;
 import underlings.element.Element;
@@ -148,8 +146,12 @@ public class Gui {
     }
 
     public Locale promptLocale(Locale[] locales) {
-        return this.promptHandler.promptChoiceDropdown(LocaleWrap.get("choose_language"), Arrays.asList(locales),
-                Locale.ENGLISH);
+        Locale locale;
+        do {
+            locale = this.promptHandler.promptChoiceDropdown(LocaleWrap.get("choose_language"), Arrays.asList(locales),
+                    Locale.ENGLISH);
+        } while (locale == null);
+        return locale;
     }
 
     public void displayPlayers(List<Player> players) {
@@ -183,7 +185,7 @@ public class Gui {
     }
 
     public Player promptPlayer(String toDispaly, Player currentPlayer, List<Player> players) {
-        //TODO, Mohammad is using this for Ignatius's StealAllStoredElementsEffect
+        // TODO, Mohammad is using this for Ignatius's StealAllStoredElementsEffect
         return null;
     }
 
