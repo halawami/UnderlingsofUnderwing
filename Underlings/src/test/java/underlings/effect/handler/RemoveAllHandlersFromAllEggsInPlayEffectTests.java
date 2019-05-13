@@ -7,6 +7,7 @@ import underlings.card.Card;
 import underlings.card.effect.wild.RemoveAllHandlersFromAllEggsInPlay;
 import underlings.handler.Handler;
 import underlings.handler.HandlerState;
+import underlings.handler.WildHandler;
 
 public class RemoveAllHandlersFromAllEggsInPlayEffectTests {
 
@@ -30,6 +31,19 @@ public class RemoveAllHandlersFromAllEggsInPlayEffectTests {
 
         Assert.assertNull(card.handler);
         Assert.assertEquals(HandlerState.BREAK_ROOM, handler.getState());
+    }
+
+    @Test
+    public void testWildHandler() {
+        Card card = new Card();
+        Handler handler = WildHandler.getInstance();
+        card.handler = handler;
+        RemoveAllHandlersFromAllEggsInPlay testedEffect = new RemoveAllHandlersFromAllEggsInPlay();
+
+        testedEffect.applyOnCardInPlay(card, null, null);
+
+        Assert.assertEquals(WildHandler.getInstance(), card.handler);
+        Assert.assertEquals(HandlerState.CARD, handler.getState());
     }
 
 }
