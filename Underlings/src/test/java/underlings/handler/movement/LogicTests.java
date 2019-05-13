@@ -169,4 +169,21 @@ public class LogicTests {
 
     }
 
+    @Test
+    public void testFieldWhiteToBreakRoom() {
+        Handler handler = new Handler(HandlerState.FIELD_WHITESPACE);
+        this.field.addHandlerWhitespace(handler);
+
+        EasyMock.replay(this.hatchingGround, this.gui);
+
+        this.logic.move(handler, HandlerChoice.BREAK_ROOM, 0);
+
+        EasyMock.verify(this.hatchingGround, this.gui);
+
+        assertEquals(1, handler.drawChoices.size());
+        assertTrue(handler.drawChoices.contains(DrawChoice.RANDOM));
+        assertEquals(HandlerState.BREAK_ROOM, handler.getState());
+
+    }
+
 }
