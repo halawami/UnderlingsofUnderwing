@@ -85,6 +85,7 @@ public class LogicTests {
     @Test
     public void testCard() {
         Card card = new Card();
+        card.name = "testCard";
 
         EasyMock.expect(this.gui.getCard(EasyMock.anyInt(), EasyMock.anyString(),
                 EasyMock.anyObject(HatchingGround.class), EasyMock.anyObject(List.class))).andReturn(card);
@@ -98,6 +99,7 @@ public class LogicTests {
         EasyMock.verify(this.hatchingGround, this.gui);
         assertEquals(HandlerState.CARD, handler.getState());
         assertEquals(handler, card.handler);
+        assertEquals(card.name, handler.location);
 
     }
 

@@ -8,7 +8,7 @@ import underlings.utilities.LocaleWrap;
 public class Handler extends ElementGiver {
 
     private HandlerState state;
-    private String location;
+    public String location;
 
     public Handler(HandlerState state) {
         super(DrawChoice.RANDOM);
