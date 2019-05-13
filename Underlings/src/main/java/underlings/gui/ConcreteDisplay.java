@@ -6,7 +6,6 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -98,9 +97,11 @@ public class ConcreteDisplay implements Display {
                 (int) (ratio * (offsetY + (height + gapY) * row)), (int) (ratio * width), (int) (ratio * height));
 
         this.gr.setColor(Color.BLACK);
-        this.gr.drawString(card.name, (int) (ratio * (30 + offsetX + (width + gapX) * col)),
+        this.gr.drawString(LocaleWrap.format("card_name", card.name),
+                (int) (ratio * (30 + offsetX + (width + gapX) * col)),
                 (int) (-25 + ratio * (height / 2 + offsetY + (height + gapY) * row)));
-        this.gr.drawString(card.points + "", (int) (ratio * (30 + offsetX + (width + gapX) * col)) + 118,
+        this.gr.drawString(LocaleWrap.format("card_points", card.points),
+                (int) (ratio * (30 + offsetX + (width + gapX) * col)) + 118,
                 (int) (-25 + ratio * (height / 2 + offsetY + (height + gapY) * row)));
 
         int spaceNum = 0;
@@ -117,8 +118,8 @@ public class ConcreteDisplay implements Display {
                 s = LocaleWrap.get("empty");
             }
             for (int i = 0; i < space.elements.size(); i++) {
-                String elementName = space.getElementColors().get(i).name();
-                s += "" + elementName.charAt(0) + elementName.charAt(elementName.length() - 1) + " ";
+                String elementName = "GUI_" + space.getElementColors().get(i).name();
+                s += LocaleWrap.get(elementName);
             }
 
             this.gr.drawString(s, x, y);
@@ -144,7 +145,8 @@ public class ConcreteDisplay implements Display {
                 (int) (ratio * (offsetY + (height + gapY) * row)), (int) (ratio * width), (int) (ratio * height));
 
         this.gr.setColor(Color.BLACK);
-        this.gr.drawString(card.name, (int) (ratio * (30 + offsetX + (width + gapX) * col)),
+        this.gr.drawString(LocaleWrap.format("card_name", card.name),
+                (int) (ratio * (30 + offsetX + (width + gapX) * col)),
                 (int) (-25 + ratio * (height / 2 + offsetY + (height + gapY) * row)));
 
         this.gr.drawString(LocaleWrap.get("hatched_wild"), (int) (ratio * (30 + offsetX + (width + gapX) * col)),
@@ -176,7 +178,7 @@ public class ConcreteDisplay implements Display {
             elements += e.getColor() + " ";
         }
         this.gr.setColor(Color.BLACK);
-        this.gr.drawString(MessageFormat.format(LocaleWrap.get("player_number"), (playerNumber + 1)),
+        this.gr.drawString(LocaleWrap.format("player_number", (playerNumber + 1)),
                 (int) (ratio * (offsetX + (width + gapX) * col)) + 5,
                 (int) (ratio * (offsetY + (height + gapY) * row)) + 15);
         this.gr.drawString(elements, (int) (ratio * (30 + offsetX + (width + gapX) * col)),
@@ -225,12 +227,11 @@ public class ConcreteDisplay implements Display {
         stats.append(LocaleWrap.get("elements_remaining"));
         for (ElementColor color : new ElementColor[] {ElementColor.RED, ElementColor.BLUE, ElementColor.YELLOW,
                 ElementColor.GREEN, ElementColor.ORANGE, ElementColor.PURPLE, ElementColor.BLACK, ElementColor.WHITE}) {
-            stats.append(MessageFormat.format(LocaleWrap.get("color_remaining"), color.toString(),
-                    elementBag.getNumberRemaining(color)));
+            stats.append(LocaleWrap.format("color_remaining", color.toString(), elementBag.getNumberRemaining(color)));
         }
-        stats.append(MessageFormat.format(LocaleWrap.get("rounds_left"), roundsLeft));
-        stats.append(MessageFormat.format(LocaleWrap.get("current_phase"), currentPhase));
-        stats.append(MessageFormat.format(LocaleWrap.get("turn_lead"), leadTurn));
+        stats.append(LocaleWrap.format("rounds_left", roundsLeft));
+        stats.append(LocaleWrap.format("current_phase", currentPhase));
+        stats.append(LocaleWrap.format("turn_lead", leadTurn));
 
 
         int y = 15;
