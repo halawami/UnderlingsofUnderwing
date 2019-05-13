@@ -123,4 +123,12 @@ public class CardTests {
         assertEquals(result, player.getMostValuableDragons());
         assertEquals(2, player.getMostValuableDragons().size());
     }
+
+    @Test
+    public void testNoHatchedCards() {
+        Player player = new Player(6, new HandlerFactory(), 0);
+        player.hatchedCards = new LinkedList<>();
+        assertEquals(Arrays.asList(), player.getMostValuableDragons());
+        assertEquals(0, player.getMostValuableDragons().size());
+    }
 }

@@ -151,6 +151,6 @@ public class Player {
                 max = card.points;
             }
         }
-        return highestValues.get(max);
+        return (highestValues.size() > 0) ? highestValues.get(max) : new LinkedList<>();
     }
 }
