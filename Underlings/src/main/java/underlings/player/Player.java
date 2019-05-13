@@ -143,7 +143,9 @@ public class Player {
         Map<Integer, List<Card>> highestValues = new HashMap<Integer, List<Card>>();
         int max = -1;
         for (Card card : this.hatchedCards) {
-            highestValues.put(card.points, new LinkedList<>());
+            if (!highestValues.containsKey(card.points)) {
+                highestValues.put(card.points, new LinkedList<>());
+            }
             if (card.points >= max) {
                 highestValues.get(card.points).add(card);
                 max = card.points;
