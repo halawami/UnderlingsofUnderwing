@@ -105,6 +105,22 @@ public class CardTests {
     }
 
     @Test
+    public void testMostValuableMultipleDragonsOneHigher() {
+        Player player = new Player(6, new HandlerFactory(), 0);
+        Card card = new Card();
+        card.points = 2;
+        Card card2 = new Card();
+        card2.points = 1;
+        player.hatchedCards = new LinkedList<>();
+        player.hatchedCards.add(card);
+        player.hatchedCards.add(card2);
+        List<Card> result = new LinkedList<>();
+        result.add(card);
+        assertEquals(result, player.getMostValuableDragons());
+        assertEquals(1, player.getMostValuableDragons().size());
+    }
+
+    @Test
     public void testMostValuableMultipleDragonsTie() {
         Player player = new Player(6, new HandlerFactory(), 0);
         Card card = new Card();
