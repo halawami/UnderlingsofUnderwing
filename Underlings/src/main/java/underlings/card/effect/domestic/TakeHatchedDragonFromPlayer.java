@@ -12,6 +12,7 @@ import underlings.card.effect.PlayersHatchingEffect;
 import underlings.gui.Gui;
 import underlings.player.Player;
 import underlings.utilities.EggHatchingLogic;
+import underlings.utilities.LocaleWrap;
 
 public class TakeHatchedDragonFromPlayer extends PlayersHatchingEffect {
 
@@ -32,7 +33,7 @@ public class TakeHatchedDragonFromPlayer extends PlayersHatchingEffect {
                 }
             }
         }
-        Card toSteal = gui.promptCardToSteal("Choose a card to steal", currentPlayer.getPlayerId(), playerCards);
+        Card toSteal = gui.promptCardToSteal(LocaleWrap.get("card_to_steal"), currentPlayer.getPlayerId(), playerCards);
 
         // TODO: is this the right behavior
         eggHatchingLogic.hatchEgg(toSteal, false, currentPlayer);
