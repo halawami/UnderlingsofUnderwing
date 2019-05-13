@@ -11,14 +11,14 @@ import underlings.gui.Gui;
 import underlings.handler.HandlerFactory;
 import underlings.player.Player;
 
-public class RotationPhaseTests {
+public class SequentialPhaseTests {
 
 
     @Test
-    public void testRotationExecute() {
-        ConcreteSequentialPhase rotation =
-                EasyMock.createMockBuilder(ConcreteSequentialPhase.class).addMockedMethod("turn").addMockedMethod("setup")
-                        .addMockedMethod("setPhaseComplete").addMockedMethod("isPhaseComplete").createMock();
+    public void testSequentialExecute() {
+        ConcreteSequentialPhase rotation = EasyMock.createMockBuilder(ConcreteSequentialPhase.class)
+                .addMockedMethod("turn").addMockedMethod("setup").addMockedMethod("setPhaseComplete")
+                .addMockedMethod("isPhaseComplete").createMock();
 
         rotation.displayMethod = () -> {
         };
@@ -30,13 +30,18 @@ public class RotationPhaseTests {
         rotation.players.add(playerOne);
         rotation.players.add(playerTwo);
 
-        rotation.setPhaseComplete(false);
         rotation.setup();
+        rotation.setPhaseComplete(false);
         EasyMock.expect(rotation.isPhaseComplete()).andReturn(false);
-        rotation.setPhaseComplete(true);
         rotation.turn(playerOne);
+        EasyMock.expect(rotation.isPhaseComplete()).andReturn(false);
+        rotation.turn(playerOne);
+        EasyMock.expect(rotation.isPhaseComplete()).andReturn(true);
+        rotation.setPhaseComplete(false);
+        EasyMock.expect(rotation.isPhaseComplete()).andReturn(false);
         rotation.turn(playerTwo);
         EasyMock.expect(rotation.isPhaseComplete()).andReturn(true);
+
         EasyMock.replay(rotation);
 
         rotation.execute(0);
@@ -47,9 +52,9 @@ public class RotationPhaseTests {
 }
 
 
-class ConcreteRotationPhase extends RotationPhase {
+class ConcreteSequentialPhase extends SequentialPhase {
 
-    public ConcreteRotationPhase(List<Player> players, Gui gui, ElementBag elementBag, HatchingGround hatchingGround,
+    public ConcreteSequentialPhase(List<Player> players, Gui gui, ElementBag elementBag, HatchingGround hatchingGround,
             Runnable displayMethod, Field field) {
         super(players, gui, elementBag, hatchingGround, displayMethod, field);
     }
