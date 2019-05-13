@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.List;
 
 import org.easymock.EasyMock;
 import org.junit.Test;
@@ -78,15 +79,28 @@ public class CardTests {
     }
 
     @Test
-    public void testMostValuableDragon() {
+    public void testMostValuableOneDragon() {
+        Player player = new Player(6, new HandlerFactory(), 0);
+        Card card = new Card();
+        card.points = 1;
+        player.hatchedCards = new LinkedList<>();
+        player.hatchedCards.add(card);
+        assertEquals(Arrays.asList(card), player.getMostValuableDragons());
+    }
+
+    @Test
+    public void testMostValuableMultipleDragons() {
         Player player = new Player(6, new HandlerFactory(), 0);
         Card card = new Card();
         card.points = 1;
         Card card2 = new Card();
-        card.points = 2;
+        card2.points = 2;
         player.hatchedCards = new LinkedList<>();
         player.hatchedCards.add(card);
         player.hatchedCards.add(card2);
-        assertEquals(Arrays.asList(card2), player.getMostValuableDragons());
+        List<Card> result = new LinkedList<>();
+        result.add(card2);
+        assertEquals(result, player.getMostValuableDragons());
+        assertEquals(1, player.getMostValuableDragons().size());
     }
 }

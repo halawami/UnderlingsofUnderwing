@@ -2,8 +2,10 @@ package underlings.player;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import underlings.card.Card;
 import underlings.element.Element;
@@ -138,6 +140,15 @@ public class Player {
     }
 
     public List<Card> getMostValuableDragons() {
-        return Arrays.asList(this.hatchedCards.get(1));
+        Map<Integer, List<Card>> highestValues = new HashMap<Integer, List<Card>>();
+        int max = -1;
+        for (Card card : this.hatchedCards) {
+            highestValues.put(card.points, new LinkedList<Card>());
+            if (card.points >= max) {
+                highestValues.get(card.points).add(card);
+                max = card.points;
+            }
+        }
+        return highestValues.get(max);
     }
 }
