@@ -8,7 +8,7 @@ public class Field {
 
     private FieldSpace white;
 
-    private List<FieldSpace> field;
+    public List<FieldSpace> field;
 
     public Field(FieldSpaceFactory fieldSpaceFactory) {
         this.white = fieldSpaceFactory.createFieldSpace(DrawChoice.WHITE);
