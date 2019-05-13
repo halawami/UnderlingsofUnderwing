@@ -100,13 +100,10 @@ public class GameTests {
         phases.add(phaseOne);
         phases.add(phaseTwo);
 
-        FinalPhase finalPhase = EasyMock.mock(FinalPhase.class);
-
         Game mockedGame = EasyMock.createMockBuilder(Game.class).addMockedMethod("display").createMock();
 
         mockedGame.numberOfPlayers = 2;
         mockedGame.roundsLeft = 2;
-        mockedGame.finalPhase = finalPhase;
         mockedGame.phases = phases;
 
         mockedGame.display();
@@ -127,6 +124,42 @@ public class GameTests {
         mockedGame.gameLoop();
 
         EasyMock.verify(phaseOne, phaseTwo, mockedGame);
+
+    }
+
+    @Test
+    public void testGameLoopWildHatched() {
+
+        List<Phase> phases = new ArrayList<>();
+        Phase phaseOne = EasyMock.mock(Phase.class);
+        Phase phaseTwo = EasyMock.mock(Phase.class);
+        phases.add(phaseOne);
+        phases.add(phaseTwo);
+
+        Map<FinalPhaseType, FinalPhase> finalPhaseMap = new HashMap<>();
+        FinalPhase wildFinalPhase = EasyMock.mock(FinalPhase.class);
+        finalPhaseMap.put(FinalPhaseType.WILD, wildFinalPhase);
+
+        FinalPhase finalPhase = EasyMock.mock(FinalPhase.class);
+
+        Game mockedGame = EasyMock.createMockBuilder(Game.class).addMockedMethod("display").createMock();
+
+        mockedGame.numberOfPlayers = 2;
+        mockedGame.roundsLeft = 2;
+        mockedGame.finalPhaseMap = finalPhaseMap;
+        mockedGame.phases = phases;
+
+        mockedGame.display();
+        phaseOne.execute(0);
+        EasyMock.expect(phaseOne.isGameComplete()).andReturn(true);
+
+        EasyMock.replay(phaseOne, phaseTwo, wildFinalPhase, finalPhase, mockedGame);
+
+        mockedGame.gameLoop();
+
+        EasyMock.verify(phaseOne, phaseTwo, wildFinalPhase, finalPhase, mockedGame);
+
+        assertEquals(mockedGame.finalPhase, wildFinalPhase);
 
     }
 
