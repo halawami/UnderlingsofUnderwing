@@ -101,7 +101,6 @@ public class ElementSpaceLogic {
         for (ElementSpace space : card.elementSpaces) {
             if (getValidAdditions(space).contains(elementColor)) {
                 spaces.add(space);
-                break;
             }
         }
         return spaces;
