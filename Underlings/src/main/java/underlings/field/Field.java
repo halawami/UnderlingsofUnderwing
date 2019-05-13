@@ -38,6 +38,9 @@ public class Field {
                 return space;
             }
         }
+        if (this.white.contains(handler)) {
+            return this.white;
+        }
         return null;
     }
 
