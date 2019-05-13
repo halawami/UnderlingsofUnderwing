@@ -9,7 +9,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
+
 import javax.swing.JOptionPane;
+
 import underlings.card.Card;
 import underlings.card.EmptyCard;
 import underlings.element.Element;
@@ -55,6 +57,7 @@ public class Gui {
     }
 
     public boolean promptDecision(String toDisplay, int playerId) {
+        // TODO
         return true;
     }
 

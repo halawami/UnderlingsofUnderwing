@@ -1,21 +1,23 @@
 package underlings.scoring;
 
 import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
-import javax.swing.JOptionPane;
+
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.card.Card;
 import underlings.card.Temperature;
-import underlings.gui.ConcretePrompt;
 import underlings.gui.Gui;
 import underlings.gui.Gui.PromptType;
 import underlings.handler.HandlerFactory;
 import underlings.player.Player;
+import underlings.utilities.LocaleWrap;
 
 public class ScoreTests {
 
@@ -201,15 +203,14 @@ public class ScoreTests {
         List<Player> fakePlayers = new LinkedList<>();
         fakePlayers = Arrays.asList(this.players[0], this.players[1]);
         this.scoreUtils = new ScoreUtils(fakePlayers, this.gui);
-        this.gui.promptHandler = EasyMock.mock(ConcretePrompt.class);
         this.scoreUtils.winners.add(this.players[0]);
-        this.gui.promptHandler.displayMessage("Winner(s): " + this.scoreUtils.winners, 0, JOptionPane.PLAIN_MESSAGE);
+        this.gui.alert(LocaleWrap.format("winners", this.scoreUtils.winners), PromptType.REGULAR);
 
-        EasyMock.replay(this.gui, this.gui.promptHandler);
+        EasyMock.replay(this.gui);
 
         this.scoreUtils.displayWinners();
 
-        EasyMock.verify(this.gui, this.gui.promptHandler);
+        EasyMock.verify(this.gui);
     }
 
     @Test
@@ -217,15 +218,14 @@ public class ScoreTests {
         List<Player> fakePlayers = new LinkedList<>();
         fakePlayers = Arrays.asList(this.players[0], this.players[1]);
         this.scoreUtils = new ScoreUtils(fakePlayers, this.gui);
-        this.gui.promptHandler = EasyMock.mock(ConcretePrompt.class);
         this.scoreUtils.winners.add(this.players[0]);
         this.scoreUtils.winners.add(this.players[1]);
-        this.gui.promptHandler.displayMessage("Winner(s): " + this.scoreUtils.winners, 0, JOptionPane.PLAIN_MESSAGE);
+        this.gui.alert(LocaleWrap.format("winners", this.scoreUtils.winners), PromptType.REGULAR);
 
-        EasyMock.replay(this.gui, this.gui.promptHandler);
+        EasyMock.replay(this.gui);
 
         this.scoreUtils.displayWinners();
 
-        EasyMock.verify(this.gui, this.gui.promptHandler);
+        EasyMock.verify(this.gui);
     }
 }

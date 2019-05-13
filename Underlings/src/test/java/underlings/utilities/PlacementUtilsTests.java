@@ -64,7 +64,7 @@ public class PlacementUtilsTests {
 
         PromptHandler promptHandler = EasyMock.mock(PromptHandler.class);
         Gui gui = new Gui(promptHandler, null);
-        EasyMock.expect(gui.promptHandler.promptChoice("Pick an element space to place an element on", spaces, 10))
+        EasyMock.expect(gui.promptChoice("Pick an element space to place an element on", spaces, 10))
                 .andReturn(card.elementSpaces[0]);
 
         EasyMock.replay(logic, promptHandler, player);
