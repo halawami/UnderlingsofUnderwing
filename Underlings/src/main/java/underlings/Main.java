@@ -20,7 +20,6 @@ import underlings.game.Deck;
 import underlings.game.Game;
 import underlings.game.HatchingGround;
 import underlings.gui.ConcreteDisplay;
-import underlings.gui.ConcretePrompt;
 import underlings.gui.Gui;
 import underlings.handler.HandlerFactory;
 import underlings.handler.HandlerMovementLogic;
@@ -54,7 +53,7 @@ public class Main {
         }
         FakePlayer.initPlayer(recipes);
 
-        Gui gui = new Gui(new ConcretePrompt(), new ConcreteDisplay());
+        Gui gui = new Gui(new TestPrompt(), new ConcreteDisplay());
         CardFactory cardFactory = new CardFactory(CARDS_JSON_FILE_NAME);
         Deck deck = new Deck(cardFactory.getCards());
         HatchingGround hatchingGround = new HatchingGround(deck, new ElementSpaceLogic(recipes));

@@ -2,6 +2,7 @@ package underlings;
 
 import java.util.List;
 import java.util.Random;
+
 import underlings.card.Card;
 import underlings.gui.ConcretePrompt;
 
@@ -29,13 +30,18 @@ public class TestPrompt extends ConcretePrompt {
     @Override
     public <T> T promptChoice(String prompt, List<T> choices, int playerId) {
         this.delay();
-        return choices.get(this.rand.nextInt(choices.size()));
+        System.out.println(choices);
+        T val = choices.get(this.rand.nextInt(choices.size()));
+        System.out.println(prompt + " choices: " + choices + " (return " + val + ")");
+        return val;
     }
 
     @Override
     public boolean promptDecision(String question, int playerId) {
         this.delay();
-        return this.rand.nextBoolean();
+        boolean val = this.rand.nextBoolean();
+        System.out.println(question + " (return " + val + ")");
+        return val;
     }
 
     @Override
@@ -45,12 +51,14 @@ public class TestPrompt extends ConcretePrompt {
         do {
             val = this.rand.nextInt(max);
         } while (val < min || val > max);
+        System.out.println(prompt + " (return " + val + ")");
         return val;
     }
 
     @Override
     public void displayMessage(String message, int playerId, int icon) {
         this.delay();
+        System.out.println(playerId + ": " + message);
         if (!(message.contains("placements") || message.contains("incubation") || message.contains("applied"))) {
             super.displayMessage(message, playerId, icon);
         }
@@ -65,6 +73,18 @@ public class TestPrompt extends ConcretePrompt {
             int j = this.rand.nextInt(cards[i].length);
             card = cards[i][j];
         }
+        System.out.println("\n" + playerId + ": " + prompt);
+        this.printCards(cards);
+        System.out.println("picked " + card + "\n");
         return card;
+    }
+
+    private void printCards(Card[][] cards) {
+        for (int i = 0; i < cards.length; i++) {
+            for (int j = 0; j < cards[0].length; j++) {
+                System.out.print(cards[i][j]);
+            }
+            System.out.println();
+        }
     }
 }
