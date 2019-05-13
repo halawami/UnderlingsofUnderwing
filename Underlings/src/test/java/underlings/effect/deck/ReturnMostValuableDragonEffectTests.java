@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.easymock.EasyMock;
+import org.junit.Assert;
 import org.junit.Test;
 
 import underlings.TestUtils;
@@ -80,7 +81,10 @@ public class ReturnMostValuableDragonEffectTests {
         ReturnMostValuableDragonEffect testedEffect = new ReturnMostValuableDragonEffect();
         testedEffect.returnMostValuableDragon(player, deck, gui);
 
+        Assert.assertFalse(player.hatchedCards.contains(mostValuableDragons.get(0)));
         EasyMock.verify(player, deck, gui);
     }
+
+
 
 }
