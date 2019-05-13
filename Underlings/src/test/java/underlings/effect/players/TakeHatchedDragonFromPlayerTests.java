@@ -15,6 +15,7 @@ import underlings.card.effect.domestic.TakeHatchedDragonFromPlayer;
 import underlings.gui.Gui;
 import underlings.player.Player;
 import underlings.utilities.EggHatchingLogic;
+import underlings.utilities.LocaleWrap;
 
 public class TakeHatchedDragonFromPlayerTests {
 
@@ -35,7 +36,7 @@ public class TakeHatchedDragonFromPlayerTests {
         effect.on(gui).on(Arrays.asList(player, player2)).on(player2).on(eggHatchingLogic);
         Map<Player, List<Card>> map = new HashMap<>();
         map.put(player, Arrays.asList(card));
-        EasyMock.expect(gui.promptCardToSteal("Choose a card to steal", 1, map)).andReturn(card);
+        EasyMock.expect(gui.promptCardToSteal(LocaleWrap.get("prompt_card_to_steal"), 1, map)).andReturn(card);
         eggHatchingLogic.hatchEgg(card, false, player2);
 
         EasyMock.replay(player, gui, player2, eggHatchingLogic);
@@ -71,7 +72,7 @@ public class TakeHatchedDragonFromPlayerTests {
         Map<Player, List<Card>> map = new HashMap<>();
         map.put(player, Arrays.asList());
         map.put(player3, Arrays.asList(card2));
-        EasyMock.expect(gui.promptCardToSteal("Choose a card to steal", 1, map)).andReturn(card2);
+        EasyMock.expect(gui.promptCardToSteal(LocaleWrap.get("prompt_card_to_steal"), 1, map)).andReturn(card2);
         eggHatchingLogic.hatchEgg(card2, false, player2);
 
         EasyMock.replay(player, gui, player2, eggHatchingLogic);
@@ -107,7 +108,7 @@ public class TakeHatchedDragonFromPlayerTests {
         Map<Player, List<Card>> map = new HashMap<>();
         map.put(player, Arrays.asList());
         map.put(player3, Arrays.asList(card2));
-        EasyMock.expect(gui.promptCardToSteal("Choose a card to steal", 1, map)).andReturn(card2);
+        EasyMock.expect(gui.promptCardToSteal(LocaleWrap.get("prompt_card_to_steal"), 1, map)).andReturn(card2);
         eggHatchingLogic.hatchEgg(card2, false, player2);
 
         EasyMock.replay(player, gui, player2, eggHatchingLogic);
