@@ -7,8 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
-
-import underlings.effect.EffectTestUtils;
+import underlings.effect.players.PlayersTests;
 import underlings.element.Element;
 
 public class StealAllElementsTests {
@@ -27,7 +26,7 @@ public class StealAllElementsTests {
     @Test
     public void testStealOneElement() {
         Player playerToStealFrom = new Player(0, null, 0);
-        List<Element> elementsToBeStolen = EffectTestUtils.getMockObjects(Element.class, 1);
+        List<Element> elementsToBeStolen = PlayersTests.getMockObjects(Element.class, 1);
         playerToStealFrom.elements = new ArrayList<>(elementsToBeStolen);
         Player stealer = new Player(0, null, 0);
 
@@ -41,7 +40,7 @@ public class StealAllElementsTests {
     @Test
     public void testStealTwoElements() {
         Player playerToStealFrom = new Player(0, null, 0);
-        List<Element> elementsToBeStolen = EffectTestUtils.getMockObjects(Element.class, 2);
+        List<Element> elementsToBeStolen = PlayersTests.getMockObjects(Element.class, 2);
         playerToStealFrom.elements = new ArrayList<>(elementsToBeStolen);
         Player stealer = new Player(0, null, 0);
 
@@ -55,10 +54,10 @@ public class StealAllElementsTests {
     @Test
     public void testStealTwoElementsWhileHavingTwoElements() {
         Player playerToStealFrom = new Player(0, null, 0);
-        List<Element> elementsToBeStolen = EffectTestUtils.getMockObjects(Element.class, 2);
+        List<Element> elementsToBeStolen = PlayersTests.getMockObjects(Element.class, 2);
         playerToStealFrom.elements = new ArrayList<>(elementsToBeStolen);
         Player stealer = new Player(0, null, 0);
-        List<Element> stealerElementsBefore = EffectTestUtils.getMockObjects(Element.class, 2);
+        List<Element> stealerElementsBefore = PlayersTests.getMockObjects(Element.class, 2);
         stealer.elements = new ArrayList<>(stealerElementsBefore);
 
         stealer.stealAllElementsFromPlayer(playerToStealFrom);
