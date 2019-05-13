@@ -1,14 +1,16 @@
 package underlings.effect.players;
 
 import java.util.List;
+
 import org.easymock.EasyMock;
 import org.junit.Test;
+
 import underlings.card.effect.Effect;
 import underlings.card.effect.domestic.StealAllStoredElements;
 import underlings.gui.Gui;
 import underlings.player.Player;
 
-public class StealAllStoredElementsTests extends PlayersTests {
+public class StealAllStoredElementsTests {
 
     @Test
     public void testEffect() {

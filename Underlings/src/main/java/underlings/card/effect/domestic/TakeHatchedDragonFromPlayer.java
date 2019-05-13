@@ -14,6 +14,7 @@ import underlings.player.Player;
 import underlings.utilities.EggHatchingLogic;
 
 public class TakeHatchedDragonFromPlayer extends PlayersHatchingEffect {
+
     public int points;
     public Temperature[] temperatures;
 

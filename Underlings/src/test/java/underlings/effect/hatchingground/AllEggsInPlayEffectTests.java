@@ -7,9 +7,9 @@ import org.easymock.EasyMock;
 import org.junit.Test;
 
 import underlings.card.Card;
-import underlings.card.effect.wild.AddElementToAllEggsInPlayEffect;
-import underlings.card.effect.wild.AllEggsInPlayEffect;
-import underlings.card.effect.wild.DestroyAllElementsOnAllEggsInPlay;
+import underlings.card.effect.wild.alleggsinplay.AddElementToAllEggsInPlayEffect;
+import underlings.card.effect.wild.alleggsinplay.AllEggsInPlayEffect;
+import underlings.card.effect.wild.alleggsinplay.DestroyAllElementsOnAllEggsInPlay;
 import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;

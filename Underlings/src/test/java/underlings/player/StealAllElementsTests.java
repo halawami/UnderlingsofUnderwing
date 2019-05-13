@@ -2,13 +2,15 @@ package underlings.player;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import org.junit.Test;
-import underlings.effect.players.PlayersTests;
+
 import underlings.element.Element;
 
-public class StealAllElementsTests extends PlayersTests {
+public class StealAllElementsTests {
 
     @Test
     public void testStealNoElements() {

@@ -1,4 +1,4 @@
-package underlings.card.effect.wild;
+package underlings.card.effect.wild.alleggsinplay;
 
 import java.util.List;
 

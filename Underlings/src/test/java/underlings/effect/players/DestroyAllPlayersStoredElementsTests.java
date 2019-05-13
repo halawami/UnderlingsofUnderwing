@@ -1,13 +1,16 @@
 package underlings.effect.players;
 
 import java.util.List;
+
 import org.easymock.EasyMock;
 import org.junit.Test;
+
+import underlings.TestUtils;
 import underlings.card.effect.Effect;
 import underlings.card.effect.wild.DestroyAllPlayersStoredElements;
 import underlings.player.Player;
 
-public class DestroyAllPlayersStoredElementsTests extends PlayersTests {
+public class DestroyAllPlayersStoredElementsTests {
 
     @Test
     public void testApplyOnTwoPlayer() {
@@ -19,9 +22,8 @@ public class DestroyAllPlayersStoredElementsTests extends PlayersTests {
         this.testApplyOnPlayers(6);
     }
 
-
     public void testApplyOnPlayers(int numberOfPlayers) {
-        List<Player> players = this.getMockObjects(Player.class, 6);
+        List<Player> players = TestUtils.mockListOf(Player.class).withLength(6);
         Effect testedEffect = new DestroyAllPlayersStoredElements();
         testedEffect.on(players);
 
