@@ -1,14 +1,11 @@
 package underlings.game.setup;
 
 import static org.junit.Assert.assertEquals;
-
 import java.util.Arrays;
 import java.util.Stack;
-
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.card.Card;
 import underlings.element.ElementBag;
 import underlings.element.utilities.ElementSpaceLogic;
@@ -42,29 +39,29 @@ public class HatchingGroundTests {
     @Test
     public void test2PlayerSize() {
         this.game.setUp(2);
-        assertEquals(3, this.game.getHatchingGround().getWidth());
-        assertEquals(2, this.game.getHatchingGround().getHeight());
+        assertEquals(3, this.game.hatchingGround.getWidth());
+        assertEquals(2, this.game.hatchingGround.getHeight());
     }
 
     @Test
     public void test3PlayerSize() {
         this.game.setUp(3);
-        assertEquals(4, this.game.getHatchingGround().getWidth());
-        assertEquals(3, this.game.getHatchingGround().getHeight());
+        assertEquals(4, this.game.hatchingGround.getWidth());
+        assertEquals(3, this.game.hatchingGround.getHeight());
     }
 
     @Test
     public void test4PlayerSize() {
         this.game.setUp(4);
-        assertEquals(4, this.game.getHatchingGround().getWidth());
-        assertEquals(4, this.game.getHatchingGround().getHeight());
+        assertEquals(4, this.game.hatchingGround.getWidth());
+        assertEquals(4, this.game.hatchingGround.getHeight());
     }
 
     @Test
     public void test6PlayerSize() {
         this.game.setUp(6);
-        assertEquals(4, this.game.getHatchingGround().getWidth());
-        assertEquals(4, this.game.getHatchingGround().getHeight());
+        assertEquals(4, this.game.hatchingGround.getWidth());
+        assertEquals(4, this.game.hatchingGround.getHeight());
     }
 
 }

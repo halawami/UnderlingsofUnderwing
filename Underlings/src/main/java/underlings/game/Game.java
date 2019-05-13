@@ -19,11 +19,11 @@ public class Game {
     private static final int MAX_PLAYERS = 6;
 
     private int maxHandlers;
-    private int numberOfPlayers;
-    private int roundsLeft;
+    public int numberOfPlayers;
+    public int roundsLeft;
     private int currentPhase = 0;
     private int turnLeader = 0;
-    private HatchingGround hatchingGround;
+    public HatchingGround hatchingGround;
     private Gui gui;
     private PlayerFactory playerFactory;
     private ElementBag elementBag;
@@ -56,14 +56,6 @@ public class Game {
         for (int i = 0; i < numberOfPlayers; i++) {
             this.players.add(this.playerFactory.createPlayer(this.maxHandlers));
         }
-    }
-
-    public int getRoundsLeft() {
-        return this.roundsLeft;
-    }
-
-    public HatchingGround getHatchingGround() {
-        return this.hatchingGround;
     }
 
     public List<Player> getPlayers() {
@@ -108,10 +100,6 @@ public class Game {
 
     public void promptPlayerCount() {
         this.numberOfPlayers = this.gui.getPlayerCount(MIN_PLAYERS, MAX_PLAYERS);
-    }
-
-    public int getPlayerCount() {
-        return this.numberOfPlayers;
     }
 
     public void display() {

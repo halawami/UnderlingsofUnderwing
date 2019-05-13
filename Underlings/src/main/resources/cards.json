@@ -1631,10 +1631,10 @@
     "domesticEffects": [
       {
         "effect": "ElementGiverEffect",
-         "choices": [
-            "YELLOW"
-         ],
-         "display": "YELLOW ELEMENT"
+        "choices": [
+          "YELLOW"
+        ],
+        "display": "YELLOW ELEMENT"
       }
     ],
     "wildEffects": [
@@ -1672,12 +1672,10 @@
     "domesticEffects": [
       {
         "effect": "ElementGiverEffect",
-     
-          "choices": [
-            "YELLOW"
-          ],
-          "display": "YELLOW ELEMENT"
-        
+        "choices": [
+          "YELLOW"
+        ],
+        "display": "YELLOW ELEMENT"
       }
     ],
     "wildEffects": [
@@ -1970,12 +1968,10 @@
     "domesticEffects": [
       {
         "effect": "ElementGiverEffect",
-      
-          "choices": [
-            "RED"
-          ],
-          "display": "RED ELEMENT"
-        
+        "choices": [
+          "RED"
+        ],
+        "display": "RED ELEMENT"
       }
     ],
     "wildEffects": [
@@ -2057,12 +2053,10 @@
     "domesticEffects": [
       {
         "effect": "ElementGiverEffect",
-     
-          "choices": [
-            "BLUE"
-          ],
-          "display": "BLUE ELEMENT"
-        
+        "choices": [
+          "BLUE"
+        ],
+        "display": "BLUE ELEMENT"
       }
     ],
     "wildEffects": [
@@ -2100,12 +2094,10 @@
     "domesticEffects": [
       {
         "effect": "ElementGiverEffect",
-      
-          "choices": [
-            "YELLOW"
-          ],
-          "display": "YELLOW ELEMENT"
-       
+        "choices": [
+          "YELLOW"
+        ],
+        "display": "YELLOW ELEMENT"
       }
     ],
     "wildEffects": [
@@ -2143,12 +2135,10 @@
     "domesticEffects": [
       {
         "effect": "ElementGiverEffect",
-       
-          "choices": [
-            "RED"
-          ],
-          "display": "RED ELEMENT"
-       
+        "choices": [
+          "RED"
+        ],
+        "display": "RED ELEMENT"
       }
     ],
     "wildEffects": [
@@ -2186,12 +2176,10 @@
     "domesticEffects": [
       {
         "effect": "ElementGiverEffect",
-    
-          "choices": [
-            "BLUE"
-          ],
-          "display": "BLUE ELEMENT"
-       
+        "choices": [
+          "BLUE"
+        ],
+        "display": "BLUE ELEMENT"
       }
     ],
     "wildEffects": [
@@ -2229,12 +2217,10 @@
     "domesticEffects": [
       {
         "effect": "ElementGiverEffect",
-       
-          "choices": [
-            "BLUE"
-          ],
-          "display": "BLUE ELEMENT"
-      
+        "choices": [
+          "BLUE"
+        ],
+        "display": "BLUE ELEMENT"
       }
     ],
     "wildEffects": [
@@ -2444,12 +2430,10 @@
     "domesticEffects": [
       {
         "effect": "ElementGiverEffect",
-    
-          "choices": [
-            "RED"
-          ],
-          "display": "RED ELEMENT"
-       
+        "choices": [
+          "RED"
+        ],
+        "display": "RED ELEMENT"
       },
       {
         "effect": "GainHandlersEffect",
@@ -2949,12 +2933,10 @@
     "domesticEffects": [
       {
         "effect": "ElementGiverEffect",
-     
-          "choices": [
-            "YELLOW"
-          ],
-          "display": "YELLOW ELEMENT"
-        
+        "choices": [
+          "YELLOW"
+        ],
+        "display": "YELLOW ELEMENT"
       },
       {
         "effect": "GainHandlersEffect",
@@ -3010,12 +2992,10 @@
     "domesticEffects": [
       {
         "effect": "ElementGiverEffect",
-       
-          "choices": [
-            "BLUE"
-          ],
-          "display": "BLUE ELEMENT"
-        
+        "choices": [
+          "BLUE"
+        ],
+        "display": "BLUE ELEMENT"
       },
       {
         "effect": "GainHandlersEffect",
@@ -3253,14 +3233,12 @@
     "domesticEffects": [
       {
         "effect": "ElementGiverEffect",
-        
-          "choices": [
-            "YELLOW",
-            "RED",
-            "ORANGE"
-          ],
-          "display": "WARM ELEMENT"
-        
+        "choices": [
+          "YELLOW",
+          "RED",
+          "ORANGE"
+        ],
+        "display": "WARM ELEMENT"
       }
     ],
     "wildEffects": [
@@ -3304,14 +3282,12 @@
     "domesticEffects": [
       {
         "effect": "ElementGiverEffect",
-     
-          "choices": [
-            "YELLOW",
-            "RED",
-            "ORANGE"
-          ],
-          "display": "WARM ELEMENT"
-       
+        "choices": [
+          "YELLOW",
+          "RED",
+          "ORANGE"
+        ],
+        "display": "WARM ELEMENT"
       }
     ],
     "wildEffects": [
@@ -3413,19 +3389,17 @@
     "domesticEffects": [
       {
         "effect": "ElementGiverEffect",
-      
-          "choices": [
-            "RED",
-            "BLUE",
-            "YELLOW",
-            "GREEN",
-            "PURPLE",
-            "ORANGE",
-            "WHITE",
-            "BLACK"
-          ],
-          "display": "RANDOM ELEMENT"
-        
+        "choices": [
+          "RED",
+          "BLUE",
+          "YELLOW",
+          "GREEN",
+          "PURPLE",
+          "ORANGE",
+          "WHITE",
+          "BLACK"
+        ],
+        "display": "RANDOM ELEMENT"
       }
     ],
     "wildEffects": [
@@ -3609,12 +3583,12 @@
     ],
     "domesticEffects": [
       {
-        "effect": "DeclareWarOnOtherPlayerEffect"
+        "effect": "StealAllStoredElements"
       }
     ],
     "wildEffects": [
       {
-        "effect": "DeclareGlobalWarEffect"
+        "effect": "DestroyAllPlayersStoredElements"
       }
     ]
   }

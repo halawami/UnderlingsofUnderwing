@@ -1,17 +1,13 @@
 package underlings.game.setup;
 
 import static org.junit.Assert.assertEquals;
-
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
-
 import java.io.IOException;
 import java.util.List;
-
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.element.ElementBag;
 import underlings.game.Game;
 import underlings.game.HatchingGround;
@@ -47,25 +43,25 @@ public class GameTests {
     @Test
     public void test2PlayerRounds() {
         this.game.setUp(2);
-        assertEquals(15, this.game.getRoundsLeft());
+        assertEquals(15, this.game.roundsLeft);
     }
 
     @Test
     public void test3PlayerRounds() {
         this.game.setUp(3);
-        assertEquals(13, this.game.getRoundsLeft());
+        assertEquals(13, this.game.roundsLeft);
     }
 
     @Test
     public void test4PlayerRounds() {
         this.game.setUp(4);
-        assertEquals(12, this.game.getRoundsLeft());
+        assertEquals(12, this.game.roundsLeft);
     }
 
     @Test
     public void test6PlayerRounds() {
         this.game.setUp(6);
-        assertEquals(12, this.game.getRoundsLeft());
+        assertEquals(12, this.game.roundsLeft);
     }
 
 }

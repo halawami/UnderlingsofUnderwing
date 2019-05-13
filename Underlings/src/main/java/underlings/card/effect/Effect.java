@@ -72,15 +72,21 @@ public abstract class Effect extends ElementGiver {
     }
 
     protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag, Gui gui,
-            Player currentPlayer, EggHatchingLogic eggHatchingLogic) {}
+            Player currentPlayer, EggHatchingLogic eggHatchingLogic) {
+    }
 
-    protected void apply(Player player, ElementBag elementBag) {}
+    protected void apply(Player player, ElementBag elementBag) {
+    }
 
-    protected void apply(Player player) {}
+    protected void apply(Player player) {
+    }
 
-    protected void apply(Player currentPlayer, List<Player> players, Gui gui) {}
+    protected void apply(Player currentPlayer, List<Player> players, Gui gui) {
+    }
 
-    protected void apply(List<Player> players, Deck deck) {}
+    protected void apply(List<Player> players, Deck deck) {
+    }
 
-    protected void apply(Player currentPlayer, List<Player> players, Gui gui, EggHatchingLogic eggHatchingLogic) {}
+    protected void apply(Player currentPlayer, List<Player> players, Gui gui, EggHatchingLogic eggHatchingLogic) {
+    }
 }

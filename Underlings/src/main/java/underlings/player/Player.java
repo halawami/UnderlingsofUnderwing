@@ -17,7 +17,7 @@ import underlings.utilities.LocaleWrap;
 public class Player {
 
     private List<Handler> handlers;
-    private int maxHandlers;
+    public int maxHandlers;
     private int points;
     private boolean reached12Points;
     private boolean reached25Points;
@@ -55,10 +55,6 @@ public class Player {
         if (this.handlers.size() != this.maxHandlers) {
             this.handlers.add(this.handlerFactory.createHandler());
         }
-    }
-
-    public int getMaxHandlers() {
-        return this.maxHandlers;
     }
 
     public void addPoints(int pointsToAdd) {
@@ -131,4 +127,12 @@ public class Player {
         return MessageFormat.format(LocaleWrap.get("player_number"), this.getPlayerId());
     }
 
+    public void destroyAllElements() {
+        this.elements.clear();
+    }
+
+    public void stealAllElementsFromPlayer(Player player) {
+        this.elements.addAll(player.elements);
+        player.destroyAllElements();
+    }
 }
