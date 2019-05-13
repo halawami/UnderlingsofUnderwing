@@ -103,4 +103,24 @@ public class CardTests {
         assertEquals(result, player.getMostValuableDragons());
         assertEquals(1, player.getMostValuableDragons().size());
     }
+
+    @Test
+    public void testMostValuableMultipleDragonsTie() {
+        Player player = new Player(6, new HandlerFactory(), 0);
+        Card card = new Card();
+        card.points = 1;
+        Card card2 = new Card();
+        card2.points = 2;
+        Card card3 = new Card();
+        card3.points = 2;
+        player.hatchedCards = new LinkedList<>();
+        player.hatchedCards.add(card);
+        player.hatchedCards.add(card2);
+        player.hatchedCards.add(card3);
+        List<Card> result = new LinkedList<>();
+        result.add(card2);
+        result.add(card3);
+        assertEquals(result, player.getMostValuableDragons());
+        assertEquals(2, player.getMostValuableDragons().size());
+    }
 }
