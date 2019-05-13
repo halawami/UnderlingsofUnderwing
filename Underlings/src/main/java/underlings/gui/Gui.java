@@ -187,7 +187,7 @@ public class Gui {
         return null;
     }
 
-    public Player promptPlayerToDeclareWarOn(List<Player> asList, int i) {
+    public Player promptPlayerToDeclareWarOn(List<Player> players, int playerId) {
         // TODO, use prompt_war_players for locale string
         return null;
     }

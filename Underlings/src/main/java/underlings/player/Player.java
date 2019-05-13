@@ -3,6 +3,7 @@ package underlings.player;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
+
 import underlings.card.Card;
 import underlings.element.Element;
 import underlings.element.ElementGiver;
@@ -21,7 +22,7 @@ public class Player {
     private boolean reached12Points;
     private boolean reached25Points;
     private HandlerFactory handlerFactory;
-    private List<Element> elements;
+    public List<Element> elements;
     private int playerId;
     public List<Card> hatchedCards;
     public List<Card> unhatchedCards;
