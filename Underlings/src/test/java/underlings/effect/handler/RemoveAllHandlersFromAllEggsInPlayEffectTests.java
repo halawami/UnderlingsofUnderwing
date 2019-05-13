@@ -29,7 +29,7 @@ public class RemoveAllHandlersFromAllEggsInPlayEffectTests {
         testedEffect.applyOnCardInPlay(card, null, null);
 
         Assert.assertNull(card.handler);
-        Assert.assertEquals(HandlerState.BREAK_ROOM, handler);
+        Assert.assertEquals(HandlerState.BREAK_ROOM, handler.getState());
     }
 
 }
