@@ -113,6 +113,8 @@ public class ElementSpaceLogic {
         for (ElementSpace space : card.elementSpaces) {
             if (getValidAdditions(space).contains(elementColor)) {
                 spaces.add(space);
+            } else if (!getValidAdditions(space).isEmpty() && this.isOpenElement(elementColor)) {
+                spaces.add(space);
             }
         }
         return spaces;
@@ -134,6 +136,10 @@ public class ElementSpaceLogic {
     public List<Element> getPlayableElements(ElementSpace space, List<Element> playerElements) {
         List<ElementColor> validAdditions = getValidAdditions(space);
         final List<Element> playableElements = new ArrayList<>();
+
+        if (validAdditions.isEmpty()) {
+            return Arrays.asList();
+        }
 
         playerElements.forEach((Element element) -> {
             ElementColor color = element.getColor();
