@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
@@ -24,6 +25,7 @@ import underlings.game.HatchingGround;
 import underlings.handler.Handler;
 import underlings.handler.HandlerChoice;
 import underlings.handler.HandlerDecision;
+import underlings.player.FakePlayer;
 import underlings.player.Player;
 import underlings.utilities.LocaleWrap;
 
@@ -31,6 +33,7 @@ public class Gui {
 
     private PromptHandler promptHandler;
     private Display display;
+    private Map<PromptType, Integer> promptTypes;
 
     public enum PromptType {
         REGULAR, WARNING, ERROR;
@@ -39,6 +42,10 @@ public class Gui {
     public Gui(PromptHandler promptHandler, Display display) {
         this.promptHandler = promptHandler;
         this.display = display;
+        this.promptTypes = new HashMap<>();
+        this.promptTypes.put(PromptType.ERROR, JOptionPane.ERROR_MESSAGE);
+        this.promptTypes.put(PromptType.REGULAR, JOptionPane.PLAIN_MESSAGE);
+        this.promptTypes.put(PromptType.WARNING, JOptionPane.WARNING_MESSAGE);
     }
 
     public DrawChoice getDrawChoice(List<ElementGiver> elementGivers, int playerId) {
@@ -205,11 +212,12 @@ public class Gui {
     }
 
     public void alert(String message, PromptType messageType) {
-
+        this.promptHandler.displayMessage(message, FakePlayer.getInstance().getPlayerId(),
+                promptTypes.get(messageType));
     }
 
     public void alert(String message, int playerId, PromptType messageType) {
-
+        this.promptHandler.displayMessage(message, playerId, promptTypes.get(messageType));
     }
 
 }
