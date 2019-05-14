@@ -207,4 +207,16 @@ public class LogicTests {
         assertEquals(WildHandler.getInstance(), card.handler);
     }
 
+    @Test
+    public void testNoHandler() {
+        Card card = new Card();
+
+        EasyMock.replay(this.hatchingGround, this.gui);
+
+        this.logic.move(card.handler, HandlerChoice.BREAK_ROOM, 0);
+
+        EasyMock.verify(this.hatchingGround, this.gui);
+        assertEquals(WildHandler.getInstance(), card.handler);
+    }
+
 }
