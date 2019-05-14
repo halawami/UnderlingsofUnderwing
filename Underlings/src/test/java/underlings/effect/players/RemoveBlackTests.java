@@ -6,7 +6,7 @@ import java.util.List;
 import org.easymock.EasyMock;
 import org.junit.Test;
 
-import underlings.card.effect.wild.RemoveBlackRecipes;
+import underlings.card.effect.wild.RemoveBlackRecipesEffect;
 import underlings.element.ElementColor;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.player.Player;
@@ -39,7 +39,7 @@ public class RemoveBlackTests {
         EasyMock.replay(logic1, logic2, logic3, logic4);
 
         List<Player> players = Arrays.asList(player1, player2, player3, player4);
-        new RemoveBlackRecipes().on(players).apply();
+        new RemoveBlackRecipesEffect().on(players).apply();
 
         EasyMock.verify(player1, player2, player3, player4);
         EasyMock.verify(logic1, logic2, logic3, logic4);

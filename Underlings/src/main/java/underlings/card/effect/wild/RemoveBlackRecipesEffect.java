@@ -7,7 +7,7 @@ import underlings.element.ElementColor;
 import underlings.gui.Gui;
 import underlings.player.Player;
 
-public class RemoveBlackRecipes extends PlayersEffect {
+public class RemoveBlackRecipesEffect extends PlayersEffect {
 
     @Override
     protected void apply(Player currentPlayer, List<Player> players, Gui gui) {
