@@ -19,7 +19,7 @@ import underlings.player.Player;
 public class ReplaceHandlerWithYourOwnEffectTests {
 
     @Test
-    public void testApplyEffect() {
+    public void testApplyEffectSelectableHandler() {
         Player currentPlayer = EasyMock.mock(Player.class);
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         List<Card> mockClaimedEggs = TestUtils.mockListOf(Card.class).withLength(6);
@@ -29,7 +29,7 @@ public class ReplaceHandlerWithYourOwnEffectTests {
         HandlerMovementLogic handlerMovementLogic = EasyMock.mock(HandlerMovementLogic.class);
         Gui gui = EasyMock.mock(Gui.class);
 
-        EasyMock.expect(currentPlayer.getPlayerId()).andReturn(0).times(2);
+        EasyMock.expect(currentPlayer.getPlayerId()).andReturn(0).anyTimes();
         EasyMock.expect(hatchingGround.getClaimedEggs()).andReturn(mockClaimedEggs);
         EasyMock.expect(gui.promptCard("Choose a card to replace its handler", mockClaimedEggs))
                 .andReturn(mockClaimedEggs.get(2));
