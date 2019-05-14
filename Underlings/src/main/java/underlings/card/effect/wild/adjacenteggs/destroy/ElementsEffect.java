@@ -9,6 +9,7 @@ import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.Deck;
+import underlings.game.HatchingGround;
 import underlings.handler.HandlerMovementLogic;
 import underlings.utilities.EggHatchingLogic;
 
@@ -19,7 +20,7 @@ public abstract class ElementsEffect extends AdjacentEggsEffect {
     @Override
     public void applyOnAdjacentEgg(Card adjacentEgg, ElementBag elementBag, ElementSpaceLogic elementSpaceLogic,
             EggHatchingLogic eggHatchingLogic, Deck deck,
-            HandlerMovementLogic handlerMovementLogic) {
+            HandlerMovementLogic handlerMovementLogic, HatchingGround hatchingGround) {
         this.destroyElementsOnAdjacentEgg(adjacentEgg, elementSpaceLogic);
     }
 

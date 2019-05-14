@@ -58,9 +58,9 @@ public class HatchAllUnclaimedAdjacentEggsEffectTests {
 
         EasyMock.replay(hatchingGround, elementBag, effect, gui, eggHatchingLogic);
 
-        hatchAllUnclaimedAdjacentEggsEffect.dragonFamilies = new Family[] {Family.MONOCHROMATIC};
+        hatchAllUnclaimedAdjacentEggsEffect.dragonFamilies = new Family[]{Family.MONOCHROMATIC};
         hatchAllUnclaimedAdjacentEggsEffect.applyOnAdjacentEgg(mockedCards.get(0), elementBag,
-                fakePlayer.elementSpaceLogic, eggHatchingLogic,  null, null );
+                fakePlayer.elementSpaceLogic, eggHatchingLogic, null, null, null);
 
         EasyMock.verify(hatchingGround, elementBag, effect, gui, eggHatchingLogic);
     }
@@ -74,7 +74,7 @@ public class HatchAllUnclaimedAdjacentEggsEffectTests {
         HatchAllUnclaimedEffect hatchAllUnclaimedAdjacentEggsEffect = new HatchAllUnclaimedEffect();
         hatchAllUnclaimedAdjacentEggsEffect.dragonFamilies = new Family[0];
         hatchAllUnclaimedAdjacentEggsEffect.applyOnAdjacentEgg(mockedCards.get(0), elementBag,
-                fakePlayer.elementSpaceLogic, eggHatchingLogic,  null, null );
+                fakePlayer.elementSpaceLogic, eggHatchingLogic, null, null, null);
         EasyMock.verify(hatchingGround, elementBag, effect, gui, eggHatchingLogic);
     }
 
@@ -85,10 +85,10 @@ public class HatchAllUnclaimedAdjacentEggsEffectTests {
         EasyMock.replay(hatchingGround, elementBag, effect, gui, eggHatchingLogic);
 
         HatchAllUnclaimedEffect hatchAllUnclaimedAdjacentEggsEffect = new HatchAllUnclaimedEffect();
-        hatchAllUnclaimedAdjacentEggsEffect.dragonFamilies = new Family[] {Family.MONOCHROMATIC};
+        hatchAllUnclaimedAdjacentEggsEffect.dragonFamilies = new Family[]{Family.MONOCHROMATIC};
 
         hatchAllUnclaimedAdjacentEggsEffect.applyOnAdjacentEgg(mockedCards.get(0), elementBag,
-                fakePlayer.elementSpaceLogic, eggHatchingLogic, null, null );
+                fakePlayer.elementSpaceLogic, eggHatchingLogic, null, null, null);
 
         EasyMock.verify(hatchingGround, elementBag, effect, gui, eggHatchingLogic);
     }

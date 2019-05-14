@@ -140,6 +140,10 @@ public class HatchingGround implements Iterable<Card> {
         return completeEggs;
     }
 
+    public void replaceCard(Card card) {
+        //TODO: takes a card in this.cards and replace it with a card from deck
+    }
+
     public Card findCard(Handler handler) {
         for (Card card : this) {
             if (card.handler == handler) {

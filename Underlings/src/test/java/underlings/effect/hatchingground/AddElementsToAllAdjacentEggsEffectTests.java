@@ -40,7 +40,7 @@ public class AddElementsToAllAdjacentEggsEffectTests {
         EasyMock.replay(eggHatchingLogic);
 
         testedEffect.applyOnAdjacentEgg(adjacentCard, elementBag, elementSpaceLogic,
-                eggHatchingLogic,  null, null);
+                eggHatchingLogic,  null, null, null);
 
         EasyMock.verify(elementBag, adjacentCard, elementSpaceLogic, testedEffect, gui, hatchingGround);
         EasyMock.verify(eggHatchingLogic);
@@ -64,7 +64,7 @@ public class AddElementsToAllAdjacentEggsEffectTests {
         EasyMock.replay(eggHatchingLogic);
 
         testedEffect.applyOnAdjacentEgg(adjacentCard, elementBag, elementSpaceLogic,
-                eggHatchingLogic,  null, null );
+                eggHatchingLogic,  null, null, null);
 
         EasyMock.verify(elementBag, adjacentCard, elementSpaceLogic, testedEffect, gui, hatchingGround);
         EasyMock.verify(eggHatchingLogic);
@@ -88,7 +88,7 @@ public class AddElementsToAllAdjacentEggsEffectTests {
         EasyMock.replay(eggHatchingLogic);
 
         testedEffect.applyOnAdjacentEgg(adjacentCard, elementBag, elementSpaceLogic,
-                eggHatchingLogic,  null, null );
+                eggHatchingLogic,  null, null, null);
 
         EasyMock.verify(elementBag, adjacentCard, elementSpaceLogic, testedEffect, gui, hatchingGround);
         EasyMock.verify(eggHatchingLogic);
