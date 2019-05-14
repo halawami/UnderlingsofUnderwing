@@ -7,6 +7,7 @@ import underlings.card.Card;
 import underlings.card.effect.wild.ReturnAllAdjacentCardsToDeckEffect;
 import underlings.game.Deck;
 import underlings.game.HatchingGround;
+import underlings.handler.HandlerChoice;
 import underlings.handler.HandlerMovementLogic;
 
 public class ReturnAllAdjacentCardsToDeckEffectTests {
@@ -18,6 +19,7 @@ public class ReturnAllAdjacentCardsToDeckEffectTests {
         Deck deck = EasyMock.mock(Deck.class);
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
 
+        handlerMovementLogic.move(adjacentCard.handler, HandlerChoice.BREAK_ROOM, 0);
         hatchingGround.replaceCard(adjacentCard);
         deck.addCard(adjacentCard);
 
@@ -30,7 +32,7 @@ public class ReturnAllAdjacentCardsToDeckEffectTests {
     }
 
     @Test
-    public void testApplyWildHandler(){
+    public void testApplyWildHandler() {
 
     }
 
