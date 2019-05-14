@@ -114,4 +114,20 @@ public class GetValidElementSpacesTest {
         assertTrue(actual.contains(space2));
         assertTrue(actual.contains(space4));
     }
+
+    @Test
+    public void testOpenElements() {
+        ElementSpace space1 = new ElementSpace(ElementColor.ORANGE);
+        ElementSpace space2 = new ElementSpace(ElementColor.BLUE);
+        space2.addElements(blueElement);
+        ElementSpace[] cardSpaces = {space1, space2};
+
+        Card testCard = new Card();
+        testCard.elementSpaces = cardSpaces;
+
+        logic.setOpenElement(ElementColor.WHITE);
+        List<ElementSpace> actual = logic.getPlayableSpaces(testCard, Arrays.asList(new Element(ElementColor.WHITE)));
+        assertEquals(1, actual.size());
+        assertTrue(actual.contains(space1));
+    }
 }
