@@ -70,7 +70,8 @@ public class Main {
         Game game = new Game(gui, hatchingGround, playerFactory, elementBag);
         Runnable gameDisplay = game::display;
 
-        EggHatchingLogic eggHatchingLogic = new EggHatchingLogic(gui, elementBag, hatchingGround, gameDisplay);
+        EggHatchingLogic eggHatchingLogic =
+                new EggHatchingLogic(gui, elementBag, hatchingGround, gameDisplay, game.getPlayers(), deck);
 
         List<Phase> phases = new ArrayList<>();
         phases.add(new DrawingPhase(game.getPlayers(), gui, elementBag, hatchingGround, gameDisplay, field));
