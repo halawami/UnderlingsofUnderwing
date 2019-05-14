@@ -19,7 +19,7 @@ public class HandlerMovementLogic {
     }
 
     public void move(Handler handler, HandlerChoice choice, int playerId) {
-        if (handler == WildHandler.getInstance()) {
+        if (handler == WildHandler.getInstance() || handler == null) {
             return;
         }
         switch (choice) {
