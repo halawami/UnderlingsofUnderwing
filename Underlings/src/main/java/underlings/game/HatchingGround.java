@@ -62,6 +62,10 @@ public class HatchingGround implements Iterable<Card> {
         return unclaimedEggs;
     }
 
+    public List<Card> getClaimedEggs() {
+        return null;
+    }
+
     public List<Card> getAdjacentCards(Card centerCard) {
         Point cardCoordinates = this.getCardCoordinates(centerCard);
         List<Card> cardsToReturn = new LinkedList<>();

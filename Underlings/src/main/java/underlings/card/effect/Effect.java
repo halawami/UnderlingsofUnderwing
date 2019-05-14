@@ -8,6 +8,7 @@ import underlings.element.ElementGiver;
 import underlings.game.Deck;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
+import underlings.handler.HandlerMovementLogic;
 import underlings.player.Player;
 import underlings.utilities.EggHatchingLogic;
 
@@ -21,6 +22,7 @@ public abstract class Effect extends ElementGiver {
     private EggHatchingLogic eggHatchingLogic;
     private List<Player> players;
     private Deck deck;
+    private HandlerMovementLogic handlerMovementLogic;
 
     public Effect on(HatchingGround hatchingGround) {
         this.hatchingGround = hatchingGround;
@@ -62,6 +64,11 @@ public abstract class Effect extends ElementGiver {
         return this;
     }
 
+    public Effect on(HandlerMovementLogic handlerMovementLogic) {
+        this.handlerMovementLogic = handlerMovementLogic;
+        return this;
+    }
+
     public void apply() {
         this.apply(this.centerCard, this.hatchingGround, this.elementBag, this.gui, this.player, this.eggHatchingLogic);
         this.apply(this.player, this.elementBag);
@@ -69,6 +76,7 @@ public abstract class Effect extends ElementGiver {
         this.apply(this.player, this.players, this.gui);
         this.apply(this.players, this.deck, this.gui);
         this.apply(this.player, this.players, this.gui, this.eggHatchingLogic);
+        this.apply(this.player, this.hatchingGround, this.handlerMovementLogic, this.gui);
     }
 
     protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag, Gui gui,
@@ -88,5 +96,10 @@ public abstract class Effect extends ElementGiver {
     }
 
     protected void apply(Player currentPlayer, List<Player> players, Gui gui, EggHatchingLogic eggHatchingLogic) {
+    }
+
+    protected void apply(Player currentPlayer, HatchingGround hatchingGround, HandlerMovementLogic handlerLogic,
+            Gui gui) {
+
     }
 }
