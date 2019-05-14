@@ -146,6 +146,30 @@ public class EggHatchingLogicTests {
     }
 
     @Test
+    public void testOneDomesticEffectNoHandler() {
+        Handler handler = new Handler(HandlerState.CARD);
+        EasyMock.expect(effect.on(card)).andReturn(effect);
+        EasyMock.expect(effect.on(elementBag)).andReturn(effect);
+        EasyMock.expect(effect.on(hatchingGround)).andReturn(effect);
+        EasyMock.expect(effect.on(player)).andReturn(effect);
+        EasyMock.expect(effect.on(gui)).andReturn(effect);
+        EasyMock.expect(effect.on(eggHatchingLogic)).andReturn(effect);
+        EasyMock.expect(effect.on(deck)).andReturn(effect);
+        EasyMock.expect(effect.on(players)).andReturn(effect);
+        effect.apply();
+        gui.notifyAction(player.getPlayerId(), effect.toString() + " has been applied");
+        displayMethod.run();
+
+        EasyMock.replay(effect, hatchingGround, gui, displayMethod);
+
+        eggHatchingLogic.hatchEgg(card, false, player);
+        assertEquals(handler, card.handler);
+        assertTrue(player.hatchedCards.contains(card));
+        assertEquals(HandlerState.READY_ROOM, handler.getState());
+        EasyMock.verify(effect, hatchingGround, gui, displayMethod);
+    }
+
+    @Test
     public void testReturnNoElements() {
         card.elementSpaces[0] = new ElementSpace(ElementColor.PURPLE);
 
