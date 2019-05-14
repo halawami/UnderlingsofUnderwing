@@ -147,7 +147,6 @@ public class EggHatchingLogicTests {
 
     @Test
     public void testOneDomesticEffectNoHandler() {
-        Handler handler = new Handler(HandlerState.CARD);
         EasyMock.expect(effect.on(card)).andReturn(effect);
         EasyMock.expect(effect.on(elementBag)).andReturn(effect);
         EasyMock.expect(effect.on(hatchingGround)).andReturn(effect);

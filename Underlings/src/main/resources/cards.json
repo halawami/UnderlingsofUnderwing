@@ -3721,5 +3721,55 @@
         "effect": "RemoveAllHandlersFromAllEggsInPlay"
       }
     ]
+  },
+  {
+    "name": "NORRUTH",
+    "points": 20,
+    "temperature": "NEUTRAL",
+    "family": "LEGENDARY",
+    "elementSpaces": [
+        {
+        "color": "PURPLE",
+        "position": "L4_1"
+      },
+      {
+        "color": "ORANGE",
+        "position": "L4_2"
+      },
+      {
+        "color": "ORANGE",
+        "position": "L4_3"
+      },
+      {
+        "color": "WHITE",
+        "position": "L4_4"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R4_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "R4_2"
+      },
+      {
+        "color": "GREEN",
+        "position": "R4_3"
+      },
+      {
+        "color": "BLACK",
+        "position": "R4_4"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "NextEggHatchesImmediatelyEffect"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AllEggsHatchLateEffect"
+      }
+    ]
   }
 ]
