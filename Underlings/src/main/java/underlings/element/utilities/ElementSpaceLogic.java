@@ -59,6 +59,10 @@ public class ElementSpaceLogic {
         recipeList.add(recipe);
     }
 
+    public void resetRecipes(ElementColor color) {
+
+    }
+
     public boolean isValidRecipe(List<ElementColor> recipe, ElementSpace space) {
         recipe = new ArrayList<ElementColor>(recipe);
         for (ElementColor color : space.getElementColors()) {
