@@ -1,6 +1,5 @@
 package underlings.utilities;
 
-import java.util.Arrays;
 import java.util.List;
 
 import underlings.card.Card;
@@ -60,7 +59,7 @@ public class EggHatchingLogic {
             for (Element element : space.elements) {
                 this.elementBag.putElement(element.getColor());
             }
-            space.elements = Arrays.asList();
+            space.elements.clear();
         }
     }
 }
