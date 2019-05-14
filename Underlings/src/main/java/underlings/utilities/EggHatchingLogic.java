@@ -1,5 +1,6 @@
 package underlings.utilities;
 
+import java.util.Arrays;
 import java.util.List;
 
 import underlings.card.Card;
@@ -41,7 +42,9 @@ public class EggHatchingLogic {
             this.returnElementsToBag(card);
         } else {
             effects = card.domesticEffects;
-            card.handler.moveToState(HandlerState.READY_ROOM);
+            if (card.handler != null) {
+                card.handler.moveToState(HandlerState.READY_ROOM);
+            }
             player.hatchedCards.add(card);
         }
         for (int i = 0; i < effects.length; i++) {
@@ -57,6 +60,7 @@ public class EggHatchingLogic {
             for (Element element : space.elements) {
                 this.elementBag.putElement(element.getColor());
             }
+            space.elements = Arrays.asList();
         }
     }
 }

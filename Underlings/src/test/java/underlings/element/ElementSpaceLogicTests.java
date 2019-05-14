@@ -78,6 +78,20 @@ public class ElementSpaceLogicTests {
     }
 
     @Test
+    public void testGetPlayableElementsAlias3() {
+        logic.setOpenElement(ElementColor.BLACK);
+
+        ElementSpace space = new ElementSpace(ElementColor.RED);
+        space.addElements(new Element(ElementColor.RED));
+
+        List<Element> playerElements = new ArrayList<>();
+        playerElements.add(new Element(ElementColor.BLACK));
+
+        List<Element> actual = logic.getPlayableElements(space, playerElements);
+        assertTrue(actual.isEmpty());
+    }
+
+    @Test
     public void testResetRecipes() {
         ElementSpace space = new ElementSpace(ElementColor.GREEN);
 
