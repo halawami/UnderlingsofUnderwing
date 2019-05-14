@@ -3679,5 +3679,47 @@
         "effect": "RemoveBlackRecipesEffect"
       }
     ]
+  },
+  {
+    "name": "VANDRENOX",
+    "points": 17,
+    "temperature": "COOL",
+    "family": "LEGENDARY",
+    "elementSpaces": [
+      {
+        "color": "PURPLE",
+        "position": "L3_1"
+      },
+      {
+        "color": "BLUE",
+        "position": "L3_2"
+      },
+      {
+        "color": "PURPLE",
+        "position": "L3_3"
+      },
+      {
+        "color": "BLACK",
+        "position": "R3_1"
+      },
+      {
+        "color": "BLACK",
+        "position": "R3_2"
+      },
+      {
+        "color": "BLACK",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "ReplaceHandlerWithYourOwnEffect"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "RemoveAllHandlersFromAllEggsInPlay"
+      }
+    ]
   }
 ]
