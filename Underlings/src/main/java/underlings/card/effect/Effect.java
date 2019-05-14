@@ -70,7 +70,8 @@ public abstract class Effect extends ElementGiver {
     }
 
     public void apply() {
-        this.apply(this.centerCard, this.hatchingGround, this.elementBag, this.gui, this.player, this.eggHatchingLogic);
+        this.apply(this.centerCard, this.hatchingGround, this.elementBag, this.gui, this.player, this.eggHatchingLogic,
+                this.deck, this.handlerMovementLogic);
         this.apply(this.player, this.elementBag);
         this.apply(this.player);
         this.apply(this.player, this.players, this.gui);
@@ -80,7 +81,8 @@ public abstract class Effect extends ElementGiver {
     }
 
     protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag, Gui gui,
-            Player currentPlayer, EggHatchingLogic eggHatchingLogic) {
+            Player currentPlayer, EggHatchingLogic eggHatchingLogic, Deck deck,
+            HandlerMovementLogic handlerMovementLogic) {
     }
 
     protected void apply(Player player, ElementBag elementBag) {

@@ -60,7 +60,7 @@ public class HatchAllUnclaimedAdjacentEggsEffectTests {
 
         hatchAllUnclaimedAdjacentEggsEffect.dragonFamilies = new Family[] {Family.MONOCHROMATIC};
         hatchAllUnclaimedAdjacentEggsEffect.applyOnAdjacentEgg(mockedCards.get(0), elementBag,
-                fakePlayer.elementSpaceLogic, eggHatchingLogic);
+                fakePlayer.elementSpaceLogic, eggHatchingLogic,  null, null );
 
         EasyMock.verify(hatchingGround, elementBag, effect, gui, eggHatchingLogic);
     }
@@ -74,7 +74,7 @@ public class HatchAllUnclaimedAdjacentEggsEffectTests {
         HatchAllUnclaimedEffect hatchAllUnclaimedAdjacentEggsEffect = new HatchAllUnclaimedEffect();
         hatchAllUnclaimedAdjacentEggsEffect.dragonFamilies = new Family[0];
         hatchAllUnclaimedAdjacentEggsEffect.applyOnAdjacentEgg(mockedCards.get(0), elementBag,
-                fakePlayer.elementSpaceLogic, eggHatchingLogic);
+                fakePlayer.elementSpaceLogic, eggHatchingLogic,  null, null );
         EasyMock.verify(hatchingGround, elementBag, effect, gui, eggHatchingLogic);
     }
 
@@ -88,7 +88,7 @@ public class HatchAllUnclaimedAdjacentEggsEffectTests {
         hatchAllUnclaimedAdjacentEggsEffect.dragonFamilies = new Family[] {Family.MONOCHROMATIC};
 
         hatchAllUnclaimedAdjacentEggsEffect.applyOnAdjacentEgg(mockedCards.get(0), elementBag,
-                fakePlayer.elementSpaceLogic, eggHatchingLogic);
+                fakePlayer.elementSpaceLogic, eggHatchingLogic, null, null );
 
         EasyMock.verify(hatchingGround, elementBag, effect, gui, eggHatchingLogic);
     }

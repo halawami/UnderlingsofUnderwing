@@ -8,6 +8,8 @@ import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
+import underlings.game.Deck;
+import underlings.handler.HandlerMovementLogic;
 import underlings.utilities.EggHatchingLogic;
 import underlings.utilities.LocaleWrap;
 
@@ -17,7 +19,8 @@ public class AddElementsEffect extends AdjacentEggsEffect {
 
     @Override
     public void applyOnAdjacentEgg(Card adjacentEgg, ElementBag elementBag, ElementSpaceLogic elementSpaceLogic,
-            EggHatchingLogic eggHatchingLogic) {
+            EggHatchingLogic eggHatchingLogic, Deck deck,
+            HandlerMovementLogic handlerMovementLogic) {
         for (ElementColor elementColorToAdd : this.elementColors) {
             this.addElementToCard(elementColorToAdd, adjacentEgg, elementSpaceLogic, elementBag);
         }

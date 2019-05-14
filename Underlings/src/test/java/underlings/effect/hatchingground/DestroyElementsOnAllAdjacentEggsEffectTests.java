@@ -27,7 +27,7 @@ public class DestroyElementsOnAllAdjacentEggsEffectTests {
         Card adjacentCard = EasyMock.mock(Card.class);
         ElementsEffect testedEffect = EasyMock.partialMockBuilder(ElementsEffect.class)
                 .addMockedMethod("destroyElementsOfColorOnCard").createMock();
-        testedEffect.elementColors = new ElementColor[] {ElementColor.BLUE};
+        testedEffect.elementColors = new ElementColor[]{ElementColor.BLUE};
         EggHatchingLogic eggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
 
         testedEffect.destroyElementsOfColorOnCard(ElementColor.BLUE, adjacentCard, elementSpaceLogic);
@@ -35,7 +35,7 @@ public class DestroyElementsOnAllAdjacentEggsEffectTests {
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         EasyMock.replay(testedEffect, elementSpaceLogic, adjacentCard, gui, hatchingGround, eggHatchingLogic);
 
-        testedEffect.applyOnAdjacentEgg(adjacentCard, null, elementSpaceLogic, eggHatchingLogic);
+        testedEffect.applyOnAdjacentEgg(adjacentCard, null, elementSpaceLogic, eggHatchingLogic, null, null);
 
         EasyMock.verify(testedEffect, elementSpaceLogic, adjacentCard, gui, hatchingGround, eggHatchingLogic);
     }
@@ -46,7 +46,7 @@ public class DestroyElementsOnAllAdjacentEggsEffectTests {
         Card adjacentCard = EasyMock.mock(Card.class);
         ElementsEffect testedEffect = EasyMock.partialMockBuilder(ElementsEffect.class)
                 .addMockedMethod("destroyElementsOfColorOnCard").createMock();
-        testedEffect.elementColors = new ElementColor[] {ElementColor.BLUE, ElementColor.RED};
+        testedEffect.elementColors = new ElementColor[]{ElementColor.BLUE, ElementColor.RED};
 
         EggHatchingLogic eggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
         testedEffect.destroyElementsOfColorOnCard(ElementColor.BLUE, adjacentCard, elementSpaceLogic);
@@ -56,7 +56,7 @@ public class DestroyElementsOnAllAdjacentEggsEffectTests {
 
         EasyMock.replay(testedEffect, elementSpaceLogic, adjacentCard, gui, hatchingGround, eggHatchingLogic);
 
-        testedEffect.applyOnAdjacentEgg(adjacentCard, null, elementSpaceLogic, eggHatchingLogic);
+        testedEffect.applyOnAdjacentEgg(adjacentCard, null, elementSpaceLogic, eggHatchingLogic, null, null );
 
         EasyMock.verify(testedEffect, elementSpaceLogic, adjacentCard, gui, hatchingGround, eggHatchingLogic);
     }

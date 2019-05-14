@@ -5,8 +5,10 @@ import java.util.List;
 import underlings.card.Card;
 import underlings.card.effect.HatchingGroundEffect;
 import underlings.element.ElementBag;
+import underlings.game.Deck;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
+import underlings.handler.HandlerMovementLogic;
 import underlings.player.FakePlayer;
 import underlings.player.Player;
 import underlings.utilities.EggHatchingLogic;
@@ -16,7 +18,8 @@ public class HatchAnyUnclaimedEggAsWildDragon extends HatchingGroundEffect {
 
     @Override
     protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag, Gui gui,
-            Player currentPlayer, EggHatchingLogic eggHatchingLogic) {
+            Player currentPlayer, EggHatchingLogic eggHatchingLogic, Deck deck,
+            HandlerMovementLogic handlerMovementLogic) {
         boolean choice = gui.promptDecision(LocaleWrap.get("prompt_choice_hatch_wildly"), currentPlayer.getPlayerId());
         if (choice) {
             List<Card> unclaimedEggs = hatchingGround.getUnclaimedEggs();

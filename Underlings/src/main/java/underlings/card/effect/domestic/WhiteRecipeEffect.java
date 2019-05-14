@@ -7,8 +7,10 @@ import underlings.card.Card;
 import underlings.card.effect.HatchingGroundEffect;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
+import underlings.game.Deck;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
+import underlings.handler.HandlerMovementLogic;
 import underlings.player.Player;
 import underlings.utilities.EggHatchingLogic;
 
@@ -25,7 +27,8 @@ public class WhiteRecipeEffect extends HatchingGroundEffect {
 
     @Override
     protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag, Gui gui,
-            Player currentPlayer, EggHatchingLogic eggHatchingLogic) {
+            Player currentPlayer, EggHatchingLogic eggHatchingLogic, Deck deck,
+            HandlerMovementLogic handlerMovementLogic) {
 
         List<String[]> recipes = new ArrayList<>();
         recipes.add(recipe000.split(","));

@@ -8,8 +8,10 @@ import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
+import underlings.game.Deck;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
+import underlings.handler.HandlerMovementLogic;
 import underlings.player.Player;
 import underlings.utilities.EggHatchingLogic;
 
@@ -20,7 +22,8 @@ public abstract class UptoElementsFromAnyEggInPlayEffect extends HatchingGroundE
 
     @Override
     protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag, Gui gui,
-            Player currentPlayer, EggHatchingLogic eggHatchingLogic) {
+            Player currentPlayer, EggHatchingLogic eggHatchingLogic, Deck deck,
+            HandlerMovementLogic handlerMovementLogic) {
         List<Card> allCards = hatchingGround.getAllCards();
         for (int i = 0; i < this.upTo; i++) {
             ElementSpace selectedSpace = gui.getElementSpaceContainingElementOfColors(allCards, this.elementChoices);
