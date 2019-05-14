@@ -3728,7 +3728,7 @@
     "temperature": "NEUTRAL",
     "family": "LEGENDARY",
     "elementSpaces": [
-        {
+      {
         "color": "PURPLE",
         "position": "L4_1"
       },
@@ -3769,6 +3769,63 @@
     "wildEffects": [
       {
         "effect": "AllEggsHatchLateEffect"
+      }
+    ]
+  },
+  {
+    "name": "TIAMAT",
+    "points": 16,
+    "temperature": "NEUTRAL",
+    "family": "LEGENDARY",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L4_1"
+      },
+      {
+        "color": "RED",
+        "position": "L4_2"
+      },
+      {
+        "color": "BLACK",
+        "position": "L4_3"
+      },
+      {
+        "color": "WHITE",
+        "position": "L4_4"
+      },
+      {
+        "color": "BLUE",
+        "position": "R4_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "R4_2"
+      },
+      {
+        "color": "BLUE",
+        "position": "R4_3"
+      },
+      {
+        "color": "GREEN",
+        "position": "R4_4"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectFiveElementsEffect",
+        "elementColors": [
+          "RED",
+          "BLUE",
+          "GREEN",
+          "BLACK",
+          "WHITE"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "ReturnAllAdjacentCardsToDeckEffect"
       }
     ]
   }

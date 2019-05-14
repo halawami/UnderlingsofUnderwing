@@ -30,7 +30,7 @@ public class ReturnAllAdjacentCardsToDeckEffectTests {
         this.testApplyWithHandler(new Handler(HandlerState.CARD));
     }
 
-    public void testApplyWithHandler(Handler handler) {
+    private void testApplyWithHandler(Handler handler) {
         Card adjacentCard = EasyMock.mock(Card.class);
         adjacentCard.handler = handler;
         HandlerMovementLogic handlerMovementLogic = EasyMock.mock(HandlerMovementLogic.class);
