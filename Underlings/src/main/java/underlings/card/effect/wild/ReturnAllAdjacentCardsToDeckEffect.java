@@ -17,6 +17,7 @@ public class ReturnAllAdjacentCardsToDeckEffect extends AdjacentEggsEffect {
             EggHatchingLogic eggHatchingLogic, Deck deck, HandlerMovementLogic handlerMovementLogic,
             HatchingGround hatchingGround) {
         handlerMovementLogic.move(adjacentEgg.handler, HandlerChoice.BREAK_ROOM, 0);
+        handlerMovementLogic.removeHandlerFromCard(adjacentEgg);
         hatchingGround.replaceCard(adjacentEgg);
         deck.addCard(adjacentEgg);
     }
