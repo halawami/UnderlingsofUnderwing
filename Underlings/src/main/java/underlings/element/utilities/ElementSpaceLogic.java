@@ -1,6 +1,7 @@
 package underlings.element.utilities;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -60,7 +61,9 @@ public class ElementSpaceLogic {
     }
 
     public void resetRecipes(ElementColor color) {
-
+        List<List<ElementColor>> recipeList = recipeMap.get(color);
+        recipeList.clear();
+        recipeList.add(Arrays.asList(color));
     }
 
     public boolean isValidRecipe(List<ElementColor> recipe, ElementSpace space) {
