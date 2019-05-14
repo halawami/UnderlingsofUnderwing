@@ -29,7 +29,7 @@ public class HandlerMovementLogic {
                 }
                 if (handler.getState() == HandlerState.CARD) {
                     Card card = this.hatchingGround.findCard(handler);
-                    card.handler = null;
+                    this.removeHandlerFromCard(card);
                 }
                 handler.moveToState(choice.getState());
                 break;
@@ -58,6 +58,10 @@ public class HandlerMovementLogic {
                 handler.moveToState(choice.getState());
         }
 
+    }
+
+    public void removeHandlerFromCard(Card card) {
+        card.handler = null;
     }
 
     public void moveToCard(Handler handler, Card card) {
