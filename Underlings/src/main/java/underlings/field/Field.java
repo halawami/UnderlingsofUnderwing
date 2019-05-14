@@ -8,7 +8,7 @@ public class Field {
 
     private FieldSpace white;
 
-    private List<FieldSpace> field;
+    public List<FieldSpace> field;
 
     public Field(FieldSpaceFactory fieldSpaceFactory) {
         this.white = fieldSpaceFactory.createFieldSpace(DrawChoice.WHITE);
@@ -37,6 +37,9 @@ public class Field {
             if (space.contains(handler)) {
                 return space;
             }
+        }
+        if (this.white.contains(handler)) {
+            return this.white;
         }
         return null;
     }

@@ -9,8 +9,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
-import java.util.function.Function;
+
 import javax.swing.JOptionPane;
+
 import underlings.card.Card;
 import underlings.card.EmptyCard;
 import underlings.element.Element;
@@ -28,8 +29,12 @@ import underlings.utilities.LocaleWrap;
 
 public class Gui {
 
-    public PromptHandler promptHandler;
-    protected Display display;
+    private PromptHandler promptHandler;
+    private Display display;
+
+    public enum PromptType {
+        REGULAR, WARNING, ERROR;
+    }
 
     public Gui(PromptHandler promptHandler, Display display) {
         this.promptHandler = promptHandler;
@@ -51,10 +56,6 @@ public class Gui {
         return this.promptHandler.promptDecision(LocaleWrap.get("gui_more_moves"), playerId);
     }
 
-    public boolean promptDecision(String toDisplay, int playerId) {
-        return true;
-    }
-
     public HandlerDecision getHandlerDecision(List<Handler> handlers, int playerId, HatchingGround hatchingGround) {
         Handler handler = this.promptHandler.promptChoice(LocaleWrap.get("gui_handler"), handlers, playerId);
         handlers.remove(handler);
@@ -71,11 +72,11 @@ public class Gui {
         return new HandlerDecision(handler, handlerChoice);
     }
 
-    public Card getCard(int playerId, String prompt, HatchingGround hatchingGround, Function<Card, Boolean> isValid) {
+    public Card getCard(int playerId, String prompt, HatchingGround hatchingGround, List<Card> validCards) {
         Card[][] cards = new Card[hatchingGround.getHeight()][hatchingGround.getWidth()];
         for (int w = 0; w < cards.length; w++) {
             for (int h = 0; h < cards[w].length; h++) {
-                if (isValid.apply(hatchingGround.cards[w][h])) {
+                if (validCards.contains(hatchingGround.cards[w][h])) {
                     cards[w][h] = hatchingGround.cards[w][h];
                 }
             }
@@ -95,12 +96,6 @@ public class Gui {
 
     public int getPlayerCount(int minPlayers, int maxPlayers) {
         return this.promptHandler.promptInt(LocaleWrap.get("prompt_player_count"), minPlayers, maxPlayers);
-    }
-
-    public ElementSpace getElementSpaceContainingElementOfColors(List<Card> cards, ElementColor[] colorChoices) {
-        // TODO: implement this method for CollectUpToElementsFromAnyEggInPlayEffect,
-        // ask Mohammad for information
-        return null;
     }
 
     public Element getElementOfColorsFromSpace(ElementColor[] elementChoices, ElementSpace elementSpace,
@@ -138,11 +133,6 @@ public class Gui {
             Card choice = this.promptHandler.pickCard(LocaleWrap.get("gui_card"), validCards, player.getPlayerId());
             return choice;
         }
-    }
-
-    public Card promptCard(String toDisplay, List<Card> cards) {
-        // TODO
-        return EmptyCard.getInstance();
     }
 
     public Locale promptLocale(Locale[] locales) {
@@ -184,20 +174,42 @@ public class Gui {
         }
     }
 
-    public Player promptPlayer(String toDispaly, Player currentPlayer, List<Player> players) {
+    public <T> T promptChoice(String prompt, List<T> choices, int playerId) {
+        return this.promptHandler.promptChoice(prompt, choices, playerId);
+    }
+
+    public ElementSpace getElementSpaceContainingElementOfColors(List<Card> cards, ElementColor[] colorChoices) {
+        // TODO: implement this method for CollectUpToElementsFromAnyEggInPlayEffect,
+        // ask Mohammad for information
+        return null;
+    }
+
+    public boolean promptDecision(String message, int playerId) {
+        // TODO
+        return true;
+    }
+
+    public Card promptCard(String message, List<Card> cards) {
+        // TODO
+        return EmptyCard.getInstance();
+    }
+
+    public Player promptPlayer(String message, Player currentPlayer, List<Player> players) {
         // TODO, Mohammad is using this for Ignatius's StealAllStoredElementsEffect
         return null;
     }
 
-    public Card promptCardToSteal(String toDispaly, int playerId, Map<Player, List<Card>> playerCards) {
+    public Card promptCardToSteal(String message, int playerId, Map<Player, List<Card>> playerCards) {
         // TODO
         return null;
     }
 
-    public Player promptPlayerToDeclareWarOn(List<Player> players, int playerId) {
-        // TODO, use prompt_war_players for locale string
-        return null;
+    public void alert(String message, PromptType messageType) {
+
     }
 
+    public void alert(String message, int playerId, PromptType messageType) {
+
+    }
 
 }

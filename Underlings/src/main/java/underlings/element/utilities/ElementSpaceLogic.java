@@ -1,6 +1,7 @@
 package underlings.element.utilities;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -40,18 +41,29 @@ public class ElementSpaceLogic {
         recipeMap = new HashMap<>();
 
         for (String line : recipeLines) {
-            ElementColor color = ElementColor.valueOf(line.split(":")[0]);
+            ElementColor createdColor = ElementColor.valueOf(line.split(":")[0]);
+            recipeMap.put(createdColor, new ArrayList<List<ElementColor>>());
+
             String[] recipes = line.split(":")[1].split(" ");
-            List<List<ElementColor>> recipeList = new ArrayList<List<ElementColor>>();
             for (String recipe : recipes) {
-                List<ElementColor> constructedRecipe = new ArrayList<ElementColor>();
-                for (String ingredient : recipe.split(",")) {
-                    constructedRecipe.add(ElementColor.valueOf(ingredient));
-                }
-                recipeList.add(constructedRecipe);
+                addRecipe(createdColor, recipe.split(","));
             }
-            recipeMap.put(color, recipeList);
         }
+    }
+
+    public void addRecipe(ElementColor createdColor, String... ingredients) {
+        List<List<ElementColor>> recipeList = recipeMap.get(createdColor);
+        List<ElementColor> recipe = new ArrayList<ElementColor>();
+        for (String ingredient : ingredients) {
+            recipe.add(ElementColor.valueOf(ingredient));
+        }
+        recipeList.add(recipe);
+    }
+
+    public void resetRecipes(ElementColor color) {
+        List<List<ElementColor>> recipeList = recipeMap.get(color);
+        recipeList.clear();
+        recipeList.add(Arrays.asList(color));
     }
 
     public boolean isValidRecipe(List<ElementColor> recipe, ElementSpace space) {
@@ -101,7 +113,8 @@ public class ElementSpaceLogic {
         for (ElementSpace space : card.elementSpaces) {
             if (getValidAdditions(space).contains(elementColor)) {
                 spaces.add(space);
-                break;
+            } else if (!getValidAdditions(space).isEmpty() && this.isOpenElement(elementColor)) {
+                spaces.add(space);
             }
         }
         return spaces;
@@ -123,6 +136,10 @@ public class ElementSpaceLogic {
     public List<Element> getPlayableElements(ElementSpace space, List<Element> playerElements) {
         List<ElementColor> validAdditions = getValidAdditions(space);
         final List<Element> playableElements = new ArrayList<>();
+
+        if (validAdditions.isEmpty()) {
+            return Arrays.asList();
+        }
 
         playerElements.forEach((Element element) -> {
             ElementColor color = element.getColor();

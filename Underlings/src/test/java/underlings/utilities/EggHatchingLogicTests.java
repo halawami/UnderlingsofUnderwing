@@ -20,6 +20,7 @@ import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
+import underlings.game.Deck;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.handler.Handler;
@@ -36,6 +37,10 @@ public class EggHatchingLogicTests {
     private HatchingGround hatchingGround;
     private Player player;
     private Gui gui;
+    private Runnable displayMethod;
+    private EggHatchingLogic eggHatchingLogic;
+    private Deck deck;
+    private List<Player> players;
 
     @Before
     public void init() throws IOException {
@@ -54,6 +59,11 @@ public class EggHatchingLogicTests {
         this.gui = EasyMock.mock(Gui.class);
         this.card.domesticEffects = new Effect[1];
         this.card.domesticEffects[0] = effect;
+        this.displayMethod = EasyMock.mock(Runnable.class);
+        this.deck = EasyMock.mock(Deck.class);
+        this.players = Arrays.asList(this.player);
+        this.eggHatchingLogic =
+                new EggHatchingLogic(gui, elementBag, hatchingGround, displayMethod, this.players, this.deck);
     }
 
     @Test
@@ -63,17 +73,19 @@ public class EggHatchingLogicTests {
         EasyMock.expect(effect.on(hatchingGround)).andReturn(effect);
         EasyMock.expect(effect.on(player)).andReturn(effect);
         EasyMock.expect(effect.on(gui)).andReturn(effect);
-        EggHatchingLogic wildEggHatchingLogic = new EggHatchingLogic(gui, elementBag, hatchingGround);
-        EasyMock.expect(effect.on(wildEggHatchingLogic)).andReturn(effect);
+        EasyMock.expect(effect.on(eggHatchingLogic)).andReturn(effect);
+        EasyMock.expect(effect.on(deck)).andReturn(effect);
+        EasyMock.expect(effect.on(players)).andReturn(effect);
         effect.apply();
         this.elementBag.putElement(ElementColor.PURPLE);
         gui.notifyAction(-1, effect.toString() + " has been applied");
+        displayMethod.run();
 
-        EasyMock.replay(effect, elementBag, hatchingGround, gui);
+        EasyMock.replay(effect, elementBag, hatchingGround, gui, displayMethod);
 
-        wildEggHatchingLogic.hatchEgg(card, true, player);
+        eggHatchingLogic.hatchEgg(card, true, player);
         assertEquals(WildHandler.getInstance(), card.handler);
-        EasyMock.verify(effect, elementBag, hatchingGround, gui);
+        EasyMock.verify(effect, elementBag, hatchingGround, gui, displayMethod);
     }
 
     @Test
@@ -86,21 +98,24 @@ public class EggHatchingLogicTests {
         EasyMock.expect(effect.on(hatchingGround)).andReturn(effect).times(2);
         EasyMock.expect(effect.on(player)).andReturn(effect).times(2);
         EasyMock.expect(effect.on(gui)).andReturn(effect).times(2);
-        EggHatchingLogic wildEggHatchingLogic = new EggHatchingLogic(gui, elementBag, hatchingGround);
-        EasyMock.expect(effect.on(wildEggHatchingLogic)).andReturn(effect).times(2);
+        EasyMock.expect(effect.on(eggHatchingLogic)).andReturn(effect).times(2);
+        EasyMock.expect(effect.on(deck)).andReturn(effect).times(2);
+        EasyMock.expect(effect.on(players)).andReturn(effect).times(2);
         effect.apply();
         EasyMock.expectLastCall().times(2);
         this.elementBag.putElement(ElementColor.PURPLE);
 
         gui.notifyAction(-1, effect + " has been applied");
-        EasyMock.expectLastCall().times(2);
+        displayMethod.run();
+        gui.notifyAction(-1, effect + " has been applied");
+        displayMethod.run();
 
-        EasyMock.replay(effect, elementBag, hatchingGround, gui);
+        EasyMock.replay(effect, elementBag, hatchingGround, gui, displayMethod);
 
-        wildEggHatchingLogic.hatchEgg(card, true, player);
+        eggHatchingLogic.hatchEgg(card, true, player);
         assertEquals(WildHandler.getInstance(), card.handler);
 
-        EasyMock.verify(effect, elementBag, hatchingGround, gui);
+        EasyMock.verify(effect, elementBag, hatchingGround, gui, displayMethod);
     }
 
     @Test
@@ -112,30 +127,31 @@ public class EggHatchingLogicTests {
         EasyMock.expect(effect.on(hatchingGround)).andReturn(effect);
         EasyMock.expect(effect.on(player)).andReturn(effect);
         EasyMock.expect(effect.on(gui)).andReturn(effect);
-        EggHatchingLogic domesticEggHatchingLogic = new EggHatchingLogic(gui, elementBag, hatchingGround);
-        EasyMock.expect(effect.on(domesticEggHatchingLogic)).andReturn(effect);
+        EasyMock.expect(effect.on(eggHatchingLogic)).andReturn(effect);
+        EasyMock.expect(effect.on(deck)).andReturn(effect);
+        EasyMock.expect(effect.on(players)).andReturn(effect);
         effect.apply();
         gui.notifyAction(player.getPlayerId(), effect.toString() + " has been applied");
+        displayMethod.run();
 
-        EasyMock.replay(effect, elementBag, hatchingGround, gui);
+        EasyMock.replay(effect, elementBag, hatchingGround, gui, displayMethod);
 
-        domesticEggHatchingLogic.hatchEgg(card, false, player);
+        eggHatchingLogic.hatchEgg(card, false, player);
         assertEquals(handler, card.handler);
         assertTrue(player.hatchedCards.contains(card));
         assertEquals(HandlerState.READY_ROOM, handler.getState());
-        EasyMock.verify(effect, elementBag, hatchingGround, gui);
+        EasyMock.verify(effect, elementBag, hatchingGround, gui, displayMethod);
     }
 
     @Test
     public void testReturnNoElements() {
         card.elementSpaces[0] = new ElementSpace(ElementColor.PURPLE);
 
-        EasyMock.replay(hatchingGround, elementBag, gui);
+        EasyMock.replay(hatchingGround, elementBag, gui, displayMethod);
 
-        EggHatchingLogic eggHatchingLogic = new EggHatchingLogic(gui, elementBag, hatchingGround);
         eggHatchingLogic.returnElementsToBag(card);
 
-        EasyMock.verify(hatchingGround, elementBag, gui);
+        EasyMock.verify(hatchingGround, elementBag, gui, displayMethod);
     }
 
     @Test
@@ -144,12 +160,11 @@ public class EggHatchingLogicTests {
         card.elementSpaces[0].elements = Arrays.asList(new Element(ElementColor.RED), new Element(ElementColor.BLUE));
         elementBag.putElement(ElementColor.RED);
         elementBag.putElement(ElementColor.BLUE);
-        EasyMock.replay(hatchingGround, elementBag, gui);
+        EasyMock.replay(hatchingGround, elementBag, gui, displayMethod);
 
-        EggHatchingLogic eggHatchingLogic = new EggHatchingLogic(gui, elementBag, hatchingGround);
         eggHatchingLogic.returnElementsToBag(card);
 
-        EasyMock.verify(hatchingGround, elementBag, gui);
+        EasyMock.verify(hatchingGround, elementBag, gui, displayMethod);
     }
 
     @Test
@@ -159,12 +174,11 @@ public class EggHatchingLogicTests {
         elementBag.putElement(ElementColor.RED);
         elementBag.putElement(ElementColor.YELLOW);
 
-        EasyMock.replay(hatchingGround, elementBag, gui);
+        EasyMock.replay(hatchingGround, elementBag, gui, displayMethod);
 
-        EggHatchingLogic eggHatchingLogic = new EggHatchingLogic(gui, elementBag, hatchingGround);
         eggHatchingLogic.returnElementsToBag(card);
 
-        EasyMock.verify(hatchingGround, elementBag, gui);
+        EasyMock.verify(hatchingGround, elementBag, gui, displayMethod);
     }
 
     @Test
@@ -180,13 +194,12 @@ public class EggHatchingLogicTests {
         elementBag.putElement(ElementColor.RED);
         elementBag.putElement(ElementColor.BLUE);
 
-        EasyMock.replay(hatchingGround, elementBag, gui);
+        EasyMock.replay(hatchingGround, elementBag, gui, displayMethod);
 
-        EggHatchingLogic eggHatchingLogic = new EggHatchingLogic(gui, elementBag, hatchingGround);
         eggHatchingLogic.returnElementsToBag(card);
         eggHatchingLogic.returnElementsToBag(card2);
 
-        EasyMock.verify(hatchingGround, elementBag, gui);
+        EasyMock.verify(hatchingGround, elementBag, gui, displayMethod);
     }
 
 }

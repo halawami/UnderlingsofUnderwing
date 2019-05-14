@@ -3,11 +3,12 @@ package underlings.phase;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.swing.JOptionPane;
+
 import underlings.card.Card;
 import underlings.element.ElementSpace;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
+import underlings.gui.Gui.PromptType;
 import underlings.handler.WildHandler;
 import underlings.player.FakePlayer;
 import underlings.player.Player;
@@ -44,8 +45,7 @@ public class PlacementPhase extends RotationPhase {
 
         List<Card> cards = this.utils.getPlayableCards(player.elementSpaceLogic, player.getElements());
         if (cards.isEmpty()) {
-            this.gui.promptHandler.displayMessage(LocaleWrap.get("no_placements"), player.getPlayerId(),
-                    JOptionPane.WARNING_MESSAGE);
+            this.gui.alert(LocaleWrap.get("no_placements"), player.getPlayerId(), PromptType.WARNING);
             return;
         } else {
             this.setPhaseComplete(false);
@@ -56,7 +56,7 @@ public class PlacementPhase extends RotationPhase {
 
         this.utils.placeElements(space, player);
 
-        if (player.elementSpaceLogic.isComplete(card) && card.handler == null) {
+        if (hatchingGround.logic.isComplete(card) && card.handler == null) {
             this.wildEggHatchingLogic.hatchEgg(card, true, FakePlayer.getInstance());
             this.checkGameover();
         }

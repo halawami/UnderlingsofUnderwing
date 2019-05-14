@@ -3,7 +3,8 @@ package underlings.handler.movement;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
-import com.google.common.base.Function;
+import java.util.Arrays;
+import java.util.List;
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
@@ -84,9 +85,12 @@ public class LogicTests {
     @Test
     public void testCard() {
         Card card = new Card();
+        card.name = "testCard";
 
         EasyMock.expect(this.gui.getCard(EasyMock.anyInt(), EasyMock.anyString(),
-                EasyMock.anyObject(HatchingGround.class), EasyMock.anyObject(Function.class))).andReturn(card);
+                EasyMock.anyObject(HatchingGround.class), EasyMock.anyObject(List.class))).andReturn(card);
+        List<Card> cardList = Arrays.asList(card);
+        EasyMock.expect(this.hatchingGround.getUnclaimedEggs()).andReturn(cardList);
         EasyMock.replay(this.hatchingGround, this.gui);
 
         Handler handler = new Handler(HandlerState.READY_ROOM);
@@ -95,6 +99,7 @@ public class LogicTests {
         EasyMock.verify(this.hatchingGround, this.gui);
         assertEquals(HandlerState.CARD, handler.getState());
         assertEquals(handler, card.handler);
+        assertEquals(card.name, handler.location);
 
     }
 
@@ -115,6 +120,7 @@ public class LogicTests {
     public void testBreakRoom() {
 
         Handler handler = new Handler(HandlerState.FIELD);
+        this.field.addHandler(0, handler);
 
         EasyMock.replay(this.hatchingGround, this.gui);
 
@@ -146,6 +152,40 @@ public class LogicTests {
 
         EasyMock.verify(this.hatchingGround, this.gui);
         assertEquals(HandlerState.READY_ROOM, handler.getState());
+    }
+
+    @Test
+    public void testFieldToBreakRoom() {
+        Handler handler = new Handler(HandlerState.FIELD);
+        this.field.addHandler(0, handler);
+
+        EasyMock.replay(this.hatchingGround, this.gui);
+
+        this.logic.move(handler, HandlerChoice.BREAK_ROOM, 0);
+
+        EasyMock.verify(this.hatchingGround, this.gui);
+
+        assertEquals(1, handler.drawChoices.size());
+        assertTrue(handler.drawChoices.contains(DrawChoice.RANDOM));
+        assertEquals(HandlerState.BREAK_ROOM, handler.getState());
+
+    }
+
+    @Test
+    public void testFieldWhiteToBreakRoom() {
+        Handler handler = new Handler(HandlerState.FIELD_WHITESPACE);
+        this.field.addHandlerWhitespace(handler);
+
+        EasyMock.replay(this.hatchingGround, this.gui);
+
+        this.logic.move(handler, HandlerChoice.BREAK_ROOM, 0);
+
+        EasyMock.verify(this.hatchingGround, this.gui);
+
+        assertEquals(1, handler.drawChoices.size());
+        assertTrue(handler.drawChoices.contains(DrawChoice.RANDOM));
+        assertEquals(HandlerState.BREAK_ROOM, handler.getState());
+
     }
 
 }

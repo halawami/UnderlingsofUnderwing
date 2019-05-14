@@ -2,17 +2,12 @@ package underlings.phase;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
-
 import java.io.IOException;
 import java.util.List;
-
-import javax.swing.JOptionPane;
-
 import org.easymock.EasyMock;
 import org.junit.Test;
-
-import underlings.gui.ConcretePrompt;
 import underlings.gui.Gui;
+import underlings.gui.Gui.PromptType;
 import underlings.player.FakePlayer;
 
 public class WildFinalPhaseTests {
@@ -20,10 +15,7 @@ public class WildFinalPhaseTests {
     @Test
     public void testRunWildFinalPhase() throws IOException {
         Gui gui = EasyMock.mock(Gui.class);
-        gui.promptHandler = EasyMock.mock(ConcretePrompt.class);
-        gui.promptHandler.displayMessage("All eggs hatched wild, the game wins", -1, JOptionPane.PLAIN_MESSAGE);
-
-        EasyMock.replay(gui, gui.promptHandler);
+        gui.alert("All eggs hatched wild, the game wins", PromptType.ERROR);
 
         FinalPhase finalPhase = new WildFinalPhase(gui);
         finalPhase.execute();
@@ -31,7 +23,6 @@ public class WildFinalPhaseTests {
         FakePlayer.initPlayer(recipes);
         finalPhase.turn(FakePlayer.getInstance());
 
-        EasyMock.verify(gui, gui.promptHandler);
     }
 
 }

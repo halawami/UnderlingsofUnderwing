@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+
 import underlings.element.ElementBag;
 import underlings.gui.Gui;
 import underlings.phase.FinalPhase;
@@ -28,9 +29,9 @@ public class Game {
     private PlayerFactory playerFactory;
     private ElementBag elementBag;
     private boolean gameOver = false;
-    private FinalPhase finalPhase;
-    private List<Phase> phases;
-    private Map<FinalPhaseType, FinalPhase> finalPhaseMap;
+    protected FinalPhase finalPhase;
+    protected List<Phase> phases;
+    protected Map<FinalPhaseType, FinalPhase> finalPhaseMap;
 
     private List<Player> players = new LinkedList<>();
 
@@ -81,7 +82,7 @@ public class Game {
         this.finalPhase.execute();
     }
 
-    private void gameLoop() {
+    public void gameLoop() {
         while (this.roundsLeft > 0) {
 
             for (Phase phase : this.phases) {

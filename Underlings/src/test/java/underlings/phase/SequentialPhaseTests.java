@@ -15,8 +15,8 @@ public class SequentialPhaseTests {
                 EasyMock.createMockBuilder(SequentialPhase.class).addMockedMethod("turn").addMockedMethod("setup")
                         .addMockedMethod("setPhaseComplete").addMockedMethod("isPhaseComplete").createMock();
 
-        sequential.displayMethod = () -> {
-        };
+        Runnable displayMethod = EasyMock.mock(Runnable.class);
+        sequential.displayMethod = displayMethod;
 
         Player playerOne = new Player(4, new HandlerFactory(), 0);
         Player playerTwo = new Player(4, new HandlerFactory(), 0);
@@ -29,19 +29,22 @@ public class SequentialPhaseTests {
         sequential.setPhaseComplete(false);
         EasyMock.expect(sequential.isPhaseComplete()).andReturn(false);
         sequential.turn(playerOne);
+        displayMethod.run();
         EasyMock.expect(sequential.isPhaseComplete()).andReturn(false);
         sequential.turn(playerOne);
+        displayMethod.run();
         EasyMock.expect(sequential.isPhaseComplete()).andReturn(true);
         sequential.setPhaseComplete(false);
         EasyMock.expect(sequential.isPhaseComplete()).andReturn(false);
         sequential.turn(playerTwo);
+        displayMethod.run();
         EasyMock.expect(sequential.isPhaseComplete()).andReturn(true);
 
-        EasyMock.replay(sequential);
+        EasyMock.replay(sequential, displayMethod);
 
         sequential.execute(0);
 
-        EasyMock.verify(sequential);
+        EasyMock.verify(sequential, displayMethod);
     }
 
 }

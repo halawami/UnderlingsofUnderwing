@@ -1,7 +1,6 @@
 package underlings.game;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import com.google.common.base.Charsets;
@@ -298,43 +297,6 @@ public class HatchingGroundTests {
         for (Card card : allCards) {
             assertTrue(cards.contains(card));
         }
-
-    }
-
-    @Test
-    public void testIsUnclaimedTrue() {
-        List<Card> cards = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            cards.add(new Card());
-        }
-        Card unclaimedCard = new Card();
-        cards.add(unclaimedCard);
-
-        Deck deck = new Deck(cards);
-        HatchingGround hatchingGround = new HatchingGround(deck, new ElementSpaceLogic(this.recipes));
-        hatchingGround.setDimensions(3, 2);
-        hatchingGround.populate();
-
-        assertTrue(hatchingGround.isUnclaimed(unclaimedCard));
-
-    }
-
-    @Test
-    public void testIsUnclaimedFalse() {
-        List<Card> cards = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            cards.add(new Card());
-        }
-        Card claimedCard = new Card();
-        claimedCard.handler = new Handler(HandlerState.CARD);
-        cards.add(claimedCard);
-
-        Deck deck = new Deck(cards);
-        HatchingGround hatchingGround = new HatchingGround(deck, new ElementSpaceLogic(this.recipes));
-        hatchingGround.setDimensions(3, 2);
-        hatchingGround.populate();
-
-        assertFalse(hatchingGround.isUnclaimed(claimedCard));
 
     }
 

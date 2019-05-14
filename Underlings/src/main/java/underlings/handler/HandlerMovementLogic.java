@@ -21,6 +21,9 @@ public class HandlerMovementLogic {
     public void move(Handler handler, HandlerChoice choice, int playerId) {
         switch (choice) {
             case BREAK_ROOM:
+                if (handler.getState() == HandlerState.FIELD || handler.getState() == HandlerState.FIELD_WHITESPACE) {
+                    this.field.removeHandler(handler);
+                }
                 if (handler.getState() == HandlerState.CARD) {
                     Card card = this.hatchingGround.findCard(handler);
                     card.handler = null;
@@ -31,7 +34,7 @@ public class HandlerMovementLogic {
                 handler.moveToState(choice.getState());
 
                 Card chosenCard = this.gui.getCard(playerId, LocaleWrap.get("handler_movement_card"),
-                        this.hatchingGround, this.hatchingGround::isUnclaimed);
+                        this.hatchingGround, this.hatchingGround.getUnclaimedEggs());
 
                 chosenCard.handler = handler;
                 handler.setLocation(chosenCard.name);

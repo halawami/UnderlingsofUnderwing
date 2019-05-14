@@ -9,6 +9,7 @@ import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
+import underlings.handler.WildHandler;
 import underlings.player.Player;
 
 public class PlacementUtilities {
@@ -16,7 +17,6 @@ public class PlacementUtilities {
     private HatchingGround hatchingGround;
     private Gui gui;
     private Runnable displayMethod;
-    private List<Card> cards;
 
     public PlacementUtilities(HatchingGround hatchingGround, Gui gui, Runnable displayMethod) {
         this.hatchingGround = hatchingGround;
@@ -24,20 +24,15 @@ public class PlacementUtilities {
         this.displayMethod = displayMethod;
     }
 
-    public Boolean isValid(Card c) {
-        return this.cards.contains(c);
-    }
-
     public Card selectCard(List<Card> cards, Player player) {
-        this.cards = cards;
         String prompt = LocaleWrap.get("prompt_element_card");
-        return this.gui.getCard(player.getPlayerId(), prompt, this.hatchingGround, this::isValid);
+        return this.gui.getCard(player.getPlayerId(), prompt, this.hatchingGround, cards);
     }
 
     public ElementSpace selectElementSpace(Card card, Player player) {
         List<ElementSpace> spaces = player.elementSpaceLogic.getPlayableSpaces(card, player.getElements());
-        ElementSpace space = this.gui.promptHandler.promptChoice(LocaleWrap.get("prompt_element_space"), spaces,
-                player.getPlayerId());
+        ElementSpace space =
+                this.gui.promptChoice(LocaleWrap.get("prompt_element_space"), spaces, player.getPlayerId());
         return space;
     }
 
@@ -45,13 +40,12 @@ public class PlacementUtilities {
         List<Element> choices = player.elementSpaceLogic.getPlayableElements(space, player.getElements());
         boolean moreMoves = true;
         while (moreMoves) {
-            Element element = this.gui.promptHandler.promptChoice(LocaleWrap.get("prompt_element"), choices,
-                    player.getPlayerId());
+            Element element = this.gui.promptChoice(LocaleWrap.get("prompt_element"), choices, player.getPlayerId());
 
             if (player.elementSpaceLogic.isOpenElement(element.getColor())) {
                 List<ElementColor> validAdditions = player.elementSpaceLogic.getValidAdditions(space);
-                ElementColor color = this.gui.promptHandler.promptChoice(LocaleWrap.get("prompt_element_color"),
-                        validAdditions, player.getPlayerId());
+                ElementColor color = this.gui.promptChoice(LocaleWrap.get("prompt_element_color"), validAdditions,
+                        player.getPlayerId());
                 element.setAlias(color);
             }
 
@@ -67,7 +61,7 @@ public class PlacementUtilities {
     public List<Card> getPlayableCards(ElementSpaceLogic logic, List<Element> elements) {
         List<Card> cards = new ArrayList<Card>();
         for (Card card : this.hatchingGround) {
-            if (!logic.getPlayableSpaces(card, elements).isEmpty()) {
+            if (card.handler != WildHandler.getInstance() && !logic.getPlayableSpaces(card, elements).isEmpty()) {
                 cards.add(card);
             }
         }

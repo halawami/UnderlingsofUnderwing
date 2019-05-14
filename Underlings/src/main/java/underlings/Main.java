@@ -2,12 +2,14 @@ package underlings;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+
 import underlings.card.CardFactory;
 import underlings.element.ElementBag;
 import underlings.element.ElementFactory;
@@ -18,6 +20,7 @@ import underlings.game.Deck;
 import underlings.game.Game;
 import underlings.game.HatchingGround;
 import underlings.gui.ConcreteDisplay;
+import underlings.gui.ConcretePrompt;
 import underlings.gui.Gui;
 import underlings.handler.HandlerFactory;
 import underlings.handler.HandlerMovementLogic;
@@ -51,7 +54,7 @@ public class Main {
         }
         FakePlayer.initPlayer(recipes);
 
-        Gui gui = new Gui(new TestPrompt(), new ConcreteDisplay());
+        Gui gui = new Gui(new ConcretePrompt(), new ConcreteDisplay());
         CardFactory cardFactory = new CardFactory(CARDS_JSON_FILE_NAME);
         Deck deck = new Deck(cardFactory.getCards());
         HatchingGround hatchingGround = new HatchingGround(deck, new ElementSpaceLogic(recipes));
@@ -68,7 +71,8 @@ public class Main {
         Game game = new Game(gui, hatchingGround, playerFactory, elementBag);
         Runnable gameDisplay = game::display;
 
-        EggHatchingLogic eggHatchingLogic = new EggHatchingLogic(gui, elementBag, hatchingGround);
+        EggHatchingLogic eggHatchingLogic =
+                new EggHatchingLogic(gui, elementBag, hatchingGround, gameDisplay, game.getPlayers(), deck);
 
         List<Phase> phases = new ArrayList<>();
         phases.add(new DrawingPhase(game.getPlayers(), gui, elementBag, hatchingGround, gameDisplay, field));

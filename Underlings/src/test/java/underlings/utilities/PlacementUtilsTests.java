@@ -1,10 +1,6 @@
 package underlings.utilities;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-import com.google.common.base.Function;
 
 import java.util.Arrays;
 import java.util.List;
@@ -39,7 +35,7 @@ public class PlacementUtilsTests {
         List<Card> cards = Arrays.asList(card1, card2);
 
         EasyMock.expect(gui.getCard(EasyMock.anyInt(), EasyMock.anyString(), EasyMock.anyObject(HatchingGround.class),
-                EasyMock.anyObject(Function.class))).andReturn(card1);
+                EasyMock.anyObject(List.class))).andReturn(card1);
 
         EasyMock.replay(hatchingGround, gui, displayMethod, player);
 
@@ -47,10 +43,6 @@ public class PlacementUtilsTests {
         assertEquals(card1, utils.selectCard(cards, player));
 
         EasyMock.verify(hatchingGround, gui, displayMethod, player);
-
-        assertTrue(utils.isValid(card1));
-        assertTrue(utils.isValid(card2));
-        assertFalse(utils.isValid(new Card()));
     }
 
     @Test
@@ -72,7 +64,7 @@ public class PlacementUtilsTests {
 
         PromptHandler promptHandler = EasyMock.mock(PromptHandler.class);
         Gui gui = new Gui(promptHandler, null);
-        EasyMock.expect(gui.promptHandler.promptChoice("Pick an element space to place an element on", spaces, 10))
+        EasyMock.expect(gui.promptChoice("Pick an element space to place an element on", spaces, 10))
                 .andReturn(card.elementSpaces[0]);
 
         EasyMock.replay(logic, promptHandler, player);

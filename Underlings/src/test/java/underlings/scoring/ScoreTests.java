@@ -7,18 +7,17 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.swing.JOptionPane;
-
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
 
 import underlings.card.Card;
 import underlings.card.Temperature;
-import underlings.gui.ConcretePrompt;
 import underlings.gui.Gui;
+import underlings.gui.Gui.PromptType;
 import underlings.handler.HandlerFactory;
 import underlings.player.Player;
+import underlings.utilities.LocaleWrap;
 
 public class ScoreTests {
 
@@ -83,7 +82,7 @@ public class ScoreTests {
 
     @Test
     public void testTwoPlayers() {
-        this.scoreUtils = new ScoreUtils(Arrays.asList(players[0], players[1]), gui);
+        this.scoreUtils = new ScoreUtils(Arrays.asList(this.players[0], this.players[1]), this.gui);
         this.scoreUtils.calculateScores();
 
         assertEquals(43, (int) (this.scoreUtils.scores.get(this.players[0])));
@@ -92,7 +91,7 @@ public class ScoreTests {
 
     @Test
     public void testOneEmpty() {
-        this.scoreUtils = new ScoreUtils(Arrays.asList(players[0], players[1], players[2]), gui);
+        this.scoreUtils = new ScoreUtils(Arrays.asList(this.players[0], this.players[1], this.players[2]), this.gui);
         this.scoreUtils.calculateScores();
 
         assertEquals(58, (int) (this.scoreUtils.scores.get(this.players[0])));
@@ -103,7 +102,8 @@ public class ScoreTests {
 
     @Test
     public void testOneNeutralWarmCool() {
-        this.scoreUtils = new ScoreUtils(Arrays.asList(players[0], players[1], players[2], players[3]), gui);
+        this.scoreUtils = new ScoreUtils(
+                Arrays.asList(this.players[0], this.players[1], this.players[2], this.players[3]), this.gui);
         this.scoreUtils.calculateScores();
 
         assertEquals(58, (int) (this.scoreUtils.scores.get(this.players[0])));
@@ -115,8 +115,9 @@ public class ScoreTests {
 
     @Test
     public void testTwoSameNetWarm() {
-        this.scoreUtils =
-                new ScoreUtils(Arrays.asList(players[0], players[1], players[2], players[3], players[4]), gui);
+        this.scoreUtils = new ScoreUtils(
+                Arrays.asList(this.players[0], this.players[1], this.players[2], this.players[3], this.players[4]),
+                this.gui);
         this.scoreUtils.calculateScores();
 
         assertEquals(58, (int) (this.scoreUtils.scores.get(this.players[0])));
@@ -128,8 +129,8 @@ public class ScoreTests {
 
     @Test
     public void testTwoSameNetCool() {
-        this.scoreUtils = new ScoreUtils(
-                Arrays.asList(players[0], players[1], players[2], players[3], players[4], players[5]), gui);
+        this.scoreUtils = new ScoreUtils(Arrays.asList(this.players[0], this.players[1], this.players[2],
+                this.players[3], this.players[4], this.players[5]), this.gui);
         this.scoreUtils.calculateScores();
 
         assertEquals(58, (int) (this.scoreUtils.scores.get(this.players[0])));
@@ -147,88 +148,84 @@ public class ScoreTests {
     @Test
     public void testDisplayScoresTwoPlayers() {
         List<Player> fakePlayers = new LinkedList<>();
-        fakePlayers = Arrays.asList(players[0], players[1]);
-        this.scoreUtils = new ScoreUtils(fakePlayers, gui);
-        gui.promptHandler = EasyMock.mock(ConcretePrompt.class);
-        this.scoreUtils.scores.put(players[1], 5);
-        this.scoreUtils.scores.put(players[0], 1);
+        fakePlayers = Arrays.asList(this.players[0], this.players[1]);
+        this.scoreUtils = new ScoreUtils(fakePlayers, this.gui);
+        this.scoreUtils.scores.put(this.players[1], 5);
+        this.scoreUtils.scores.put(this.players[0], 1);
         for (Player player : this.scoreUtils.scores.keySet()) {
-            gui.promptHandler.displayMessage(player + ": " + this.scoreUtils.scores.get(player) + " points",
-                    player.getPlayerId(), JOptionPane.PLAIN_MESSAGE);
+            this.gui.alert(player + ": " + this.scoreUtils.scores.get(player) + " points", player.getPlayerId(),
+                    PromptType.REGULAR);
         }
-        EasyMock.replay(gui, gui.promptHandler);
+        EasyMock.replay(this.gui);
         this.scoreUtils.displayScores();
-        EasyMock.verify(gui, gui.promptHandler);
+        EasyMock.verify(this.gui);
     }
 
     @Test
     public void testDisplayScoresNoPlayers() {
         List<Player> fakePlayers = new LinkedList<>();
-        this.scoreUtils = new ScoreUtils(fakePlayers, gui);
-        gui.promptHandler = EasyMock.mock(ConcretePrompt.class);
-        EasyMock.replay(gui, gui.promptHandler);
+        this.scoreUtils = new ScoreUtils(fakePlayers, this.gui);
+        EasyMock.replay(this.gui);
         this.scoreUtils.displayScores();
-        EasyMock.verify(gui, gui.promptHandler);
+        EasyMock.verify(this.gui);
     }
 
     @Test
     public void testDecideWinnersDifferentScores() {
         List<Player> fakePlayers = new LinkedList<>();
-        fakePlayers = Arrays.asList(players[0], players[1]);
-        this.scoreUtils = new ScoreUtils(fakePlayers, gui);
-        this.scoreUtils.scores.put(players[1], 1);
-        this.scoreUtils.scores.put(players[0], 5);
-        EasyMock.replay(gui);
+        fakePlayers = Arrays.asList(this.players[0], this.players[1]);
+        this.scoreUtils = new ScoreUtils(fakePlayers, this.gui);
+        this.scoreUtils.scores.put(this.players[1], 1);
+        this.scoreUtils.scores.put(this.players[0], 5);
+        EasyMock.replay(this.gui);
         int max = this.scoreUtils.decideWinners(this.scoreUtils.scores, fakePlayers.get(0), 0);
         int finalMax = this.scoreUtils.decideWinners(this.scoreUtils.scores, fakePlayers.get(1), max);
-        EasyMock.verify(gui);
+        EasyMock.verify(this.gui);
         assertEquals(5, finalMax);
     }
 
     @Test
     public void testDecideWinnersSameScores() {
         List<Player> fakePlayers = new LinkedList<>();
-        fakePlayers = Arrays.asList(players[0], players[1]);
-        this.scoreUtils = new ScoreUtils(fakePlayers, gui);
-        this.scoreUtils.scores.put(players[1], 1);
-        this.scoreUtils.scores.put(players[0], 1);
-        EasyMock.replay(gui);
+        fakePlayers = Arrays.asList(this.players[0], this.players[1]);
+        this.scoreUtils = new ScoreUtils(fakePlayers, this.gui);
+        this.scoreUtils.scores.put(this.players[1], 1);
+        this.scoreUtils.scores.put(this.players[0], 1);
+        EasyMock.replay(this.gui);
         int max = this.scoreUtils.decideWinners(this.scoreUtils.scores, fakePlayers.get(0), 0);
         int finalMax = this.scoreUtils.decideWinners(this.scoreUtils.scores, fakePlayers.get(1), max);
-        EasyMock.verify(gui);
+        EasyMock.verify(this.gui);
         assertEquals(1, finalMax);
     }
 
     @Test
     public void testDisplayOneWinner() {
         List<Player> fakePlayers = new LinkedList<>();
-        fakePlayers = Arrays.asList(players[0], players[1]);
-        this.scoreUtils = new ScoreUtils(fakePlayers, gui);
-        gui.promptHandler = EasyMock.mock(ConcretePrompt.class);
-        this.scoreUtils.winners.add(players[0]);
-        this.gui.promptHandler.displayMessage("Winner(s): " + this.scoreUtils.winners, 0, JOptionPane.PLAIN_MESSAGE);
+        fakePlayers = Arrays.asList(this.players[0], this.players[1]);
+        this.scoreUtils = new ScoreUtils(fakePlayers, this.gui);
+        this.scoreUtils.winners.add(this.players[0]);
+        this.gui.alert(LocaleWrap.format("winners", this.scoreUtils.winners), PromptType.REGULAR);
 
-        EasyMock.replay(gui, gui.promptHandler);
+        EasyMock.replay(this.gui);
 
         this.scoreUtils.displayWinners();
 
-        EasyMock.verify(gui, gui.promptHandler);
+        EasyMock.verify(this.gui);
     }
 
     @Test
     public void testDisplayTwoWinner() {
         List<Player> fakePlayers = new LinkedList<>();
-        fakePlayers = Arrays.asList(players[0], players[1]);
-        this.scoreUtils = new ScoreUtils(fakePlayers, gui);
-        gui.promptHandler = EasyMock.mock(ConcretePrompt.class);
-        this.scoreUtils.winners.add(players[0]);
-        this.scoreUtils.winners.add(players[1]);
-        this.gui.promptHandler.displayMessage("Winner(s): " + this.scoreUtils.winners, 0, JOptionPane.PLAIN_MESSAGE);
+        fakePlayers = Arrays.asList(this.players[0], this.players[1]);
+        this.scoreUtils = new ScoreUtils(fakePlayers, this.gui);
+        this.scoreUtils.winners.add(this.players[0]);
+        this.scoreUtils.winners.add(this.players[1]);
+        this.gui.alert(LocaleWrap.format("winners", this.scoreUtils.winners), PromptType.REGULAR);
 
-        EasyMock.replay(gui, gui.promptHandler);
+        EasyMock.replay(this.gui);
 
         this.scoreUtils.displayWinners();
 
-        EasyMock.verify(gui, gui.promptHandler);
+        EasyMock.verify(this.gui);
     }
 }
