@@ -163,9 +163,7 @@ public class EggHatchingLogicTests {
         EasyMock.replay(effect, hatchingGround, gui, displayMethod);
 
         eggHatchingLogic.hatchEgg(card, false, player);
-        assertEquals(handler, card.handler);
         assertTrue(player.hatchedCards.contains(card));
-        assertEquals(HandlerState.READY_ROOM, handler.getState());
         EasyMock.verify(effect, hatchingGround, gui, displayMethod);
     }
 

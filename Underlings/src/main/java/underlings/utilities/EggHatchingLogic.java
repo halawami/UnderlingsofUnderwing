@@ -41,7 +41,9 @@ public class EggHatchingLogic {
             this.returnElementsToBag(card);
         } else {
             effects = card.domesticEffects;
-            card.handler.moveToState(HandlerState.READY_ROOM);
+            if (card.handler != null) {
+                card.handler.moveToState(HandlerState.READY_ROOM);
+            }
             player.hatchedCards.add(card);
         }
         for (int i = 0; i < effects.length; i++) {
