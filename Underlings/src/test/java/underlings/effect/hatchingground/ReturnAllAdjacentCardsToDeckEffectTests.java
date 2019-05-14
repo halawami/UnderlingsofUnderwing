@@ -29,4 +29,9 @@ public class ReturnAllAdjacentCardsToDeckEffectTests {
         EasyMock.verify(adjacentCard, handlerMovementLogic, deck, hatchingGround);
     }
 
+    @Test
+    public void testApplyWildHandler(){
+
+    }
+
 }

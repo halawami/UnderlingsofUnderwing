@@ -3,11 +3,14 @@ package underlings.handler.movement;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+
 import java.util.Arrays;
 import java.util.List;
+
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.card.Card;
 import underlings.field.Field;
 import underlings.field.FieldSpaceFactory;
@@ -18,6 +21,7 @@ import underlings.handler.Handler;
 import underlings.handler.HandlerChoice;
 import underlings.handler.HandlerMovementLogic;
 import underlings.handler.HandlerState;
+import underlings.handler.WildHandler;
 
 public class LogicTests {
 
@@ -186,6 +190,21 @@ public class LogicTests {
         assertTrue(handler.drawChoices.contains(DrawChoice.RANDOM));
         assertEquals(HandlerState.BREAK_ROOM, handler.getState());
 
+    }
+
+    @Test
+    public void testWildHandler() {
+        Card card = new Card();
+        Handler handler = WildHandler.getInstance();
+
+        card.handler = handler;
+
+        EasyMock.replay(this.hatchingGround, this.gui);
+
+        this.logic.move(handler, HandlerChoice.BREAK_ROOM, 0);
+
+        EasyMock.verify(this.hatchingGround, this.gui);
+        assertEquals(WildHandler.getInstance(), card.handler);
     }
 
 }
