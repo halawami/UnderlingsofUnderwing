@@ -34,7 +34,7 @@ public class AdjacentEggsEffectTests {
         List<Card> mockedCards = getMockedCards(2);
         EasyMock.expect(hatchingGround.getAdjacentCards(centerCard)).andReturn(mockedCards);
         for (Card mockedCard : mockedCards) {
-            testedEffect.applyOnAdjacentEgg(mockedCard, elementBag, player.elementSpaceLogic, gui,
+            testedEffect.applyOnAdjacentEgg(mockedCard, elementBag, player.elementSpaceLogic,
                     eggHatchingLogic);
         }
 

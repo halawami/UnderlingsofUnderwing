@@ -8,7 +8,6 @@ import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
-import underlings.gui.Gui;
 import underlings.utilities.EggHatchingLogic;
 import underlings.utilities.LocaleWrap;
 
@@ -18,7 +17,7 @@ public class AddElementsEffect extends AdjacentEggsEffect {
 
     @Override
     public void applyOnAdjacentEgg(Card adjacentEgg, ElementBag elementBag, ElementSpaceLogic elementSpaceLogic,
-            Gui gui, EggHatchingLogic eggHatchingLogic) {
+            EggHatchingLogic eggHatchingLogic) {
         for (ElementColor elementColorToAdd : this.elementColors) {
             this.addElementToCard(elementColorToAdd, adjacentEgg, elementSpaceLogic, elementBag);
         }

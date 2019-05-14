@@ -35,7 +35,7 @@ public class DestroyElementsOnAllAdjacentEggsEffectTests {
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         EasyMock.replay(testedEffect, elementSpaceLogic, adjacentCard, gui, hatchingGround, eggHatchingLogic);
 
-        testedEffect.applyOnAdjacentEgg(adjacentCard, null, elementSpaceLogic, gui, eggHatchingLogic);
+        testedEffect.applyOnAdjacentEgg(adjacentCard, null, elementSpaceLogic, eggHatchingLogic);
 
         EasyMock.verify(testedEffect, elementSpaceLogic, adjacentCard, gui, hatchingGround, eggHatchingLogic);
     }
@@ -56,7 +56,7 @@ public class DestroyElementsOnAllAdjacentEggsEffectTests {
 
         EasyMock.replay(testedEffect, elementSpaceLogic, adjacentCard, gui, hatchingGround, eggHatchingLogic);
 
-        testedEffect.applyOnAdjacentEgg(adjacentCard, null, elementSpaceLogic, gui, eggHatchingLogic);
+        testedEffect.applyOnAdjacentEgg(adjacentCard, null, elementSpaceLogic, eggHatchingLogic);
 
         EasyMock.verify(testedEffect, elementSpaceLogic, adjacentCard, gui, hatchingGround, eggHatchingLogic);
     }
