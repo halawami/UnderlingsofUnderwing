@@ -10,7 +10,6 @@ public class RemoveBlackRecipes extends PlayersEffect {
 
     @Override
     protected void apply(Player currentPlayer, List<Player> players, Gui gui) {
-        currentPlayer.elementSpaceLogic.
 
     }
 
