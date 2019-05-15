@@ -97,8 +97,40 @@ public class Gui {
         this.promptHandler.displayMessage(message, playerId, JOptionPane.PLAIN_MESSAGE);
     }
 
-    public int getFieldSpace() {
-        return this.promptHandler.promptInt(LocaleWrap.get("gui_field_space"), 0, 21);
+    public int getFieldSpace(int playerId) {
+        // 21 0 1 2 3 4 5 6 7
+        // 20 8
+        // 19 9
+        // 18 blue green yellow blue red orange black 10
+
+        Integer[][] field = new Integer[4][9];
+        field[0][0] = 21;
+        field[0][1] = 0;
+        field[0][2] = 1;
+        field[0][3] = 2;
+        field[0][4] = 3;
+        field[0][5] = 4;
+        field[0][6] = 5;
+        field[0][7] = 6;
+        field[0][8] = 7;
+        field[1][0] = 20;
+        field[1][8] = 8;
+        field[2][0] = 19;
+        field[2][8] = 9;
+        field[3][0] = 18;
+        field[3][1] = 17;
+        field[3][2] = 16;
+        field[3][3] = 15;
+        field[3][4] = 14;
+        field[3][5] = 13;
+        field[3][6] = 12;
+        field[3][7] = 11;
+        field[3][8] = 10;
+
+        String prompt = LocaleWrap.get("gui_field_space");
+        Integer val = this.promptHandler.pickFromGrid(prompt, field, playerId);
+
+        return (int) val;
     }
 
     public int getPlayerCount(int minPlayers, int maxPlayers) {
@@ -212,7 +244,7 @@ public class Gui {
     }
 
     public Handler promptHandler(String message, int playerId, List<Handler> handlers) {
-        //TODO
+        // TODO
         return null;
     }
 

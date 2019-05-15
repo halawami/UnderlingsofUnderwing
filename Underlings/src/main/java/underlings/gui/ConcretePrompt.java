@@ -64,7 +64,7 @@ public class ConcretePrompt implements PromptHandler {
 
         Object value = optionPane.getValue();
 
-        if (value == null || value instanceof Integer) {
+        if (value == null) {
             System.exit(0);
         }
 
