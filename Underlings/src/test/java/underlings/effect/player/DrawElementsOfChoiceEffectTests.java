@@ -98,6 +98,11 @@ public class DrawElementsOfChoiceEffectTests {
         this.testGetEffectElementGivers(2);
     }
 
+    @Test
+    public void testGetEffectedElementGiversThreeElementGiver() {
+        this.testGetEffectElementGivers(3);
+    }
+
     private void testGetEffectElementGivers(int numberOfElementGivers) {
         ElementBag elementBag = EasyMock.mock(ElementBag.class);
         DrawElementsOfChoiceEffect testedEffect = new DrawElementsOfChoiceEffect();
