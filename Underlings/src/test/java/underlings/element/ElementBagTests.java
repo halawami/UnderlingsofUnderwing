@@ -137,4 +137,29 @@ public class ElementBagTests {
         Collections.sort(availableDrawChoices);
         assertEquals(expectedDrawChoices, availableDrawChoices);
     }
+
+    @Test
+    public void testGetAvailableDrawChoicesDifferentCountValues() throws NoSuchFieldException, IllegalAccessException {
+        ElementBag bag = new ElementBag(new ElementFactory(), new Random());
+        Field privateMap = ElementBag.class.getDeclaredField("elementCount");
+        privateMap.setAccessible(true);
+
+        @SuppressWarnings("unchecked")
+        Map<ElementColor, Integer> elementCounts = (Map<ElementColor, Integer>) privateMap.get(bag);
+        elementCounts.put(ElementColor.BLUE, 0);
+        elementCounts.put(ElementColor.RED, 2);
+        elementCounts.put(ElementColor.YELLOW, 1);
+        elementCounts.put(ElementColor.PURPLE, 3);
+        elementCounts.put(ElementColor.GREEN, 1);
+        elementCounts.put(ElementColor.ORANGE, 0);
+        elementCounts.put(ElementColor.WHITE, 20);
+        elementCounts.put(ElementColor.BLACK, 0);
+
+        List<DrawChoice> availableDrawChoices = bag.getAvailableDrawChoices();
+        List<DrawChoice> expectedDrawChoices = Arrays.asList(RED, YELLOW, PURPLE, GREEN, WHITE);
+
+        Collections.sort(expectedDrawChoices);
+        Collections.sort(availableDrawChoices);
+        assertEquals(expectedDrawChoices, availableDrawChoices);
+    }
 }
