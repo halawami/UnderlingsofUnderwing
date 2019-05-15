@@ -8,7 +8,7 @@ import org.junit.Test;
 import underlings.TestUtils;
 import underlings.card.effect.ObserverEffect;
 
-public class OnPhaseOneTests {
+public class PhaseOneTests {
 
     @Test
     public void testNoObservers() {
@@ -37,6 +37,20 @@ public class OnPhaseOneTests {
         player.onPhaseOne();
 
         observerEffects.forEach(EasyMock::verify);
+    }
+
+    @Test
+    public void testEndPhaseOne() {
+        Player player = EasyMock.partialMockBuilder(Player.class)
+                .addMockedMethod("useEffectElementGivers").createMock();
+
+        player.useEffectElementGivers(false);
+
+        EasyMock.replay(player);
+
+        player.endPhaseOne();
+
+        EasyMock.verify(player);
     }
 
 }
