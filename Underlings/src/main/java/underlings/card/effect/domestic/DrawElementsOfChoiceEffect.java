@@ -36,7 +36,9 @@ public class DrawElementsOfChoiceEffect extends ElementEffect implements Observe
             ElementBag elementBag) {
         List<ElementGiver> effectedElementGivers = new ArrayList<>();
         List<DrawChoice> availableDrawChoices = elementBag.getAvailableDrawChoices();
-        effectedElementGivers.add(this.elementGiverFactory.createElementGiver(availableDrawChoices));
+        for (int i = 0; i < playerElementGivers.size(); i++) {
+            effectedElementGivers.add(this.elementGiverFactory.createElementGiver(availableDrawChoices));
+        }
         return effectedElementGivers;
     }
 }
