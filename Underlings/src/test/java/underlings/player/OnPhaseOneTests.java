@@ -1,8 +1,11 @@
 package underlings.player;
 
+import java.util.List;
+
 import org.easymock.EasyMock;
 import org.junit.Test;
 
+import underlings.TestUtils;
 import underlings.card.effect.ObserverEffect;
 
 public class OnPhaseOneTests {
@@ -27,6 +30,21 @@ public class OnPhaseOneTests {
         player.onPhaseOne();
 
         EasyMock.verify(observerEffect);
+    }
+
+    @Test
+    public void testTwoObserver() {
+        List<ObserverEffect> observerEffects = TestUtils.mockListOf(ObserverEffect.class).withLength(2);
+        Player player = new Player(0, null, 0);
+        observerEffects.forEach(player::addObserverEffect);
+
+        observerEffects.forEach(observerEffect -> observerEffect.onPhaseOne(player));
+
+        observerEffects.forEach(EasyMock::replay);
+
+        player.onPhaseOne();
+
+        observerEffects.forEach(EasyMock::verify);
     }
 
 }
