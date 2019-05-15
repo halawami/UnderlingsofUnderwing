@@ -300,4 +300,27 @@ public class HatchingGroundTests {
 
     }
 
+    @Test
+    public void testGetUnclaimedDragon() {
+        final Deck deck = EasyMock.strictMock(Deck.class);
+        Card card = new Card();
+        card.points = 3;
+        for (int i = 0; i < 5; i++) {
+            Card card2 = new Card();
+            card2.points = 6;
+            EasyMock.expect(deck.draw()).andReturn(card2);
+        }
+        EasyMock.expect(deck.draw()).andReturn(card);
+
+        EasyMock.replay(deck);
+
+        HatchingGround hatchingGround = new HatchingGround(deck, new ElementSpaceLogic(this.recipes));
+        hatchingGround.setDimensions(3, 2);
+        hatchingGround.populate();
+
+        EasyMock.verify(deck);
+
+        assertEquals(1, hatchingGround.getUnclaimedDragons(4).size());
+    }
+
 }
