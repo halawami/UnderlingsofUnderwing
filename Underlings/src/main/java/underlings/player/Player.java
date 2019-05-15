@@ -30,6 +30,7 @@ public class Player {
     public List<Card> hatchedCards;
     public List<Card> unhatchedCards;
     public ElementSpaceLogic elementSpaceLogic;
+    public int maxHandlersOnSpace;
 
     public Player(int maxHandlers, HandlerFactory handlerFactory, int playerId) {
         this.handlers = new ArrayList<>();
@@ -44,6 +45,7 @@ public class Player {
         this.reached12Points = false;
         this.reached25Points = false;
         this.playerId = playerId;
+        this.maxHandlersOnSpace = 1;
     }
 
     public int getHandlerCount() {

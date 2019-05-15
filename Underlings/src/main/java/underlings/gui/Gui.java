@@ -99,11 +99,31 @@ public class Gui {
         this.promptHandler.displayMessage(message, playerId, JOptionPane.PLAIN_MESSAGE);
     }
 
-    public FieldSpace getFieldSpace(int playerId, Field field) {
+    public FieldSpace getFieldSpace(Player player, Field field) {
         FieldSpace[][] grid = field.getGrid();
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[0].length; j++) {
+                FieldSpace space = grid[i][j];
+
+                if (space == null) {
+                    continue;
+                }
+
+                int count = 0;
+                for (Handler handler : player.getHandlers()) {
+                    if (space.contains(handler)) {
+                        count++;
+                    }
+                }
+
+                if (count == player.maxHandlersOnSpace) {
+                    grid[i][j] = null;
+                }
+            }
+        }
 
         String prompt = LocaleWrap.get("gui_field_space");
-        FieldSpace val = this.promptHandler.pickFromGrid(prompt, grid, playerId);
+        FieldSpace val = this.promptHandler.pickFromGrid(prompt, grid, player.getPlayerId());
 
         return val;
     }

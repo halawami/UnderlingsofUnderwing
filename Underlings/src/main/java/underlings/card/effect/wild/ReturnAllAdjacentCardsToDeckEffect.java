@@ -8,6 +8,7 @@ import underlings.game.Deck;
 import underlings.game.HatchingGround;
 import underlings.handler.HandlerChoice;
 import underlings.handler.HandlerMovementLogic;
+import underlings.player.FakePlayer;
 import underlings.utilities.EggHatchingLogic;
 
 public class ReturnAllAdjacentCardsToDeckEffect extends AdjacentEggsEffect {
@@ -16,7 +17,7 @@ public class ReturnAllAdjacentCardsToDeckEffect extends AdjacentEggsEffect {
     public void applyOnAdjacentEgg(Card adjacentEgg, ElementBag elementBag, ElementSpaceLogic elementSpaceLogic,
             EggHatchingLogic eggHatchingLogic, Deck deck, HandlerMovementLogic handlerMovementLogic,
             HatchingGround hatchingGround) {
-        handlerMovementLogic.move(adjacentEgg.handler, HandlerChoice.BREAK_ROOM, 0);
+        handlerMovementLogic.move(adjacentEgg.handler, HandlerChoice.BREAK_ROOM, FakePlayer.getInstance());
         handlerMovementLogic.removeHandlerFromCard(adjacentEgg);
         hatchingGround.replaceCard(adjacentEgg);
         deck.addCard(adjacentEgg);

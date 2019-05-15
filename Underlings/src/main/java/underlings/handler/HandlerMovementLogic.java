@@ -5,6 +5,7 @@ import underlings.field.Field;
 import underlings.field.FieldSpace;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
+import underlings.player.Player;
 import underlings.utilities.LocaleWrap;
 
 public class HandlerMovementLogic {
@@ -19,7 +20,7 @@ public class HandlerMovementLogic {
         this.field = field;
     }
 
-    public void move(Handler handler, HandlerChoice choice, int playerId) {
+    public void move(Handler handler, HandlerChoice choice, Player player) {
         if (handler == WildHandler.getInstance() || handler == null) {
             return;
         }
@@ -36,14 +37,14 @@ public class HandlerMovementLogic {
                 break;
             case CARD:
 
-                Card chosenCard = this.gui.getCard(playerId, LocaleWrap.get("handler_movement_card"),
+                Card chosenCard = this.gui.getCard(player.getPlayerId(), LocaleWrap.get("handler_movement_card"),
                         this.hatchingGround, this.hatchingGround.getUnclaimedEggs());
 
                 moveToCard(handler, chosenCard);
                 break;
             case FIELD:
                 handler.moveToState(choice.getState());
-                FieldSpace space = this.gui.getFieldSpace(playerId, field);
+                FieldSpace space = this.gui.getFieldSpace(player, field);
                 int spaceIndex = field.field.indexOf(space);
                 this.field.addHandler(spaceIndex, handler);
                 break;
