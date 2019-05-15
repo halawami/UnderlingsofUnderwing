@@ -114,4 +114,33 @@ public class DrawElementsOfChoiceEffectTests {
         elementGivers.forEach(EasyMock::verify);
     }
 
+    @Test
+    public void testGetEffectedElementGiversTwoElementGiver() {
+        ElementBag elementBag = EasyMock.mock(ElementBag.class);
+        DrawElementsOfChoiceEffect testedEffect = new DrawElementsOfChoiceEffect();
+        ElementGiverFactory elementGiverFactory = EasyMock.mock(ElementGiverFactory.class);
+        testedEffect.elementGiverFactory = elementGiverFactory;
+        testedEffect.elementBag = elementBag;
+        List<ElementGiver> elementGivers = TestUtils.mockListOf(ElementGiver.class).withLength(2);
+        List<DrawChoice> availableDrawChoices = Arrays.asList(DrawChoice.BLUE, DrawChoice.RED);
+        List<ElementGiver> mockEffectGivers = TestUtils.mockListOf(ElementGiver.class).withLength(2);
+
+        EasyMock.expect(elementBag.getAvailableDrawChoices()).andReturn(availableDrawChoices);
+        for (ElementGiver effectElementGiver : mockEffectGivers) {
+            EasyMock.expect(elementGiverFactory.createElementGiver(availableDrawChoices)).andReturn(effectElementGiver);
+        }
+
+        EasyMock.replay(elementBag, elementGiverFactory);
+        elementGivers.forEach(EasyMock::replay);
+        mockEffectGivers.forEach(EasyMock::replay);
+
+        List<ElementGiver> effectElementGivers = testedEffect.getEffectedElementGivers(elementGivers, elementBag);
+
+        Assert.assertEquals(mockEffectGivers, effectElementGivers);
+
+        EasyMock.verify(elementBag, elementGiverFactory);
+        elementGivers.forEach(EasyMock::verify);
+        mockEffectGivers.forEach(EasyMock::verify);
+    }
+
 }
