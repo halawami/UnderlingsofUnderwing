@@ -26,13 +26,13 @@ public class DrawElementsOfChoiceEffect extends ElementEffect implements Observe
     @Override
     public void onPhaseOne(Player player) {
         if (!this.beenUsed) {
-            player.effectedElementGivers = this.getEffectedElementGivers(player.getElementGivers(), elementBag);
-            player.useEffectedElementGivers(true);
+            player.effectElementGivers = this.getEffectElementGivers(player.getElementGivers(), elementBag);
+            player.useEffectElementGivers(true);
             this.beenUsed = true;
         }
     }
 
-    public List<ElementGiver> getEffectedElementGivers(List<ElementGiver> playerElementGivers,
+    public List<ElementGiver> getEffectElementGivers(List<ElementGiver> playerElementGivers,
             ElementBag elementBag) {
         List<ElementGiver> effectedElementGivers = new ArrayList<>();
         List<DrawChoice> availableDrawChoices = elementBag.getAvailableDrawChoices();
