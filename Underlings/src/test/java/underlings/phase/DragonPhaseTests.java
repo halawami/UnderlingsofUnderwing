@@ -189,8 +189,8 @@ public class DragonPhaseTests {
         player.hatchingTime = 0;
         EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList(card));
         eggHatchingLogic.returnElementsToBag(card);
-        eggHatchingLogic.hatchEgg(card, false, player);
 
+        eggHatchingLogic.hatchEgg(card, false, player);
         EasyMock.replay(hatchingGround, bag, player, card.domesticEffects[0], handler, eggHatchingLogic);
 
         Phase phase = new DragonPhase(players, null, bag, hatchingGround, null, null, eggHatchingLogic);
@@ -198,5 +198,32 @@ public class DragonPhaseTests {
         phase.turn(player);
         EasyMock.verify(hatchingGround, bag, player, card.domesticEffects[0], handler, eggHatchingLogic);
         assertEquals(0, player.unhatchedCards.size());
+        assertEquals(1, player.hatchingTime);
+    }
+
+    @Test
+    public void testHatchingTimeZeroTwoEggs() {
+        final Gui gui = EasyMock.mock(Gui.class);
+        player = new Player(2, new HandlerFactory(), 0);
+        player.hatchingTime = 0;
+        card.handler = player.getHandlers().get(0);
+        Card card2 = new Card();
+        card2.name = "tempName";
+        final String message = LocaleWrap.format("incubation_state", card2.name);
+        card2.handler = player.getHandlers().get(0);
+        EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList(card, card2));
+        eggHatchingLogic.returnElementsToBag(card);
+        eggHatchingLogic.hatchEgg(card, false, player);
+        eggHatchingLogic.returnElementsToBag(card2);
+        gui.notifyAction(player.getPlayerId(), message);
+
+        EasyMock.replay(hatchingGround, gui, bag, card.domesticEffects[0], handler, eggHatchingLogic);
+
+        Phase phase = new DragonPhase(players, gui, bag, hatchingGround, null, null, eggHatchingLogic);
+        phase.setup();
+        phase.turn(player);
+        EasyMock.verify(hatchingGround, bag, gui, card.domesticEffects[0], handler, eggHatchingLogic);
+        assertEquals(1, player.hatchingTime);
+        assertEquals(1, player.unhatchedCards.size());
     }
 }

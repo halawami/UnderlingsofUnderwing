@@ -38,6 +38,7 @@ public class DragonPhase extends SequentialPhase {
             if (player.getHandlers().contains(completeCard.handler)) {
                 if (player.hatchingTime == 0) {
                     this.domesticEggHatchingLogic.hatchEgg(completeCard, false, player);
+                    player.hatchingTime = 1;
                 } else {
                     player.moveToIncubation(completeCard);
                     this.gui.notifyAction(player.getPlayerId(),
