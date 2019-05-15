@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import underlings.TestUtils;
 import underlings.card.effect.domestic.DrawElementsOfChoiceEffect;
+import underlings.element.ElementBag;
 import underlings.element.ElementGiver;
 import underlings.player.Player;
 
@@ -16,15 +17,17 @@ public class DrawElementsOfChoiceEffectTests {
     @Test
     public void testApply() {
         Player player = EasyMock.mock(Player.class);
+        ElementBag elementBag = EasyMock.mock(ElementBag.class);
         DrawElementsOfChoiceEffect testedEffect = new DrawElementsOfChoiceEffect();
 
         player.addObserverEffect(testedEffect);
 
-        EasyMock.replay(player);
+        EasyMock.replay(player, elementBag);
 
-        testedEffect.on(player).apply();
+        testedEffect.on(player).on(elementBag).apply();
 
-        EasyMock.verify(player);
+        Assert.assertEquals(elementBag, testedEffect.elementBag);
+        EasyMock.verify(player, elementBag);
     }
 
     @Test
@@ -71,10 +74,10 @@ public class DrawElementsOfChoiceEffectTests {
         testedEffect.onPhaseOne(player);
         testedEffect.onPhaseOne(player);
 
-        Assert.assertEquals(effectedElementGivers, player.effectedElementGivers);
         EasyMock.verify(player, testedEffect);
         elementGivers.forEach(EasyMock::verify);
         effectedElementGivers.forEach(EasyMock::verify);
     }
+
 
 }
