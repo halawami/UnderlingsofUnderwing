@@ -52,17 +52,19 @@ public class HatchingGround implements Iterable<Card> {
     }
 
     public List<Card> getUnclaimedEggs() {
-        List<Card> unclaimedEggs = new ArrayList<>();
-        for (Card card : this) {
-            if (card.handler == null) {
-                unclaimedEggs.add(card);
-            }
-        }
-
-        return unclaimedEggs;
+        return getUnclaimedDragons(Integer.MAX_VALUE);
+        // List<Card> unclaimedEggs = new ArrayList<>();
+        // for (Card card : this) {
+        // if (card.handler == null) {
+        // unclaimedEggs.add(card);
+        // }
+        // }
+        //
+        // return unclaimedEggs;
     }
 
     public List<Card> getClaimedEggs() {
+        // TODO
         return null;
     }
 
@@ -161,7 +163,7 @@ public class HatchingGround implements Iterable<Card> {
         return allCards;
     }
 
-    public List<Card> getUnhatchedDragons(int maxPoints) {
+    public List<Card> getUnclaimedDragons(int maxPoints) {
         List<Card> validCards = new LinkedList<>();
         for (Card card : this) {
             if (card.points <= maxPoints && card.handler == null) {
