@@ -102,7 +102,6 @@ public class ElementBag {
     }
 
     public List<DrawChoice> getAvailableDrawChoices() {
-        //TODO
-        return null;
+        return new ArrayList<>();
     }
 }
