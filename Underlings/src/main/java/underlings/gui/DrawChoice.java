@@ -4,7 +4,7 @@ import underlings.element.ElementColor;
 import underlings.utilities.LocaleWrap;
 
 public enum DrawChoice {
-    BLUE, RED, GREEN, PURPLE, ORANGE, YELLOW, BLACK, WHITE, RANDOM, COOL, WARM;
+    BLUE, RED, GREEN, PURPLE, ORANGE, YELLOW, BLACK, WHITE, RANDOM, COOL, WARM, NULL;
 
     public ElementColor elementColor;
 
@@ -17,6 +17,15 @@ public enum DrawChoice {
         YELLOW.elementColor = ElementColor.YELLOW;
         BLACK.elementColor = ElementColor.BLACK;
         WHITE.elementColor = ElementColor.WHITE;
+    }
+
+    public static DrawChoice getChoiceFromColor(ElementColor color) {
+        for (DrawChoice drawChoice : DrawChoice.values()) {
+            if (drawChoice.elementColor == color) {
+                return drawChoice;
+            }
+        }
+        return NULL;
     }
 
     @Override

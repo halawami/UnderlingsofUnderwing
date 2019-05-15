@@ -11,6 +11,7 @@ import static underlings.gui.DrawChoice.YELLOW;
 
 import java.lang.reflect.Field;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -105,6 +106,9 @@ public class ElementBagTests {
 
         List<DrawChoice> availableDrawChoices = bag.getAvailableDrawChoices();
         List<DrawChoice> expectedDrawChoices = Arrays.asList(BLUE, RED, YELLOW, PURPLE, GREEN, ORANGE, WHITE);
+
+        Collections.sort(expectedDrawChoices);
+        Collections.sort(availableDrawChoices);
         assertEquals(expectedDrawChoices, availableDrawChoices);
     }
 }

@@ -103,8 +103,10 @@ public class ElementBag {
 
     public List<DrawChoice> getAvailableDrawChoices() {
         List<DrawChoice> availableDrawChoices = new ArrayList<>();
-        if (this.elementCount.get(ElementColor.BLUE) == 1) {
-            availableDrawChoices.add(DrawChoice.BLUE);
+        for (ElementColor color: this.elementCount.keySet()){
+            if (this.elementCount.get(color) == 1){
+                availableDrawChoices.add(DrawChoice.getChoiceFromColor(color));
+            }
         }
         return availableDrawChoices;
     }
