@@ -33,6 +33,7 @@ public class Player {
     public ElementSpaceLogic elementSpaceLogic;
     public int maxHandlersOnSpace;
     private List<ObserverEffect> observerEffects;
+    public List<ElementGiver> effectedElementGivers;
 
     public Player(int maxHandlers, HandlerFactory handlerFactory, int playerId) {
         this.handlers = new ArrayList<>();
@@ -165,5 +166,9 @@ public class Player {
 
     public void addObserverEffect(ObserverEffect observerEffect) {
         this.observerEffects.add(observerEffect);
+    }
+
+    public void useEffectedElementGivers(boolean useEffectedElementGivers) {
+
     }
 }
