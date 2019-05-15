@@ -32,11 +32,10 @@ public class Player {
     public List<Card> unhatchedCards;
     public ElementSpaceLogic elementSpaceLogic;
     public int maxHandlersOnSpace;
-    public Player(int maxHandlers, HandlerFactory handlerFactory, int playerId) {
-        this.handlers = new ArrayList<>();
-        this.elements = new ArrayList<>();
-        this.hatchedCards = new ArrayList<>();
-        this.unhatchedCards = new ArrayList<>();
+    private List<ObserverEffect> observerEffects;
+    public List<ElementGiver> effectElementGivers;
+    private boolean useEffectElementGivers;
+    public int hatchingTime;
 
     public Player(int maxHandlers, HandlerFactory handlerFactory, int playerId) {
         this.handlers = new ArrayList<>();
@@ -134,9 +133,13 @@ public class Player {
         return this.playerId;
     }
 
-    public void moveToIncubation(Card card) {
-        this.unhatchedCards.add(card);
-        card.handler.moveToState(HandlerState.INCUBATION);
+    public boolean hasCard(Card card) {
+        if (this.getHandlers().contains(card.handler)) {
+            this.unhatchedCards.add(card);
+            card.handler.moveToState(HandlerState.INCUBATION);
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -182,5 +185,10 @@ public class Player {
 
     public void endPhaseOne() {
         this.useEffectElementGivers(false);
+    }
+
+    public void moveToIncubation(Card card) {
+        this.unhatchedCards.add(card);
+        card.handler.moveToState(HandlerState.INCUBATION);
     }
 }
