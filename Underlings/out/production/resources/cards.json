@@ -1,0 +1,3832 @@
+[
+  {
+    "name": "SKY WHELP",
+    "points": 5,
+    "temperature": "WARM",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "YELLOW",
+        "position": "L3_2"
+      },
+      {
+        "color": "WHITE",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
+      },
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "YELLOW"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "WHITE"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "WATER WHELP",
+    "points": 5,
+    "temperature": "COOL",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "BLUE",
+        "position": "L3_2"
+      },
+      {
+        "color": "BLACK",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
+      },
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "BLUE"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "BLACK"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ARBOR WHELP",
+    "points": 6,
+    "temperature": "COOL",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "GREEN",
+        "position": "L3_2"
+      },
+      {
+        "color": "WHITE",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "YELLOW",
+          "BLUE"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "GREEN"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "BLOOD WHELP",
+    "points": 5,
+    "temperature": "WARM",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_2"
+      },
+      {
+        "color": "WHITE",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "RED"
+        ]
+      },
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "WHITE"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "BRIMSTONE WHELP",
+    "points": 3,
+    "temperature": "WARM",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_2"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "RED",
+          "ORANGE"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "ORANGE"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ELECTRIC WHELP",
+    "points": 3,
+    "temperature": "NEUTRAL",
+    "family": "COMPLEMENTARY",
+    "elementSpaces": [
+      {
+        "color": "YELLOW",
+        "position": "L3_2"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "PURPLE",
+          "YELLOW"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "PURPLE"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "TWILIGHT WHELP",
+    "points": 3,
+    "temperature": "COOL",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_2"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "PURPLE",
+          "RED"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "RED"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "HARVEST WHELP",
+    "points": 6,
+    "temperature": "WARM",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "ORANGE",
+        "position": "L3_2"
+      },
+      {
+        "color": "WHITE",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "YELLOW",
+          "RED"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "ORANGE"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "VOID WHELP",
+    "points": 3,
+    "temperature": "COOL",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "BLUE",
+        "position": "L3_2"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "PURPLE",
+          "BLUE"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "PURPLE"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "UNDINE WHELP",
+    "points": 3,
+    "temperature": "COOL",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "BLUE",
+        "position": "L3_2"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "BLUE",
+          "GREEN"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "BLUE"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "SUNSTONE WHELP",
+    "points": 3,
+    "temperature": "WARM",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "YELLOW",
+        "position": "L3_2"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "YELLOW",
+          "ORANGE"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "YELLOW"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "STORM WHELP",
+    "points": 6,
+    "temperature": "BLUE",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "PURPLE",
+        "position": "L3_2"
+      },
+      {
+        "color": "BLACK",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "BLUE",
+          "RED"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "PURPLE"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "STEAM WHELP",
+    "points": 3,
+    "temperature": "WARM",
+    "family": "COMPLEMENTARY",
+    "elementSpaces": [
+      {
+        "color": "BLUE",
+        "position": "L3_2"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "BLUE",
+          "ORANGE"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "ORANGE"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "NATURE WHELP",
+    "points": 3,
+    "temperature": "NEUTRAL",
+    "family": "COMPLEMENTARY",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_2"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "RED",
+          "GREEN"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "GREEN"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ETHEREAL WHELP",
+    "points": 3,
+    "temperature": "COOL",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_2"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "YELLOW",
+          "GREEN"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "GREEN"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ETHEREAL DRAKE",
+    "points": 5,
+    "temperature": "COOL",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "YELLOW",
+        "position": "L3_2"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "GREEN"
+        ]
+      },
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "BLUE"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "BLOOD DRAKE",
+    "points": 9,
+    "temperature": "WARM",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_2"
+      },
+      {
+        "color": "WHITE",
+        "position": "R3_1"
+      },
+      {
+        "color": "WHITE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
+      },
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "YELLOW",
+          "GREEN",
+          "BLUE",
+          "RED",
+          "PURPLE",
+          "WHITE",
+          "BLACK",
+          "ORANGE"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "WHITE"
+        ]
+      },
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "RED"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "SKY DRAKE",
+    "points": 9,
+    "temperature": "WARM",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "YELLOW",
+        "position": "L3_2"
+      },
+      {
+        "color": "WHITE",
+        "position": "R3_1"
+      },
+      {
+        "color": "WHITE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
+      },
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "YELLOW",
+          "GREEN",
+          "BLUE",
+          "RED",
+          "PURPLE",
+          "WHITE",
+          "BLACK",
+          "ORANGE"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "WHITE"
+        ]
+      },
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "YELLOW"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "STORM DRAKE",
+    "points": 9,
+    "temperature": "COOL",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "BLACK",
+        "position": "L3_2"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_1"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "PURPLE"
+        ]
+      },
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "PURPLE"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "WATER DRAKE",
+    "points": 9,
+    "temperature": "COOL",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "BLUE",
+        "position": "L3_2"
+      },
+      {
+        "color": "BLACK",
+        "position": "R3_1"
+      },
+      {
+        "color": "BLACK",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
+      },
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "YELLOW",
+          "GREEN",
+          "BLUE",
+          "RED",
+          "PURPLE",
+          "WHITE",
+          "BLACK",
+          "ORANGE"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "BLUE"
+        ]
+      },
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "BLACK"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "UNDINE DRAKE",
+    "points": 5,
+    "temperature": "COOL",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "BLUE",
+        "position": "L3_2"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "BLUE"
+        ]
+      },
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "GREEN"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "BRIMSTONE DRAKE",
+    "points": 5,
+    "temperature": "WARM",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_2"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_1"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "ORANGE"
+        ]
+      },
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "RED"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "VOID DRAKE",
+    "points": 5,
+    "temperature": "COOL",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "BLUE",
+        "position": "L3_2"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_1"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "PURPLE"
+        ]
+      },
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "RED"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ARBOR DRAKE",
+    "points": 9,
+    "temperature": "COOL",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "WHITE",
+        "position": "L3_2"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "GREEN"
+        ]
+      },
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "GREEN"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "HARVEST DRAKE",
+    "points": 9,
+    "temperature": "WARM",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "WHITE",
+        "position": "L3_2"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_1"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "ORANGE"
+        ]
+      },
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "ORANGE"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "SUNSTONE DRAKE",
+    "points": 5,
+    "temperature": "WARM",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "YELLOW",
+        "position": "L3_2"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_1"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "YELLOW"
+        ]
+      },
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "ORANGE"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "TWILIGHT DRAKE",
+    "points": 5,
+    "temperature": "COOL",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_2"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_1"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "RED"
+        ]
+      },
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "PURPLE"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "AEON WHELP",
+    "points": 6,
+    "temperature": "NEUTRAL",
+    "family": "TETRADIC",
+    "elementSpaces": [
+      {
+        "color": "YELLOW",
+        "position": "L3_1"
+      },
+      {
+        "color": "ORANGE",
+        "position": "L3_3"
+      },
+      {
+        "color": "BLUE",
+        "position": "R3_1"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "GREEN",
+          "RED"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AllElementsEffect",
+        "elementColors": [
+          "RED",
+          "GREEN"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ICESHARD WHELP",
+    "points": 5,
+    "temperature": "COOL",
+    "family": "HARMONIC",
+    "elementSpaces": [
+      {
+        "color": "GREEN",
+        "position": "L3_2"
+      },
+      {
+        "color": "BLUE",
+        "position": "R3_1"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "DestroyUpToElementsOnAnyEggInPlayEffect",
+        "upTo": 2,
+        "elementChoices": [
+          "RED",
+          "YELLOW",
+          "ORANGE"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AllElementsEffect",
+        "elementColors": [
+          "RED",
+          "YELLOW",
+          "ORANGE"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "NEBULA WHELP",
+    "points": 6,
+    "temperature": "NEUTRAL",
+    "family": "TETRADIC",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_1"
+      },
+      {
+        "color": "YELLOW",
+        "position": "L3_3"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "BLUE",
+          "ORANGE"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AllElementsEffect",
+        "elementColors": [
+          "BLUE",
+          "ORANGE"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ABYSSAL WHELP",
+    "points": 6,
+    "temperature": "NEUTRAL",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_1"
+      },
+      {
+        "color": "ORANGE",
+        "position": "L3_3"
+      },
+      {
+        "color": "BLUE",
+        "position": "R3_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "PURPLE",
+          "YELLOW"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AllElementsEffect",
+        "elementColors": [
+          "YELLOW",
+          "PURPLE"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "FLAMEWREATHED WHELP",
+    "points": 4,
+    "temperature": "WARM",
+    "family": "HARMONIC",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_2"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_1"
+      },
+      {
+        "color": "YELLOW",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "DestroyUpToElementsOnAnyEggInPlayEffect",
+        "upTo": 2,
+        "elementChoices": [
+          "PURPLE",
+          "GREEN",
+          "BLUE"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AllElementsEffect",
+        "elementColors": [
+          "PURPLE",
+          "GREEN",
+          "BLUE"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "OPALESCENT WHELP",
+    "points": 6,
+    "temperature": "NEUTRAL",
+    "family": "TRIADIC",
+    "elementSpaces": [
+      {
+        "color": "GREEN",
+        "position": "L3_1"
+      },
+      {
+        "color": "PURPLE",
+        "position": "L3_3"
+      },
+      {
+        "color": "YELLOW",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TRIADIC"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "CHROMATIC WHELP",
+    "points": 3,
+    "temperature": "NEUTRAL",
+    "family": "TRIADIC",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_1"
+      },
+      {
+        "color": "YELLOW",
+        "position": "L3_3"
+      },
+      {
+        "color": "BLUE",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "RED",
+          "YELLOW",
+          "BLUE"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TRIADIC"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "STEAM DRAKE",
+    "points": 5,
+    "temperature": "WARM",
+    "family": "COMPLEMENTARY",
+    "elementSpaces": [
+      {
+        "color": "BLUE",
+        "position": "L3_2"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_1"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "OneElementEffect",
+        "elementColors": [
+          "PURPLE"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ELECTRIC DRAKE",
+    "points": 5,
+    "temperature": "NEUTRAL",
+    "family": "COMPLEMENTARY",
+    "elementSpaces": [
+      {
+        "color": "YELLOW",
+        "position": "L3_2"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_1"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "OneElementEffect",
+        "elementColors": [
+          "ORANGE"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "CHROMATIC DRAKE",
+    "points": 6,
+    "temperature": "NEUTRAL",
+    "family": "TRIADIC",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_1"
+      },
+      {
+        "color": "YELLOW",
+        "position": "L3_2"
+      },
+      {
+        "color": "YELLOW",
+        "position": "L3_3"
+      },
+      {
+        "color": "RED",
+        "position": "R3_1"
+      },
+      {
+        "color": "BLUE",
+        "position": "R3_2"
+      },
+      {
+        "color": "BLUE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "RED",
+          "YELLOW",
+          "BLUE"
+        ]
+      },
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "OneElementEffect",
+        "elementColors": [
+          "RED",
+          "YELLOW",
+          "BLUE"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "NATURE DRAKE",
+    "points": 5,
+    "temperature": "NEUTRAL",
+    "family": "COMPLEMENTARY",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_2"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "OneElementEffect",
+        "elementColors": [
+          "GREEN"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "OPALESCENT DRAKE",
+    "points": 10,
+    "temperature": "NEUTRAL",
+    "family": "TRIADIC",
+    "elementSpaces": [
+      {
+        "color": "GREEN",
+        "position": "L3_1"
+      },
+      {
+        "color": "PURPLE",
+        "position": "L3_3"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_1"
+      },
+      {
+        "color": "BLACK",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "PURPLE",
+          "ORANGE",
+          "GREEN"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "OneElementEffect",
+        "elementColors": [
+          "PURPLE",
+          "ORANGE",
+          "GREEN"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "FLAMEWREATHED WYVERN",
+    "points": 8,
+    "temperature": "WARM",
+    "family": "HARMONIC",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_1"
+      },
+      {
+        "color": "ORANGE",
+        "position": "L3_2"
+      },
+      {
+        "color": "YELLOW",
+        "position": "L3_3"
+      },
+      {
+        "color": "RED",
+        "position": "R3_1"
+      },
+      {
+        "color": "ORANGE",
+        "position": "L3_3"
+      },
+      {
+        "color": "YELLOW",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectUpToElementsFromAnyEggInPlayEffect",
+        "upTo": 2,
+        "elementChoices": [
+          "PURPLE",
+          "GREEN",
+          "BLUE"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "BLOOD WYVERN",
+    "points": 10,
+    "temperature": "WARM",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_1"
+      },
+      {
+        "color": "WHITE",
+        "position": "L3_3"
+      },
+      {
+        "color": "RED",
+        "position": "R3_1"
+      },
+      {
+        "color": "WHITE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
+      },
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "WHITE"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "MONOCHROMATIC"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ETHEREAL WYVERN",
+    "points": 9,
+    "temperature": "COOL",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "YELLOW",
+        "position": "L3_1"
+      },
+      {
+        "color": "WHITE",
+        "position": "L3_3"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "ElementGiverEffect",
+        "choices": [
+          "YELLOW"
+        ],
+        "display": "YELLOW ELEMENT"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TERTIARY"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ELECTRIC WYVERN",
+    "points": 9,
+    "temperature": "NEUTRAL",
+    "family": "COMPLEMENTARY",
+    "elementSpaces": [
+      {
+        "color": "YELLOW",
+        "position": "L3_1"
+      },
+      {
+        "color": "BLACK",
+        "position": "L3_3"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_1"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "ElementGiverEffect",
+        "choices": [
+          "YELLOW"
+        ],
+        "display": "YELLOW ELEMENT"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "COMPLEMENTARY"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "CHROMATIC WYVERN_R",
+    "points": 9,
+    "temperature": "NEUTRAL",
+    "family": "TRIADIC",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_1"
+      },
+      {
+        "color": "RED",
+        "position": "L3_2"
+      },
+      {
+        "color": "RED",
+        "position": "L3_3"
+      },
+      {
+        "color": "YELLOW",
+        "position": "R3_1"
+      },
+      {
+        "color": "BLUE",
+        "position": "R3_2"
+      },
+      {
+        "color": "WHITE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectOneElementFromAnyEggInPlayEffect",
+        "elementChoices": [
+          "RED"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "RED",
+          "BLUE",
+          "YELLOW"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "CHROMATIC WYVERN_Y",
+    "points": 9,
+    "temperature": "NEUTRAL",
+    "family": "TRIADIC",
+    "elementSpaces": [
+      {
+        "color": "YELLOW",
+        "position": "L3_1"
+      },
+      {
+        "color": "YELLOW",
+        "position": "L3_2"
+      },
+      {
+        "color": "YELLOW",
+        "position": "L3_3"
+      },
+      {
+        "color": "RED",
+        "position": "R3_1"
+      },
+      {
+        "color": "BLUE",
+        "position": "R3_2"
+      },
+      {
+        "color": "WHITE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectOneElementFromAnyEggInPlayEffect",
+        "elementChoices": [
+          "YELLOW"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "RED",
+          "BLUE",
+          "YELLOW"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "CHROMATIC WYVERN_B",
+    "points": 9,
+    "temperature": "NEUTRAL",
+    "family": "TRIADIC",
+    "elementSpaces": [
+      {
+        "color": "BLUE",
+        "position": "L3_1"
+      },
+      {
+        "color": "BLUE",
+        "position": "L3_2"
+      },
+      {
+        "color": "BLUE",
+        "position": "L3_3"
+      },
+      {
+        "color": "RED",
+        "position": "R3_1"
+      },
+      {
+        "color": "YELLOW",
+        "position": "R3_2"
+      },
+      {
+        "color": "BLACK",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectOneElementFromAnyEggInPlayEffect",
+        "elementChoices": [
+          "BLUE"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "RED",
+          "BLUE",
+          "YELLOW"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ETHEREAL WYRM",
+    "points": 13,
+    "temperature": "COOL",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "WHITE",
+        "position": "L3_1"
+      },
+      {
+        "color": "YELLOW",
+        "position": "L3_2"
+      },
+      {
+        "color": "WHITE",
+        "position": "L3_3"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectAndHatchAnyUnclaimedEggEffect",
+        "points": 5
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ICESHARD WYVERN",
+    "points": 10,
+    "temperature": "COOL",
+    "family": "HARMONIC",
+    "elementSpaces": [
+      {
+        "color": "BLUE",
+        "position": "L3_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "L3_2"
+      },
+      {
+        "color": "PURPLE",
+        "position": "L3_3"
+      },
+      {
+        "color": "BLUE",
+        "position": "R3_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_2"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectUpToElementsFromAnyEggInPlayEffect",
+        "upTo": 2,
+        "elementChoices": [
+          "RED",
+          "ORANGE",
+          "YELLOW"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "NATURE WYVERN",
+    "points": 9,
+    "temperature": "NEUTRAL",
+    "family": "COMPLEMENTARY",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_1"
+      },
+      {
+        "color": "BLACK",
+        "position": "L3_3"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "ElementGiverEffect",
+        "choices": [
+          "RED"
+        ],
+        "display": "RED ELEMENT"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "COMPLEMENTARY"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "SKY WYVERN",
+    "points": 10,
+    "temperature": "WARM",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "YELLOW",
+        "position": "L3_1"
+      },
+      {
+        "color": "WHITE",
+        "position": "L3_3"
+      },
+      {
+        "color": "YELLOW",
+        "position": "R3_1"
+      },
+      {
+        "color": "WHITE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "YELLOW"
+        ]
+      },
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "MONOCHROMATIC"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "STEAM WYVERN",
+    "points": 9,
+    "temperature": "WARM",
+    "family": "COMPLEMENTARY",
+    "elementSpaces": [
+      {
+        "color": "BLUE",
+        "position": "L3_1"
+      },
+      {
+        "color": "BLACK",
+        "position": "L3_3"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_1"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "ElementGiverEffect",
+        "choices": [
+          "BLUE"
+        ],
+        "display": "BLUE ELEMENT"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "COMPLEMENTARY"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "SUNSTONE WYVERN",
+    "points": 9,
+    "temperature": "WARM",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "YELLOW",
+        "position": "L3_1"
+      },
+      {
+        "color": "WHITE",
+        "position": "L3_3"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_1"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "ElementGiverEffect",
+        "choices": [
+          "YELLOW"
+        ],
+        "display": "YELLOW ELEMENT"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TERTIARY"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "TWILIGHT WYVERN",
+    "points": 9,
+    "temperature": "COOL",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_1"
+      },
+      {
+        "color": "BLACK",
+        "position": "L3_3"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_1"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "ElementGiverEffect",
+        "choices": [
+          "RED"
+        ],
+        "display": "RED ELEMENT"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TERTIARY"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "UNDINE WYVERN",
+    "points": 9,
+    "temperature": "COOL",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "BLUE",
+        "position": "L3_1"
+      },
+      {
+        "color": "BLACK",
+        "position": "L3_3"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "ElementGiverEffect",
+        "choices": [
+          "BLUE"
+        ],
+        "display": "BLUE ELEMENT"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TERTIARY"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "VOID WYVERN",
+    "points": 9,
+    "temperature": "COOL",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "BLUE",
+        "position": "L3_1"
+      },
+      {
+        "color": "BLACK",
+        "position": "L3_3"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_1"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "ElementGiverEffect",
+        "choices": [
+          "BLUE"
+        ],
+        "display": "BLUE ELEMENT"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TERTIARY"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "WATER WYVERN",
+    "points": 10,
+    "temperature": "COOL",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "BLUE",
+        "position": "L3_1"
+      },
+      {
+        "color": "BLACK",
+        "position": "L3_3"
+      },
+      {
+        "color": "BLUE",
+        "position": "R3_1"
+      },
+      {
+        "color": "BLACK",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "BLACK"
+        ]
+      },
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "MONOCHROMATIC"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ABYSSAL WYRM",
+    "points": 12,
+    "temperature": "NEUTRAL",
+    "family": "TRIADIC",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L4_1"
+      },
+      {
+        "color": "RED",
+        "position": "L4_2"
+      },
+      {
+        "color": "ORANGE",
+        "position": "L4_3"
+      },
+      {
+        "color": "ORANGE",
+        "position": "L4_4"
+      },
+      {
+        "color": "BLUE",
+        "position": "R4_1"
+      },
+      {
+        "color": "BLUE",
+        "position": "R4_2"
+      },
+      {
+        "color": "GREEN",
+        "position": "R4_3"
+      },
+      {
+        "color": "GREEN",
+        "position": "R4_4"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "AEON WYRM",
+    "points": 12,
+    "temperature": "NEUTRAL",
+    "family": "TETRADIC",
+    "elementSpaces": [
+      {
+        "color": "YELLOW",
+        "position": "L4_1"
+      },
+      {
+        "color": "YELLOW",
+        "position": "L4_2"
+      },
+      {
+        "color": "ORANGE",
+        "position": "L4_3"
+      },
+      {
+        "color": "ORANGE",
+        "position": "L4_4"
+      },
+      {
+        "color": "BLUE",
+        "position": "R4_1"
+      },
+      {
+        "color": "BLUE",
+        "position": "R4_2"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R4_3"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R4_4"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "BLOOD WYRM",
+    "points": 12,
+    "temperature": "WARM",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_1"
+      },
+      {
+        "color": "RED",
+        "position": "L3_2"
+      },
+      {
+        "color": "BLACK",
+        "position": "L3_3"
+      },
+      {
+        "color": "RED",
+        "position": "R3_1"
+      },
+      {
+        "color": "RED",
+        "position": "R3_2"
+      },
+      {
+        "color": "BLACK",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "ElementGiverEffect",
+        "choices": [
+          "RED"
+        ],
+        "display": "RED ELEMENT"
+      },
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "BRIMSTONE WYRM",
+    "points": 11,
+    "temperature": "WARM",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_1"
+      },
+      {
+        "color": "WHITE",
+        "position": "L3_3"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_1"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_2"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectAndHatchAnyUnclaimedEggEffect",
+        "points": 5
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ELECTRIC WYRM",
+    "points": 11,
+    "temperature": "NEUTRAL",
+    "family": "COMPLEMENTARY",
+    "elementSpaces": [
+      {
+        "color": "YELLOW",
+        "position": "L3_1"
+      },
+      {
+        "color": "BLACK",
+        "position": "L3_3"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_1"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_2"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectAndHatchAnyUnclaimedEggEffect",
+        "points": 5
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "NATURE WYRM",
+    "points": 11,
+    "temperature": "NEUTRAL",
+    "family": "COMPLEMENTARY",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L3_1"
+      },
+      {
+        "color": "BLACK",
+        "position": "L3_3"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_2"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectAndHatchAnyUnclaimedEggEffect",
+        "points": 5
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "STEAM WYRM",
+    "points": 11,
+    "temperature": "WARM",
+    "family": "COMPLEMENTARY",
+    "elementSpaces": [
+      {
+        "color": "BLUE",
+        "position": "L3_1"
+      },
+      {
+        "color": "BLACK",
+        "position": "L3_3"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_1"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_2"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectAndHatchAnyUnclaimedEggEffect",
+        "points": 5
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "SUNSTONE WYRM",
+    "points": 11,
+    "temperature": "WARM",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "YELLOW",
+        "position": "L3_1"
+      },
+      {
+        "color": "BLACK",
+        "position": "L3_3"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_1"
+      },
+      {
+        "color": "WHITE",
+        "position": "R3_2"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectAndHatchAnyUnclaimedEggEffect",
+        "points": 5
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "TWILIGHT WYRM",
+    "points": 13,
+    "temperature": "COOL",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "BLACK",
+        "position": "L3_1"
+      },
+      {
+        "color": "RED",
+        "position": "L3_2"
+      },
+      {
+        "color": "BLACK",
+        "position": "L3_3"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_1"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectAndHatchAnyUnclaimedEggEffect",
+        "points": 5
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "UNDINE WYRM",
+    "points": 13,
+    "temperature": "COOL",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "BLACK",
+        "position": "L3_1"
+      },
+      {
+        "color": "BLUE",
+        "position": "L3_2"
+      },
+      {
+        "color": "BLACK",
+        "position": "L3_3"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectAndHatchAnyUnclaimedEggEffect",
+        "points": 5
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "VOID WYRM",
+    "points": 13,
+    "temperature": "COOL",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "BLACK",
+        "position": "L3_1"
+      },
+      {
+        "color": "BLUE",
+        "position": "L3_2"
+      },
+      {
+        "color": "BLACK",
+        "position": "L3_3"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_1"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectAndHatchAnyUnclaimedEggEffect",
+        "points": 5
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "NEBULA WYRM",
+    "points": 12,
+    "temperature": "NEUTRAL",
+    "family": "TETRADIC",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L4_1"
+      },
+      {
+        "color": "RED",
+        "position": "L4_2"
+      },
+      {
+        "color": "YELLOW",
+        "position": "L4_3"
+      },
+      {
+        "color": "YELLOW",
+        "position": "L4_4"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R4_1"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R4_2"
+      },
+      {
+        "color": "GREEN",
+        "position": "R4_3"
+      },
+      {
+        "color": "GREEN",
+        "position": "R4_4"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "SKY WYRM",
+    "points": 12,
+    "temperature": "WARM",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "YELLOW",
+        "position": "L3_1"
+      },
+      {
+        "color": "YELLOW",
+        "position": "L3_2"
+      },
+      {
+        "color": "WHITE",
+        "position": "L3_3"
+      },
+      {
+        "color": "YELLOW",
+        "position": "R3_1"
+      },
+      {
+        "color": "YELLOW",
+        "position": "R3_2"
+      },
+      {
+        "color": "WHITE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "ElementGiverEffect",
+        "choices": [
+          "YELLOW"
+        ],
+        "display": "YELLOW ELEMENT"
+      },
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "WATER WYRM",
+    "points": 12,
+    "temperature": "COOL",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "BLUE",
+        "position": "L3_1"
+      },
+      {
+        "color": "BLUE",
+        "position": "L3_2"
+      },
+      {
+        "color": "BLACK",
+        "position": "L3_3"
+      },
+      {
+        "color": "BLUE",
+        "position": "R3_1"
+      },
+      {
+        "color": "BLUE",
+        "position": "R3_2"
+      },
+      {
+        "color": "BLACK",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "ElementGiverEffect",
+        "choices": [
+          "BLUE"
+        ],
+        "display": "BLUE ELEMENT"
+      },
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "OPALESCENT WYRM_G",
+    "points": 14,
+    "temperature": "NEUTRAL",
+    "family": "TRIADIC",
+    "elementSpaces": [
+      {
+        "color": "PURPLE",
+        "position": "L4_1"
+      },
+      {
+        "color": "ORANGE",
+        "position": "L4_2"
+      },
+      {
+        "color": "PURPLE",
+        "position": "L4_3"
+      },
+      {
+        "color": "ORANGE",
+        "position": "L4_4"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_2"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectOneElementFromAnyEggInPlayEffect",
+        "elementChoices": [
+          "GREEN"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "OPALESCENT WYRM_O",
+    "points": 14,
+    "temperature": "NEUTRAL",
+    "family": "TRIADIC",
+    "elementSpaces": [
+      {
+        "color": "PURPLE",
+        "position": "L4_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "L4_2"
+      },
+      {
+        "color": "PURPLE",
+        "position": "L4_3"
+      },
+      {
+        "color": "GREEN",
+        "position": "L4_4"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_1"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_2"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectOneElementFromAnyEggInPlayEffect",
+        "elementChoices": [
+          "ORANGE"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "OPALESCENT WYRM_P",
+    "points": 14,
+    "temperature": "NEUTRAL",
+    "family": "TRIADIC",
+    "elementSpaces": [
+      {
+        "color": "GREEN",
+        "position": "L4_1"
+      },
+      {
+        "color": "ORANGE",
+        "position": "L4_2"
+      },
+      {
+        "color": "GREEN",
+        "position": "L4_3"
+      },
+      {
+        "color": "ORANGE",
+        "position": "L4_4"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_1"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_2"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectOneElementFromAnyEggInPlayEffect",
+        "elementChoices": [
+          "PURPLE"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "DE'LONS",
+    "points": 14,
+    "temperature": "WARM",
+    "family": "LEGENDARY",
+    "elementSpaces": [
+      {
+        "color": "ORANGE",
+        "position": "L4_1"
+      },
+      {
+        "color": "ORANGE",
+        "position": "L4_2"
+      },
+      {
+        "color": "ORANGE",
+        "position": "L4_3"
+      },
+      {
+        "color": "WHITE",
+        "position": "L4_4"
+      },
+      {
+        "color": "RED",
+        "position": "R4_1"
+      },
+      {
+        "color": "RED",
+        "position": "R4_2"
+      },
+      {
+        "color": "RED",
+        "position": "R4_3"
+      },
+      {
+        "color": "YELLOW",
+        "position": "R4_4"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "ElementGiverEffect",
+        "choices": [
+          "YELLOW",
+          "RED",
+          "ORANGE"
+        ],
+        "display": "WARM ELEMENT"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementToAllEggsInPlayEffect",
+        "ElementColor": "RED"
+      }
+    ]
+  },
+  {
+    "name": "XANDUS",
+    "points": 15,
+    "temperature": "COOL",
+    "family": "LEGENDARY",
+    "elementSpaces": [
+      {
+        "color": "BLACK",
+        "position": "L3_1"
+      },
+      {
+        "color": "BLACK",
+        "position": "L3_2"
+      },
+      {
+        "color": "BLUE",
+        "position": "L3_3"
+      },
+      {
+        "color": "WHITE",
+        "position": "R3_1"
+      },
+      {
+        "color": "BLUE",
+        "position": "R3_2"
+      },
+      {
+        "color": "BLUE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "ElementGiverEffect",
+        "choices": [
+          "YELLOW",
+          "RED",
+          "ORANGE"
+        ],
+        "display": "WARM ELEMENT"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementToAllEggsInPlayEffect",
+        "ElementColor": "RED"
+      }
+    ]
+  },
+  {
+    "name": "CORDATH",
+    "points": 20,
+    "temperature": "COOL",
+    "family": "LEGENDARY",
+    "elementSpaces": [
+      {
+        "color": "GREEN",
+        "position": "L4_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "L4_2"
+      },
+      {
+        "color": "GREEN",
+        "position": "L4_3"
+      },
+      {
+        "color": "BLACK",
+        "position": "L4_4"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R4_1"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R4_2"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R4_3"
+      },
+      {
+        "color": "BLACK",
+        "position": "R4_4"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "PlayersTradeDragon"
+      }
+    ]
+  },
+  {
+    "name": "WHYTE",
+    "points": 17,
+    "temperature": "NEUTRAL",
+    "family": "LEGENDARY",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L4_1"
+      },
+      {
+        "color": "ORANGE",
+        "position": "L4_2"
+      },
+      {
+        "color": "YELLOW",
+        "position": "L4_3"
+      },
+      {
+        "color": "WHITE",
+        "position": "L4_4"
+      },
+      {
+        "color": "BLUE",
+        "position": "R4_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "R4_2"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R4_3"
+      },
+      {
+        "color": "BLACK",
+        "position": "R4_4"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "ElementGiverEffect",
+        "choices": [
+          "RED",
+          "BLUE",
+          "YELLOW",
+          "GREEN",
+          "PURPLE",
+          "ORANGE",
+          "WHITE",
+          "BLACK"
+        ],
+        "display": "RANDOM ELEMENT"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "DestroyAllElementsOnAllEggsInPlay"
+      }
+    ]
+  },
+  {
+    "name": "DRACEUTRUM",
+    "points": 14,
+    "temperature": "NEUTRAL",
+    "family": "LEGENDARY",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L4_1"
+      },
+      {
+        "color": "RED",
+        "position": "L4_2"
+      },
+      {
+        "color": "WHITE",
+        "position": "L4_3"
+      },
+      {
+        "color": "BLUE",
+        "position": "L4_4"
+      },
+      {
+        "color": "RED",
+        "position": "R4_1"
+      },
+      {
+        "color": "WHITE",
+        "position": "R4_2"
+      },
+      {
+        "color": "BLUE",
+        "position": "R4_3"
+      },
+      {
+        "color": "BLUE",
+        "position": "R4_4"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "TakeHatchedDragonFromPlayer",
+        "points": 9,
+        "temperatures": [
+          "NEUTRAL"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "ReturnAllHatchedDragonsFromPlayers",
+        "temperatures": [
+          "NEUTRAL"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "KEL'DROTH",
+    "points": 16,
+    "temperature": "COOL",
+    "family": "LEGENDARY",
+    "elementSpaces": [
+      {
+        "color": "GREEN",
+        "position": "L3_1"
+      },
+      {
+        "color": "PURPLE",
+        "position": "L3_2"
+      },
+      {
+        "color": "GREEN",
+        "position": "L3_3"
+      },
+      {
+        "color": "BLACK",
+        "position": "R3_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_2"
+      },
+      {
+        "color": "BLACK",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 4
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "LoseHandlerEffect"
+      }
+    ]
+  },
+  {
+    "name": "ARTIFELES",
+    "points": 16,
+    "temperature": "NEUTRAL",
+    "family": "LEGENDARY",
+    "elementSpaces": [
+      {
+        "color": "BLACK",
+        "position": "L3_1"
+      },
+      {
+        "color": "WHITE",
+        "position": "L3_3"
+      },
+      {
+        "color": "WHITE",
+        "position": "R3_1"
+      },
+      {
+        "color": "BLACK",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "UseBlackOrWhiteInPlaceEffect"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "DestroyAllBlackAndWhiteElementsEffect"
+      }
+    ]
+  },
+  {
+    "name": "IGNATIUS",
+    "points": 15,
+    "temperature": "WARM",
+    "family": "LEGENDARY",
+    "elementSpaces": [
+      {
+        "color": "YELLOW",
+        "position": "L4_1"
+      },
+      {
+        "color": "YELLOW",
+        "position": "L4_2"
+      },
+      {
+        "color": "ORANGE",
+        "position": "L4_3"
+      },
+      {
+        "color": "WHITE",
+        "position": "L4_4"
+      },
+      {
+        "color": "YELLOW",
+        "position": "R4_1"
+      },
+      {
+        "color": "YELLOW",
+        "position": "R4_2"
+      },
+      {
+        "color": "RED",
+        "position": "R4_3"
+      },
+      {
+        "color": "BLACK",
+        "position": "R4_4"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "StealAllStoredElements"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "DestroyAllPlayersStoredElements"
+      }
+    ]
+  },
+  {
+    "name": "AERYSTRASZA",
+    "points": 16,
+    "temperature": "WARM",
+    "family": "LEGENDARY",
+    "elementSpaces": [
+      {
+        "color": "ORANGE",
+        "position": "L3_1"
+      },
+      {
+        "color": "WHITE",
+        "position": "L3_2"
+      },
+      {
+        "color": "ORANGE",
+        "position": "L3_3"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_1"
+      },
+      {
+        "color": "WHITE",
+        "position": "R3_2"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectUpToElementsFromAnyEggInPlayEffect",
+        "upTo": 3,
+        "elementChoices": [
+          "ORANGE"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "ReturnMostValuableDragonEffect"
+      }
+    ]
+  },
+  {
+    "name": "AERILLIA",
+    "points": 15,
+    "temperature": "WARM",
+    "family": "LEGENDARY",
+    "elementSpaces": [
+      {
+        "color": "WHITE",
+        "position": "L3_1"
+      },
+      {
+        "color": "RED",
+        "position": "L3_2"
+      },
+      {
+        "color": "YELLOW",
+        "position": "L3_3"
+      },
+      {
+        "color": "WHITE",
+        "position": "R3_1"
+      },
+      {
+        "color": "BLACK",
+        "position": "R3_2"
+      },
+      {
+        "color": "YELLOW",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "UseBlackOrWhiteInPlaceEffect"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "RemoveBlackRecipesEffect"
+      }
+    ]
+  },
+  {
+    "name": "VANDRENOX",
+    "points": 17,
+    "temperature": "COOL",
+    "family": "LEGENDARY",
+    "elementSpaces": [
+      {
+        "color": "PURPLE",
+        "position": "L3_1"
+      },
+      {
+        "color": "BLUE",
+        "position": "L3_2"
+      },
+      {
+        "color": "PURPLE",
+        "position": "L3_3"
+      },
+      {
+        "color": "BLACK",
+        "position": "R3_1"
+      },
+      {
+        "color": "BLACK",
+        "position": "R3_2"
+      },
+      {
+        "color": "BLACK",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "ReplaceHandlerWithYourOwnEffect"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "RemoveAllHandlersFromAllEggsInPlay"
+      }
+    ]
+  },
+  {
+    "name": "NORRUTH",
+    "points": 20,
+    "temperature": "NEUTRAL",
+    "family": "LEGENDARY",
+    "elementSpaces": [
+      {
+        "color": "PURPLE",
+        "position": "L4_1"
+      },
+      {
+        "color": "ORANGE",
+        "position": "L4_2"
+      },
+      {
+        "color": "ORANGE",
+        "position": "L4_3"
+      },
+      {
+        "color": "WHITE",
+        "position": "L4_4"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R4_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "R4_2"
+      },
+      {
+        "color": "GREEN",
+        "position": "R4_3"
+      },
+      {
+        "color": "BLACK",
+        "position": "R4_4"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "NextEggHatchesImmediatelyEffect"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AllEggsHatchLateEffect"
+      }
+    ]
+  },
+  {
+    "name": "TIAMAT",
+    "points": 16,
+    "temperature": "NEUTRAL",
+    "family": "LEGENDARY",
+    "elementSpaces": [
+      {
+        "color": "RED",
+        "position": "L4_1"
+      },
+      {
+        "color": "RED",
+        "position": "L4_2"
+      },
+      {
+        "color": "BLACK",
+        "position": "L4_3"
+      },
+      {
+        "color": "WHITE",
+        "position": "L4_4"
+      },
+      {
+        "color": "BLUE",
+        "position": "R4_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "R4_2"
+      },
+      {
+        "color": "BLUE",
+        "position": "R4_3"
+      },
+      {
+        "color": "GREEN",
+        "position": "R4_4"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectFiveElementsEffect",
+        "elementColors": [
+          "RED",
+          "BLUE",
+          "GREEN",
+          "BLACK",
+          "WHITE"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "ReturnAllAdjacentCardsToDeckEffect"
+      }
+    ]
+  }
+]
