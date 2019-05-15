@@ -34,6 +34,7 @@ public class Player {
     public int maxHandlersOnSpace;
     private List<ObserverEffect> observerEffects;
     public List<ElementGiver> effectElementGivers;
+    private boolean useEffectElementGivers;
 
     public Player(int maxHandlers, HandlerFactory handlerFactory, int playerId) {
         this.handlers = new ArrayList<>();
@@ -107,6 +108,10 @@ public class Player {
     }
 
     public List<ElementGiver> getElementGivers() {
+        if (this.useEffectElementGivers) {
+            return this.effectElementGivers;
+        }
+
         List<ElementGiver> elementGivers = new ArrayList<>();
 
         elementGivers.addAll(this.handlers);
@@ -169,6 +174,6 @@ public class Player {
     }
 
     public void useEffectElementGivers(boolean useEffectElementGivers) {
-
+        this.useEffectElementGivers = useEffectElementGivers;
     }
 }
