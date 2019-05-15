@@ -1,5 +1,7 @@
 package underlings.field;
 
+import static org.junit.Assert.assertArrayEquals;
+
 import org.junit.Test;
 
 public class GetGridTests {
@@ -32,6 +34,6 @@ public class GetGridTests {
         grid[3][7] = field.field.get(11);
         grid[3][8] = field.field.get(10);
 
-        assertEquals(grid, field.getGrid());
+        assertArrayEquals(grid, field.getGrid());
     }
 }
