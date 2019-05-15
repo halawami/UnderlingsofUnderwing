@@ -8,7 +8,7 @@ public class DrawElementsOfChoiceEffect extends PlayerEffect implements Observer
 
     @Override
     protected void apply(Player player) {
-
+        player.addObserverEffect(this);
     }
 
     @Override
