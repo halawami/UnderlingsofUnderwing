@@ -1,6 +1,7 @@
 package underlings.phase;
 
 import java.util.List;
+
 import underlings.card.Card;
 import underlings.element.ElementBag;
 import underlings.field.Field;
@@ -34,7 +35,8 @@ public class DragonPhase extends SequentialPhase {
         player.unhatchedCards.clear();
         for (Card completeCard : this.completeEggs) {
             this.domesticEggHatchingLogic.returnElementsToBag(completeCard);
-            if (player.hasCard(completeCard)) {
+            if (player.getHandlers().contains(completeCard.handler)) {
+                player.moveToIncubation(completeCard);
                 this.gui.notifyAction(player.getPlayerId(), LocaleWrap.format("incubation_state", completeCard.name));
             }
         }

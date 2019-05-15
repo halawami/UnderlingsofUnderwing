@@ -1,8 +1,6 @@
 package underlings.player;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -24,7 +22,8 @@ public class CardTests {
         Handler handler = new HandlerFactory().createHandler();
         card.handler = handler;
         Player player = new Player(6, new HandlerFactory(), 0);
-        assertFalse(player.hasCard(card));
+        player.moveToIncubation(card);
+        assertEquals(HandlerState.INCUBATION, card.handler.getState());
     }
 
     @Test
@@ -33,7 +32,7 @@ public class CardTests {
         Card card = new Card();
         card.handler = player.getHandlers().get(0);
 
-        assertTrue(player.hasCard(card));
+        player.moveToIncubation(card);
         assertEquals(card.handler.getState(), HandlerState.INCUBATION);
         assertEquals(1, player.unhatchedCards.size());
         assertEquals(card, player.unhatchedCards.get(0));
@@ -50,10 +49,10 @@ public class CardTests {
         EasyMock.replay(card, card2);
 
         EasyMock.verify(card, card2);
-        assertTrue(player.hasCard(card));
-        assertTrue(player.hasCard(card2));
-        assertEquals(card.handler.getState(), HandlerState.INCUBATION);
-        assertEquals(card2.handler.getState(), HandlerState.INCUBATION);
+        player.moveToIncubation(card);
+        player.moveToIncubation(card2);
+        assertEquals(HandlerState.INCUBATION, card.handler.getState());
+        assertEquals(HandlerState.INCUBATION, card2.handler.getState());
         assertEquals(2, player.unhatchedCards.size());
         assertEquals(card, player.unhatchedCards.get(0));
         assertEquals(card2, player.unhatchedCards.get(1));
@@ -71,9 +70,8 @@ public class CardTests {
         EasyMock.replay(card, card2, handler);
 
         EasyMock.verify(card, card2, handler);
-        assertTrue(player.hasCard(card));
-        assertFalse(player.hasCard(card2));
-        assertEquals(card.handler.getState(), HandlerState.INCUBATION);
+        player.moveToIncubation(card);
+        assertEquals(HandlerState.INCUBATION, card.handler.getState());
         assertEquals(1, player.unhatchedCards.size());
         assertEquals(card, player.unhatchedCards.get(0));
     }
