@@ -31,6 +31,7 @@ public class Player {
     public List<Card> unhatchedCards;
     public ElementSpaceLogic elementSpaceLogic;
     public int maxHandlersOnSpace;
+    public int hatchingTime;
 
     public Player(int maxHandlers, HandlerFactory handlerFactory, int playerId) {
         this.handlers = new ArrayList<>();
@@ -46,6 +47,7 @@ public class Player {
         this.reached25Points = false;
         this.playerId = playerId;
         this.maxHandlersOnSpace = 1;
+        this.hatchingTime = 1;
     }
 
     public int getHandlerCount() {
@@ -118,13 +120,9 @@ public class Player {
         return this.playerId;
     }
 
-    public boolean hasCard(Card card) {
-        if (this.getHandlers().contains(card.handler)) {
-            this.unhatchedCards.add(card);
-            card.handler.moveToState(HandlerState.INCUBATION);
-            return true;
-        }
-        return false;
+    public void moveToIncubation(Card card) {
+        this.unhatchedCards.add(card);
+        card.handler.moveToState(HandlerState.INCUBATION);
     }
 
     @Override
