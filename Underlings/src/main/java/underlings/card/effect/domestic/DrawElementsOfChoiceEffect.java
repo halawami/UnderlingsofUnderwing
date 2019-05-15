@@ -14,19 +14,19 @@ import underlings.player.Player;
 public class DrawElementsOfChoiceEffect extends ElementEffect implements ObserverEffect {
 
     public ElementGiverFactory elementGiverFactory;
-    public ElementBag elementBag;
+    public ElementBag bag;
     private boolean beenUsed;
 
     @Override
     protected void apply(Player player, ElementBag elementBag) {
         player.addObserverEffect(this);
-        this.elementBag = elementBag;
+        this.bag = elementBag;
     }
 
     @Override
     public void onPhaseOne(Player player) {
         if (!this.beenUsed) {
-            player.effectElementGivers = this.getEffectElementGivers(player.getElementGivers(), elementBag);
+            player.effectElementGivers = this.getEffectElementGivers(player.getElementGivers(), bag);
             player.useEffectElementGivers(true);
             this.beenUsed = true;
         }

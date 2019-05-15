@@ -29,7 +29,7 @@ public class DrawElementsOfChoiceEffectTests {
 
         testedEffect.on(player).on(elementBag).apply();
 
-        Assert.assertEquals(elementBag, testedEffect.elementBag);
+        Assert.assertEquals(elementBag, testedEffect.bag);
         EasyMock.verify(player, elementBag);
     }
 
@@ -39,7 +39,7 @@ public class DrawElementsOfChoiceEffectTests {
         ElementBag elementBag = EasyMock.mock(ElementBag.class);
         DrawElementsOfChoiceEffect testedEffect = EasyMock.partialMockBuilder(DrawElementsOfChoiceEffect.class)
                 .addMockedMethod("getEffectElementGivers").createMock();
-        testedEffect.elementBag = elementBag;
+        testedEffect.bag = elementBag;
         List<ElementGiver> elementGivers = TestUtils.mockListOf(ElementGiver.class).withLength(2);
         List<ElementGiver> effectElementGivers = TestUtils.mockListOf(ElementGiver.class).withLength(2);
 
@@ -66,7 +66,7 @@ public class DrawElementsOfChoiceEffectTests {
         ElementBag elementBag = EasyMock.mock(ElementBag.class);
         DrawElementsOfChoiceEffect testedEffect = EasyMock.partialMockBuilder(DrawElementsOfChoiceEffect.class)
                 .addMockedMethod("getEffectElementGivers").createMock();
-        testedEffect.elementBag = elementBag;
+        testedEffect.bag = elementBag;
         List<ElementGiver> elementGivers = TestUtils.mockListOf(ElementGiver.class).withLength(2);
         List<ElementGiver> effectedElementGivers = TestUtils.mockListOf(ElementGiver.class).withLength(2);
 
@@ -108,7 +108,7 @@ public class DrawElementsOfChoiceEffectTests {
         DrawElementsOfChoiceEffect testedEffect = new DrawElementsOfChoiceEffect();
         ElementGiverFactory elementGiverFactory = EasyMock.mock(ElementGiverFactory.class);
         testedEffect.elementGiverFactory = elementGiverFactory;
-        testedEffect.elementBag = elementBag;
+        testedEffect.bag = elementBag;
         List<ElementGiver> elementGivers = TestUtils.mockListOf(ElementGiver.class).withLength(numberOfElementGivers);
         List<DrawChoice> availableDrawChoices = Arrays.asList(DrawChoice.BLUE, DrawChoice.RED);
         List<ElementGiver> mockEffectGivers = TestUtils.mockListOf(ElementGiver.class)
