@@ -183,6 +183,7 @@ public class PlayersTradeDragonTests {
         Player player = EasyMock.mock(Player.class);
         Player player2 = EasyMock.mock(Player.class);
         Player player3 = EasyMock.mock(Player.class);
+        Player player4 = EasyMock.mock(Player.class);
         Gui gui = EasyMock.mock(Gui.class);
         Card card = new Card();
         card.points = 12;
@@ -200,13 +201,16 @@ public class PlayersTradeDragonTests {
         player2.hatchedCards.add(card2);
         player3.hatchedCards = new ArrayList<>();
         player3.hatchedCards.add(card2);
-        effect.on(Arrays.asList(player, player2, player3)).on(gui);
+        player4.hatchedCards = new ArrayList<>();
+        player4.hatchedCards.add(card2);
+        player4.hatchedCards.add(card);
+        effect.on(Arrays.asList(player, player2, player3, player4)).on(gui);
         gui.notifyAction(-1, LocaleWrap.get("notify_no_player_least_dragons"));
 
-        EasyMock.replay(player, player2, mockedEffect, gui, player3);
+        EasyMock.replay(player, player2, mockedEffect, gui, player3, player4);
 
         effect.apply();
 
-        EasyMock.verify(player, player2, mockedEffect, gui, player3);
+        EasyMock.verify(player, player2, mockedEffect, gui, player3, player4);
     }
 }
