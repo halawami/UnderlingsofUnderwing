@@ -21,6 +21,8 @@ import underlings.element.ElementColor;
 import underlings.element.ElementGiver;
 import underlings.element.ElementSpace;
 import underlings.element.NullElement;
+import underlings.field.Field;
+import underlings.field.FieldSpace;
 import underlings.game.HatchingGround;
 import underlings.handler.Handler;
 import underlings.handler.HandlerChoice;
@@ -97,35 +99,35 @@ public class Gui {
         this.promptHandler.displayMessage(message, playerId, JOptionPane.PLAIN_MESSAGE);
     }
 
-    public int getFieldSpace(int playerId) {
-        Integer[][] field = new Integer[4][9];
-        field[0][0] = 21;
-        field[0][1] = 0;
-        field[0][2] = 1;
-        field[0][3] = 2;
-        field[0][4] = 3;
-        field[0][5] = 4;
-        field[0][6] = 5;
-        field[0][7] = 6;
-        field[0][8] = 7;
-        field[1][0] = 20;
-        field[1][8] = 8;
-        field[2][0] = 19;
-        field[2][8] = 9;
-        field[3][0] = 18;
-        field[3][1] = 17;
-        field[3][2] = 16;
-        field[3][3] = 15;
-        field[3][4] = 14;
-        field[3][5] = 13;
-        field[3][6] = 12;
-        field[3][7] = 11;
-        field[3][8] = 10;
+    public FieldSpace getFieldSpace(int playerId, Field field) {
+        FieldSpace[][] grid = new FieldSpace[4][9];
+        grid[0][0] = field.field.get(21);
+        grid[0][1] = field.field.get(0);
+        grid[0][2] = field.field.get(1);
+        grid[0][3] = field.field.get(2);
+        grid[0][4] = field.field.get(3);
+        grid[0][5] = field.field.get(4);
+        grid[0][6] = field.field.get(5);
+        grid[0][7] = field.field.get(6);
+        grid[0][8] = field.field.get(7);
+        grid[1][0] = field.field.get(20);
+        grid[1][8] = field.field.get(8);
+        grid[2][0] = field.field.get(19);
+        grid[2][8] = field.field.get(9);
+        grid[3][0] = field.field.get(18);
+        grid[3][1] = field.field.get(17);
+        grid[3][2] = field.field.get(16);
+        grid[3][3] = field.field.get(15);
+        grid[3][4] = field.field.get(14);
+        grid[3][5] = field.field.get(13);
+        grid[3][6] = field.field.get(12);
+        grid[3][7] = field.field.get(11);
+        grid[3][8] = field.field.get(10);
 
         String prompt = LocaleWrap.get("gui_field_space");
-        Integer val = this.promptHandler.pickFromGrid(prompt, field, playerId);
+        FieldSpace val = this.promptHandler.pickFromGrid(prompt, grid, playerId);
 
-        return (int) val;
+        return val;
     }
 
     public int getPlayerCount(int minPlayers, int maxPlayers) {

@@ -2,6 +2,7 @@ package underlings.field;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import underlings.gui.DrawChoice;
 import underlings.handler.Handler;
 import underlings.utilities.LocaleWrap;
@@ -30,6 +31,11 @@ public class FieldSpace {
         this.handlers.remove(handler);
         handler.resetDrawChoice();
         handler.addDrawChoice(DrawChoice.RANDOM);
+    }
+
+    @Override
+    public String toString() {
+        return LocaleWrap.format("field_space_string", this.color);
     }
 
 }

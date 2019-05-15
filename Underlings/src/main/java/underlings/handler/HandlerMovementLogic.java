@@ -2,6 +2,7 @@ package underlings.handler;
 
 import underlings.card.Card;
 import underlings.field.Field;
+import underlings.field.FieldSpace;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.utilities.LocaleWrap;
@@ -42,8 +43,9 @@ public class HandlerMovementLogic {
                 break;
             case FIELD:
                 handler.moveToState(choice.getState());
-                int fieldSpace = this.gui.getFieldSpace(playerId);
-                this.field.addHandler(fieldSpace, handler);
+                FieldSpace space = this.gui.getFieldSpace(playerId, field);
+                int spaceIndex = field.field.indexOf(space);
+                this.field.addHandler(spaceIndex, handler);
                 break;
             case FIELD_WHITESPACE:
                 handler.moveToState(choice.getState());

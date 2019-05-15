@@ -11,6 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import underlings.element.ElementGiver;
+import underlings.field.FieldSpace;
 import underlings.handler.Handler;
 import underlings.handler.HandlerState;
 
@@ -57,7 +58,7 @@ public class ChoiceTests {
                 EasyMock.anyInt())).andReturn(0);
         EasyMock.replay(this.promptHandler, this.display);
 
-        int fieldSpace = this.gui.getFieldSpace(1);
+        FieldSpace fieldSpace = this.gui.getFieldSpace(1, field);
 
         assertEquals(0, fieldSpace);
     }
@@ -68,7 +69,7 @@ public class ChoiceTests {
                 EasyMock.anyInt())).andReturn(21);
         EasyMock.replay(this.promptHandler, this.display);
 
-        int fieldSpace = this.gui.getFieldSpace(1);
+        FieldSpace fieldSpace = this.gui.getFieldSpace(1, field);
 
         assertEquals(21, fieldSpace);
     }
