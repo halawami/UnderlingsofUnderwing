@@ -43,7 +43,7 @@ public class DrawElementsOfChoiceEffectTests {
         elementGivers.forEach(EasyMock::replay);
         effectedElementGivers.forEach(EasyMock::replay);
 
-        testedEffect.on(player).apply();
+        testedEffect.onPhaseOne(player);
 
         Assert.assertEquals(effectedElementGivers, player.effectedElementGivers);
         EasyMock.verify(player, testedEffect);

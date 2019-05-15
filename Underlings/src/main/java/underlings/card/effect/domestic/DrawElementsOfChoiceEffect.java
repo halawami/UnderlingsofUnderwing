@@ -16,7 +16,8 @@ public class DrawElementsOfChoiceEffect extends PlayerEffect implements Observer
 
     @Override
     public void onPhaseOne(Player player) {
-
+        player.effectedElementGivers = this.getEffectedElementGivers(player.getElementGivers());
+        player.useEffectedElementGivers(true);
     }
 
     public List<ElementGiver> getEffectedElementGivers(List<ElementGiver> playerElementGivers) {
