@@ -7,7 +7,7 @@ public class NextEggHatchesImmediatelyEffect extends PlayerEffect {
 
     @Override
     protected void apply(Player player) {
-
+        player.hatchingTime = 0;
     }
 
 }
