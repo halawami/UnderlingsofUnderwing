@@ -63,4 +63,20 @@ public class DrawingPhaseTests {
         players.forEach(EasyMock::verify);
     }
 
+    @Test
+    public void testTearDown() {
+        List<Player> players = TestUtils.mockListOf(Player.class).withLength(2);
+
+        for (Player player : players) {
+            player.endPhaseOne();
+        }
+
+        players.forEach(EasyMock::replay);
+
+        DrawingPhase drawingPhase = new DrawingPhase(players, null, null, null, null, null);
+        drawingPhase.teardown();
+
+        players.forEach(EasyMock::verify);
+    }
+
 }
