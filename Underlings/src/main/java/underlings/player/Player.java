@@ -32,13 +32,14 @@ public class Player {
     public List<Card> unhatchedCards;
     public ElementSpaceLogic elementSpaceLogic;
     public int maxHandlersOnSpace;
-    private ObserverEffect observerEffect;
+    private List<ObserverEffect> observerEffects;
 
     public Player(int maxHandlers, HandlerFactory handlerFactory, int playerId) {
         this.handlers = new ArrayList<>();
         this.elements = new ArrayList<>();
         this.hatchedCards = new ArrayList<>();
         this.unhatchedCards = new ArrayList<>();
+        this.observerEffects = new ArrayList<>();
         this.handlerFactory = handlerFactory;
         this.maxHandlers = maxHandlers;
         this.gainHandler();
@@ -159,10 +160,10 @@ public class Player {
     }
 
     public void onPhaseOne() {
-        this.observerEffect.onPhaseOne(this);
+        this.observerEffects.forEach(observerEffect -> observerEffect.onPhaseOne(this));
     }
 
     public void addObserverEffect(ObserverEffect observerEffect) {
-        this.observerEffect = observerEffect;
+        this.observerEffects.add(observerEffect);
     }
 }
