@@ -56,8 +56,7 @@ public class HatchingGround implements Iterable<Card> {
     }
 
     public List<Card> getClaimedEggs() {
-        // TODO
-        return null;
+        return getDragons(Integer.MAX_VALUE, false);
     }
 
     public List<Card> getAdjacentCards(Card centerCard) {
@@ -158,7 +157,9 @@ public class HatchingGround implements Iterable<Card> {
     public List<Card> getDragons(int maxPoints, boolean unclaimed) {
         List<Card> validCards = new LinkedList<>();
         for (Card card : this) {
-            if (card.points <= maxPoints && card.handler == null) {
+            if (card.points <= maxPoints && card.handler == null && unclaimed) {
+                validCards.add(card);
+            } else if (!unclaimed && card.handler != null) {
                 validCards.add(card);
             }
         }

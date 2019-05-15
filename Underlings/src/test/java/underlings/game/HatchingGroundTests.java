@@ -330,8 +330,8 @@ public class HatchingGroundTests {
         card.points = 3;
         card.handler = WildHandler.getInstance();
         Card card2 = new Card();
-        card.points = 3;
-        card.handler = EasyMock.mock(Handler.class);
+        card2.points = 3;
+        card2.handler = EasyMock.mock(Handler.class);
         for (int i = 0; i < 4; i++) {
             Card card3 = new Card();
             card3.points = 6;
@@ -340,13 +340,13 @@ public class HatchingGroundTests {
         EasyMock.expect(deck.draw()).andReturn(card);
         EasyMock.expect(deck.draw()).andReturn(card2);
 
-        EasyMock.replay(deck, card.handler);
+        EasyMock.replay(deck, card2.handler);
 
         HatchingGround hatchingGround = new HatchingGround(deck, new ElementSpaceLogic(this.recipes));
         hatchingGround.setDimensions(3, 2);
         hatchingGround.populate();
 
-        EasyMock.verify(deck, card.handler);
+        EasyMock.verify(deck, card2.handler);
 
         List<Card> cards = hatchingGround.getDragons(4, false);
         assertEquals(2, cards.size());
