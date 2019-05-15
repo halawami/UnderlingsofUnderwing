@@ -53,14 +53,6 @@ public class HatchingGround implements Iterable<Card> {
 
     public List<Card> getUnclaimedEggs() {
         return getUnclaimedDragons(Integer.MAX_VALUE);
-        // List<Card> unclaimedEggs = new ArrayList<>();
-        // for (Card card : this) {
-        // if (card.handler == null) {
-        // unclaimedEggs.add(card);
-        // }
-        // }
-        //
-        // return unclaimedEggs;
     }
 
     public List<Card> getClaimedEggs() {
