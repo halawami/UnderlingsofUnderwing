@@ -115,7 +115,7 @@ public class Player {
         return this.getNormalElementGivers();
     }
 
-    private List<ElementGiver> getNormalElementGivers() {
+    public List<ElementGiver> getNormalElementGivers() {
         List<ElementGiver> elementGivers = new ArrayList<>();
 
         elementGivers.addAll(this.handlers);

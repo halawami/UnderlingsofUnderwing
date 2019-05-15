@@ -1,6 +1,7 @@
 package underlings.player;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import org.easymock.EasyMock;
@@ -122,7 +123,7 @@ public class GetElementGiversTests {
     }
 
     @Test
-    public void testEffectElementGivers() {
+    public void testEffectElementGiversTrue() {
         List<ElementGiver> effectElementGivers = TestUtils.mockListOf(ElementGiver.class).withLength(2);
         Player player = new Player(0, null, 0);
         player.effectElementGivers = effectElementGivers;
@@ -131,7 +132,24 @@ public class GetElementGiversTests {
         List<ElementGiver> elementGivers = player.getElementGivers();
 
         Assert.assertEquals(effectElementGivers, elementGivers);
+    }
 
+    @Test
+    public void testEffectElementGiversTrueThenFalse() {
+        List<ElementGiver> effectElementGivers = TestUtils.mockListOf(ElementGiver.class).withLength(2);
+        Player player = EasyMock.partialMockBuilder(Player.class)
+                .addMockedMethod("getNormalElementGivers").createMock();
+        player.effectElementGivers = effectElementGivers;
+
+        EasyMock.expect(player.getNormalElementGivers()).andReturn(Collections.emptyList());
+
+        EasyMock.replay(player);
+
+        player.useEffectElementGivers(true);
+        player.useEffectElementGivers(false);
+        List<ElementGiver> elementGivers = player.getElementGivers();
+
+        EasyMock.verify(player);
     }
 
 }
