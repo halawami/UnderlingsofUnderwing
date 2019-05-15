@@ -1,6 +1,7 @@
 package underlings.element;
 
 import static org.junit.Assert.assertEquals;
+import static underlings.gui.DrawChoice.BLACK;
 import static underlings.gui.DrawChoice.BLUE;
 import static underlings.gui.DrawChoice.GREEN;
 import static underlings.gui.DrawChoice.ORANGE;
@@ -106,6 +107,31 @@ public class ElementBagTests {
 
         List<DrawChoice> availableDrawChoices = bag.getAvailableDrawChoices();
         List<DrawChoice> expectedDrawChoices = Arrays.asList(BLUE, RED, YELLOW, PURPLE, GREEN, ORANGE, WHITE);
+
+        Collections.sort(expectedDrawChoices);
+        Collections.sort(availableDrawChoices);
+        assertEquals(expectedDrawChoices, availableDrawChoices);
+    }
+
+    @Test
+    public void testAllAvailableDrawChoices() throws NoSuchFieldException, IllegalAccessException {
+        ElementBag bag = new ElementBag(new ElementFactory(), new Random());
+        Field privateMap = ElementBag.class.getDeclaredField("elementCount");
+        privateMap.setAccessible(true);
+
+        @SuppressWarnings("unchecked")
+        Map<ElementColor, Integer> elementCounts = (Map<ElementColor, Integer>) privateMap.get(bag);
+        elementCounts.put(ElementColor.BLUE, 1);
+        elementCounts.put(ElementColor.RED, 1);
+        elementCounts.put(ElementColor.YELLOW, 1);
+        elementCounts.put(ElementColor.PURPLE, 1);
+        elementCounts.put(ElementColor.GREEN, 1);
+        elementCounts.put(ElementColor.ORANGE, 1);
+        elementCounts.put(ElementColor.WHITE, 1);
+        elementCounts.put(ElementColor.BLACK, 1);
+
+        List<DrawChoice> availableDrawChoices = bag.getAvailableDrawChoices();
+        List<DrawChoice> expectedDrawChoices = Arrays.asList(BLUE, RED, YELLOW, PURPLE, GREEN, ORANGE, WHITE, BLACK);
 
         Collections.sort(expectedDrawChoices);
         Collections.sort(availableDrawChoices);
