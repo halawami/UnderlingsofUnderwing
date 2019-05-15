@@ -182,6 +182,6 @@ public class Player {
     }
 
     public void endPhaseOne() {
-        //TODO:
+        this.useEffectElementGivers(false);
     }
 }
