@@ -155,4 +155,8 @@ public class Player {
         }
         return (highestValues.size() > 0) ? highestValues.get(max) : new LinkedList<>();
     }
+
+    public void onPhaseOne() {
+
+    }
 }
