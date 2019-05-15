@@ -332,13 +332,17 @@ public class HatchingGroundTests {
         Card card2 = new Card();
         card2.points = 3;
         card2.handler = EasyMock.mock(Handler.class);
-        for (int i = 0; i < 4; i++) {
-            Card card3 = new Card();
-            card3.points = 6;
-            EasyMock.expect(deck.draw()).andReturn(card3);
+        Card card3 = new Card();
+        card3.points = 3;
+        card3.handler = null;
+        for (int i = 0; i < 3; i++) {
+            Card card4 = new Card();
+            card4.points = 6;
+            EasyMock.expect(deck.draw()).andReturn(card4);
         }
         EasyMock.expect(deck.draw()).andReturn(card);
         EasyMock.expect(deck.draw()).andReturn(card2);
+        EasyMock.expect(deck.draw()).andReturn(card3);
 
         EasyMock.replay(deck, card2.handler);
 
