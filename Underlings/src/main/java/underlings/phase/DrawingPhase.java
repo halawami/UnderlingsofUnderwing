@@ -42,7 +42,15 @@ public class DrawingPhase extends SequentialPhase {
         this.elementGivers = new HashMap<>();
 
         for (Player player : this.players) {
+            player.onPhaseOne();
             this.elementGivers.put(player, player.getElementGivers());
+        }
+    }
+
+    @Override
+    public void teardown() {
+        for (Player player : this.players) {
+            player.endPhaseOne();
         }
     }
 

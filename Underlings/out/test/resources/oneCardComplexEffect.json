@@ -1,0 +1,12 @@
+[
+  {
+    "domesticEffects": [
+      {
+        "effect": "UseBlackOrWhiteInPlaceEffect"
+      },
+      {
+        "effect": "CollectElementEffect"
+      }
+    ]
+  }
+]

@@ -1,8 +1,10 @@
 package underlings.phase;
 
 import java.util.ArrayList;
+
 import org.easymock.EasyMock;
 import org.junit.Test;
+
 import underlings.handler.HandlerFactory;
 import underlings.player.Player;
 
@@ -13,7 +15,8 @@ public class SequentialPhaseTests {
     public void testSequentialExecute() {
         SequentialPhase sequential =
                 EasyMock.createMockBuilder(SequentialPhase.class).addMockedMethod("turn").addMockedMethod("setup")
-                        .addMockedMethod("setPhaseComplete").addMockedMethod("isPhaseComplete").createMock();
+                        .addMockedMethod("setPhaseComplete").addMockedMethod("isPhaseComplete")
+                        .addMockedMethod("teardown").createMock();
 
         Runnable displayMethod = EasyMock.mock(Runnable.class);
         sequential.displayMethod = displayMethod;
@@ -39,6 +42,7 @@ public class SequentialPhaseTests {
         sequential.turn(playerTwo);
         displayMethod.run();
         EasyMock.expect(sequential.isPhaseComplete()).andReturn(true);
+        sequential.teardown();
 
         EasyMock.replay(sequential, displayMethod);
 

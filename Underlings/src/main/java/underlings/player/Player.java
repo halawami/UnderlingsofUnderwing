@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import underlings.card.Card;
+import underlings.card.effect.ObserverEffect;
 import underlings.element.Element;
 import underlings.element.ElementGiver;
 import underlings.element.NullElement;
@@ -31,13 +32,18 @@ public class Player {
     public List<Card> unhatchedCards;
     public ElementSpaceLogic elementSpaceLogic;
     public int maxHandlersOnSpace;
-    public int hatchingTime;
+    public Player(int maxHandlers, HandlerFactory handlerFactory, int playerId) {
+        this.handlers = new ArrayList<>();
+        this.elements = new ArrayList<>();
+        this.hatchedCards = new ArrayList<>();
+        this.unhatchedCards = new ArrayList<>();
 
     public Player(int maxHandlers, HandlerFactory handlerFactory, int playerId) {
         this.handlers = new ArrayList<>();
         this.elements = new ArrayList<>();
         this.hatchedCards = new ArrayList<>();
         this.unhatchedCards = new ArrayList<>();
+        this.observerEffects = new ArrayList<>();
         this.handlerFactory = handlerFactory;
         this.maxHandlers = maxHandlers;
         this.gainHandler();
@@ -105,6 +111,14 @@ public class Player {
     }
 
     public List<ElementGiver> getElementGivers() {
+        if (this.useEffectElementGivers) {
+            return this.effectElementGivers;
+        }
+
+        return this.getNormalElementGivers();
+    }
+
+    public List<ElementGiver> getNormalElementGivers() {
         List<ElementGiver> elementGivers = new ArrayList<>();
 
         elementGivers.addAll(this.handlers);
@@ -152,5 +166,21 @@ public class Player {
             }
         }
         return (highestValues.size() > 0) ? highestValues.get(max) : new LinkedList<>();
+    }
+
+    public void onPhaseOne() {
+        this.observerEffects.forEach(observerEffect -> observerEffect.onPhaseOne(this));
+    }
+
+    public void addObserverEffect(ObserverEffect observerEffect) {
+        this.observerEffects.add(observerEffect);
+    }
+
+    public void useEffectElementGivers(boolean useEffectElementGivers) {
+        this.useEffectElementGivers = useEffectElementGivers;
+    }
+
+    public void endPhaseOne() {
+        this.useEffectElementGivers(false);
     }
 }
