@@ -112,6 +112,10 @@ public class Player {
             return this.effectElementGivers;
         }
 
+        return this.getNormalElementGivers();
+    }
+
+    private List<ElementGiver> getNormalElementGivers() {
         List<ElementGiver> elementGivers = new ArrayList<>();
 
         elementGivers.addAll(this.handlers);
