@@ -21,7 +21,7 @@ public class CollectAndHatchAnyUnclaimedEggEffect extends HatchingGroundEffect {
     protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag, Gui gui,
             Player currentPlayer, EggHatchingLogic eggHatchingLogic, Deck deck,
             HandlerMovementLogic handlerMovementLogic) {
-        List<Card> validCards = hatchingGround.getUnclaimedDragons(points);
+        List<Card> validCards = hatchingGround.getDragons(points, true);
         Card selectedCard =
                 gui.getCard(currentPlayer.getPlayerId(), LocaleWrap.get("gui_card"), hatchingGround, validCards);
         if (selectedCard != EmptyCard.getInstance()) {

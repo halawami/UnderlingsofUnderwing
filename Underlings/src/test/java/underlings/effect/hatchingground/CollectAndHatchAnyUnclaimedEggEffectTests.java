@@ -27,7 +27,7 @@ public class CollectAndHatchAnyUnclaimedEggEffectTests {
         Gui gui = EasyMock.mock(Gui.class);
         EggHatchingLogic eggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
         mockedCards.get(0).points = 5;
-        EasyMock.expect(hatchingGround.getUnclaimedDragons(5)).andReturn(mockedCards);
+        EasyMock.expect(hatchingGround.getDragons(5, true)).andReturn(mockedCards);
         EasyMock.expect(currentPlayer.getPlayerId()).andReturn(0);
         EasyMock.expect(gui.getCard(0, LocaleWrap.get("gui_card"), hatchingGround, mockedCards))
                 .andReturn(mockedCards.get(0));
@@ -56,7 +56,7 @@ public class CollectAndHatchAnyUnclaimedEggEffectTests {
         CollectAndHatchAnyUnclaimedEggEffect collectAndHatchAnyUnclaimedEggEffect =
                 new CollectAndHatchAnyUnclaimedEggEffect();
         mockedCards.get(0).points = 5;
-        EasyMock.expect(hatchingGround.getUnclaimedDragons(5)).andReturn(mockedCards);
+        EasyMock.expect(hatchingGround.getDragons(5, true)).andReturn(mockedCards);
         EasyMock.expect(currentPlayer.getPlayerId()).andReturn(0);
         EasyMock.expect(gui.getCard(0, LocaleWrap.get("gui_card"), hatchingGround, mockedCards))
                 .andReturn(EmptyCard.getInstance());

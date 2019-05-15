@@ -148,29 +148,6 @@ public class Gui {
         return this.promptHandler.promptChoice(LocaleWrap.get("gui_element_collect"), choices, playerNum);
     }
 
-    // public Card getEggToHatch(Card[][] cards, int maxPoints, Player player) {
-    // Card[][] validCards = new Card[cards.length][cards[0].length];
-    //
-    // boolean noValidCards = true;
-    // for (int row = 0; row < cards.length; row++) {
-    // for (int col = 0; col < cards[row].length; col++) {
-    // if (cards[row][col].points <= maxPoints && cards[row][col].handler == null) {
-    // validCards[row][col] = (cards[row][col]);
-    // noValidCards = false;
-    // }
-    // }
-    // }
-    //
-    // if (noValidCards) {
-    // return EmptyCard.getInstance();
-    // } else {
-    // Card choice = this.promptHandler.pickFromGrid(LocaleWrap.get("gui_card"), validCards,
-    // player.getPlayerId());
-    // return choice;
-    // }
-    // }
-
-
     public Locale promptLocale(Locale[] locales) {
         Locale locale;
         do {
