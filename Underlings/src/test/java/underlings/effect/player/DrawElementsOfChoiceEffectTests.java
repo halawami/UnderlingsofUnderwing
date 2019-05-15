@@ -28,7 +28,7 @@ public class DrawElementsOfChoiceEffectTests {
     }
 
     @Test
-    public void testOnPhaseOne() {
+    public void testOnFirstPhaseOne() {
         Player player = EasyMock.mock(Player.class);
         DrawElementsOfChoiceEffect testedEffect = EasyMock.partialMockBuilder(DrawElementsOfChoiceEffect.class)
                 .addMockedMethod("getEffectedElementGivers").createMock();
@@ -43,6 +43,32 @@ public class DrawElementsOfChoiceEffectTests {
         elementGivers.forEach(EasyMock::replay);
         effectedElementGivers.forEach(EasyMock::replay);
 
+        testedEffect.onPhaseOne(player);
+
+        Assert.assertEquals(effectedElementGivers, player.effectedElementGivers);
+        EasyMock.verify(player, testedEffect);
+        elementGivers.forEach(EasyMock::verify);
+        effectedElementGivers.forEach(EasyMock::verify);
+    }
+
+    @Test
+    public void testOnSecondPhaseOne() {
+        Player player = EasyMock.mock(Player.class);
+        DrawElementsOfChoiceEffect testedEffect = EasyMock.partialMockBuilder(DrawElementsOfChoiceEffect.class)
+                .addMockedMethod("getEffectedElementGivers").createMock();
+        List<ElementGiver> elementGivers = TestUtils.mockListOf(ElementGiver.class).withLength(2);
+        List<ElementGiver> effectedElementGivers = TestUtils.mockListOf(ElementGiver.class).withLength(2);
+
+        EasyMock.expect(player.getElementGivers()).andReturn(elementGivers).once();
+        EasyMock.expect(testedEffect.getEffectedElementGivers(elementGivers)).andReturn(effectedElementGivers).once();
+        player.useEffectedElementGivers(true);
+        EasyMock.expectLastCall().once();
+
+        EasyMock.replay(player, testedEffect);
+        elementGivers.forEach(EasyMock::replay);
+        effectedElementGivers.forEach(EasyMock::replay);
+
+        testedEffect.onPhaseOne(player);
         testedEffect.onPhaseOne(player);
 
         Assert.assertEquals(effectedElementGivers, player.effectedElementGivers);
