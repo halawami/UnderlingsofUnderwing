@@ -98,11 +98,6 @@ public class Gui {
     }
 
     public int getFieldSpace(int playerId) {
-        // 21 0 1 2 3 4 5 6 7
-        // 20 8
-        // 19 9
-        // 18 blue green yellow blue red orange black 10
-
         Integer[][] field = new Integer[4][9];
         field[0][0] = 21;
         field[0][1] = 0;

@@ -1,12 +1,15 @@
 package underlings.gui;
 
 import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import org.easymock.EasyMock;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.element.ElementGiver;
 import underlings.handler.Handler;
 import underlings.handler.HandlerState;
@@ -50,20 +53,22 @@ public class ChoiceTests {
 
     @Test
     public void testFieldSpace0() {
-        EasyMock.expect(this.promptHandler.promptInt("Enter Field Space", 0, 21)).andReturn(0);
+        EasyMock.expect(this.promptHandler.pickFromGrid(EasyMock.anyString(), EasyMock.anyObject(Integer[][].class),
+                EasyMock.anyInt())).andReturn(0);
         EasyMock.replay(this.promptHandler, this.display);
 
-        int fieldSpace = this.gui.getFieldSpace();
+        int fieldSpace = this.gui.getFieldSpace(1);
 
         assertEquals(0, fieldSpace);
     }
 
     @Test
     public void testFieldSpace21() {
-        EasyMock.expect(this.promptHandler.promptInt("Enter Field Space", 0, 21)).andReturn(21);
+        EasyMock.expect(this.promptHandler.pickFromGrid(EasyMock.anyString(), EasyMock.anyObject(Integer[][].class),
+                EasyMock.anyInt())).andReturn(21);
         EasyMock.replay(this.promptHandler, this.display);
 
-        int fieldSpace = this.gui.getFieldSpace();
+        int fieldSpace = this.gui.getFieldSpace(1);
 
         assertEquals(21, fieldSpace);
     }
