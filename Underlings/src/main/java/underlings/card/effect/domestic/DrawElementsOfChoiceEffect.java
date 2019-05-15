@@ -1,15 +1,19 @@
 package underlings.card.effect.domestic;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import underlings.card.effect.ElementEffect;
 import underlings.card.effect.ObserverEffect;
 import underlings.element.ElementBag;
 import underlings.element.ElementGiver;
+import underlings.element.ElementGiverFactory;
+import underlings.gui.DrawChoice;
 import underlings.player.Player;
 
 public class DrawElementsOfChoiceEffect extends ElementEffect implements ObserverEffect {
 
+    public ElementGiverFactory elementGiverFactory;
     public ElementBag elementBag;
     private boolean beenUsed;
 
@@ -30,6 +34,9 @@ public class DrawElementsOfChoiceEffect extends ElementEffect implements Observe
 
     public List<ElementGiver> getEffectedElementGivers(List<ElementGiver> playerElementGivers,
             ElementBag elementBag) {
-        return null;
+        List<ElementGiver> effectedElementGivers = new ArrayList<>();
+        List<DrawChoice> availableDrawChoices = elementBag.getAvailableDrawChoices();
+        effectedElementGivers.add(this.elementGiverFactory.createElementGiver(availableDrawChoices));
+        return effectedElementGivers;
     }
 }

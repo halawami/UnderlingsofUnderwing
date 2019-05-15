@@ -11,6 +11,7 @@ import underlings.TestUtils;
 import underlings.card.effect.domestic.DrawElementsOfChoiceEffect;
 import underlings.element.ElementBag;
 import underlings.element.ElementGiver;
+import underlings.element.ElementGiverFactory;
 import underlings.gui.DrawChoice;
 import underlings.player.Player;
 
@@ -91,16 +92,26 @@ public class DrawElementsOfChoiceEffectTests {
     public void testGetEffectedElementGiversOneElementGiver() {
         ElementBag elementBag = EasyMock.mock(ElementBag.class);
         DrawElementsOfChoiceEffect testedEffect = new DrawElementsOfChoiceEffect();
+        ElementGiverFactory elementGiverFactory = EasyMock.mock(ElementGiverFactory.class);
+        testedEffect.elementGiverFactory = elementGiverFactory;
         testedEffect.elementBag = elementBag;
         List<ElementGiver> elementGivers = TestUtils.mockListOf(ElementGiver.class).withLength(1);
         List<DrawChoice> availableDrawChoices = Arrays.asList(DrawChoice.BLUE, DrawChoice.RED);
+        ElementGiver effectElementGiver = EasyMock.mock(ElementGiver.class);
 
         EasyMock.expect(elementBag.getAvailableDrawChoices()).andReturn(availableDrawChoices);
+        EasyMock.expect(elementGiverFactory.createElementGiver(availableDrawChoices)).andReturn(effectElementGiver);
+
+        EasyMock.replay(elementBag, elementGiverFactory, effectElementGiver);
+        elementGivers.forEach(EasyMock::replay);
 
         List<ElementGiver> effectedElementGivers = testedEffect.getEffectedElementGivers(elementGivers, elementBag);
 
         Assert.assertEquals(1, effectedElementGivers.size());
-        Assert.assertEquals(availableDrawChoices, effectedElementGivers.get(0).drawChoices);
+        Assert.assertEquals(effectElementGiver, effectedElementGivers.get(0));
+
+        EasyMock.verify(elementBag, elementGiverFactory, effectElementGiver);
+        elementGivers.forEach(EasyMock::verify);
     }
 
 }

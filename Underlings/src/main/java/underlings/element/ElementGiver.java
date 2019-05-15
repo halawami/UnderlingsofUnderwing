@@ -3,9 +3,10 @@ package underlings.element;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 import underlings.gui.DrawChoice;
 
-public abstract class ElementGiver {
+public class ElementGiver {
 
     public List<DrawChoice> drawChoices;
 
