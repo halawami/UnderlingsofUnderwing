@@ -2,6 +2,7 @@ package underlings.element;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -100,4 +101,8 @@ public class ElementBag {
         this.elementCount.put(color, this.elementCount.get(color) + 1);
     }
 
+    public List<DrawChoice> getAvailableDrawChoices() {
+        //TODO
+        return null;
+    }
 }

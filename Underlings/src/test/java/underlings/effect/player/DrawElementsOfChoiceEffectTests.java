@@ -1,5 +1,6 @@
 package underlings.effect.player;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.easymock.EasyMock;
@@ -10,6 +11,7 @@ import underlings.TestUtils;
 import underlings.card.effect.domestic.DrawElementsOfChoiceEffect;
 import underlings.element.ElementBag;
 import underlings.element.ElementGiver;
+import underlings.gui.DrawChoice;
 import underlings.player.Player;
 
 public class DrawElementsOfChoiceEffectTests {
@@ -85,5 +87,20 @@ public class DrawElementsOfChoiceEffectTests {
         effectedElementGivers.forEach(EasyMock::verify);
     }
 
+    @Test
+    public void testGetEffectedElementGiversOneElementGiver() {
+        ElementBag elementBag = EasyMock.mock(ElementBag.class);
+        DrawElementsOfChoiceEffect testedEffect = new DrawElementsOfChoiceEffect();
+        testedEffect.elementBag = elementBag;
+        List<ElementGiver> elementGivers = TestUtils.mockListOf(ElementGiver.class).withLength(1);
+        List<DrawChoice> availableDrawChoices = Arrays.asList(DrawChoice.BLUE, DrawChoice.RED);
+
+        EasyMock.expect(elementBag.getAvailableDrawChoices()).andReturn(availableDrawChoices);
+
+        List<ElementGiver> effectedElementGivers = testedEffect.getEffectedElementGivers(elementGivers, elementBag);
+
+        Assert.assertEquals(1, effectedElementGivers.size());
+        Assert.assertEquals(availableDrawChoices, effectedElementGivers.get(0).drawChoices);
+    }
 
 }
