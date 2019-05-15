@@ -3,11 +3,13 @@ package underlings.phase;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.easymock.EasyMock;
 import org.junit.Test;
 
+import underlings.TestUtils;
 import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
@@ -42,6 +44,23 @@ public class DrawingPhaseTests {
 
         EasyMock.verify(gui, elementBag);
         assertTrue(player.getElements().contains(element));
+    }
+
+    @Test
+    public void testSetup() {
+        List<Player> players = TestUtils.mockListOf(Player.class).withLength(2);
+
+        for (Player player : players) {
+            EasyMock.expect(player.getElementGivers()).andStubReturn(Collections.emptyList());
+            player.onPhaseOne();
+        }
+
+        players.forEach(EasyMock::replay);
+
+        DrawingPhase drawingPhase = new DrawingPhase(players, null, null, null, null, null);
+        drawingPhase.setup();
+
+        players.forEach(EasyMock::verify);
     }
 
 }

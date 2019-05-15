@@ -47,11 +47,6 @@ public class DrawingPhase extends SequentialPhase {
         }
     }
 
-    @Override
-    public void teardown() {
-        for (Player player : this.players) {
-            player.endPhaseOne();
-        }
-    }
+
 
 }
