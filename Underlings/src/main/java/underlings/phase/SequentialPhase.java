@@ -31,6 +31,5 @@ public abstract class SequentialPhase extends Phase {
     }
 
     public void teardown() {
-
     }
 }
