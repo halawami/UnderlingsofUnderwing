@@ -31,7 +31,7 @@ public class HandlerPhaseTest {
         HandlerDecision handlerDecision = new HandlerDecision(player.getHandlers().get(0), HandlerChoice.CARD);
 
         EasyMock.expect(gui.getHandlerDecision(player.getHandlers(), 0, hatchingGround)).andReturn(handlerDecision);
-        handlerMovementLogic.move(handlerDecision.handler, handlerDecision.choice, 0);
+        handlerMovementLogic.move(handlerDecision.handler, handlerDecision.choice, player);
 
         Phase handlerPhase = new HandlerPhase(players, gui, null, hatchingGround, () -> {
         }, null, handlerMovementLogic);
@@ -59,7 +59,7 @@ public class HandlerPhaseTest {
         HandlerDecision handlerDecision = new HandlerDecision(player.getHandlers().get(0), HandlerChoice.CARD);
 
         EasyMock.expect(gui.getHandlerDecision(player.getHandlers(), 0, hatchingGround)).andReturn(handlerDecision);
-        handlerMovementLogic.move(handlerDecision.handler, handlerDecision.choice, 0);
+        handlerMovementLogic.move(handlerDecision.handler, handlerDecision.choice, player);
 
         Phase handlerPhase = new HandlerPhase(players, gui, null, hatchingGround, () -> {
         }, null, handlerMovementLogic);

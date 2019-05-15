@@ -55,7 +55,7 @@ public class ReplaceHandlerWithYourOwnEffectTests {
         EasyMock.expect(currentPlayer.getHandlers()).andReturn(mockHandlers);
         EasyMock.expect(gui.promptHandler("Choose a handler to replace with", 0, mockHandlers))
                 .andReturn(mockHandlers.get(1));
-        handlerMovementLogic.move(toBeReplaced, HandlerChoice.BREAK_ROOM, 0);
+        handlerMovementLogic.move(toBeReplaced, HandlerChoice.BREAK_ROOM, currentPlayer);
         handlerMovementLogic.moveToCard(mockHandlers.get(1), mockClaimedEggs.get(2));
 
         EasyMock.replay(currentPlayer, hatchingGround, toBeReplaced, handlerMovementLogic, gui);

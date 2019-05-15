@@ -19,9 +19,11 @@ import underlings.gui.DrawChoice;
 import underlings.gui.Gui;
 import underlings.handler.Handler;
 import underlings.handler.HandlerChoice;
+import underlings.handler.HandlerFactory;
 import underlings.handler.HandlerMovementLogic;
 import underlings.handler.HandlerState;
 import underlings.handler.WildHandler;
+import underlings.player.Player;
 
 public class LogicTests {
 
@@ -29,6 +31,7 @@ public class LogicTests {
     private Gui gui;
     private Field field;
     private HandlerMovementLogic logic;
+    private Player player;
 
     @Before
     public void init() {
@@ -36,6 +39,7 @@ public class LogicTests {
         this.gui = EasyMock.mock(Gui.class);
         this.field = new Field(new FieldSpaceFactory());
         this.logic = new HandlerMovementLogic(this.hatchingGround, this.gui, this.field);
+        this.player = new Player(2, new HandlerFactory(), 0);
     }
 
     @Test
@@ -49,7 +53,7 @@ public class LogicTests {
         EasyMock.expect(this.hatchingGround.findCard(handler)).andReturn(card);
         EasyMock.replay(this.hatchingGround, this.gui);
 
-        this.logic.move(handler, HandlerChoice.BREAK_ROOM, 0);
+        this.logic.move(handler, HandlerChoice.BREAK_ROOM, player);
 
         EasyMock.verify(this.hatchingGround, this.gui);
         assertNull(card.handler);
@@ -60,11 +64,11 @@ public class LogicTests {
     public void testFieldStay() {
         Handler handler = new Handler(HandlerState.READY_ROOM);
 
-        EasyMock.expect(this.gui.getFieldSpace(0, this.field)).andReturn(this.field.field.get(0));
+        EasyMock.expect(this.gui.getFieldSpace(player, this.field)).andReturn(this.field.field.get(0));
         EasyMock.replay(this.hatchingGround, this.gui);
 
-        this.logic.move(handler, HandlerChoice.FIELD, 0);
-        this.logic.move(handler, HandlerChoice.STAY, 0);
+        this.logic.move(handler, HandlerChoice.FIELD, player);
+        this.logic.move(handler, HandlerChoice.STAY, player);
 
         EasyMock.verify(this.hatchingGround, this.gui);
         assertEquals(HandlerState.FIELD, handler.getState());
@@ -75,10 +79,10 @@ public class LogicTests {
     public void testField() {
         Handler handler = new Handler(HandlerState.READY_ROOM);
 
-        EasyMock.expect(this.gui.getFieldSpace(0, this.field)).andReturn(this.field.field.get(0));
+        EasyMock.expect(this.gui.getFieldSpace(player, this.field)).andReturn(this.field.field.get(0));
         EasyMock.replay(this.hatchingGround, this.gui);
 
-        this.logic.move(handler, HandlerChoice.FIELD, 0);
+        this.logic.move(handler, HandlerChoice.FIELD, player);
 
         EasyMock.verify(this.hatchingGround, this.gui);
         assertEquals(HandlerState.FIELD, handler.getState());
@@ -98,7 +102,7 @@ public class LogicTests {
         EasyMock.replay(this.hatchingGround, this.gui);
 
         Handler handler = new Handler(HandlerState.READY_ROOM);
-        this.logic.move(handler, HandlerChoice.CARD, 0);
+        this.logic.move(handler, HandlerChoice.CARD, player);
 
         EasyMock.verify(this.hatchingGround, this.gui);
         assertEquals(HandlerState.CARD, handler.getState());
@@ -113,7 +117,7 @@ public class LogicTests {
 
         EasyMock.replay(this.hatchingGround, this.gui);
 
-        this.logic.move(handler, HandlerChoice.FIELD_WHITESPACE, 0);
+        this.logic.move(handler, HandlerChoice.FIELD_WHITESPACE, player);
 
         EasyMock.verify(this.hatchingGround, this.gui);
         assertEquals(HandlerState.FIELD_WHITESPACE, handler.getState());
@@ -128,7 +132,7 @@ public class LogicTests {
 
         EasyMock.replay(this.hatchingGround, this.gui);
 
-        this.logic.move(handler, HandlerChoice.BREAK_ROOM, 0);
+        this.logic.move(handler, HandlerChoice.BREAK_ROOM, player);
 
         EasyMock.verify(this.hatchingGround, this.gui);
         assertEquals(HandlerState.BREAK_ROOM, handler.getState());
@@ -140,7 +144,7 @@ public class LogicTests {
 
         EasyMock.replay(this.hatchingGround, this.gui);
 
-        this.logic.move(handler, HandlerChoice.STAY, 0);
+        this.logic.move(handler, HandlerChoice.STAY, player);
 
         EasyMock.verify(this.hatchingGround, this.gui);
         assertEquals(HandlerState.READY_ROOM, handler.getState());
@@ -152,7 +156,7 @@ public class LogicTests {
 
         EasyMock.replay(this.hatchingGround, this.gui);
 
-        this.logic.move(handler, HandlerChoice.READY_ROOM, 0);
+        this.logic.move(handler, HandlerChoice.READY_ROOM, player);
 
         EasyMock.verify(this.hatchingGround, this.gui);
         assertEquals(HandlerState.READY_ROOM, handler.getState());
@@ -165,7 +169,7 @@ public class LogicTests {
 
         EasyMock.replay(this.hatchingGround, this.gui);
 
-        this.logic.move(handler, HandlerChoice.BREAK_ROOM, 0);
+        this.logic.move(handler, HandlerChoice.BREAK_ROOM, player);
 
         EasyMock.verify(this.hatchingGround, this.gui);
 
@@ -182,7 +186,7 @@ public class LogicTests {
 
         EasyMock.replay(this.hatchingGround, this.gui);
 
-        this.logic.move(handler, HandlerChoice.BREAK_ROOM, 0);
+        this.logic.move(handler, HandlerChoice.BREAK_ROOM, player);
 
         EasyMock.verify(this.hatchingGround, this.gui);
 
@@ -198,7 +202,7 @@ public class LogicTests {
 
         EasyMock.replay(this.hatchingGround, this.gui);
 
-        this.logic.move(handler, HandlerChoice.BREAK_ROOM, 0);
+        this.logic.move(handler, HandlerChoice.BREAK_ROOM, player);
 
         EasyMock.verify(this.hatchingGround, this.gui);
         assertEquals(HandlerState.CARD, WildHandler.getInstance().getState());
@@ -210,7 +214,7 @@ public class LogicTests {
 
         EasyMock.replay(this.hatchingGround, this.gui);
 
-        this.logic.move(card.handler, HandlerChoice.BREAK_ROOM, 0);
+        this.logic.move(card.handler, HandlerChoice.BREAK_ROOM, player);
 
         EasyMock.verify(this.hatchingGround, this.gui);
         assertNull(card.handler);
