@@ -60,7 +60,7 @@ public class LogicTests {
     public void testFieldStay() {
         Handler handler = new Handler(HandlerState.READY_ROOM);
 
-        EasyMock.expect(this.gui.getFieldSpace(0, this.field)).andReturn(0);
+        EasyMock.expect(this.gui.getFieldSpace(0, this.field)).andReturn(this.field.field.get(0));
         EasyMock.replay(this.hatchingGround, this.gui);
 
         this.logic.move(handler, HandlerChoice.FIELD, 0);
@@ -75,7 +75,7 @@ public class LogicTests {
     public void testField() {
         Handler handler = new Handler(HandlerState.READY_ROOM);
 
-        EasyMock.expect(this.gui.getFieldSpace(0, this.field)).andReturn(0);
+        EasyMock.expect(this.gui.getFieldSpace(0, this.field)).andReturn(this.field.field.get(0));
         EasyMock.replay(this.hatchingGround, this.gui);
 
         this.logic.move(handler, HandlerChoice.FIELD, 0);

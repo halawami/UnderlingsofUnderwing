@@ -11,7 +11,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import underlings.element.ElementGiver;
+import underlings.field.Field;
 import underlings.field.FieldSpace;
+import underlings.field.FieldSpaceFactory;
 import underlings.handler.Handler;
 import underlings.handler.HandlerState;
 
@@ -54,24 +56,28 @@ public class ChoiceTests {
 
     @Test
     public void testFieldSpace0() {
-        EasyMock.expect(this.promptHandler.pickFromGrid(EasyMock.anyString(), EasyMock.anyObject(Integer[][].class),
-                EasyMock.anyInt())).andReturn(0);
+        Field field = new Field(new FieldSpaceFactory());
+
+        EasyMock.expect(this.promptHandler.pickFromGrid(EasyMock.anyString(), EasyMock.anyObject(FieldSpace[][].class),
+                EasyMock.anyInt())).andReturn(field.field.get(0));
         EasyMock.replay(this.promptHandler, this.display);
 
         FieldSpace fieldSpace = this.gui.getFieldSpace(1, field);
 
-        assertEquals(0, fieldSpace);
+        assertEquals(field.field.get(0), fieldSpace);
     }
 
     @Test
     public void testFieldSpace21() {
-        EasyMock.expect(this.promptHandler.pickFromGrid(EasyMock.anyString(), EasyMock.anyObject(Integer[][].class),
-                EasyMock.anyInt())).andReturn(21);
+        Field field = new Field(new FieldSpaceFactory());
+
+        EasyMock.expect(this.promptHandler.pickFromGrid(EasyMock.anyString(), EasyMock.anyObject(FieldSpace[][].class),
+                EasyMock.anyInt())).andReturn(field.field.get(21));
         EasyMock.replay(this.promptHandler, this.display);
 
         FieldSpace fieldSpace = this.gui.getFieldSpace(1, field);
 
-        assertEquals(21, fieldSpace);
+        assertEquals(field.field.get(21), fieldSpace);
     }
 
 }
