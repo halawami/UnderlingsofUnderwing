@@ -141,7 +141,7 @@ public class HatchingGround implements Iterable<Card> {
     }
 
     public void replaceCard(Card card) {
-        //TODO: takes a card in this.cards and replace it with a card from deck
+        // TODO: takes a card in this.cards and replace it with a card from deck
     }
 
     public Card findCard(Handler handler) {
@@ -159,6 +159,16 @@ public class HatchingGround implements Iterable<Card> {
             allCards.add(card);
         }
         return allCards;
+    }
+
+    public List<Card> getUnhatchedDragons(int maxPoints) {
+        List<Card> validCards = new LinkedList<>();
+        for (Card card : this) {
+            if (card.points <= maxPoints && card.handler == null) {
+                validCards.add(card);
+            }
+        }
+        return validCards;
     }
 
 }
