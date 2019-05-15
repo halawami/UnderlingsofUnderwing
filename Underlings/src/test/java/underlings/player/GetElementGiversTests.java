@@ -2,9 +2,12 @@ package underlings.player;
 
 import java.util.Arrays;
 import java.util.List;
+
 import org.easymock.EasyMock;
 import org.junit.Assert;
 import org.junit.Test;
+
+import underlings.TestUtils;
 import underlings.card.Card;
 import underlings.element.ElementGiver;
 import underlings.handler.Handler;
@@ -116,6 +119,19 @@ public class GetElementGiversTests {
 
         EasyMock.verify(mockHandlerFactory, effectElementGiver1, effectElementGiver2, elementGiverCard1,
                 elementGiverCard2);
+    }
+
+    @Test
+    public void testEffectElementGivers() {
+        List<ElementGiver> effectElementGivers = TestUtils.mockListOf(ElementGiver.class).withLength(2);
+        Player player = new Player(0, null, 0);
+        player.effectElementGivers = effectElementGivers;
+        player.useEffectElementGivers(true);
+
+        List<ElementGiver> elementGivers = player.getElementGivers();
+
+        Assert.assertEquals(effectElementGivers, elementGivers);
+
     }
 
 }
