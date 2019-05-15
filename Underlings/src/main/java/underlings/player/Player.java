@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import underlings.card.Card;
+import underlings.card.effect.ObserverEffect;
 import underlings.element.Element;
 import underlings.element.ElementGiver;
 import underlings.element.NullElement;
@@ -157,6 +158,10 @@ public class Player {
     }
 
     public void onPhaseOne() {
+
+    }
+
+    public void addObserverEffect(ObserverEffect observerEffect) {
 
     }
 }
