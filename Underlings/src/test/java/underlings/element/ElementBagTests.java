@@ -1,8 +1,10 @@
 package underlings.element;
 
 import static org.junit.Assert.assertEquals;
+import static underlings.gui.DrawChoice.BLUE;
 
 import java.lang.reflect.Field;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -55,5 +57,26 @@ public class ElementBagTests {
 
         List<DrawChoice> availableDrawChoices = bag.getAvailableDrawChoices();
         assertEquals(0, availableDrawChoices.size());
+    }
+
+    @Test
+    public void testOneAvailableDrawChoices() throws NoSuchFieldException, IllegalAccessException {
+        ElementBag bag = new ElementBag(new ElementFactory(), new Random());
+        Field privateMap = ElementBag.class.getDeclaredField("elementCount");
+        privateMap.setAccessible(true);
+
+        @SuppressWarnings("unchecked")
+        Map<ElementColor, Integer> elementCounts = (Map<ElementColor, Integer>) privateMap.get(bag);
+        elementCounts.put(ElementColor.BLUE, 1);
+        elementCounts.put(ElementColor.RED, 0);
+        elementCounts.put(ElementColor.YELLOW, 0);
+        elementCounts.put(ElementColor.PURPLE, 0);
+        elementCounts.put(ElementColor.GREEN, 0);
+        elementCounts.put(ElementColor.ORANGE, 0);
+        elementCounts.put(ElementColor.WHITE, 0);
+        elementCounts.put(ElementColor.BLACK, 0);
+
+        List<DrawChoice> availableDrawChoices = bag.getAvailableDrawChoices();
+        assertEquals(Arrays.asList(BLUE), availableDrawChoices);
     }
 }
