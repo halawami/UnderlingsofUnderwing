@@ -180,4 +180,8 @@ public class Player {
     public void useEffectElementGivers(boolean useEffectElementGivers) {
         this.useEffectElementGivers = useEffectElementGivers;
     }
+
+    public void endPhaseOne() {
+        //TODO:
+    }
 }
