@@ -3,7 +3,6 @@ package underlings;
 import java.util.List;
 import java.util.Random;
 
-import underlings.card.Card;
 import underlings.gui.ConcretePrompt;
 
 public class TestPrompt extends ConcretePrompt {
@@ -65,24 +64,24 @@ public class TestPrompt extends ConcretePrompt {
     }
 
     @Override
-    public Card pickCard(String prompt, Card[][] cards, int playerId) {
+    public <T> T pickFromGrid(String prompt, T[][] objects, int playerId) {
         this.delay();
-        Card card = null;
-        while (card == null) {
-            int i = this.rand.nextInt(cards.length);
-            int j = this.rand.nextInt(cards[i].length);
-            card = cards[i][j];
+        T object = null;
+        while (object == null) {
+            int i = this.rand.nextInt(objects.length);
+            int j = this.rand.nextInt(objects[i].length);
+            object = objects[i][j];
         }
         System.out.println("\n" + playerId + ": " + prompt);
-        this.printCards(cards);
-        System.out.println("picked " + card + "\n");
-        return card;
+        this.printGrid(objects);
+        System.out.println("picked " + object + "\n");
+        return object;
     }
 
-    private void printCards(Card[][] cards) {
-        for (int i = 0; i < cards.length; i++) {
-            for (int j = 0; j < cards[0].length; j++) {
-                System.out.print(cards[i][j]);
+    private <T> void printGrid(T[][] objects) {
+        for (int i = 0; i < objects.length; i++) {
+            for (int j = 0; j < objects[0].length; j++) {
+                System.out.print(objects[i][j]);
             }
             System.out.println();
         }

@@ -5,11 +5,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.MessageFormat;
 import java.util.List;
+
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import underlings.card.Card;
+
 import underlings.utilities.LocaleWrap;
 
 public class ConcretePrompt implements PromptHandler {
@@ -20,9 +21,10 @@ public class ConcretePrompt implements PromptHandler {
         return choices.get(index);
     }
 
+    @SuppressWarnings("unchecked")
     @Override
-    public Card pickCard(String prompt, Card[][] cards, int playerId) {
-        if (cards.length == 0) {
+    public <T> T pickFromGrid(String prompt, T[][] objects, int playerId) {
+        if (objects.length == 0) {
             return null;
         }
 
@@ -32,21 +34,21 @@ public class ConcretePrompt implements PromptHandler {
         optionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
 
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(cards.length, cards[0].length));
+        panel.setLayout(new GridLayout(objects.length, objects[0].length));
 
-        for (int w = 0; w < cards.length; w++) {
-            for (int h = 0; h < cards[0].length; h++) {
-                if (cards[w][h] == null) {
+        for (int w = 0; w < objects.length; w++) {
+            for (int h = 0; h < objects[0].length; h++) {
+                if (objects[w][h] == null) {
                     panel.add(new JPanel());
                 } else {
-                    JButton button = new JButton(cards[w][h].toString());
+                    JButton button = new JButton(objects[w][h].toString());
 
-                    final Card returnCard = cards[w][h];
+                    final T object = objects[w][h];
                     button.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             JOptionPane pane = (JOptionPane) ((JButton) e.getSource()).getParent().getParent();
-                            pane.setValue(returnCard);
+                            pane.setValue(object);
                         }
                     });
 
@@ -66,7 +68,7 @@ public class ConcretePrompt implements PromptHandler {
             System.exit(0);
         }
 
-        return (Card) value;
+        return (T) value;
     }
 
     private int displayOptions(Object[] options, String title, String message) {

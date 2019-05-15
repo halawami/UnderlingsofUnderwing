@@ -1,7 +1,6 @@
 package underlings.gui;
 
 import java.util.List;
-import underlings.card.Card;
 
 public interface PromptHandler {
 
@@ -11,7 +10,7 @@ public interface PromptHandler {
 
     <T> T promptChoiceDropdown(String prompt, List<T> choices, T defaultChoice);
 
-    Card pickCard(String prompt, Card[][] cards, int playerId);
+    <T> T pickFromGrid(String prompt, T[][] cards, int playerId);
 
     boolean promptDecision(String question, int playerId);
 

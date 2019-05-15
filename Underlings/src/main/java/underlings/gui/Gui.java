@@ -89,7 +89,7 @@ public class Gui {
             }
         }
 
-        Card card = this.promptHandler.pickCard(prompt, cards, playerId);
+        Card card = this.promptHandler.pickFromGrid(prompt, cards, playerId);
         return card;
     }
 
@@ -137,7 +137,7 @@ public class Gui {
         if (noValidCards) {
             return EmptyCard.getInstance();
         } else {
-            Card choice = this.promptHandler.pickCard(LocaleWrap.get("gui_card"), validCards, player.getPlayerId());
+            Card choice = this.promptHandler.pickFromGrid(LocaleWrap.get("gui_card"), validCards, player.getPlayerId());
             return choice;
         }
     }
