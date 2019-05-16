@@ -3,6 +3,7 @@ package underlings.gui;
 import static org.junit.Assert.assertEquals;
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import javax.swing.JOptionPane;
@@ -166,6 +167,18 @@ public class GuiTests {
         this.replay();
 
         this.gui.alert("test", 1, PromptType.ERROR);
+    }
+
+    @Test
+    public void testPromptChoice() {
+        EasyMock.expect(this.promptHandler.promptChoice(EasyMock.anyString(), EasyMock.anyObject(), EasyMock.anyInt()))
+                .andReturn(1);
+        this.replay();
+
+        List<Integer> ints = new ArrayList<>();
+        Integer result = this.gui.promptChoice("test", ints, 0);
+
+        assertEquals(1, result.intValue());
     }
 
 }
