@@ -228,4 +228,16 @@ public class DragonPhaseTests {
         assertEquals(1, player.unhatchedCards.size());
         assertEquals(HandlerState.INCUBATION, card2.handler.getState());
     }
+
+    @Test
+    public void testSetupLateEggs() {
+        final Gui gui = EasyMock.mock(Gui.class);
+
+        EasyMock.replay(hatchingGround, gui, bag, card.domesticEffects[0], handler, eggHatchingLogic);
+
+        Phase phase = new DragonPhase(players, gui, bag, hatchingGround, null, null, eggHatchingLogic);
+        phase.setup();
+        EasyMock.verify(hatchingGround, bag, gui, card.domesticEffects[0], handler, eggHatchingLogic);
+    }
+
 }
