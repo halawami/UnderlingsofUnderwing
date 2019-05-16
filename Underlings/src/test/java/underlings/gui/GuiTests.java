@@ -160,4 +160,12 @@ public class GuiTests {
         this.gui.alert("test", 1, PromptType.WARNING);
     }
 
+    @Test
+    public void testAlertError() {
+        this.promptHandler.displayMessage("test", 1, JOptionPane.ERROR_MESSAGE);
+        this.replay();
+
+        this.gui.alert("test", 1, PromptType.ERROR);
+    }
+
 }
