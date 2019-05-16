@@ -230,13 +230,27 @@ public class DragonPhaseTests {
     }
 
     @Test
-    public void testSetupLateEggs() {
+    public void testSetupLateEgg() {
         final Gui gui = EasyMock.mock(Gui.class);
         hatchingGround.lateHatching = true;
 
         EasyMock.replay(hatchingGround, gui, bag, card.domesticEffects[0], handler, eggHatchingLogic);
 
         Phase phase = new DragonPhase(players, gui, bag, hatchingGround, null, null, eggHatchingLogic);
+        phase.setup();
+        EasyMock.verify(hatchingGround, bag, gui, card.domesticEffects[0], handler, eggHatchingLogic);
+    }
+
+    @Test
+    public void testSetupTwoRoundsLateEggs() {
+        final Gui gui = EasyMock.mock(Gui.class);
+        hatchingGround.lateHatching = true;
+        EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList(card));
+
+        EasyMock.replay(hatchingGround, gui, bag, card.domesticEffects[0], handler, eggHatchingLogic);
+
+        Phase phase = new DragonPhase(players, gui, bag, hatchingGround, null, null, eggHatchingLogic);
+        phase.setup();
         phase.setup();
         EasyMock.verify(hatchingGround, bag, gui, card.domesticEffects[0], handler, eggHatchingLogic);
     }
