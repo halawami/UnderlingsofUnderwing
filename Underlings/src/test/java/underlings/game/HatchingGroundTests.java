@@ -352,7 +352,7 @@ public class HatchingGroundTests {
 
         EasyMock.verify(deck, card2.handler);
 
-        List<Card> cards = hatchingGround.getDragons(4, false);
+        List<Card> cards = hatchingGround.getClaimedEggs();
         assertEquals(2, cards.size());
         assertTrue(cards.contains(card));
         assertTrue(cards.contains(card2));
