@@ -168,6 +168,7 @@ public class ScoreTests {
         EasyMock.replay(this.gui);
         this.scoreUtils.displayScores();
         EasyMock.verify(this.gui);
+        assertEquals(0, this.scoreUtils.winners.size());
     }
 
     @Test
@@ -181,7 +182,25 @@ public class ScoreTests {
         int max = this.scoreUtils.decideWinners(this.scoreUtils.scores, fakePlayers.get(0), 0);
         int finalMax = this.scoreUtils.decideWinners(this.scoreUtils.scores, fakePlayers.get(1), max);
         EasyMock.verify(this.gui);
+        assertEquals(1, this.scoreUtils.winners.size());
         assertEquals(5, finalMax);
+    }
+
+    @Test
+    public void testDecideWinnersMultipleDifferentScores() {
+        List<Player> fakePlayers = new LinkedList<>();
+        fakePlayers = Arrays.asList(this.players[0], this.players[1], this.players[2]);
+        this.scoreUtils = new ScoreUtils(fakePlayers, this.gui);
+        this.scoreUtils.scores.put(this.players[0], 5);
+        this.scoreUtils.scores.put(this.players[1], 1);
+        this.scoreUtils.scores.put(this.players[2], 6);
+        EasyMock.replay(this.gui);
+        int max = this.scoreUtils.decideWinners(this.scoreUtils.scores, fakePlayers.get(0), 0);
+        int secondMax = this.scoreUtils.decideWinners(this.scoreUtils.scores, fakePlayers.get(1), max);
+        int finalMax = this.scoreUtils.decideWinners(this.scoreUtils.scores, fakePlayers.get(2), secondMax);
+        EasyMock.verify(this.gui);
+        assertEquals(1, this.scoreUtils.winners.size());
+        assertEquals(6, finalMax);
     }
 
     @Test
@@ -196,7 +215,10 @@ public class ScoreTests {
         int finalMax = this.scoreUtils.decideWinners(this.scoreUtils.scores, fakePlayers.get(1), max);
         EasyMock.verify(this.gui);
         assertEquals(1, finalMax);
+        assertEquals(2, this.scoreUtils.winners.size());
     }
+
+
 
     @Test
     public void testDisplayOneWinner() {

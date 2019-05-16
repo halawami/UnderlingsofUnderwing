@@ -358,4 +358,38 @@ public class HatchingGroundTests {
         assertTrue(cards.contains(card2));
     }
 
+    @Test
+    public void testGetDragonsSamePoints() {
+        final Deck deck = EasyMock.strictMock(Deck.class);
+        Card card = new Card();
+        card.points = 3;
+        card.handler = WildHandler.getInstance();
+        Card card2 = new Card();
+        card2.points = 3;
+        card2.handler = EasyMock.mock(Handler.class);
+        Card card3 = new Card();
+        card3.points = 3;
+        card3.handler = null;
+        for (int i = 0; i < 3; i++) {
+            Card card4 = new Card();
+            card4.points = 6;
+            EasyMock.expect(deck.draw()).andReturn(card4);
+        }
+        EasyMock.expect(deck.draw()).andReturn(card);
+        EasyMock.expect(deck.draw()).andReturn(card2);
+        EasyMock.expect(deck.draw()).andReturn(card3);
+
+        EasyMock.replay(deck, card2.handler);
+
+        HatchingGround hatchingGround = new HatchingGround(deck, new ElementSpaceLogic(this.recipes));
+        hatchingGround.setDimensions(3, 2);
+        hatchingGround.populate();
+
+        EasyMock.verify(deck, card2.handler);
+
+        List<Card> cards = hatchingGround.getDragons(3, true);
+        assertEquals(1, cards.size());
+        assertTrue(cards.contains(card3));
+    }
+
 }
