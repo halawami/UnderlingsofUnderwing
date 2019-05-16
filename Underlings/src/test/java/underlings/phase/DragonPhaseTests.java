@@ -1,6 +1,7 @@
 package underlings.phase;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -80,6 +81,7 @@ public class DragonPhaseTests {
         assertEquals(1, player.unhatchedCards.size());
         phase.turn(player);
         assertEquals(0, player.unhatchedCards.size());
+        assertTrue(phase.isPhaseComplete());
         EasyMock.verify(hatchingGround, bag, player, card.domesticEffects[0], handler, eggHatchingLogic);
     }
 
@@ -99,7 +101,7 @@ public class DragonPhaseTests {
         assertEquals(2, player.unhatchedCards.size());
         phase.turn(player);
         assertEquals(0, player.unhatchedCards.size());
-
+        assertTrue(phase.isPhaseComplete());
         EasyMock.verify(hatchingGround, bag, player, card.domesticEffects[0], handler, eggHatchingLogic);
     }
 
@@ -112,6 +114,7 @@ public class DragonPhaseTests {
         Phase phase = new DragonPhase(players, null, bag, hatchingGround, null, null, null);
         phase.setup();
         phase.turn(player);
+        assertTrue(phase.isPhaseComplete());
         EasyMock.verify(hatchingGround, bag, player);
     }
 
@@ -132,6 +135,7 @@ public class DragonPhaseTests {
         Phase phase = new DragonPhase(players, gui, bag, hatchingGround, null, null, eggHatchingLogic);
         phase.setup();
         phase.turn(player);
+        assertTrue(phase.isPhaseComplete());
         EasyMock.verify(hatchingGround, bag, handler, gui, eggHatchingLogic);
     }
 
@@ -154,6 +158,7 @@ public class DragonPhaseTests {
         Phase phase = new DragonPhase(players, gui, bag, hatchingGround, null, null, eggHatchingLogic);
         phase.setup();
         phase.turn(player);
+        assertTrue(phase.isPhaseComplete());
         EasyMock.verify(hatchingGround, bag, handler, gui, eggHatchingLogic);
     }
 
@@ -170,6 +175,7 @@ public class DragonPhaseTests {
         Phase phase = new DragonPhase(players, gui, bag, hatchingGround, null, null, eggHatchingLogic);
         phase.setup();
         phase.turn(player);
+        assertTrue(phase.isPhaseComplete());
         EasyMock.verify(hatchingGround, bag, handler, gui);
     }
 
@@ -182,6 +188,7 @@ public class DragonPhaseTests {
         Phase phase = new DragonPhase(players, null, bag, hatchingGround, null, null, null);
         phase.setup();
         phase.turn(player);
+        assertTrue(phase.isPhaseComplete());
         EasyMock.verify(hatchingGround, bag, player, handler);
     }
 
@@ -197,6 +204,7 @@ public class DragonPhaseTests {
         Phase phase = new DragonPhase(players, null, bag, hatchingGround, null, null, eggHatchingLogic);
         phase.setup();
         phase.turn(player);
+        assertTrue(phase.isPhaseComplete());
         EasyMock.verify(hatchingGround, bag, player, card.domesticEffects[0], handler, eggHatchingLogic);
         assertEquals(0, player.unhatchedCards.size());
         assertEquals(1, player.hatchingTime);
@@ -226,6 +234,7 @@ public class DragonPhaseTests {
         EasyMock.verify(hatchingGround, bag, gui, card.domesticEffects[0], handler, eggHatchingLogic);
         assertEquals(1, player.hatchingTime);
         assertEquals(1, player.unhatchedCards.size());
+        assertTrue(phase.isPhaseComplete());
         assertEquals(HandlerState.INCUBATION, card2.handler.getState());
     }
 
