@@ -76,29 +76,20 @@ public abstract class Effect extends ElementGiver {
         this.apply(this.player);
         this.apply(this.player, this.players, this.gui);
         this.apply(this.players, this.deck, this.gui);
-        this.apply(this.player, this.players, this.gui, this.eggHatchingLogic);
         this.apply(this.player, this.hatchingGround, this.handlerMovementLogic, this.gui);
     }
 
     protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag, Gui gui,
             Player currentPlayer, EggHatchingLogic eggHatchingLogic, Deck deck,
-            HandlerMovementLogic handlerMovementLogic) {
-    }
+            HandlerMovementLogic handlerMovementLogic) {}
 
-    protected void apply(Player player, ElementBag elementBag) {
-    }
+    protected void apply(Player player, ElementBag elementBag) {}
 
-    protected void apply(Player player) {
-    }
+    protected void apply(Player player) {}
 
-    protected void apply(Player currentPlayer, List<Player> players, Gui gui) {
-    }
+    protected void apply(Player currentPlayer, List<Player> players, Gui gui) {}
 
-    protected void apply(List<Player> players, Deck deck, Gui gui) {
-    }
-
-    protected void apply(Player currentPlayer, List<Player> players, Gui gui, EggHatchingLogic eggHatchingLogic) {
-    }
+    protected void apply(List<Player> players, Deck deck, Gui gui) {}
 
     protected void apply(Player currentPlayer, HatchingGround hatchingGround, HandlerMovementLogic handlerLogic,
             Gui gui) {

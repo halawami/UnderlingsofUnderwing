@@ -6,21 +6,21 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+
 import underlings.card.Card;
 import underlings.card.Temperature;
-import underlings.card.effect.PlayersHatchingEffect;
+import underlings.card.effect.PlayersEffect;
 import underlings.gui.Gui;
 import underlings.player.Player;
-import underlings.utilities.EggHatchingLogic;
 import underlings.utilities.LocaleWrap;
 
-public class TakeHatchedDragonFromPlayer extends PlayersHatchingEffect {
+public class TakeHatchedDragonFromPlayer extends PlayersEffect {
 
     public int points;
     public Temperature[] temperatures;
 
     @Override
-    protected void apply(Player currentPlayer, List<Player> players, Gui gui, EggHatchingLogic eggHatchingLogic) {
+    protected void apply(Player currentPlayer, List<Player> players, Gui gui) {
         List<Temperature> temperaturesList = Arrays.asList(this.temperatures);
         Map<Player, List<Card>> playerCards = new HashMap<>();
         for (Player player : players) {
@@ -40,7 +40,7 @@ public class TakeHatchedDragonFromPlayer extends PlayersHatchingEffect {
                 currentPlayer.getId());
 
         // TODO: is this the right behavior
-        eggHatchingLogic.hatchEgg(toSteal, false, currentPlayer);
+        // eggHatchingLogic.hatchEgg(toSteal, false, currentPlayer);
     }
 
 }
