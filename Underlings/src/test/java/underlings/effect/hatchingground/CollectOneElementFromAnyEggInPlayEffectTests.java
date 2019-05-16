@@ -21,7 +21,7 @@ public class CollectOneElementFromAnyEggInPlayEffectTests {
     @Test
     public void testNoSelectableElement() {
         Player currentPlayer = EasyMock.mock(Player.class);
-        EasyMock.expect(currentPlayer.getPlayerId()).andReturn(10);
+        EasyMock.expect(currentPlayer.getId()).andReturn(10);
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         List<Card> mockedCards = this.getMockedCards(6);
         Gui gui = EasyMock.mock(Gui.class);
@@ -49,7 +49,7 @@ public class CollectOneElementFromAnyEggInPlayEffectTests {
     @Test
     public void testASelectableElement() {
         Player currentPlayer = EasyMock.mock(Player.class);
-        EasyMock.expect(currentPlayer.getPlayerId()).andReturn(10);
+        EasyMock.expect(currentPlayer.getId()).andReturn(10);
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         List<Card> mockedCards = this.getMockedCards(6);
         Gui gui = EasyMock.mock(Gui.class);

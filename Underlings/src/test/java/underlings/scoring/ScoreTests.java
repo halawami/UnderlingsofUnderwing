@@ -153,7 +153,7 @@ public class ScoreTests {
         this.scoreUtils.scores.put(this.players[1], 5);
         this.scoreUtils.scores.put(this.players[0], 1);
         for (Player player : this.scoreUtils.scores.keySet()) {
-            this.gui.alert(player + ": " + this.scoreUtils.scores.get(player) + " points", player.getPlayerId(),
+            this.gui.alert(player + ": " + this.scoreUtils.scores.get(player) + " points", player.getId(),
                     PromptType.REGULAR);
         }
         EasyMock.replay(this.gui);

@@ -133,7 +133,7 @@ public class EggHatchingLogicTests {
         EasyMock.expect(effect.on(deck)).andReturn(effect);
         EasyMock.expect(effect.on(players)).andReturn(effect);
         effect.apply();
-        gui.notifyAction(player.getPlayerId(), effect.toString() + " has been applied");
+        gui.notifyAction(player.getId(), effect.toString() + " has been applied");
         displayMethod.run();
 
         EasyMock.replay(effect, hatchingGround, gui, displayMethod);
@@ -156,7 +156,7 @@ public class EggHatchingLogicTests {
         EasyMock.expect(effect.on(deck)).andReturn(effect);
         EasyMock.expect(effect.on(players)).andReturn(effect);
         effect.apply();
-        gui.notifyAction(player.getPlayerId(), effect.toString() + " has been applied");
+        gui.notifyAction(player.getId(), effect.toString() + " has been applied");
         displayMethod.run();
 
         EasyMock.replay(effect, hatchingGround, gui, displayMethod);

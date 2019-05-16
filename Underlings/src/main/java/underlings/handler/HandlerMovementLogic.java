@@ -37,7 +37,7 @@ public class HandlerMovementLogic {
                 break;
             case CARD:
 
-                Card chosenCard = this.gui.getCard(player.getPlayerId(), LocaleWrap.get("handler_movement_card"),
+                Card chosenCard = this.gui.getCard(player.getId(), LocaleWrap.get("handler_movement_card"),
                         this.hatchingGround, this.hatchingGround.getUnclaimedEggs());
 
                 moveToCard(handler, chosenCard);

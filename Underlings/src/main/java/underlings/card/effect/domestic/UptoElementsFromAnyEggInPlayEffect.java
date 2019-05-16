@@ -28,7 +28,7 @@ public abstract class UptoElementsFromAnyEggInPlayEffect extends HatchingGroundE
         for (int i = 0; i < this.upTo; i++) {
             ElementSpace selectedSpace = gui.getElementSpaceContainingElementOfColors(allCards, this.elementChoices);
             Element selectedElement =
-                    gui.getElementOfColorsFromSpace(this.elementChoices, selectedSpace, currentPlayer.getPlayerId());
+                    gui.getElementOfColorsFromSpace(this.elementChoices, selectedSpace, currentPlayer.getId());
             applyOnSelectedElement(selectedElement, selectedSpace, currentPlayer);
         }
     }

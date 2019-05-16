@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-
 import underlings.card.Card;
 import underlings.card.effect.ObserverEffect;
 import underlings.element.Element;
@@ -27,7 +26,7 @@ public class Player {
     private boolean reached25Points;
     private HandlerFactory handlerFactory;
     public List<Element> elements;
-    private int playerId;
+    public int id;
     public List<Card> hatchedCards;
     public List<Card> unhatchedCards;
     public ElementSpaceLogic elementSpaceLogic;
@@ -37,7 +36,7 @@ public class Player {
     private boolean useEffectElementGivers;
     public int hatchingTime;
 
-    public Player(int maxHandlers, HandlerFactory handlerFactory, int playerId) {
+    public Player(int maxHandlers, HandlerFactory handlerFactory, int id) {
         this.handlers = new ArrayList<>();
         this.elements = new ArrayList<>();
         this.hatchedCards = new ArrayList<>();
@@ -50,7 +49,7 @@ public class Player {
         this.points = 0;
         this.reached12Points = false;
         this.reached25Points = false;
-        this.playerId = playerId;
+        this.id = id;
         this.maxHandlersOnSpace = 1;
         this.hatchingTime = 1;
     }
@@ -129,8 +128,8 @@ public class Player {
         return elementGivers;
     }
 
-    public int getPlayerId() {
-        return this.playerId;
+    public int getId() {
+        return this.id;
     }
 
     public boolean hasCard(Card card) {
@@ -144,7 +143,7 @@ public class Player {
 
     @Override
     public String toString() {
-        return MessageFormat.format(LocaleWrap.get("player_number"), this.getPlayerId());
+        return MessageFormat.format(LocaleWrap.get("player_number"), this.getId());
     }
 
     public void destroyAllElements() {

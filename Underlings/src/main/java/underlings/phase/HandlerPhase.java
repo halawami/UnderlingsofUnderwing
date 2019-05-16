@@ -54,7 +54,7 @@ public class HandlerPhase extends RotationPhase {
         if (playersHandlers.size() != 0) {
 
             HandlerDecision decision =
-                    this.gui.getHandlerDecision(playersHandlers, player.getPlayerId(), this.hatchingGround);
+                    this.gui.getHandlerDecision(playersHandlers, player.getId(), this.hatchingGround);
             this.handlerMovementLogic.move(decision.handler, decision.choice, player);
             this.setPhaseComplete(false);
 

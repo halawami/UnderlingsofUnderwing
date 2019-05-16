@@ -70,7 +70,7 @@ public class DragonPhaseTests {
         EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList());
         player.unhatchedCards.add(card);
         eggHatchingLogic.hatchEgg(card, false, player);
-        EasyMock.expect(player.getPlayerId()).andReturn(1).anyTimes();
+        EasyMock.expect(player.getId()).andReturn(1).anyTimes();
 
         EasyMock.replay(hatchingGround, bag, player, card.domesticEffects[0], handler, eggHatchingLogic);
 
@@ -89,7 +89,7 @@ public class DragonPhaseTests {
         player.unhatchedCards.add(card);
         eggHatchingLogic.hatchEgg(card, false, player);
         EasyMock.expectLastCall().times(2);
-        EasyMock.expect(player.getPlayerId()).andReturn(1).anyTimes();
+        EasyMock.expect(player.getId()).andReturn(1).anyTimes();
 
         EasyMock.replay(hatchingGround, bag, player, card.domesticEffects[0], handler, eggHatchingLogic);
 
@@ -124,7 +124,7 @@ public class DragonPhaseTests {
         card.domesticEffects = new Effect[0];
         EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList(card));
         eggHatchingLogic.returnElementsToBag(card);
-        gui.notifyAction(player.getPlayerId(), message);
+        gui.notifyAction(player.getId(), message);
 
         EasyMock.replay(hatchingGround, bag, handler, gui, eggHatchingLogic);
 
@@ -145,7 +145,7 @@ public class DragonPhaseTests {
         EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList(card, card));
         eggHatchingLogic.returnElementsToBag(card);
         EasyMock.expectLastCall().times(2);
-        gui.notifyAction(player.getPlayerId(), message);
+        gui.notifyAction(player.getId(), message);
         EasyMock.expectLastCall().times(2);
 
         EasyMock.replay(hatchingGround, bag, handler, gui, eggHatchingLogic);
@@ -215,7 +215,7 @@ public class DragonPhaseTests {
         eggHatchingLogic.returnElementsToBag(card);
         eggHatchingLogic.hatchEgg(card, false, player);
         eggHatchingLogic.returnElementsToBag(card2);
-        gui.notifyAction(player.getPlayerId(), message);
+        gui.notifyAction(player.getId(), message);
 
         EasyMock.replay(hatchingGround, gui, bag, card.domesticEffects[0], handler, eggHatchingLogic);
 

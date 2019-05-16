@@ -11,7 +11,6 @@ import java.util.Map;
 import java.util.Set;
 import javax.swing.JOptionPane;
 import underlings.card.Card;
-import underlings.card.EmptyCard;
 import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
@@ -123,7 +122,7 @@ public class Gui {
         }
 
         String prompt = LocaleWrap.get("gui_field_space");
-        FieldSpace val = this.promptHandler.pickFromGrid(prompt, grid, player.getPlayerId());
+        FieldSpace val = this.promptHandler.pickFromGrid(prompt, grid, player.getId());
 
         return val;
     }
@@ -200,11 +199,6 @@ public class Gui {
     public boolean promptDecision(String message, int playerId) {
         // TODO
         return true;
-    }
-
-    public Card promptCard(String message, List<Card> cards) {
-        // TODO
-        return EmptyCard.getInstance();
     }
 
     public Player promptPlayer(String message, Player currentPlayer, List<Player> players) {

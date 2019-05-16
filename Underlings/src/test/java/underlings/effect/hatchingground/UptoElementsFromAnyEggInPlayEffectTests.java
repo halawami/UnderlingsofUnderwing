@@ -32,7 +32,7 @@ public class UptoElementsFromAnyEggInPlayEffectTests {
 
     public void testApplyOnNumberOfSelectedElements(int numberOfSlectedElements) {
         Player currentPlayer = EasyMock.mock(Player.class);
-        EasyMock.expect(currentPlayer.getPlayerId()).andReturn(10).anyTimes();
+        EasyMock.expect(currentPlayer.getId()).andReturn(10).anyTimes();
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         List<ElementSpace> mockSpaces = this.getMockedObjects(ElementSpace.class, numberOfSlectedElements);
         List<Element> mockElements = this.getMockedObjects(Element.class, numberOfSlectedElements);

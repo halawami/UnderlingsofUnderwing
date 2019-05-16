@@ -28,7 +28,7 @@ public class PlacementUtilsTests {
         Runnable displayMethod = EasyMock.mock(Runnable.class);
 
         Player player = EasyMock.mock(Player.class);
-        EasyMock.expect(player.getPlayerId()).andReturn(10).anyTimes();
+        EasyMock.expect(player.getId()).andReturn(10).anyTimes();
 
         Card card1 = new Card();
         Card card2 = new Card();
@@ -48,7 +48,7 @@ public class PlacementUtilsTests {
     @Test
     public void testSelectElementSpace() {
         Player player = EasyMock.mock(Player.class);
-        EasyMock.expect(player.getPlayerId()).andReturn(10).anyTimes();
+        EasyMock.expect(player.getId()).andReturn(10).anyTimes();
 
         List<Element> elements = Arrays.asList(new Element(ElementColor.RED));
         EasyMock.expect(player.getElements()).andReturn(elements).anyTimes();

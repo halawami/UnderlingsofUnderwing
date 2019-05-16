@@ -45,7 +45,7 @@ public class PlacementPhase extends RotationPhase {
 
         List<Card> cards = this.utils.getPlayableCards(player.elementSpaceLogic, player.getElements());
         if (cards.isEmpty()) {
-            this.gui.alert(LocaleWrap.get("no_placements"), player.getPlayerId(), PromptType.WARNING);
+            this.gui.alert(LocaleWrap.get("no_placements"), player.getId(), PromptType.WARNING);
             return;
         } else {
             this.setPhaseComplete(false);

@@ -17,16 +17,16 @@ public class PlayerIdTests {
     public void testOnePlayer() throws IOException {
         PlayerFactory playerFactory = new PlayerFactory(new HandlerFactory(), Arrays.asList());
         Player p = playerFactory.createPlayer(2);
-        assertEquals(1, p.getPlayerId());
+        assertEquals(1, p.getId());
     }
 
     @Test
     public void testTwoPlayers() throws IOException {
         PlayerFactory playerFactory = new PlayerFactory(new HandlerFactory(), Arrays.asList());
         Player p = playerFactory.createPlayer(2);
-        assertEquals(1, p.getPlayerId());
+        assertEquals(1, p.getId());
         Player p2 = playerFactory.createPlayer(2);
-        assertEquals(2, p2.getPlayerId());
+        assertEquals(2, p2.getId());
     }
 
 }

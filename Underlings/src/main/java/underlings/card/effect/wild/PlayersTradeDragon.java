@@ -30,7 +30,7 @@ public class PlayersTradeDragon extends PlayersEffect {
             }
         }
         if (highestCards.get(min).size() > 1) {
-            gui.notifyAction(FakePlayer.getInstance().getPlayerId(), LocaleWrap.get("notify_no_player_least_dragons"));
+            gui.notifyAction(FakePlayer.getInstance().getId(), LocaleWrap.get("notify_no_player_least_dragons"));
         } else {
             playerWithMinCards = highestCards.get(min).get(0);
             for (Player player : players) {

@@ -100,7 +100,7 @@ public class ScoreUtils {
         for (Player player : this.scores.keySet()) {
             maxScore = this.decideWinners(this.scores, player, maxScore);
 
-            this.gui.alert(LocaleWrap.format("player_score", player, this.scores.get(player)), player.getPlayerId(),
+            this.gui.alert(LocaleWrap.format("player_score", player, this.scores.get(player)), player.getId(),
                     PromptType.REGULAR);
         }
     }
