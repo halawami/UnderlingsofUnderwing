@@ -24,7 +24,9 @@ public class DragonPhase extends SequentialPhase {
 
     @Override
     public void setup() {
-        this.completeEggs = this.hatchingGround.pullAndReplaceCompleteEggs();
+        if (!this.hatchingGround.lateHatching) {
+            this.completeEggs = this.hatchingGround.pullAndReplaceCompleteEggs();
+        }
     }
 
     @Override

@@ -232,6 +232,7 @@ public class DragonPhaseTests {
     @Test
     public void testSetupLateEggs() {
         final Gui gui = EasyMock.mock(Gui.class);
+        hatchingGround.lateHatching = true;
 
         EasyMock.replay(hatchingGround, gui, bag, card.domesticEffects[0], handler, eggHatchingLogic);
 
