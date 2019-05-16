@@ -3,26 +3,25 @@ package underlings.phase;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-
 import org.easymock.EasyMock;
 import org.junit.Test;
-
 import underlings.card.Card;
 import underlings.game.Deck;
 import underlings.game.HatchingGround;
 import underlings.gui.Display;
 import underlings.gui.Gui;
 import underlings.gui.PromptHandler;
+import underlings.gui.YesNoChoice;
 import underlings.handler.Handler;
 import underlings.handler.HandlerState;
 import underlings.handler.WildHandler;
 import underlings.player.Player;
+import underlings.utilities.LocaleWrap;
 
 public class PlacementPhaseTests {
 
@@ -52,7 +51,7 @@ public class PlacementPhaseTests {
         EasyMock.verify(player);
 
         @SuppressWarnings("unchecked")
-        Map<Player, Integer> map = (Map<Player, Integer>) getField(phase.getClass(), phase, "turnCounts");
+        Map<Player, Integer> map = (Map<Player, Integer>) this.getField(phase.getClass(), phase, "turnCounts");
         assertEquals(new Integer(2), map.get(player));
     }
 
@@ -65,9 +64,9 @@ public class PlacementPhaseTests {
         EasyMock.replay(player);
         PlacementPhase phase = new PlacementPhase(players, null, null, null, null, null);
         phase.setup();
-        Method turnCountMethod = getMethod(phase, "checkAndDecrementTurnCount", Player.class);
+        Method turnCountMethod = this.getMethod(phase, "checkAndDecrementTurnCount", Player.class);
         @SuppressWarnings("unchecked")
-        Map<Player, Integer> map = (Map<Player, Integer>) getField(phase.getClass(), phase, "turnCounts");
+        Map<Player, Integer> map = (Map<Player, Integer>) this.getField(phase.getClass(), phase, "turnCounts");
         assertTrue((boolean) (turnCountMethod.invoke(phase, player)));
         assertEquals(new Integer(1), map.get(player));
         assertTrue((boolean) (turnCountMethod.invoke(phase, player)));
@@ -86,9 +85,9 @@ public class PlacementPhaseTests {
         EasyMock.replay(player);
         PlacementPhase phase = new PlacementPhase(players, null, null, null, null, null);
         phase.setup();
-        Method turnCountMethod = getMethod(phase, "checkAndDecrementTurnCount", Player.class);
+        Method turnCountMethod = this.getMethod(phase, "checkAndDecrementTurnCount", Player.class);
         @SuppressWarnings("unchecked")
-        Map<Player, Integer> map = (Map<Player, Integer>) getField(phase.getClass(), phase, "turnCounts");
+        Map<Player, Integer> map = (Map<Player, Integer>) this.getField(phase.getClass(), phase, "turnCounts");
         assertTrue((boolean) (turnCountMethod.invoke(phase, player)));
         assertEquals(new Integer(2), map.get(player));
         assertTrue((boolean) (turnCountMethod.invoke(phase, player)));
@@ -117,12 +116,12 @@ public class PlacementPhaseTests {
         hatchingGround.populate();
         PlacementPhase phase = new PlacementPhase(players, null, hatchingGround, null, null, null);
         phase.setup();
-        Method gameoverMethod = getMethod(phase, "checkGameover");
+        Method gameoverMethod = this.getMethod(phase, "checkGameover");
         gameoverMethod.invoke(phase);
         EasyMock.verify(player, deck);
 
-        assertFalse((boolean) getField(Phase.class, phase, "gameComplete"));
-        assertFalse((boolean) getField(Phase.class, phase, "phaseComplete"));
+        assertFalse((boolean) this.getField(Phase.class, phase, "gameComplete"));
+        assertFalse((boolean) this.getField(Phase.class, phase, "phaseComplete"));
     }
 
     @Test
@@ -135,12 +134,12 @@ public class PlacementPhaseTests {
         EasyMock.replay(player);
         PlacementPhase phase = new PlacementPhase(players, null, hatchingGround, null, null, null);
         phase.setup();
-        Method gameoverMethod = getMethod(phase, "checkGameover");
+        Method gameoverMethod = this.getMethod(phase, "checkGameover");
         gameoverMethod.invoke(phase);
         EasyMock.verify(player);
 
-        assertTrue((boolean) getField(Phase.class, phase, "gameComplete"));
-        assertTrue((boolean) getField(Phase.class, phase, "phaseComplete"));
+        assertTrue((boolean) this.getField(Phase.class, phase, "gameComplete"));
+        assertTrue((boolean) this.getField(Phase.class, phase, "phaseComplete"));
     }
 
     @Test
@@ -160,12 +159,12 @@ public class PlacementPhaseTests {
         hatchingGround.populate();
         PlacementPhase phase = new PlacementPhase(players, null, hatchingGround, null, null, null);
         phase.setup();
-        Method gameoverMethod = getMethod(phase, "checkGameover");
+        Method gameoverMethod = this.getMethod(phase, "checkGameover");
         gameoverMethod.invoke(phase);
         EasyMock.verify(player, deck);
 
-        assertTrue((boolean) getField(Phase.class, phase, "gameComplete"));
-        assertTrue((boolean) getField(Phase.class, phase, "phaseComplete"));
+        assertTrue((boolean) this.getField(Phase.class, phase, "gameComplete"));
+        assertTrue((boolean) this.getField(Phase.class, phase, "phaseComplete"));
     }
 
     @Test
@@ -174,9 +173,12 @@ public class PlacementPhaseTests {
         PromptHandler promptHandler = EasyMock.mock(PromptHandler.class);
         Gui gui = new Gui(promptHandler, display);
 
+        EasyMock.expect(promptHandler.promptChoice(LocaleWrap.get("gui_more_moves"), YesNoChoice.getChoices(), 0))
+                .andReturn(YesNoChoice.NO);
+
         EasyMock.replay(display, promptHandler);
 
-        boolean result = gui.getMoreMovesDecision(0, 0);
+        boolean result = gui.promptChoice(LocaleWrap.get("gui_more_moves"), YesNoChoice.getChoices(), 0).booleanValue;
 
         EasyMock.verify(display, promptHandler);
         assertFalse(result);
@@ -188,11 +190,12 @@ public class PlacementPhaseTests {
         PromptHandler promptHandler = EasyMock.mock(PromptHandler.class);
         Gui gui = new Gui(promptHandler, display);
 
-        EasyMock.expect(promptHandler.promptDecision(EasyMock.anyString(), EasyMock.anyInt())).andReturn(true);
+        EasyMock.expect(promptHandler.promptChoice(LocaleWrap.get("gui_more_moves"), YesNoChoice.getChoices(), 0))
+                .andReturn(YesNoChoice.YES);
 
         EasyMock.replay(display, promptHandler);
 
-        boolean result = gui.getMoreMovesDecision(1, 0);
+        boolean result = gui.promptChoice(LocaleWrap.get("gui_more_moves"), YesNoChoice.getChoices(), 0).booleanValue;
 
         EasyMock.verify(display, promptHandler);
         assertTrue(result);
