@@ -3,13 +3,10 @@ package underlings.effect.players;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-
 import java.util.ArrayList;
 import java.util.Arrays;
-
 import org.easymock.EasyMock;
 import org.junit.Test;
-
 import underlings.card.Card;
 import underlings.card.EmptyCard;
 import underlings.card.effect.Effect;
@@ -38,8 +35,9 @@ public class PlayersTradeDragonTests {
         // TODO: this should probably be differnet than prompt card because we want to show cards
         // and points and effects
         // need to take playerid
-        EasyMock.expect(gui.promptCard(LocaleWrap.get("prompt_card_to_trade"), player.hatchedCards)).andReturn(card);
-        EasyMock.expect(gui.promptCard(LocaleWrap.get("prompt_card_to_trade"), player2.hatchedCards))
+        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_card_to_trade"), player.hatchedCards, 0))
+                .andReturn(card);
+        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_card_to_trade"), player2.hatchedCards, 0))
                 .andReturn(EmptyCard.getInstance());
 
         EasyMock.replay(player, player2, mockedEffect, gui);
@@ -80,8 +78,10 @@ public class PlayersTradeDragonTests {
         // and points and effects
         // need to take playerid
 
-        EasyMock.expect(gui.promptCard(LocaleWrap.get("prompt_card_to_trade"), player.hatchedCards)).andReturn(card3);
-        EasyMock.expect(gui.promptCard(LocaleWrap.get("prompt_card_to_trade"), player2.hatchedCards)).andReturn(card2);
+        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_card_to_trade"), player.hatchedCards, 0))
+                .andReturn(card3);
+        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_card_to_trade"), player2.hatchedCards, 0))
+                .andReturn(card2);
 
         EasyMock.replay(player, player2, mockedEffect, gui);
 
@@ -127,11 +127,15 @@ public class PlayersTradeDragonTests {
         // TODO: this should probably be differnet than prompt card because we want to show cards
         // and points and effects
         // need to take playerid
-        EasyMock.expect(gui.promptCard(LocaleWrap.get("prompt_card_to_trade"), player.hatchedCards)).andReturn(card);
-        EasyMock.expect(gui.promptCard(LocaleWrap.get("prompt_card_to_trade"), playerWithLeastDragons.hatchedCards))
+        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_card_to_trade"), player.hatchedCards, 0))
+                .andReturn(card);
+        EasyMock.expect(
+                gui.promptChoice(LocaleWrap.get("prompt_card_to_trade"), playerWithLeastDragons.hatchedCards, 0))
                 .andReturn(card3);
-        EasyMock.expect(gui.promptCard(LocaleWrap.get("prompt_card_to_trade"), player2.hatchedCards)).andReturn(card2);
-        EasyMock.expect(gui.promptCard(LocaleWrap.get("prompt_card_to_trade"), playerWithLeastDragons.hatchedCards))
+        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_card_to_trade"), player2.hatchedCards, 0))
+                .andReturn(card2);
+        EasyMock.expect(
+                gui.promptChoice(LocaleWrap.get("prompt_card_to_trade"), playerWithLeastDragons.hatchedCards, 0))
                 .andReturn(card);
 
         EasyMock.replay(player, player2, mockedEffect, gui, player3);

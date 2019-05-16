@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-
 import underlings.card.Card;
 import underlings.card.effect.PlayersEffect;
 import underlings.gui.Gui;
@@ -35,9 +34,10 @@ public class PlayersTradeDragon extends PlayersEffect {
             playerWithMinCards = highestCards.get(min).get(0);
             for (Player player : players) {
                 if (player != playerWithMinCards) {
-                    Card cardToTrade = gui.promptCard(LocaleWrap.get("prompt_card_to_trade"), player.hatchedCards);
-                    Card secondCardToTrade =
-                            gui.promptCard(LocaleWrap.get("prompt_card_to_trade"), playerWithMinCards.hatchedCards);
+                    Card cardToTrade =
+                            gui.promptChoice(LocaleWrap.get("prompt_card_to_trade"), player.hatchedCards, player.id);
+                    Card secondCardToTrade = gui.promptChoice(LocaleWrap.get("prompt_card_to_trade"),
+                            playerWithMinCards.hatchedCards, playerWithMinCards.id);
                     player.hatchedCards.remove(cardToTrade);
                     playerWithMinCards.hatchedCards.add(cardToTrade);
                     player.hatchedCards.add(secondCardToTrade);
