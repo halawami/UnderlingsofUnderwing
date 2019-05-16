@@ -217,11 +217,6 @@ public class Gui {
         return null;
     }
 
-    public Handler promptHandler(String message, int playerId, List<Handler> handlers) {
-        // TODO
-        return null;
-    }
-
     public void alert(String message, PromptType messageType) {
         this.promptHandler.displayMessage(message, messageType.jOptionMessageType);
     }

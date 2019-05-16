@@ -1,7 +1,6 @@
 package underlings.card.effect.domestic;
 
 import java.util.List;
-
 import underlings.card.Card;
 import underlings.card.effect.HandlerEffect;
 import underlings.game.HatchingGround;
@@ -19,8 +18,8 @@ public class ReplaceHandlerWithYourOwnEffect extends HandlerEffect {
         List<Card> claimedEggs = hatchingGround.getClaimedEggs();
         if (!claimedEggs.isEmpty()) {
             Card chosenEgg = gui.promptCard("Choose a card to replace its handler", claimedEggs);
-            Handler chosenHandler = gui.promptHandler("Choose a handler to replace with", currentPlayer.getPlayerId(),
-                    currentPlayer.getHandlers());
+            Handler chosenHandler = gui.promptChoice("Choose a handler to replace with", currentPlayer.getHandlers(),
+                    currentPlayer.getPlayerId());
             handlerLogic.move(chosenEgg.handler, HandlerChoice.BREAK_ROOM, currentPlayer);
             handlerLogic.moveToCard(chosenHandler, chosenEgg);
         }

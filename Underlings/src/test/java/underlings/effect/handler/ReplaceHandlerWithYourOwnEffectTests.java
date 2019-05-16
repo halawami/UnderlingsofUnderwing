@@ -1,10 +1,8 @@
 package underlings.effect.handler;
 
 import java.util.List;
-
 import org.easymock.EasyMock;
 import org.junit.Test;
-
 import underlings.TestUtils;
 import underlings.card.Card;
 import underlings.card.effect.Effect;
@@ -53,7 +51,7 @@ public class ReplaceHandlerWithYourOwnEffectTests {
         EasyMock.expect(gui.promptCard("Choose a card to replace its handler", mockClaimedEggs))
                 .andReturn(mockClaimedEggs.get(2));
         EasyMock.expect(currentPlayer.getHandlers()).andReturn(mockHandlers);
-        EasyMock.expect(gui.promptHandler("Choose a handler to replace with", 0, mockHandlers))
+        EasyMock.expect(gui.promptChoice("Choose a handler to replace with", mockHandlers, 0))
                 .andReturn(mockHandlers.get(1));
         handlerMovementLogic.move(toBeReplaced, HandlerChoice.BREAK_ROOM, currentPlayer);
         handlerMovementLogic.moveToCard(mockHandlers.get(1), mockClaimedEggs.get(2));
