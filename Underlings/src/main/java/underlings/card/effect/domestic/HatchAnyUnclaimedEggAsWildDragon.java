@@ -2,7 +2,7 @@ package underlings.card.effect.domestic;
 
 import java.util.List;
 import underlings.card.Card;
-import underlings.card.effect.HatchingGroundEffect;
+import underlings.card.effect.DiverseHatchingGroundEffect;
 import underlings.element.ElementBag;
 import underlings.game.Deck;
 import underlings.game.HatchingGround;
@@ -14,7 +14,7 @@ import underlings.player.Player;
 import underlings.utilities.EggHatchingLogic;
 import underlings.utilities.LocaleWrap;
 
-public class HatchAnyUnclaimedEggAsWildDragon extends HatchingGroundEffect {
+public class HatchAnyUnclaimedEggAsWildDragon extends DiverseHatchingGroundEffect {
 
     @Override
     protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag, Gui gui,

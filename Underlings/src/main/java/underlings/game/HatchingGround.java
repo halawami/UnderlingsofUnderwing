@@ -19,10 +19,12 @@ public class HatchingGround implements Iterable<Card> {
     public Card[][] cards;
     private Deck deck;
     public ElementSpaceLogic logic;
+    public boolean lateHatching;
 
     public HatchingGround(Deck deck, ElementSpaceLogic logic) {
         this.deck = deck;
         this.logic = logic;
+        this.lateHatching = false;
     }
 
     public int getWidth() {

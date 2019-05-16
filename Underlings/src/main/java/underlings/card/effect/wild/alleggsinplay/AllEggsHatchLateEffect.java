@@ -1,13 +1,13 @@
 package underlings.card.effect.wild.alleggsinplay;
 
-import underlings.card.Card;
-import underlings.element.ElementBag;
-import underlings.element.utilities.ElementSpaceLogic;
+import underlings.card.effect.HatchingGroundEffect;
+import underlings.game.HatchingGround;
+import underlings.gui.Gui;
 
-public class AllEggsHatchLateEffect extends AllEggsInPlayEffect {
+public class AllEggsHatchLateEffect extends HatchingGroundEffect {
 
     @Override
-    public void applyOnCardInPlay(Card cardInPlay, ElementSpaceLogic elementSpaceLogic, ElementBag elementBag) {
+    protected void apply(HatchingGround hatchingGround, Gui gui) {
 
     }
 

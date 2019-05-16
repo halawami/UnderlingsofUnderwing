@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import underlings.card.Card;
-import underlings.card.effect.HatchingGroundEffect;
+import underlings.card.effect.DiverseHatchingGroundEffect;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.game.Deck;
@@ -14,7 +14,7 @@ import underlings.handler.HandlerMovementLogic;
 import underlings.player.Player;
 import underlings.utilities.EggHatchingLogic;
 
-public class WhiteRecipeEffect extends HatchingGroundEffect {
+public class WhiteRecipeEffect extends DiverseHatchingGroundEffect {
 
     String recipe000 = "RED,YELLOW,BLUE,PURPLE,ORANGE,GREEN";
     String recipe001 = "RED,YELLOW,BLUE,PURPLE,ORANGE,BLUE,YELLOW";

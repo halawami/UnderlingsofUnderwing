@@ -4,7 +4,7 @@ import java.util.List;
 
 import underlings.card.Card;
 import underlings.card.EmptyCard;
-import underlings.card.effect.HatchingGroundEffect;
+import underlings.card.effect.DiverseHatchingGroundEffect;
 import underlings.element.ElementBag;
 import underlings.game.Deck;
 import underlings.game.HatchingGround;
@@ -14,7 +14,7 @@ import underlings.player.Player;
 import underlings.utilities.EggHatchingLogic;
 import underlings.utilities.LocaleWrap;
 
-public class CollectAndHatchAnyUnclaimedEggEffect extends HatchingGroundEffect {
+public class CollectAndHatchAnyUnclaimedEggEffect extends DiverseHatchingGroundEffect {
     public int points;
 
     @Override
