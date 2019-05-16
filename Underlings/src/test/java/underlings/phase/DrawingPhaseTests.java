@@ -1,14 +1,11 @@
 package underlings.phase;
 
 import static org.junit.Assert.assertTrue;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
 import org.easymock.EasyMock;
 import org.junit.Test;
-
 import underlings.TestUtils;
 import underlings.element.Element;
 import underlings.element.ElementBag;
@@ -17,6 +14,7 @@ import underlings.gui.DrawChoice;
 import underlings.gui.Gui;
 import underlings.handler.HandlerFactory;
 import underlings.player.Player;
+import underlings.utilities.LocaleWrap;
 
 public class DrawingPhaseTests {
 
@@ -32,7 +30,11 @@ public class DrawingPhaseTests {
 
         Element element = new Element(ElementColor.BLUE);
 
-        EasyMock.expect(gui.getDrawChoice(player.getElementGivers(), 0)).andReturn(DrawChoice.RANDOM);
+        EasyMock.expect(gui.promptChoice(LocaleWrap.get("gui_element_giver"), player.getElementGivers(), 0))
+                .andReturn(player.getElementGivers().get(0));
+        EasyMock.expect(
+                gui.promptChoice(LocaleWrap.get("gui_draw_choice"), player.getElementGivers().get(0).drawChoices, 0))
+                .andReturn(DrawChoice.RANDOM);
         EasyMock.expect(elementBag.drawElement(DrawChoice.RANDOM)).andReturn(element);
 
         Phase drawingPhase = new DrawingPhase(players, gui, elementBag, null, null, null);

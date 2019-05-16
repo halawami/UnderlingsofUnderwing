@@ -13,7 +13,6 @@ import underlings.card.Card;
 import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
-import underlings.element.ElementGiver;
 import underlings.element.ElementSpace;
 import underlings.element.NullElement;
 import underlings.field.Field;
@@ -46,13 +45,6 @@ public class Gui {
     public Gui(PromptHandler promptHandler, Display display) {
         this.promptHandler = promptHandler;
         this.display = display;
-    }
-
-    public DrawChoice getDrawChoice(List<ElementGiver> elementGivers, int playerId) {
-        ElementGiver elementGiver =
-                this.promptHandler.promptChoice(LocaleWrap.get("gui_element_giver"), elementGivers, playerId);
-        elementGivers.remove(elementGiver);
-        return this.promptHandler.promptChoice(LocaleWrap.get("gui_draw_choice"), elementGiver.drawChoices, playerId);
     }
 
     public boolean getMoreMovesDecision(int choiceNum, int playerId) {
