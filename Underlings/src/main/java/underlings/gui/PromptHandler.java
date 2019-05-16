@@ -12,8 +12,6 @@ public interface PromptHandler {
 
     <T> T pickFromGrid(String prompt, T[][] cards, int playerId);
 
-    boolean promptDecision(String question, int playerId);
-
     void displayMessage(String message, int playerId, int icon);
 
     void displayMessage(String message, int icon);

@@ -1,6 +1,5 @@
 package underlings.effect.hatchingground;
 
-import static org.junit.Assert.assertEquals;
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
 import java.io.IOException;
@@ -11,10 +10,10 @@ import org.junit.Test;
 import underlings.card.Card;
 import underlings.card.effect.Effect;
 import underlings.card.effect.domestic.HatchAnyUnclaimedEggAsWildDragon;
-import underlings.card.effect.domestic.HatchAnyUnclaimedEggAsWildDragon.Choice;
 import underlings.element.ElementBag;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
+import underlings.gui.YesNoChoice;
 import underlings.player.FakePlayer;
 import underlings.player.Player;
 import underlings.utilities.EggHatchingLogic;
@@ -33,8 +32,8 @@ public class HatchAnyUnclaimedEggAsWildDragonTests {
         Effect effect = new HatchAnyUnclaimedEggAsWildDragon();
         effect.on(card).on(hatchingGround).on(elementBag).on(gui).on(player).on(eggHatchingLogic);
         EasyMock.expect(player.getId()).andReturn(-1);
-        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_choice_hatch_wildly"), Choice.getChoices(), -1))
-                .andReturn(Choice.YES);
+        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_choice_hatch_wildly"), YesNoChoice.getChoices(), -1))
+                .andReturn(YesNoChoice.YES);
         EasyMock.expect(hatchingGround.getUnclaimedEggs()).andReturn(Arrays.asList(card));
         EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_card_hatch_wildly"), Arrays.asList(card), 0))
                 .andReturn(card);
@@ -60,8 +59,8 @@ public class HatchAnyUnclaimedEggAsWildDragonTests {
         Effect effect = new HatchAnyUnclaimedEggAsWildDragon();
         effect.on(card).on(hatchingGround).on(elementBag).on(gui).on(player).on(eggHatchingLogic);
         EasyMock.expect(player.getId()).andReturn(-1);
-        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_choice_hatch_wildly"), Choice.getChoices(), -1))
-                .andReturn(Choice.NO);
+        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_choice_hatch_wildly"), YesNoChoice.getChoices(), -1))
+                .andReturn(YesNoChoice.NO);
 
         EasyMock.replay(card, hatchingGround, elementBag, gui, player, eggHatchingLogic);
 
@@ -81,8 +80,8 @@ public class HatchAnyUnclaimedEggAsWildDragonTests {
         Effect effect = new HatchAnyUnclaimedEggAsWildDragon();
         effect.on(card).on(hatchingGround).on(elementBag).on(gui).on(player).on(eggHatchingLogic);
         EasyMock.expect(player.getId()).andReturn(-1).times(2);
-        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_choice_hatch_wildly"), Choice.getChoices(), -1))
-                .andReturn(Choice.YES);
+        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_choice_hatch_wildly"), YesNoChoice.getChoices(), -1))
+                .andReturn(YesNoChoice.YES);
         EasyMock.expect(hatchingGround.getUnclaimedEggs()).andReturn(Arrays.asList());
         gui.notifyAction(-1, LocaleWrap.get("notify_no_unclaimed_eggs"));
 
@@ -91,18 +90,6 @@ public class HatchAnyUnclaimedEggAsWildDragonTests {
         effect.apply();
 
         EasyMock.verify(card, hatchingGround, elementBag, gui, player, eggHatchingLogic);
-    }
-
-    @Test
-    public void testChoiceYesToString() {
-        Choice choice = Choice.YES;
-        assertEquals("Yes", choice.toString());
-    }
-
-    @Test
-    public void testChoiceNoToString() {
-        Choice choice = Choice.NO;
-        assertEquals("No", choice.toString());
     }
 
 }

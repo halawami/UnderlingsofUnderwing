@@ -181,4 +181,19 @@ public class GuiTests {
         assertEquals(1, result.intValue());
     }
 
+
+    @Test
+    public void testChoiceYesToString() {
+        this.replay();
+        YesNoChoice choice = YesNoChoice.YES;
+        assertEquals("Yes", choice.toString());
+    }
+
+    @Test
+    public void testChoiceNoToString() {
+        this.replay();
+        YesNoChoice choice = YesNoChoice.NO;
+        assertEquals("No", choice.toString());
+    }
+
 }

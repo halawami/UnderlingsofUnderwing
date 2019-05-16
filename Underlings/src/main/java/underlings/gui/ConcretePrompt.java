@@ -80,12 +80,6 @@ public class ConcretePrompt implements PromptHandler {
     }
 
     @Override
-    public boolean promptDecision(String question, int playerId) {
-        int option = JOptionPane.showConfirmDialog(null, question, this.getPlayer(playerId), JOptionPane.YES_NO_OPTION);
-        return option == JOptionPane.YES_OPTION;
-    }
-
-    @Override
     public void displayMessage(String message, int playerId, int icon) {
         JOptionPane.showMessageDialog(null, message, this.getPlayer(playerId), icon);
     }

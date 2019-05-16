@@ -9,6 +9,7 @@ import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
+import underlings.gui.YesNoChoice;
 import underlings.handler.WildHandler;
 import underlings.player.Player;
 
@@ -31,8 +32,7 @@ public class PlacementUtilities {
 
     public ElementSpace selectElementSpace(Card card, Player player) {
         List<ElementSpace> spaces = player.elementSpaceLogic.getPlayableSpaces(card, player.getElements());
-        ElementSpace space =
-                this.gui.promptChoice(LocaleWrap.get("prompt_element_space"), spaces, player.getId());
+        ElementSpace space = this.gui.promptChoice(LocaleWrap.get("prompt_element_space"), spaces, player.getId());
         return space;
     }
 
@@ -44,8 +44,8 @@ public class PlacementUtilities {
 
             if (player.elementSpaceLogic.isOpenElement(element.getColor())) {
                 List<ElementColor> validAdditions = player.elementSpaceLogic.getValidAdditions(space);
-                ElementColor color = this.gui.promptChoice(LocaleWrap.get("prompt_element_color"), validAdditions,
-                        player.getId());
+                ElementColor color =
+                        this.gui.promptChoice(LocaleWrap.get("prompt_element_color"), validAdditions, player.getId());
                 element.setAlias(color);
             }
 
@@ -54,7 +54,13 @@ public class PlacementUtilities {
             this.displayMethod.run();
 
             choices = player.elementSpaceLogic.getPlayableElements(space, player.getElements());
-            moreMoves = this.gui.getMoreMovesDecision(choices.size(), player.getId());
+            if (choices.size() == 0) {
+                moreMoves = false;
+            } else {
+                moreMoves = this.gui.promptChoice(LocaleWrap.get("gui_more_moves"), YesNoChoice.getChoices(),
+                        player.getId()).booleanValue;
+            }
+
         }
     }
 

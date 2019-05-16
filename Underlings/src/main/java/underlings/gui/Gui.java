@@ -47,14 +47,6 @@ public class Gui {
         this.display = display;
     }
 
-    public boolean getMoreMovesDecision(int choiceNum, int playerId) {
-        if (choiceNum == 0) {
-            return false;
-        }
-
-        return this.promptHandler.promptDecision(LocaleWrap.get("gui_more_moves"), playerId);
-    }
-
     public HandlerDecision getHandlerDecision(List<Handler> handlers, int playerId, HatchingGround hatchingGround) {
         Handler handler = this.promptHandler.promptChoice(LocaleWrap.get("gui_handler"), handlers, playerId);
         handlers.remove(handler);
