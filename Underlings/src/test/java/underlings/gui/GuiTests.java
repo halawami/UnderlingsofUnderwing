@@ -1,6 +1,8 @@
 package underlings.gui;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
 import java.util.ArrayList;
@@ -194,6 +196,20 @@ public class GuiTests {
         this.replay();
         YesNoChoice choice = YesNoChoice.NO;
         assertEquals("No", choice.toString());
+    }
+
+    @Test
+    public void testChoiceYesBooleanValue() {
+        this.replay();
+        YesNoChoice choice = YesNoChoice.YES;
+        assertTrue(choice.booleanValue);
+    }
+
+    @Test
+    public void testChoiceNoBooleanValue() {
+        this.replay();
+        YesNoChoice choice = YesNoChoice.NO;
+        assertFalse(choice.booleanValue);
     }
 
 }
