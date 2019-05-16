@@ -152,4 +152,12 @@ public class GuiTests {
         this.gui.alert("test", 1, PromptType.REGULAR);
     }
 
+    @Test
+    public void testAlertWarning() {
+        this.promptHandler.displayMessage("test", 1, JOptionPane.WARNING_MESSAGE);
+        this.replay();
+
+        this.gui.alert("test", 1, PromptType.WARNING);
+    }
+
 }
