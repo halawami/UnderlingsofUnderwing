@@ -96,4 +96,10 @@ public class HatchAnyUnclaimedEggAsWildDragonTests {
         assertEquals("Yes", choice.toString());
     }
 
+    @Test
+    public void testChoiceNoToString() {
+        Choice choice = Choice.NO;
+        assertEquals("No", choice.toString());
+    }
+
 }
