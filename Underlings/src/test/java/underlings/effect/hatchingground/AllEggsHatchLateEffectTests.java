@@ -9,7 +9,6 @@ import underlings.card.effect.wild.alleggsinplay.AllEggsHatchLateEffect;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.gui.Gui.PromptType;
-import underlings.gui.Gui.PromptType;
 import underlings.utilities.LocaleWrap;
 
 public class AllEggsHatchLateEffectTests {

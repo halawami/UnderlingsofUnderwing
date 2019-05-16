@@ -21,6 +21,7 @@ import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.handler.Handler;
 import underlings.handler.HandlerFactory;
+import underlings.handler.HandlerState;
 import underlings.player.Player;
 import underlings.utilities.EggHatchingLogic;
 import underlings.utilities.LocaleWrap;
@@ -210,7 +211,7 @@ public class DragonPhaseTests {
         Card card2 = new Card();
         card2.name = "tempName";
         final String message = LocaleWrap.format("incubation_state", card2.name);
-        card2.handler = player.getHandlers().get(0);
+        card2.handler = player.getHandlers().get(1);
         EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList(card, card2));
         eggHatchingLogic.returnElementsToBag(card);
         eggHatchingLogic.hatchEgg(card, false, player);
@@ -225,5 +226,6 @@ public class DragonPhaseTests {
         EasyMock.verify(hatchingGround, bag, gui, card.domesticEffects[0], handler, eggHatchingLogic);
         assertEquals(1, player.hatchingTime);
         assertEquals(1, player.unhatchedCards.size());
+        assertEquals(HandlerState.INCUBATION, card2.handler.getState());
     }
 }
