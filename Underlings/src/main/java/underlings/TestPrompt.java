@@ -2,7 +2,6 @@ package underlings;
 
 import java.util.List;
 import java.util.Random;
-
 import underlings.gui.ConcretePrompt;
 
 public class TestPrompt extends ConcretePrompt {
@@ -35,13 +34,6 @@ public class TestPrompt extends ConcretePrompt {
         return val;
     }
 
-    @Override
-    public boolean promptDecision(String question, int playerId) {
-        this.delay();
-        boolean val = this.rand.nextBoolean();
-        System.out.println(question + " (return " + val + ")");
-        return val;
-    }
 
     @Override
     public int promptInt(String prompt, int min, int max) {
