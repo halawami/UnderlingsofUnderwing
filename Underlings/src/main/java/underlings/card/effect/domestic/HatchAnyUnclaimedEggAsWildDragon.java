@@ -1,5 +1,6 @@
 package underlings.card.effect.domestic;
 
+import java.util.ArrayList;
 import java.util.List;
 import underlings.card.Card;
 import underlings.card.effect.HatchingGroundEffect;
@@ -15,12 +16,30 @@ import underlings.utilities.LocaleWrap;
 
 public class HatchAnyUnclaimedEggAsWildDragon extends HatchingGroundEffect {
 
+    public enum Choice {
+        YES, NO;
+
+        @Override
+        public String toString() {
+            return LocaleWrap.get(this.name());
+        }
+
+        public static List<Choice> getChoices() {
+            List<Choice> choices = new ArrayList<>();
+            choices.add(YES);
+            choices.add(NO);
+            return choices;
+        }
+
+    }
+
     @Override
     protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag, Gui gui,
             Player currentPlayer, EggHatchingLogic eggHatchingLogic, Deck deck,
             HandlerMovementLogic handlerMovementLogic) {
-        boolean choice = gui.promptDecision(LocaleWrap.get("prompt_choice_hatch_wildly"), currentPlayer.getId());
-        if (choice) {
+        Choice choice = gui.promptChoice(LocaleWrap.get("prompt_choice_hatch_wildly"), Choice.getChoices(),
+                currentPlayer.getId());
+        if (choice == Choice.YES) {
             List<Card> unclaimedEggs = hatchingGround.getUnclaimedEggs();
             if (unclaimedEggs.size() == 0) {
                 gui.notifyAction(currentPlayer.getId(), LocaleWrap.get("notify_no_unclaimed_eggs"));

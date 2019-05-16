@@ -196,11 +196,6 @@ public class Gui {
         return null;
     }
 
-    public boolean promptDecision(String message, int playerId) {
-        // TODO
-        return true;
-    }
-
     public Card promptCardToSteal(String message, int playerId, Map<Player, List<Card>> playerCards) {
         // TODO
         return null;

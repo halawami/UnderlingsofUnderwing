@@ -1,5 +1,6 @@
 package underlings.effect.hatchingground;
 
+import static org.junit.Assert.assertEquals;
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
 import java.io.IOException;
@@ -10,6 +11,7 @@ import org.junit.Test;
 import underlings.card.Card;
 import underlings.card.effect.Effect;
 import underlings.card.effect.domestic.HatchAnyUnclaimedEggAsWildDragon;
+import underlings.card.effect.domestic.HatchAnyUnclaimedEggAsWildDragon.Choice;
 import underlings.element.ElementBag;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
@@ -87,4 +89,11 @@ public class HatchAnyUnclaimedEggAsWildDragonTests {
 
         EasyMock.verify(card, hatchingGround, elementBag, gui, player, eggHatchingLogic);
     }
+
+    @Test
+    public void testChoiceYesToString() {
+        Choice choice = Choice.YES;
+        assertEquals("Yes", choice.toString());
+    }
+
 }
