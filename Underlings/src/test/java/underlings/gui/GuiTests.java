@@ -17,6 +17,7 @@ import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.Deck;
 import underlings.game.Game;
 import underlings.game.HatchingGround;
+import underlings.gui.Gui.PromptType;
 import underlings.handler.HandlerFactory;
 import underlings.player.PlayerFactory;
 
@@ -43,6 +44,10 @@ public class GuiTests {
         this.hatchingGround = new HatchingGround(this.deck, new ElementSpaceLogic(recipes));
         this.game = new Game(this.gui, this.hatchingGround, new PlayerFactory(new HandlerFactory(), recipes),
                 new ElementBag(new ElementFactory(), new Random()));
+    }
+
+    private void replay() {
+        EasyMock.replay(this.promptHandler, this.display);
     }
 
     @After
@@ -125,10 +130,17 @@ public class GuiTests {
 
     @Test
     public void testNotify() {
-
         this.promptHandler.displayMessage("test", 0, JOptionPane.PLAIN_MESSAGE);
-        EasyMock.replay(this.promptHandler, this.display);
+        this.replay();
 
         this.gui.notifyAction(0, "test");
+    }
+
+    @Test
+    public void testAlertNoPlayerID() {
+        this.promptHandler.displayMessage("test", JOptionPane.PLAIN_MESSAGE);
+        this.replay();
+
+        this.gui.alert("test", PromptType.REGULAR);
     }
 }

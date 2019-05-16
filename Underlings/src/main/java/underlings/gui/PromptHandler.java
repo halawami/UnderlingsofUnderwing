@@ -16,4 +16,6 @@ public interface PromptHandler {
 
     void displayMessage(String message, int playerId, int icon);
 
+    void displayMessage(String message, int icon);
+
 }
