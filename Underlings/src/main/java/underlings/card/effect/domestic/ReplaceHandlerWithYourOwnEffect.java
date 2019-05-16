@@ -17,7 +17,7 @@ public class ReplaceHandlerWithYourOwnEffect extends HandlerEffect {
             Gui gui) {
         List<Card> claimedEggs = hatchingGround.getClaimedEggs();
         if (!claimedEggs.isEmpty()) {
-            Card chosenEgg = gui.promptCard("Choose a card to replace its handler", claimedEggs);
+            Card chosenEgg = gui.promptChoice("Choose a card to replace its handler", claimedEggs, currentPlayer.id);
             Handler chosenHandler = gui.promptChoice("Choose a handler to replace with", currentPlayer.getHandlers(),
                     currentPlayer.getId());
             handlerLogic.move(chosenEgg.handler, HandlerChoice.BREAK_ROOM, currentPlayer);
