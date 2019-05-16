@@ -7,7 +7,6 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 import java.util.Set;
 import javax.swing.JOptionPane;
 import underlings.card.Card;
@@ -193,11 +192,6 @@ public class Gui {
     public ElementSpace getElementSpaceContainingElementOfColors(List<Card> cards, ElementColor[] colorChoices) {
         // TODO: implement this method for CollectUpToElementsFromAnyEggInPlayEffect,
         // ask Mohammad for information
-        return null;
-    }
-
-    public Card promptCardToSteal(String message, int playerId, Map<Player, List<Card>> playerCards) {
-        // TODO
         return null;
     }
 

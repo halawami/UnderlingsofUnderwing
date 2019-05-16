@@ -1,14 +1,13 @@
 package underlings.effect.players;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-
 import org.easymock.EasyMock;
 import org.junit.Test;
-
 import underlings.card.Card;
 import underlings.card.Temperature;
 import underlings.card.effect.domestic.TakeHatchedDragonFromPlayer;
@@ -36,7 +35,9 @@ public class TakeHatchedDragonFromPlayerTests {
         effect.on(gui).on(Arrays.asList(player, player2)).on(player2).on(eggHatchingLogic);
         Map<Player, List<Card>> map = new HashMap<>();
         map.put(player, Arrays.asList(card));
-        EasyMock.expect(gui.promptCardToSteal(LocaleWrap.get("prompt_card_to_steal"), 1, map)).andReturn(card);
+        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_player_to_steal"), new ArrayList<>(map.keySet()), 0))
+                .andReturn(player);
+        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_card_to_steal"), map.get(player), 1)).andReturn(card);
         eggHatchingLogic.hatchEgg(card, false, player2);
 
         EasyMock.replay(player, gui, player2, eggHatchingLogic);
@@ -72,7 +73,11 @@ public class TakeHatchedDragonFromPlayerTests {
         Map<Player, List<Card>> map = new HashMap<>();
         map.put(player, Arrays.asList());
         map.put(player3, Arrays.asList(card2));
-        EasyMock.expect(gui.promptCardToSteal(LocaleWrap.get("prompt_card_to_steal"), 1, map)).andReturn(card2);
+
+        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_player_to_steal"), new ArrayList<>(map.keySet()), 0))
+                .andReturn(player3);
+        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_card_to_steal"), map.get(player3), 1)).andReturn(card2);
+
         eggHatchingLogic.hatchEgg(card2, false, player2);
 
         EasyMock.replay(player, gui, player2, eggHatchingLogic);
@@ -108,7 +113,11 @@ public class TakeHatchedDragonFromPlayerTests {
         Map<Player, List<Card>> map = new HashMap<>();
         map.put(player, Arrays.asList());
         map.put(player3, Arrays.asList(card2));
-        EasyMock.expect(gui.promptCardToSteal(LocaleWrap.get("prompt_card_to_steal"), 1, map)).andReturn(card2);
+
+        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_player_to_steal"), new ArrayList<>(map.keySet()), 0))
+                .andReturn(player3);
+        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_card_to_steal"), map.get(player3), 1)).andReturn(card2);
+
         eggHatchingLogic.hatchEgg(card2, false, player2);
 
         EasyMock.replay(player, gui, player2, eggHatchingLogic);

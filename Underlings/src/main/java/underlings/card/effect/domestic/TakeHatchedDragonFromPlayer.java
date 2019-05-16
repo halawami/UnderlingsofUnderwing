@@ -1,11 +1,11 @@
 package underlings.card.effect.domestic;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-
 import underlings.card.Card;
 import underlings.card.Temperature;
 import underlings.card.effect.PlayersHatchingEffect;
@@ -21,20 +21,23 @@ public class TakeHatchedDragonFromPlayer extends PlayersHatchingEffect {
 
     @Override
     protected void apply(Player currentPlayer, List<Player> players, Gui gui, EggHatchingLogic eggHatchingLogic) {
-        List<Temperature> temperaturesList = Arrays.asList(temperatures);
+        List<Temperature> temperaturesList = Arrays.asList(this.temperatures);
         Map<Player, List<Card>> playerCards = new HashMap<>();
         for (Player player : players) {
             if (player != currentPlayer) {
                 playerCards.put(player, new LinkedList<>());
                 for (Card dragon : player.hatchedCards) {
-                    if (temperaturesList.contains(dragon.temperature) && dragon.points <= points) {
+                    if (temperaturesList.contains(dragon.temperature) && dragon.points <= this.points) {
                         playerCards.get(player).add(dragon);
                     }
                 }
             }
         }
-        Card toSteal =
-                gui.promptCardToSteal(LocaleWrap.get("prompt_card_to_steal"), currentPlayer.getId(), playerCards);
+
+        Player playerToSteal = gui.promptChoice(LocaleWrap.get("prompt_player_to_steal"),
+                new ArrayList<>(playerCards.keySet()), currentPlayer.id);
+        Card toSteal = gui.promptChoice(LocaleWrap.get("prompt_card_to_steal"), playerCards.get(playerToSteal),
+                currentPlayer.getId());
 
         // TODO: is this the right behavior
         eggHatchingLogic.hatchEgg(toSteal, false, currentPlayer);
