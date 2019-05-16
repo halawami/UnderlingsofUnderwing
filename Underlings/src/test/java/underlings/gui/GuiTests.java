@@ -143,4 +143,13 @@ public class GuiTests {
 
         this.gui.alert("test", PromptType.REGULAR);
     }
+
+    @Test
+    public void testAlertRegular() {
+        this.promptHandler.displayMessage("test", 1, JOptionPane.PLAIN_MESSAGE);
+        this.replay();
+
+        this.gui.alert("test", 1, PromptType.REGULAR);
+    }
+
 }
