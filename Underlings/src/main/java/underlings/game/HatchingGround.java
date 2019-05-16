@@ -136,7 +136,7 @@ public class HatchingGround implements Iterable<Card> {
     }
 
     public void replaceCard(Card card) {
-        // TODO: takes a card in this.cards and replace it with a card from deck
+        cards[0][0] = deck.draw();
     }
 
     public Card findCard(Handler handler) {
