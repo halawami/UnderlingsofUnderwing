@@ -6,14 +6,15 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+
 import org.easymock.EasyMock;
 import org.junit.Test;
+
 import underlings.card.Card;
 import underlings.card.Temperature;
 import underlings.card.effect.domestic.TakeHatchedDragonFromPlayer;
 import underlings.gui.Gui;
 import underlings.player.Player;
-import underlings.utilities.EggHatchingLogic;
 import underlings.utilities.LocaleWrap;
 
 public class TakeHatchedDragonFromPlayerTests {
@@ -22,7 +23,6 @@ public class TakeHatchedDragonFromPlayerTests {
     public void testApply() {
         Player player = EasyMock.mock(Player.class);
         Player player2 = EasyMock.mock(Player.class);
-        EggHatchingLogic eggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
         Card card = new Card();
         player.hatchedCards = new LinkedList<>();
         player.hatchedCards.add(card);
@@ -32,21 +32,20 @@ public class TakeHatchedDragonFromPlayerTests {
         Gui gui = EasyMock.mock(Gui.class);
         EasyMock.expect(player2.getId()).andReturn(1);
         TakeHatchedDragonFromPlayer effect = new TakeHatchedDragonFromPlayer();
-        effect.on(gui).on(Arrays.asList(player, player2)).on(player2).on(eggHatchingLogic);
+        effect.on(gui).on(Arrays.asList(player, player2)).on(player2);
         Map<Player, List<Card>> map = new HashMap<>();
         map.put(player, Arrays.asList(card));
         EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_player_to_steal"), new ArrayList<>(map.keySet()), 0))
                 .andReturn(player);
         EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_card_to_steal"), map.get(player), 1)).andReturn(card);
-        eggHatchingLogic.hatchEgg(card, false, player2);
 
-        EasyMock.replay(player, gui, player2, eggHatchingLogic);
+        EasyMock.replay(player, gui, player2);
 
         effect.points = 9;
         effect.temperatures = new Temperature[] {Temperature.NEUTRAL};
         effect.apply();
 
-        EasyMock.verify(player, gui, player2, eggHatchingLogic);
+        EasyMock.verify(player, gui, player2);
     }
 
     @Test
@@ -54,7 +53,6 @@ public class TakeHatchedDragonFromPlayerTests {
         Player player = EasyMock.mock(Player.class);
         Player player2 = EasyMock.mock(Player.class);
         Player player3 = EasyMock.mock(Player.class);
-        EggHatchingLogic eggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
         Card card = new Card();
         card.temperature = Temperature.WARM;
         card.points = 8;
@@ -69,7 +67,7 @@ public class TakeHatchedDragonFromPlayerTests {
         Gui gui = EasyMock.mock(Gui.class);
         EasyMock.expect(player2.getId()).andReturn(1);
         TakeHatchedDragonFromPlayer effect = new TakeHatchedDragonFromPlayer();
-        effect.on(gui).on(Arrays.asList(player, player2, player3)).on(player2).on(eggHatchingLogic);
+        effect.on(gui).on(Arrays.asList(player, player2, player3)).on(player2);
         Map<Player, List<Card>> map = new HashMap<>();
         map.put(player, Arrays.asList());
         map.put(player3, Arrays.asList(card2));
@@ -78,15 +76,13 @@ public class TakeHatchedDragonFromPlayerTests {
                 .andReturn(player3);
         EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_card_to_steal"), map.get(player3), 1)).andReturn(card2);
 
-        eggHatchingLogic.hatchEgg(card2, false, player2);
-
-        EasyMock.replay(player, gui, player2, eggHatchingLogic);
+        EasyMock.replay(player, gui, player2);
 
         effect.points = 9;
         effect.temperatures = new Temperature[] {Temperature.NEUTRAL};
         effect.apply();
 
-        EasyMock.verify(player, gui, player2, eggHatchingLogic);
+        EasyMock.verify(player, gui, player2);
     }
 
     @Test
@@ -94,7 +90,6 @@ public class TakeHatchedDragonFromPlayerTests {
         Player player = EasyMock.mock(Player.class);
         Player player2 = EasyMock.mock(Player.class);
         Player player3 = EasyMock.mock(Player.class);
-        EggHatchingLogic eggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
         Card card = new Card();
         card.temperature = Temperature.NEUTRAL;
         card.points = 10;
@@ -109,7 +104,7 @@ public class TakeHatchedDragonFromPlayerTests {
         Gui gui = EasyMock.mock(Gui.class);
         EasyMock.expect(player2.getId()).andReturn(1);
         TakeHatchedDragonFromPlayer effect = new TakeHatchedDragonFromPlayer();
-        effect.on(gui).on(Arrays.asList(player, player2, player3)).on(player2).on(eggHatchingLogic);
+        effect.on(gui).on(Arrays.asList(player, player2, player3)).on(player2);
         Map<Player, List<Card>> map = new HashMap<>();
         map.put(player, Arrays.asList());
         map.put(player3, Arrays.asList(card2));
@@ -118,14 +113,12 @@ public class TakeHatchedDragonFromPlayerTests {
                 .andReturn(player3);
         EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_card_to_steal"), map.get(player3), 1)).andReturn(card2);
 
-        eggHatchingLogic.hatchEgg(card2, false, player2);
-
-        EasyMock.replay(player, gui, player2, eggHatchingLogic);
+        EasyMock.replay(player, gui, player2);
 
         effect.points = 9;
         effect.temperatures = new Temperature[] {Temperature.NEUTRAL};
         effect.apply();
 
-        EasyMock.verify(player, gui, player2, eggHatchingLogic);
+        EasyMock.verify(player, gui, player2);
     }
 }
