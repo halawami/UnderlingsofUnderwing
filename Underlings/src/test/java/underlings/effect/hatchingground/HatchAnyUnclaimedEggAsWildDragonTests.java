@@ -2,14 +2,11 @@ package underlings.effect.hatchingground;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
-
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
-
 import org.easymock.EasyMock;
 import org.junit.Test;
-
 import underlings.card.Card;
 import underlings.card.effect.Effect;
 import underlings.card.effect.domestic.HatchAnyUnclaimedEggAsWildDragon;
@@ -36,7 +33,7 @@ public class HatchAnyUnclaimedEggAsWildDragonTests {
         EasyMock.expect(player.getId()).andReturn(-1);
         EasyMock.expect(gui.promptDecision(LocaleWrap.get("prompt_choice_hatch_wildly"), -1)).andReturn(true);
         EasyMock.expect(hatchingGround.getUnclaimedEggs()).andReturn(Arrays.asList(card));
-        EasyMock.expect(gui.promptCard(LocaleWrap.get("prompt_card_hatch_wildly"), Arrays.asList(card)))
+        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_card_hatch_wildly"), Arrays.asList(card), 0))
                 .andReturn(card);
         List<String> recipes = Resources.readLines(Resources.getResource("DefaultRecipeList.txt"), Charsets.UTF_8);
         FakePlayer.initPlayer(recipes);

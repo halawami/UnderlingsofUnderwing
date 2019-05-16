@@ -1,7 +1,6 @@
 package underlings.card.effect.domestic;
 
 import java.util.List;
-
 import underlings.card.Card;
 import underlings.card.effect.HatchingGroundEffect;
 import underlings.element.ElementBag;
@@ -26,7 +25,8 @@ public class HatchAnyUnclaimedEggAsWildDragon extends HatchingGroundEffect {
             if (unclaimedEggs.size() == 0) {
                 gui.notifyAction(currentPlayer.getId(), LocaleWrap.get("notify_no_unclaimed_eggs"));
             } else {
-                Card toHatch = gui.promptCard(LocaleWrap.get("prompt_card_hatch_wildly"), unclaimedEggs);
+                Card toHatch =
+                        gui.promptChoice(LocaleWrap.get("prompt_card_hatch_wildly"), unclaimedEggs, currentPlayer.id);
                 eggHatchingLogic.hatchEgg(toHatch, true, FakePlayer.getInstance());
             }
         }
