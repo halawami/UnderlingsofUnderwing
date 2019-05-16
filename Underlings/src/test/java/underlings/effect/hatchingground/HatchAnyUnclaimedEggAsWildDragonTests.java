@@ -33,7 +33,8 @@ public class HatchAnyUnclaimedEggAsWildDragonTests {
         Effect effect = new HatchAnyUnclaimedEggAsWildDragon();
         effect.on(card).on(hatchingGround).on(elementBag).on(gui).on(player).on(eggHatchingLogic);
         EasyMock.expect(player.getId()).andReturn(-1);
-        EasyMock.expect(gui.promptDecision(LocaleWrap.get("prompt_choice_hatch_wildly"), -1)).andReturn(true);
+        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_choice_hatch_wildly"), Choice.getChoices(), -1))
+                .andReturn(Choice.YES);
         EasyMock.expect(hatchingGround.getUnclaimedEggs()).andReturn(Arrays.asList(card));
         EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_card_hatch_wildly"), Arrays.asList(card), 0))
                 .andReturn(card);
@@ -59,7 +60,8 @@ public class HatchAnyUnclaimedEggAsWildDragonTests {
         Effect effect = new HatchAnyUnclaimedEggAsWildDragon();
         effect.on(card).on(hatchingGround).on(elementBag).on(gui).on(player).on(eggHatchingLogic);
         EasyMock.expect(player.getId()).andReturn(-1);
-        EasyMock.expect(gui.promptDecision(LocaleWrap.get("prompt_choice_hatch_wildly"), -1)).andReturn(false);
+        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_choice_hatch_wildly"), Choice.getChoices(), -1))
+                .andReturn(Choice.NO);
 
         EasyMock.replay(card, hatchingGround, elementBag, gui, player, eggHatchingLogic);
 
@@ -79,7 +81,8 @@ public class HatchAnyUnclaimedEggAsWildDragonTests {
         Effect effect = new HatchAnyUnclaimedEggAsWildDragon();
         effect.on(card).on(hatchingGround).on(elementBag).on(gui).on(player).on(eggHatchingLogic);
         EasyMock.expect(player.getId()).andReturn(-1).times(2);
-        EasyMock.expect(gui.promptDecision(LocaleWrap.get("prompt_choice_hatch_wildly"), -1)).andReturn(true);
+        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_choice_hatch_wildly"), Choice.getChoices(), -1))
+                .andReturn(Choice.YES);
         EasyMock.expect(hatchingGround.getUnclaimedEggs()).andReturn(Arrays.asList());
         gui.notifyAction(-1, LocaleWrap.get("notify_no_unclaimed_eggs"));
 
