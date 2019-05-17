@@ -187,6 +187,7 @@ public class Gui {
         if (cardOptions.isEmpty()) {
             return null;
         }
+
         YesNoChoice choice = this.promptHandler.promptChoice("Would you like to take an element from a card?",
                 YesNoChoice.getChoices(), playerId);
         if (choice == YesNoChoice.NO) {
