@@ -1,5 +1,7 @@
 package underlings.phase;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,17 +34,18 @@ public class HandlerPhaseTest {
 
         EasyMock.expect(gui.getHandlerDecision(player.getHandlers(), 0, hatchingGround)).andReturn(handlerDecision);
         handlerMovementLogic.move(handlerDecision.handler, handlerDecision.choice, player);
+        Runnable displayMethod = EasyMock.mock(Runnable.class);
+        displayMethod.run();
 
-        Phase handlerPhase = new HandlerPhase(players, gui, null, hatchingGround, () -> {
-        }, null, handlerMovementLogic);
+        Phase handlerPhase =
+                new HandlerPhase(players, gui, null, hatchingGround, displayMethod, null, handlerMovementLogic);
 
-        EasyMock.replay(gui, handlerMovementLogic, hatchingGround);
+        EasyMock.replay(gui, handlerMovementLogic, hatchingGround, displayMethod);
 
         handlerPhase.setup();
         handlerPhase.turn(player);
 
-        EasyMock.verify(gui, handlerMovementLogic, hatchingGround);
-
+        EasyMock.verify(gui, handlerMovementLogic, hatchingGround, displayMethod);
     }
 
     @Test
@@ -69,6 +72,7 @@ public class HandlerPhaseTest {
         handlerPhase.setup();
         handlerPhase.turn(player);
 
+        assertEquals(HandlerState.READY_ROOM, player.getHandlers().get(0).getState());
         EasyMock.verify(gui, handlerMovementLogic, hatchingGround);
 
     }

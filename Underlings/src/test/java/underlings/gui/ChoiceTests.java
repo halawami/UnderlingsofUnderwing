@@ -1,10 +1,11 @@
 package underlings.gui;
 
 import static org.junit.Assert.assertEquals;
+
 import org.easymock.EasyMock;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.field.Field;
 import underlings.field.FieldSpace;
 import underlings.field.FieldSpaceFactory;
@@ -21,11 +22,6 @@ public class ChoiceTests {
         this.promptHandler = EasyMock.mock(PromptHandler.class);
         this.display = EasyMock.mock(Display.class);
         this.gui = new Gui(this.promptHandler, this.display);
-    }
-
-    @After
-    public void verify() {
-        EasyMock.verify(this.promptHandler, this.display);
     }
 
     @Test
