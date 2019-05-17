@@ -8,7 +8,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
+
 import javax.swing.JOptionPane;
+
 import underlings.card.Card;
 import underlings.element.Element;
 import underlings.element.ElementBag;
