@@ -25,7 +25,7 @@ public class GetElementSpaceWithColorsTests {
         PromptHandler prompt = EasyMock.mock(PromptHandler.class);
         List<String> expectedChoices = new ArrayList<>();
         expectedChoices.add("Cancel");
-        EasyMock.expect(prompt.promptChoice("Pick a card to steal from", expectedChoices, 1)).andReturn("Cancel");
+        EasyMock.expect(prompt.promptChoice("Pick a card to take from", expectedChoices, 1)).andReturn("Cancel");
         EasyMock.replay(prompt);
 
         List<Card> cards = Arrays.asList(card);
@@ -49,7 +49,7 @@ public class GetElementSpaceWithColorsTests {
         PromptHandler prompt = EasyMock.mock(PromptHandler.class);
         List<String> expectedChoices = new ArrayList<>();
         expectedChoices.add("Cancel");
-        EasyMock.expect(prompt.promptChoice("Pick a card to steal from", expectedChoices, 1)).andReturn("Cancel");
+        EasyMock.expect(prompt.promptChoice("Pick a card to take from", expectedChoices, 1)).andReturn("Cancel");
         EasyMock.replay(prompt);
 
         Gui gui = new Gui(prompt, null);
@@ -73,7 +73,7 @@ public class GetElementSpaceWithColorsTests {
         PromptHandler prompt = EasyMock.mock(PromptHandler.class);
         List<String> expectedChoices = new ArrayList<>();
         expectedChoices.add("Cancel");
-        EasyMock.expect(prompt.promptChoice("Pick a card to steal from", expectedChoices, 1)).andReturn("Cancel");
+        EasyMock.expect(prompt.promptChoice("Pick a card to take from", expectedChoices, 1)).andReturn("Cancel");
         EasyMock.replay(prompt);
 
         Gui gui = new Gui(prompt, null);
@@ -98,7 +98,9 @@ public class GetElementSpaceWithColorsTests {
         List<String> expectedChoices = new ArrayList<>();
         expectedChoices.add("TestCard");
         expectedChoices.add("Cancel");
-        EasyMock.expect(prompt.promptChoice("Pick a card to steal from", expectedChoices, 1)).andReturn("TestCard");
+        EasyMock.expect(prompt.promptChoice("Pick a card to take from", expectedChoices, 1)).andReturn("TestCard");
+        EasyMock.expect(prompt.promptChoice("Pick a space to take from", Arrays.asList(card.elementSpaces[0]), 1))
+                .andReturn(card.elementSpaces[0]);
         EasyMock.replay(prompt);
 
         Gui gui = new Gui(prompt, null);

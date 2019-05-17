@@ -185,7 +185,7 @@ public class Gui {
             }
         }
         cardOptions.add("Cancel");
-        String val = this.promptHandler.promptChoice("Pick a card to steal from", cardOptions, playerId);
+        String val = this.promptHandler.promptChoice("Pick a card to take from", cardOptions, playerId);
         return val.equals("Cancel") ? null : cards.get(0).elementSpaces[0];
     }
 
