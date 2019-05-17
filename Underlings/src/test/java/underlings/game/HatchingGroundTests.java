@@ -263,6 +263,7 @@ public class HatchingGroundTests {
         final Card fakeCard = new Card();
         Card card = new Card();
         card.handler = WildHandler.getInstance();
+        card.wildEffects = new Effect[0];
         ElementSpace[] spaces = {new ElementSpace(ElementColor.PURPLE), new ElementSpace(ElementColor.BLACK)};
         card.elementSpaces = spaces;
         spaces[0].elements = Arrays.asList(new Element(ElementColor.PURPLE));
@@ -333,6 +334,7 @@ public class HatchingGroundTests {
         Card card = new Card();
         card.points = 3;
         card.handler = WildHandler.getInstance();
+        card.wildEffects = new Effect[0];
         Card card2 = new Card();
         card2.points = 3;
         card2.handler = EasyMock.mock(Handler.class);
@@ -368,6 +370,7 @@ public class HatchingGroundTests {
         Card card = new Card();
         card.points = 3;
         card.handler = WildHandler.getInstance();
+        card.wildEffects = new Effect[0];
         Card card2 = new Card();
         card2.points = 3;
         card2.handler = EasyMock.mock(Handler.class);
@@ -404,16 +407,13 @@ public class HatchingGroundTests {
         Deck deck = EasyMock.mock(Deck.class);
         EasyMock.expect(deck.draw()).andReturn(card);
 
-        ElementSpaceLogic logic = EasyMock.mock(ElementSpaceLogic.class);
-        EasyMock.expect(logic.isComplete(card)).andReturn(false);
+        EasyMock.replay(deck);
 
-        EasyMock.replay(logic, deck);
-
-        HatchingGround hatchingGround = new HatchingGround(deck, logic);
+        HatchingGround hatchingGround = new HatchingGround(deck, null);
         hatchingGround.setDimensions(1, 1);
         hatchingGround.populate();
 
-        EasyMock.verify(logic, deck);
+        EasyMock.verify(deck);
     }
 
     @Test
@@ -424,16 +424,13 @@ public class HatchingGroundTests {
         Deck deck = EasyMock.mock(Deck.class);
         EasyMock.expect(deck.draw()).andReturn(card);
 
-        ElementSpaceLogic logic = EasyMock.mock(ElementSpaceLogic.class);
-        EasyMock.expect(logic.isComplete(card)).andReturn(true);
+        EasyMock.replay(deck);
 
-        EasyMock.replay(logic, deck);
-
-        HatchingGround hatchingGround = new HatchingGround(deck, logic);
+        HatchingGround hatchingGround = new HatchingGround(deck, null);
         hatchingGround.setDimensions(1, 1);
         hatchingGround.populate();
 
-        EasyMock.verify(logic, deck);
+        EasyMock.verify(deck);
     }
 
     @Test
@@ -450,16 +447,13 @@ public class HatchingGroundTests {
         Deck deck = EasyMock.mock(Deck.class);
         EasyMock.expect(deck.draw()).andReturn(card);
 
-        ElementSpaceLogic logic = EasyMock.mock(ElementSpaceLogic.class);
-        EasyMock.expect(logic.isComplete(card)).andReturn(true);
+        EasyMock.replay(effect, deck);
 
-        EasyMock.replay(logic, effect, deck);
-
-        HatchingGround hatchingGround = new HatchingGround(deck, logic);
+        HatchingGround hatchingGround = new HatchingGround(deck, null);
         hatchingGround.setDimensions(1, 1);
         hatchingGround.populate();
 
-        EasyMock.verify(logic, effect, deck);
+        EasyMock.verify(effect, deck);
     }
 
     @Test
@@ -473,16 +467,13 @@ public class HatchingGroundTests {
         Deck deck = EasyMock.mock(Deck.class);
         EasyMock.expect(deck.draw()).andReturn(card);
 
-        ElementSpaceLogic logic = EasyMock.mock(ElementSpaceLogic.class);
-        EasyMock.expect(logic.isComplete(card)).andReturn(true);
+        EasyMock.replay(deck);
 
-        EasyMock.replay(logic, deck);
-
-        HatchingGround hatchingGround = new HatchingGround(deck, logic);
+        HatchingGround hatchingGround = new HatchingGround(deck, null);
         hatchingGround.setDimensions(1, 1);
         hatchingGround.populate();
 
-        EasyMock.verify(logic, deck);
+        EasyMock.verify(deck);
     }
 
     @Test
@@ -504,16 +495,13 @@ public class HatchingGroundTests {
         Deck deck = EasyMock.mock(Deck.class);
         EasyMock.expect(deck.draw()).andReturn(card);
 
-        ElementSpaceLogic logic = EasyMock.mock(ElementSpaceLogic.class);
-        EasyMock.expect(logic.isComplete(card)).andReturn(true);
+        EasyMock.replay(deck, effect1, effect2);
 
-        EasyMock.replay(logic, deck, effect1, effect2);
-
-        HatchingGround hatchingGround = new HatchingGround(deck, logic);
+        HatchingGround hatchingGround = new HatchingGround(deck, null);
         hatchingGround.setDimensions(1, 1);
         hatchingGround.populate();
 
-        EasyMock.verify(logic, deck, effect1, effect2);
+        EasyMock.verify(deck, effect1, effect2);
     }
 
 }

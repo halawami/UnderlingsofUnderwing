@@ -35,6 +35,7 @@ public class EggHatchingLogic {
     }
 
     public void hatchEgg(Card card, boolean wild, Player player) {
+        System.out.println("hatching " + card);
         Effect[] effects;
         if (wild) {
             card.handler = WildHandler.getInstance();
