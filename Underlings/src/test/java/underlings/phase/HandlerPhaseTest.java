@@ -1,5 +1,7 @@
 package underlings.phase;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,6 +71,7 @@ public class HandlerPhaseTest {
         handlerPhase.setup();
         handlerPhase.turn(player);
 
+        assertEquals(HandlerState.READY_ROOM, player.getHandlers().get(0).getState());
         EasyMock.verify(gui, handlerMovementLogic, hatchingGround);
 
     }
