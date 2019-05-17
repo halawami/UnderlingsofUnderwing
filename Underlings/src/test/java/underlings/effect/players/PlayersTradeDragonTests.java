@@ -3,10 +3,14 @@ package underlings.effect.players;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import org.easymock.EasyMock;
+import org.junit.Before;
 import org.junit.Test;
+
 import underlings.card.Card;
 import underlings.card.EmptyCard;
 import underlings.card.effect.Effect;
@@ -17,24 +21,35 @@ import underlings.utilities.LocaleWrap;
 
 public class PlayersTradeDragonTests {
 
+    private Player player;
+    private Player player2;
+    private Gui gui;
+    private Card card;
+    private Card card2;
+    private Effect mockedEffect;
+    private Effect effect;
+
+    @Before
+    public void testInit() {
+        this.player = EasyMock.mock(Player.class);
+        this.player2 = EasyMock.mock(Player.class);
+        this.gui = EasyMock.mock(Gui.class);
+        this.card = new Card();
+        this.card.points = 12;
+        this.card.domesticEffects = new Effect[] {mockedEffect};
+        this.card2 = new Card();
+        this.card2.points = 12;
+        this.card.domesticEffects = new Effect[] {mockedEffect};
+        this.mockedEffect = EasyMock.mock(Effect.class);
+        this.effect = new PlayersTradeDragon();
+        this.player.hatchedCards = new ArrayList<>();
+        this.player.hatchedCards.add(card);
+        this.player2.hatchedCards = new ArrayList<>();
+    }
+
     @Test
     public void testApplyTwoPlayersOneCard() {
-        Player player = EasyMock.mock(Player.class);
-        Player player2 = EasyMock.mock(Player.class);
-        Gui gui = EasyMock.mock(Gui.class);
-        Card card = new Card();
-        card.points = 12;
-        card.domesticEffects = new Effect[1];
-        Effect mockedEffect = EasyMock.mock(Effect.class);
-        card.domesticEffects[0] = mockedEffect;
-        Effect effect = new PlayersTradeDragon();
-        player.hatchedCards = new ArrayList<>();
-        player.hatchedCards.add(card);
-        player2.hatchedCards = new ArrayList<>();
         effect.on(Arrays.asList(player, player2)).on(gui);
-        // TODO: this should probably be differnet than prompt card because we want to show cards
-        // and points and effects
-        // need to take playerid
         EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_card_to_trade"), player.hatchedCards, 0))
                 .andReturn(card);
         EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_card_to_trade"), player2.hatchedCards, 0))
@@ -53,30 +68,12 @@ public class PlayersTradeDragonTests {
 
     @Test
     public void testApplyTwoPlayersThreeCards() {
-        Player player = EasyMock.mock(Player.class);
-        Player player2 = EasyMock.mock(Player.class);
-        Gui gui = EasyMock.mock(Gui.class);
-        Card card = new Card();
-        card.points = 12;
-        card.domesticEffects = new Effect[1];
-        Effect mockedEffect = EasyMock.mock(Effect.class);
-        card.domesticEffects[0] = mockedEffect;
         Card card3 = new Card();
         card3.points = 12;
         card3.domesticEffects = new Effect[] {mockedEffect};
-        Card card2 = new Card();
-        card2.points = 12;
-        card2.domesticEffects = new Effect[] {mockedEffect};
-        Effect effect = new PlayersTradeDragon();
-        player.hatchedCards = new ArrayList<>();
-        player.hatchedCards.add(card);
         player.hatchedCards.add(card3);
-        player2.hatchedCards = new ArrayList<>();
         player2.hatchedCards.add(card2);
         effect.on(Arrays.asList(player, player2)).on(gui);
-        // TODO: this should probably be differnet than prompt card because we want to show cards
-        // and points and effects
-        // need to take playerid
 
         EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_card_to_trade"), player.hatchedCards, 0))
                 .andReturn(card3);
@@ -98,35 +95,19 @@ public class PlayersTradeDragonTests {
 
     @Test
     public void testApplyMultiplePlayers() {
-        Player player = EasyMock.mock(Player.class);
-        Player player2 = EasyMock.mock(Player.class);
+
         Player player3 = EasyMock.mock(Player.class);
-        Gui gui = EasyMock.mock(Gui.class);
-        Card card = new Card();
-        card.points = 12;
-        card.domesticEffects = new Effect[1];
-        Effect mockedEffect = EasyMock.mock(Effect.class);
-        card.domesticEffects[0] = mockedEffect;
         Card card3 = new Card();
         card3.points = 12;
         card3.domesticEffects = new Effect[] {mockedEffect};
-        Card card2 = new Card();
-        card2.points = 12;
-        card2.domesticEffects = new Effect[] {mockedEffect};
-        Effect effect = new PlayersTradeDragon();
-        player.hatchedCards = new ArrayList<>();
-        player.hatchedCards.add(card);
         player.hatchedCards.add(card3);
-        player2.hatchedCards = new ArrayList<>();
         player2.hatchedCards.add(card2);
         player2.hatchedCards.add(card3);
         player3.hatchedCards = new ArrayList<>();
         player3.hatchedCards.add(card3);
         effect.on(Arrays.asList(player, player2, player3)).on(gui);
         Player playerWithLeastDragons = player3;
-        // TODO: this should probably be differnet than prompt card because we want to show cards
-        // and points and effects
-        // need to take playerid
+
         EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_card_to_trade"), player.hatchedCards, 0))
                 .andReturn(card);
         EasyMock.expect(
@@ -156,21 +137,6 @@ public class PlayersTradeDragonTests {
 
     @Test
     public void testApplySameNumberOfDragons() {
-        Player player = EasyMock.mock(Player.class);
-        Player player2 = EasyMock.mock(Player.class);
-        Gui gui = EasyMock.mock(Gui.class);
-        Card card = new Card();
-        card.points = 12;
-        card.domesticEffects = new Effect[1];
-        Effect mockedEffect = EasyMock.mock(Effect.class);
-        card.domesticEffects[0] = mockedEffect;
-        Card card2 = new Card();
-        card2.points = 12;
-        card2.domesticEffects = new Effect[] {mockedEffect};
-        Effect effect = new PlayersTradeDragon();
-        player.hatchedCards = new ArrayList<>();
-        player.hatchedCards.add(card);
-        player2.hatchedCards = new ArrayList<>();
         player2.hatchedCards.add(card2);
         effect.on(Arrays.asList(player, player2)).on(gui);
         gui.notifyAction(-1, LocaleWrap.get("notify_no_player_least_dragons"));
@@ -184,24 +150,9 @@ public class PlayersTradeDragonTests {
 
     @Test
     public void testApplyMultipleSameNumberOfDragons() {
-        Player player = EasyMock.mock(Player.class);
-        Player player2 = EasyMock.mock(Player.class);
         Player player3 = EasyMock.mock(Player.class);
         Player player4 = EasyMock.mock(Player.class);
-        Gui gui = EasyMock.mock(Gui.class);
-        Card card = new Card();
-        card.points = 12;
-        card.domesticEffects = new Effect[1];
-        Effect mockedEffect = EasyMock.mock(Effect.class);
-        card.domesticEffects[0] = mockedEffect;
-        Card card2 = new Card();
-        card2.points = 12;
-        card2.domesticEffects = new Effect[] {mockedEffect};
-        Effect effect = new PlayersTradeDragon();
-        player.hatchedCards = new ArrayList<>();
-        player.hatchedCards.add(card);
         player.hatchedCards.add(card2);
-        player2.hatchedCards = new ArrayList<>();
         player2.hatchedCards.add(card2);
         player3.hatchedCards = new ArrayList<>();
         player3.hatchedCards.add(card2);
