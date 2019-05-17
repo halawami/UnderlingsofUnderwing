@@ -48,7 +48,7 @@ public class HatchingGround implements Iterable<Card> {
         this.cards = new Card[this.height][this.width];
         for (int row = 0; row < this.height; row++) {
             for (int col = 0; col < this.width; col++) {
-                this.cards[row][col] = this.deck.draw();
+                placeCard(row, col, this.deck.draw());
             }
         }
     }
@@ -128,7 +128,7 @@ public class HatchingGround implements Iterable<Card> {
                 Card currentCard = this.cards[row][col];
                 if (logic.isComplete(currentCard) && currentCard.handler != WildHandler.getInstance()) {
                     completeEggs.add(this.cards[row][col]);
-                    this.cards[row][col] = this.deck.draw();
+                    placeCard(row, col, this.deck.draw());
                 }
             }
         }
@@ -139,10 +139,14 @@ public class HatchingGround implements Iterable<Card> {
         for (int row = 0; row < this.height; row++) {
             for (int col = 0; col < this.width; col++) {
                 if (this.cards[row][col] == card) {
-                    this.cards[row][col] = this.deck.draw();
+                    placeCard(row, col, this.deck.draw());
                 }
             }
         }
+    }
+
+    public void placeCard(int row, int col, Card card) {
+        this.cards[row][col] = card;
     }
 
     public Card findCard(Handler handler) {
