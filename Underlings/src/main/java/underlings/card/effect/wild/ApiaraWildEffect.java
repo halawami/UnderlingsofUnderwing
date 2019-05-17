@@ -31,7 +31,9 @@ public class ApiaraWildEffect extends DiverseHatchingGroundEffect {
         } else {
             List<Card> unclaimedEggs = hatchingGround.getUnclaimedEggs();
             if (!unclaimedEggs.isEmpty()) {
-                eggHatchingLogic.hatchEgg(unclaimedEggs.get(0), true, currentPlayer);
+                for (Card egg : unclaimedEggs) {
+                    eggHatchingLogic.hatchEgg(egg, true, currentPlayer);
+                }
             }
         }
     }
