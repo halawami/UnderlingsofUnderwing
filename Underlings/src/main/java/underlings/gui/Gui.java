@@ -175,9 +175,15 @@ public class Gui {
         return this.promptHandler.promptChoice(prompt, choices, playerId);
     }
 
-    public ElementSpace getElementSpaceWithColors(List<Card> cards, ElementColor[] colorChoices) {
-        // TODO: implement this method for CollectUpToElementsFromAnyEggInPlayEffect,
-        // ask Mohammad for information
+    public ElementSpace getElementSpaceWithColors(List<Card> cards, ElementColor[] colorChoices, int playerId) {
+        List<String> cardOptions = new ArrayList<String>();
+        for (Card card : cards) {
+            for (ElementColor color : colorChoices) {
+
+            }
+        }
+        cardOptions.add("Cancel");
+        this.promptHandler.promptChoice("Pick a card to steal from", cardOptions, playerId);
         return null;
     }
 
