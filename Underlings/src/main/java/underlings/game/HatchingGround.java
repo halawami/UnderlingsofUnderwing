@@ -8,6 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import underlings.card.Card;
+import underlings.card.effect.Effect;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.handler.Handler;
 import underlings.handler.WildHandler;
@@ -148,8 +149,8 @@ public class HatchingGround implements Iterable<Card> {
     public void placeCard(int row, int col, Card card) {
         this.cards[row][col] = card;
         if (logic.isComplete(card) && card.handler == WildHandler.getInstance()) {
-            if (card.wildEffects.length > 0) {
-                card.wildEffects[0].apply();
+            for (Effect effect : card.wildEffects) {
+                effect.apply();
             }
         }
     }
