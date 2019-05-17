@@ -8,7 +8,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
+
 import javax.swing.JOptionPane;
+
 import underlings.card.Card;
 import underlings.element.Element;
 import underlings.element.ElementBag;
@@ -173,10 +175,40 @@ public class Gui {
         return this.promptHandler.promptChoice(prompt, choices, playerId);
     }
 
-    public ElementSpace getElementSpaceContainingElementOfColors(List<Card> cards, ElementColor[] colorChoices) {
-        // TODO: implement this method for CollectUpToElementsFromAnyEggInPlayEffect,
-        // ask Mohammad for information
-        return null;
+    public ElementSpace getElementSpaceWithColors(List<Card> cards, ElementColor[] colorChoices, int playerId) {
+        List<Card> cardOptions = new ArrayList<>();
+        for (Card card : cards) {
+            if (!getSpacesWithColors(card, colorChoices).isEmpty()) {
+                cardOptions.add(card);
+            }
+        }
+        if (cardOptions.isEmpty()) {
+            return null;
+        }
+
+        YesNoChoice choice = this.promptHandler.promptChoice(LocaleWrap.get("take_element_yesno"),
+                YesNoChoice.getChoices(), playerId);
+        if (choice == YesNoChoice.NO) {
+            return null;
+        }
+
+        Card card = this.promptHandler.promptChoice(LocaleWrap.get("take_element_card"), cardOptions, playerId);
+        List<ElementSpace> spaces = getSpacesWithColors(card, colorChoices);
+        ElementSpace space = this.promptHandler.promptChoice(LocaleWrap.get("take_element_space"), spaces, playerId);
+        return space;
+    }
+
+    private List<ElementSpace> getSpacesWithColors(Card card, ElementColor[] colorChoices) {
+        List<ElementSpace> spaces = new ArrayList<>();
+        for (ElementSpace space : card.elementSpaces) {
+            for (ElementColor color : colorChoices) {
+                if (space.getElementColors().contains(color)) {
+                    spaces.add(space);
+                    break;
+                }
+            }
+        }
+        return spaces;
     }
 
     public void alert(String message, PromptType messageType) {

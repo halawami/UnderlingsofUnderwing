@@ -26,7 +26,8 @@ public abstract class UptoElementsFromAnyEggInPlayEffect extends DiverseHatching
             HandlerMovementLogic handlerMovementLogic) {
         List<Card> allCards = hatchingGround.getAllCards();
         for (int i = 0; i < this.upTo; i++) {
-            ElementSpace selectedSpace = gui.getElementSpaceContainingElementOfColors(allCards, this.elementChoices);
+            ElementSpace selectedSpace =
+                    gui.getElementSpaceWithColors(allCards, this.elementChoices, currentPlayer.getId());
             Element selectedElement =
                     gui.getElementOfColorsFromSpace(this.elementChoices, selectedSpace, currentPlayer.getId());
             applyOnSelectedElement(selectedElement, selectedSpace, currentPlayer);

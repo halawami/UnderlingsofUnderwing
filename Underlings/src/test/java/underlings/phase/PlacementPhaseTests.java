@@ -3,14 +3,18 @@ package underlings.phase;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+
 import org.easymock.EasyMock;
 import org.junit.Test;
+
 import underlings.card.Card;
+import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.Deck;
 import underlings.game.HatchingGround;
 import underlings.gui.Display;
@@ -101,6 +105,9 @@ public class PlacementPhaseTests {
 
     @Test
     public void testCheckGameover() throws Exception {
+        ElementSpaceLogic logic = EasyMock.mock(ElementSpaceLogic.class);
+        EasyMock.expect(logic.isComplete(EasyMock.anyObject(Card.class))).andReturn(false).anyTimes();
+
         Player player = EasyMock.mock(Player.class);
         EasyMock.expect(player.getHandlerCount()).andReturn(3).anyTimes();
         final List<Player> players = Arrays.asList(player);
@@ -109,16 +116,16 @@ public class PlacementPhaseTests {
         card.handler = new Handler(HandlerState.CARD);
         Deck deck = EasyMock.mock(Deck.class);
         EasyMock.expect(deck.draw()).andReturn(card);
-        HatchingGround hatchingGround = new HatchingGround(deck, null);
+        HatchingGround hatchingGround = new HatchingGround(deck, logic);
 
-        EasyMock.replay(player, deck);
+        EasyMock.replay(player, deck, logic);
         hatchingGround.setDimensions(1, 1);
         hatchingGround.populate();
         PlacementPhase phase = new PlacementPhase(players, null, hatchingGround, null, null, null);
         phase.setup();
         Method gameoverMethod = this.getMethod(phase, "checkGameover");
         gameoverMethod.invoke(phase);
-        EasyMock.verify(player, deck);
+        EasyMock.verify(player, deck, logic);
 
         assertFalse((boolean) this.getField(Phase.class, phase, "gameComplete"));
         assertFalse((boolean) this.getField(Phase.class, phase, "phaseComplete"));
@@ -144,6 +151,9 @@ public class PlacementPhaseTests {
 
     @Test
     public void testCheckGameoverLost() throws Exception {
+        ElementSpaceLogic logic = EasyMock.mock(ElementSpaceLogic.class);
+        EasyMock.expect(logic.isComplete(EasyMock.anyObject(Card.class))).andReturn(false).anyTimes();
+
         Player player = EasyMock.mock(Player.class);
         EasyMock.expect(player.getHandlerCount()).andReturn(3).anyTimes();
         final List<Player> players = Arrays.asList(player);
@@ -152,16 +162,16 @@ public class PlacementPhaseTests {
         card.handler = WildHandler.getInstance();
         Deck deck = EasyMock.mock(Deck.class);
         EasyMock.expect(deck.draw()).andReturn(card);
-        HatchingGround hatchingGround = new HatchingGround(deck, null);
+        HatchingGround hatchingGround = new HatchingGround(deck, logic);
 
-        EasyMock.replay(player, deck);
+        EasyMock.replay(player, deck, logic);
         hatchingGround.setDimensions(1, 1);
         hatchingGround.populate();
         PlacementPhase phase = new PlacementPhase(players, null, hatchingGround, null, null, null);
         phase.setup();
         Method gameoverMethod = this.getMethod(phase, "checkGameover");
         gameoverMethod.invoke(phase);
-        EasyMock.verify(player, deck);
+        EasyMock.verify(player, deck, logic);
 
         assertTrue((boolean) this.getField(Phase.class, phase, "gameComplete"));
         assertTrue((boolean) this.getField(Phase.class, phase, "phaseComplete"));
