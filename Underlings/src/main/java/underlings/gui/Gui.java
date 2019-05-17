@@ -173,7 +173,7 @@ public class Gui {
         return this.promptHandler.promptChoice(prompt, choices, playerId);
     }
 
-    public ElementSpace getElementSpaceContainingElementOfColors(List<Card> cards, ElementColor[] colorChoices) {
+    public ElementSpace getElementSpaceWithColors(List<Card> cards, ElementColor[] colorChoices) {
         // TODO: implement this method for CollectUpToElementsFromAnyEggInPlayEffect,
         // ask Mohammad for information
         return null;

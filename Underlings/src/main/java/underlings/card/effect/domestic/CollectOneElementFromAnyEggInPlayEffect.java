@@ -24,7 +24,7 @@ public class CollectOneElementFromAnyEggInPlayEffect extends DiverseHatchingGrou
             Player currentPlayer, EggHatchingLogic eggHatchingLogic, Deck deck,
             HandlerMovementLogic handlerMovementLogic) {
         List<Card> allCards = hatchingGround.getAllCards();
-        ElementSpace selectedSpace = gui.getElementSpaceContainingElementOfColors(allCards, this.elementChoices);
+        ElementSpace selectedSpace = gui.getElementSpaceWithColors(allCards, this.elementChoices);
         Element selectedElement =
                 gui.getElementOfColorsFromSpace(this.elementChoices, selectedSpace, currentPlayer.getId());
         giveElementToPlayer(selectedElement, selectedSpace, currentPlayer);
