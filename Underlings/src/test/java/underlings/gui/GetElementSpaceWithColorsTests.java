@@ -10,6 +10,7 @@ import org.junit.Test;
 import underlings.card.Card;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
+import underlings.element.NullElement;
 
 public class GetElementSpaceWithColorsTests {
 
@@ -23,7 +24,21 @@ public class GetElementSpaceWithColorsTests {
 
         Gui gui = new Gui(null, null);
         ElementSpace space = gui.getElementSpaceWithColors(cards, colorChoices);
-        assertEquals(null, space);
+        assertEquals(NullElement.getInstance(), space);
+    }
+
+    @Test
+    public void testNoColors() {
+        Card card = new Card();
+        card.elementSpaces = new ElementSpace[1];
+        card.elementSpaces[0] = new ElementSpace(ElementColor.RED);
+
+        ElementColor[] colorChoices = {};
+
+        Gui gui = new Gui(null, null);
+        List<Card> cards = Arrays.asList(card);
+        ElementSpace space = gui.getElementSpaceWithColors(cards, colorChoices);
+        assertEquals(NullElement.getInstance(), space);
     }
 
 }
