@@ -15,6 +15,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import underlings.card.Card;
+import underlings.card.effect.Effect;
 import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
@@ -433,6 +434,32 @@ public class HatchingGroundTests {
         hatchingGround.populate();
 
         EasyMock.verify(logic, deck);
+    }
+
+    @Test
+    public void testPlaceCardCompleteWild() {
+        Card card = new Card();
+        card.name = "TestCard";
+        card.handler = WildHandler.getInstance();
+
+        Effect effect = EasyMock.mock(Effect.class);
+        card.wildEffects = new Effect[1];
+        card.wildEffects[0] = effect;
+        effect.apply();
+
+        Deck deck = EasyMock.mock(Deck.class);
+        EasyMock.expect(deck.draw()).andReturn(card);
+
+        ElementSpaceLogic logic = EasyMock.mock(ElementSpaceLogic.class);
+        EasyMock.expect(logic.isComplete(card)).andReturn(false);
+
+        EasyMock.replay(logic, effect, deck);
+
+        HatchingGround hatchingGround = new HatchingGround(deck, logic);
+        hatchingGround.setDimensions(1, 1);
+        hatchingGround.populate();
+
+        EasyMock.verify(logic, effect, deck);
     }
 
 }
