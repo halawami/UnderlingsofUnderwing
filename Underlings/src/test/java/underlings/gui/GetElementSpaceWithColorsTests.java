@@ -96,8 +96,9 @@ public class GetElementSpaceWithColorsTests {
 
         PromptHandler prompt = EasyMock.mock(PromptHandler.class);
         List<String> expectedChoices = new ArrayList<>();
+        expectedChoices.add("TestCard");
         expectedChoices.add("Cancel");
-        EasyMock.expect(prompt.promptChoice("Pick a card to steal from", expectedChoices, 1)).andReturn("Cancel");
+        EasyMock.expect(prompt.promptChoice("Pick a card to steal from", expectedChoices, 1)).andReturn("TestCard");
         EasyMock.replay(prompt);
 
         Gui gui = new Gui(prompt, null);

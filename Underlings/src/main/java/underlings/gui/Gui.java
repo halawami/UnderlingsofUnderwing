@@ -179,12 +179,14 @@ public class Gui {
         List<String> cardOptions = new ArrayList<String>();
         for (Card card : cards) {
             for (ElementColor color : colorChoices) {
-
+                if (card.elementSpaces.length > 0 && card.elementSpaces[0].color == color) {
+                    cardOptions.add(card.name);
+                }
             }
         }
         cardOptions.add("Cancel");
-        this.promptHandler.promptChoice("Pick a card to steal from", cardOptions, playerId);
-        return null;
+        String val = this.promptHandler.promptChoice("Pick a card to steal from", cardOptions, playerId);
+        return val.equals("Cancel") ? null : cards.get(0).elementSpaces[0];
     }
 
     public void alert(String message, PromptType messageType) {
