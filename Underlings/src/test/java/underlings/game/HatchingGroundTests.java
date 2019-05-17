@@ -462,4 +462,27 @@ public class HatchingGroundTests {
         EasyMock.verify(logic, effect, deck);
     }
 
+    @Test
+    public void testPlaceCardCompleteWildNoEffects() {
+        Card card = new Card();
+        card.name = "TestCard";
+        card.handler = WildHandler.getInstance();
+
+        card.wildEffects = new Effect[0];
+
+        Deck deck = EasyMock.mock(Deck.class);
+        EasyMock.expect(deck.draw()).andReturn(card);
+
+        ElementSpaceLogic logic = EasyMock.mock(ElementSpaceLogic.class);
+        EasyMock.expect(logic.isComplete(card)).andReturn(true);
+
+        EasyMock.replay(logic, deck);
+
+        HatchingGround hatchingGround = new HatchingGround(deck, logic);
+        hatchingGround.setDimensions(1, 1);
+        hatchingGround.populate();
+
+        EasyMock.verify(logic, deck);
+    }
+
 }
