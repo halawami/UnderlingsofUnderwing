@@ -55,10 +55,10 @@ public class TakeHatchedDragonFromPlayerTests {
         Player player3 = EasyMock.mock(Player.class);
         Card card = new Card();
         card.temperature = Temperature.WARM;
-        card.points = 8;
+        card.points = 9;
         Card card2 = new Card();
         card2.temperature = Temperature.NEUTRAL;
-        card2.points = 8;
+        card2.points = 9;
         player.hatchedCards = new LinkedList<>();
         player.hatchedCards.add(card);
         player2.hatchedCards = new LinkedList<>();
@@ -96,43 +96,6 @@ public class TakeHatchedDragonFromPlayerTests {
         Card card2 = new Card();
         card2.temperature = Temperature.NEUTRAL;
         card2.points = 8;
-        player.hatchedCards = new LinkedList<>();
-        player.hatchedCards.add(card);
-        player2.hatchedCards = new LinkedList<>();
-        player3.hatchedCards = new LinkedList<>();
-        player3.hatchedCards.add(card2);
-        Gui gui = EasyMock.mock(Gui.class);
-        EasyMock.expect(player2.getId()).andReturn(1);
-        TakeHatchedDragonFromPlayer effect = new TakeHatchedDragonFromPlayer();
-        effect.on(gui).on(Arrays.asList(player, player2, player3)).on(player2);
-        Map<Player, List<Card>> map = new HashMap<>();
-        map.put(player, Arrays.asList());
-        map.put(player3, Arrays.asList(card2));
-
-        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_player_to_steal"), new ArrayList<>(map.keySet()), 0))
-                .andReturn(player3);
-        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_card_to_steal"), map.get(player3), 1)).andReturn(card2);
-
-        EasyMock.replay(player, gui, player2);
-
-        effect.points = 9;
-        effect.temperatures = new Temperature[] {Temperature.NEUTRAL};
-        effect.apply();
-
-        EasyMock.verify(player, gui, player2);
-    }
-
-    @Test
-    public void testApplyMultipleDragonsSamePoints() {
-        Player player = EasyMock.mock(Player.class);
-        Player player2 = EasyMock.mock(Player.class);
-        Player player3 = EasyMock.mock(Player.class);
-        Card card = new Card();
-        card.temperature = Temperature.NEUTRAL;
-        card.points = 9;
-        Card card2 = new Card();
-        card2.temperature = Temperature.NEUTRAL;
-        card2.points = 9;
         player.hatchedCards = new LinkedList<>();
         player.hatchedCards.add(card);
         player2.hatchedCards = new LinkedList<>();
