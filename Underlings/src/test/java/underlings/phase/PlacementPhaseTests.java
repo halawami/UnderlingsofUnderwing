@@ -14,6 +14,7 @@ import org.easymock.EasyMock;
 import org.junit.Test;
 
 import underlings.card.Card;
+import underlings.card.effect.Effect;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.Deck;
 import underlings.game.HatchingGround;
@@ -160,6 +161,7 @@ public class PlacementPhaseTests {
 
         Card card = new Card();
         card.handler = WildHandler.getInstance();
+        card.wildEffects = new Effect[0];
         Deck deck = EasyMock.mock(Deck.class);
         EasyMock.expect(deck.draw()).andReturn(card);
         HatchingGround hatchingGround = new HatchingGround(deck, logic);

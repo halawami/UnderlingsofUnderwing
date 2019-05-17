@@ -5,8 +5,10 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import underlings.card.Card;
 import underlings.element.ElementBag;
 import underlings.gui.Gui;
+import underlings.handler.WildHandler;
 import underlings.phase.FinalPhase;
 import underlings.phase.FinalPhase.FinalPhaseType;
 import underlings.phase.Phase;
@@ -28,7 +30,6 @@ public class Game {
     private Gui gui;
     private PlayerFactory playerFactory;
     private ElementBag elementBag;
-    private boolean gameOver = false;
     protected FinalPhase finalPhase;
     protected List<Phase> phases;
     protected Map<FinalPhaseType, FinalPhase> finalPhaseMap;
@@ -89,8 +90,7 @@ public class Game {
                 this.currentPhase++;
                 this.display();
                 phase.execute(this.turnLeader);
-                this.gameOver = phase.isGameComplete();
-                if (this.gameOver) {
+                if (checkGameover(phase)) {
                     this.roundsLeft = 0;
                     this.finalPhase = this.finalPhaseMap.get(FinalPhaseType.WILD);
                     break;
@@ -101,6 +101,18 @@ public class Game {
             this.turnLeader = (this.turnLeader + 1) % this.numberOfPlayers;
             this.roundsLeft--;
         }
+    }
+
+    public boolean checkGameover(Phase phase) {
+        if (phase.isGameComplete()) {
+            return true;
+        }
+        for (Card card : hatchingGround) {
+            if (card.handler != WildHandler.getInstance()) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public void promptLocale() {

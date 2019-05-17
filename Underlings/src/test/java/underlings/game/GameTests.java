@@ -1,14 +1,17 @@
 package underlings.game;
 
 import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.element.ElementBag;
 import underlings.gui.Gui;
 import underlings.phase.FinalPhase;
@@ -100,7 +103,8 @@ public class GameTests {
         phases.add(phaseOne);
         phases.add(phaseTwo);
 
-        Game mockedGame = EasyMock.createMockBuilder(Game.class).addMockedMethod("display").createMock();
+        Game mockedGame = EasyMock.createMockBuilder(Game.class).addMockedMethod("display")
+                .addMockedMethod("checkGameover").createMock();
 
         mockedGame.numberOfPlayers = 2;
         mockedGame.roundsLeft = 2;
@@ -108,16 +112,16 @@ public class GameTests {
 
         mockedGame.display();
         phaseOne.execute(0);
-        EasyMock.expect(phaseOne.isGameComplete()).andReturn(false);
+        EasyMock.expect(mockedGame.checkGameover(phaseOne)).andReturn(false);
         mockedGame.display();
         phaseTwo.execute(0);
-        EasyMock.expect(phaseTwo.isGameComplete()).andReturn(false);
+        EasyMock.expect(mockedGame.checkGameover(phaseTwo)).andReturn(false);
         mockedGame.display();
         phaseOne.execute(1);
-        EasyMock.expect(phaseOne.isGameComplete()).andReturn(false);
+        EasyMock.expect(mockedGame.checkGameover(phaseOne)).andReturn(false);
         mockedGame.display();
         phaseTwo.execute(1);
-        EasyMock.expect(phaseTwo.isGameComplete()).andReturn(false);
+        EasyMock.expect(mockedGame.checkGameover(phaseTwo)).andReturn(false);
 
         EasyMock.replay(phaseOne, phaseTwo, mockedGame);
 
