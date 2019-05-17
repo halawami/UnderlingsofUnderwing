@@ -178,16 +178,8 @@ public class Gui {
     public ElementSpace getElementSpaceWithColors(List<Card> cards, ElementColor[] colorChoices, int playerId) {
         List<Card> cardOptions = new ArrayList<>();
         for (Card card : cards) {
-            for (ElementColor color : colorChoices) {
-                for (ElementSpace space : card.elementSpaces) {
-                    if (space.getElementColors().contains(color)) {
-                        cardOptions.add(card);
-                        break;
-                    }
-                }
-                if (cardOptions.contains(card)) {
-                    break;
-                }
+            if (!getSpacesWithColors(card, colorChoices).isEmpty()) {
+                cardOptions.add(card);
             }
         }
         if (cardOptions.isEmpty()) {
@@ -201,6 +193,12 @@ public class Gui {
         }
 
         Card card = this.promptHandler.promptChoice(LocaleWrap.get("take_element_card"), cardOptions, playerId);
+        List<ElementSpace> spaces = getSpacesWithColors(card, colorChoices);
+        ElementSpace space = this.promptHandler.promptChoice(LocaleWrap.get("take_element_space"), spaces, playerId);
+        return space;
+    }
+
+    private List<ElementSpace> getSpacesWithColors(Card card, ElementColor[] colorChoices) {
         List<ElementSpace> spaces = new ArrayList<>();
         for (ElementSpace space : card.elementSpaces) {
             for (ElementColor color : colorChoices) {
@@ -210,8 +208,7 @@ public class Gui {
                 }
             }
         }
-        ElementSpace space = this.promptHandler.promptChoice(LocaleWrap.get("take_element_space"), spaces, playerId);
-        return space;
+        return spaces;
     }
 
     public void alert(String message, PromptType messageType) {
