@@ -148,7 +148,9 @@ public class HatchingGround implements Iterable<Card> {
     public void placeCard(int row, int col, Card card) {
         this.cards[row][col] = card;
         if (logic.isComplete(card) && card.handler == WildHandler.getInstance()) {
-            card.wildEffects[0].apply();
+            if (card.wildEffects.length > 0) {
+                card.wildEffects[0].apply();
+            }
         }
     }
 
