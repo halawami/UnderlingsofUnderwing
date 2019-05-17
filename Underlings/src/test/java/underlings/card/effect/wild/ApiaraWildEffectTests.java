@@ -1,5 +1,8 @@
 package underlings.card.effect.wild;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.easymock.EasyMock;
 import org.junit.Test;
 
@@ -25,6 +28,25 @@ public class ApiaraWildEffectTests {
         Effect effect = new ApiaraWildEffect();
         effect.on(hatchingGround).on(apiara).on(deck).apply();
 
+        EasyMock.verify(hatchingGround, deck);
+    }
+
+    @Test
+    public void testEffectTwiceNoCards() {
+        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
+        Deck deck = EasyMock.mock(Deck.class);
+        Card apiara = new Card();
+
+        hatchingGround.replaceCard(apiara);
+        deck.addCard(apiara);
+
+        List<Card> cards = new ArrayList<>();
+        EasyMock.expect(hatchingGround.getUnclaimedEggs()).andReturn(cards);
+
+        EasyMock.replay(hatchingGround, deck);
+        Effect effect = new ApiaraWildEffect();
+        effect.on(hatchingGround).on(apiara).on(deck).apply();
+        effect.on(hatchingGround).on(apiara).on(deck).apply();
         EasyMock.verify(hatchingGround, deck);
     }
 }
