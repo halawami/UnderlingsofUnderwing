@@ -194,13 +194,13 @@ public class Gui {
             return null;
         }
 
-        YesNoChoice choice = this.promptHandler.promptChoice("Would you like to take an element from a card?",
+        YesNoChoice choice = this.promptHandler.promptChoice(LocaleWrap.get("take_element_yesno"),
                 YesNoChoice.getChoices(), playerId);
         if (choice == YesNoChoice.NO) {
             return null;
         }
 
-        Card card = this.promptHandler.promptChoice("Pick a card to take from", cardOptions, playerId);
+        Card card = this.promptHandler.promptChoice(LocaleWrap.get("take_element_card"), cardOptions, playerId);
         List<ElementSpace> spaces = new ArrayList<>();
         for (ElementSpace space : card.elementSpaces) {
             for (ElementColor color : colorChoices) {
@@ -210,7 +210,7 @@ public class Gui {
                 }
             }
         }
-        ElementSpace space = this.promptHandler.promptChoice("Pick a space to take from", spaces, playerId);
+        ElementSpace space = this.promptHandler.promptChoice(LocaleWrap.get("take_element_space"), spaces, playerId);
         return space;
     }
 
