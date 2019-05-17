@@ -176,17 +176,27 @@ public class Gui {
     }
 
     public ElementSpace getElementSpaceWithColors(List<Card> cards, ElementColor[] colorChoices, int playerId) {
-        List<String> cardOptions = new ArrayList<String>();
+        List<Card> cardOptions = new ArrayList<>();
         for (Card card : cards) {
             for (ElementColor color : colorChoices) {
                 if (card.elementSpaces.length > 0 && card.elementSpaces[0].color == color) {
-                    cardOptions.add(card.name);
+                    cardOptions.add(card);
                 }
             }
         }
-        cardOptions.add("Cancel");
-        String val = this.promptHandler.promptChoice("Pick a card to take from", cardOptions, playerId);
-        return val.equals("Cancel") ? null : cards.get(0).elementSpaces[0];
+        if (cardOptions.isEmpty()) {
+            return null;
+        }
+        YesNoChoice choice = this.promptHandler.promptChoice("Would you like to take an element from a card?",
+                YesNoChoice.getChoices(), playerId);
+        if (choice == YesNoChoice.NO) {
+            return null;
+        }
+
+        Card card = this.promptHandler.promptChoice("Pick a card to take from", cardOptions, playerId);
+        List<ElementSpace> spaces = Arrays.asList(card.elementSpaces);
+        ElementSpace space = this.promptHandler.promptChoice("Pick a space to take from", spaces, playerId);
+        return space;
     }
 
     public void alert(String message, PromptType messageType) {
