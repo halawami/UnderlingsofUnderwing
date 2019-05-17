@@ -437,7 +437,7 @@ public class HatchingGroundTests {
     }
 
     @Test
-    public void testPlaceCardCompleteWild() {
+    public void testPlaceCardCompleteWildOneEffect() {
         Card card = new Card();
         card.name = "TestCard";
         card.handler = WildHandler.getInstance();
@@ -451,7 +451,7 @@ public class HatchingGroundTests {
         EasyMock.expect(deck.draw()).andReturn(card);
 
         ElementSpaceLogic logic = EasyMock.mock(ElementSpaceLogic.class);
-        EasyMock.expect(logic.isComplete(card)).andReturn(false);
+        EasyMock.expect(logic.isComplete(card)).andReturn(true);
 
         EasyMock.replay(logic, effect, deck);
 
