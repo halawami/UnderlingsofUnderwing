@@ -10,6 +10,8 @@ import underlings.card.Card;
 import underlings.card.effect.Effect;
 import underlings.game.Deck;
 import underlings.game.HatchingGround;
+import underlings.player.FakePlayer;
+import underlings.utilities.EggHatchingLogic;
 
 public class ApiaraWildEffectTests {
 
@@ -48,5 +50,28 @@ public class ApiaraWildEffectTests {
         effect.on(hatchingGround).on(apiara).on(deck).apply();
         effect.on(hatchingGround).on(apiara).on(deck).apply();
         EasyMock.verify(hatchingGround, deck);
+    }
+
+    @Test
+    public void testEffectTwiceOneCard() {
+        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
+        Deck deck = EasyMock.mock(Deck.class);
+        Card apiara = new Card();
+
+        hatchingGround.replaceCard(apiara);
+        deck.addCard(apiara);
+
+        List<Card> cards = new ArrayList<>();
+        cards.add(new Card());
+        EasyMock.expect(hatchingGround.getUnclaimedEggs()).andReturn(cards);
+
+        EggHatchingLogic logic = EasyMock.mock(EggHatchingLogic.class);
+        logic.hatchEgg(cards.get(0), true, FakePlayer.getInstance());
+
+        EasyMock.replay(hatchingGround, deck, logic);
+        Effect effect = new ApiaraWildEffect();
+        effect.on(hatchingGround).on(apiara).on(deck).apply();
+        effect.on(hatchingGround).on(apiara).on(deck).apply();
+        EasyMock.verify(hatchingGround, deck, logic);
     }
 }
