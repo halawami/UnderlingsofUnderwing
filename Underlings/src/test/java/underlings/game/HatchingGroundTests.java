@@ -415,4 +415,24 @@ public class HatchingGroundTests {
         EasyMock.verify(logic, deck);
     }
 
+    @Test
+    public void testPlaceCardCompleteNotWild() {
+        Card card = new Card();
+        card.name = "TestCard";
+
+        Deck deck = EasyMock.mock(Deck.class);
+        EasyMock.expect(deck.draw()).andReturn(card);
+
+        ElementSpaceLogic logic = EasyMock.mock(ElementSpaceLogic.class);
+        EasyMock.expect(logic.isComplete(card)).andReturn(true);
+
+        EasyMock.replay(logic, deck);
+
+        HatchingGround hatchingGround = new HatchingGround(deck, logic);
+        hatchingGround.setDimensions(1, 1);
+        hatchingGround.populate();
+
+        EasyMock.verify(logic, deck);
+    }
+
 }
