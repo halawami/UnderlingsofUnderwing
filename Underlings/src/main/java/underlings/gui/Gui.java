@@ -179,8 +179,14 @@ public class Gui {
         List<Card> cardOptions = new ArrayList<>();
         for (Card card : cards) {
             for (ElementColor color : colorChoices) {
-                if (card.elementSpaces.length > 0 && card.elementSpaces[0].color == color) {
-                    cardOptions.add(card);
+                for (ElementSpace space : card.elementSpaces) {
+                    if (space.getElementColors().contains(color)) {
+                        cardOptions.add(card);
+                        break;
+                    }
+                }
+                if (cardOptions.contains(card)) {
+                    break;
                 }
             }
         }
