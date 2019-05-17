@@ -56,4 +56,19 @@ public class GetElementSpaceWithColorsTests {
         assertEquals(null, space);
     }
 
+    @Test
+    public void testOneSpaceOneColorValid() {
+        Card card = new Card();
+        card.elementSpaces = new ElementSpace[1];
+        card.elementSpaces[0] = new ElementSpace(ElementColor.RED);
+        card.elementSpaces[0].addElements(new Element(ElementColor.RED));
+
+        ElementColor[] colorChoices = {ElementColor.RED};
+
+        Gui gui = new Gui(null, null);
+        List<Card> cards = Arrays.asList(card);
+        ElementSpace space = gui.getElementSpaceWithColors(cards, colorChoices);
+        assertEquals(null, space);
+    }
+
 }
