@@ -60,7 +60,6 @@ public class GetElementSpaceWithColorsTests {
         assertEquals(null, space);
     }
 
-    @SuppressWarnings("unchecked")
     @Test
     public void testOneSpaceOneColorValid() {
         Card card = new Card();
@@ -78,8 +77,7 @@ public class GetElementSpaceWithColorsTests {
         EasyMock.expect(
                 prompt.promptChoice("Would you like to take an element from a card?", YesNoChoice.getChoices(), 1))
                 .andReturn(YesNoChoice.YES);
-        EasyMock.expect(prompt.promptChoice(EasyMock.anyString(), EasyMock.anyObject(List.class), EasyMock.anyInt()))
-                .andReturn(card);
+        EasyMock.expect(prompt.promptChoice("Pick a card to take from", Arrays.asList(card), 1)).andReturn(card);
         EasyMock.expect(prompt.promptChoice("Pick a space to take from", Arrays.asList(card.elementSpaces[0]), 1))
                 .andReturn(card.elementSpaces[0]);
         EasyMock.replay(prompt);
@@ -88,6 +86,38 @@ public class GetElementSpaceWithColorsTests {
         List<Card> cards = Arrays.asList(card);
         ElementSpace space = gui.getElementSpaceWithColors(cards, colorChoices, 1);
         assertEquals(card.elementSpaces[0], space);
+
+        EasyMock.verify(prompt);
+    }
+
+    @Test
+    public void testTwoSpacesMultiColorsValid() {
+        Card card = new Card();
+        card.name = "TestCard";
+        card.elementSpaces = new ElementSpace[2];
+        card.elementSpaces[0] = new ElementSpace(ElementColor.RED);
+        card.elementSpaces[0].addElements(new Element(ElementColor.RED));
+        card.elementSpaces[1] = new ElementSpace(ElementColor.BLUE);
+        card.elementSpaces[1].addElements(new Element(ElementColor.BLUE));
+
+        ElementColor[] colorChoices = {ElementColor.RED, ElementColor.BLUE};
+
+        PromptHandler prompt = EasyMock.mock(PromptHandler.class);
+        List<String> expectedChoices = new ArrayList<>();
+        expectedChoices.add("TestCard");
+        expectedChoices.add("Cancel");
+        EasyMock.expect(
+                prompt.promptChoice("Would you like to take an element from a card?", YesNoChoice.getChoices(), 1))
+                .andReturn(YesNoChoice.YES);
+        EasyMock.expect(prompt.promptChoice("Pick a card to take from", Arrays.asList(card), 1)).andReturn(card);
+        EasyMock.expect(prompt.promptChoice("Pick a space to take from",
+                Arrays.asList(card.elementSpaces[0], card.elementSpaces[1]), 1)).andReturn(card.elementSpaces[1]);
+        EasyMock.replay(prompt);
+
+        Gui gui = new Gui(prompt, null);
+        List<Card> cards = Arrays.asList(card);
+        ElementSpace space = gui.getElementSpaceWithColors(cards, colorChoices, 1);
+        assertEquals(card.elementSpaces[1], space);
 
         EasyMock.verify(prompt);
     }
