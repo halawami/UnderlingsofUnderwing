@@ -16,7 +16,8 @@ public class ApiaraWildEffect extends DiverseHatchingGroundEffect {
     protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag, Gui gui,
             Player currentPlayer, EggHatchingLogic eggHatchingLogic, Deck deck,
             HandlerMovementLogic handlerMovementLogic) {
-
+        hatchingGround.replaceCard(centerCard);
+        deck.addCard(centerCard);
     }
 
 }
