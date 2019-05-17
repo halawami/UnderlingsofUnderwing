@@ -7,7 +7,7 @@ public class TwoHandlersOnFieldSpaceEffect extends PlayerEffect {
 
     @Override
     protected void apply(Player player) {
-
+        player.maxHandlersOnSpace = 2;
     }
 
 }
