@@ -1,5 +1,7 @@
 package underlings.card.effect.wild;
 
+import java.util.List;
+
 import underlings.card.Card;
 import underlings.card.effect.DiverseHatchingGroundEffect;
 import underlings.element.ElementBag;
@@ -27,7 +29,10 @@ public class ApiaraWildEffect extends DiverseHatchingGroundEffect {
             deck.addCard(centerCard);
             this.redraw = true;
         } else {
-            hatchingGround.getUnclaimedEggs();
+            List<Card> unclaimedEggs = hatchingGround.getUnclaimedEggs();
+            if (!unclaimedEggs.isEmpty()) {
+                eggHatchingLogic.hatchEgg(unclaimedEggs.get(0), true, currentPlayer);
+            }
         }
     }
 
