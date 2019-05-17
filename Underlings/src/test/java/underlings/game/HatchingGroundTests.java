@@ -26,10 +26,13 @@ import underlings.handler.WildHandler;
 public class HatchingGroundTests {
 
     private List<String> recipes;
+    private ElementSpaceLogic niceLogic;
 
     @Before
     public void loadRecipes() throws Exception {
         this.recipes = Resources.readLines(Resources.getResource("DefaultRecipeList.txt"), Charsets.UTF_8);
+        this.niceLogic = EasyMock.niceMock(ElementSpaceLogic.class);
+        EasyMock.replay(this.niceLogic);
     }
 
     @Test
@@ -39,7 +42,7 @@ public class HatchingGroundTests {
 
         EasyMock.replay(deck);
 
-        HatchingGround hatchingGround = new HatchingGround(deck, new ElementSpaceLogic(this.recipes));
+        HatchingGround hatchingGround = new HatchingGround(deck, this.niceLogic);
         hatchingGround.setDimensions(3, 2);
         hatchingGround.populate();
 
@@ -58,7 +61,7 @@ public class HatchingGroundTests {
 
         EasyMock.replay(deck);
 
-        HatchingGround hatchingGround = new HatchingGround(deck, new ElementSpaceLogic(this.recipes));
+        HatchingGround hatchingGround = new HatchingGround(deck, this.niceLogic);
         hatchingGround.setDimensions(3, 2);
         hatchingGround.populate();
 
@@ -74,7 +77,7 @@ public class HatchingGroundTests {
 
         EasyMock.replay(deck);
 
-        HatchingGround hatchingGround = new HatchingGround(deck, new ElementSpaceLogic(this.recipes));
+        HatchingGround hatchingGround = new HatchingGround(deck, this.niceLogic);
         hatchingGround.setDimensions(3, 2);
         hatchingGround.populate();
 
@@ -88,7 +91,7 @@ public class HatchingGroundTests {
 
         EasyMock.replay(deck);
 
-        HatchingGround hatchingGround = new HatchingGround(deck, new ElementSpaceLogic(this.recipes));
+        HatchingGround hatchingGround = new HatchingGround(deck, this.niceLogic);
         hatchingGround.setDimensions(4, 3);
         hatchingGround.populate();
 
@@ -102,7 +105,7 @@ public class HatchingGroundTests {
 
         EasyMock.replay(deck);
 
-        HatchingGround hatchingGround = new HatchingGround(deck, new ElementSpaceLogic(this.recipes));
+        HatchingGround hatchingGround = new HatchingGround(deck, this.niceLogic);
         hatchingGround.setDimensions(4, 4);
         hatchingGround.populate();
 
@@ -131,7 +134,7 @@ public class HatchingGroundTests {
         EasyMock.expect(deck.draw()).andReturn(card2);
 
         EasyMock.replay(deck, handler);
-        HatchingGround hatchingGround = new HatchingGround(deck, new ElementSpaceLogic(this.recipes));
+        HatchingGround hatchingGround = new HatchingGround(deck, new ElementSpaceLogic(recipes));
         hatchingGround.setDimensions(4, 4);
         hatchingGround.populate();
         assertEquals(card, hatchingGround.cards[0][0]);
@@ -163,7 +166,7 @@ public class HatchingGroundTests {
         EasyMock.expect(deck.draw()).andReturn(card2).times(2);
 
         EasyMock.replay(deck, handler);
-        HatchingGround hatchingGround = new HatchingGround(deck, new ElementSpaceLogic(this.recipes));
+        HatchingGround hatchingGround = new HatchingGround(deck, new ElementSpaceLogic(recipes));
         hatchingGround.setDimensions(4, 4);
         hatchingGround.populate();
         assertEquals(card, hatchingGround.cards[0][0]);
@@ -182,7 +185,7 @@ public class HatchingGroundTests {
         EasyMock.expect(deck.draw()).andReturn(new Card()).times(16);
 
         EasyMock.replay(deck, handler);
-        HatchingGround hatchingGround = new HatchingGround(deck, new ElementSpaceLogic(this.recipes));
+        HatchingGround hatchingGround = new HatchingGround(deck, this.niceLogic);
         hatchingGround.setDimensions(4, 4);
         hatchingGround.populate();
 
@@ -211,7 +214,7 @@ public class HatchingGroundTests {
         EasyMock.expect(deck.draw()).andReturn(fakeCard).times(15);
 
         EasyMock.replay(deck, handler);
-        HatchingGround hatchingGround = new HatchingGround(deck, new ElementSpaceLogic(this.recipes));
+        HatchingGround hatchingGround = new HatchingGround(deck, this.niceLogic);
         hatchingGround.setDimensions(4, 4);
         hatchingGround.populate();
         assertEquals(card, hatchingGround.cards[0][0]);
@@ -243,7 +246,7 @@ public class HatchingGroundTests {
         EasyMock.expect(deck.draw()).andReturn(card2);
 
         EasyMock.replay(deck, handler);
-        HatchingGround hatchingGround = new HatchingGround(deck, new ElementSpaceLogic(this.recipes));
+        HatchingGround hatchingGround = new HatchingGround(deck, new ElementSpaceLogic(recipes));
         hatchingGround.setDimensions(4, 4);
         hatchingGround.populate();
         assertEquals(card, hatchingGround.cards[0][0]);
@@ -270,7 +273,7 @@ public class HatchingGroundTests {
         EasyMock.expect(deck.draw()).andReturn(fakeCard).times(15);
 
         EasyMock.replay(deck);
-        HatchingGround hatchingGround = new HatchingGround(deck, new ElementSpaceLogic(this.recipes));
+        HatchingGround hatchingGround = new HatchingGround(deck, this.niceLogic);
         hatchingGround.setDimensions(4, 4);
         hatchingGround.populate();
         assertEquals(card, hatchingGround.cards[0][0]);
@@ -286,7 +289,7 @@ public class HatchingGroundTests {
             cards.add(new Card());
         }
         Deck deck = new Deck(cards);
-        HatchingGround hatchingGround = new HatchingGround(deck, new ElementSpaceLogic(this.recipes));
+        HatchingGround hatchingGround = new HatchingGround(deck, this.niceLogic);
         hatchingGround.setDimensions(3, 2);
         hatchingGround.populate();
 
@@ -314,7 +317,7 @@ public class HatchingGroundTests {
 
         EasyMock.replay(deck);
 
-        HatchingGround hatchingGround = new HatchingGround(deck, new ElementSpaceLogic(this.recipes));
+        HatchingGround hatchingGround = new HatchingGround(deck, this.niceLogic);
         hatchingGround.setDimensions(3, 2);
         hatchingGround.populate();
 
@@ -346,7 +349,7 @@ public class HatchingGroundTests {
 
         EasyMock.replay(deck, card2.handler);
 
-        HatchingGround hatchingGround = new HatchingGround(deck, new ElementSpaceLogic(this.recipes));
+        HatchingGround hatchingGround = new HatchingGround(deck, this.niceLogic);
         hatchingGround.setDimensions(3, 2);
         hatchingGround.populate();
 
@@ -381,7 +384,7 @@ public class HatchingGroundTests {
 
         EasyMock.replay(deck, card2.handler);
 
-        HatchingGround hatchingGround = new HatchingGround(deck, new ElementSpaceLogic(this.recipes));
+        HatchingGround hatchingGround = new HatchingGround(deck, this.niceLogic);
         hatchingGround.setDimensions(3, 2);
         hatchingGround.populate();
 
@@ -390,6 +393,26 @@ public class HatchingGroundTests {
         List<Card> cards = hatchingGround.getDragons(3, true);
         assertEquals(1, cards.size());
         assertTrue(cards.contains(card3));
+    }
+
+    @Test
+    public void testPlaceCardIncomplete() {
+        Card card = new Card();
+        card.name = "TestCard";
+
+        Deck deck = EasyMock.mock(Deck.class);
+        EasyMock.expect(deck.draw()).andReturn(card);
+
+        ElementSpaceLogic logic = EasyMock.mock(ElementSpaceLogic.class);
+        EasyMock.expect(logic.isComplete(card)).andReturn(false);
+
+        EasyMock.replay(logic, deck);
+
+        HatchingGround hatchingGround = new HatchingGround(deck, logic);
+        hatchingGround.setDimensions(1, 1);
+        hatchingGround.populate();
+
+        EasyMock.verify(logic, deck);
     }
 
 }

@@ -6,6 +6,7 @@ import org.easymock.EasyMock;
 import org.junit.Test;
 
 import underlings.card.Card;
+import underlings.element.utilities.ElementSpaceLogic;
 import underlings.handler.Handler;
 import underlings.handler.HandlerState;
 
@@ -34,14 +35,16 @@ public class FindCardTests {
         EasyMock.expect(mockedDeck.draw()).andReturn(card1);
         EasyMock.expect(mockedDeck.draw()).andReturn(card2);
 
-        EasyMock.replay(mockedDeck);
+        ElementSpaceLogic logic = EasyMock.niceMock(ElementSpaceLogic.class);
 
-        HatchingGround ground = new HatchingGround(mockedDeck, null);
+        EasyMock.replay(mockedDeck, logic);
+
+        HatchingGround ground = new HatchingGround(mockedDeck, logic);
         ground.setDimensions(2, 2);
         ground.populate();
         Card foundCard = ground.findCard(card1.handler);
 
-        EasyMock.verify(mockedDeck);
+        EasyMock.verify(mockedDeck, logic);
 
         assertEquals(card1, foundCard);
     }
@@ -54,14 +57,16 @@ public class FindCardTests {
 
         EasyMock.expect(mockedDeck.draw()).andReturn(card1).times(4);
 
-        EasyMock.replay(mockedDeck);
+        ElementSpaceLogic logic = EasyMock.niceMock(ElementSpaceLogic.class);
 
-        HatchingGround ground = new HatchingGround(mockedDeck, null);
+        EasyMock.replay(mockedDeck, logic);
+
+        HatchingGround ground = new HatchingGround(mockedDeck, logic);
         ground.setDimensions(2, 2);
         ground.populate();
         Card foundCard = ground.findCard(new Handler(HandlerState.CARD));
 
-        EasyMock.verify(mockedDeck);
+        EasyMock.verify(mockedDeck, logic);
 
         assertEquals(null, foundCard);
     }

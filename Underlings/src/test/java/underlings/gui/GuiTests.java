@@ -3,16 +3,21 @@ package underlings.gui;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
 import javax.swing.JOptionPane;
+
 import org.easymock.EasyMock;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.card.Card;
 import underlings.element.ElementBag;
 import underlings.element.ElementFactory;
@@ -44,7 +49,10 @@ public class GuiTests {
         EasyMock.replay(this.deck);
 
         List<String> recipes = Resources.readLines(Resources.getResource("DefaultRecipeList.txt"), Charsets.UTF_8);
-        this.hatchingGround = new HatchingGround(this.deck, new ElementSpaceLogic(recipes));
+
+        ElementSpaceLogic logic = EasyMock.niceMock(ElementSpaceLogic.class);
+        EasyMock.replay(logic);
+        this.hatchingGround = new HatchingGround(this.deck, logic);
         this.game = new Game(this.gui, this.hatchingGround, new PlayerFactory(new HandlerFactory(), recipes),
                 new ElementBag(new ElementFactory(), new Random()));
     }
