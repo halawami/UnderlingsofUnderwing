@@ -147,6 +147,7 @@ public class HatchingGround implements Iterable<Card> {
 
     public void placeCard(int row, int col, Card card) {
         this.cards[row][col] = card;
+        this.logic.isComplete(card);
     }
 
     public Card findCard(Handler handler) {
