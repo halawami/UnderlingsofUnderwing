@@ -201,7 +201,15 @@ public class Gui {
         }
 
         Card card = this.promptHandler.promptChoice("Pick a card to take from", cardOptions, playerId);
-        List<ElementSpace> spaces = Arrays.asList(card.elementSpaces);
+        List<ElementSpace> spaces = new ArrayList<>();
+        for (ElementSpace space : card.elementSpaces) {
+            for (ElementColor color : colorChoices) {
+                if (space.getElementColors().contains(color)) {
+                    spaces.add(space);
+                    break;
+                }
+            }
+        }
         ElementSpace space = this.promptHandler.promptChoice("Pick a space to take from", spaces, playerId);
         return space;
     }
