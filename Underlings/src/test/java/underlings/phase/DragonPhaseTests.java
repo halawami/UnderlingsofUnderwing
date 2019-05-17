@@ -247,6 +247,8 @@ public class DragonPhaseTests {
 
         Phase phase = new DragonPhase(players, gui, bag, hatchingGround, null, null, eggHatchingLogic);
         phase.setup();
+
+        assertEquals(2, player.hatchingTime);
         EasyMock.verify(hatchingGround, bag, gui, card.domesticEffects[0], handler, eggHatchingLogic);
     }
 
