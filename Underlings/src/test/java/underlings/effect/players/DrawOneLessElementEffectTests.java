@@ -64,6 +64,7 @@ public class DrawOneLessElementEffectTests {
         testedEffect.onPhaseOne(player);
 
         Assert.assertEquals(effectElementGivers, player.effectElementGivers);
+
         EasyMock.verify(player, testedEffect);
         elementGivers.forEach(EasyMock::verify);
         effectElementGivers.forEach(EasyMock::verify);
@@ -94,6 +95,23 @@ public class DrawOneLessElementEffectTests {
 
         Assert.assertEquals(1, effectElementGivers.size());
         Assert.assertEquals(elementGivers.get(0), effectElementGivers.get(0));
+
+        elementGivers.forEach(EasyMock::verify);
+    }
+
+    @Test
+    public void testGetEffectElementGiversThreeElementGiver() {
+        List<ElementGiver> elementGivers = TestUtils.mockListOf(ElementGiver.class).withLength(3);
+
+        elementGivers.forEach(EasyMock::replay);
+
+        DrawOneLessElementEffect testedEffect = new DrawOneLessElementEffect();
+        List<ElementGiver> effectElementGivers = testedEffect.getEffectElementGivers(elementGivers);
+
+        Assert.assertEquals(2, effectElementGivers.size());
+        for (int i = 0; i < effectElementGivers.size(); i++) {
+            Assert.assertEquals(i, effectElementGivers.size());
+        }
 
         elementGivers.forEach(EasyMock::verify);
     }
