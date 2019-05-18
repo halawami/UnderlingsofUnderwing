@@ -58,6 +58,22 @@ public class CollectElementEffectTests extends MockTest {
         collectElementEffect.apply();
     }
 
+    private void testColors(int numberOfNumber){
+        Element blueElement = new Element(ElementColor.BLUE);
+
+        CollectElementEffect collectElementEffect = new CollectElementEffect();
+        collectElementEffect.on(this.player).on(this.elementBag);
+        ElementColor[] elementChoices = new ElementColor[] {ElementColor.BLUE, ElementColor.RED};
+        collectElementEffect.elementChoices = elementChoices;
+
+        EasyMock.expect(this.elementBag.drawElementFromList(elementChoices)).andReturn(blueElement);
+        this.player.addElement(blueElement);
+
+        this.replayAll();
+
+        collectElementEffect.apply();
+    }
+
     @Test
     public void testToString() {
         this.replayAll();
