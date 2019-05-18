@@ -8,6 +8,7 @@ import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
+import underlings.utilities.LocaleWrap;
 
 public class AddElementToAllEggsInPlayEffect extends AllEggsInPlayEffect {
 
@@ -25,5 +26,10 @@ public class AddElementToAllEggsInPlayEffect extends AllEggsInPlayEffect {
             Element elementToAdd = elementBag.drawElementFromList(color);
             playableSpace.addElements(elementToAdd);
         }
+    }
+
+    @Override
+    public String toString() {
+        return LocaleWrap.format("place_element_on_all_eggs_effect", elementColor);
     }
 }

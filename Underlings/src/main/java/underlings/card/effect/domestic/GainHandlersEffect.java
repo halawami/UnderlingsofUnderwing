@@ -17,7 +17,7 @@ public class GainHandlersEffect extends PlayerEffect {
 
     @Override
     public String toString() {
-        return LocaleWrap.get("gain_one_handler_effect");
+        return LocaleWrap.format("gain_handler_effect", numberOfHandlers);
     }
 
 }

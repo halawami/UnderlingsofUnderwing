@@ -22,10 +22,14 @@ public class CollectAndHatchAnyUnclaimedEggEffect extends DiverseHatchingGroundE
             Player currentPlayer, EggHatchingLogic eggHatchingLogic, Deck deck,
             HandlerMovementLogic handlerMovementLogic) {
         List<Card> validCards = hatchingGround.getDragons(points, true);
-        Card selectedCard =
-                gui.getCard(currentPlayer.getId(), LocaleWrap.get("gui_card"), hatchingGround, validCards);
+        Card selectedCard = gui.getCard(currentPlayer.getId(), LocaleWrap.get("gui_card"), hatchingGround, validCards);
         if (selectedCard != EmptyCard.getInstance()) {
             eggHatchingLogic.hatchEgg(selectedCard, false, currentPlayer);
         }
+    }
+
+    @Override
+    public String toString() {
+        return LocaleWrap.format("hatch_unclaimed_dragon_effect", points);
     }
 }

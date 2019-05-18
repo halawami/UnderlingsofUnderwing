@@ -5,6 +5,7 @@ import underlings.card.effect.wild.alleggsinplay.AllEggsInPlayEffect;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.utilities.ElementSpaceLogic;
+import underlings.utilities.LocaleWrap;
 
 public class DestroyAllBlackAndWhiteElementsEffect extends AllEggsInPlayEffect {
 
@@ -16,4 +17,8 @@ public class DestroyAllBlackAndWhiteElementsEffect extends AllEggsInPlayEffect {
         }
     }
 
+    @Override
+    public String toString() {
+        return LocaleWrap.get("destroy_white_black_elements");
+    }
 }

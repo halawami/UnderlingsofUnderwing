@@ -3681,7 +3681,7 @@
     ]
   },
   {
-    "name": "VANDRENOX",
+    "name": "VADRENOX",
     "points": 17,
     "temperature": "COOL",
     "family": "LEGENDARY",
@@ -3714,6 +3714,10 @@
     "domesticEffects": [
       {
         "effect": "ReplaceHandlerWithYourOwnEffect"
+      },
+	  {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       }
     ],
     "wildEffects": [

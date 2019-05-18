@@ -3,6 +3,7 @@ package underlings.card.effect.wild.alleggsinplay;
 import underlings.card.effect.HatchingGroundEffect;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
+import underlings.utilities.LocaleWrap;
 
 public class AllEggsHatchLateEffect extends HatchingGroundEffect {
 
@@ -11,4 +12,8 @@ public class AllEggsHatchLateEffect extends HatchingGroundEffect {
         hatchingGround.lateHatching = true;
     }
 
+    @Override
+    public String toString() {
+        return LocaleWrap.get("egg_hatches_late_effect");
+    }
 }

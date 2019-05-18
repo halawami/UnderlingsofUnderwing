@@ -1,6 +1,7 @@
 package underlings.card.effect.domestic;
 
 import java.util.List;
+
 import underlings.card.Card;
 import underlings.card.effect.HandlerEffect;
 import underlings.game.HatchingGround;
@@ -9,6 +10,7 @@ import underlings.handler.Handler;
 import underlings.handler.HandlerChoice;
 import underlings.handler.HandlerMovementLogic;
 import underlings.player.Player;
+import underlings.utilities.LocaleWrap;
 
 public class ReplaceHandlerWithYourOwnEffect extends HandlerEffect {
 
@@ -23,5 +25,10 @@ public class ReplaceHandlerWithYourOwnEffect extends HandlerEffect {
             handlerLogic.move(chosenEgg.handler, HandlerChoice.BREAK_ROOM, currentPlayer);
             handlerLogic.moveToCard(chosenHandler, chosenEgg);
         }
+    }
+
+    @Override
+    public String toString() {
+        return LocaleWrap.get("replace_handler_effect");
     }
 }

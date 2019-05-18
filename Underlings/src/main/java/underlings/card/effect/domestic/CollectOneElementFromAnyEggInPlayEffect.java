@@ -14,6 +14,7 @@ import underlings.gui.Gui;
 import underlings.handler.HandlerMovementLogic;
 import underlings.player.Player;
 import underlings.utilities.EggHatchingLogic;
+import underlings.utilities.LocaleWrap;
 
 public class CollectOneElementFromAnyEggInPlayEffect extends DiverseHatchingGroundEffect {
 
@@ -35,5 +36,15 @@ public class CollectOneElementFromAnyEggInPlayEffect extends DiverseHatchingGrou
     private void giveElementToPlayer(Element selectedElement, ElementSpace selectedSpace, Player currentPlayer) {
         selectedSpace.destroyOneElementOfColor(selectedElement.getColor());
         currentPlayer.addElement(selectedElement);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder elements = new StringBuilder();
+        for (ElementColor color : this.elementChoices) {
+            elements.append(color);
+            elements.append(" ");
+        }
+        return LocaleWrap.format("collect_one_element_effect", elements);
     }
 }

@@ -6,6 +6,7 @@ import underlings.element.ElementBag;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.handler.HandlerState;
 import underlings.handler.WildHandler;
+import underlings.utilities.LocaleWrap;
 
 public class RemoveAllHandlersFromAllEggsInPlay extends AllEggsInPlayEffect {
 
@@ -15,5 +16,10 @@ public class RemoveAllHandlersFromAllEggsInPlay extends AllEggsInPlayEffect {
             cardInPlay.handler.moveToState(HandlerState.BREAK_ROOM);
             cardInPlay.handler = null;
         }
+    }
+
+    @Override
+    public String toString() {
+        return LocaleWrap.get("remove_all_handlers_from_eggs_effect");
     }
 }

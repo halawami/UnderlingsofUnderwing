@@ -46,4 +46,5 @@ public class WhiteRecipeEffect extends DiverseHatchingGroundEffect {
         }
     }
 
+    // TODO: toString for this
 }

@@ -43,4 +43,13 @@ public class TakeHatchedDragonFromPlayer extends PlayersEffect {
         playerToSteal.hatchedCards.remove(toSteal);
     }
 
+    @Override
+    public String toString() {
+        StringBuilder temperature = new StringBuilder();
+        for (Temperature temp : temperatures) {
+            temperature.append(temp);
+            temperature.append(" ");
+        }
+        return LocaleWrap.format("take_hatched_dragon", points, temperature);
+    }
 }

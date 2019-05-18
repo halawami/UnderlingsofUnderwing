@@ -3,6 +3,7 @@ package underlings.card.effect.wild.alleggsinplay;
 import underlings.card.Card;
 import underlings.element.ElementBag;
 import underlings.element.utilities.ElementSpaceLogic;
+import underlings.utilities.LocaleWrap;
 
 public class DestroyAllElementsOnAllEggsInPlay extends AllEggsInPlayEffect {
 
@@ -13,5 +14,10 @@ public class DestroyAllElementsOnAllEggsInPlay extends AllEggsInPlayEffect {
                 cardInPlay.elementSpaces[i].destroyAllElements();
             }
         }
+    }
+
+    @Override
+    public String toString() {
+        return LocaleWrap.get("destroy_all_elements_on_all_eggs_effect");
     }
 }

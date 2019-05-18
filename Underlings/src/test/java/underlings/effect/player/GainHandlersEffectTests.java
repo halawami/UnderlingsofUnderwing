@@ -44,8 +44,7 @@ public class GainHandlersEffectTests {
     @Test
     public void testToString() {
         Effect gainOneHandler = new GainHandlersEffect();
-
-        assertEquals("Gain one handler", gainOneHandler.toString());
+        assertEquals("Gain 0 handler", gainOneHandler.toString());
     }
 
 }

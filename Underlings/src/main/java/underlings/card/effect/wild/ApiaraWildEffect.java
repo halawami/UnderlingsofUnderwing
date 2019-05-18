@@ -11,6 +11,7 @@ import underlings.gui.Gui;
 import underlings.handler.HandlerMovementLogic;
 import underlings.player.Player;
 import underlings.utilities.EggHatchingLogic;
+import underlings.utilities.LocaleWrap;
 
 public class ApiaraWildEffect extends DiverseHatchingGroundEffect {
 
@@ -38,4 +39,8 @@ public class ApiaraWildEffect extends DiverseHatchingGroundEffect {
         }
     }
 
+    @Override
+    public String toString() {
+        return LocaleWrap.get("apiara_wild_effect");
+    }
 }

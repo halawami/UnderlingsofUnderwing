@@ -1,11 +1,13 @@
 package underlings.card.effect.wild;
 
 import java.util.List;
+
 import underlings.card.Card;
 import underlings.card.effect.DeckEffects;
 import underlings.game.Deck;
 import underlings.gui.Gui;
 import underlings.player.Player;
+import underlings.utilities.LocaleWrap;
 
 public class ReturnMostValuableDragonEffect extends DeckEffects {
 
@@ -22,5 +24,10 @@ public class ReturnMostValuableDragonEffect extends DeckEffects {
             player.hatchedCards.remove(mostValuableDragon);
             deck.addCard(mostValuableDragon);
         }
+    }
+
+    @Override
+    public String toString() {
+        return LocaleWrap.get("gain_handler_effect");
     }
 }

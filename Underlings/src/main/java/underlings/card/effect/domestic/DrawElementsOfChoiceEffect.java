@@ -32,8 +32,7 @@ public class DrawElementsOfChoiceEffect extends ElementEffect implements Observe
         }
     }
 
-    public List<ElementGiver> getEffectElementGivers(List<ElementGiver> playerElementGivers,
-            ElementBag elementBag) {
+    public List<ElementGiver> getEffectElementGivers(List<ElementGiver> playerElementGivers, ElementBag elementBag) {
         List<ElementGiver> effectedElementGivers = new ArrayList<>();
         List<DrawChoice> availableDrawChoices = elementBag.getAvailableDrawChoices();
         for (int i = 0; i < playerElementGivers.size(); i++) {
@@ -41,4 +40,7 @@ public class DrawElementsOfChoiceEffect extends ElementEffect implements Observe
         }
         return effectedElementGivers;
     }
+
+    // TODO: to string?
+
 }

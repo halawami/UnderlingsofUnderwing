@@ -1,6 +1,7 @@
 package underlings.card.effect.domestic;
 
 import java.util.List;
+
 import underlings.card.Card;
 import underlings.card.effect.DiverseHatchingGroundEffect;
 import underlings.element.ElementBag;
@@ -32,6 +33,11 @@ public class HatchAnyUnclaimedEggAsWildDragon extends DiverseHatchingGroundEffec
                 eggHatchingLogic.hatchEgg(toHatch, true, FakePlayer.getInstance());
             }
         }
+    }
+
+    @Override
+    public String toString() {
+        return LocaleWrap.get("hatch_egg_as_wild_dragon_effect");
     }
 
 }

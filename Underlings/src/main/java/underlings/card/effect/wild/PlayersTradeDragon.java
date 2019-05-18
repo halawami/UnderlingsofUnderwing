@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+
 import underlings.card.Card;
 import underlings.card.effect.PlayersEffect;
 import underlings.gui.Gui;
@@ -47,4 +48,8 @@ public class PlayersTradeDragon extends PlayersEffect {
         }
     }
 
+    @Override
+    public String toString() {
+        return LocaleWrap.get("trade_dragons_effect");
+    }
 }

@@ -10,6 +10,7 @@ import underlings.handler.HandlerChoice;
 import underlings.handler.HandlerMovementLogic;
 import underlings.player.FakePlayer;
 import underlings.utilities.EggHatchingLogic;
+import underlings.utilities.LocaleWrap;
 
 public class ReturnAllAdjacentCardsToDeckEffect extends AdjacentEggsEffect {
 
@@ -21,5 +22,10 @@ public class ReturnAllAdjacentCardsToDeckEffect extends AdjacentEggsEffect {
         handlerMovementLogic.removeHandlerFromCard(adjacentEgg);
         hatchingGround.replaceCard(adjacentEgg);
         deck.addCard(adjacentEgg);
+    }
+
+    @Override
+    public String toString() {
+        return LocaleWrap.get("return_adjacent_eggs_effect");
     }
 }
