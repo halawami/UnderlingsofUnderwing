@@ -11,7 +11,7 @@ public class DrawOneLessElementEffect extends PlayersEffect implements ObserverE
 
     @Override
     protected void apply(Player currentPlayer, List<Player> players, Gui gui) {
-
+        players.forEach(player -> player.addObserverEffect(this));
     }
 
     @Override
