@@ -110,7 +110,7 @@ public class DrawOneLessElementEffectTests {
 
         Assert.assertEquals(2, effectElementGivers.size());
         for (int i = 0; i < effectElementGivers.size(); i++) {
-            Assert.assertEquals(i, effectElementGivers.size());
+            Assert.assertEquals(elementGivers.get(i), effectElementGivers.get(i));
         }
 
         elementGivers.forEach(EasyMock::verify);
