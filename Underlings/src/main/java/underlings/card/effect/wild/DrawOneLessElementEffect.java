@@ -1,5 +1,6 @@
 package underlings.card.effect.wild;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import underlings.card.effect.ObserverEffect;
@@ -22,7 +23,9 @@ public class DrawOneLessElementEffect extends PlayersEffect implements ObserverE
     }
 
     public List<ElementGiver> getEffectElementGivers(List<ElementGiver> elementGivers) {
-        return null;
+        List<ElementGiver> effectElementGivers = new ArrayList<>(elementGivers);
+        effectElementGivers.remove(effectElementGivers.size() - 1);
+        return effectElementGivers;
     }
 
 }
