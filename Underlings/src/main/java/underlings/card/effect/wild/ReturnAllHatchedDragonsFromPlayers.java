@@ -1,8 +1,8 @@
 package underlings.card.effect.wild;
 
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
+
 import underlings.card.Card;
 import underlings.card.Temperature;
 import underlings.card.effect.DeckEffects;
@@ -24,15 +24,13 @@ public class ReturnAllHatchedDragonsFromPlayers extends DeckEffects {
     }
 
     private void removeCardsOfTemperature(Deck deck, List<Temperature> temperaturesList, Player player) {
-        List<Card> cardsToRemove = new LinkedList<>();
-        for (Card card : player.hatchedCards) {
+        for (int i = 0; i < player.hatchedCards.size(); i++) {
+            Card card = player.hatchedCards.get(i);
             if (temperaturesList.contains(card.temperature)) {
                 deck.addCard(card, true);
-                cardsToRemove.add(card);
+                player.hatchedCards.remove(i--);
             }
         }
-
-        player.hatchedCards.removeAll(cardsToRemove);
     }
 
     @Override
