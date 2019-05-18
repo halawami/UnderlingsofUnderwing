@@ -20,6 +20,7 @@ import underlings.element.NullElement;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
+import underlings.handler.WildHandler;
 import underlings.utilities.EggHatchingLogic;
 import underlings.utilities.LocaleWrap;
 
@@ -34,8 +35,29 @@ public class AddElementsToAllAdjacentEggsEffectTests {
                 EasyMock.partialMockBuilder(AddElementsEffect.class).addMockedMethod("addElementToCard").createMock();
         testedEffect.elementColors = new ElementColor[] {ElementColor.BLUE};
         EggHatchingLogic eggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
-        EasyMock.expect(adjacentCard.isClaimed()).andReturn(false);
         testedEffect.addElementToCard(ElementColor.BLUE, adjacentCard, elementSpaceLogic, elementBag);
+        Gui gui = EasyMock.mock(Gui.class);
+        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
+        EasyMock.replay(elementBag, adjacentCard, elementSpaceLogic, testedEffect, gui, hatchingGround);
+        EasyMock.replay(eggHatchingLogic);
+
+        testedEffect.applyOnAdjacentEgg(adjacentCard, elementBag, elementSpaceLogic, eggHatchingLogic, null, null,
+                null);
+
+        EasyMock.verify(elementBag, adjacentCard, elementSpaceLogic, testedEffect, gui, hatchingGround);
+        EasyMock.verify(eggHatchingLogic);
+    }
+
+    @Test
+    public void testApplyToWildCard() {
+        ElementBag elementBag = EasyMock.mock(ElementBag.class);
+        ElementSpaceLogic elementSpaceLogic = EasyMock.mock(ElementSpaceLogic.class);
+        Card adjacentCard = EasyMock.mock(Card.class);
+        adjacentCard.handler = WildHandler.getInstance();
+        AddElementsEffect testedEffect =
+                EasyMock.partialMockBuilder(AddElementsEffect.class).addMockedMethod("addElementToCard").createMock();
+        testedEffect.elementColors = new ElementColor[] {ElementColor.BLUE};
+        EggHatchingLogic eggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
         Gui gui = EasyMock.mock(Gui.class);
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         EasyMock.replay(elementBag, adjacentCard, elementSpaceLogic, testedEffect, gui, hatchingGround);
