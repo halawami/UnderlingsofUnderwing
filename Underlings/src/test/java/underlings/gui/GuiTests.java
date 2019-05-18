@@ -3,22 +3,18 @@ package underlings.gui;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
 import javax.swing.JOptionPane;
-
 import org.easymock.EasyMock;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.card.Card;
+import underlings.card.EmptyCard;
 import underlings.element.ElementBag;
 import underlings.element.ElementFactory;
 import underlings.element.utilities.ElementSpaceLogic;
@@ -28,6 +24,7 @@ import underlings.game.HatchingGround;
 import underlings.gui.Gui.PromptType;
 import underlings.handler.HandlerFactory;
 import underlings.player.PlayerFactory;
+import underlings.utilities.LocaleWrap;
 
 public class GuiTests {
 
@@ -218,6 +215,29 @@ public class GuiTests {
         this.replay();
         YesNoChoice choice = YesNoChoice.NO;
         assertFalse(choice.booleanValue);
+    }
+
+    @Test
+    public void testReorderCard() {
+        Card cardOne = new Card();
+        Card cardTwo = new Card();
+        List<Card> cardsToChoose = new ArrayList<>();
+        cardsToChoose.add(cardOne);
+        cardsToChoose.add(cardTwo);
+        cardsToChoose.add(EmptyCard.getInstance());
+
+        EasyMock.expect(this.promptHandler.promptChoice(LocaleWrap.get("choose_card"), cardsToChoose, 0))
+                .andReturn(cardTwo);
+        EasyMock.expect(this.promptHandler.promptChoice(LocaleWrap.get("choose_card"), cardsToChoose, 0))
+                .andReturn(cardOne);
+
+        this.replay();
+
+        List<Card> choosen = this.gui.reorderCards(cardsToChoose);
+
+        assertEquals(2, choosen.size());
+        assertEquals(cardTwo, choosen.get(0));
+        assertEquals(cardOne, choosen.get(1));
     }
 
 }

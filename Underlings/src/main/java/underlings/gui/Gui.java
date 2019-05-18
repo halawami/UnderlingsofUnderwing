@@ -9,6 +9,7 @@ import java.util.Locale;
 import java.util.Set;
 import javax.swing.JOptionPane;
 import underlings.card.Card;
+import underlings.card.EmptyCard;
 import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
@@ -214,7 +215,17 @@ public class Gui {
     }
 
     public List<Card> reorderCards(List<Card> cards) {
-        return null;
+        while (cards.contains(EmptyCard.getInstance())) {
+            cards.remove(EmptyCard.getInstance());
+        }
+
+        List<Card> ordered = new ArrayList<>();
+        while (!cards.isEmpty()) {
+            Card card = this.promptChoice(LocaleWrap.get("choose_card"), cards, 0);
+            cards.remove(card);
+            ordered.add(card);
+        }
+        return ordered;
     }
 
 }

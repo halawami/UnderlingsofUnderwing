@@ -53,6 +53,11 @@ public class EggHatchingLogic {
             this.gui.notifyAction(player.getId(), LocaleWrap.format("effect_applied", effects[i].toString()));
             this.displayMethod.run();
         }
+        for (Card egg : hatchingGround.getUnclaimedEggs()) {
+            if (hatchingGround.logic.isComplete(egg)) {
+                this.hatchEgg(egg, true, player);
+            }
+        }
     }
 
     public void returnElementsToBag(Card dragon) {

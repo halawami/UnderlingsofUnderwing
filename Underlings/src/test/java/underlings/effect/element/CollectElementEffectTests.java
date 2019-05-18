@@ -24,6 +24,7 @@ public class CollectElementEffectTests extends MockTest {
         this.elementBag = EasyMock.mock(ElementBag.class);
     }
 
+    @Test
     public void testOneColor() {
         Element blueElement = new Element(ElementColor.BLUE);
 

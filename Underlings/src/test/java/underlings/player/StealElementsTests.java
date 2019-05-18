@@ -11,6 +11,8 @@ import org.junit.Test;
 
 import underlings.Constructors;
 import underlings.MockTest;
+
+import underlings.TestUtils;
 import underlings.element.Element;
 
 public class StealElementsTests extends MockTest {
@@ -19,8 +21,8 @@ public class StealElementsTests extends MockTest {
 
     @Before
     public void init() {
-        this.playerToStealFrom = Constructors.Player();
-        this.stealer = Constructors.Player();
+        this.playerToStealFrom = TestUtils.Player();
+        this.stealer = TestUtils.Player();
     }
 
     @Test
