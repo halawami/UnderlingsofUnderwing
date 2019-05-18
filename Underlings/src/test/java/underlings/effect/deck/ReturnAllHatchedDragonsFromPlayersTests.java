@@ -21,6 +21,7 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
     @Before
     public void init() {
         this.deck = this.mock(Deck.class);
+        this.player = this.mock(Player.class);
         this.card = new Card();
         this.card2 = new Card();
         this.card3 = new Card();
@@ -64,6 +65,23 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
 
         effect.apply();
     }
+
+    @Test
+    public void testRemoveFromOneHatchedCards() {
+        ReturnAllHatchedDragonsFromPlayers effect = new ReturnAllHatchedDragonsFromPlayers();
+        effect.temperatures = new Temperature[]{Temperature.NEUTRAL};
+        this.player.hatchedCards = this.mockListOf(Card.class).withLengthOf(1);
+        this.player.hatchedCards.get(0).temperature = Temperature.NEUTRAL;
+
+        this.deck.addCard(this.player.hatchedCards.get(0), true);
+
+        this.replayAll();
+
+        effect.removeCardsOfTemperature(this.deck, Arrays.asList(Temperature.NEUTRAL), this.player);
+
+        assertEquals(0, this.player.hatchedCards.size());
+    }
+
 
     @Test
     public void testToString() {
