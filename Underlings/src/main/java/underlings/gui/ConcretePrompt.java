@@ -5,10 +5,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.MessageFormat;
 import java.util.List;
+
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
 import underlings.utilities.LocaleWrap;
 
 public class ConcretePrompt implements PromptHandler {
@@ -85,6 +87,11 @@ public class ConcretePrompt implements PromptHandler {
     }
 
     @Override
+    public void displayMessage(String message, int icon) {
+        JOptionPane.showMessageDialog(null, message, "", icon);
+    }
+
+    @Override
     public int promptInt(String prompt, int min, int max) {
         int result = 0;
         do {
@@ -111,10 +118,5 @@ public class ConcretePrompt implements PromptHandler {
 
     private String getPlayer(int playerId) {
         return MessageFormat.format(LocaleWrap.get("player_number"), playerId);
-    }
-
-    @Override
-    public void displayMessage(String message, int icon) {
-        JOptionPane.showMessageDialog(null, message, "", icon);
     }
 }

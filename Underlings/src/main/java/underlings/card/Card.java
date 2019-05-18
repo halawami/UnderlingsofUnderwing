@@ -2,7 +2,6 @@ package underlings.card;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import underlings.card.effect.Effect;
 import underlings.element.ElementGiver;
 import underlings.element.ElementSpace;
@@ -31,7 +30,7 @@ public class Card {
     public List<ElementGiver> getElementGivers() {
         List<ElementGiver> elementGivers = new ArrayList<>();
         for (Effect domesticEffect : this.domesticEffects) {
-            if (domesticEffect.drawChoices != null && !domesticEffect.drawChoices.isEmpty()) {
+            if (!(domesticEffect.drawChoices == null)) {
                 elementGivers.add(domesticEffect);
             }
         }

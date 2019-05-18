@@ -34,12 +34,12 @@ public class Gui {
     public enum PromptType {
         REGULAR, WARNING, ERROR;
 
-        public int jOptionMessageType;
+        public int messageType;
 
         static {
-            REGULAR.jOptionMessageType = JOptionPane.PLAIN_MESSAGE;
-            WARNING.jOptionMessageType = JOptionPane.WARNING_MESSAGE;
-            ERROR.jOptionMessageType = JOptionPane.ERROR_MESSAGE;
+            REGULAR.messageType = JOptionPane.PLAIN_MESSAGE;
+            WARNING.messageType = JOptionPane.WARNING_MESSAGE;
+            ERROR.messageType = JOptionPane.ERROR_MESSAGE;
         }
 
     }
@@ -171,11 +171,11 @@ public class Gui {
     }
 
     public void alert(String message, PromptType messageType) {
-        this.promptHandler.displayMessage(message, messageType.jOptionMessageType);
+        this.promptHandler.displayMessage(message, messageType.messageType);
     }
 
     public void alert(String message, int playerId, PromptType messageType) {
-        this.promptHandler.displayMessage(message, playerId, messageType.jOptionMessageType);
+        this.promptHandler.displayMessage(message, playerId, messageType.messageType);
     }
 
     public List<Card> reorderCards(List<Card> cards) {
