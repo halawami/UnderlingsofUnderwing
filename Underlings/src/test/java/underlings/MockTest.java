@@ -28,7 +28,7 @@ public abstract class MockTest {
     protected HandlerMovementLogic handlerMovementLogic;
     protected ElementSpaceLogic elementSpaceLogic;
     protected Runnable displayMethod;
-    protected Player player;
+    protected Player player, player2;
     protected List<Player> players;
     protected ScoreUtils scoreUtils;
     protected Phase dragonPhase;
@@ -36,11 +36,11 @@ public abstract class MockTest {
     protected Display display;
     protected PromptHandler promptHandler;
     protected ElementBag elementBag;
-    protected Card card;
+    protected Card card, card2, card3;
     protected ElementSpace[] elementSpaces;
     protected EggHatchingLogic eggHatchingLogic;
     protected Handler handler;
-    protected Effect effect1, effect2;
+    protected Effect effect, effect2;
     protected ElementSpace elementSpace, elementSpace2;
 
     protected List<Object> mocks = new ArrayList<>();

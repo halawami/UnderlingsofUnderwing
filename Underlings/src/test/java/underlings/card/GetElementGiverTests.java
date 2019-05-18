@@ -14,7 +14,7 @@ public class GetElementGiverTests extends MockTest {
 
     @Before
     public void init() {
-        this.effect1 = this.mock(Effect.class);
+        this.effect = this.mock(Effect.class);
         this.effect2 = this.mock(Effect.class);
 
     }
@@ -46,7 +46,7 @@ public class GetElementGiverTests extends MockTest {
         ElementGiverEffect elementGiverEffect = new ElementGiverEffect(DrawChoice.RED);
 
         Card testedCard = new Card();
-        testedCard.domesticEffects = new Effect[] {this.effect1, elementGiverEffect, this.effect2};
+        testedCard.domesticEffects = new Effect[] {this.effect, elementGiverEffect, this.effect2};
         this.replayAll();
         List<ElementGiver> elementGivers = testedCard.getElementGivers();
 
@@ -59,7 +59,7 @@ public class GetElementGiverTests extends MockTest {
         ElementGiverEffect elementGiverEffect = new ElementGiverEffect(DrawChoice.RED);
 
         Card testedCard = new Card();
-        testedCard.domesticEffects = new Effect[] {this.effect1, this.effect2, elementGiverEffect};
+        testedCard.domesticEffects = new Effect[] {this.effect, this.effect2, elementGiverEffect};
         this.replayAll();
         List<ElementGiver> elementGivers = testedCard.getElementGivers();
 
@@ -74,7 +74,7 @@ public class GetElementGiverTests extends MockTest {
         ElementGiverEffect elementGiverEffect2 = new ElementGiverEffect(DrawChoice.BLUE);
 
         Card testedCard = new Card();
-        testedCard.domesticEffects = new Effect[] {this.effect1, elementGiverEffect1, elementGiverEffect2};
+        testedCard.domesticEffects = new Effect[] {this.effect, elementGiverEffect1, elementGiverEffect2};
         this.replayAll();
 
         List<ElementGiver> elementGivers = testedCard.getElementGivers();

@@ -15,18 +15,14 @@ import underlings.player.Player;
 
 public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
 
-    private Player player, player2;
-    private Card card, card2, card3;
-    private Deck deck;
-
     @Before
     public void init() {
         this.player = this.mock(Player.class);
         this.player2 = this.mock(Player.class);
+        this.deck = this.mock(Deck.class);
         this.card = new Card();
         this.card2 = new Card();
         this.card3 = new Card();
-        this.deck = this.mock(Deck.class);
     }
 
     @Test
