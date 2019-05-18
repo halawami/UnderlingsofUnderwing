@@ -3715,7 +3715,7 @@
       {
         "effect": "ReplaceHandlerWithYourOwnEffect"
       },
-	  {
+      {
         "effect": "GainHandlersEffect",
         "numberOfHandlers": 1
       }
@@ -3872,6 +3872,56 @@
     "wildEffects": [
       {
         "effect": "ApiaraWildEffect"
+      }
+    ]
+  },
+  {
+    "name": "TYCHE",
+    "points": 16,
+    "temperature": "NEUTRAL",
+    "family": "LEGENDARY",
+    "elementSpaces": [
+      {
+        "color": "YELLOW",
+        "position": "L4_1"
+      },
+      {
+        "color": "ORANGE",
+        "position": "L4_2"
+      },
+      {
+        "color": "ORANGE",
+        "position": "L4_3"
+      },
+      {
+        "color": "YELLOW",
+        "position": "L4_4"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R4_1"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R4_2"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R4_3"
+      },
+      {
+        "color": "BLACK",
+        "position": "R4_4"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "DrawElementsOfChoiceEffect"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "ReturnAllAdjacentHandlersEffect"
       }
     ]
   }
