@@ -1,7 +1,9 @@
 package underlings.game;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import java.util.List;
 import java.util.Stack;
 import java.util.function.Consumer;
 import org.easymock.EasyMock;
@@ -14,8 +16,10 @@ public class DeckTests {
 
     private Deck deck;
     private static final int DECK_SIZE = 50;
-    Consumer consumer;
+    @SuppressWarnings("rawtypes")
+    Consumer<List> consumer;
 
+    @SuppressWarnings("unchecked")
     @Before
     public void init() {
         Stack<Card> cards = new Stack<Card>();
@@ -25,12 +29,6 @@ public class DeckTests {
         this.consumer = EasyMock.mock(Consumer.class);
         this.deck = new Deck(cards, this.consumer);
     }
-
-    @Test
-    public void testDeckSetUp() {
-        assertEquals(DECK_SIZE, this.deck.getSize());
-    }
-
 
     @Test
     public void testDraw() {
@@ -52,26 +50,29 @@ public class DeckTests {
     public void testAddCardNoShuffle() {
         Card card = new Card();
         this.deck.addCard(card, false);
-        assertEquals(51, this.deck.getSize());
+        assertTrue(this.deck.cards.contains(card));
+    }
+
+    @Test
+    public void testAddCardShuffle() {
+        Card card = new Card();
+        this.consumer.accept(this.deck.cards);
+        EasyMock.replay(this.consumer);
+
+        this.deck.addCard(card, true);
+
+        assertTrue(this.deck.cards.contains(card));
+        EasyMock.verify(this.consumer);
     }
 
     @Test
     public void testAddEmptyCard() {
         Card card = EmptyCard.getInstance();
         this.deck.addCard(card, false);
-        assertEquals(50, this.deck.getSize());
-        for (int i = 0; i < 50; i++) {
-            assertNotEquals(EmptyCard.getInstance(), this.deck.draw());
-        }
+
+        assertFalse(this.deck.cards.contains(card));
     }
 
-    @Test
-    public void testAddCardEmptyDeck() {
-        Stack<Card> cards = new Stack<>();
-        this.deck = new Deck(cards, this.consumer);
-        Card card = new Card();
-        this.deck.addCard(card, false);
-        assertEquals(1, this.deck.getSize());
-    }
+
 
 }

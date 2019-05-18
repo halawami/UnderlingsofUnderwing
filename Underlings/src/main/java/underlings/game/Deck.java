@@ -8,7 +8,7 @@ import underlings.card.EmptyCard;
 
 public class Deck {
 
-    private List<Card> cards;
+    protected List<Card> cards;
 
     @SuppressWarnings("rawtypes")
     Consumer<List> shuffleFunction;
@@ -24,10 +24,6 @@ public class Deck {
             return EmptyCard.getInstance();
         }
         return this.cards.remove(0);
-    }
-
-    public int getSize() {
-        return this.cards.size();
     }
 
     public void addCard(Card card, boolean shuffle) {
