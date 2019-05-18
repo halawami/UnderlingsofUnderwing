@@ -1,19 +1,12 @@
 package underlings.scoring;
 
 import static org.junit.Assert.assertEquals;
-
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
-
-import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.card.Card;
 import underlings.card.Temperature;
-import underlings.gui.Gui;
-import underlings.player.Player;
 
 public class TemperatureTests {
 
@@ -22,15 +15,12 @@ public class TemperatureTests {
 
     @Before
     public void init() {
-        Player player = EasyMock.mock(Player.class);
-        List<Player> players = Arrays.asList(player);
-        Gui gui = EasyMock.mock(Gui.class);
-        this.scoreUtils = new ScoreUtils(players, gui);
+        this.scoreUtils = new ScoreUtils(null, null);
         this.cards = new Card[] {new Card(), new Card(), new Card(), new Card()};
     }
 
     @Test
-    public void testEmpty() {
+    public void testNoCards() {
         int balance = this.scoreUtils.calculateTemperature(Collections.emptyList());
 
         assertEquals(0, balance);
