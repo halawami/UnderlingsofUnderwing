@@ -1,10 +1,18 @@
 package underlings.field;
 
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertNull;
 
+import java.util.Arrays;
+
+import org.easymock.EasyMock;
 import org.junit.Test;
 
-public class GetGridTests {
+import underlings.handler.Handler;
+import underlings.handler.HandlerState;
+import underlings.player.Player;
+
+public class GridTests {
 
     @Test
     public void testGetGrid() {
@@ -35,5 +43,18 @@ public class GetGridTests {
         grid[3][8] = field.field.get(10);
 
         assertArrayEquals(grid, field.getGrid());
+    }
+
+    @Test
+    public void testGetValidFieldSpaces() {
+        Field field = new Field(new FieldSpaceFactory());
+
+        Handler handler = new Handler(HandlerState.CARD);
+        Player player = EasyMock.niceMock(Player.class);
+        player.maxHandlersOnSpace = 1;
+        player.handlers = Arrays.asList(handler);
+        field.addHandler(2, handler);
+        FieldSpace[][] grid = field.getValidFieldSpaces(player);
+        assertNull(grid[0][3]);
     }
 }
