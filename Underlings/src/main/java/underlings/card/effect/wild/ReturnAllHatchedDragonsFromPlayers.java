@@ -18,23 +18,28 @@ public class ReturnAllHatchedDragonsFromPlayers extends DeckEffects {
 
     @Override
     protected void apply(List<Player> players, Deck deck, Gui gui) {
-        List<Temperature> temperaturesList = Arrays.asList(temperatures);
+        List<Temperature> temperaturesList = Arrays.asList(this.temperatures);
         for (Player player : players) {
-            List<Card> cardsToRemove = new LinkedList<>();
-            for (Card card : player.hatchedCards) {
-                if (temperaturesList.contains(card.temperature)) {
-                    deck.addCard(card);
-                    cardsToRemove.add(card);
-                }
-            }
-            player.hatchedCards.removeAll(cardsToRemove);
+            this.removeCardsOfTemperature(deck, temperaturesList, player);
         }
+    }
+
+    private void removeCardsOfTemperature(Deck deck, List<Temperature> temperaturesList, Player player) {
+        List<Card> cardsToRemove = new LinkedList<>();
+        for (Card card : player.hatchedCards) {
+            if (temperaturesList.contains(card.temperature)) {
+                deck.addCard(card);
+                cardsToRemove.add(card);
+            }
+        }
+
+        player.hatchedCards.removeAll(cardsToRemove);
     }
 
     @Override
     public String toString() {
         StringBuilder temperature = new StringBuilder();
-        for (Temperature temp : temperatures) {
+        for (Temperature temp : this.temperatures) {
             temperature.append(temp);
             temperature.append(" ");
         }

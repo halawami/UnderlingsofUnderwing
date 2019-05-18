@@ -2,10 +2,13 @@ package underlings.effect.deck;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+
 import java.util.Arrays;
 import java.util.LinkedList;
+
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.Temperature;
@@ -38,8 +41,9 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
 
         this.replayAll();
 
-        effect.temperatures = new Temperature[] {Temperature.NEUTRAL};
+        effect.temperatures = new Temperature[]{Temperature.NEUTRAL};
         effect.apply();
+
         assertTrue(this.player.hatchedCards.isEmpty());
     }
 
@@ -58,8 +62,9 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
 
         this.replayAll();
 
-        effect.temperatures = new Temperature[] {Temperature.NEUTRAL};
+        effect.temperatures = new Temperature[]{Temperature.NEUTRAL};
         effect.apply();
+
         assertTrue(this.player.hatchedCards.isEmpty());
     }
 
@@ -79,7 +84,7 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
 
         this.replayAll();
 
-        effect.temperatures = new Temperature[] {Temperature.NEUTRAL};
+        effect.temperatures = new Temperature[]{Temperature.NEUTRAL};
         effect.apply();
         assertTrue(this.player.hatchedCards.isEmpty());
         assertTrue(this.player2.hatchedCards.isEmpty());
@@ -102,7 +107,7 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
 
         this.replayAll();
 
-        effect.temperatures = new Temperature[] {Temperature.NEUTRAL};
+        effect.temperatures = new Temperature[]{Temperature.NEUTRAL};
         effect.apply();
         assertEquals(1, this.player2.hatchedCards.size());
         assertTrue(this.player2.hatchedCards.contains(this.card3));
@@ -112,7 +117,7 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
     public void testToString() {
         this.replayAll();
         ReturnAllHatchedDragonsFromPlayers effect = new ReturnAllHatchedDragonsFromPlayers();
-        effect.temperatures = new Temperature[] {Temperature.COOL};
+        effect.temperatures = new Temperature[]{Temperature.COOL};
         StringBuilder temperature = new StringBuilder();
         for (Temperature temp : effect.temperatures) {
             temperature.append(temp);

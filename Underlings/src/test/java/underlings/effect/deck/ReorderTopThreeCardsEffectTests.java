@@ -59,8 +59,6 @@ public class ReorderTopThreeCardsEffectTests extends MockTest {
 
         ReorderTopThreeCardsEffect testedEffect = new ReorderTopThreeCardsEffect();
         testedEffect.on(deck).on(gui).apply();
-
-        this.verifyAll();
     }
 
     private void addEmptyCards(List<Card> topCards, int cardsLeft) {
