@@ -1,19 +1,13 @@
 package underlings.scoring;
 
 import static org.junit.Assert.assertEquals;
-
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
-
-import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
-
+import underlings.Constructors;
 import underlings.card.Card;
 import underlings.card.Temperature;
-import underlings.gui.Gui;
-import underlings.player.Player;
 
 public class TemperatureTests {
 
@@ -22,15 +16,16 @@ public class TemperatureTests {
 
     @Before
     public void init() {
-        Player player = EasyMock.mock(Player.class);
-        List<Player> players = Arrays.asList(player);
-        Gui gui = EasyMock.mock(Gui.class);
-        this.scoreUtils = new ScoreUtils(players, gui);
-        this.cards = new Card[] {new Card(), new Card(), new Card(), new Card()};
+        this.scoreUtils = new ScoreUtils(null, null);
+        this.cards = new Card[4];
+        this.cards[0] = Constructors.Card(Temperature.WARM);
+        this.cards[1] = Constructors.Card(Temperature.COOL);
+        this.cards[2] = Constructors.Card(Temperature.NEUTRAL);
+        this.cards[3] = new Card();
     }
 
     @Test
-    public void testEmpty() {
+    public void testNoCards() {
         int balance = this.scoreUtils.calculateTemperature(Collections.emptyList());
 
         assertEquals(0, balance);
@@ -38,10 +33,6 @@ public class TemperatureTests {
 
     @Test
     public void testPerfectBalance() {
-        this.cards[0].temperature = Temperature.WARM;
-        this.cards[1].temperature = Temperature.COOL;
-        this.cards[2].temperature = Temperature.NEUTRAL;
-
         int balance = this.scoreUtils.calculateTemperature(Arrays.asList(this.cards));
 
         assertEquals(0, balance);
@@ -49,11 +40,7 @@ public class TemperatureTests {
 
     @Test
     public void testWarmBalance() {
-        this.cards[0].temperature = Temperature.WARM;
-        this.cards[1].temperature = Temperature.COOL;
-        this.cards[2].temperature = Temperature.NEUTRAL;
-        this.cards[3].temperature = Temperature.WARM;
-
+        this.cards[3] = Constructors.Card(Temperature.WARM);
         int balance = this.scoreUtils.calculateTemperature(Arrays.asList(this.cards));
 
         assertEquals(1, balance);
@@ -61,11 +48,7 @@ public class TemperatureTests {
 
     @Test
     public void testCoolBalance() {
-        this.cards[0].temperature = Temperature.WARM;
-        this.cards[1].temperature = Temperature.COOL;
-        this.cards[2].temperature = Temperature.NEUTRAL;
-        this.cards[3].temperature = Temperature.COOL;
-
+        this.cards[3] = Constructors.Card(Temperature.COOL);
         int balance = this.scoreUtils.calculateTemperature(Arrays.asList(this.cards));
 
         assertEquals(-1, balance);

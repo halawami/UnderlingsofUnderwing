@@ -51,7 +51,7 @@ public class HandlerTests {
     public void test2PlayerReadyRoom() {
         this.game.setUp(2);
         for (Player player : this.game.getPlayers()) {
-            for (Handler handler : player.getHandlers()) {
+            for (Handler handler : player.handlers) {
                 assertEquals(HandlerState.READY_ROOM, handler.getState());
             }
         }
@@ -61,7 +61,7 @@ public class HandlerTests {
     public void test6PlayerReadyRoom() {
         this.game.setUp(6);
         for (Player player : this.game.getPlayers()) {
-            for (Handler handler : player.getHandlers()) {
+            for (Handler handler : player.handlers) {
                 assertEquals(HandlerState.READY_ROOM, handler.getState());
             }
         }

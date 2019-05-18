@@ -1,6 +1,5 @@
 package underlings.gui;
 
-import java.awt.Dimension;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,9 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
-
 import javax.swing.JOptionPane;
-
 import underlings.card.Card;
 import underlings.element.Element;
 import underlings.element.ElementBag;
@@ -94,7 +91,7 @@ public class Gui {
                 }
 
                 int count = 0;
-                for (Handler handler : player.getHandlers()) {
+                for (Handler handler : player.handlers) {
                     if (space.contains(handler)) {
                         count++;
                     }
@@ -146,8 +143,7 @@ public class Gui {
         for (int playerNumber = 0; playerNumber < players.size(); playerNumber++) {
             Player player = players.get(playerNumber);
             this.display.displayPlayer(playerNumber, player);
-            List<Handler> handlers = player.getHandlers();
-            this.display.displayHandlers(playerNumber, handlers);
+            this.display.displayHandlers(playerNumber, player.handlers);
         }
 
     }
@@ -162,10 +158,8 @@ public class Gui {
     }
 
     public void displayHatchingGround(HatchingGround hatchingGround) {
-        Dimension hgDimensions = hatchingGround.getDimensions();
-
-        for (int row = 0; row < hgDimensions.height; row++) {
-            for (int col = 0; col < hgDimensions.width; col++) {
+        for (int row = 0; row < hatchingGround.getHeight(); row++) {
+            for (int col = 0; col < hatchingGround.getWidth(); col++) {
                 this.display.displayCard(row, col, hatchingGround.cards[row][col]);
             }
         }
@@ -178,7 +172,7 @@ public class Gui {
     public ElementSpace getElementSpaceWithColors(List<Card> cards, ElementColor[] colorChoices, int playerId) {
         List<Card> cardOptions = new ArrayList<>();
         for (Card card : cards) {
-            if (!getSpacesWithColors(card, colorChoices).isEmpty()) {
+            if (!this.getSpacesWithColors(card, colorChoices).isEmpty()) {
                 cardOptions.add(card);
             }
         }
@@ -193,7 +187,7 @@ public class Gui {
         }
 
         Card card = this.promptHandler.promptChoice(LocaleWrap.get("take_element_card"), cardOptions, playerId);
-        List<ElementSpace> spaces = getSpacesWithColors(card, colorChoices);
+        List<ElementSpace> spaces = this.getSpacesWithColors(card, colorChoices);
         ElementSpace space = this.promptHandler.promptChoice(LocaleWrap.get("take_element_space"), spaces, playerId);
         return space;
     }

@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-
 import underlings.card.Card;
 import underlings.card.effect.ObserverEffect;
 import underlings.element.Element;
@@ -20,7 +19,7 @@ import underlings.utilities.LocaleWrap;
 
 public class Player {
 
-    private List<Handler> handlers;
+    public List<Handler> handlers;
     public int maxHandlers;
     private int points;
     private boolean reached12Points;
@@ -36,6 +35,9 @@ public class Player {
     public List<ElementGiver> effectElementGivers;
     private boolean useEffectElementGivers;
     public int hatchingTime;
+
+    public int score;
+    public int netTemperature;
 
     public Player(int maxHandlers, HandlerFactory handlerFactory, int id) {
         this.handlers = new ArrayList<>();
@@ -57,10 +59,6 @@ public class Player {
 
     public int getHandlerCount() {
         return this.handlers.size();
-    }
-
-    public List<Handler> getHandlers() {
-        return this.handlers;
     }
 
     public void gainHandler() {

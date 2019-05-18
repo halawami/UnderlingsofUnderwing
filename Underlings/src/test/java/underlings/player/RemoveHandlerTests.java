@@ -1,24 +1,21 @@
-package underlings.player.handler;
+package underlings.player;
 
 import static org.junit.Assert.assertEquals;
-
 import org.junit.Before;
 import org.junit.Test;
+import underlings.Constructors;
 
-import underlings.handler.HandlerFactory;
-import underlings.player.Player;
-
-public class RemoveTests {
+public class RemoveHandlerTests {
 
     private Player player;
 
     @Before
     public void init() {
-        this.player = new Player(6, new HandlerFactory(), 0);
+        this.player = Constructors.Player();
     }
 
     @Test
-    public void test3Handlers() {
+    public void testThree() {
         this.gainHandler(1);
 
         this.player.loseHandler();
@@ -26,7 +23,7 @@ public class RemoveTests {
     }
 
     @Test
-    public void testMaxHandlers() {
+    public void testMax() {
         this.gainHandler(4);
 
         this.player.loseHandler();
@@ -34,7 +31,7 @@ public class RemoveTests {
     }
 
     @Test
-    public void test2Handlers() {
+    public void testTwo() {
         this.player.loseHandler();
         assertEquals(2, this.player.getHandlerCount());
     }

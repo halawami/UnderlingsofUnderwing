@@ -7,7 +7,7 @@ import underlings.utilities.LocaleWrap;
 
 public class Handler extends ElementGiver {
 
-    private HandlerState state;
+    public HandlerState state;
     public String location;
 
     public Handler(HandlerState state) {

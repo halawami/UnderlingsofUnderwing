@@ -1,11 +1,7 @@
 package underlings.scoring;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
-
 import underlings.card.Card;
 import underlings.card.Temperature;
 import underlings.gui.Gui;
@@ -17,60 +13,36 @@ public class ScoreUtils {
 
     private List<Player> players;
     private Gui gui;
-    protected List<Player> winners;
-    protected Map<Player, Integer> scores;
+    protected int winningScore;
 
     public ScoreUtils(List<Player> players, Gui gui) {
         this.players = players;
         this.gui = gui;
-        this.winners = new LinkedList<>();
-        this.scores = new HashMap<>();
     }
 
     public void calculateScores() {
-        boolean bonus = this.players.size() > 2;
-
         int warmest = 0;
         int coolest = 0;
 
-        List<Player> warmestPlayers = new ArrayList<>();
-        List<Player> coolestPlayers = new ArrayList<>();
-
         for (Player player : this.players) {
-            int temp = this.calculateTemperature(player.hatchedCards);
+            player.netTemperature = this.calculateTemperature(player.hatchedCards);
 
-            if (temp != 0) {
-                if (temp > warmest) {
-                    warmest = temp;
-                    warmestPlayers = new ArrayList<>();
-                    warmestPlayers.add(player);
-                } else if (temp == warmest) {
-                    warmestPlayers.add(player);
-                }
-
-                if (temp < coolest) {
-                    coolest = temp;
-                    coolestPlayers = new ArrayList<>();
-                    coolestPlayers.add(player);
-                } else if (temp == coolest) {
-                    coolestPlayers.add(player);
-                }
-            }
-
+            warmest = (player.netTemperature > warmest) ? player.netTemperature : warmest;
+            coolest = (player.netTemperature < coolest) ? player.netTemperature : coolest;
         }
 
         for (Player player : this.players) {
-            int score = 0;
+            player.score = 0;
 
-            if (bonus) {
-                score += (warmestPlayers.contains(player)) ? 15 : 0;
-                score += (coolestPlayers.contains(player)) ? 15 : 0;
-                score += (this.calculateTemperature(player.hatchedCards)) == 0 ? 20 : 0;
+            if (this.players.size() > 2) {
+                player.score += (player.netTemperature == warmest && warmest != 0) ? 15 : 0;
+                player.score += (player.netTemperature == coolest && coolest != 0) ? 15 : 0;
+                player.score += (player.netTemperature == 0) ? 20 : 0;
             }
 
-            score += this.calculatePoints(player.hatchedCards);
+            player.score += this.calculatePoints(player.hatchedCards);
 
-            this.scores.put(player, score);
+            this.winningScore = (player.score > this.winningScore) ? player.score : this.winningScore;
         }
     }
 
@@ -96,29 +68,19 @@ public class ScoreUtils {
     }
 
     public void displayScores() {
-        int maxScore = 0;
-
-        for (Player player : this.scores.keySet()) {
-            maxScore = this.decideWinners(this.scores, player, maxScore);
-
-            this.gui.alert(LocaleWrap.format("player_score", player, this.scores.get(player)), player.getId(),
-                    PromptType.REGULAR);
+        for (Player player : this.players) {
+            this.gui.alert(LocaleWrap.format("player_score", player, player.score), player.id, PromptType.REGULAR);
         }
-    }
-
-    public int decideWinners(Map<Player, Integer> scores, Player player, int maxScore) {
-        if (scores.get(player) == maxScore) {
-            this.winners.add(player);
-        } else if (scores.get(player) > maxScore) {
-            this.winners.clear();
-            this.winners.add(player);
-            maxScore = scores.get(player);
-        }
-        return maxScore;
     }
 
     public void displayWinners() {
-        this.gui.alert(LocaleWrap.format("winners", this.winners), PromptType.REGULAR);
+        List<Player> winners = new ArrayList<>();
+        for (Player player : this.players) {
+            if (player.score == this.winningScore) {
+                winners.add(player);
+            }
+        }
+        this.gui.alert(LocaleWrap.format("winners", winners), PromptType.REGULAR);
     }
 
 }

@@ -15,7 +15,7 @@ import underlings.handler.Handler;
 import underlings.handler.HandlerFactory;
 import underlings.handler.HandlerState;
 
-public class GetElementGiversTests {
+public class ElementGiversTests {
 
     @Test
     public void testTwoHandlersNoCardElementGivers() {

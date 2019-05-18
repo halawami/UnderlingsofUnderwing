@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import underlings.element.ElementBag;
 import underlings.field.Field;
 import underlings.game.HatchingGround;
@@ -33,7 +32,7 @@ public class HandlerPhase extends RotationPhase {
         this.unmovedHandlers = new HashMap<>();
 
         for (Player player : this.players) {
-            this.unmovedHandlers.put(player, new ArrayList<>(player.getHandlers()));
+            this.unmovedHandlers.put(player, new ArrayList<>(player.handlers));
 
             for (Handler handler : this.unmovedHandlers.get(player)) {
                 if (handler.getState() == HandlerState.BREAK_ROOM) {
