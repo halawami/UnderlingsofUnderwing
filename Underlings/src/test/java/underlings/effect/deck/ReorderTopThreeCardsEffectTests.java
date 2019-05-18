@@ -31,6 +31,11 @@ public class ReorderTopThreeCardsEffectTests {
         this.testCardsLeft(1);
     }
 
+    @Test
+    public void testNoCardsLeft() {
+        this.testCardsLeft(0);
+    }
+
     private void testCardsLeft(int cardsLeft) {
         Deck deck = EasyMock.mock(Deck.class);
         List<Card> topThreeCards = TestUtils.mockListOf(Card.class).withLength(cardsLeft);
