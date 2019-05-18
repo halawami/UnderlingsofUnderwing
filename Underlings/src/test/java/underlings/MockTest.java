@@ -4,16 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 import org.easymock.EasyMock;
 import org.junit.After;
+import underlings.card.Card;
+import underlings.element.ElementBag;
+import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.Deck;
 import underlings.game.HatchingGround;
 import underlings.gui.Display;
 import underlings.gui.Gui;
 import underlings.gui.PromptHandler;
+import underlings.handler.Handler;
 import underlings.handler.HandlerMovementLogic;
 import underlings.phase.Phase;
 import underlings.player.Player;
 import underlings.scoring.ScoreUtils;
+import underlings.utilities.EggHatchingLogic;
 
 public abstract class MockTest {
 
@@ -29,6 +34,11 @@ public abstract class MockTest {
     protected Deck deck;
     protected Display display;
     protected PromptHandler promptHandler;
+    protected ElementBag elementBag;
+    protected Card card;
+    protected ElementSpace[] elementSpaces;
+    protected EggHatchingLogic eggHatchingLogic;
+    protected Handler handler;
 
     protected List<Object> mocks = new ArrayList<>();
 
