@@ -3,10 +3,8 @@ package underlings.gui;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
-import java.util.Set;
 import javax.swing.JOptionPane;
 import underlings.card.Card;
 import underlings.card.EmptyCard;
@@ -97,7 +95,7 @@ public class Gui {
     public Element getElementOfColorsFromSpace(ElementColor[] elementChoices, ElementSpace elementSpace,
             int playerNum) {
         List<ElementColor> validColors = new ArrayList<>(Arrays.asList(elementChoices));
-        Set<Element> colors = new HashSet<>();
+        List<Element> colors = new ArrayList<>();
 
         for (Element element : elementSpace.elements) {
             if (validColors.contains(element.getColor())) {

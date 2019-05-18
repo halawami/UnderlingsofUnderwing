@@ -2,6 +2,7 @@ package underlings.scoring;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import underlings.card.Card;
 import underlings.card.Temperature;
 import underlings.gui.Gui;
