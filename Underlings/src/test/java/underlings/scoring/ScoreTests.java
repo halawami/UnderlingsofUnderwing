@@ -7,11 +7,11 @@ import java.util.List;
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
+import underlings.Constructors;
 import underlings.card.Card;
 import underlings.card.Temperature;
 import underlings.gui.Gui;
 import underlings.gui.Gui.PromptType;
-import underlings.handler.HandlerFactory;
 import underlings.player.Player;
 import underlings.utilities.LocaleWrap;
 
@@ -27,42 +27,42 @@ public class ScoreTests {
         this.gui = EasyMock.mock(Gui.class);
         this.players = new Player[5];
 
-        this.players[0] = new Player(6, new HandlerFactory(), 1);
+        this.players[0] = Constructors.Player();
         this.players[0].hatchedCards = new ArrayList<Card>() {
             {
-                this.add(ScoreTests.this.createCard(12, Temperature.WARM));
-                this.add(ScoreTests.this.createCard(3, Temperature.COOL));
-                this.add(ScoreTests.this.createCard(6, Temperature.NEUTRAL));
-                this.add(ScoreTests.this.createCard(19, Temperature.COOL));
-                this.add(ScoreTests.this.createCard(3, Temperature.WARM));
+                this.add(Constructors.Card(12, Temperature.WARM));
+                this.add(Constructors.Card(3, Temperature.COOL));
+                this.add(Constructors.Card(6, Temperature.NEUTRAL));
+                this.add(Constructors.Card(19, Temperature.COOL));
+                this.add(Constructors.Card(3, Temperature.WARM));
             }
         };
 
-        this.players[1] = new Player(6, new HandlerFactory(), 2);
+        this.players[1] = Constructors.Player();
         this.players[1].hatchedCards = new ArrayList<Card>() {
             {
-                this.add(ScoreTests.this.createCard(16, Temperature.WARM));
-                this.add(ScoreTests.this.createCard(19, Temperature.COOL));
-                this.add(ScoreTests.this.createCard(10, Temperature.NEUTRAL));
+                this.add(Constructors.Card(16, Temperature.WARM));
+                this.add(Constructors.Card(19, Temperature.COOL));
+                this.add(Constructors.Card(10, Temperature.NEUTRAL));
             }
         };
 
-        this.players[2] = new Player(6, new HandlerFactory(), 3);
+        this.players[2] = Constructors.Player();
         this.players[2].hatchedCards = new ArrayList<Card>();
 
-        this.players[3] = new Player(6, new HandlerFactory(), 4);
+        this.players[3] = Constructors.Player();
         this.players[3].hatchedCards = new ArrayList<Card>() {
             {
-                this.add(ScoreTests.this.createCard(3, Temperature.COOL));
-                this.add(ScoreTests.this.createCard(10, Temperature.COOL));
+                this.add(Constructors.Card(3, Temperature.COOL));
+                this.add(Constructors.Card(10, Temperature.COOL));
             }
         };
 
-        this.players[4] = new Player(6, new HandlerFactory(), 5);
+        this.players[4] = Constructors.Player();
         this.players[4].hatchedCards = new ArrayList<Card>() {
             {
-                this.add(ScoreTests.this.createCard(3, Temperature.WARM));
-                this.add(ScoreTests.this.createCard(3, Temperature.WARM));
+                this.add(Constructors.Card(3, Temperature.WARM));
+                this.add(Constructors.Card(3, Temperature.WARM));
             }
         };
 
@@ -76,7 +76,6 @@ public class ScoreTests {
 
         assertEquals(43, this.players[0].score);
         assertEquals(45, this.players[1].score);
-
         assertEquals(45, this.scoreUtils.winningScore);
     }
 
@@ -88,7 +87,6 @@ public class ScoreTests {
         assertEquals(63, this.players[0].score);
         assertEquals(65, this.players[1].score);
         assertEquals(20, this.players[2].score);
-
         assertEquals(65, this.scoreUtils.winningScore);
 
     }
@@ -103,7 +101,6 @@ public class ScoreTests {
         assertEquals(65, this.players[1].score);
         assertEquals(20, this.players[2].score);
         assertEquals(28, this.players[3].score);
-
         assertEquals(65, this.scoreUtils.winningScore);
 
     }
@@ -120,7 +117,6 @@ public class ScoreTests {
         assertEquals(20, this.players[2].score);
         assertEquals(28, this.players[3].score);
         assertEquals(21, this.players[4].score);
-
         assertEquals(65, this.scoreUtils.winningScore);
     }
 
@@ -159,13 +155,6 @@ public class ScoreTests {
         this.scoreUtils.displayWinners();
 
         EasyMock.verify(this.gui);
-    }
-
-    private Card createCard(int points, Temperature temperature) {
-        Card toReturn = new Card();
-        toReturn.points = points;
-        toReturn.temperature = temperature;
-        return toReturn;
     }
 
 }

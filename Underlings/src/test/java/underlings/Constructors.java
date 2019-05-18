@@ -1,6 +1,7 @@
 package underlings;
 
 import underlings.card.Card;
+import underlings.card.Temperature;
 import underlings.handler.HandlerFactory;
 import underlings.player.Player;
 
@@ -15,4 +16,11 @@ public class Constructors {
         card.points = points;
         return card;
     }
+
+    public static Card Card(int points, Temperature temperature) {
+        Card card = Card(points);
+        card.temperature = temperature;
+        return card;
+    }
+
 }
