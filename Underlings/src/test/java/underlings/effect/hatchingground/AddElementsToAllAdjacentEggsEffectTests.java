@@ -20,7 +20,6 @@ import underlings.element.NullElement;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
-import underlings.player.FakePlayer;
 import underlings.utilities.EggHatchingLogic;
 import underlings.utilities.LocaleWrap;
 
@@ -186,36 +185,6 @@ public class AddElementsToAllAdjacentEggsEffectTests {
         for (ElementSpace mockedPlayableSpace : mockedPlayableSpaces) {
             EasyMock.verify(mockedPlayableSpace);
         }
-    }
-
-    @Test
-    public void testCheckOtherHatchedCards() {
-        ElementColor blue = ElementColor.BLUE;
-        ElementColor black = ElementColor.BLACK;
-        Card mockedCard = EasyMock.mock(Card.class);
-        Card adjacentCard = EasyMock.mock(Card.class);
-        adjacentCard.elementSpaces =
-                new ElementSpace[] {new ElementSpace(ElementColor.BLUE), new ElementSpace(ElementColor.BLACK)};
-        adjacentCard.elementSpaces[1].elements = Arrays.asList(new Element(black));
-        ElementSpaceLogic elementSpaceLogic = EasyMock.mock(ElementSpaceLogic.class);
-        ElementBag elementBag = EasyMock.mock(ElementBag.class);
-        Element stubElement = EasyMock.niceMock(Element.class);
-        ElementSpace mockedPlayableSpace = EasyMock.mock(ElementSpace.class);
-
-        EasyMock.expect(elementSpaceLogic.getPlayableSpaces(mockedCard, blue))
-                .andReturn(Arrays.asList(mockedPlayableSpace));
-        EasyMock.expect(elementBag.drawElementFromList(blue)).andReturn(stubElement);
-        mockedPlayableSpace.addElements(stubElement);
-        EggHatchingLogic eggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
-        eggHatchingLogic.hatchEgg(adjacentCard, true, FakePlayer.getInstance());
-
-        EasyMock.replay(mockedCard, adjacentCard, elementSpaceLogic, elementBag, mockedPlayableSpace, eggHatchingLogic);
-
-        AddElementsEffect testedEffect = new AddElementsEffect();
-
-        testedEffect.addElementToCard(blue, mockedCard, elementSpaceLogic, elementBag);
-
-        EasyMock.verify(mockedCard, adjacentCard, elementSpaceLogic, elementBag, mockedPlayableSpace, eggHatchingLogic);
     }
 
     private List<ElementSpace> getMockedPlayableSpaces(int numberOfSpaces) {
