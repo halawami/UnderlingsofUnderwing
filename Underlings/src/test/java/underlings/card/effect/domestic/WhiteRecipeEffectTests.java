@@ -1,8 +1,7 @@
 package underlings.card.effect.domestic;
 
-import org.junit.Before;
 import static org.junit.Assert.assertEquals;
-
+import org.junit.Before;
 import org.junit.Test;
 import underlings.MockTest;
 import underlings.card.effect.Effect;
@@ -60,6 +59,7 @@ public class WhiteRecipeEffectTests extends MockTest {
 
     @Test
     public void testToStringDestroy() {
+        this.replayAll();
         WhiteRecipeEffect effect = new WhiteRecipeEffect();
         assertEquals(LocaleWrap.get("combine_primary_secondary_for_white"), effect.toString());
     }
