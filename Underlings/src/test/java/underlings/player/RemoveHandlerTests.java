@@ -3,7 +3,8 @@ package underlings.player;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
-import underlings.Constructors;
+
+import underlings.TestUtils;
 
 public class RemoveHandlerTests {
 
@@ -11,7 +12,7 @@ public class RemoveHandlerTests {
 
     @Before
     public void init() {
-        this.player = Constructors.Player();
+        this.player = TestUtils.Player();
     }
 
     @Test
