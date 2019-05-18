@@ -32,45 +32,39 @@ public class ReturnMostValuableDragonEffectTests extends MockTest {
 
     private void testApplyEffectOnPlayers(int numberOfPlayers) {
         List<Player> players = this.mockListOf(Player.class).withLengthOf(numberOfPlayers);
-        Deck deck = EasyMock.mock(Deck.class);
-        Gui gui = EasyMock.mock(Gui.class);
-        ReturnMostValuableDragonEffect testedEffect = EasyMock.partialMockBuilder(ReturnMostValuableDragonEffect.class)
+        Deck deck = this.mock(Deck.class);
+        Gui gui = this.mock(Gui.class);
+        ReturnMostValuableDragonEffect effect = EasyMock.partialMockBuilder(ReturnMostValuableDragonEffect.class)
                 .addMockedMethod("returnMostValuableDragon").createMock();
-        testedEffect.on(players).on(deck).on(gui);
+        this.addMock(effect);
 
-        players.forEach(player -> testedEffect.returnMostValuableDragon(player, deck, gui));
+        players.forEach(player -> effect.returnMostValuableDragon(player, deck, gui));
 
-        EasyMock.replay(deck, gui, testedEffect);
-        players.forEach(EasyMock::replay);
+        this.replayAll();
 
-        testedEffect.apply();
-
-        EasyMock.verify(deck, gui, testedEffect);
-        players.forEach(EasyMock::verify);
+        effect.on(players).on(deck).on(gui).apply();
     }
 
     @Test
     public void testReturnMostValuableDragonNoDragons() {
-        Player player = EasyMock.mock(Player.class);
-        Deck deck = EasyMock.mock(Deck.class);
-        Gui gui = EasyMock.mock(Gui.class);
+        Player player = this.mock(Player.class);
+        Deck deck = this.mock(Deck.class);
+        Gui gui = this.mock(Gui.class);
         List<Card> mostValuableDragons = Collections.emptyList();
 
         EasyMock.expect(player.getMostValuableDragons()).andReturn(mostValuableDragons);
 
-        EasyMock.replay(player, deck, gui);
+        this.replayAll();
 
-        ReturnMostValuableDragonEffect testedEffect = new ReturnMostValuableDragonEffect();
-        testedEffect.returnMostValuableDragon(player, deck, gui);
-
-        EasyMock.verify(player, deck, gui);
+        ReturnMostValuableDragonEffect effect = new ReturnMostValuableDragonEffect();
+        effect.returnMostValuableDragon(player, deck, gui);
     }
 
     @Test
     public void testReturnMostValuableDragonOneDragon() {
-        Player player = EasyMock.mock(Player.class);
-        Deck deck = EasyMock.mock(Deck.class);
-        Gui gui = EasyMock.mock(Gui.class);
+        Player player = this.mock(Player.class);
+        Deck deck = this.mock(Deck.class);
+        Gui gui = this.mock(Gui.class);
         List<Card> mostValuableDragons = this.mockListOf(Card.class).withLengthOf(1);
         player.hatchedCards = new ArrayList<>(mostValuableDragons);
 
@@ -79,21 +73,19 @@ public class ReturnMostValuableDragonEffectTests extends MockTest {
                 .andReturn(mostValuableDragons.get(0));
         deck.addCard(mostValuableDragons.get(0), true);
 
-        EasyMock.replay(player, deck, gui);
         this.replayAll();
 
-        ReturnMostValuableDragonEffect testedEffect = new ReturnMostValuableDragonEffect();
-        testedEffect.returnMostValuableDragon(player, deck, gui);
+        ReturnMostValuableDragonEffect effect = new ReturnMostValuableDragonEffect();
+        effect.returnMostValuableDragon(player, deck, gui);
 
         Assert.assertFalse(player.hatchedCards.contains(mostValuableDragons.get(0)));
-        EasyMock.verify(player, deck, gui);
     }
 
     @Test
     public void testReturnMostValuableDragonTwoDragons() {
-        Player player = EasyMock.mock(Player.class);
-        Deck deck = EasyMock.mock(Deck.class);
-        Gui gui = EasyMock.mock(Gui.class);
+        Player player = this.mock(Player.class);
+        Deck deck = this.mock(Deck.class);
+        Gui gui = this.mock(Gui.class);
         List<Card> mostValuableDragons = this.mockListOf(Card.class).withLengthOf(2);
         player.hatchedCards = new ArrayList<>(mostValuableDragons);
 
@@ -102,14 +94,12 @@ public class ReturnMostValuableDragonEffectTests extends MockTest {
                 .andReturn(mostValuableDragons.get(1));
         deck.addCard(mostValuableDragons.get(1), true);
 
-        EasyMock.replay(player, deck, gui);
         this.replayAll();
 
-        ReturnMostValuableDragonEffect testedEffect = new ReturnMostValuableDragonEffect();
-        testedEffect.returnMostValuableDragon(player, deck, gui);
+        ReturnMostValuableDragonEffect effect = new ReturnMostValuableDragonEffect();
+        effect.returnMostValuableDragon(player, deck, gui);
 
         Assert.assertFalse(player.hatchedCards.contains(mostValuableDragons.get(1)));
-        EasyMock.verify(player, deck, gui);
     }
 
     @Test
