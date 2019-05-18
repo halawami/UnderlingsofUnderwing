@@ -51,14 +51,14 @@ public class HatchAllUnclaimedAdjacentEggsEffectTests {
         this.hatchAllUnclaimedAdjacentEggsEffect = new HatchAllUnclaimedEffect();
     }
 
-    @Test // TODO: ask Mohammad if this is the correct way to test this class
+    @Test
     public void testHatchOneAdjacentUnclaimedEgg() {
         mockedCards.get(0).family = Family.MONOCHROMATIC;
         eggHatchingLogic.hatchEgg(mockedCards.get(0), true, fakePlayer);
 
         EasyMock.replay(hatchingGround, elementBag, effect, gui, eggHatchingLogic);
 
-        hatchAllUnclaimedAdjacentEggsEffect.dragonFamilies = new Family[]{Family.MONOCHROMATIC};
+        hatchAllUnclaimedAdjacentEggsEffect.dragonFamilies = new Family[] {Family.MONOCHROMATIC};
         hatchAllUnclaimedAdjacentEggsEffect.applyOnAdjacentEgg(mockedCards.get(0), elementBag,
                 fakePlayer.elementSpaceLogic, eggHatchingLogic, null, null, null);
 
@@ -85,7 +85,7 @@ public class HatchAllUnclaimedAdjacentEggsEffectTests {
         EasyMock.replay(hatchingGround, elementBag, effect, gui, eggHatchingLogic);
 
         HatchAllUnclaimedEffect hatchAllUnclaimedAdjacentEggsEffect = new HatchAllUnclaimedEffect();
-        hatchAllUnclaimedAdjacentEggsEffect.dragonFamilies = new Family[]{Family.MONOCHROMATIC};
+        hatchAllUnclaimedAdjacentEggsEffect.dragonFamilies = new Family[] {Family.MONOCHROMATIC};
 
         hatchAllUnclaimedAdjacentEggsEffect.applyOnAdjacentEgg(mockedCards.get(0), elementBag,
                 fakePlayer.elementSpaceLogic, eggHatchingLogic, null, null, null);
