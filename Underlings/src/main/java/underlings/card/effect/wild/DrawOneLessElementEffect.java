@@ -17,7 +17,8 @@ public class DrawOneLessElementEffect extends PlayersEffect implements ObserverE
 
     @Override
     public void onPhaseOne(Player player) {
-
+        player.effectElementGivers = this.getEffectElementGivers(player.getElementGivers());
+        player.useEffectElementGivers(true);
     }
 
     public List<ElementGiver> getEffectElementGivers(List<ElementGiver> elementGivers) {
