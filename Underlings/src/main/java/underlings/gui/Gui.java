@@ -81,7 +81,7 @@ public class Gui {
         this.promptHandler.displayMessage(message, playerId, JOptionPane.PLAIN_MESSAGE);
     }
 
-    public FieldSpace getFieldSpace(Player player, Field field) {
+    public FieldSpace getValidFieldSpaces(Player player, Field field) {
         FieldSpace[][] grid = field.getGrid();
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[0].length; j++) {

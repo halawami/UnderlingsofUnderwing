@@ -44,7 +44,7 @@ public class HandlerMovementLogic {
                 break;
             case FIELD:
                 handler.moveToState(choice.getState());
-                FieldSpace space = this.gui.getFieldSpace(player, field);
+                FieldSpace space = this.gui.getValidFieldSpaces(player, field);
                 int spaceIndex = field.field.indexOf(space);
                 this.field.addHandler(spaceIndex, handler);
                 break;

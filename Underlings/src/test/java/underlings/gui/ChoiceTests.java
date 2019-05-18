@@ -32,7 +32,7 @@ public class ChoiceTests {
                 EasyMock.anyInt())).andReturn(field.field.get(0));
 
         EasyMock.replay(this.promptHandler, this.display);
-        FieldSpace fieldSpace = this.gui.getFieldSpace(FakePlayer.getInstance(), field);
+        FieldSpace fieldSpace = this.gui.getValidFieldSpaces(FakePlayer.getInstance(), field);
         EasyMock.verify(this.promptHandler, this.display);
 
         assertEquals(field.field.get(0), fieldSpace);
@@ -46,7 +46,7 @@ public class ChoiceTests {
                 EasyMock.anyInt())).andReturn(field.field.get(21));
 
         EasyMock.replay(this.promptHandler, this.display);
-        FieldSpace fieldSpace = this.gui.getFieldSpace(FakePlayer.getInstance(), field);
+        FieldSpace fieldSpace = this.gui.getValidFieldSpaces(FakePlayer.getInstance(), field);
         EasyMock.verify(this.promptHandler, this.display);
 
         assertEquals(field.field.get(21), fieldSpace);
