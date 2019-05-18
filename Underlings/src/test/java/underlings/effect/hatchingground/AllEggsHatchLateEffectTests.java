@@ -8,8 +8,6 @@ import org.junit.Test;
 import underlings.card.effect.wild.alleggsinplay.AllEggsHatchLateEffect;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
-import underlings.gui.Gui.PromptType;
-import underlings.utilities.LocaleWrap;
 
 public class AllEggsHatchLateEffectTests {
 
@@ -19,7 +17,6 @@ public class AllEggsHatchLateEffectTests {
         Gui gui = EasyMock.mock(Gui.class);
         AllEggsHatchLateEffect effect = new AllEggsHatchLateEffect();
         effect.on(hatchingGround).on(gui);
-        gui.alert(LocaleWrap.get("eggs_hatch_late"), PromptType.WARNING);
         EasyMock.replay(hatchingGround, gui);
 
         effect.apply();
