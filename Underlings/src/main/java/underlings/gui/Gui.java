@@ -53,7 +53,6 @@ public class Gui {
         handlers.remove(handler);
 
         List<HandlerChoice> possibleChoices = handler.getPossibleChoices();
-        possibleChoices = new ArrayList<>(possibleChoices);
         if (hatchingGround.getUnclaimedEggs().isEmpty()) {
             possibleChoices.remove(HandlerChoice.CARD);
         }

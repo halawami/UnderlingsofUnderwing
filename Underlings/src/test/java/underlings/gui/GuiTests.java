@@ -100,6 +100,40 @@ public class GuiTests {
     }
 
     @Test
+    public void testGetHandlerDecisioNoCards() {
+        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
+        Handler handler = EasyMock.mock(Handler.class);
+        List<Handler> handlers = new ArrayList<>();
+        handlers.add(handler);
+        List<HandlerChoice> handlerChoices = new ArrayList<>(HandlerChoice.getMovements(HandlerState.READY_ROOM));
+        List<HandlerChoice> mockHandlerChoices = new ArrayList<>(handlerChoices);
+        mockHandlerChoices.remove(HandlerChoice.CARD);
+
+        EasyMock.expect(this.promptHandler.promptChoice(LocaleWrap.get("gui_handler"), handlers, 0)).andReturn(handler);
+        EasyMock.expect(handler.getPossibleChoices()).andReturn(handlerChoices);
+
+        EasyMock.expect(hatchingGround.getUnclaimedEggs()).andReturn(Collections.emptyList());
+
+        EasyMock.expect(this.promptHandler.promptChoice(
+                MessageFormat.format(LocaleWrap.get("gui_handler_choice"), handler), mockHandlerChoices, 0))
+                .andReturn(HandlerChoice.FIELD);
+
+
+        EasyMock.replay(hatchingGround, handler);
+        this.replay();
+
+        HandlerDecision handlerDecision = this.gui.getHandlerDecision(handlers, 0, hatchingGround);
+
+        assertEquals(handler, handlerDecision.handler);
+
+        assertFalse(handlerChoices.contains(HandlerChoice.CARD));
+        assertEquals(HandlerChoice.FIELD, handlerDecision.choice);
+        assertTrue(handlers.isEmpty());
+
+        EasyMock.verify(hatchingGround, handler);
+    }
+
+    @Test
     public void testGetPlayerCountTwoPlayers() {
         EasyMock.expect(this.promptHandler.promptInt("Enter Player Count", 2, 6)).andReturn(2);
 
