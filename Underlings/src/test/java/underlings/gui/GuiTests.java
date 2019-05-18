@@ -267,4 +267,40 @@ public class GuiTests {
         assertEquals(NullElement.getInstance(), element);
     }
 
+    @Test
+    public void testGetCard() {
+        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
+        EasyMock.expect(hatchingGround.getWidth()).andReturn(2).anyTimes();
+        EasyMock.expect(hatchingGround.getHeight()).andReturn(2).anyTimes();
+        hatchingGround.cards = new Card[2][2];
+        hatchingGround.cards[0][0] = new Card();
+        hatchingGround.cards[0][1] = new Card();
+        hatchingGround.cards[1][0] = new Card();
+        hatchingGround.cards[1][1] = new Card();
+
+        hatchingGround.cards[0][0].name = "1";
+        hatchingGround.cards[0][1].name = "2";
+        hatchingGround.cards[1][0].name = "3";
+        hatchingGround.cards[1][1].name = "4";
+
+        List<Card> validCards = new ArrayList<>();
+        validCards.add(hatchingGround.cards[0][1]);
+        validCards.add(hatchingGround.cards[1][0]);
+
+        Card[][] cards = new Card[2][2];
+        cards[0][1] = validCards.get(0);
+        cards[1][0] = validCards.get(1);
+
+        EasyMock.expect(this.promptHandler.pickFromGrid(EasyMock.anyString(), EasyMock.anyObject(Card[][].class),
+                EasyMock.anyInt())).andReturn(validCards.get(0));
+
+        EasyMock.replay(hatchingGround);
+        this.replay();
+
+        Card card = this.gui.getCard(1, " ", hatchingGround, validCards);
+        assertEquals(validCards.get(0), card);
+
+        EasyMock.verify(hatchingGround);
+    }
+
 }
