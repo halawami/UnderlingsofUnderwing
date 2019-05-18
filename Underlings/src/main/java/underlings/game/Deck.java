@@ -3,14 +3,15 @@ package underlings.game;
 import java.util.List;
 import java.util.Stack;
 import java.util.function.Consumer;
+
 import underlings.card.Card;
 import underlings.card.EmptyCard;
 
+@SuppressWarnings("rawtypes")
 public class Deck {
 
     protected List<Card> cards;
 
-    @SuppressWarnings("rawtypes")
     Consumer<List> shuffleFunction;
 
     public Deck(List<Card> cards, Consumer<List> shuffleFunction) {
