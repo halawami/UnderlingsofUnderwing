@@ -1,9 +1,11 @@
 package underlings.phase;
 
 import java.util.Arrays;
+
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.MockTest;
 import underlings.gui.Gui;
 import underlings.gui.Gui.PromptType;
@@ -14,10 +16,10 @@ public class RegularFinalPhaseTests extends MockTest {
 
     @Before
     public void init() {
-        gui = EasyMock.mock(Gui.class);
-        player = EasyMock.mock(Player.class);
-        dragonPhase = EasyMock.mock(DragonPhase.class);
-        scoreUtils = EasyMock.mock(ScoreUtils.class);
+        gui = mock(Gui.class);
+        player = mock(Player.class);
+        dragonPhase = mock(DragonPhase.class);
+        scoreUtils = mock(ScoreUtils.class);
     }
 
     @Test

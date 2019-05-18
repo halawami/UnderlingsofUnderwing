@@ -3,13 +3,9 @@ package underlings.gui;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
-import java.util.Set;
-
 import javax.swing.JOptionPane;
-
 import underlings.card.Card;
 import underlings.card.EmptyCard;
 import underlings.element.Element;
@@ -51,10 +47,10 @@ public class Gui {
 
     public HandlerDecision getHandlerDecision(List<Handler> handlers, int playerId, HatchingGround hatchingGround) {
         Handler handler = this.promptHandler.promptChoice(LocaleWrap.get("gui_handler"), handlers, playerId);
+
         handlers.remove(handler);
 
         List<HandlerChoice> possibleChoices = handler.getPossibleChoices();
-        possibleChoices = new ArrayList<>(possibleChoices);
         if (hatchingGround.getUnclaimedEggs().isEmpty()) {
             possibleChoices.remove(HandlerChoice.CARD);
         }
@@ -75,8 +71,7 @@ public class Gui {
             }
         }
 
-        Card card = this.promptHandler.pickFromGrid(prompt, cards, playerId);
-        return card;
+        return this.promptHandler.pickFromGrid(prompt, cards, playerId);
     }
 
     public void notifyAction(int playerId, String message) {
@@ -99,7 +94,7 @@ public class Gui {
     public Element getElementOfColorsFromSpace(ElementColor[] elementChoices, ElementSpace elementSpace,
             int playerNum) {
         List<ElementColor> validColors = new ArrayList<>(Arrays.asList(elementChoices));
-        Set<Element> colors = new HashSet<>();
+        List<Element> colors = new ArrayList<>();
 
         for (Element element : elementSpace.elements) {
             if (validColors.contains(element.getColor())) {
