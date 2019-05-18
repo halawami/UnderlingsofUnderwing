@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import underlings.handler.HandlerFactory;
 
-public class PlayerIdTests {
+public class IdTests {
 
     @Test
     public void testIdZero() {

@@ -11,7 +11,7 @@ import org.junit.Test;
 import underlings.TestUtils;
 import underlings.element.Element;
 
-public class StealAllElementsTests {
+public class StealElementsTests {
 
     @Test
     public void testStealNoElements() {

@@ -1,4 +1,4 @@
-package underlings.player.handler;
+package underlings.player;
 
 import static org.junit.Assert.assertEquals;
 
@@ -8,7 +8,7 @@ import org.junit.Test;
 import underlings.handler.HandlerFactory;
 import underlings.player.Player;
 
-public class DeficiencyTests {
+public class HandlerDeficiencyTests {
 
     private Player player;
 
