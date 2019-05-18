@@ -3,6 +3,7 @@ package underlings.card;
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
 import com.google.common.reflect.ClassPath;
+import com.google.common.reflect.ClassPath.ClassInfo;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.typeadapters.RuntimeTypeAdapterFactory;
@@ -30,12 +31,24 @@ public class CardFactory {
     }
 
     private List<Class<? extends Effect>> getEffectClasses() {
-        List<Class<? extends Effect>> effectClasses = new ArrayList<>();
-
         Set<ClassPath.ClassInfo> effectClassInfos = this.loadEffectClassInfos();
-        effectClassInfos.forEach(effectClassInfo -> effectClasses.add(this.getClassFromClassInfo(effectClassInfo)));
+        return this.getEffectClassesFromInfos(effectClassInfos);
 
+    }
+
+    private List<Class<? extends Effect>> getEffectClassesFromInfos(Set<ClassInfo> effectClassInfos) {
+        List<Class<? extends Effect>> effectClasses = new ArrayList<>();
+        for (ClassInfo classInfo : effectClassInfos) {
+            Class<?> loadedClass = classInfo.load();
+            if (this.isEffectClass(loadedClass)) {
+                effectClasses.add((Class<? extends Effect>) loadedClass);
+            }
+        }
         return effectClasses;
+    }
+
+    private boolean isEffectClass(Class<?> loadedClass) {
+        return Effect.class.isAssignableFrom(loadedClass);
     }
 
     @SuppressWarnings("unchecked")
