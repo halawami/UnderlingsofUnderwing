@@ -264,7 +264,7 @@ public class DragonPhaseTests {
     }
 
     @Test
-    public void testTwoRoundsLateEggs() {
+    public void testThreeRoundsLateEgg() {
         final Gui gui = EasyMock.mock(Gui.class);
         Player player = new Player(6, new HandlerFactory(), 1);
         card.handler = player.getHandlers().get(0);
@@ -273,6 +273,7 @@ public class DragonPhaseTests {
         hatchingGround.lateHatching = true;
         EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList(card));
         EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList());
+        EasyMock.expectLastCall().times(2);
         eggHatchingLogic.returnElementsToBag(card);
         gui.notifyAction(player.getId(), message);
         eggHatchingLogic.hatchEgg(card, false, player);
@@ -284,8 +285,11 @@ public class DragonPhaseTests {
         phase.turn(player);
         phase.setup();
         phase.turn(player);
+        phase.setup();
+        phase.turn(player);
 
         EasyMock.verify(hatchingGround, bag, gui, card.domesticEffects[0], handler, eggHatchingLogic);
     }
+
 
 }

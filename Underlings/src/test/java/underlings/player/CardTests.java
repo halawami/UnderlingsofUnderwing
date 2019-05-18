@@ -1,6 +1,7 @@
 package underlings.player;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -22,7 +23,7 @@ public class CardTests {
         Handler handler = new HandlerFactory().createHandler();
         card.handler = handler;
         Player player = new Player(6, new HandlerFactory(), 0);
-        player.moveToIncubation(card);
+        player.moveToIncubation(card, player.hatchingTime);
         assertEquals(HandlerState.INCUBATION, card.handler.getState());
     }
 
@@ -32,13 +33,14 @@ public class CardTests {
         Card card = new Card();
         card.handler = player.getHandlers().get(0);
 
-        player.moveToIncubation(card);
+        player.moveToIncubation(card, player.hatchingTime);
         assertEquals(card.handler.getState(), HandlerState.INCUBATION);
         assertEquals(1, player.unhatchedCards.size());
-        assertEquals(card, player.unhatchedCards.get(0));
+        assertTrue(player.unhatchedCards.containsKey(card));
     }
 
     @Test
+
     public void testTwoCompletedEggs() {
         Player player = new Player(6, new HandlerFactory(), 0);
         Card card = EasyMock.mock(Card.class);
@@ -49,13 +51,13 @@ public class CardTests {
         EasyMock.replay(card, card2);
 
         EasyMock.verify(card, card2);
-        player.moveToIncubation(card);
-        player.moveToIncubation(card2);
+        player.moveToIncubation(card, player.hatchingTime);
+        player.moveToIncubation(card2, player.hatchingTime);
         assertEquals(HandlerState.INCUBATION, card.handler.getState());
         assertEquals(HandlerState.INCUBATION, card2.handler.getState());
         assertEquals(2, player.unhatchedCards.size());
-        assertEquals(card, player.unhatchedCards.get(0));
-        assertEquals(card2, player.unhatchedCards.get(1));
+        assertTrue(player.unhatchedCards.containsKey(card));
+        assertTrue(player.unhatchedCards.containsKey(card2));
     }
 
     @Test
@@ -70,10 +72,10 @@ public class CardTests {
         EasyMock.replay(card, card2, handler);
 
         EasyMock.verify(card, card2, handler);
-        player.moveToIncubation(card);
+        player.moveToIncubation(card, player.hatchingTime);
         assertEquals(HandlerState.INCUBATION, card.handler.getState());
         assertEquals(1, player.unhatchedCards.size());
-        assertEquals(card, player.unhatchedCards.get(0));
+        assertTrue(player.unhatchedCards.containsKey(card));
     }
 
     @Test

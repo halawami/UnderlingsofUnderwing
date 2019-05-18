@@ -1,5 +1,6 @@
 package underlings.phase;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import underlings.card.Card;
@@ -29,14 +30,18 @@ public class DragonPhase extends SequentialPhase {
 
     @Override
     public void turn(Player player) {
+        List<Card> hatchedCards = new LinkedList<>();
         for (Card card : player.unhatchedCards.keySet()) {
             if (player.unhatchedCards.get(card) == 1) {
                 this.domesticEggHatchingLogic.hatchEgg(card, false, player);
+                hatchedCards.add(card);
             } else {
                 player.unhatchedCards.put(card, player.unhatchedCards.get(card) - 1);
             }
         }
-        player.unhatchedCards.clear();
+        for (Card card : hatchedCards) {
+            player.unhatchedCards.remove(card);
+        }
         for (Card completeCard : this.completeEggs) {
             this.domesticEggHatchingLogic.returnElementsToBag(completeCard);
             if (player.getHandlers().contains(completeCard.handler)) {
