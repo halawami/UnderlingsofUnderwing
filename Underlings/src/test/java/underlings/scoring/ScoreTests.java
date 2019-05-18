@@ -71,7 +71,7 @@ public class ScoreTests {
 
     @Test
     public void testTwoPlayers() {
-        this.scoreUtils = new ScoreUtils(Arrays.asList(this.players[0], this.players[1]), this.gui);
+        this.scoreUtils = Constructors.ScoreUtils(this.players[0], this.players[1]);
         this.scoreUtils.calculateScores();
 
         assertEquals(43, this.players[0].score);
@@ -81,7 +81,7 @@ public class ScoreTests {
 
     @Test
     public void testTwoNeutralOneEmpty() {
-        this.scoreUtils = new ScoreUtils(Arrays.asList(this.players[0], this.players[1], this.players[2]), this.gui);
+        this.scoreUtils = Constructors.ScoreUtils(this.players[0], this.players[1], this.players[2]);
         this.scoreUtils.calculateScores();
 
         assertEquals(63, this.players[0].score);
@@ -93,8 +93,7 @@ public class ScoreTests {
 
     @Test
     public void testTwoNeutralOneEmptyOneCool() {
-        this.scoreUtils = new ScoreUtils(
-                Arrays.asList(this.players[0], this.players[1], this.players[2], this.players[3]), this.gui);
+        this.scoreUtils = Constructors.ScoreUtils(this.players[0], this.players[1], this.players[2], this.players[3]);
         this.scoreUtils.calculateScores();
 
         assertEquals(63, this.players[0].score);
@@ -107,9 +106,8 @@ public class ScoreTests {
 
     @Test
     public void testAll() {
-        this.scoreUtils = new ScoreUtils(
-                Arrays.asList(this.players[0], this.players[1], this.players[2], this.players[3], this.players[4]),
-                this.gui);
+        this.scoreUtils = Constructors.ScoreUtils(this.players[0], this.players[1], this.players[2], this.players[3],
+                this.players[4]);
         this.scoreUtils.calculateScores();
 
         assertEquals(63, this.players[0].score);
@@ -123,14 +121,14 @@ public class ScoreTests {
 
     @Test
     public void testDisplayScores() {
-        List<Player> players = Arrays.asList(this.players[0], this.players[1]);
-        this.scoreUtils = new ScoreUtils(players, this.gui);
+        this.scoreUtils = Constructors.ScoreUtils(this.gui, this.players[0], this.players[1]);
         this.players[0].score = 1;
         this.players[1].score = 5;
 
-        for (Player player : players) {
-            this.gui.alert(LocaleWrap.format("player_score", player, player.score), player.id, PromptType.REGULAR);
-        }
+        this.gui.alert(LocaleWrap.format("player_score", this.players[0], this.players[0].score), this.players[0].id,
+                PromptType.REGULAR);
+        this.gui.alert(LocaleWrap.format("player_score", this.players[1], this.players[1].score), this.players[1].id,
+                PromptType.REGULAR);
 
         EasyMock.replay(this.gui);
 
@@ -142,7 +140,7 @@ public class ScoreTests {
     @Test
     public void testDisplayWinners() {
         List<Player> players = Arrays.asList(this.players[0], this.players[1]);
-        this.scoreUtils = new ScoreUtils(players, this.gui);
+        this.scoreUtils = Constructors.ScoreUtils(this.gui, this.players[0], this.players[1]);
         this.players[0].score = 5;
         this.players[1].score = 10;
         List<Player> winners = new ArrayList<>();

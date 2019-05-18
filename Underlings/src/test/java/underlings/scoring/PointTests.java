@@ -14,7 +14,7 @@ public class PointTests {
 
     @Before
     public void init() {
-        this.scoreUtils = new ScoreUtils(null, null);
+        this.scoreUtils = Constructors.ScoreUtils();
     }
 
     @Test

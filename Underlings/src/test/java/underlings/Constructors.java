@@ -1,9 +1,12 @@
 package underlings;
 
+import java.util.Arrays;
 import underlings.card.Card;
 import underlings.card.Temperature;
+import underlings.gui.Gui;
 import underlings.handler.HandlerFactory;
 import underlings.player.Player;
+import underlings.scoring.ScoreUtils;
 
 public class Constructors {
 
@@ -28,6 +31,18 @@ public class Constructors {
         Card card = new Card();
         card.temperature = temperature;
         return card;
+    }
+
+    public static ScoreUtils ScoreUtils() {
+        return new ScoreUtils(null, null);
+    }
+
+    public static ScoreUtils ScoreUtils(Player... players) {
+        return new ScoreUtils(Arrays.asList(players), null);
+    }
+
+    public static ScoreUtils ScoreUtils(Gui gui, Player... players) {
+        return new ScoreUtils(Arrays.asList(players), gui);
     }
 
 }
