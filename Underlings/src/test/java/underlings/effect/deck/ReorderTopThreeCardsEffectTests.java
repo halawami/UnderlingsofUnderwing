@@ -17,73 +17,26 @@ import underlings.gui.Gui;
 public class ReorderTopThreeCardsEffectTests {
 
     @Test
-    public void testThreeCards() {
-        Deck deck = EasyMock.mock(Deck.class);
-        List<Card> topThreeCards = TestUtils.mockListOf(Card.class).withLength(3);
-        Gui gui = EasyMock.mock(Gui.class);
-        List<Card> reorderedCards = new ArrayList<>(topThreeCards);
-        Collections.shuffle(reorderedCards);
-
-        for (Card topCard : topThreeCards) {
-            EasyMock.expect(deck.draw()).andReturn(topCard);
-        }
-        EasyMock.expect(gui.reorderCards(topThreeCards)).andReturn(reorderedCards);
-        for (Card reorderedCard : reorderedCards) {
-            deck.addCard(reorderedCard);
-        }
-
-        EasyMock.replay(deck, gui);
-        topThreeCards.forEach(EasyMock::replay);
-
-        ReorderTopThreeCardsEffect testedEffect = new ReorderTopThreeCardsEffect();
-        testedEffect.on(deck).on(gui).apply();
-
-        EasyMock.verify(deck, gui);
-        topThreeCards.forEach(EasyMock::verify);
+    public void testThreeOrMoreCardsLeft() {
+        this.testCardsLeft(3);
     }
 
     @Test
-    public void testTwoCards() {
-        Deck deck = EasyMock.mock(Deck.class);
-        List<Card> topThreeCards = TestUtils.mockListOf(Card.class).withLength(2);
-        topThreeCards.add(EmptyCard.getInstance());
-        Gui gui = EasyMock.mock(Gui.class);
-        List<Card> reorderedCards = new ArrayList<>(topThreeCards);
-        reorderedCards.removeIf(EmptyCard.getInstance()::equals);
-        Collections.shuffle(reorderedCards);
-
-        for (Card topCard : topThreeCards) {
-            EasyMock.expect(deck.draw()).andReturn(topCard);
-        }
-        EasyMock.expect(gui.reorderCards(topThreeCards)).andReturn(reorderedCards);
-        for (Card reorderedCard : reorderedCards) {
-            deck.addCard(reorderedCard);
-        }
-
-        EasyMock.replay(deck, gui);
-        for (Card topCard : topThreeCards) {
-            if (topCard != EmptyCard.getInstance()) {
-                EasyMock.replay(topCard);
-            }
-        }
-
-        ReorderTopThreeCardsEffect testedEffect = new ReorderTopThreeCardsEffect();
-        testedEffect.on(deck).on(gui).apply();
-
-        EasyMock.verify(deck, gui);
-        for (Card topCard : topThreeCards) {
-            if (topCard != EmptyCard.getInstance()) {
-                EasyMock.verify(topCard);
-            }
-        }
+    public void testTwoCardsLeft() {
+        this.testCardsLeft(2);
     }
 
     @Test
-    public void testOneCard() {
+    public void testOneCardLeft() {
+        this.testCardsLeft(1);
+    }
+
+    private void testCardsLeft(int cardsLeft) {
         Deck deck = EasyMock.mock(Deck.class);
-        List<Card> topThreeCards = TestUtils.mockListOf(Card.class).withLength(1);
-        topThreeCards.add(EmptyCard.getInstance());
-        topThreeCards.add(EmptyCard.getInstance());
+        List<Card> topThreeCards = TestUtils.mockListOf(Card.class).withLength(cardsLeft);
+        for (int i = cardsLeft; i < 3; i++) {
+            topThreeCards.add(EmptyCard.getInstance());
+        }
         Gui gui = EasyMock.mock(Gui.class);
         List<Card> reorderedCards = new ArrayList<>(topThreeCards);
         reorderedCards.removeIf(EmptyCard.getInstance()::equals);
