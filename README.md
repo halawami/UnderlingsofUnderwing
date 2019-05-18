@@ -32,6 +32,49 @@ The definition of done is created by examining and applying BVA on the rules.
   - When at 2 handlers, the handler count should remain at 2
     - ```underlings.player.RemoveHandlerTests.testTwo()```
 
+#### Handler Deficiency ```underlings.player.HandlerDeficiencyTests```
+
+- [x] Reach [0, 11] points while having [2, MAX] handlers
+  - At 2 handlers, the handler count should remain at 2
+    - ```underlings.player.HandlerDeficiencyTests.test11Points2Handlers()```
+  - At MAX handlers, the handler count should remain at MAX
+    - ```underlings.player.HandlerDeficiencyTests.test11PointsMaxHandlers()```
+- [x] Reach 12 points while having 2 handlers
+  - The handler count should increase to 3
+    - ```underlings.player.HandlerDeficiencyTests.test12Points2Handlers()```
+- [x] Reach 12 points while having [3, MAX] handlers
+  - When at 3 handlers, the handler count should remain at 3
+    - ```underlings.player.HandlerDeficiencyTests.test12Points3Handlers()```
+  - When at MAX handlers, the handler count should remain at MAX
+    - ```underlings.player.HandlerDeficiencyTests.test12PointsMaxHandlers()```
+- [x] Reach 25 points from above 12 points while having [2, 3] handlers
+  - When at 2 handlers, the handler count should increase to 3
+    - ```underlings.player.HandlerDeficiencyTests.test25PointsFrom12With2Handlers()```
+  - When at 3 handlers, the handler count should increase to 4
+    - ```underlings.player.HandlerDeficiencyTests.test25PointsFrom12With3Handlers()```
+- [x] Reach 25 points from above 12 points while having [4, MAX] handlers
+  - When at 4 handlers, the handler count should remain at 4
+    - ```underlings.player.HandlerDeficiencyTests.test25PointsFrom12With4Handlers()```
+  - When at MAX handlers, the handler count should remain at MAX
+    - ```underlings.player.HandlerDeficiencyTests.test25PointsFrom12WithMaxHandlers()```
+- [x] Reach 25 points from below 12 points while having [2, 3] handlers
+  - When at 2 handlers, the handler count should increase to 4
+    - ```underlings.player.HandlerDeficiencyTests.test25PointsFrom0With2Handlers()```
+  - When at 3 handlers, the handler count should increase to 4
+    - ```underlings.player.HandlerDeficiencyTests.test25PointsFrom0With3Handlers()```
+- [x] Reach 25 points from below 12 points while having [4, MAX] handlers
+  - When at 4 handlers, the handler count should remain at 4
+    - ```underlings.player.HandlerDeficiencyTests.test25PointsFrom0With4Handlers()```
+  - When at MAX handlers, the handler count should remain at MAX
+    - ```underlings.player.HandlerDeficiencyTests.test25PointsFrom0WithMaxHandlers()```
+- [x] Reach 12 points with 2 handlers after dropping below 12 points
+  - The handler count should remain at 2
+    - ```underlings.player.HandlerDeficiencyTests.test12PointsTwice()```
+- [x] Reach 25 points with [2, 3] handlers after dropping below 25 points
+  - When at 2 handlers, the handler count should remain at 2
+    - ```underlings.player.HandlerDeficiencyTests.test25PointsTwice2Handlers()```
+  - When at 3 handlers, the handler count should remain at 3
+    - ```underlings.player.HandlerDeficiencyTests.test25PointsTwice3Handlers()```
 
 ### Scoring ```underlings.scoring```
 
