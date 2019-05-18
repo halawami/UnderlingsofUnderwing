@@ -7,9 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
-
 import javax.swing.JOptionPane;
-
 import underlings.card.Card;
 import underlings.element.Element;
 import underlings.element.ElementBag;
@@ -93,7 +91,7 @@ public class Gui {
                 }
 
                 int count = 0;
-                for (Handler handler : player.getHandlers()) {
+                for (Handler handler : player.handlers) {
                     if (space.contains(handler)) {
                         count++;
                     }
@@ -145,8 +143,7 @@ public class Gui {
         for (int playerNumber = 0; playerNumber < players.size(); playerNumber++) {
             Player player = players.get(playerNumber);
             this.display.displayPlayer(playerNumber, player);
-            List<Handler> handlers = player.getHandlers();
-            this.display.displayHandlers(playerNumber, handlers);
+            this.display.displayHandlers(playerNumber, player.handlers);
         }
 
     }
@@ -175,7 +172,7 @@ public class Gui {
     public ElementSpace getElementSpaceWithColors(List<Card> cards, ElementColor[] colorChoices, int playerId) {
         List<Card> cardOptions = new ArrayList<>();
         for (Card card : cards) {
-            if (!getSpacesWithColors(card, colorChoices).isEmpty()) {
+            if (!this.getSpacesWithColors(card, colorChoices).isEmpty()) {
                 cardOptions.add(card);
             }
         }
@@ -190,7 +187,7 @@ public class Gui {
         }
 
         Card card = this.promptHandler.promptChoice(LocaleWrap.get("take_element_card"), cardOptions, playerId);
-        List<ElementSpace> spaces = getSpacesWithColors(card, colorChoices);
+        List<ElementSpace> spaces = this.getSpacesWithColors(card, colorChoices);
         ElementSpace space = this.promptHandler.promptChoice(LocaleWrap.get("take_element_space"), spaces, playerId);
         return space;
     }

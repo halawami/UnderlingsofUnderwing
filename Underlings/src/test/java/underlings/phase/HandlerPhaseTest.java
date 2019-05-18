@@ -2,13 +2,10 @@ package underlings.phase;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import org.easymock.EasyMock;
 import org.junit.Test;
-
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.handler.HandlerChoice;
@@ -31,9 +28,9 @@ public class HandlerPhaseTest {
         List<Player> players = new ArrayList<Player>();
         players.add(player);
 
-        HandlerDecision handlerDecision = new HandlerDecision(player.getHandlers().get(0), HandlerChoice.CARD);
+        HandlerDecision handlerDecision = new HandlerDecision(player.handlers.get(0), HandlerChoice.CARD);
 
-        EasyMock.expect(gui.getHandlerDecision(player.getHandlers(), 0, hatchingGround)).andReturn(handlerDecision);
+        EasyMock.expect(gui.getHandlerDecision(player.handlers, 0, hatchingGround)).andReturn(handlerDecision);
         handlerMovementLogic.move(handlerDecision.handler, handlerDecision.choice, player);
         Runnable displayMethod = EasyMock.mock(Runnable.class);
         displayMethod.run();
@@ -60,10 +57,10 @@ public class HandlerPhaseTest {
 
         List<Player> players = new ArrayList<Player>();
         players.add(player);
-        player.getHandlers().get(0).moveToState(HandlerState.BREAK_ROOM);
-        HandlerDecision handlerDecision = new HandlerDecision(player.getHandlers().get(0), HandlerChoice.CARD);
+        player.handlers.get(0).moveToState(HandlerState.BREAK_ROOM);
+        HandlerDecision handlerDecision = new HandlerDecision(player.handlers.get(0), HandlerChoice.CARD);
 
-        EasyMock.expect(gui.getHandlerDecision(player.getHandlers(), 0, hatchingGround)).andReturn(handlerDecision);
+        EasyMock.expect(gui.getHandlerDecision(player.handlers, 0, hatchingGround)).andReturn(handlerDecision);
         handlerMovementLogic.move(handlerDecision.handler, handlerDecision.choice, player);
 
         Phase handlerPhase = new HandlerPhase(players, gui, null, hatchingGround, () -> {
@@ -75,7 +72,7 @@ public class HandlerPhaseTest {
         handlerPhase.turn(player);
 
         assertFalse(hatchingGround.lateHatching);
-        assertEquals(HandlerState.READY_ROOM, player.getHandlers().get(0).getState());
+        assertEquals(HandlerState.READY_ROOM, player.handlers.get(0).getState());
         EasyMock.verify(gui, handlerMovementLogic, hatchingGround);
 
     }

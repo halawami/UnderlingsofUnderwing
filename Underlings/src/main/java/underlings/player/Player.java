@@ -19,7 +19,7 @@ import underlings.utilities.LocaleWrap;
 
 public class Player {
 
-    protected List<Handler> handlers;
+    public List<Handler> handlers;
     public int maxHandlers;
     private int points;
     private boolean reached12Points;
@@ -60,10 +60,10 @@ public class Player {
     public int getHandlerCount() {
         return this.handlers.size();
     }
-
-    public List<Handler> getHandlers() {
-        return this.handlers;
-    }
+    //
+    // public List<Handler> getHandlers() {
+    // return this.handlers;
+    // }
 
     public void gainHandler() {
         if (this.handlers.size() != this.maxHandlers) {
