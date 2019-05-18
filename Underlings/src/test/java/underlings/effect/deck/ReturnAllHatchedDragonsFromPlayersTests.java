@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.Arrays;
 import java.util.LinkedList;
 
+import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,8 +22,6 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
 
     @Before
     public void init() {
-        this.player = this.mock(Player.class);
-        this.player2 = this.mock(Player.class);
         this.deck = this.mock(Deck.class);
         this.card = new Card();
         this.card2 = new Card();
@@ -30,22 +29,24 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
     }
 
     @Test
-    public void testApply() {
-        this.card.temperature = Temperature.NEUTRAL;
-        this.player.hatchedCards = new LinkedList<>();
-        this.player.hatchedCards.add(this.card);
+    public void testApplyOnTwoPlayers() {
+        this.players = this.mockListOf(Player.class).withLengthOf(2);
+        ReturnAllHatchedDragonsFromPlayers effect = EasyMock
+                .partialMockBuilder(ReturnAllHatchedDragonsFromPlayers.class)
+                .addMockedMethod("removeCardsOfTemperature").createMock();
+        this.addMock(effect);
+        effect.temperatures = new Temperature[]{Temperature.NEUTRAL};
+        effect.on(this.players).on(this.deck);
 
-        ReturnAllHatchedDragonsFromPlayers effect = new ReturnAllHatchedDragonsFromPlayers();
-        effect.on(Arrays.asList(this.player)).on(this.deck);
-        this.deck.addCard(this.card, true);
+        for (Player player : players) {
+            effect.removeCardsOfTemperature(this.deck, Arrays.asList(effect.temperatures), player);
+        }
 
         this.replayAll();
 
-        effect.temperatures = new Temperature[]{Temperature.NEUTRAL};
         effect.apply();
-
-        assertTrue(this.player.hatchedCards.isEmpty());
     }
+
 
     @Test
     public void testTwoCardsSamePlayer() {

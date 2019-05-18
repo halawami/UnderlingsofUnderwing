@@ -79,7 +79,9 @@ public abstract class MockTest {
         public List<T> withLengthOf(int length) {
             List<T> mockObjects = new ArrayList<>();
             for (int i = 0; i < length; i++) {
-                mockObjects.add(EasyMock.mock(this.objectsClass));
+                T mock = EasyMock.mock(this.objectsClass);
+                mockObjects.add(mock);
+                MockTest.this.mocks.add(mock);
             }
             return mockObjects;
         }
