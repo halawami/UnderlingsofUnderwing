@@ -57,7 +57,7 @@ public class HatchAllUnclaimedAdjacentEggsEffectTests {
     @Test
     public void testHatchOneAdjacentUnclaimedEgg() {
         mockedCards.get(0).family = Family.MONOCHROMATIC;
-        eggHatchingLogic.hatchEgg(mockedCards.get(0), true, fakePlayer);
+        eggHatchingLogic.hatchEgg(mockedCards.get(0), fakePlayer);
 
         EasyMock.replay(hatchingGround, elementBag, effect, gui, eggHatchingLogic);
 
