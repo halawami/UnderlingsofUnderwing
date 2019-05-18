@@ -30,7 +30,7 @@ public class CollectFiveElementsEffectTests extends MockTest {
         CollectFiveElementsEffect testedEffect = new CollectFiveElementsEffect();
         ElementColor[] colors = new ElementColor[] {RED, BLUE, GREEN, BLACK, WHITE};
         testedEffect.elementColors = colors;
-        List<Element> mockElements = this.mockListOf(Element.class).withLength(5);
+        List<Element> mockElements = this.mockListOf(Element.class).withLengthOf(5);
 
         for (int i = 0; i < 5; i++) {
             EasyMock.expect(elementBag.drawElementFromList(colors[i])).andReturn(mockElements.get(i));

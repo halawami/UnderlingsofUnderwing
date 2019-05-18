@@ -19,7 +19,7 @@ public class StealAllStoredElementsTests extends MockTest {
     @Test
     public void testEffect() {
         Player currentPlayer = EasyMock.mock(Player.class);
-        List<Player> players = this.mockListOf(Player.class).withLength(6);
+        List<Player> players = this.mockListOf(Player.class).withLengthOf(6);
         Gui gui = EasyMock.mock(Gui.class);
         Effect testedEffect = new StealAllStoredElements();
         testedEffect.on(currentPlayer).on(players).on(gui);

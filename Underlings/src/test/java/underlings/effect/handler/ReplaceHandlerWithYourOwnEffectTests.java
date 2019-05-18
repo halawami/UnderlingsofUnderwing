@@ -25,7 +25,7 @@ public class ReplaceHandlerWithYourOwnEffectTests extends MockTest {
     public void testApplyEffectNoSelectableHandler() {
         Player currentPlayer = EasyMock.mock(Player.class);
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
-        List<Card> mockClaimedEggs = this.mockListOf(Card.class).withLength(0);
+        List<Card> mockClaimedEggs = this.mockListOf(Card.class).withLengthOf(0);
         HandlerMovementLogic handlerMovementLogic = EasyMock.mock(HandlerMovementLogic.class);
         Gui gui = EasyMock.mock(Gui.class);
 
@@ -44,8 +44,8 @@ public class ReplaceHandlerWithYourOwnEffectTests extends MockTest {
     public void testApplyEffectSelectableHandler() {
         Player currentPlayer = EasyMock.mock(Player.class);
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
-        List<Card> mockClaimedEggs = this.mockListOf(Card.class).withLength(6);
-        List<Handler> mockHandlers = this.mockListOf(Handler.class).withLength(2);
+        List<Card> mockClaimedEggs = this.mockListOf(Card.class).withLengthOf(6);
+        List<Handler> mockHandlers = this.mockListOf(Handler.class).withLengthOf(2);
         Handler toBeReplaced = EasyMock.mock(Handler.class);
         mockClaimedEggs.get(2).handler = toBeReplaced;
         HandlerMovementLogic handlerMovementLogic = EasyMock.mock(HandlerMovementLogic.class);

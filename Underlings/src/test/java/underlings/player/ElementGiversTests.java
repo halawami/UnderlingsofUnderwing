@@ -124,7 +124,7 @@ public class ElementGiversTests extends MockTest {
 
     @Test
     public void testEffectElementGiversTrue() {
-        List<ElementGiver> effectElementGivers = this.mockListOf(ElementGiver.class).withLength(2);
+        List<ElementGiver> effectElementGivers = this.mockListOf(ElementGiver.class).withLengthOf(2);
         Player player = new Player(0, null, 0);
         player.effectElementGivers = effectElementGivers;
         player.useEffectElementGivers(true);
@@ -136,7 +136,7 @@ public class ElementGiversTests extends MockTest {
 
     @Test
     public void testEffectElementGiversTrueThenFalse() {
-        List<ElementGiver> effectElementGivers = this.mockListOf(ElementGiver.class).withLength(2);
+        List<ElementGiver> effectElementGivers = this.mockListOf(ElementGiver.class).withLengthOf(2);
         Player player = EasyMock.partialMockBuilder(Player.class)
                 .addMockedMethod("getNormalElementGivers").createMock();
         player.effectElementGivers = effectElementGivers;

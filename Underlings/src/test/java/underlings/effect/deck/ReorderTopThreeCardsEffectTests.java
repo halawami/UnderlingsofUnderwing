@@ -38,7 +38,7 @@ public class ReorderTopThreeCardsEffectTests extends MockTest {
 
     private void testCardsLeft(int cardsLeft) {
         Deck deck = this.mock(Deck.class);
-        List<Card> topThreeCards = this.mockListOf(Card.class).withLength(cardsLeft);
+        List<Card> topThreeCards = this.mockListOf(Card.class).withLengthOf(cardsLeft);
         for (int i = cardsLeft; i < 3; i++) {
             topThreeCards.add(EmptyCard.getInstance());
         }

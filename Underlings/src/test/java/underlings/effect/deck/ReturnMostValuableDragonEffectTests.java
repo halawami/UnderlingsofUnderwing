@@ -31,7 +31,7 @@ public class ReturnMostValuableDragonEffectTests extends MockTest {
     }
 
     private void testApplyEffectOnPlayers(int numberOfPlayers) {
-        List<Player> players = this.mockListOf(Player.class).withLength(numberOfPlayers);
+        List<Player> players = this.mockListOf(Player.class).withLengthOf(numberOfPlayers);
         Deck deck = EasyMock.mock(Deck.class);
         Gui gui = EasyMock.mock(Gui.class);
         ReturnMostValuableDragonEffect testedEffect = EasyMock.partialMockBuilder(ReturnMostValuableDragonEffect.class)
@@ -71,7 +71,7 @@ public class ReturnMostValuableDragonEffectTests extends MockTest {
         Player player = EasyMock.mock(Player.class);
         Deck deck = EasyMock.mock(Deck.class);
         Gui gui = EasyMock.mock(Gui.class);
-        List<Card> mostValuableDragons = this.mockListOf(Card.class).withLength(1);
+        List<Card> mostValuableDragons = this.mockListOf(Card.class).withLengthOf(1);
         player.hatchedCards = new ArrayList<>(mostValuableDragons);
 
         EasyMock.expect(player.getMostValuableDragons()).andReturn(mostValuableDragons);
@@ -93,7 +93,7 @@ public class ReturnMostValuableDragonEffectTests extends MockTest {
         Player player = EasyMock.mock(Player.class);
         Deck deck = EasyMock.mock(Deck.class);
         Gui gui = EasyMock.mock(Gui.class);
-        List<Card> mostValuableDragons = this.mockListOf(Card.class).withLength(2);
+        List<Card> mostValuableDragons = this.mockListOf(Card.class).withLengthOf(2);
         player.hatchedCards = new ArrayList<>(mostValuableDragons);
 
         EasyMock.expect(player.getMostValuableDragons()).andReturn(mostValuableDragons);

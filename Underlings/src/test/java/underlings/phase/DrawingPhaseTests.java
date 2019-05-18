@@ -53,7 +53,7 @@ public class DrawingPhaseTests extends MockTest {
 
     @Test
     public void testSetup() {
-        List<Player> players = this.mockListOf(Player.class).withLength(2);
+        List<Player> players = this.mockListOf(Player.class).withLengthOf(2);
 
         for (Player player : players) {
             EasyMock.expect(player.getElementGivers()).andStubReturn(Collections.emptyList());
@@ -70,7 +70,7 @@ public class DrawingPhaseTests extends MockTest {
 
     @Test
     public void testTearDown() {
-        List<Player> players = this.mockListOf(Player.class).withLength(2);
+        List<Player> players = this.mockListOf(Player.class).withLengthOf(2);
 
         for (Player player : players) {
             player.endPhaseOne();

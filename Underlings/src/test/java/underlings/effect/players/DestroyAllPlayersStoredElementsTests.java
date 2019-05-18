@@ -26,7 +26,7 @@ public class DestroyAllPlayersStoredElementsTests extends MockTest {
     }
 
     public void testApplyOnPlayers(int numberOfPlayers) {
-        List<Player> players = this.mockListOf(Player.class).withLength(numberOfPlayers);
+        List<Player> players = this.mockListOf(Player.class).withLengthOf(numberOfPlayers);
         Effect testedEffect = new DestroyAllPlayersStoredElements();
         testedEffect.on(players);
 

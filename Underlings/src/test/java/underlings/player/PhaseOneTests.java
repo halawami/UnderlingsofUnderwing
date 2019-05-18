@@ -26,7 +26,7 @@ public class PhaseOneTests extends MockTest {
     }
 
     private void testWithObservers(int numberOfObservers) {
-        List<ObserverEffect> observerEffects = this.mockListOf(ObserverEffect.class).withLength(numberOfObservers);
+        List<ObserverEffect> observerEffects = this.mockListOf(ObserverEffect.class).withLengthOf(numberOfObservers);
         Player player = new Player(0, null, 0);
         observerEffects.forEach(player::addObserverEffect);
 
