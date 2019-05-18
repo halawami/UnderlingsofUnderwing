@@ -36,6 +36,7 @@ public class CardFactory {
 
     }
 
+    @SuppressWarnings("unchecked")
     private List<Class<? extends Effect>> getEffectClassesFromInfos(Set<ClassInfo> effectClassInfos) {
         List<Class<? extends Effect>> effectClasses = new ArrayList<>();
         for (ClassInfo classInfo : effectClassInfos) {
@@ -49,11 +50,6 @@ public class CardFactory {
 
     private boolean isEffectClass(Class<?> loadedClass) {
         return Effect.class.isAssignableFrom(loadedClass);
-    }
-
-    @SuppressWarnings("unchecked")
-    private Class<? extends Effect> getClassFromClassInfo(ClassPath.ClassInfo effectClassInfo) {
-        return (Class<? extends Effect>) effectClassInfo.load();
     }
 
     private Set<ClassPath.ClassInfo> loadEffectClassInfos() {
