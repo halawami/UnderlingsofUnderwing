@@ -2,7 +2,6 @@ package underlings.card.effect.domestic;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import underlings.card.Card;
 import underlings.card.effect.DeckEffects;
 import underlings.game.Deck;
@@ -20,7 +19,7 @@ public class ReorderTopThreeCardsEffect extends DeckEffects {
 
         List<Card> reorderedCards = gui.reorderCards(topThreeCards);
         for (Card card : reorderedCards) {
-            deck.addCard(card);
+            deck.addCard(card, false);
         }
     }
 }

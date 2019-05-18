@@ -1,7 +1,6 @@
 package underlings.card.effect.wild;
 
 import java.util.List;
-
 import underlings.card.Card;
 import underlings.card.effect.DeckEffects;
 import underlings.game.Deck;
@@ -22,7 +21,7 @@ public class ReturnMostValuableDragonEffect extends DeckEffects {
             Card mostValuableDragon =
                     gui.promptChoice("Pick a dragon to return to deck", mostValuableDragons, player.id);
             player.hatchedCards.remove(mostValuableDragon);
-            deck.addCard(mostValuableDragon);
+            deck.addCard(mostValuableDragon, true);
         }
     }
 

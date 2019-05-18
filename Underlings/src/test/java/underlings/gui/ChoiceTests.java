@@ -1,11 +1,11 @@
 package underlings.gui;
 
 import static org.junit.Assert.assertEquals;
-
+import static org.junit.Assert.assertTrue;
+import java.util.List;
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.field.Field;
 import underlings.field.FieldSpace;
 import underlings.field.FieldSpaceFactory;
@@ -50,6 +50,15 @@ public class ChoiceTests {
         EasyMock.verify(this.promptHandler, this.display);
 
         assertEquals(field.field.get(21), fieldSpace);
+    }
+
+    @Test
+    public void testYesNoChoices() {
+        List<YesNoChoice> choices = YesNoChoice.getChoices();
+
+        assertEquals(2, choices.size());
+        assertTrue(choices.contains(YesNoChoice.YES));
+        assertTrue(choices.contains(YesNoChoice.NO));
     }
 
 }

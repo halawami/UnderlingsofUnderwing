@@ -1,7 +1,8 @@
 package underlings.gui;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
 import underlings.utilities.LocaleWrap;
 
 public enum YesNoChoice {
@@ -20,10 +21,7 @@ public enum YesNoChoice {
     }
 
     public static List<YesNoChoice> getChoices() {
-        List<YesNoChoice> choices = new ArrayList<>();
-        choices.add(YES);
-        choices.add(NO);
-        return choices;
+        return Arrays.asList(YES, NO);
     }
 
 }

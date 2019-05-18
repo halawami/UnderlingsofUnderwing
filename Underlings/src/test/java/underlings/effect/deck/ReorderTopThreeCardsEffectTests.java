@@ -3,11 +3,11 @@ package underlings.effect.deck;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
 import org.easymock.EasyMock;
 import org.junit.Test;
 
 import underlings.MockTest;
+import underlings.TestUtils;
 import underlings.card.Card;
 import underlings.card.EmptyCard;
 import underlings.card.effect.domestic.ReorderTopThreeCardsEffect;
@@ -52,7 +52,7 @@ public class ReorderTopThreeCardsEffectTests extends MockTest {
         }
         EasyMock.expect(gui.reorderCards(topThreeCards)).andReturn(reorderedCards);
         for (Card reorderedCard : reorderedCards) {
-            deck.addCard(reorderedCard);
+            deck.addCard(reorderedCard, false);
         }
 
         this.replayAll();
