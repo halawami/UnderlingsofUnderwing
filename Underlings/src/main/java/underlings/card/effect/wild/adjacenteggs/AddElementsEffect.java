@@ -20,8 +20,8 @@ public class AddElementsEffect extends AdjacentEggsEffect {
 
     @Override
     public void applyOnAdjacentEgg(Card adjacentEgg, ElementBag elementBag, ElementSpaceLogic elementSpaceLogic,
-            EggHatchingLogic eggHatchingLogic, Deck deck,
-            HandlerMovementLogic handlerMovementLogic, HatchingGround hatchingGround) {
+            EggHatchingLogic eggHatchingLogic, Deck deck, HandlerMovementLogic handlerMovementLogic,
+            HatchingGround hatchingGround) {
         for (ElementColor elementColorToAdd : this.elementColors) {
             this.addElementToCard(elementColorToAdd, adjacentEgg, elementSpaceLogic, elementBag);
         }
@@ -38,7 +38,12 @@ public class AddElementsEffect extends AdjacentEggsEffect {
 
     @Override
     public String toString() {
-        return LocaleWrap.get("add_elements_effect");
+        StringBuilder elements = new StringBuilder();
+        for (ElementColor color : this.elementColors) {
+            elements.append(color);
+            elements.append(" ");
+        }
+        return LocaleWrap.format("place_element_on_all_eggs_effect", elements);
     }
 
 }

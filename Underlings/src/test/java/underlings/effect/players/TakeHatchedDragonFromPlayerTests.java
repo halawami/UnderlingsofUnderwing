@@ -1,5 +1,7 @@
 package underlings.effect.players;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -122,5 +124,16 @@ public class TakeHatchedDragonFromPlayerTests {
         EasyMock.verify(player, gui, player2);
     }
 
+    @Test
+    public void testToString() {
+        TakeHatchedDragonFromPlayer effect = new TakeHatchedDragonFromPlayer();
+        effect.temperatures = new Temperature[] {Temperature.COOL};
+        StringBuilder temperature = new StringBuilder();
+        for (Temperature temp : effect.temperatures) {
+            temperature.append(temp);
+            temperature.append(" ");
+        }
+        assertEquals(LocaleWrap.format("take_hatched_dragon", temperature, effect.points), effect.toString());
+    }
 
 }

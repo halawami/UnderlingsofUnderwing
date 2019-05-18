@@ -1,8 +1,12 @@
 package underlings.effect.handler;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.List;
+
 import org.easymock.EasyMock;
 import org.junit.Test;
+
 import underlings.TestUtils;
 import underlings.card.Card;
 import underlings.card.effect.Effect;
@@ -13,6 +17,7 @@ import underlings.handler.Handler;
 import underlings.handler.HandlerChoice;
 import underlings.handler.HandlerMovementLogic;
 import underlings.player.Player;
+import underlings.utilities.LocaleWrap;
 
 public class ReplaceHandlerWithYourOwnEffectTests {
 
@@ -66,5 +71,11 @@ public class ReplaceHandlerWithYourOwnEffectTests {
         EasyMock.verify(currentPlayer, hatchingGround, toBeReplaced, handlerMovementLogic, gui);
         mockClaimedEggs.forEach(EasyMock::verify);
         mockHandlers.forEach(EasyMock::verify);
+    }
+
+    @Test
+    public void testToString() {
+        Effect effect = new ReplaceHandlerWithYourOwnEffect();
+        assertEquals(LocaleWrap.get("replace_handler_effect"), effect.toString());
     }
 }

@@ -1,5 +1,7 @@
 package underlings.card.effect.domestic;
 
+import static org.junit.Assert.assertEquals;
+
 import org.easymock.EasyMock;
 import org.junit.Test;
 
@@ -8,6 +10,7 @@ import underlings.element.ElementColor;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.HatchingGround;
 import underlings.player.Player;
+import underlings.utilities.LocaleWrap;
 
 public class WhiteRecipeEffectTests {
 
@@ -53,4 +56,11 @@ public class WhiteRecipeEffectTests {
 
         EasyMock.verify(ground, ground.logic, player, player.elementSpaceLogic);
     }
+
+    @Test
+    public void testToStringDestroy() {
+        WhiteRecipeEffect effect = new WhiteRecipeEffect();
+        assertEquals(LocaleWrap.get("combine_primary_secondary_for_white"), effect.toString());
+    }
+
 }

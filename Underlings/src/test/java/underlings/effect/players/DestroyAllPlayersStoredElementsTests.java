@@ -1,5 +1,7 @@
 package underlings.effect.players;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.List;
 
 import org.easymock.EasyMock;
@@ -9,6 +11,7 @@ import underlings.TestUtils;
 import underlings.card.effect.Effect;
 import underlings.card.effect.wild.DestroyAllPlayersStoredElements;
 import underlings.player.Player;
+import underlings.utilities.LocaleWrap;
 
 public class DestroyAllPlayersStoredElementsTests {
 
@@ -34,6 +37,12 @@ public class DestroyAllPlayersStoredElementsTests {
         testedEffect.apply();
 
         players.forEach(EasyMock::verify);
+    }
+
+    @Test
+    public void testToString() {
+        Effect effect = new DestroyAllPlayersStoredElements();
+        assertEquals(LocaleWrap.get("destroy_all_players_stored_elemetns"), effect.toString());
     }
 
 }

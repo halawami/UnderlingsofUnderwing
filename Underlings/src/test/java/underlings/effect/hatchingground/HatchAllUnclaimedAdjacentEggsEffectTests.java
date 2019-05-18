@@ -1,5 +1,7 @@
 package underlings.effect.hatchingground;
 
+import static org.junit.Assert.assertEquals;
+
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
 
@@ -22,6 +24,7 @@ import underlings.handler.Handler;
 import underlings.player.FakePlayer;
 import underlings.player.Player;
 import underlings.utilities.EggHatchingLogic;
+import underlings.utilities.LocaleWrap;
 
 public class HatchAllUnclaimedAdjacentEggsEffectTests {
 
@@ -99,5 +102,17 @@ public class HatchAllUnclaimedAdjacentEggsEffectTests {
             mockedCards.add(EasyMock.niceMock(Card.class));
         }
         return mockedCards;
+    }
+
+    @Test
+    public void testToString() {
+        HatchAllUnclaimedEffect effect = new HatchAllUnclaimedEffect();
+        effect.dragonFamilies = new Family[] {Family.MONOCHROMATIC};
+        StringBuilder families = new StringBuilder();
+        for (Family family : effect.dragonFamilies) {
+            families.append(family);
+            families.append(" ");
+        }
+        assertEquals(LocaleWrap.format("hatch_all_unclaimed_adjacent_eggs_effect", families), effect.toString());
     }
 }

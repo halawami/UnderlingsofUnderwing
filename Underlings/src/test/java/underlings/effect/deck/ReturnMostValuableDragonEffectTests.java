@@ -1,17 +1,23 @@
 package underlings.effect.deck;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 import org.easymock.EasyMock;
 import org.junit.Assert;
 import org.junit.Test;
+
 import underlings.TestUtils;
 import underlings.card.Card;
+import underlings.card.effect.wild.ReturnAllHatchedDragonsFromPlayers;
 import underlings.card.effect.wild.ReturnMostValuableDragonEffect;
 import underlings.game.Deck;
 import underlings.gui.Gui;
 import underlings.player.Player;
+import underlings.utilities.LocaleWrap;
 
 public class ReturnMostValuableDragonEffectTests {
 
@@ -103,6 +109,12 @@ public class ReturnMostValuableDragonEffectTests {
 
         Assert.assertFalse(player.hatchedCards.contains(mostValuableDragons.get(1)));
         EasyMock.verify(player, deck, gui);
+    }
+
+    @Test
+    public void testToString() {
+        ReturnMostValuableDragonEffect effect = new ReturnMostValuableDragonEffect();
+        assertEquals(LocaleWrap.get("return_most_valuable_dragon_effect"), effect.toString());
     }
 
 }

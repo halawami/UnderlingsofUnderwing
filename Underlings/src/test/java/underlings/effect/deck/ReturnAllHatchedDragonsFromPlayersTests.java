@@ -14,6 +14,7 @@ import underlings.card.Temperature;
 import underlings.card.effect.wild.ReturnAllHatchedDragonsFromPlayers;
 import underlings.game.Deck;
 import underlings.player.Player;
+import underlings.utilities.LocaleWrap;
 
 public class ReturnAllHatchedDragonsFromPlayersTests {
 
@@ -118,6 +119,18 @@ public class ReturnAllHatchedDragonsFromPlayersTests {
         assertTrue(player2.hatchedCards.contains(card3));
 
         EasyMock.verify(player, deck, player2);
+    }
+
+    @Test
+    public void testToString() {
+        ReturnAllHatchedDragonsFromPlayers effect = new ReturnAllHatchedDragonsFromPlayers();
+        effect.temperatures = new Temperature[] {Temperature.COOL};
+        StringBuilder temperature = new StringBuilder();
+        for (Temperature temp : effect.temperatures) {
+            temperature.append(temp);
+            temperature.append(" ");
+        }
+        assertEquals(LocaleWrap.format("return_hatched_dragons", temperature), effect.toString());
     }
 
 }

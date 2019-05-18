@@ -1,13 +1,17 @@
 package underlings.effect.player;
 
+import static org.junit.Assert.assertEquals;
+
 import org.easymock.EasyMock;
 import org.junit.Test;
 
+import underlings.card.effect.Effect;
 import underlings.card.effect.PlayerEffect;
 import underlings.card.effect.domestic.UseBlackOrWhiteInPlaceEffect;
 import underlings.element.ElementColor;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.player.Player;
+import underlings.utilities.LocaleWrap;
 
 public class UseBlackOrWhiteInPlaceTests {
 
@@ -26,5 +30,11 @@ public class UseBlackOrWhiteInPlaceTests {
         effect.on(player).apply();
 
         EasyMock.verify(player, logic);
+    }
+
+    @Test
+    public void testToString() {
+        Effect effect = new UseBlackOrWhiteInPlaceEffect();
+        assertEquals(LocaleWrap.get("black_white_inplace_effect"), effect.toString());
     }
 }

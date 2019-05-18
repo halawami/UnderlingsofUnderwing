@@ -1,5 +1,7 @@
 package underlings.effect.hatchingground;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +17,7 @@ import underlings.element.NullElement;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.player.Player;
+import underlings.utilities.LocaleWrap;
 
 public class CollectOneElementFromAnyEggInPlayEffectTests {
 
@@ -83,6 +86,18 @@ public class CollectOneElementFromAnyEggInPlayEffectTests {
             mockedCards.add(EasyMock.niceMock(Card.class));
         }
         return mockedCards;
+    }
+
+    @Test
+    public void testToString() {
+        CollectOneElementFromAnyEggInPlayEffect effect = new CollectOneElementFromAnyEggInPlayEffect();
+        effect.elementChoices = new ElementColor[] {ElementColor.BLACK};
+        StringBuilder elements = new StringBuilder();
+        for (ElementColor color : effect.elementChoices) {
+            elements.append(color);
+            elements.append(" ");
+        }
+        assertEquals(LocaleWrap.format("collect_one_element_effect", elements), effect.toString());
     }
 
 }

@@ -50,6 +50,6 @@ public class TakeHatchedDragonFromPlayer extends PlayersEffect {
             temperature.append(temp);
             temperature.append(" ");
         }
-        return LocaleWrap.format("take_hatched_dragon", points, temperature);
+        return LocaleWrap.format("take_hatched_dragon", temperature, points);
     }
 }

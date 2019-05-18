@@ -1,13 +1,17 @@
 package underlings.effect.player;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import org.easymock.EasyMock;
 import org.junit.Test;
 
+import underlings.card.effect.Effect;
 import underlings.card.effect.wild.LoseHandlerEffect;
 import underlings.player.Player;
+import underlings.utilities.LocaleWrap;
 
 public class LoseHandlerEffectTests {
 
@@ -45,5 +49,10 @@ public class LoseHandlerEffectTests {
         return mockedObjects;
     }
 
+    @Test
+    public void testToString() {
+        Effect effect = new LoseHandlerEffect();
+        assertEquals(LocaleWrap.get("lose_handler_effect"), effect.toString());
+    }
 
 }

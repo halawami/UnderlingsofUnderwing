@@ -28,6 +28,6 @@ public class ReturnMostValuableDragonEffect extends DeckEffects {
 
     @Override
     public String toString() {
-        return LocaleWrap.get("gain_handler_effect");
+        return LocaleWrap.get("return_most_valuable_dragon_effect");
     }
 }

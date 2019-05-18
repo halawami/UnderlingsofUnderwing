@@ -44,8 +44,7 @@ public class DrawElementsOfChoiceEffectTests {
         List<ElementGiver> effectElementGivers = TestUtils.mockListOf(ElementGiver.class).withLength(2);
 
         EasyMock.expect(player.getElementGivers()).andReturn(elementGivers);
-        EasyMock.expect(testedEffect.getEffectElementGivers(elementGivers, elementBag))
-                .andReturn(effectElementGivers);
+        EasyMock.expect(testedEffect.getEffectElementGivers(elementGivers, elementBag)).andReturn(effectElementGivers);
         player.useEffectElementGivers(true);
 
         EasyMock.replay(player, testedEffect, elementBag);
@@ -71,8 +70,8 @@ public class DrawElementsOfChoiceEffectTests {
         List<ElementGiver> effectedElementGivers = TestUtils.mockListOf(ElementGiver.class).withLength(2);
 
         EasyMock.expect(player.getElementGivers()).andReturn(elementGivers).once();
-        EasyMock.expect(testedEffect.getEffectElementGivers(elementGivers, elementBag))
-                .andReturn(effectedElementGivers).once();
+        EasyMock.expect(testedEffect.getEffectElementGivers(elementGivers, elementBag)).andReturn(effectedElementGivers)
+                .once();
         player.useEffectElementGivers(true);
         EasyMock.expectLastCall().once();
 
@@ -111,8 +110,8 @@ public class DrawElementsOfChoiceEffectTests {
         testedEffect.bag = elementBag;
         List<ElementGiver> elementGivers = TestUtils.mockListOf(ElementGiver.class).withLength(numberOfElementGivers);
         List<DrawChoice> availableDrawChoices = Arrays.asList(DrawChoice.BLUE, DrawChoice.RED);
-        List<ElementGiver> mockEffectGivers = TestUtils.mockListOf(ElementGiver.class)
-                .withLength(numberOfElementGivers);
+        List<ElementGiver> mockEffectGivers =
+                TestUtils.mockListOf(ElementGiver.class).withLength(numberOfElementGivers);
 
         EasyMock.expect(elementBag.getAvailableDrawChoices()).andReturn(availableDrawChoices);
         for (ElementGiver effectElementGiver : mockEffectGivers) {

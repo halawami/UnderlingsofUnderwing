@@ -1,5 +1,7 @@
 package underlings.effect.hatchingground;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,5 +79,11 @@ public class CollectAndHatchAnyUnclaimedEggEffectTests {
             mockedCards.add(EasyMock.niceMock(Card.class));
         }
         return mockedCards;
+    }
+
+    @Test
+    public void testToString() {
+        CollectAndHatchAnyUnclaimedEggEffect effect = new CollectAndHatchAnyUnclaimedEggEffect();
+        assertEquals(LocaleWrap.format("hatch_unclaimed_dragon_effect", effect.points), effect.toString());
     }
 }

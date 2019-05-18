@@ -1,5 +1,7 @@
 package underlings.effect.hatchingground;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +19,7 @@ import underlings.element.NullElement;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.player.Player;
+import underlings.utilities.LocaleWrap;
 
 public class UptoElementsFromAnyEggInPlayEffectTests {
 
@@ -141,5 +144,29 @@ public class UptoElementsFromAnyEggInPlayEffectTests {
             mockedObjects.add(EasyMock.mock(objectsClass));
         }
         return mockedObjects;
+    }
+
+    @Test
+    public void testToStringCollect() {
+        CollectUpToElementsFromAnyEggInPlayEffect effect = new CollectUpToElementsFromAnyEggInPlayEffect();
+        effect.elementChoices = new ElementColor[] {ElementColor.BLACK};
+        StringBuilder elements = new StringBuilder();
+        for (ElementColor color : effect.elementChoices) {
+            elements.append(color);
+            elements.append(" ");
+        }
+        assertEquals(LocaleWrap.format("up_to_effect", "Collect", effect.upTo, elements), effect.toString());
+    }
+
+    @Test
+    public void testToStringDestroy() {
+        DestroyUpToElementsOnAnyEggInPlayEffect effect = new DestroyUpToElementsOnAnyEggInPlayEffect();
+        effect.elementChoices = new ElementColor[] {ElementColor.BLACK};
+        StringBuilder elements = new StringBuilder();
+        for (ElementColor color : effect.elementChoices) {
+            elements.append(color);
+            elements.append(" ");
+        }
+        assertEquals(LocaleWrap.format("up_to_effect", "Destroy", effect.upTo, elements), effect.toString());
     }
 }

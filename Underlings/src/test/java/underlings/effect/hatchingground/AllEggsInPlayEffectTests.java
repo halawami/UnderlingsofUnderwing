@@ -1,5 +1,7 @@
 package underlings.effect.hatchingground;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +22,7 @@ import underlings.gui.Gui;
 import underlings.handler.Handler;
 import underlings.player.Player;
 import underlings.utilities.EggHatchingLogic;
+import underlings.utilities.LocaleWrap;
 
 public class AllEggsInPlayEffectTests {
 
@@ -49,9 +52,8 @@ public class AllEggsInPlayEffectTests {
         List<Card> mockedCards = getMockedCards(numberOfCards);
         EggHatchingLogic eggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
 
-        AllEggsInPlayEffect testedEffect =
-                EasyMock.partialMockBuilder(AllEggsInPlayEffect.class)
-                        .addMockedMethod("applyOnCardInPlay").createMock();
+        AllEggsInPlayEffect testedEffect = EasyMock.partialMockBuilder(AllEggsInPlayEffect.class)
+                .addMockedMethod("applyOnCardInPlay").createMock();
         testedEffect.on(elementBag).on(centerCard).on(hatchingGround).on(gui).on(eggHatchingLogic).on(player);
 
         EasyMock.expect(hatchingGround.getAllCards()).andReturn(mockedCards);
@@ -162,6 +164,19 @@ public class AllEggsInPlayEffectTests {
             mockedCards.add(EasyMock.niceMock(Card.class));
         }
         return mockedCards;
+    }
+
+    @Test
+    public void testToStringDestroy() {
+        DestroyAllElementsOnAllEggsInPlay effect = new DestroyAllElementsOnAllEggsInPlay();
+        assertEquals(LocaleWrap.get("destroy_all_elements_on_all_eggs_effect"), effect.toString());
+    }
+
+    @Test
+    public void testToStringPlace() {
+        AddElementToAllEggsInPlayEffect effect = new AddElementToAllEggsInPlayEffect();
+        effect.elementColor = ElementColor.BLACK;
+        assertEquals(LocaleWrap.format("place_element_on_all_eggs_effect", effect.elementColor), effect.toString());
     }
 
 }

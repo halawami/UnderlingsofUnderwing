@@ -1,5 +1,7 @@
 package underlings.card.effect.wild;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +14,7 @@ import underlings.game.Deck;
 import underlings.game.HatchingGround;
 import underlings.player.Player;
 import underlings.utilities.EggHatchingLogic;
+import underlings.utilities.LocaleWrap;
 
 public class ApiaraWildEffectTests {
 
@@ -104,5 +107,11 @@ public class ApiaraWildEffectTests {
         effect.on(hatchingGround).on(apiara).on(deck).on(player).on(logic).apply();
         effect.on(hatchingGround).on(apiara).on(deck).on(player).on(logic).apply();
         EasyMock.verify(hatchingGround, deck, logic, player);
+    }
+
+    @Test
+    public void testToStringDestroy() {
+        ApiaraWildEffect effect = new ApiaraWildEffect();
+        assertEquals(LocaleWrap.get("apiara_wild_effect"), effect.toString());
     }
 }

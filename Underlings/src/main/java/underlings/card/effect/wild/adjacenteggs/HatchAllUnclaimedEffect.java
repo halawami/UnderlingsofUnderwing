@@ -31,7 +31,7 @@ public class HatchAllUnclaimedEffect extends AdjacentEggsEffect {
     @Override
     public String toString() {
         StringBuilder families = new StringBuilder();
-        for (Family family : dragonFamilies) {
+        for (Family family : this.dragonFamilies) {
             families.append(family);
             families.append(" ");
         }

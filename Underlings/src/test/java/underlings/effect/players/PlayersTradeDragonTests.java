@@ -168,4 +168,11 @@ public class PlayersTradeDragonTests {
 
         EasyMock.verify(player, player2, mockedEffect, gui, player3, player4);
     }
+
+    @Test
+    public void testToString() {
+        Effect effect = new PlayersTradeDragon();
+        assertEquals(LocaleWrap.get("trade_dragons_effect"), effect.toString());
+    }
+
 }
