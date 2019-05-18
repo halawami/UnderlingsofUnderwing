@@ -3,6 +3,7 @@ package underlings.card.effect.wild;
 import java.util.ArrayList;
 import java.util.List;
 import org.easymock.EasyMock;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import underlings.card.Card;
@@ -14,15 +15,30 @@ import underlings.utilities.EggHatchingLogic;
 
 public class ApiaraWildEffectTests {
 
-    Card apiara;
-    HatchingGround hatchingGround;
-    Deck deck;
+    private Card apiara;
+    private HatchingGround hatchingGround;
+    private Deck deck;
+    private Effect effect;
+    private Player player;
+    private EggHatchingLogic logic;
 
     @Before
     public void init() {
         this.apiara = new Card();
         this.hatchingGround = EasyMock.mock(HatchingGround.class);
         this.deck = EasyMock.mock(Deck.class);
+        this.effect = new ApiaraWildEffect();
+        this.player = EasyMock.mock(Player.class);
+        this.logic = EasyMock.mock(EggHatchingLogic.class);
+    }
+
+    @After
+    public void verify() {
+        EasyMock.verify(this.hatchingGround, this.deck, this.logic, this.player);
+    }
+
+    private void replay() {
+        EasyMock.replay(this.hatchingGround, this.deck, this.logic, this.player);
     }
 
     @Test
@@ -30,12 +46,9 @@ public class ApiaraWildEffectTests {
         this.hatchingGround.replaceCard(this.apiara);
         this.deck.addCard(this.apiara);
 
-        EasyMock.replay(this.hatchingGround, this.deck);
+        this.replay();
 
-        Effect effect = new ApiaraWildEffect();
-        effect.on(this.hatchingGround).on(this.apiara).on(this.deck).apply();
-
-        EasyMock.verify(this.hatchingGround, this.deck);
+        this.effect.on(this.hatchingGround).on(this.apiara).on(this.deck).apply();
     }
 
     @Test
@@ -46,11 +59,10 @@ public class ApiaraWildEffectTests {
         List<Card> cards = new ArrayList<>();
         EasyMock.expect(this.hatchingGround.getUnclaimedEggs()).andReturn(cards);
 
-        EasyMock.replay(this.hatchingGround, this.deck);
-        Effect effect = new ApiaraWildEffect();
-        effect.on(this.hatchingGround).on(this.apiara).on(this.deck).apply();
-        effect.on(this.hatchingGround).on(this.apiara).on(this.deck).apply();
-        EasyMock.verify(this.hatchingGround, this.deck);
+        this.replay();
+
+        this.effect.on(this.hatchingGround).on(this.apiara).on(this.deck).apply();
+        this.effect.on(this.hatchingGround).on(this.apiara).on(this.deck).apply();
     }
 
     @Test
@@ -62,17 +74,15 @@ public class ApiaraWildEffectTests {
         cards.add(new Card());
         EasyMock.expect(this.hatchingGround.getUnclaimedEggs()).andReturn(cards);
 
-        Player player = EasyMock.mock(Player.class);
-        EasyMock.expect(player.getId()).andReturn(4).anyTimes();
 
-        EggHatchingLogic logic = EasyMock.mock(EggHatchingLogic.class);
-        logic.hatchEgg(cards.get(0), true, player);
+        EasyMock.expect(this.player.getId()).andReturn(4).anyTimes();
 
-        EasyMock.replay(this.hatchingGround, this.deck, logic, player);
-        Effect effect = new ApiaraWildEffect();
-        effect.on(this.hatchingGround).on(this.apiara).on(this.deck).on(player).on(logic).apply();
-        effect.on(this.hatchingGround).on(this.apiara).on(this.deck).on(player).on(logic).apply();
-        EasyMock.verify(this.hatchingGround, this.deck, logic, player);
+        this.logic.hatchEgg(cards.get(0), true, this.player);
+
+        this.replay();
+
+        this.effect.on(this.hatchingGround).on(this.apiara).on(this.deck).on(this.player).on(this.logic).apply();
+        this.effect.on(this.hatchingGround).on(this.apiara).on(this.deck).on(this.player).on(this.logic).apply();
     }
 
     @Test
@@ -85,17 +95,15 @@ public class ApiaraWildEffectTests {
         cards.add(new Card());
         EasyMock.expect(this.hatchingGround.getUnclaimedEggs()).andReturn(cards);
 
-        Player player = EasyMock.mock(Player.class);
-        EasyMock.expect(player.getId()).andReturn(4).anyTimes();
+        EasyMock.expect(this.player.getId()).andReturn(4).anyTimes();
 
-        EggHatchingLogic logic = EasyMock.mock(EggHatchingLogic.class);
-        logic.hatchEgg(cards.get(0), true, player);
-        logic.hatchEgg(cards.get(1), true, player);
+        this.logic.hatchEgg(cards.get(0), true, this.player);
+        this.logic.hatchEgg(cards.get(1), true, this.player);
 
-        EasyMock.replay(this.hatchingGround, this.deck, logic, player);
-        Effect effect = new ApiaraWildEffect();
-        effect.on(this.hatchingGround).on(this.apiara).on(this.deck).on(player).on(logic).apply();
-        effect.on(this.hatchingGround).on(this.apiara).on(this.deck).on(player).on(logic).apply();
-        EasyMock.verify(this.hatchingGround, this.deck, logic, player);
+        this.replay();
+
+        this.effect.on(this.hatchingGround).on(this.apiara).on(this.deck).on(this.player).on(this.logic).apply();
+        this.effect.on(this.hatchingGround).on(this.apiara).on(this.deck).on(this.player).on(this.logic).apply();
     }
+
 }
