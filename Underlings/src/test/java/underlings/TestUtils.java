@@ -1,10 +1,6 @@
 package underlings;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-
-import org.easymock.EasyMock;
 
 import underlings.card.Card;
 import underlings.card.Temperature;
@@ -13,23 +9,7 @@ import underlings.handler.HandlerFactory;
 import underlings.player.Player;
 import underlings.scoring.ScoreUtils;
 
-public class TestUtils<T> {
-
-    private Class<T> objectsClass;
-
-    public static <T> TestUtils<T> mockListOf(Class<T> objectsClass) {
-        TestUtils<T> utilsContainingType = new TestUtils<>();
-        utilsContainingType.objectsClass = objectsClass;
-        return utilsContainingType;
-    }
-
-    public List<T> withLength(int length) {
-        List<T> mockObjects = new ArrayList<>();
-        for (int i = 0; i < length; i++) {
-            mockObjects.add(EasyMock.mock(this.objectsClass));
-        }
-        return mockObjects;
-    }
+public class TestUtils {
 
     public static ScoreUtils ScoreUtils(Gui gui, Player... players) {
         return new ScoreUtils(Arrays.asList(players), gui);

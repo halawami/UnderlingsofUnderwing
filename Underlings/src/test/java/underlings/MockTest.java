@@ -66,13 +66,13 @@ public abstract class MockTest {
         this.mocks.add(mock);
     }
 
-    public <T> TestUtils<T> mockListOf(Class<T> objectsClass) {
-        TestUtils<T> utilsContainingType = new TestUtils<>();
+    public <T> MockListHelper<T> mockListOf(Class<T> objectsClass) {
+        MockListHelper<T> utilsContainingType = new MockListHelper<>();
         utilsContainingType.objectsClass = objectsClass;
         return utilsContainingType;
     }
 
-    public class TestUtils<T> {
+    public class MockListHelper<T> {
 
         private Class<T> objectsClass;
 
