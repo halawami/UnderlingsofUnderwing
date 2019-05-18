@@ -1,6 +1,5 @@
 package underlings.game;
 
-import java.awt.Dimension;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -39,10 +38,6 @@ public class HatchingGround implements Iterable<Card> {
     public void setDimensions(int width, int height) {
         this.width = width;
         this.height = height;
-    }
-
-    public Dimension getDimensions() {
-        return new Dimension(this.width, this.height);
     }
 
     public void populate() {
@@ -93,7 +88,6 @@ public class HatchingGround implements Iterable<Card> {
         }
         return new Point(-2, -2);
     }
-
 
     @Override
     public Iterator<Card> iterator() {

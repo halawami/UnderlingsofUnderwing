@@ -1,6 +1,5 @@
 package underlings.gui;
 
-import java.awt.Dimension;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -162,10 +161,8 @@ public class Gui {
     }
 
     public void displayHatchingGround(HatchingGround hatchingGround) {
-        Dimension hgDimensions = hatchingGround.getDimensions();
-
-        for (int row = 0; row < hgDimensions.height; row++) {
-            for (int col = 0; col < hgDimensions.width; col++) {
+        for (int row = 0; row < hatchingGround.getHeight(); row++) {
+            for (int col = 0; col < hatchingGround.getWidth(); col++) {
                 this.display.displayCard(row, col, hatchingGround.cards[row][col]);
             }
         }
