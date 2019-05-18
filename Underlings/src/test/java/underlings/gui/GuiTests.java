@@ -22,8 +22,12 @@ import org.junit.Test;
 
 import underlings.card.Card;
 import underlings.card.EmptyCard;
+import underlings.element.Element;
 import underlings.element.ElementBag;
+import underlings.element.ElementColor;
 import underlings.element.ElementFactory;
+import underlings.element.ElementSpace;
+import underlings.element.NullElement;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.Deck;
 import underlings.game.Game;
@@ -222,6 +226,45 @@ public class GuiTests {
 
         assertEquals(Locale.CANADA, locale);
 
+    }
+
+    @Test
+    public void testGetElementOfColorsFromSpaceNoChoices() {
+        ElementColor[] choices = new ElementColor[0];
+        ElementSpace space = new ElementSpace(ElementColor.BLACK);
+
+        List<Element> elements = new ArrayList<>();
+        elements.add(NullElement.getInstance());
+        EasyMock.expect(this.promptHandler.promptChoice(LocaleWrap.get("gui_element_collect"), elements, 0))
+                .andReturn(NullElement.getInstance());
+
+        this.replay();
+
+        Element element = this.gui.getElementOfColorsFromSpace(choices, space, 0);
+
+        assertEquals(NullElement.getInstance(), element);
+
+    }
+
+    @Test
+    public void testGetElementOfColorsFromSpace() {
+        ElementColor[] choices = new ElementColor[2];
+        choices[1] = ElementColor.RED;
+        ElementSpace space = new ElementSpace(ElementColor.BLACK);
+        space.addElements(new Element(ElementColor.RED));
+        space.addElements(new Element(ElementColor.BLUE));
+
+        List<Element> elements = new ArrayList<>();
+        elements.add(space.elements.get(0));
+        elements.add(NullElement.getInstance());
+        EasyMock.expect(this.promptHandler.promptChoice(LocaleWrap.get("gui_element_collect"), elements, 0))
+                .andReturn(NullElement.getInstance());
+
+        this.replay();
+
+        Element element = this.gui.getElementOfColorsFromSpace(choices, space, 0);
+
+        assertEquals(NullElement.getInstance(), element);
     }
 
 }
