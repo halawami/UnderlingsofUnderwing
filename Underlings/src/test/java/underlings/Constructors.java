@@ -18,7 +18,14 @@ public class Constructors {
     }
 
     public static Card Card(int points, Temperature temperature) {
-        Card card = Card(points);
+        Card card = new Card();
+        card.points = points;
+        card.temperature = temperature;
+        return card;
+    }
+
+    public static Card Card(Temperature temperature) {
+        Card card = new Card();
         card.temperature = temperature;
         return card;
     }
