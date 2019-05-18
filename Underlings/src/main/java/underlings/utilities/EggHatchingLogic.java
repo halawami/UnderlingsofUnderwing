@@ -34,17 +34,15 @@ public class EggHatchingLogic {
         this.deck = deck;
     }
 
-    public void hatchEgg(Card card, boolean wild, Player player) {
+    public void hatchEgg(Card card, Player player) {
         Effect[] effects;
-        if (wild) {
+        if (!card.isClaimed()) {
             card.handler = WildHandler.getInstance();
             effects = card.wildEffects;
             this.returnElementsToBag(card);
         } else {
             effects = card.domesticEffects;
-            if (card.handler != null) {
-                card.handler.moveToState(HandlerState.READY_ROOM);
-            }
+            card.handler.moveToState(HandlerState.READY_ROOM);
             player.hatchedCards.add(card);
         }
         for (int i = 0; i < effects.length; i++) {
@@ -55,7 +53,7 @@ public class EggHatchingLogic {
         }
         for (Card egg : hatchingGround.getUnclaimedEggs()) {
             if (hatchingGround.logic.isComplete(egg)) {
-                this.hatchEgg(egg, true, player);
+                this.hatchEgg(egg, player);
             }
         }
     }

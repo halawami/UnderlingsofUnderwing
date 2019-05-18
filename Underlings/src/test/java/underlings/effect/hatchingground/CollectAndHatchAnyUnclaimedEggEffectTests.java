@@ -33,7 +33,7 @@ public class CollectAndHatchAnyUnclaimedEggEffectTests {
         EasyMock.expect(currentPlayer.getId()).andReturn(0);
         EasyMock.expect(gui.getCard(0, LocaleWrap.get("gui_card"), hatchingGround, mockedCards))
                 .andReturn(mockedCards.get(0));
-        eggHatchingLogic.hatchEgg(mockedCards.get(0), false, currentPlayer);
+        eggHatchingLogic.hatchEgg(mockedCards.get(0), currentPlayer);
         CollectAndHatchAnyUnclaimedEggEffect collectAndHatchAnyUnclaimedEggEffect =
                 new CollectAndHatchAnyUnclaimedEggEffect();
         collectAndHatchAnyUnclaimedEggEffect.on(gui).on(currentPlayer).on(hatchingGround).on(eggHatchingLogic);
