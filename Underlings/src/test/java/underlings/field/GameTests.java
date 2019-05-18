@@ -2,10 +2,8 @@ package underlings.field;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-
 import org.easymock.EasyMock;
 import org.junit.Test;
-
 import underlings.card.Card;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.Deck;
@@ -23,7 +21,7 @@ public class GameTests {
         HatchingGround hatchingGround = new HatchingGround(deck, logic);
 
         Phase phase = EasyMock.mock(Phase.class);
-        EasyMock.expect(phase.isGameComplete()).andReturn(true);
+        phase.gameComplete = true;
 
         EasyMock.replay(deck, logic, phase);
 
@@ -42,7 +40,7 @@ public class GameTests {
         hatchingGround.populate();
 
         Phase phase = EasyMock.mock(Phase.class);
-        EasyMock.expect(phase.isGameComplete()).andReturn(false);
+        phase.gameComplete = false;
 
         EasyMock.replay(deck, logic, phase);
 
@@ -61,7 +59,7 @@ public class GameTests {
         EasyMock.expect(deck.draw()).andReturn(card2);
 
         Phase phase = EasyMock.mock(Phase.class);
-        EasyMock.expect(phase.isGameComplete()).andReturn(false);
+        phase.gameComplete = false;
 
         ElementSpaceLogic logic = EasyMock.niceMock(ElementSpaceLogic.class);
 
@@ -89,7 +87,7 @@ public class GameTests {
         EasyMock.expect(deck.draw()).andReturn(card2);
 
         Phase phase = EasyMock.mock(Phase.class);
-        EasyMock.expect(phase.isGameComplete()).andReturn(false);
+        phase.gameComplete = false;
 
         ElementSpaceLogic logic = EasyMock.niceMock(ElementSpaceLogic.class);
 

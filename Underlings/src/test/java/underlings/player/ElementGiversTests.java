@@ -129,6 +129,8 @@ public class ElementGiversTests extends MockTest {
         player.effectElementGivers = effectElementGivers;
         player.useEffectElementGivers(true);
 
+        this.replayAll();
+
         List<ElementGiver> elementGivers = player.getElementGivers();
 
         Assert.assertEquals(effectElementGivers, elementGivers);
@@ -144,6 +146,7 @@ public class ElementGiversTests extends MockTest {
         EasyMock.expect(player.getNormalElementGivers()).andReturn(Collections.emptyList());
 
         EasyMock.replay(player);
+        this.replayAll();
 
         player.useEffectElementGivers(true);
         player.useEffectElementGivers(false);

@@ -100,7 +100,7 @@ public class Game {
     }
 
     public boolean checkGameover(Phase phase) {
-        if (phase.isGameComplete()) {
+        if (phase.gameComplete) {
             return true;
         }
         for (Card card : this.hatchingGround) {

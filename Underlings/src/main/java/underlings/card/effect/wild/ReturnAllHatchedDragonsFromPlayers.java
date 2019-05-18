@@ -23,7 +23,7 @@ public class ReturnAllHatchedDragonsFromPlayers extends DeckEffects {
         }
     }
 
-    private void removeCardsOfTemperature(Deck deck, List<Temperature> temperaturesList, Player player) {
+    public void removeCardsOfTemperature(Deck deck, List<Temperature> temperaturesList, Player player) {
         for (int i = 0; i < player.hatchedCards.size(); i++) {
             Card card = player.hatchedCards.get(i);
             if (temperaturesList.contains(card.temperature)) {

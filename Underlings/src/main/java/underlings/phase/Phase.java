@@ -17,7 +17,7 @@ public abstract class Phase {
     protected Field field;
 
     private boolean phaseComplete;
-    protected boolean gameComplete;
+    public boolean gameComplete;
 
     public Phase(List<Player> players, Gui gui, ElementBag elementBag, HatchingGround hatchingGround,
             Runnable displayMethod, Field field) {
@@ -34,10 +34,6 @@ public abstract class Phase {
     public abstract void setup();
 
     public abstract void turn(Player player);
-
-    public boolean isGameComplete() {
-        return this.gameComplete;
-    }
 
     public void setPhaseComplete(boolean phaseComplete) {
         this.phaseComplete = phaseComplete;

@@ -1,11 +1,13 @@
 package underlings.effect.deck;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
+import java.util.List;
 
+import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,96 +23,126 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
 
     @Before
     public void init() {
-        this.player = this.mock(Player.class);
-        this.player2 = this.mock(Player.class);
         this.deck = this.mock(Deck.class);
-        this.card = new Card();
-        this.card2 = new Card();
-        this.card3 = new Card();
+        this.player = this.mock(Player.class);
     }
 
     @Test
-    public void testApply() {
-        this.card.temperature = Temperature.NEUTRAL;
-        this.player.hatchedCards = new LinkedList<>();
-        this.player.hatchedCards.add(this.card);
-
-        ReturnAllHatchedDragonsFromPlayers effect = new ReturnAllHatchedDragonsFromPlayers();
-        effect.on(Arrays.asList(this.player)).on(this.deck);
-        this.deck.addCard(this.card, true);
-
-        this.replayAll();
-
-        effect.temperatures = new Temperature[]{Temperature.NEUTRAL};
-        effect.apply();
-
-        assertTrue(this.player.hatchedCards.isEmpty());
+    public void testApplyOnTwoPlayers() {
+        this.testApplyOnPlayers(2);
     }
 
     @Test
-    public void testTwoCardsSamePlayer() {
-        this.card.temperature = Temperature.NEUTRAL;
-        this.card2.temperature = Temperature.NEUTRAL;
-        this.player.hatchedCards = new LinkedList<>();
-        this.player.hatchedCards.add(this.card);
-        this.player.hatchedCards.add(this.card2);
+    public void testApplyOnSixPlayers() {
+        this.testApplyOnPlayers(6);
+    }
 
-        ReturnAllHatchedDragonsFromPlayers effect = new ReturnAllHatchedDragonsFromPlayers();
-        effect.on(Arrays.asList(this.player)).on(this.deck);
-        this.deck.addCard(this.card, true);
-        this.deck.addCard(this.card2, true);
+
+    public void testApplyOnPlayers(int numberOfPlayers) {
+        this.players = this.mockListOf(Player.class).withLengthOf(numberOfPlayers);
+
+        ReturnAllHatchedDragonsFromPlayers effect = EasyMock
+                .partialMockBuilder(ReturnAllHatchedDragonsFromPlayers.class)
+                .addMockedMethod("removeCardsOfTemperature").createMock();
+        this.addMock(effect);
+        effect.temperatures = new Temperature[]{Temperature.NEUTRAL};
+        effect.on(this.players).on(this.deck);
+
+        for (Player player : players) {
+            effect.removeCardsOfTemperature(this.deck, Arrays.asList(effect.temperatures), player);
+        }
 
         this.replayAll();
 
-        effect.temperatures = new Temperature[]{Temperature.NEUTRAL};
         effect.apply();
-
-        assertTrue(this.player.hatchedCards.isEmpty());
     }
 
     @Test
-    public void testMultipleCardsAndPlayers() {
-        this.card.temperature = Temperature.NEUTRAL;
-        this.card2.temperature = Temperature.NEUTRAL;
-        this.player.hatchedCards = new LinkedList<>();
-        this.player.hatchedCards.add(this.card);
-        this.player2.hatchedCards = new LinkedList<>();
-        this.player2.hatchedCards.add(this.card2);
-
+    public void testRemoveFromNoHatchedCards() {
         ReturnAllHatchedDragonsFromPlayers effect = new ReturnAllHatchedDragonsFromPlayers();
-        effect.on(Arrays.asList(this.player, this.player2)).on(this.deck);
-        this.deck.addCard(this.card, true);
-        this.deck.addCard(this.card2, true);
+
+        this.player.hatchedCards = new ArrayList<>();
 
         this.replayAll();
 
-        effect.temperatures = new Temperature[]{Temperature.NEUTRAL};
-        effect.apply();
-        assertTrue(this.player.hatchedCards.isEmpty());
-        assertTrue(this.player2.hatchedCards.isEmpty());
+        effect.removeCardsOfTemperature(this.deck, Arrays.asList(Temperature.NEUTRAL), this.player);
+
+        assertEquals(0, this.player.hatchedCards.size());
     }
 
     @Test
-    public void testMultipleCardsAndPlayersDifferentTemperature() {
-        this.card.temperature = Temperature.COOL;
-        this.card2.temperature = Temperature.NEUTRAL;
-        this.card3.temperature = Temperature.WARM;
-        this.player.hatchedCards = new LinkedList<>();
-        this.player.hatchedCards.add(this.card);
-        this.player2.hatchedCards = new LinkedList<>();
-        this.player2.hatchedCards.add(this.card2);
-        this.player2.hatchedCards.add(this.card3);
-
+    public void testRemoveFromOneHatchedCards() {
         ReturnAllHatchedDragonsFromPlayers effect = new ReturnAllHatchedDragonsFromPlayers();
-        effect.on(Arrays.asList(this.player, this.player2)).on(this.deck);
-        this.deck.addCard(this.card2, true);
+
+        this.player.hatchedCards = this.mockListOf(Card.class).withLengthOf(1);
+        this.player.hatchedCards.get(0).temperature = Temperature.NEUTRAL;
+
+        this.deck.addCard(this.player.hatchedCards.get(0), true);
 
         this.replayAll();
 
-        effect.temperatures = new Temperature[]{Temperature.NEUTRAL};
-        effect.apply();
-        assertEquals(1, this.player2.hatchedCards.size());
-        assertTrue(this.player2.hatchedCards.contains(this.card3));
+        effect.removeCardsOfTemperature(this.deck, Arrays.asList(Temperature.NEUTRAL), this.player);
+
+        assertEquals(0, this.player.hatchedCards.size());
+    }
+
+    @Test
+    public void testRemoveOneCard() {
+        ReturnAllHatchedDragonsFromPlayers effect = new ReturnAllHatchedDragonsFromPlayers();
+
+        List<Card> mockHatchedCards = this.mockListOf(Card.class).withLengthOf(6);
+        this.player.hatchedCards = new ArrayList<>(mockHatchedCards);
+        this.player.hatchedCards.get(0).temperature = Temperature.NEUTRAL;
+
+        this.deck.addCard(this.player.hatchedCards.get(0), true);
+
+        this.replayAll();
+
+        effect.removeCardsOfTemperature(this.deck, Arrays.asList(Temperature.NEUTRAL), this.player);
+
+        assertEquals(5, this.player.hatchedCards.size());
+        assertFalse(this.player.hatchedCards.contains(mockHatchedCards.get(0)));
+    }
+
+    @Test
+    public void testRemoveAllButOneCard() {
+        ReturnAllHatchedDragonsFromPlayers effect = new ReturnAllHatchedDragonsFromPlayers();
+
+        List<Card> mockHatchedCards = this.mockListOf(Card.class).withLengthOf(6);
+        this.player.hatchedCards = new ArrayList<>(mockHatchedCards);
+
+        for (int i = 0; i < this.player.hatchedCards.size() - 1; i++) {
+            this.player.hatchedCards.get(i).temperature = Temperature.NEUTRAL;
+            this.deck.addCard(this.player.hatchedCards.get(i), true);
+        }
+
+        this.replayAll();
+
+        effect.removeCardsOfTemperature(this.deck, Arrays.asList(Temperature.NEUTRAL), this.player);
+
+        assertEquals(1, this.player.hatchedCards.size());
+        for (int i = 0; i < mockHatchedCards.size() - 1; i++) {
+            assertFalse(this.player.hatchedCards.contains(mockHatchedCards.get(i)));
+        }
+    }
+
+    @Test
+    public void testRemoveAllCards() {
+        ReturnAllHatchedDragonsFromPlayers effect = new ReturnAllHatchedDragonsFromPlayers();
+
+        List<Card> mockHatchedCards = this.mockListOf(Card.class).withLengthOf(6);
+        this.player.hatchedCards = new ArrayList<>(mockHatchedCards);
+
+        for (int i = 0; i < this.player.hatchedCards.size(); i++) {
+            this.player.hatchedCards.get(i).temperature = Temperature.NEUTRAL;
+            this.deck.addCard(this.player.hatchedCards.get(i), true);
+        }
+
+        this.replayAll();
+
+        effect.removeCardsOfTemperature(this.deck, Arrays.asList(Temperature.NEUTRAL), this.player);
+
+        assertEquals(0, this.player.hatchedCards.size());
     }
 
     @Test

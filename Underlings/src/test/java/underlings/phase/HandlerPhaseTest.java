@@ -2,13 +2,11 @@ package underlings.phase;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-
 import java.util.ArrayList;
-
+import java.util.Collections;
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.MockTest;
 import underlings.TestUtils;
 import underlings.game.HatchingGround;
@@ -73,6 +71,16 @@ public class HandlerPhaseTest extends MockTest {
 
         assertFalse(this.hatchingGround.lateHatching);
         assertEquals(HandlerState.READY_ROOM, this.player.handlers.get(0).getState());
+    }
+
+    @Test
+    public void testTurnNoHandlers() {
+        HandlerPhase handlerPhase = new HandlerPhase(this.players, this.gui, null, this.hatchingGround, () -> {
+        }, null, this.handlerMovementLogic);
+        handlerPhase.setup();
+        handlerPhase.unmovedHandlers.put(this.player, Collections.emptyList());
+        this.replayAll();
+        handlerPhase.turn(this.player);
     }
 
 }

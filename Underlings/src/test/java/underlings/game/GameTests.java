@@ -136,7 +136,7 @@ public class GameTests {
 
         mockedGame.display();
         phaseOne.execute(0);
-        EasyMock.expect(phaseOne.isGameComplete()).andReturn(true);
+        phaseOne.gameComplete = true;
 
         EasyMock.replay(phaseOne, phaseTwo, wildFinalPhase, finalPhase, mockedGame);
 

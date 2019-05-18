@@ -23,7 +23,7 @@ public class HandlerPhase extends RotationPhase {
         this.handlerMovementLogic = handlerMovementLogic;
     }
 
-    private Map<Player, List<Handler>> unmovedHandlers;
+    protected Map<Player, List<Handler>> unmovedHandlers;
     private HandlerMovementLogic handlerMovementLogic;
 
     @Override
