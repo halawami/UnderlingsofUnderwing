@@ -30,7 +30,7 @@ public class RegularFinalPhaseTests extends MockTest {
         dragonPhase.turn(player);
         EasyMock.expectLastCall().times(4);
 
-        replay();
+        replayAll();
 
         FinalPhase finalPhase = new RegularFinalPhase(Arrays.asList(player), gui, dragonPhase, scoreUtils);
         finalPhase.execute();

@@ -38,7 +38,7 @@ public class ApiaraWildEffectTests extends MockTest {
         this.hatchingGround.replaceCard(this.apiara);
         this.deck.addCard(this.apiara);
 
-        this.replay();
+        this.replayAll();
 
         this.effect.on(this.hatchingGround).on(this.apiara).on(this.deck).apply();
     }
@@ -51,7 +51,7 @@ public class ApiaraWildEffectTests extends MockTest {
         List<Card> cards = new ArrayList<>();
         EasyMock.expect(this.hatchingGround.getUnclaimedEggs()).andReturn(cards);
 
-        this.replay();
+        this.replayAll();
 
         this.effect.on(this.hatchingGround).on(this.apiara).on(this.deck).apply();
         this.effect.on(this.hatchingGround).on(this.apiara).on(this.deck).apply();
@@ -71,7 +71,7 @@ public class ApiaraWildEffectTests extends MockTest {
 
         this.logic.hatchEgg(cards.get(0), true, this.player);
 
-        this.replay();
+        this.replayAll();
 
         this.effect.on(this.hatchingGround).on(this.apiara).on(this.deck).on(this.player).on(this.logic).apply();
         this.effect.on(this.hatchingGround).on(this.apiara).on(this.deck).on(this.player).on(this.logic).apply();
@@ -92,7 +92,7 @@ public class ApiaraWildEffectTests extends MockTest {
         this.logic.hatchEgg(cards.get(0), true, this.player);
         this.logic.hatchEgg(cards.get(1), true, this.player);
 
-        this.replay();
+        this.replayAll();
 
         this.effect.on(this.hatchingGround).on(this.apiara).on(this.deck).on(this.player).on(this.logic).apply();
         this.effect.on(this.hatchingGround).on(this.apiara).on(this.deck).on(this.player).on(this.logic).apply();

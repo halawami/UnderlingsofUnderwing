@@ -39,7 +39,7 @@ public class HandlerPhaseTest extends MockTest {
 
         this.displayMethod.run();
 
-        this.replay();
+        this.replayAll();
 
         Phase handlerPhase = new HandlerPhase(this.players, this.gui, null, this.hatchingGround, this.displayMethod,
                 null, this.handlerMovementLogic);
@@ -63,7 +63,7 @@ public class HandlerPhaseTest extends MockTest {
         Phase handlerPhase = new HandlerPhase(this.players, this.gui, null, this.hatchingGround, () -> {
         }, null, this.handlerMovementLogic);
 
-        this.replay();
+        this.replayAll();
 
         handlerPhase.setup();
         handlerPhase.turn(this.player);

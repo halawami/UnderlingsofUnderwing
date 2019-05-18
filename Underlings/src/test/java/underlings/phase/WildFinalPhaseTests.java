@@ -28,7 +28,7 @@ public class WildFinalPhaseTests extends MockTest {
         List<String> recipes = Resources.readLines(Resources.getResource("DefaultRecipeList.txt"), Charsets.UTF_8);
         FakePlayer.initPlayer(recipes);
 
-        this.replay();
+        this.replayAll();
 
         finalPhase.execute();
         finalPhase.turn(FakePlayer.getInstance());

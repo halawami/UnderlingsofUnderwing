@@ -39,7 +39,7 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
         effect.on(Arrays.asList(this.player)).on(this.deck);
         this.deck.addCard(this.card);
 
-        this.replay();
+        this.replayAll();
 
         effect.temperatures = new Temperature[] {Temperature.NEUTRAL};
         effect.apply();
@@ -59,7 +59,7 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
         this.deck.addCard(this.card);
         this.deck.addCard(this.card2);
 
-        this.replay();
+        this.replayAll();
 
         effect.temperatures = new Temperature[] {Temperature.NEUTRAL};
         effect.apply();
@@ -80,7 +80,7 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
         this.deck.addCard(this.card);
         this.deck.addCard(this.card2);
 
-        this.replay();
+        this.replayAll();
 
         effect.temperatures = new Temperature[] {Temperature.NEUTRAL};
         effect.apply();
@@ -103,7 +103,7 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
         effect.on(Arrays.asList(this.player, this.player2)).on(this.deck);
         this.deck.addCard(this.card2);
 
-        this.replay();
+        this.replayAll();
 
         effect.temperatures = new Temperature[] {Temperature.NEUTRAL};
         effect.apply();
