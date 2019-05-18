@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import javax.swing.JOptionPane;
@@ -186,6 +187,19 @@ public class GuiTests {
         assertEquals(2, choosen.size());
         assertEquals(cardTwo, choosen.get(0));
         assertEquals(cardOne, choosen.get(1));
+    }
+
+    @Test
+    public void testDisplay() {
+        this.display.displayBackground();
+        this.display.displayHatchingGround(this.hatchingGround);
+        this.display.displayPlayers(EasyMock.anyObject());
+        this.display.displayStats(EasyMock.anyObject(), EasyMock.anyInt(), EasyMock.anyInt(), EasyMock.anyInt());
+        this.display.update();
+
+        this.replay();
+
+        this.gui.display(0, 0, 0, this.hatchingGround, Collections.emptyList(), EasyMock.mock(ElementBag.class));
     }
 
 }

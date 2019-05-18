@@ -144,8 +144,6 @@ public class Gui {
         this.display.displayBackground();
         this.display.displayHatchingGround(hatchingGround);
         this.display.displayPlayers(players);
-
-
         this.display.displayStats(elementBag, roundsLeft, currentPhase, turnLeader + 1);
         this.display.update();
     }
