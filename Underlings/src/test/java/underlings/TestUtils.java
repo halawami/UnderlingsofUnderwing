@@ -42,8 +42,12 @@ public class TestUtils {
         return card;
     }
 
+    public static Player Player(int id) {
+        return new Player(6, new HandlerFactory(), id);
+    }
+
     public static Player Player() {
-        return new Player(6, new HandlerFactory(), 0);
+        return Player(0);
     }
 
 }

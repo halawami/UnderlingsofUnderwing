@@ -2,9 +2,7 @@ package underlings.game;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
-
 import underlings.card.Card;
 import underlings.element.ElementBag;
 import underlings.gui.Gui;
@@ -14,7 +12,6 @@ import underlings.phase.FinalPhase.FinalPhaseType;
 import underlings.phase.Phase;
 import underlings.player.Player;
 import underlings.player.PlayerFactory;
-import underlings.utilities.LocaleWrap;
 
 public class Game {
 
@@ -73,7 +70,6 @@ public class Game {
         this.finalPhaseMap = finalPhaseMap;
         this.finalPhase = finalPhaseMap.get(FinalPhaseType.REGULAR);
 
-        this.promptLocale();
         this.promptPlayerCount();
         this.setUp(this.numberOfPlayers);
 
@@ -90,7 +86,7 @@ public class Game {
                 this.currentPhase++;
                 this.display();
                 phase.execute(this.turnLeader);
-                if (checkGameover(phase)) {
+                if (this.checkGameover(phase)) {
                     this.roundsLeft = 0;
                     this.finalPhase = this.finalPhaseMap.get(FinalPhaseType.WILD);
                     break;
@@ -107,17 +103,12 @@ public class Game {
         if (phase.isGameComplete()) {
             return true;
         }
-        for (Card card : hatchingGround) {
+        for (Card card : this.hatchingGround) {
             if (card.handler != WildHandler.getInstance()) {
                 return false;
             }
         }
         return true;
-    }
-
-    public void promptLocale() {
-        Locale locale = this.gui.promptLocale(Locale.getAvailableLocales());
-        LocaleWrap.locale = locale;
     }
 
     public void promptPlayerCount() {
