@@ -20,12 +20,13 @@ public enum DrawChoice {
     }
 
     public static DrawChoice getChoiceFromColor(ElementColor color) {
+        DrawChoice choice = NULL;
         for (DrawChoice drawChoice : DrawChoice.values()) {
             if (drawChoice.elementColor == color) {
-                return drawChoice;
+                choice = drawChoice;
             }
         }
-        return NULL;
+        return choice;
     }
 
     @Override
