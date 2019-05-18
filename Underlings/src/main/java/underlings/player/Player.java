@@ -60,10 +60,6 @@ public class Player {
     public int getHandlerCount() {
         return this.handlers.size();
     }
-    //
-    // public List<Handler> getHandlers() {
-    // return this.handlers;
-    // }
 
     public void gainHandler() {
         if (this.handlers.size() != this.maxHandlers) {
