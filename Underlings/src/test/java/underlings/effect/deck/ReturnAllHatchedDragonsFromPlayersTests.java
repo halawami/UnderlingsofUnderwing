@@ -29,28 +29,17 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
 
     @Test
     public void testApplyOnTwoPlayers() {
-        this.players = this.mockListOf(Player.class).withLengthOf(2);
-
-        ReturnAllHatchedDragonsFromPlayers effect = EasyMock
-                .partialMockBuilder(ReturnAllHatchedDragonsFromPlayers.class)
-                .addMockedMethod("removeCardsOfTemperature").createMock();
-        this.addMock(effect);
-        effect.temperatures = new Temperature[]{Temperature.NEUTRAL};
-        effect.on(this.players).on(this.deck);
-
-        for (Player player : players) {
-            effect.removeCardsOfTemperature(this.deck, Arrays.asList(effect.temperatures), player);
-        }
-
-        this.replayAll();
-
-        effect.apply();
+        this.testApplyOnPlayers(2);
     }
-
 
     @Test
     public void testApplyOnSixPlayers() {
-        this.players = this.mockListOf(Player.class).withLengthOf(6);
+        this.testApplyOnPlayers(6);
+    }
+
+    @Test
+    public void testApplyOnPlayers(int numberOfPlayers) {
+        this.players = this.mockListOf(Player.class).withLengthOf(numberOfPlayers);
 
         ReturnAllHatchedDragonsFromPlayers effect = EasyMock
                 .partialMockBuilder(ReturnAllHatchedDragonsFromPlayers.class)
