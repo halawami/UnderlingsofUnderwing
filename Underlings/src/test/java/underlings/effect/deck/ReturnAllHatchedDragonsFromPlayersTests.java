@@ -25,14 +25,12 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
     public void init() {
         this.deck = this.mock(Deck.class);
         this.player = this.mock(Player.class);
-        this.card = new Card();
-        this.card2 = new Card();
-        this.card3 = new Card();
     }
 
     @Test
     public void testApplyOnTwoPlayers() {
         this.players = this.mockListOf(Player.class).withLengthOf(2);
+
         ReturnAllHatchedDragonsFromPlayers effect = EasyMock
                 .partialMockBuilder(ReturnAllHatchedDragonsFromPlayers.class)
                 .addMockedMethod("removeCardsOfTemperature").createMock();
@@ -53,6 +51,7 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
     @Test
     public void testApplyOnSixPlayers() {
         this.players = this.mockListOf(Player.class).withLengthOf(6);
+
         ReturnAllHatchedDragonsFromPlayers effect = EasyMock
                 .partialMockBuilder(ReturnAllHatchedDragonsFromPlayers.class)
                 .addMockedMethod("removeCardsOfTemperature").createMock();
@@ -72,6 +71,7 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
     @Test
     public void testRemoveFromNoHatchedCards() {
         ReturnAllHatchedDragonsFromPlayers effect = new ReturnAllHatchedDragonsFromPlayers();
+
         this.player.hatchedCards = new ArrayList<>();
 
         this.replayAll();
@@ -84,6 +84,7 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
     @Test
     public void testRemoveFromOneHatchedCards() {
         ReturnAllHatchedDragonsFromPlayers effect = new ReturnAllHatchedDragonsFromPlayers();
+
         this.player.hatchedCards = this.mockListOf(Card.class).withLengthOf(1);
         this.player.hatchedCards.get(0).temperature = Temperature.NEUTRAL;
 
@@ -99,6 +100,7 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
     @Test
     public void testRemoveOneCard() {
         ReturnAllHatchedDragonsFromPlayers effect = new ReturnAllHatchedDragonsFromPlayers();
+
         List<Card> mockHatchedCards = this.mockListOf(Card.class).withLengthOf(6);
         this.player.hatchedCards = new ArrayList<>(mockHatchedCards);
         this.player.hatchedCards.get(0).temperature = Temperature.NEUTRAL;
@@ -116,6 +118,7 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
     @Test
     public void testRemoveAllButOneCard() {
         ReturnAllHatchedDragonsFromPlayers effect = new ReturnAllHatchedDragonsFromPlayers();
+
         List<Card> mockHatchedCards = this.mockListOf(Card.class).withLengthOf(6);
         this.player.hatchedCards = new ArrayList<>(mockHatchedCards);
 
@@ -137,6 +140,7 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
     @Test
     public void testRemoveAllCards() {
         ReturnAllHatchedDragonsFromPlayers effect = new ReturnAllHatchedDragonsFromPlayers();
+
         List<Card> mockHatchedCards = this.mockListOf(Card.class).withLengthOf(6);
         this.player.hatchedCards = new ArrayList<>(mockHatchedCards);
 

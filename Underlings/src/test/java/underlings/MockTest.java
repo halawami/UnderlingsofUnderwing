@@ -30,7 +30,7 @@ public abstract class MockTest {
     protected HandlerMovementLogic handlerMovementLogic;
     protected ElementSpaceLogic elementSpaceLogic;
     protected Runnable displayMethod;
-    protected Player player, player2;
+    protected Player player;
     protected List<Player> players;
     protected ScoreUtils scoreUtils;
     protected Phase dragonPhase;
@@ -38,7 +38,7 @@ public abstract class MockTest {
     protected Display display;
     protected PromptHandler promptHandler;
     protected ElementBag elementBag;
-    protected Card card, card2, card3;
+    protected Card card, card2;
     protected ElementSpace[] elementSpaces;
     protected EggHatchingLogic eggHatchingLogic;
     protected Handler handler;
