@@ -110,17 +110,6 @@ The definition of done is created by examining and applying BVA on the rules.
   - When at 3 handlers, the handler count should remain at 3
     - ```tests.player.handler.DeficiencyTests.test25PointsTwice3Handlers()```
 
-#### Add Handler ```tests.player.handler.AddTests```
-
-- [x] Gain a handler while at [2, MAX) handlers
-  - When at 2 handlers, adding a handler will result in a 3rd handler
-    - ```tests.player.handler.AddTests.test2Handlers()```
-  - When at MAX - 1 handlers, adding a handler will result in MAX handlers
-    - ```tests.player.handler.AddTests.testMaxMinus1Handlers()```
-- [x] Gain a handler while at the MAX handler amount
-  - When an additional handler is added, the handler count should remain at MAX
-    - ```tests.player.handler.AddTests.testMaxHandler()```
-
 #### Remove Handler ```tests.player.handler.RemoveTests```
 
 - [x] Lose a handler while at [3, MAX] handlers

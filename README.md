@@ -8,6 +8,19 @@ Hussein Alawami, Mohammad Baqer, George Main IV, Wesley Siebenthaler
 
 The definition of done is created by examining and applying BVA on the rules.
 
+### Players ```underlings.player```
+
+#### Add Handler ```underlings.player.AddHandlerTests```
+
+- [x] Gain a handler while at [2, MAX) handlers
+  - When at 2 handlers, adding a handler will result in a 3rd handler
+    - ```underlings.player.AddHandlerTests.testTwo()```
+  - When at MAX - 1 handlers, adding a handler will result in MAX handlers
+    - ```underlings.player.AddHandlerTests.testAlmostMax()```
+- [x] Gain a handler while at the MAX handler amount
+  - When an additional handler is added, the handler count should remain at MAX
+    - ```underlings.player.AddHandlerTests.testMax()```
+
 ### Scoring ```underlings.scoring```
 
 #### Temperature Tests ```underlings.scoring.TemperatureTests```
