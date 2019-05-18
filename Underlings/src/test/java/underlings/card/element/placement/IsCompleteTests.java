@@ -3,80 +3,65 @@ package underlings.card.element.placement;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.easymock.EasyMock;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import underlings.MockTest;
 import underlings.card.Card;
 import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
 
-public class IsCompleteTests {
-
-    private Card completeCard;
-    private ElementSpace firstMockedElementSpace;
-    private ElementSpace secondMockedElementSpace;
-    private ElementSpaceLogic elementSpaceLogic;
+public class IsCompleteTests extends MockTest {
 
     @Before
     public void init() {
-        this.completeCard = new Card();
-        this.firstMockedElementSpace = EasyMock.mock(ElementSpace.class);
-        this.secondMockedElementSpace = EasyMock.mock(ElementSpace.class);
+        this.card = new Card();
+        this.elementSpace = this.mock(ElementSpace.class);
+        this.elementSpace2 = this.mock(ElementSpace.class);
         this.elementSpaceLogic = EasyMock.partialMockBuilder(ElementSpaceLogic.class)
                 .addMockedMethod("isComplete", ElementSpace.class).createMock();
-    }
-
-    @After
-    public void verify() {
-        EasyMock.verify(this.firstMockedElementSpace, this.secondMockedElementSpace, this.elementSpaceLogic);
-    }
-
-    public void replay() {
-        EasyMock.replay(this.firstMockedElementSpace, this.secondMockedElementSpace, this.elementSpaceLogic);
+        this.addMock(this.elementSpaceLogic);
     }
 
     @Test
     public void testCompleteCardOneElementSpace() {
-        this.completeCard.elementSpaces = new ElementSpace[] {this.firstMockedElementSpace};
-        EasyMock.expect(this.elementSpaceLogic.isComplete(this.firstMockedElementSpace)).andReturn(true);
+        this.card.elementSpaces = new ElementSpace[] {this.elementSpace};
+        EasyMock.expect(this.elementSpaceLogic.isComplete(this.elementSpace)).andReturn(true);
 
-        this.replay();
+        this.replayAll();
 
-        assertTrue(this.elementSpaceLogic.isComplete(this.completeCard));
+        assertTrue(this.elementSpaceLogic.isComplete(this.card));
     }
 
     @Test
     public void testIncompleteCardOneElementSpace() {
-        this.completeCard.elementSpaces = new ElementSpace[] {this.firstMockedElementSpace};
-        EasyMock.expect(this.elementSpaceLogic.isComplete(this.firstMockedElementSpace)).andReturn(false);
+        this.card.elementSpaces = new ElementSpace[] {this.elementSpace};
+        EasyMock.expect(this.elementSpaceLogic.isComplete(this.elementSpace)).andReturn(false);
 
-        this.replay();
+        this.replayAll();
 
-        assertFalse(this.elementSpaceLogic.isComplete(this.completeCard));
+        assertFalse(this.elementSpaceLogic.isComplete(this.card));
     }
 
     @Test
     public void testCompleteCardTwoElementSpace() {
-        this.completeCard.elementSpaces =
-                new ElementSpace[] {this.firstMockedElementSpace, this.secondMockedElementSpace};
-        EasyMock.expect(this.elementSpaceLogic.isComplete(this.firstMockedElementSpace)).andReturn(true);
-        EasyMock.expect(this.elementSpaceLogic.isComplete(this.secondMockedElementSpace)).andReturn(true);
+        this.card.elementSpaces = new ElementSpace[] {this.elementSpace, this.elementSpace2};
+        EasyMock.expect(this.elementSpaceLogic.isComplete(this.elementSpace)).andReturn(true);
+        EasyMock.expect(this.elementSpaceLogic.isComplete(this.elementSpace2)).andReturn(true);
 
-        this.replay();
+        this.replayAll();
 
-        assertTrue(this.elementSpaceLogic.isComplete(this.completeCard));
+        assertTrue(this.elementSpaceLogic.isComplete(this.card));
     }
 
     @Test
     public void testIncompleteCardTwoElementSpace() {
-        this.completeCard.elementSpaces =
-                new ElementSpace[] {this.firstMockedElementSpace, this.secondMockedElementSpace};
-        EasyMock.expect(this.elementSpaceLogic.isComplete(this.firstMockedElementSpace)).andReturn(true);
-        EasyMock.expect(this.elementSpaceLogic.isComplete(this.secondMockedElementSpace)).andReturn(false);
+        this.card.elementSpaces = new ElementSpace[] {this.elementSpace, this.elementSpace2};
+        EasyMock.expect(this.elementSpaceLogic.isComplete(this.elementSpace)).andReturn(true);
+        EasyMock.expect(this.elementSpaceLogic.isComplete(this.elementSpace2)).andReturn(false);
 
-        this.replay();
+        this.replayAll();
 
-        assertFalse(this.elementSpaceLogic.isComplete(this.completeCard));
+        assertFalse(this.elementSpaceLogic.isComplete(this.card));
     }
 
 

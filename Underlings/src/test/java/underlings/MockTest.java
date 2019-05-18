@@ -41,6 +41,7 @@ public abstract class MockTest {
     protected EggHatchingLogic eggHatchingLogic;
     protected Handler handler;
     protected Effect effect1, effect2;
+    protected ElementSpace elementSpace, elementSpace2;
 
     protected List<Object> mocks = new ArrayList<>();
 
@@ -57,6 +58,10 @@ public abstract class MockTest {
     @After
     public void verifyAll() {
         EasyMock.verify(this.mocks.toArray());
+    }
+
+    public void addMock(Object mock) {
+        this.mocks.add(mock);
     }
 
 }
