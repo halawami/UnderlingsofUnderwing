@@ -16,7 +16,6 @@ import underlings.utilities.LocaleWrap;
 
 public class ApiaraWildEffectTests extends MockTest {
 
-
     @Before
     public void init() {
         this.card = new Card();
