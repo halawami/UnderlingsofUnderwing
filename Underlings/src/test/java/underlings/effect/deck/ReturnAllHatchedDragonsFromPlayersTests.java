@@ -110,6 +110,7 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
 
     @Test
     public void testToString() {
+        this.replayAll();
         ReturnAllHatchedDragonsFromPlayers effect = new ReturnAllHatchedDragonsFromPlayers();
         effect.temperatures = new Temperature[] {Temperature.COOL};
         StringBuilder temperature = new StringBuilder();

@@ -167,7 +167,6 @@ public class AddElementsToAllAdjacentEggsEffectTests {
         Card mockedCard = EasyMock.mock(Card.class);
         ElementSpaceLogic elementSpaceLogic = EasyMock.mock(ElementSpaceLogic.class);
         ElementBag elementBag = EasyMock.mock(ElementBag.class);
-        Element stubElement = EasyMock.niceMock(Element.class);
         List<ElementSpace> mockedPlayableSpaces = getMockedPlayableSpaces(8);
 
         EasyMock.expect(elementSpaceLogic.getPlayableSpaces(mockedCard, blue)).andReturn(mockedPlayableSpaces);
