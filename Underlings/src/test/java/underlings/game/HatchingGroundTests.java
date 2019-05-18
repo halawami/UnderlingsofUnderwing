@@ -128,7 +128,6 @@ public class HatchingGroundTests {
         EasyMock.expect(deck.draw()).andReturn(new Card());
 
         EasyMock.replay(logic, deck);
-
         HatchingGround hatchingGround = new HatchingGround(deck, logic);
         hatchingGround.setDimensions(2, 2);
         hatchingGround.populate();
@@ -148,7 +147,7 @@ public class HatchingGroundTests {
         for (int i = 0; i < 6; i++) {
             cards.add(new Card());
         }
-        Deck deck = new Deck(cards);
+        Deck deck = new Deck(cards, null);
         HatchingGround hatchingGround = new HatchingGround(deck, this.niceLogic);
         hatchingGround.setDimensions(3, 2);
         hatchingGround.populate();
