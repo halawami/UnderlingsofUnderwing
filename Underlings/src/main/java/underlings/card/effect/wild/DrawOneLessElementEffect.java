@@ -23,9 +23,7 @@ public class DrawOneLessElementEffect extends PlayersEffect implements ObserverE
     }
 
     public List<ElementGiver> getEffectElementGivers(List<ElementGiver> elementGivers) {
-        List<ElementGiver> effectElementGivers = new ArrayList<>(elementGivers);
-        effectElementGivers.remove(effectElementGivers.size() - 1);
-        return effectElementGivers;
+        return new ArrayList<>();
     }
 
 }
