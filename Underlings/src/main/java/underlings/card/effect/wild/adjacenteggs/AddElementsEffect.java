@@ -7,6 +7,7 @@ import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
+import underlings.element.NullElement;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.Deck;
 import underlings.game.HatchingGround;
@@ -32,7 +33,9 @@ public class AddElementsEffect extends AdjacentEggsEffect {
         List<ElementSpace> playableSpaces = elementSpaceLogic.getPlayableSpaces(card, elementColorToAdd);
         if (!playableSpaces.isEmpty()) {
             Element elementToAdd = elementBag.drawElementFromList(elementColorToAdd);
-            playableSpaces.get(0).addElements(elementToAdd);
+            if (elementToAdd != NullElement.getInstance()) {
+                playableSpaces.get(0).addElements(elementToAdd);
+            }
         }
     }
 

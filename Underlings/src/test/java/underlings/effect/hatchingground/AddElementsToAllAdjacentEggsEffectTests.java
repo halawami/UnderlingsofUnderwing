@@ -162,7 +162,7 @@ public class AddElementsToAllAdjacentEggsEffectTests {
     }
 
     @Test
-    public void testAddElementWithEmptyBag() {
+    public void testAddElementWithNoElementsLeftInBag() {
         ElementColor blue = ElementColor.BLUE;
         Card mockedCard = EasyMock.mock(Card.class);
         ElementSpaceLogic elementSpaceLogic = EasyMock.mock(ElementSpaceLogic.class);
