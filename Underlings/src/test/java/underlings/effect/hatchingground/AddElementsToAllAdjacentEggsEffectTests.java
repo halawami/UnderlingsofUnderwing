@@ -16,6 +16,7 @@ import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
+import underlings.element.NullElement;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
@@ -145,6 +146,32 @@ public class AddElementsToAllAdjacentEggsEffectTests {
         EasyMock.expect(elementSpaceLogic.getPlayableSpaces(mockedCard, blue)).andReturn(mockedPlayableSpaces);
         EasyMock.expect(elementBag.drawElementFromList(blue)).andReturn(stubElement);
         mockedPlayableSpaces.get(0).addElements(stubElement);
+
+        EasyMock.replay(mockedCard, elementSpaceLogic, elementBag);
+        for (ElementSpace mockedPlayableSpace : mockedPlayableSpaces) {
+            EasyMock.replay(mockedPlayableSpace);
+        }
+
+        AddElementsEffect testedEffect = new AddElementsEffect();
+        testedEffect.addElementToCard(blue, mockedCard, elementSpaceLogic, elementBag);
+
+        EasyMock.verify(mockedCard, elementSpaceLogic, elementBag);
+        for (ElementSpace mockedPlayableSpace : mockedPlayableSpaces) {
+            EasyMock.verify(mockedPlayableSpace);
+        }
+    }
+
+    @Test
+    public void testAddElementWithEmptyBag() {
+        ElementColor blue = ElementColor.BLUE;
+        Card mockedCard = EasyMock.mock(Card.class);
+        ElementSpaceLogic elementSpaceLogic = EasyMock.mock(ElementSpaceLogic.class);
+        ElementBag elementBag = EasyMock.mock(ElementBag.class);
+        Element stubElement = EasyMock.niceMock(Element.class);
+        List<ElementSpace> mockedPlayableSpaces = getMockedPlayableSpaces(8);
+
+        EasyMock.expect(elementSpaceLogic.getPlayableSpaces(mockedCard, blue)).andReturn(mockedPlayableSpaces);
+        EasyMock.expect(elementBag.drawElementFromList(blue)).andReturn(NullElement.getInstance());
 
         EasyMock.replay(mockedCard, elementSpaceLogic, elementBag);
         for (ElementSpace mockedPlayableSpace : mockedPlayableSpaces) {
