@@ -8,6 +8,7 @@ import com.google.common.io.Resources;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 import javax.swing.JOptionPane;
 import org.easymock.EasyMock;
@@ -200,6 +201,22 @@ public class GuiTests {
         this.replay();
 
         this.gui.display(0, 0, 0, this.hatchingGround, Collections.emptyList(), EasyMock.mock(ElementBag.class));
+    }
+
+    @Test
+    public void testPromptLocale() {
+        EasyMock.expect(
+                this.promptHandler.promptChoiceDropdown(EasyMock.anyString(), EasyMock.anyObject(), EasyMock.anyInt()))
+                .andReturn(null);
+        EasyMock.expect(this.promptHandler.promptChoiceDropdown(LocaleWrap.get("choose_language"),
+                new ArrayList<Locale>(), Locale.ENGLISH)).andReturn(Locale.CANADA);
+
+        this.replay();
+
+        Locale locale = this.gui.promptLocale(new Locale[] {});
+
+        assertEquals(Locale.CANADA, locale);
+
     }
 
 }
