@@ -110,6 +110,28 @@ The definition of done is created by examining and applying BVA on the rules.
   - When at 3 handlers, the handler count should remain at 3
     - ```tests.player.handler.DeficiencyTests.test25PointsTwice3Handlers()```
 
+#### Add Handler ```tests.player.handler.AddTests```
+
+- [x] Gain a handler while at [2, MAX) handlers
+  - When at 2 handlers, adding a handler will result in a 3rd handler
+    - ```tests.player.handler.AddTests.test2Handlers()```
+  - When at MAX - 1 handlers, adding a handler will result in MAX handlers
+    - ```tests.player.handler.AddTests.testMaxMinus1Handlers()```
+- [x] Gain a handler while at the MAX handler amount
+  - When an additional handler is added, the handler count should remain at MAX
+    - ```tests.player.handler.AddTests.testMaxHandler()```
+
+#### Remove Handler ```tests.player.handler.RemoveTests```
+
+- [x] Lose a handler while at [3, MAX] handlers
+  - When at 3 handlers, the handler count should decrease to 2
+    - ```tests.player.handler.RemoveTests.test3Handlers()```
+  - When at MAX handlers, the handler count should decrease to MAX - 1
+    - ```tests.player.handler.RemoveTests.testMaxHandlers()```
+- [x] Lose a handler while at 2 handlers
+  - When at 2 handlers, the handler count should remain at 2
+    - ```tests.player.handler.RemoveTests.test2Handlers()```
+
 ### Element Collection (Phase 1) ```tests.elements.drawing```
 
 #### Drawing Specific Elements ```tests.elements.drawing.SpecificTests```
@@ -956,3 +978,4 @@ The definition of done is created by examining and applying BVA on the rules.
 - [ ] Max handlers on field position and move another handler to same spot
 - [ ] Players have different number of assigning turns (number of handlers is different)
 - [ ] Players have the same number of assigning turns (number of handlers is the same)
+

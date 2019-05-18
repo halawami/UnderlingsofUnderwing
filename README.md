@@ -21,6 +21,18 @@ The definition of done is created by examining and applying BVA on the rules.
   - When an additional handler is added, the handler count should remain at MAX
     - ```underlings.player.AddHandlerTests.testMax()```
 
+#### Remove Handler ```underlings.player.RemoveHandlerTests```
+
+- [x] Lose a handler while at [3, MAX] handlers
+  - When at 3 handlers, the handler count should decrease to 2
+    - ```underlings.player.RemoveHandlerTests.testThree()```
+  - When at MAX handlers, the handler count should decrease to MAX - 1
+    - ```underlings.player.RemoveHandlerTests.testMax()```
+- [x] Lose a handler while at 2 handlers
+  - When at 2 handlers, the handler count should remain at 2
+    - ```underlings.player.RemoveHandlerTests.testTwo()```
+
+
 ### Scoring ```underlings.scoring```
 
 #### Temperature Tests ```underlings.scoring.TemperatureTests```
