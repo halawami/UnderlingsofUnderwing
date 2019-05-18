@@ -85,58 +85,6 @@ public class GuiTests {
     }
 
     @Test
-    public void testDisplayCardSetupTwoPlayers() {
-        this.game.setUp(2);
-
-        EasyMock.expect(this.promptHandler.promptInt("Enter Player Count [2, 6]", 2, 6)).andStubReturn(2);
-        this.display.displayCard(EasyMock.anyInt(), EasyMock.anyInt(), EasyMock.anyObject(Card.class));
-        EasyMock.expectLastCall().times(6);
-
-        EasyMock.replay(this.promptHandler, this.display);
-        this.gui.displayHatchingGround(this.hatchingGround);
-        EasyMock.verify(this.promptHandler, this.display);
-    }
-
-    @Test
-    public void testDisplayCardSetupThreePlayers() {
-        this.game.setUp(3);
-
-        EasyMock.expect(this.promptHandler.promptInt("Enter Player Count [2, 6]", 2, 6)).andStubReturn(2);
-        this.display.displayCard(EasyMock.anyInt(), EasyMock.anyInt(), EasyMock.anyObject(Card.class));
-        EasyMock.expectLastCall().times(12);
-
-        EasyMock.replay(this.promptHandler, this.display);
-        this.gui.displayHatchingGround(this.hatchingGround);
-        EasyMock.verify(this.promptHandler, this.display);
-    }
-
-    @Test
-    public void testDisplayCardSetupFourPlayers() {
-        this.game.setUp(4);
-
-        EasyMock.expect(this.promptHandler.promptInt("Enter Player Count [2, 6]", 2, 6)).andStubReturn(4);
-        this.display.displayCard(EasyMock.anyInt(), EasyMock.anyInt(), EasyMock.anyObject(Card.class));
-        EasyMock.expectLastCall().times(16);
-
-        EasyMock.replay(this.promptHandler, this.display);
-        this.gui.displayHatchingGround(this.hatchingGround);
-        EasyMock.verify(this.promptHandler, this.display);
-    }
-
-    @Test
-    public void testDisplayCardSetupSixPlayers() {
-        this.game.setUp(6);
-
-        EasyMock.expect(this.promptHandler.promptInt("Enter Player Count [2, 6]", 2, 6)).andStubReturn(6);
-        this.display.displayCard(EasyMock.anyInt(), EasyMock.anyInt(), EasyMock.anyObject(Card.class));
-        EasyMock.expectLastCall().times(16);
-
-        EasyMock.replay(this.promptHandler, this.display);
-        this.gui.displayHatchingGround(this.hatchingGround);
-        EasyMock.verify(this.promptHandler, this.display);
-    }
-
-    @Test
     public void testNotify() {
         this.promptHandler.displayMessage("test", 0, JOptionPane.PLAIN_MESSAGE);
         this.replay();

@@ -139,31 +139,15 @@ public class Gui {
         return locale;
     }
 
-    public void displayPlayers(List<Player> players) {
-
-        for (int playerNumber = 0; playerNumber < players.size(); playerNumber++) {
-            Player player = players.get(playerNumber);
-            this.display.displayPlayer(playerNumber, player);
-            this.display.displayHandlers(playerNumber, player.handlers);
-        }
-
-    }
-
     public void display(int roundsLeft, int currentPhase, int turnLeader, HatchingGround hatchingGround,
             List<Player> players, ElementBag elementBag) {
         this.display.displayBackground();
-        this.displayHatchingGround(hatchingGround);
-        this.displayPlayers(players);
+        this.display.displayHatchingGround(hatchingGround);
+        this.display.displayPlayers(players);
+
+
         this.display.displayStats(elementBag, roundsLeft, currentPhase, turnLeader + 1);
         this.display.update();
-    }
-
-    public void displayHatchingGround(HatchingGround hatchingGround) {
-        for (int row = 0; row < hatchingGround.getHeight(); row++) {
-            for (int col = 0; col < hatchingGround.getWidth(); col++) {
-                this.display.displayCard(row, col, hatchingGround.cards[row][col]);
-            }
-        }
     }
 
     public <T> T promptChoice(String prompt, List<T> choices, int playerId) {
