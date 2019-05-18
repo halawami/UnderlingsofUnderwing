@@ -7,7 +7,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
+
 import javax.swing.JOptionPane;
+
 import underlings.card.Card;
 import underlings.card.EmptyCard;
 import underlings.element.Element;
@@ -82,27 +84,7 @@ public class Gui {
     }
 
     public FieldSpace getFieldSpace(Player player, Field field) {
-        FieldSpace[][] grid = field.getGrid();
-        for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid[0].length; j++) {
-                FieldSpace space = grid[i][j];
-
-                if (space == null) {
-                    continue;
-                }
-
-                int count = 0;
-                for (Handler handler : player.handlers) {
-                    if (space.contains(handler)) {
-                        count++;
-                    }
-                }
-
-                if (count == player.maxHandlersOnSpace) {
-                    grid[i][j] = null;
-                }
-            }
-        }
+        FieldSpace[][] grid = field.getValidFieldSpaces(player);
 
         String prompt = LocaleWrap.get("gui_field_space");
         FieldSpace val = this.promptHandler.pickFromGrid(prompt, grid, player.getId());
@@ -139,31 +121,13 @@ public class Gui {
         return locale;
     }
 
-    public void displayPlayers(List<Player> players) {
-
-        for (int playerNumber = 0; playerNumber < players.size(); playerNumber++) {
-            Player player = players.get(playerNumber);
-            this.display.displayPlayer(playerNumber, player);
-            this.display.displayHandlers(playerNumber, player.handlers);
-        }
-
-    }
-
     public void display(int roundsLeft, int currentPhase, int turnLeader, HatchingGround hatchingGround,
             List<Player> players, ElementBag elementBag) {
         this.display.displayBackground();
-        this.displayHatchingGround(hatchingGround);
-        this.displayPlayers(players);
+        this.display.displayHatchingGround(hatchingGround);
+        this.display.displayPlayers(players);
         this.display.displayStats(elementBag, roundsLeft, currentPhase, turnLeader + 1);
         this.display.update();
-    }
-
-    public void displayHatchingGround(HatchingGround hatchingGround) {
-        for (int row = 0; row < hatchingGround.getHeight(); row++) {
-            for (int col = 0; col < hatchingGround.getWidth(); col++) {
-                this.display.displayCard(row, col, hatchingGround.cards[row][col]);
-            }
-        }
     }
 
     public <T> T promptChoice(String prompt, List<T> choices, int playerId) {

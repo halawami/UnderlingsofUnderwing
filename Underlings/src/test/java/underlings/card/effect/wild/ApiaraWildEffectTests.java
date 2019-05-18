@@ -1,11 +1,14 @@
 package underlings.card.effect.wild;
 
 import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.MockTest;
 import underlings.card.Card;
 import underlings.game.Deck;
@@ -63,7 +66,7 @@ public class ApiaraWildEffectTests extends MockTest {
 
         EasyMock.expect(this.player.getId()).andReturn(4).anyTimes();
 
-        this.eggHatchingLogic.hatchEgg(cards.get(0), true, this.player);
+        this.eggHatchingLogic.hatchEgg(cards.get(0), this.player);
 
         this.replayAll();
 
@@ -85,8 +88,8 @@ public class ApiaraWildEffectTests extends MockTest {
 
         EasyMock.expect(this.player.getId()).andReturn(4).anyTimes();
 
-        this.eggHatchingLogic.hatchEgg(cards.get(0), true, this.player);
-        this.eggHatchingLogic.hatchEgg(cards.get(1), true, this.player);
+        this.eggHatchingLogic.hatchEgg(cards.get(0), this.player);
+        this.eggHatchingLogic.hatchEgg(cards.get(1), this.player);
 
         this.replayAll();
 

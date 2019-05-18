@@ -6,7 +6,9 @@ import static org.junit.Assert.assertTrue;
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 import javax.swing.JOptionPane;
 import org.easymock.EasyMock;
@@ -82,58 +84,6 @@ public class GuiTests {
         this.game.promptPlayerCount();
 
         assertEquals(6, this.game.numberOfPlayers);
-    }
-
-    @Test
-    public void testDisplayCardSetupTwoPlayers() {
-        this.game.setUp(2);
-
-        EasyMock.expect(this.promptHandler.promptInt("Enter Player Count [2, 6]", 2, 6)).andStubReturn(2);
-        this.display.displayCard(EasyMock.anyInt(), EasyMock.anyInt(), EasyMock.anyObject(Card.class));
-        EasyMock.expectLastCall().times(6);
-
-        EasyMock.replay(this.promptHandler, this.display);
-        this.gui.displayHatchingGround(this.hatchingGround);
-        EasyMock.verify(this.promptHandler, this.display);
-    }
-
-    @Test
-    public void testDisplayCardSetupThreePlayers() {
-        this.game.setUp(3);
-
-        EasyMock.expect(this.promptHandler.promptInt("Enter Player Count [2, 6]", 2, 6)).andStubReturn(2);
-        this.display.displayCard(EasyMock.anyInt(), EasyMock.anyInt(), EasyMock.anyObject(Card.class));
-        EasyMock.expectLastCall().times(12);
-
-        EasyMock.replay(this.promptHandler, this.display);
-        this.gui.displayHatchingGround(this.hatchingGround);
-        EasyMock.verify(this.promptHandler, this.display);
-    }
-
-    @Test
-    public void testDisplayCardSetupFourPlayers() {
-        this.game.setUp(4);
-
-        EasyMock.expect(this.promptHandler.promptInt("Enter Player Count [2, 6]", 2, 6)).andStubReturn(4);
-        this.display.displayCard(EasyMock.anyInt(), EasyMock.anyInt(), EasyMock.anyObject(Card.class));
-        EasyMock.expectLastCall().times(16);
-
-        EasyMock.replay(this.promptHandler, this.display);
-        this.gui.displayHatchingGround(this.hatchingGround);
-        EasyMock.verify(this.promptHandler, this.display);
-    }
-
-    @Test
-    public void testDisplayCardSetupSixPlayers() {
-        this.game.setUp(6);
-
-        EasyMock.expect(this.promptHandler.promptInt("Enter Player Count [2, 6]", 2, 6)).andStubReturn(6);
-        this.display.displayCard(EasyMock.anyInt(), EasyMock.anyInt(), EasyMock.anyObject(Card.class));
-        EasyMock.expectLastCall().times(16);
-
-        EasyMock.replay(this.promptHandler, this.display);
-        this.gui.displayHatchingGround(this.hatchingGround);
-        EasyMock.verify(this.promptHandler, this.display);
     }
 
     @Test
@@ -238,6 +188,35 @@ public class GuiTests {
         assertEquals(2, choosen.size());
         assertEquals(cardTwo, choosen.get(0));
         assertEquals(cardOne, choosen.get(1));
+    }
+
+    @Test
+    public void testDisplay() {
+        this.display.displayBackground();
+        this.display.displayHatchingGround(this.hatchingGround);
+        this.display.displayPlayers(EasyMock.anyObject());
+        this.display.displayStats(EasyMock.anyObject(), EasyMock.anyInt(), EasyMock.anyInt(), EasyMock.anyInt());
+        this.display.update();
+
+        this.replay();
+
+        this.gui.display(0, 0, 0, this.hatchingGround, Collections.emptyList(), EasyMock.mock(ElementBag.class));
+    }
+
+    @Test
+    public void testPromptLocale() {
+        EasyMock.expect(
+                this.promptHandler.promptChoiceDropdown(EasyMock.anyString(), EasyMock.anyObject(), EasyMock.anyInt()))
+                .andReturn(null);
+        EasyMock.expect(this.promptHandler.promptChoiceDropdown(LocaleWrap.get("choose_language"),
+                new ArrayList<Locale>(), Locale.ENGLISH)).andReturn(Locale.CANADA);
+
+        this.replay();
+
+        Locale locale = this.gui.promptLocale(new Locale[] {});
+
+        assertEquals(Locale.CANADA, locale);
+
     }
 
 }

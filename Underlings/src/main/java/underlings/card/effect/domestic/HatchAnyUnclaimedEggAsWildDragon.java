@@ -30,7 +30,7 @@ public class HatchAnyUnclaimedEggAsWildDragon extends DiverseHatchingGroundEffec
             } else {
                 Card toHatch =
                         gui.promptChoice(LocaleWrap.get("prompt_card_hatch_wildly"), unclaimedEggs, currentPlayer.id);
-                eggHatchingLogic.hatchEgg(toHatch, true, FakePlayer.getInstance());
+                eggHatchingLogic.hatchEgg(toHatch, FakePlayer.getInstance());
             }
         }
     }

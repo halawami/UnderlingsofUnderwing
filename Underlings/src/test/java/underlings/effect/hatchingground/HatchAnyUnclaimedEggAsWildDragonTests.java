@@ -44,7 +44,7 @@ public class HatchAnyUnclaimedEggAsWildDragonTests {
                 .andReturn(card);
         List<String> recipes = Resources.readLines(Resources.getResource("DefaultRecipeList.txt"), Charsets.UTF_8);
         FakePlayer.initPlayer(recipes);
-        eggHatchingLogic.hatchEgg(card, true, FakePlayer.getInstance());
+        eggHatchingLogic.hatchEgg(card, FakePlayer.getInstance());
 
         EasyMock.replay(card, hatchingGround, elementBag, gui, player, eggHatchingLogic);
 

@@ -24,7 +24,7 @@ public class HatchAllUnclaimedEffect extends AdjacentEggsEffect {
             HatchingGround hatchingGround) {
         List<Family> dragonFamiliesList = Arrays.asList(dragonFamilies);
         if (adjacentEgg.handler == null && dragonFamiliesList.contains(adjacentEgg.family)) {
-            eggHatchingLogic.hatchEgg(adjacentEgg, true, FakePlayer.getInstance());
+            eggHatchingLogic.hatchEgg(adjacentEgg, FakePlayer.getInstance());
         }
     }
 

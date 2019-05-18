@@ -57,7 +57,7 @@ public class PlacementPhase extends RotationPhase {
         this.utils.placeElements(space, player);
 
         if (hatchingGround.logic.isComplete(card) && card.handler == null) {
-            this.wildEggHatchingLogic.hatchEgg(card, true, FakePlayer.getInstance());
+            this.wildEggHatchingLogic.hatchEgg(card, FakePlayer.getInstance());
             this.checkGameover();
         }
     }
