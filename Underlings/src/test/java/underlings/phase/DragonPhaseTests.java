@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import org.easymock.EasyMock;
@@ -46,7 +47,7 @@ public class DragonPhaseTests {
         this.handler = EasyMock.mock(Handler.class);
         this.card = new Card();
         this.player.hatchedCards = new ArrayList<>();
-        this.player.unhatchedCards = new ArrayList<>();
+        this.player.unhatchedCards = new HashMap<>();
         this.player.elementSpaceLogic = EasyMock.mock(ElementSpaceLogic.class);
         this.players = Arrays.asList(player);
         this.card.handler = this.handler;
@@ -70,7 +71,7 @@ public class DragonPhaseTests {
     @Test
     public void testOneUnhatchedEgg() {
         EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList());
-        player.unhatchedCards.add(card);
+        player.unhatchedCards.put(card, 1);
         eggHatchingLogic.hatchEgg(card, false, player);
         EasyMock.expect(player.getId()).andReturn(1).anyTimes();
 
@@ -88,8 +89,8 @@ public class DragonPhaseTests {
     @Test
     public void testTwoUnhatchedEgg() {
         EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList());
-        player.unhatchedCards.add(card);
-        player.unhatchedCards.add(card);
+        player.unhatchedCards.put(card, 1);
+        player.unhatchedCards.put(new Card(), 1);
         eggHatchingLogic.hatchEgg(card, false, player);
         EasyMock.expectLastCall().times(2);
         EasyMock.expect(player.getId()).andReturn(1).anyTimes();
@@ -239,16 +240,19 @@ public class DragonPhaseTests {
     }
 
     @Test
-    public void testSetupLateEgg() {
+    public void testHatchLateEgg() {
         final Gui gui = EasyMock.mock(Gui.class);
         hatchingGround.lateHatching = true;
+
+        EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList(card));
+        eggHatchingLogic.returnElementsToBag(card);
 
         EasyMock.replay(hatchingGround, gui, bag, card.domesticEffects[0], handler, eggHatchingLogic);
 
         Phase phase = new DragonPhase(players, gui, bag, hatchingGround, null, null, eggHatchingLogic);
         phase.setup();
-
-        assertEquals(2, player.hatchingTime);
+        phase.turn(player);
+        assertEquals(new Integer(2), player.unhatchedCards.get(card));
         EasyMock.verify(hatchingGround, bag, gui, card.domesticEffects[0], handler, eggHatchingLogic);
     }
 

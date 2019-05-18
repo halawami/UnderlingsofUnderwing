@@ -33,7 +33,7 @@ public class DragonPhase extends SequentialPhase {
 
     @Override
     public void turn(Player player) {
-        for (Card card : player.unhatchedCards) {
+        for (Card card : player.unhatchedCards.keySet()) {
             this.domesticEggHatchingLogic.hatchEgg(card, false, player);
         }
         player.unhatchedCards.clear();
@@ -44,7 +44,7 @@ public class DragonPhase extends SequentialPhase {
                     this.domesticEggHatchingLogic.hatchEgg(completeCard, false, player);
                     player.hatchingTime = 1;
                 } else {
-                    player.moveToIncubation(completeCard);
+                    player.moveToIncubation(completeCard, 1);
                     this.gui.notifyAction(player.getId(), LocaleWrap.format("incubation_state", completeCard.name));
                 }
             }

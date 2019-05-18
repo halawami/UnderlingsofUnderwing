@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+
 import underlings.card.Card;
 import underlings.card.effect.ObserverEffect;
 import underlings.element.Element;
@@ -28,7 +29,7 @@ public class Player {
     public List<Element> elements;
     public int id;
     public List<Card> hatchedCards;
-    public List<Card> unhatchedCards;
+    public Map<Card, Integer> unhatchedCards;
     public ElementSpaceLogic elementSpaceLogic;
     public int maxHandlersOnSpace;
     private List<ObserverEffect> observerEffects;
@@ -40,7 +41,7 @@ public class Player {
         this.handlers = new ArrayList<>();
         this.elements = new ArrayList<>();
         this.hatchedCards = new ArrayList<>();
-        this.unhatchedCards = new ArrayList<>();
+        this.unhatchedCards = new HashMap<>();
         this.observerEffects = new ArrayList<>();
         this.handlerFactory = handlerFactory;
         this.maxHandlers = maxHandlers;
@@ -132,15 +133,6 @@ public class Player {
         return this.id;
     }
 
-    public boolean hasCard(Card card) {
-        if (this.getHandlers().contains(card.handler)) {
-            this.unhatchedCards.add(card);
-            card.handler.moveToState(HandlerState.INCUBATION);
-            return true;
-        }
-        return false;
-    }
-
     @Override
     public String toString() {
         return MessageFormat.format(LocaleWrap.get("player_number"), this.getId());
@@ -186,8 +178,8 @@ public class Player {
         this.useEffectElementGivers(false);
     }
 
-    public void moveToIncubation(Card card) {
-        this.unhatchedCards.add(card);
+    public void moveToIncubation(Card card, int roundsLeft) {
+        this.unhatchedCards.put(card, roundsLeft);
         card.handler.moveToState(HandlerState.INCUBATION);
     }
 }
