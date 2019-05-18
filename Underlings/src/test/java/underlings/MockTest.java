@@ -7,7 +7,9 @@ import org.junit.After;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.handler.HandlerMovementLogic;
+import underlings.phase.Phase;
 import underlings.player.Player;
+import underlings.scoring.ScoreUtils;
 
 public abstract class MockTest {
 
@@ -17,6 +19,8 @@ public abstract class MockTest {
     protected Runnable displayMethod;
     protected Player player;
     protected List<Player> players;
+    protected ScoreUtils scoreUtils;
+    protected Phase dragonPhase;
 
     protected List<Object> mocks = new ArrayList<>();
 
