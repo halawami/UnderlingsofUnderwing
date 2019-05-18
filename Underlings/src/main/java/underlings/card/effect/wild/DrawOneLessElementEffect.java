@@ -4,6 +4,7 @@ import java.util.List;
 
 import underlings.card.effect.ObserverEffect;
 import underlings.card.effect.PlayersEffect;
+import underlings.element.ElementGiver;
 import underlings.gui.Gui;
 import underlings.player.Player;
 
@@ -17,6 +18,10 @@ public class DrawOneLessElementEffect extends PlayersEffect implements ObserverE
     @Override
     public void onPhaseOne(Player player) {
 
+    }
+
+    public List<ElementGiver> getEffectElementGivers(List<ElementGiver> elementGivers) {
+        return null;
     }
 
 }
