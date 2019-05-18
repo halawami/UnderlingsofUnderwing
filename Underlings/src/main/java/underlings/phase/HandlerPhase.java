@@ -20,6 +20,8 @@ public class HandlerPhase extends RotationPhase {
     public HandlerPhase(List<Player> players, Gui gui, ElementBag elementBag, HatchingGround hatchingGround,
             Runnable displayMethod, Field field, HandlerMovementLogic handlerMovementLogic) {
         super(players, gui, elementBag, hatchingGround, displayMethod, field);
+        // TODO: add latehatching = false;
+        // hatchingGround.lateHatching = false;
         this.handlerMovementLogic = handlerMovementLogic;
     }
 
