@@ -1,15 +1,15 @@
 package underlings.card.effect.domestic;
 
-import org.easymock.EasyMock;
+import org.junit.Before;
 import org.junit.Test;
-
+import underlings.MockTest;
 import underlings.card.effect.Effect;
 import underlings.element.ElementColor;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.HatchingGround;
 import underlings.player.Player;
 
-public class WhiteRecipeEffectTests {
+public class WhiteRecipeEffectTests extends MockTest {
 
     String recipe000 = "RED,YELLOW,BLUE,PURPLE,ORANGE,GREEN";
     String recipe001 = "RED,YELLOW,BLUE,PURPLE,ORANGE,BLUE,YELLOW";
@@ -20,37 +20,38 @@ public class WhiteRecipeEffectTests {
     String recipe110 = "RED,YELLOW,BLUE,RED,BLUE,RED,YELLOW,GREEN";
     String recipe111 = "RED,YELLOW,BLUE,RED,BLUE,RED,YELLOW,BLUE,YELLOW";
 
+    @Before
+    public void init() {
+        this.hatchingGround = this.mock(HatchingGround.class);
+        this.player = this.mock(Player.class);
+    }
+
     @Test
     public void testEffect() {
-        HatchingGround ground = EasyMock.mock(HatchingGround.class);
-        ground.logic = EasyMock.mock(ElementSpaceLogic.class);
-        Player player = EasyMock.mock(Player.class);
-        player.elementSpaceLogic = EasyMock.mock(ElementSpaceLogic.class);
+        this.hatchingGround.logic = this.mock(ElementSpaceLogic.class);
+        this.player.elementSpaceLogic = this.mock(ElementSpaceLogic.class);
 
+        this.hatchingGround.logic.addRecipe(ElementColor.WHITE, this.recipe000.split(","));
+        this.hatchingGround.logic.addRecipe(ElementColor.WHITE, this.recipe001.split(","));
+        this.hatchingGround.logic.addRecipe(ElementColor.WHITE, this.recipe010.split(","));
+        this.hatchingGround.logic.addRecipe(ElementColor.WHITE, this.recipe011.split(","));
+        this.hatchingGround.logic.addRecipe(ElementColor.WHITE, this.recipe100.split(","));
+        this.hatchingGround.logic.addRecipe(ElementColor.WHITE, this.recipe101.split(","));
+        this.hatchingGround.logic.addRecipe(ElementColor.WHITE, this.recipe110.split(","));
+        this.hatchingGround.logic.addRecipe(ElementColor.WHITE, this.recipe111.split(","));
 
-        ground.logic.addRecipe(ElementColor.WHITE, recipe000.split(","));
-        ground.logic.addRecipe(ElementColor.WHITE, recipe001.split(","));
-        ground.logic.addRecipe(ElementColor.WHITE, recipe010.split(","));
-        ground.logic.addRecipe(ElementColor.WHITE, recipe011.split(","));
-        ground.logic.addRecipe(ElementColor.WHITE, recipe100.split(","));
-        ground.logic.addRecipe(ElementColor.WHITE, recipe101.split(","));
-        ground.logic.addRecipe(ElementColor.WHITE, recipe110.split(","));
-        ground.logic.addRecipe(ElementColor.WHITE, recipe111.split(","));
+        this.player.elementSpaceLogic.addRecipe(ElementColor.WHITE, this.recipe000.split(","));
+        this.player.elementSpaceLogic.addRecipe(ElementColor.WHITE, this.recipe001.split(","));
+        this.player.elementSpaceLogic.addRecipe(ElementColor.WHITE, this.recipe010.split(","));
+        this.player.elementSpaceLogic.addRecipe(ElementColor.WHITE, this.recipe011.split(","));
+        this.player.elementSpaceLogic.addRecipe(ElementColor.WHITE, this.recipe100.split(","));
+        this.player.elementSpaceLogic.addRecipe(ElementColor.WHITE, this.recipe101.split(","));
+        this.player.elementSpaceLogic.addRecipe(ElementColor.WHITE, this.recipe110.split(","));
+        this.player.elementSpaceLogic.addRecipe(ElementColor.WHITE, this.recipe111.split(","));
 
-        player.elementSpaceLogic.addRecipe(ElementColor.WHITE, recipe000.split(","));
-        player.elementSpaceLogic.addRecipe(ElementColor.WHITE, recipe001.split(","));
-        player.elementSpaceLogic.addRecipe(ElementColor.WHITE, recipe010.split(","));
-        player.elementSpaceLogic.addRecipe(ElementColor.WHITE, recipe011.split(","));
-        player.elementSpaceLogic.addRecipe(ElementColor.WHITE, recipe100.split(","));
-        player.elementSpaceLogic.addRecipe(ElementColor.WHITE, recipe101.split(","));
-        player.elementSpaceLogic.addRecipe(ElementColor.WHITE, recipe110.split(","));
-        player.elementSpaceLogic.addRecipe(ElementColor.WHITE, recipe111.split(","));
-
-        EasyMock.replay(ground, ground.logic, player, player.elementSpaceLogic);
+        this.replayAll();
 
         Effect effect = new WhiteRecipeEffect();
-        effect.on(ground).on(player).apply();
-
-        EasyMock.verify(ground, ground.logic, player, player.elementSpaceLogic);
+        effect.on(this.hatchingGround).on(this.player).apply();
     }
 }
