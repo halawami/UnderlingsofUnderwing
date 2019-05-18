@@ -17,7 +17,7 @@ The definition of done is created by examining and applying BVA on the rules.
     - ```underlings.player.IdTests.testOne()```
   - Player 6 should have a player number of 6
     - ```underlings.player.IdTests.testSix()```
-- [x] Players should display as Player #
+- [x] Players should display as "Player #"
   - ```underlings.player.IdTests.testToString()```
 
 #### Add Handler ```underlings.player.AddHandlerTests```
