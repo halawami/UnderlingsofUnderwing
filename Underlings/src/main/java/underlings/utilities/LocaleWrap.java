@@ -6,7 +6,11 @@ import java.util.ResourceBundle;
 
 public class LocaleWrap {
 
-    public static Locale locale = Locale.ENGLISH;
+    protected static Locale locale = Locale.ENGLISH;
+
+    public void setLocale(Locale locale) {
+        LocaleWrap.locale = locale;
+    }
 
     public static String get(String string) {
         return ResourceBundle.getBundle("messages", locale).getString(string);

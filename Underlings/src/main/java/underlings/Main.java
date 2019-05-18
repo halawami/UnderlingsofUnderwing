@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
 import underlings.card.CardFactory;
@@ -52,7 +53,6 @@ public class Main {
             System.exit(1);
         }
         FakePlayer.initPlayer(recipes);
-
         Gui gui = new Gui(new ConcretePrompt(), new ConcreteDisplay());
         CardFactory cardFactory = new CardFactory(CARDS_JSON_FILE_NAME);
         Deck deck = new Deck(cardFactory.getCards(), Collections::sort);
@@ -89,6 +89,9 @@ public class Main {
         finalPhaseMap.put(FinalPhaseType.REGULAR,
                 new RegularFinalPhase(game.getPlayers(), gui, dragonPhase, scoreUtils));
         finalPhaseMap.put(FinalPhaseType.WILD, new WildFinalPhase(gui));
+
+        Locale locale = gui.promptLocale(Locale.getAvailableLocales());
+        new LocaleWrap().setLocale(locale);
 
         game.start(phases, finalPhaseMap);
 

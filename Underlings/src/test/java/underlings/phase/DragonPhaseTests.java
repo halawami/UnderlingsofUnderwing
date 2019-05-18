@@ -51,6 +51,7 @@ public class DragonPhaseTests extends MockTest {
         this.card.elementSpaces = this.elementSpaces;
         this.eggHatchingLogic = this.mock(EggHatchingLogic.class);
         this.elementSpaces[0].elements = Arrays.asList(new Element(ElementColor.BLUE), new Element(ElementColor.RED));
+        this.gui = this.mock(Gui.class);
 
         EasyMock.expect(this.player.getHandlerCount()).andReturn(1).anyTimes();
         this.player.handlers = Arrays.asList(this.handler);
@@ -117,7 +118,6 @@ public class DragonPhaseTests extends MockTest {
 
     @Test
     public void testOneUncompletedEgg() {
-        final Gui gui = EasyMock.mock(Gui.class);
         this.player = new Player(2, new HandlerFactory(), 0);
         this.card.handler = this.player.handlers.get(0);
         this.card.name = "tempName";
@@ -138,7 +138,6 @@ public class DragonPhaseTests extends MockTest {
 
     @Test
     public void testTwoUncompletedEgg() {
-        final Gui gui = EasyMock.mock(Gui.class);
         this.player = new Player(2, new HandlerFactory(), 0);
         this.card.handler = this.player.handlers.get(0);
         this.card.name = "tempName";
@@ -161,7 +160,6 @@ public class DragonPhaseTests extends MockTest {
 
     @Test
     public void testOneUncompletedEggNotThePlayerEgg() {
-        final Gui gui = EasyMock.mock(Gui.class);
         this.card.domesticEffects = new Effect[0];
         this.player = new Player(2, new HandlerFactory(), 0);
         EasyMock.expect(this.hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList(this.card));
@@ -210,7 +208,6 @@ public class DragonPhaseTests extends MockTest {
 
     @Test
     public void testHatchingTimeZeroTwoEggs() {
-        final Gui gui = EasyMock.mock(Gui.class);
         this.player = new Player(2, new HandlerFactory(), 0);
         this.player.hatchingTime = 0;
         this.card.handler = this.player.handlers.get(0);
@@ -239,7 +236,6 @@ public class DragonPhaseTests extends MockTest {
 
     @Test
     public void testHatchLateEgg() {
-        final Gui gui = EasyMock.mock(Gui.class);
         Player player = new Player(6, new HandlerFactory(), 1);
         this.card.handler = player.handlers.get(0);
         this.card.name = "tempName";
@@ -260,7 +256,6 @@ public class DragonPhaseTests extends MockTest {
 
     @Test
     public void testThreeRoundsLateEgg() {
-        final Gui gui = EasyMock.mock(Gui.class);
         Player player = new Player(6, new HandlerFactory(), 1);
         this.card.handler = player.handlers.get(0);
         this.card.name = "tempName";
@@ -287,7 +282,6 @@ public class DragonPhaseTests extends MockTest {
 
     @Test
     public void testTwoRoundsLateEgg() {
-        final Gui gui = EasyMock.mock(Gui.class);
         Player player = new Player(6, new HandlerFactory(), 1);
         this.card.handler = player.handlers.get(0);
         this.card.name = "tempName";
