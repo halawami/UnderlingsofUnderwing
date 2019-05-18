@@ -12,6 +12,7 @@ import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.Deck;
 import underlings.game.HatchingGround;
 import underlings.handler.HandlerMovementLogic;
+import underlings.handler.WildHandler;
 import underlings.utilities.EggHatchingLogic;
 import underlings.utilities.LocaleWrap;
 
@@ -23,6 +24,9 @@ public class AddElementsEffect extends AdjacentEggsEffect {
     public void applyOnAdjacentEgg(Card adjacentEgg, ElementBag elementBag, ElementSpaceLogic elementSpaceLogic,
             EggHatchingLogic eggHatchingLogic, Deck deck, HandlerMovementLogic handlerMovementLogic,
             HatchingGround hatchingGround) {
+        if (adjacentEgg.handler == WildHandler.getInstance()) {
+            return;
+        }
         for (ElementColor elementColorToAdd : this.elementColors) {
             this.addElementToCard(elementColorToAdd, adjacentEgg, elementSpaceLogic, elementBag);
         }
