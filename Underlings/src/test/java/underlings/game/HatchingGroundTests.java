@@ -2,18 +2,14 @@ package underlings.game;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.card.Card;
 import underlings.card.effect.Effect;
 import underlings.element.Element;
@@ -135,7 +131,7 @@ public class HatchingGroundTests {
         EasyMock.expect(deck.draw()).andReturn(card2);
 
         EasyMock.replay(deck, handler);
-        HatchingGround hatchingGround = new HatchingGround(deck, new ElementSpaceLogic(recipes));
+        HatchingGround hatchingGround = new HatchingGround(deck, new ElementSpaceLogic(this.recipes));
         hatchingGround.setDimensions(4, 4);
         hatchingGround.populate();
         assertEquals(card, hatchingGround.cards[0][0]);
@@ -167,7 +163,7 @@ public class HatchingGroundTests {
         EasyMock.expect(deck.draw()).andReturn(card2).times(2);
 
         EasyMock.replay(deck, handler);
-        HatchingGround hatchingGround = new HatchingGround(deck, new ElementSpaceLogic(recipes));
+        HatchingGround hatchingGround = new HatchingGround(deck, new ElementSpaceLogic(this.recipes));
         hatchingGround.setDimensions(4, 4);
         hatchingGround.populate();
         assertEquals(card, hatchingGround.cards[0][0]);
@@ -247,7 +243,7 @@ public class HatchingGroundTests {
         EasyMock.expect(deck.draw()).andReturn(card2);
 
         EasyMock.replay(deck, handler);
-        HatchingGround hatchingGround = new HatchingGround(deck, new ElementSpaceLogic(recipes));
+        HatchingGround hatchingGround = new HatchingGround(deck, new ElementSpaceLogic(this.recipes));
         hatchingGround.setDimensions(4, 4);
         hatchingGround.populate();
         assertEquals(card, hatchingGround.cards[0][0]);
@@ -290,7 +286,7 @@ public class HatchingGroundTests {
         for (int i = 0; i < 6; i++) {
             cards.add(new Card());
         }
-        Deck deck = new Deck(cards);
+        Deck deck = new Deck(cards, null);
         HatchingGround hatchingGround = new HatchingGround(deck, this.niceLogic);
         hatchingGround.setDimensions(3, 2);
         hatchingGround.populate();

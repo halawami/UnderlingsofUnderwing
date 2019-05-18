@@ -2,36 +2,44 @@ package underlings.game;
 
 import java.util.List;
 import java.util.Stack;
-
+import java.util.function.Consumer;
 import underlings.card.Card;
 import underlings.card.EmptyCard;
 
 public class Deck {
 
-    private Stack<Card> cards;
+    private List<Card> cards;
 
-    public Deck(List<Card> cards) {
+    @SuppressWarnings("rawtypes")
+    Consumer<List> shuffleFunction;
+
+    public Deck(List<Card> cards, Consumer<List> shuffleFunction) {
         this.cards = new Stack<>();
         this.cards.addAll(cards);
+        this.shuffleFunction = shuffleFunction;
     }
 
     public Card draw() {
-        if (cards.isEmpty()) {
+        if (this.cards.isEmpty()) {
             return EmptyCard.getInstance();
         }
-        return cards.pop();
+        return this.cards.remove(0);
     }
 
     public int getSize() {
         return this.cards.size();
     }
 
-    public void addCard(Card card) {
+    public void addCard(Card card, boolean shuffle) {
         if (card != EmptyCard.getInstance()) {
             this.cards.add(card);
         }
-        // TODO: shuffle here
-        // TODO: ^^ don't shuffle here, but instead make a shuffle function and call it separately, because of 'Lusura'
+
+        if (shuffle) {
+            this.shuffleFunction.accept(this.cards);
+        }
     }
+
+
 
 }

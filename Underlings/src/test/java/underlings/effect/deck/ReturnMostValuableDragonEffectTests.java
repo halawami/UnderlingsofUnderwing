@@ -1,15 +1,12 @@
 package underlings.effect.deck;
 
 import static org.junit.Assert.assertEquals;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
 import org.easymock.EasyMock;
 import org.junit.Assert;
 import org.junit.Test;
-
 import underlings.TestUtils;
 import underlings.card.Card;
 import underlings.card.effect.wild.ReturnMostValuableDragonEffect;
@@ -77,7 +74,7 @@ public class ReturnMostValuableDragonEffectTests {
         EasyMock.expect(player.getMostValuableDragons()).andReturn(mostValuableDragons);
         EasyMock.expect(gui.promptChoice("Pick a dragon to return to deck", mostValuableDragons, 0))
                 .andReturn(mostValuableDragons.get(0));
-        deck.addCard(mostValuableDragons.get(0));
+        deck.addCard(mostValuableDragons.get(0), true);
 
         EasyMock.replay(player, deck, gui);
 
@@ -99,7 +96,7 @@ public class ReturnMostValuableDragonEffectTests {
         EasyMock.expect(player.getMostValuableDragons()).andReturn(mostValuableDragons);
         EasyMock.expect(gui.promptChoice("Pick a dragon to return to deck", mostValuableDragons, 0))
                 .andReturn(mostValuableDragons.get(1));
-        deck.addCard(mostValuableDragons.get(1));
+        deck.addCard(mostValuableDragons.get(1), true);
 
         EasyMock.replay(player, deck, gui);
 

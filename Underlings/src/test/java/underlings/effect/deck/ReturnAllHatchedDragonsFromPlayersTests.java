@@ -34,7 +34,7 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
 
         ReturnAllHatchedDragonsFromPlayers effect = new ReturnAllHatchedDragonsFromPlayers();
         effect.on(Arrays.asList(this.player)).on(this.deck);
-        this.deck.addCard(this.card);
+        this.deck.addCard(this.card, true);
 
         this.replayAll();
 
@@ -53,8 +53,8 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
 
         ReturnAllHatchedDragonsFromPlayers effect = new ReturnAllHatchedDragonsFromPlayers();
         effect.on(Arrays.asList(this.player)).on(this.deck);
-        this.deck.addCard(this.card);
-        this.deck.addCard(this.card2);
+        this.deck.addCard(this.card, true);
+        this.deck.addCard(this.card2, true);
 
         this.replayAll();
 
@@ -74,8 +74,8 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
 
         ReturnAllHatchedDragonsFromPlayers effect = new ReturnAllHatchedDragonsFromPlayers();
         effect.on(Arrays.asList(this.player, this.player2)).on(this.deck);
-        this.deck.addCard(this.card);
-        this.deck.addCard(this.card2);
+        this.deck.addCard(this.card, true);
+        this.deck.addCard(this.card2, true);
 
         this.replayAll();
 
@@ -98,7 +98,7 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
 
         ReturnAllHatchedDragonsFromPlayers effect = new ReturnAllHatchedDragonsFromPlayers();
         effect.on(Arrays.asList(this.player, this.player2)).on(this.deck);
-        this.deck.addCard(this.card2);
+        this.deck.addCard(this.card2, true);
 
         this.replayAll();
 

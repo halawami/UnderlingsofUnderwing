@@ -21,7 +21,7 @@ public class ReturnAllAdjacentCardsToDeckEffect extends AdjacentEggsEffect {
         handlerMovementLogic.move(adjacentEgg.handler, HandlerChoice.BREAK_ROOM, FakePlayer.getInstance());
         handlerMovementLogic.removeHandlerFromCard(adjacentEgg);
         hatchingGround.replaceCard(adjacentEgg);
-        deck.addCard(adjacentEgg);
+        deck.addCard(adjacentEgg, true);
     }
 
     @Override
