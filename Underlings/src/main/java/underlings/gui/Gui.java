@@ -71,8 +71,7 @@ public class Gui {
             }
         }
 
-        Card card = this.promptHandler.pickFromGrid(prompt, cards, playerId);
-        return card;
+        return this.promptHandler.pickFromGrid(prompt, cards, playerId);
     }
 
     public void notifyAction(int playerId, String message) {
