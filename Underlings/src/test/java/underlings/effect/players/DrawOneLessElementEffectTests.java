@@ -26,4 +26,20 @@ public class DrawOneLessElementEffectTests {
 
         players.forEach(EasyMock::verify);
     }
+
+    @Test
+    public void testApplySixPlayers() {
+        List<Player> players = TestUtils.mockListOf(Player.class).withLength(2);
+        DrawOneLessElementEffect testedEffect = new DrawOneLessElementEffect();
+
+        for (Player player : players) {
+            player.addObserverEffect(testedEffect);
+        }
+
+        players.forEach(EasyMock::replay);
+
+        testedEffect.on(players).apply();
+
+        players.forEach(EasyMock::verify);
+    }
 }
