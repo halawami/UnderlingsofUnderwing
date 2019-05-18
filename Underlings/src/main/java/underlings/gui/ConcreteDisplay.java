@@ -1,6 +1,7 @@
 package underlings.gui;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -9,8 +10,10 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
+
 import underlings.card.Card;
 import underlings.element.Element;
 import underlings.element.ElementBag;
@@ -30,6 +33,8 @@ public class ConcreteDisplay implements Display {
     private JFrame frame;
     private Image img;
     private Graphics gr;
+    private Font fontBig;
+    private Font fontSmall;
 
     private Image background;
 
@@ -55,6 +60,11 @@ public class ConcreteDisplay implements Display {
 
         this.img = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_ARGB);
         this.gr = this.img.getGraphics();
+
+        Font f = this.gr.getFont();
+        this.fontBig = new Font(f.getName(), f.getStyle(), 12);
+        this.fontSmall = new Font(f.getName(), f.getStyle(), 10);
+        this.gr.setFont(this.fontBig);
 
         this.getImages();
 
@@ -97,12 +107,14 @@ public class ConcreteDisplay implements Display {
                 (int) (ratio * (offsetY + (height + gapY) * row)), (int) (ratio * width), (int) (ratio * height));
 
         this.gr.setColor(Color.BLACK);
+        this.gr.setFont(this.fontSmall);
         this.gr.drawString(LocaleWrap.format("card_name", card.name),
-                (int) (ratio * (30 + offsetX + (width + gapX) * col)),
-                (int) (-25 + ratio * (height / 2 + offsetY + (height + gapY) * row)));
+                (int) (ratio * (30 + offsetX + (width + gapX) * col)) - 5,
+                (int) (-25 + ratio * (height / 2 + offsetY + (height + gapY) * row)) - 6);
+        this.gr.setFont(this.fontBig);
         this.gr.drawString(LocaleWrap.format("card_points", card.points),
-                (int) (ratio * (30 + offsetX + (width + gapX) * col)) + 118,
-                (int) (-25 + ratio * (height / 2 + offsetY + (height + gapY) * row)));
+                (int) (ratio * (30 + offsetX + (width + gapX) * col)) - 5,
+                (int) (-25 + ratio * (height / 2 + offsetY + (height + gapY) * row) + 6));
 
         int spaceNum = 0;
         for (ElementSpace space : card.elementSpaces) {
@@ -174,15 +186,23 @@ public class ConcreteDisplay implements Display {
                 (int) (ratio * (offsetY + (height + gapY) * row)), (int) (ratio * width), (int) (ratio * height));
 
         String elements = "";
+        int i = 0;
         for (Element e : player.getElements()) {
             elements += e.getColor() + " ";
+            if (++i == 6) {
+                elements += LocaleWrap.get("line_break");
+                i = 0;
+            }
         }
         this.gr.setColor(Color.BLACK);
         this.gr.drawString(LocaleWrap.format("player_number", (playerNumber + 1)),
                 (int) (ratio * (offsetX + (width + gapX) * col)) + 5,
                 (int) (ratio * (offsetY + (height + gapY) * row)) + 15);
-        this.gr.drawString(elements, (int) (ratio * (30 + offsetX + (width + gapX) * col)),
-                (int) (-25 + ratio * (height / 2 + offsetY + (height + gapY) * row)));
+        int index = 0;
+        for (String element : elements.split(LocaleWrap.get("line_break"))) {
+            this.gr.drawString(element, (int) (ratio * (30 + offsetX + (width + gapX) * col)),
+                    (int) (-50 + index++ * 25 + ratio * (height / 2 + offsetY + (height + gapY) * row)));
+        }
     }
 
     @Override
