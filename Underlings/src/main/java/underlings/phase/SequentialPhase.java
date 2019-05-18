@@ -1,7 +1,6 @@
 package underlings.phase;
 
 import java.util.List;
-
 import underlings.element.ElementBag;
 import underlings.field.Field;
 import underlings.game.HatchingGround;
@@ -30,6 +29,5 @@ public abstract class SequentialPhase extends Phase {
         this.teardown();
     }
 
-    public void teardown() {
-    }
+    protected abstract void teardown();
 }
