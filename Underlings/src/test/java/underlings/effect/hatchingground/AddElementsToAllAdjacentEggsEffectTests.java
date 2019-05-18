@@ -34,7 +34,7 @@ public class AddElementsToAllAdjacentEggsEffectTests {
                 EasyMock.partialMockBuilder(AddElementsEffect.class).addMockedMethod("addElementToCard").createMock();
         testedEffect.elementColors = new ElementColor[] {ElementColor.BLUE};
         EggHatchingLogic eggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
-
+        EasyMock.expect(adjacentCard.isClaimed()).andReturn(false);
         testedEffect.addElementToCard(ElementColor.BLUE, adjacentCard, elementSpaceLogic, elementBag);
         Gui gui = EasyMock.mock(Gui.class);
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
