@@ -89,13 +89,16 @@ public class DragonPhaseTests {
     @Test
     public void testTwoUnhatchedEgg() {
         EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList());
+        Card card2 = new Card();
+        card2.domesticEffects = new Effect[] {EasyMock.mock(Effect.class)};
         player.unhatchedCards.put(card, 1);
-        player.unhatchedCards.put(new Card(), 1);
+        player.unhatchedCards.put(card2, 1);
         eggHatchingLogic.hatchEgg(card, false, player);
-        EasyMock.expectLastCall().times(2);
+        eggHatchingLogic.hatchEgg(card2, false, player);
         EasyMock.expect(player.getId()).andReturn(1).anyTimes();
 
-        EasyMock.replay(hatchingGround, bag, player, card.domesticEffects[0], handler, eggHatchingLogic);
+        EasyMock.replay(hatchingGround, bag, player, card.domesticEffects[0], card2.domesticEffects[0], handler,
+                eggHatchingLogic);
 
         Phase phase = new DragonPhase(players, null, bag, hatchingGround, null, null, eggHatchingLogic);
         phase.setup();
@@ -242,6 +245,8 @@ public class DragonPhaseTests {
     @Test
     public void testHatchLateEgg() {
         final Gui gui = EasyMock.mock(Gui.class);
+        Player player = new Player(6, new HandlerFactory(), 1);
+        card.handler = player.getHandlers().get(0);
         hatchingGround.lateHatching = true;
 
         EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList(card));
