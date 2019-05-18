@@ -1,16 +1,13 @@
 package underlings.scoring;
 
 import static org.junit.Assert.assertEquals;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.card.Card;
 import underlings.gui.Gui;
 import underlings.player.Player;
@@ -28,7 +25,7 @@ public class PointTests {
     }
 
     @Test
-    public void testEmpty() {
+    public void testNoCards() {
         int points = this.scoreUtils.calculatePoints(Collections.emptyList());
 
         assertEquals(0, points);

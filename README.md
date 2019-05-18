@@ -23,6 +23,13 @@ The definition of done is created by examining and applying BVA on the rules.
 
 #### Point Tests ```underlings.scoring.PointTests```
 
+- [x] Card point total should be the sum of a players card's points
+  - When a player has no cards their score should be 0
+    - ```underlings.scoring.PointTests.testNoCards()```
+  - When a player has one or more cards, the sum should be the card point total
+    - ```underlings.scoring.PointTests.testOneCard()```
+    - ```underlings.scoring.PointTests.testTwoCards()```
+
 #### Scoring Tests ```underlings.scoring.ScoreTests```
 
 
