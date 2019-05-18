@@ -7,19 +7,19 @@ import java.util.List;
 import org.easymock.EasyMock;
 import org.junit.Test;
 
-import underlings.TestUtils;
+import underlings.MockTest;
 import underlings.card.effect.Effect;
 import underlings.card.effect.domestic.StealAllStoredElements;
 import underlings.gui.Gui;
 import underlings.player.Player;
 import underlings.utilities.LocaleWrap;
 
-public class StealAllStoredElementsTests {
+public class StealAllStoredElementsTests extends MockTest {
 
     @Test
     public void testEffect() {
         Player currentPlayer = EasyMock.mock(Player.class);
-        List<Player> players = TestUtils.mockListOf(Player.class).withLength(6);
+        List<Player> players = this.mockListOf(Player.class).withLength(6);
         Gui gui = EasyMock.mock(Gui.class);
         Effect testedEffect = new StealAllStoredElements();
         testedEffect.on(currentPlayer).on(players).on(gui);

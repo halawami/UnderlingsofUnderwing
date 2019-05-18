@@ -10,16 +10,15 @@ import org.easymock.EasyMock;
 import org.junit.Assert;
 import org.junit.Test;
 
-import underlings.TestUtils;
+import underlings.MockTest;
 import underlings.card.Card;
-import underlings.card.effect.wild.ReturnAllHatchedDragonsFromPlayers;
 import underlings.card.effect.wild.ReturnMostValuableDragonEffect;
 import underlings.game.Deck;
 import underlings.gui.Gui;
 import underlings.player.Player;
 import underlings.utilities.LocaleWrap;
 
-public class ReturnMostValuableDragonEffectTests {
+public class ReturnMostValuableDragonEffectTests extends MockTest {
 
     @Test
     public void testApplyEffectOnTwoPlayers() {
@@ -32,7 +31,7 @@ public class ReturnMostValuableDragonEffectTests {
     }
 
     private void testApplyEffectOnPlayers(int numberOfPlayers) {
-        List<Player> players = TestUtils.mockListOf(Player.class).withLength(numberOfPlayers);
+        List<Player> players = this.mockListOf(Player.class).withLength(numberOfPlayers);
         Deck deck = EasyMock.mock(Deck.class);
         Gui gui = EasyMock.mock(Gui.class);
         ReturnMostValuableDragonEffect testedEffect = EasyMock.partialMockBuilder(ReturnMostValuableDragonEffect.class)
@@ -72,7 +71,7 @@ public class ReturnMostValuableDragonEffectTests {
         Player player = EasyMock.mock(Player.class);
         Deck deck = EasyMock.mock(Deck.class);
         Gui gui = EasyMock.mock(Gui.class);
-        List<Card> mostValuableDragons = TestUtils.mockListOf(Card.class).withLength(1);
+        List<Card> mostValuableDragons = this.mockListOf(Card.class).withLength(1);
         player.hatchedCards = new ArrayList<>(mostValuableDragons);
 
         EasyMock.expect(player.getMostValuableDragons()).andReturn(mostValuableDragons);
@@ -94,7 +93,7 @@ public class ReturnMostValuableDragonEffectTests {
         Player player = EasyMock.mock(Player.class);
         Deck deck = EasyMock.mock(Deck.class);
         Gui gui = EasyMock.mock(Gui.class);
-        List<Card> mostValuableDragons = TestUtils.mockListOf(Card.class).withLength(2);
+        List<Card> mostValuableDragons = this.mockListOf(Card.class).withLength(2);
         player.hatchedCards = new ArrayList<>(mostValuableDragons);
 
         EasyMock.expect(player.getMostValuableDragons()).andReturn(mostValuableDragons);

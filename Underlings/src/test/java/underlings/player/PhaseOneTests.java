@@ -5,10 +5,10 @@ import java.util.List;
 import org.easymock.EasyMock;
 import org.junit.Test;
 
-import underlings.TestUtils;
+import underlings.MockTest;
 import underlings.card.effect.ObserverEffect;
 
-public class PhaseOneTests {
+public class PhaseOneTests extends MockTest {
 
     @Test
     public void testNoObservers() {
@@ -26,7 +26,7 @@ public class PhaseOneTests {
     }
 
     private void testWithObservers(int numberOfObservers) {
-        List<ObserverEffect> observerEffects = TestUtils.mockListOf(ObserverEffect.class).withLength(numberOfObservers);
+        List<ObserverEffect> observerEffects = this.mockListOf(ObserverEffect.class).withLength(numberOfObservers);
         Player player = new Player(0, null, 0);
         observerEffects.forEach(player::addObserverEffect);
 

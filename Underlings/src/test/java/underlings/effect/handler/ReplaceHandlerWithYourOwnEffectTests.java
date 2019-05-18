@@ -7,7 +7,7 @@ import java.util.List;
 import org.easymock.EasyMock;
 import org.junit.Test;
 
-import underlings.TestUtils;
+import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.effect.Effect;
 import underlings.card.effect.domestic.ReplaceHandlerWithYourOwnEffect;
@@ -19,13 +19,13 @@ import underlings.handler.HandlerMovementLogic;
 import underlings.player.Player;
 import underlings.utilities.LocaleWrap;
 
-public class ReplaceHandlerWithYourOwnEffectTests {
+public class ReplaceHandlerWithYourOwnEffectTests extends MockTest {
 
     @Test
     public void testApplyEffectNoSelectableHandler() {
         Player currentPlayer = EasyMock.mock(Player.class);
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
-        List<Card> mockClaimedEggs = TestUtils.mockListOf(Card.class).withLength(0);
+        List<Card> mockClaimedEggs = this.mockListOf(Card.class).withLength(0);
         HandlerMovementLogic handlerMovementLogic = EasyMock.mock(HandlerMovementLogic.class);
         Gui gui = EasyMock.mock(Gui.class);
 
@@ -44,8 +44,8 @@ public class ReplaceHandlerWithYourOwnEffectTests {
     public void testApplyEffectSelectableHandler() {
         Player currentPlayer = EasyMock.mock(Player.class);
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
-        List<Card> mockClaimedEggs = TestUtils.mockListOf(Card.class).withLength(6);
-        List<Handler> mockHandlers = TestUtils.mockListOf(Handler.class).withLength(2);
+        List<Card> mockClaimedEggs = this.mockListOf(Card.class).withLength(6);
+        List<Handler> mockHandlers = this.mockListOf(Handler.class).withLength(2);
         Handler toBeReplaced = EasyMock.mock(Handler.class);
         mockClaimedEggs.get(2).handler = toBeReplaced;
         HandlerMovementLogic handlerMovementLogic = EasyMock.mock(HandlerMovementLogic.class);

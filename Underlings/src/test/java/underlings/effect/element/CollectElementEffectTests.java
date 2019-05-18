@@ -1,11 +1,13 @@
 package underlings.effect.element;
 
 import static org.junit.Assert.assertEquals;
+
 import java.text.MessageFormat;
 
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.MockTest;
 import underlings.card.effect.domestic.CollectElementEffect;
 import underlings.element.Element;
@@ -57,6 +59,7 @@ public class CollectElementEffectTests extends MockTest {
 
     @Test
     public void testToString() {
+        this.replayAll();
         CollectElementEffect effect = new CollectElementEffect();
         effect.elementChoices = new ElementColor[] {ElementColor.BLACK};
         StringBuilder elements = new StringBuilder();

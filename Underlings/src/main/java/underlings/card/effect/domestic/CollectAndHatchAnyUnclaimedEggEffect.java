@@ -15,6 +15,7 @@ import underlings.utilities.EggHatchingLogic;
 import underlings.utilities.LocaleWrap;
 
 public class CollectAndHatchAnyUnclaimedEggEffect extends DiverseHatchingGroundEffect {
+
     public int points;
 
     @Override

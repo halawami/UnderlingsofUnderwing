@@ -6,16 +6,16 @@ import org.easymock.EasyMock;
 import org.junit.Assert;
 import org.junit.Test;
 
-import underlings.TestUtils;
+import underlings.MockTest;
 import underlings.card.effect.wild.DrawOneLessElementEffect;
 import underlings.element.ElementGiver;
 import underlings.player.Player;
 
-public class DrawOneLessElementEffectTests {
+public class DrawOneLessElementEffectTests extends MockTest {
 
     @Test
     public void testApplyTwoPlayers() {
-        List<Player> players = TestUtils.mockListOf(Player.class).withLength(2);
+        List<Player> players = this.mockListOf(Player.class).withLength(2);
         DrawOneLessElementEffect testedEffect = new DrawOneLessElementEffect();
 
         for (Player player : players) {
@@ -31,7 +31,7 @@ public class DrawOneLessElementEffectTests {
 
     @Test
     public void testApplySixPlayers() {
-        List<Player> players = TestUtils.mockListOf(Player.class).withLength(2);
+        List<Player> players = this.mockListOf(Player.class).withLength(2);
         DrawOneLessElementEffect testedEffect = new DrawOneLessElementEffect();
 
         for (Player player : players) {
@@ -50,8 +50,8 @@ public class DrawOneLessElementEffectTests {
         Player player = EasyMock.mock(Player.class);
         DrawOneLessElementEffect testedEffect = EasyMock.partialMockBuilder(DrawOneLessElementEffect.class)
                 .addMockedMethod("getEffectElementGivers").createMock();
-        List<ElementGiver> elementGivers = TestUtils.mockListOf(ElementGiver.class).withLength(2);
-        List<ElementGiver> effectElementGivers = TestUtils.mockListOf(ElementGiver.class).withLength(1);
+        List<ElementGiver> elementGivers = this.mockListOf(ElementGiver.class).withLength(2);
+        List<ElementGiver> effectElementGivers = this.mockListOf(ElementGiver.class).withLength(1);
 
         EasyMock.expect(player.getElementGivers()).andReturn(elementGivers);
         EasyMock.expect(testedEffect.getEffectElementGivers(elementGivers)).andReturn(effectElementGivers);
@@ -86,7 +86,7 @@ public class DrawOneLessElementEffectTests {
     }
 
     public void testGetEffectElementGivers(int numberOfGivers) {
-        List<ElementGiver> elementGivers = TestUtils.mockListOf(ElementGiver.class).withLength(numberOfGivers);
+        List<ElementGiver> elementGivers = this.mockListOf(ElementGiver.class).withLength(numberOfGivers);
 
         elementGivers.forEach(EasyMock::replay);
 

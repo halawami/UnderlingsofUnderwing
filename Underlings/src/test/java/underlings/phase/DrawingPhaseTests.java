@@ -1,12 +1,15 @@
 package underlings.phase;
 
 import static org.junit.Assert.assertTrue;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 import org.easymock.EasyMock;
 import org.junit.Test;
-import underlings.TestUtils;
+
+import underlings.MockTest;
 import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
@@ -16,7 +19,7 @@ import underlings.handler.HandlerFactory;
 import underlings.player.Player;
 import underlings.utilities.LocaleWrap;
 
-public class DrawingPhaseTests {
+public class DrawingPhaseTests extends MockTest {
 
     @Test
     public void testTurn() {
@@ -50,7 +53,7 @@ public class DrawingPhaseTests {
 
     @Test
     public void testSetup() {
-        List<Player> players = TestUtils.mockListOf(Player.class).withLength(2);
+        List<Player> players = this.mockListOf(Player.class).withLength(2);
 
         for (Player player : players) {
             EasyMock.expect(player.getElementGivers()).andStubReturn(Collections.emptyList());
@@ -67,7 +70,7 @@ public class DrawingPhaseTests {
 
     @Test
     public void testTearDown() {
-        List<Player> players = TestUtils.mockListOf(Player.class).withLength(2);
+        List<Player> players = this.mockListOf(Player.class).withLength(2);
 
         for (Player player : players) {
             player.endPhaseOne();

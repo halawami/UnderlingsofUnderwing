@@ -13,7 +13,7 @@ import java.util.List;
 import org.easymock.EasyMock;
 import org.junit.Test;
 
-import underlings.TestUtils;
+import underlings.MockTest;
 import underlings.card.effect.domestic.CollectFiveElementsEffect;
 import underlings.element.Element;
 import underlings.element.ElementBag;
@@ -21,7 +21,7 @@ import underlings.element.ElementColor;
 import underlings.player.Player;
 import underlings.utilities.LocaleWrap;
 
-public class CollectFiveElementsEffectTests {
+public class CollectFiveElementsEffectTests extends MockTest {
 
     @Test
     public void testEffect() {
@@ -30,7 +30,7 @@ public class CollectFiveElementsEffectTests {
         CollectFiveElementsEffect testedEffect = new CollectFiveElementsEffect();
         ElementColor[] colors = new ElementColor[] {RED, BLUE, GREEN, BLACK, WHITE};
         testedEffect.elementColors = colors;
-        List<Element> mockElements = TestUtils.mockListOf(Element.class).withLength(5);
+        List<Element> mockElements = this.mockListOf(Element.class).withLength(5);
 
         for (int i = 0; i < 5; i++) {
             EasyMock.expect(elementBag.drawElementFromList(colors[i])).andReturn(mockElements.get(i));

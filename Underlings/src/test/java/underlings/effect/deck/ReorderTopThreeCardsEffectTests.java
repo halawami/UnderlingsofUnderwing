@@ -7,14 +7,14 @@ import java.util.List;
 import org.easymock.EasyMock;
 import org.junit.Test;
 
-import underlings.TestUtils;
+import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.EmptyCard;
 import underlings.card.effect.domestic.ReorderTopThreeCardsEffect;
 import underlings.game.Deck;
 import underlings.gui.Gui;
 
-public class ReorderTopThreeCardsEffectTests {
+public class ReorderTopThreeCardsEffectTests extends MockTest {
 
     @Test
     public void testThreeOrMoreCardsLeft() {
@@ -37,8 +37,8 @@ public class ReorderTopThreeCardsEffectTests {
     }
 
     private void testCardsLeft(int cardsLeft) {
-        Deck deck = EasyMock.mock(Deck.class);
-        List<Card> topThreeCards = TestUtils.mockListOf(Card.class).withLength(cardsLeft);
+        Deck deck = this.mock(Deck.class);
+        List<Card> topThreeCards = this.mockListOf(Card.class).withLengthOf(cardsLeft);
         for (int i = cardsLeft; i < 3; i++) {
             topThreeCards.add(EmptyCard.getInstance());
         }

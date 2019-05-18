@@ -2,15 +2,18 @@ package underlings.player;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.Constructors;
-import underlings.TestUtils;
+import underlings.MockTest;
 import underlings.element.Element;
 
-public class StealElementsTests {
+public class StealElementsTests extends MockTest {
 
     private Player playerToStealFrom, stealer;
 
@@ -30,7 +33,7 @@ public class StealElementsTests {
 
     @Test
     public void testStealOneElement() {
-        List<Element> elementsToBeStolen = TestUtils.mockListOf(Element.class).withLength(1);
+        List<Element> elementsToBeStolen = this.mockListOf(Element.class).withLength(1);
         this.playerToStealFrom.elements = new ArrayList<>(elementsToBeStolen);
 
         this.stealer.stealAllElementsFromPlayer(this.playerToStealFrom);
@@ -42,7 +45,7 @@ public class StealElementsTests {
 
     @Test
     public void testStealTwoElements() {
-        List<Element> elementsToBeStolen = TestUtils.mockListOf(Element.class).withLength(2);
+        List<Element> elementsToBeStolen = this.mockListOf(Element.class).withLength(2);
         this.playerToStealFrom.elements = new ArrayList<>(elementsToBeStolen);
 
         this.stealer.stealAllElementsFromPlayer(this.playerToStealFrom);
@@ -54,9 +57,9 @@ public class StealElementsTests {
 
     @Test
     public void testStealTwoElementsWhileHavingTwoElements() {
-        List<Element> elementsToBeStolen = TestUtils.mockListOf(Element.class).withLength(2);
+        List<Element> elementsToBeStolen = this.mockListOf(Element.class).withLength(2);
         this.playerToStealFrom.elements = new ArrayList<>(elementsToBeStolen);
-        List<Element> stealerElementsBefore = TestUtils.mockListOf(Element.class).withLength(2);
+        List<Element> stealerElementsBefore = this.mockListOf(Element.class).withLength(2);
         this.stealer.elements = new ArrayList<>(stealerElementsBefore);
 
         this.stealer.stealAllElementsFromPlayer(this.playerToStealFrom);

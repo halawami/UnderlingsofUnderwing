@@ -7,13 +7,13 @@ import java.util.List;
 import org.easymock.EasyMock;
 import org.junit.Test;
 
-import underlings.TestUtils;
+import underlings.MockTest;
 import underlings.card.effect.Effect;
 import underlings.card.effect.wild.DestroyAllPlayersStoredElements;
 import underlings.player.Player;
 import underlings.utilities.LocaleWrap;
 
-public class DestroyAllPlayersStoredElementsTests {
+public class DestroyAllPlayersStoredElementsTests extends MockTest {
 
     @Test
     public void testApplyOnTwoPlayer() {
@@ -26,7 +26,7 @@ public class DestroyAllPlayersStoredElementsTests {
     }
 
     public void testApplyOnPlayers(int numberOfPlayers) {
-        List<Player> players = TestUtils.mockListOf(Player.class).withLength(numberOfPlayers);
+        List<Player> players = this.mockListOf(Player.class).withLength(numberOfPlayers);
         Effect testedEffect = new DestroyAllPlayersStoredElements();
         testedEffect.on(players);
 

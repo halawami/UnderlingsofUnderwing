@@ -8,14 +8,14 @@ import org.easymock.EasyMock;
 import org.junit.Assert;
 import org.junit.Test;
 
-import underlings.TestUtils;
+import underlings.MockTest;
 import underlings.card.Card;
 import underlings.element.ElementGiver;
 import underlings.handler.Handler;
 import underlings.handler.HandlerFactory;
 import underlings.handler.HandlerState;
 
-public class ElementGiversTests {
+public class ElementGiversTests extends MockTest {
 
     @Test
     public void testTwoHandlersNoCardElementGivers() {
@@ -124,7 +124,7 @@ public class ElementGiversTests {
 
     @Test
     public void testEffectElementGiversTrue() {
-        List<ElementGiver> effectElementGivers = TestUtils.mockListOf(ElementGiver.class).withLength(2);
+        List<ElementGiver> effectElementGivers = this.mockListOf(ElementGiver.class).withLength(2);
         Player player = new Player(0, null, 0);
         player.effectElementGivers = effectElementGivers;
         player.useEffectElementGivers(true);
@@ -136,7 +136,7 @@ public class ElementGiversTests {
 
     @Test
     public void testEffectElementGiversTrueThenFalse() {
-        List<ElementGiver> effectElementGivers = TestUtils.mockListOf(ElementGiver.class).withLength(2);
+        List<ElementGiver> effectElementGivers = this.mockListOf(ElementGiver.class).withLength(2);
         Player player = EasyMock.partialMockBuilder(Player.class)
                 .addMockedMethod("getNormalElementGivers").createMock();
         player.effectElementGivers = effectElementGivers;

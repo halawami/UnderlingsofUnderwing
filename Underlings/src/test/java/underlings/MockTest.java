@@ -2,8 +2,10 @@ package underlings;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.easymock.EasyMock;
 import org.junit.After;
+
 import underlings.card.Card;
 import underlings.card.effect.Effect;
 import underlings.element.ElementBag;
@@ -62,6 +64,26 @@ public abstract class MockTest {
 
     public void addMock(Object mock) {
         this.mocks.add(mock);
+    }
+
+    public <T> TestUtils<T> mockListOf(Class<T> objectsClass) {
+        TestUtils<T> utilsContainingType = new TestUtils<>();
+        utilsContainingType.objectsClass = objectsClass;
+        return utilsContainingType;
+    }
+
+    public class TestUtils<T> {
+
+        private Class<T> objectsClass;
+
+        public List<T> withLength(int length) {
+            List<T> mockObjects = new ArrayList<>();
+            for (int i = 0; i < length; i++) {
+                mockObjects.add(EasyMock.mock(this.objectsClass));
+            }
+            return mockObjects;
+        }
+
     }
 
 }
