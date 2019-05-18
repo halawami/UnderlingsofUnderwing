@@ -7,6 +7,7 @@ import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -81,6 +82,7 @@ public class EggHatchingLogicTests {
         effect.apply();
         gui.notifyAction(-1, effect.toString() + " has been applied");
         displayMethod.run();
+        EasyMock.expect(hatchingGround.getUnclaimedEggs()).andReturn(new ArrayList<>());
 
         EasyMock.replay(effect, hatchingGround, gui, displayMethod);
 
@@ -106,6 +108,7 @@ public class EggHatchingLogicTests {
         displayMethod.run();
         card.elementSpaces[0].elements = Arrays.asList(elementBag.drawElementFromList(ElementColor.BLUE),
                 elementBag.drawElementFromList(ElementColor.RED));
+        EasyMock.expect(hatchingGround.getUnclaimedEggs()).andReturn(new ArrayList<>());
 
         EasyMock.replay(effect, hatchingGround, gui, displayMethod);
 
@@ -138,6 +141,7 @@ public class EggHatchingLogicTests {
         displayMethod.run();
         gui.notifyAction(-1, effect + " has been applied");
         displayMethod.run();
+        EasyMock.expect(hatchingGround.getUnclaimedEggs()).andReturn(new ArrayList<>());
 
         EasyMock.replay(effect, hatchingGround, gui, displayMethod);
 
@@ -162,6 +166,7 @@ public class EggHatchingLogicTests {
         effect.apply();
         gui.notifyAction(player.getId(), effect.toString() + " has been applied");
         displayMethod.run();
+        EasyMock.expect(hatchingGround.getUnclaimedEggs()).andReturn(new ArrayList<>());
 
         EasyMock.replay(effect, hatchingGround, gui, displayMethod);
 
@@ -185,6 +190,7 @@ public class EggHatchingLogicTests {
         effect.apply();
         gui.notifyAction(player.getId(), effect.toString() + " has been applied");
         displayMethod.run();
+        EasyMock.expect(hatchingGround.getUnclaimedEggs()).andReturn(new ArrayList<>());
 
         EasyMock.replay(effect, hatchingGround, gui, displayMethod);
 
