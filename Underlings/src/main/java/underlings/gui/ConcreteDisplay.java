@@ -10,15 +10,14 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
-
 import underlings.card.Card;
 import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
+import underlings.game.HatchingGround;
 import underlings.handler.Handler;
 import underlings.handler.WildHandler;
 import underlings.player.Player;
@@ -82,11 +81,15 @@ public class ConcreteDisplay implements Display {
     }
 
     @Override
-    public void displayCard(int row, int col, Card card) {
-        if (card.handler == WildHandler.getInstance()) {
-            this.displayDragon(row, col, card);
-        } else {
-            this.displayEgg(row, col, card);
+    public void displayHatchingGround(HatchingGround hatchingGround) {
+        for (int row = 0; row < hatchingGround.getHeight(); row++) {
+            for (int col = 0; col < hatchingGround.getWidth(); col++) {
+                if (hatchingGround.cards[row][col].handler == WildHandler.getInstance()) {
+                    this.displayDragon(row, col, hatchingGround.cards[row][col]);
+                } else {
+                    this.displayEgg(row, col, hatchingGround.cards[row][col]);
+                }
+            }
         }
     }
 
@@ -166,42 +169,45 @@ public class ConcreteDisplay implements Display {
     }
 
     @Override
-    public void displayPlayer(int playerNumber, Player player) {
-        // 8 7
-        // 1363 730
-        // 1372 2921
-        int offsetX = 8;
-        int offsetY = 7;
-        int gapX = 9;
-        int gapY = 2191;
-        int width = 1355;
-        int height = 723;
-        double ratio = 1066 / 4099.0;
+    public void displayPlayers(List<Player> players) {
+        for (Player player : players) {
+            // 8 7
+            // 1363 730
+            // 1372 2921
+            int offsetX = 8;
+            int offsetY = 7;
+            int gapX = 9;
+            int gapY = 2191;
+            int width = 1355;
+            int height = 723;
+            double ratio = 1066 / 4099.0;
 
-        int row = playerNumber / 3;
-        int col = playerNumber % 3;
+            int row = (player.id - 1) / 3;
+            int col = (player.id - 1) % 3;
 
-        this.gr.setColor(Color.LIGHT_GRAY);
-        this.gr.fillRect((int) (ratio * (offsetX + (width + gapX) * col)),
-                (int) (ratio * (offsetY + (height + gapY) * row)), (int) (ratio * width), (int) (ratio * height));
+            this.gr.setColor(Color.LIGHT_GRAY);
+            this.gr.fillRect((int) (ratio * (offsetX + (width + gapX) * col)),
+                    (int) (ratio * (offsetY + (height + gapY) * row)), (int) (ratio * width), (int) (ratio * height));
 
-        String elements = "";
-        int i = 0;
-        for (Element e : player.getElements()) {
-            elements += e.getColor() + " ";
-            if (++i == 6) {
-                elements += LocaleWrap.get("line_break");
-                i = 0;
+            String elements = "";
+            int i = 0;
+            for (Element e : player.getElements()) {
+                elements += e.getColor() + " ";
+                if (++i == 6) {
+                    elements += LocaleWrap.get("line_break");
+                    i = 0;
+                }
             }
-        }
-        this.gr.setColor(Color.BLACK);
-        this.gr.drawString(LocaleWrap.format("player_number", (playerNumber + 1)),
-                (int) (ratio * (offsetX + (width + gapX) * col)) + 5,
-                (int) (ratio * (offsetY + (height + gapY) * row)) + 15);
-        int index = 0;
-        for (String element : elements.split(LocaleWrap.get("line_break"))) {
-            this.gr.drawString(element, (int) (ratio * (30 + offsetX + (width + gapX) * col)),
-                    (int) (-50 + index++ * 25 + ratio * (height / 2 + offsetY + (height + gapY) * row)));
+            this.gr.setColor(Color.BLACK);
+            this.gr.drawString(LocaleWrap.format("player_number", player.id),
+                    (int) (ratio * (offsetX + (width + gapX) * col)) + 5,
+                    (int) (ratio * (offsetY + (height + gapY) * row)) + 15);
+            int index = 0;
+            for (String element : elements.split(LocaleWrap.get("line_break"))) {
+                this.gr.drawString(element, (int) (ratio * (30 + offsetX + (width + gapX) * col)),
+                        (int) (-50 + index++ * 25 + ratio * (height / 2 + offsetY + (height + gapY) * row)));
+            }
+            this.displayHandlers(player.id - 1, player.handlers);
         }
     }
 
