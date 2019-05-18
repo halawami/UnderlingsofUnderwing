@@ -37,7 +37,7 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
         this.testApplyOnPlayers(6);
     }
 
-    @Test
+
     public void testApplyOnPlayers(int numberOfPlayers) {
         this.players = this.mockListOf(Player.class).withLengthOf(numberOfPlayers);
 

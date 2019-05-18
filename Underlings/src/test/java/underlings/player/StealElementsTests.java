@@ -36,6 +36,7 @@ public class StealElementsTests extends MockTest {
         List<Element> elementsToBeStolen = this.mockListOf(Element.class).withLengthOf(1);
         this.playerToStealFrom.elements = new ArrayList<>(elementsToBeStolen);
 
+        this.replayAll();
         this.stealer.stealAllElementsFromPlayer(this.playerToStealFrom);
 
         assertEquals(0, this.playerToStealFrom.elements.size());
@@ -48,6 +49,7 @@ public class StealElementsTests extends MockTest {
         List<Element> elementsToBeStolen = this.mockListOf(Element.class).withLengthOf(2);
         this.playerToStealFrom.elements = new ArrayList<>(elementsToBeStolen);
 
+        this.replayAll();
         this.stealer.stealAllElementsFromPlayer(this.playerToStealFrom);
 
         assertEquals(0, this.playerToStealFrom.elements.size());
@@ -62,6 +64,7 @@ public class StealElementsTests extends MockTest {
         List<Element> stealerElementsBefore = this.mockListOf(Element.class).withLengthOf(2);
         this.stealer.elements = new ArrayList<>(stealerElementsBefore);
 
+        this.replayAll();
         this.stealer.stealAllElementsFromPlayer(this.playerToStealFrom);
 
         assertEquals(0, this.playerToStealFrom.elements.size());
