@@ -72,43 +72,28 @@ public class DrawOneLessElementEffectTests {
 
     @Test
     public void testGetEffectElementGiversOneElementGiver() {
-        List<ElementGiver> elementGivers = TestUtils.mockListOf(ElementGiver.class).withLength(1);
-
-        elementGivers.forEach(EasyMock::replay);
-
-        DrawOneLessElementEffect testedEffect = new DrawOneLessElementEffect();
-        List<ElementGiver> effectElementGivers = testedEffect.getEffectElementGivers(elementGivers);
-
-        Assert.assertEquals(0, effectElementGivers.size());
-
-        elementGivers.forEach(EasyMock::verify);
+        this.testGetEffectElementGivers(1);
     }
 
     @Test
     public void testGetEffectElementGiversTwoElementGiver() {
-        List<ElementGiver> elementGivers = TestUtils.mockListOf(ElementGiver.class).withLength(2);
-
-        elementGivers.forEach(EasyMock::replay);
-
-        DrawOneLessElementEffect testedEffect = new DrawOneLessElementEffect();
-        List<ElementGiver> effectElementGivers = testedEffect.getEffectElementGivers(elementGivers);
-
-        Assert.assertEquals(1, effectElementGivers.size());
-        Assert.assertEquals(elementGivers.get(0), effectElementGivers.get(0));
-
-        elementGivers.forEach(EasyMock::verify);
+        this.testGetEffectElementGivers(2);
     }
 
     @Test
     public void testGetEffectElementGiversThreeElementGiver() {
-        List<ElementGiver> elementGivers = TestUtils.mockListOf(ElementGiver.class).withLength(3);
+        this.testGetEffectElementGivers(3);
+    }
+
+    public void testGetEffectElementGivers(int numberOfGivers) {
+        List<ElementGiver> elementGivers = TestUtils.mockListOf(ElementGiver.class).withLength(numberOfGivers);
 
         elementGivers.forEach(EasyMock::replay);
 
         DrawOneLessElementEffect testedEffect = new DrawOneLessElementEffect();
         List<ElementGiver> effectElementGivers = testedEffect.getEffectElementGivers(elementGivers);
 
-        Assert.assertEquals(2, effectElementGivers.size());
+        Assert.assertEquals(numberOfGivers - 1, effectElementGivers.size());
         for (int i = 0; i < effectElementGivers.size(); i++) {
             Assert.assertEquals(elementGivers.get(i), effectElementGivers.get(i));
         }
