@@ -4,8 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 import org.easymock.EasyMock;
 import org.junit.After;
+import underlings.game.HatchingGround;
+import underlings.gui.Gui;
+import underlings.handler.HandlerMovementLogic;
+import underlings.player.Player;
 
 public abstract class MockTest {
+
+    protected Gui gui;
+    protected HatchingGround hatchingGround;
+    protected HandlerMovementLogic handlerMovementLogic;
+    protected Runnable displayMethod;
+    protected Player player;
+    protected List<Player> players;
 
     protected List<Object> mocks = new ArrayList<>();
 
