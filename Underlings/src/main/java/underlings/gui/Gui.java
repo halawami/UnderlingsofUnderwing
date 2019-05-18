@@ -7,9 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
-
 import javax.swing.JOptionPane;
-
 import underlings.card.Card;
 import underlings.card.EmptyCard;
 import underlings.element.Element;
@@ -51,6 +49,7 @@ public class Gui {
 
     public HandlerDecision getHandlerDecision(List<Handler> handlers, int playerId, HatchingGround hatchingGround) {
         Handler handler = this.promptHandler.promptChoice(LocaleWrap.get("gui_handler"), handlers, playerId);
+
         handlers.remove(handler);
 
         List<HandlerChoice> possibleChoices = handler.getPossibleChoices();

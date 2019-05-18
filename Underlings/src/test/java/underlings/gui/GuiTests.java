@@ -3,23 +3,20 @@ package underlings.gui;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
-
+import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
-
 import javax.swing.JOptionPane;
-
 import org.easymock.EasyMock;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.card.Card;
 import underlings.card.EmptyCard;
 import underlings.element.ElementBag;
@@ -29,7 +26,11 @@ import underlings.game.Deck;
 import underlings.game.Game;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui.PromptType;
+import underlings.handler.Handler;
+import underlings.handler.HandlerChoice;
+import underlings.handler.HandlerDecision;
 import underlings.handler.HandlerFactory;
+import underlings.handler.HandlerState;
 import underlings.player.PlayerFactory;
 import underlings.utilities.LocaleWrap;
 
@@ -68,6 +69,34 @@ public class GuiTests {
     @After
     public void verify() {
         EasyMock.verify(this.promptHandler, this.display);
+    }
+
+    @Test
+    public void testGetHandlerDecisionWithCard() {
+        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
+        Handler handler = EasyMock.mock(Handler.class);
+        List<Handler> handlers = new ArrayList<>();
+        handlers.add(handler);
+        List<HandlerChoice> handlerChoices = HandlerChoice.getMovements(HandlerState.READY_ROOM);
+
+        EasyMock.expect(this.promptHandler.promptChoice(LocaleWrap.get("gui_handler"), handlers, 0)).andReturn(handler);
+        EasyMock.expect(handler.getPossibleChoices()).andReturn(handlerChoices);
+
+        EasyMock.expect(hatchingGround.getUnclaimedEggs()).andReturn(Arrays.asList(new Card()));
+        EasyMock.expect(this.promptHandler
+                .promptChoice(MessageFormat.format(LocaleWrap.get("gui_handler_choice"), handler), handlerChoices, 0))
+                .andReturn(HandlerChoice.CARD);
+
+        EasyMock.replay(hatchingGround, handler);
+        this.replay();
+
+        HandlerDecision handlerDecision = this.gui.getHandlerDecision(handlers, 0, hatchingGround);
+
+        assertEquals(handler, handlerDecision.handler);
+        assertEquals(HandlerChoice.CARD, handlerDecision.choice);
+        assertTrue(handlers.isEmpty());
+
+        EasyMock.verify(hatchingGround, handler);
     }
 
     @Test
