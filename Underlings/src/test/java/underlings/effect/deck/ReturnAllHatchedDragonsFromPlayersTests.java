@@ -21,12 +21,12 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
 
     @Before
     public void init() {
-        this.player = this.getMock(Player.class);
-        this.player2 = this.getMock(Player.class);
+        this.player = this.mock(Player.class);
+        this.player2 = this.mock(Player.class);
         this.card = new Card();
         this.card2 = new Card();
         this.card3 = new Card();
-        this.deck = this.getMock(Deck.class);
+        this.deck = this.mock(Deck.class);
     }
 
     @Test

@@ -9,7 +9,7 @@ public abstract class MockTest {
 
     protected List<Object> mocks = new ArrayList<>();
 
-    public <T> T getMock(Class<T> mockClass) {
+    public <T> T mock(Class<T> mockClass) {
         T mock = EasyMock.mock(mockClass);
         this.mocks.add(mock);
         return mock;
