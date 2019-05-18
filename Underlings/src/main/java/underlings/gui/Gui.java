@@ -219,4 +219,8 @@ public class Gui {
         this.promptHandler.displayMessage(message, playerId, messageType.jOptionMessageType);
     }
 
+    public List<Card> reorderCards(List<Card> cards) {
+        return null;
+    }
+
 }
