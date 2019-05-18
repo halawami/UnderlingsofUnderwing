@@ -1,5 +1,7 @@
 package underlings.effect.hatchingground;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -18,6 +20,7 @@ import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.utilities.EggHatchingLogic;
+import underlings.utilities.LocaleWrap;
 
 public class DestroyElementsOnAllAdjacentEggsEffectTests {
 
@@ -27,7 +30,7 @@ public class DestroyElementsOnAllAdjacentEggsEffectTests {
         Card adjacentCard = EasyMock.mock(Card.class);
         ElementsEffect testedEffect = EasyMock.partialMockBuilder(ElementsEffect.class)
                 .addMockedMethod("destroyElementsOfColorOnCard").createMock();
-        testedEffect.elementColors = new ElementColor[]{ElementColor.BLUE};
+        testedEffect.elementColors = new ElementColor[] {ElementColor.BLUE};
         EggHatchingLogic eggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
 
         testedEffect.destroyElementsOfColorOnCard(ElementColor.BLUE, adjacentCard, elementSpaceLogic);
@@ -46,7 +49,7 @@ public class DestroyElementsOnAllAdjacentEggsEffectTests {
         Card adjacentCard = EasyMock.mock(Card.class);
         ElementsEffect testedEffect = EasyMock.partialMockBuilder(ElementsEffect.class)
                 .addMockedMethod("destroyElementsOfColorOnCard").createMock();
-        testedEffect.elementColors = new ElementColor[]{ElementColor.BLUE, ElementColor.RED};
+        testedEffect.elementColors = new ElementColor[] {ElementColor.BLUE, ElementColor.RED};
 
         EggHatchingLogic eggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
         testedEffect.destroyElementsOfColorOnCard(ElementColor.BLUE, adjacentCard, elementSpaceLogic);
@@ -166,6 +169,18 @@ public class DestroyElementsOnAllAdjacentEggsEffectTests {
             mockedPlayableSpaces.add(EasyMock.mock(ElementSpace.class));
         }
         return mockedPlayableSpaces;
+    }
+
+    @Test
+    public void testToStringPlace() {
+        AllElementsEffect effect = new AllElementsEffect();
+        effect.elementColors = new ElementColor[] {ElementColor.BLACK};
+        StringBuilder elements = new StringBuilder();
+        for (ElementColor color : effect.elementColors) {
+            elements.append(color);
+            elements.append(" ");
+        }
+        assertEquals(LocaleWrap.format("destroy_all_elements_on_adjacent_eggs_effect", elements), effect.toString());
     }
 
 }

@@ -4,9 +4,11 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import underlings.card.effect.Effect;
 import underlings.card.effect.domestic.NextEggHatchesImmediatelyEffect;
 import underlings.handler.HandlerFactory;
 import underlings.player.Player;
+import underlings.utilities.LocaleWrap;
 
 public class NextEggHatchesImmediatelyEffectTests {
 
@@ -18,6 +20,12 @@ public class NextEggHatchesImmediatelyEffectTests {
         effect.on(player).apply();
 
         assertEquals(0, player.hatchingTime);
+    }
+
+    @Test
+    public void testToString() {
+        Effect effect = new NextEggHatchesImmediatelyEffect();
+        assertEquals(LocaleWrap.get("egg_hatches_early_effect"), effect.toString());
     }
 
 }

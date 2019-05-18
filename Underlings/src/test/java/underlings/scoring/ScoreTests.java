@@ -1,12 +1,14 @@
 package underlings.scoring;
 
 import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.Constructors;
 import underlings.card.Card;
 import underlings.card.Temperature;
@@ -139,7 +141,6 @@ public class ScoreTests {
 
     @Test
     public void testDisplayWinners() {
-        List<Player> players = Arrays.asList(this.players[0], this.players[1]);
         this.scoreUtils = Constructors.ScoreUtils(this.gui, this.players[0], this.players[1]);
         this.players[0].score = 5;
         this.players[1].score = 10;

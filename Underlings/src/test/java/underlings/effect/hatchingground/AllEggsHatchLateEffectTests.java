@@ -1,13 +1,16 @@
 package underlings.effect.hatchingground;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.easymock.EasyMock;
 import org.junit.Test;
 
+import underlings.card.effect.Effect;
 import underlings.card.effect.wild.alleggsinplay.AllEggsHatchLateEffect;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
+import underlings.utilities.LocaleWrap;
 
 public class AllEggsHatchLateEffectTests {
 
@@ -25,4 +28,9 @@ public class AllEggsHatchLateEffectTests {
         assertTrue(hatchingGround.lateHatching);
     }
 
+    @Test
+    public void testToString() {
+        Effect effect = new AllEggsHatchLateEffect();
+        assertEquals(LocaleWrap.get("egg_hatches_late_effect"), effect.toString());
+    }
 }

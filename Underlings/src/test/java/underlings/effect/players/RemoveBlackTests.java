@@ -1,15 +1,19 @@
 package underlings.effect.players;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.Arrays;
 import java.util.List;
 
 import org.easymock.EasyMock;
 import org.junit.Test;
 
+import underlings.card.effect.Effect;
 import underlings.card.effect.wild.RemoveBlackRecipesEffect;
 import underlings.element.ElementColor;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.player.Player;
+import underlings.utilities.LocaleWrap;
 
 public class RemoveBlackTests {
 
@@ -43,5 +47,11 @@ public class RemoveBlackTests {
 
         EasyMock.verify(player1, player2, player3, player4);
         EasyMock.verify(logic1, logic2, logic3, logic4);
+    }
+
+    @Test
+    public void testToString() {
+        Effect effect = new RemoveBlackRecipesEffect();
+        assertEquals(LocaleWrap.get("remove_black_recipes_effect"), effect.toString());
     }
 }

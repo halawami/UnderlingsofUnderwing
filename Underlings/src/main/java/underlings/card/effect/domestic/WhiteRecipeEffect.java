@@ -13,6 +13,7 @@ import underlings.gui.Gui;
 import underlings.handler.HandlerMovementLogic;
 import underlings.player.Player;
 import underlings.utilities.EggHatchingLogic;
+import underlings.utilities.LocaleWrap;
 
 public class WhiteRecipeEffect extends DiverseHatchingGroundEffect {
 
@@ -46,5 +47,8 @@ public class WhiteRecipeEffect extends DiverseHatchingGroundEffect {
         }
     }
 
-    // TODO: toString for this
+    @Override
+    public String toString() {
+        return LocaleWrap.get("combine_primary_secondary_for_white");
+    }
 }

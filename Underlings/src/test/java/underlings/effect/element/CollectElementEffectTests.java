@@ -1,6 +1,8 @@
 package underlings.effect.element;
 
 import static org.junit.Assert.assertEquals;
+import java.text.MessageFormat;
+
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,6 +12,7 @@ import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.player.Player;
+import underlings.utilities.LocaleWrap;
 
 public class CollectElementEffectTests extends MockTest {
 
@@ -19,18 +22,6 @@ public class CollectElementEffectTests extends MockTest {
         this.elementBag = EasyMock.mock(ElementBag.class);
     }
 
-    @Test
-    public void testToString() {
-        this.replayAll();
-        CollectElementEffect elementEffect = new CollectElementEffect();
-
-        elementEffect.elementChoices = new ElementColor[] {ElementColor.BLACK, ElementColor.WHITE};
-
-        assertEquals("Collect one of the following elements randomly: [ Black White ]", elementEffect.toString());
-
-    }
-
-    @Test
     public void testOneColor() {
         Element blueElement = new Element(ElementColor.BLUE);
 
@@ -62,6 +53,18 @@ public class CollectElementEffectTests extends MockTest {
         this.replayAll();
 
         collectElementEffect.apply();
+    }
+
+    @Test
+    public void testToString() {
+        CollectElementEffect effect = new CollectElementEffect();
+        effect.elementChoices = new ElementColor[] {ElementColor.BLACK};
+        StringBuilder elements = new StringBuilder();
+        for (ElementColor color : effect.elementChoices) {
+            elements.append(color);
+            elements.append(" ");
+        }
+        assertEquals(MessageFormat.format(LocaleWrap.get("collect_element_effect"), elements), effect.toString());
     }
 
 }

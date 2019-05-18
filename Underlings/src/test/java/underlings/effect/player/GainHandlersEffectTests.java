@@ -5,9 +5,9 @@ import static org.junit.Assert.assertEquals;
 import org.easymock.EasyMock;
 import org.junit.Test;
 
-import underlings.card.effect.Effect;
 import underlings.card.effect.domestic.GainHandlersEffect;
 import underlings.player.Player;
+import underlings.utilities.LocaleWrap;
 
 public class GainHandlersEffectTests {
 
@@ -43,8 +43,8 @@ public class GainHandlersEffectTests {
 
     @Test
     public void testToString() {
-        Effect gainOneHandler = new GainHandlersEffect();
-        assertEquals("Gain 0 handler", gainOneHandler.toString());
+        GainHandlersEffect effect = new GainHandlersEffect();
+        assertEquals(LocaleWrap.format("gain_handler_effect", effect.numberOfHandlers), effect.toString());
     }
 
 }

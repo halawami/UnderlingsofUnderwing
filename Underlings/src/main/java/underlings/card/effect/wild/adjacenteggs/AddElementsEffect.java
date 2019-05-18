@@ -7,6 +7,7 @@ import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
+import underlings.element.NullElement;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.Deck;
 import underlings.game.HatchingGround;
@@ -20,8 +21,8 @@ public class AddElementsEffect extends AdjacentEggsEffect {
 
     @Override
     public void applyOnAdjacentEgg(Card adjacentEgg, ElementBag elementBag, ElementSpaceLogic elementSpaceLogic,
-            EggHatchingLogic eggHatchingLogic, Deck deck,
-            HandlerMovementLogic handlerMovementLogic, HatchingGround hatchingGround) {
+            EggHatchingLogic eggHatchingLogic, Deck deck, HandlerMovementLogic handlerMovementLogic,
+            HatchingGround hatchingGround) {
         for (ElementColor elementColorToAdd : this.elementColors) {
             this.addElementToCard(elementColorToAdd, adjacentEgg, elementSpaceLogic, elementBag);
         }
@@ -32,13 +33,20 @@ public class AddElementsEffect extends AdjacentEggsEffect {
         List<ElementSpace> playableSpaces = elementSpaceLogic.getPlayableSpaces(card, elementColorToAdd);
         if (!playableSpaces.isEmpty()) {
             Element elementToAdd = elementBag.drawElementFromList(elementColorToAdd);
-            playableSpaces.get(0).addElements(elementToAdd);
+            if (elementToAdd != NullElement.getInstance()) {
+                playableSpaces.get(0).addElements(elementToAdd);
+            }
         }
     }
 
     @Override
     public String toString() {
-        return LocaleWrap.get("add_elements_effect");
+        StringBuilder elements = new StringBuilder();
+        for (ElementColor color : this.elementColors) {
+            elements.append(color);
+            elements.append(" ");
+        }
+        return LocaleWrap.format("place_element_on_all_eggs_effect", elements);
     }
 
 }

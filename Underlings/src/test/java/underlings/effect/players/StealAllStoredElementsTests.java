@@ -1,8 +1,12 @@
 package underlings.effect.players;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.List;
+
 import org.easymock.EasyMock;
 import org.junit.Test;
+
 import underlings.TestUtils;
 import underlings.card.effect.Effect;
 import underlings.card.effect.domestic.StealAllStoredElements;
@@ -30,6 +34,12 @@ public class StealAllStoredElementsTests {
 
         EasyMock.verify(currentPlayer, gui);
         players.forEach(EasyMock::verify);
+    }
+
+    @Test
+    public void testToString() {
+        Effect effect = new StealAllStoredElements();
+        assertEquals(LocaleWrap.get("take_all_elements_effect"), effect.toString());
     }
 
 }

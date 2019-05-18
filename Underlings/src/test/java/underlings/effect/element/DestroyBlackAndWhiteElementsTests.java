@@ -1,5 +1,7 @@
 package underlings.effect.element;
 
+import static org.junit.Assert.assertEquals;
+
 import org.easymock.EasyMock;
 import org.junit.Test;
 
@@ -9,6 +11,7 @@ import underlings.card.effect.wild.alleggsinplay.AllEggsInPlayEffect;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
+import underlings.utilities.LocaleWrap;
 
 public class DestroyBlackAndWhiteElementsTests {
 
@@ -53,4 +56,11 @@ public class DestroyBlackAndWhiteElementsTests {
 
         EasyMock.verify(space1, space2, logic);
     }
+
+    @Test
+    public void testToString() {
+        DestroyAllBlackAndWhiteElementsEffect effect = new DestroyAllBlackAndWhiteElementsEffect();
+        assertEquals(LocaleWrap.get("destroy_white_black_elements"), effect.toString());
+    }
+
 }

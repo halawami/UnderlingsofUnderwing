@@ -5,6 +5,7 @@ import org.junit.Test;
 import underlings.Constructors;
 import underlings.card.effect.Effect;
 import underlings.player.Player;
+import underlings.utilities.LocaleWrap;
 
 public class TwoHandlersOnFieldSpaceEffectTests {
 
@@ -16,5 +17,11 @@ public class TwoHandlersOnFieldSpaceEffectTests {
         effect.on(player).apply();
 
         assertEquals(2, player.maxHandlersOnSpace);
+    }
+
+    @Test
+    public void testToString() {
+        Effect effect = new TwoHandlersOnFieldSpaceEffect();
+        assertEquals(LocaleWrap.get("two_handler_effect"), effect.toString());
     }
 }

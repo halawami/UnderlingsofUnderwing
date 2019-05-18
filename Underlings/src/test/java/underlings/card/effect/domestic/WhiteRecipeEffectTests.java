@@ -1,5 +1,6 @@
 package underlings.card.effect.domestic;
 
+import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 import underlings.MockTest;
@@ -8,6 +9,7 @@ import underlings.element.ElementColor;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.HatchingGround;
 import underlings.player.Player;
+import underlings.utilities.LocaleWrap;
 
 public class WhiteRecipeEffectTests extends MockTest {
 
@@ -54,4 +56,12 @@ public class WhiteRecipeEffectTests extends MockTest {
         Effect effect = new WhiteRecipeEffect();
         effect.on(this.hatchingGround).on(this.player).apply();
     }
+
+    @Test
+    public void testToStringDestroy() {
+        this.replayAll();
+        WhiteRecipeEffect effect = new WhiteRecipeEffect();
+        assertEquals(LocaleWrap.get("combine_primary_secondary_for_white"), effect.toString());
+    }
+
 }

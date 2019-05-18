@@ -1,9 +1,12 @@
 package underlings.effect.hatchingground;
 
+import static org.junit.Assert.assertEquals;
+
 import org.easymock.EasyMock;
 import org.junit.Test;
 
 import underlings.card.Card;
+import underlings.card.effect.Effect;
 import underlings.card.effect.wild.ReturnAllAdjacentCardsToDeckEffect;
 import underlings.game.Deck;
 import underlings.game.HatchingGround;
@@ -13,6 +16,7 @@ import underlings.handler.HandlerMovementLogic;
 import underlings.handler.HandlerState;
 import underlings.handler.WildHandler;
 import underlings.player.FakePlayer;
+import underlings.utilities.LocaleWrap;
 
 public class ReturnAllAdjacentCardsToDeckEffectTests {
 
@@ -51,5 +55,9 @@ public class ReturnAllAdjacentCardsToDeckEffectTests {
         EasyMock.verify(adjacentCard, handlerMovementLogic, deck, hatchingGround);
     }
 
-
+    @Test
+    public void testToString() {
+        Effect effect = new ReturnAllAdjacentCardsToDeckEffect();
+        assertEquals(LocaleWrap.get("return_adjacent_eggs_effect"), effect.toString());
+    }
 }
