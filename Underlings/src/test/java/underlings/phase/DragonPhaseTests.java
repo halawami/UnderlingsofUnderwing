@@ -247,10 +247,12 @@ public class DragonPhaseTests {
         final Gui gui = EasyMock.mock(Gui.class);
         Player player = new Player(6, new HandlerFactory(), 1);
         card.handler = player.getHandlers().get(0);
+        card.name = "tempName";
+        final String message = LocaleWrap.format("incubation_state", card.name);
         hatchingGround.lateHatching = true;
-
         EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList(card));
         eggHatchingLogic.returnElementsToBag(card);
+        gui.notifyAction(player.getId(), message);
 
         EasyMock.replay(hatchingGround, gui, bag, card.domesticEffects[0], handler, eggHatchingLogic);
 
