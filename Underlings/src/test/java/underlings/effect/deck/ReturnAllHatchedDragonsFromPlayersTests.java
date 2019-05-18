@@ -114,6 +114,45 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
     }
 
     @Test
+    public void testRemoveAllButOneCard() {
+        ReturnAllHatchedDragonsFromPlayers effect = new ReturnAllHatchedDragonsFromPlayers();
+        List<Card> mockHatchedCards = this.mockListOf(Card.class).withLengthOf(6);
+        this.player.hatchedCards = new ArrayList<>(mockHatchedCards);
+
+        for (int i = 0; i < this.player.hatchedCards.size() - 1; i++) {
+            this.player.hatchedCards.get(i).temperature = Temperature.NEUTRAL;
+            this.deck.addCard(this.player.hatchedCards.get(i), true);
+        }
+
+        this.replayAll();
+
+        effect.removeCardsOfTemperature(this.deck, Arrays.asList(Temperature.NEUTRAL), this.player);
+
+        assertEquals(1, this.player.hatchedCards.size());
+        for (int i = 0; i < mockHatchedCards.size() - 1; i++) {
+            assertFalse(this.player.hatchedCards.contains(mockHatchedCards.get(i)));
+        }
+    }
+
+    @Test
+    public void testRemoveAllCards() {
+        ReturnAllHatchedDragonsFromPlayers effect = new ReturnAllHatchedDragonsFromPlayers();
+        List<Card> mockHatchedCards = this.mockListOf(Card.class).withLengthOf(6);
+        this.player.hatchedCards = new ArrayList<>(mockHatchedCards);
+
+        for (int i = 0; i < this.player.hatchedCards.size(); i++) {
+            this.player.hatchedCards.get(i).temperature = Temperature.NEUTRAL;
+            this.deck.addCard(this.player.hatchedCards.get(i), true);
+        }
+
+        this.replayAll();
+
+        effect.removeCardsOfTemperature(this.deck, Arrays.asList(Temperature.NEUTRAL), this.player);
+
+        assertEquals(0, this.player.hatchedCards.size());
+    }
+
+    @Test
     public void testToString() {
         this.replayAll();
         ReturnAllHatchedDragonsFromPlayers effect = new ReturnAllHatchedDragonsFromPlayers();
