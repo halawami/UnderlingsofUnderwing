@@ -109,7 +109,7 @@ public class ScoreTests {
     }
 
     @Test
-    public void testTwoNeutralOneEmptyOneCoolOneWarm() {
+    public void testAll() {
         this.scoreUtils = new ScoreUtils(
                 Arrays.asList(this.players[0], this.players[1], this.players[2], this.players[3], this.players[4]),
                 this.gui);
@@ -126,7 +126,7 @@ public class ScoreTests {
 
 
     @Test
-    public void testDisplayScoresTwoPlayers() {
+    public void testDisplayScores() {
         List<Player> players = Arrays.asList(this.players[0], this.players[1]);
         this.scoreUtils = new ScoreUtils(players, this.gui);
         this.players[0].score = 1;

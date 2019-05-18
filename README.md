@@ -32,6 +32,15 @@ The definition of done is created by examining and applying BVA on the rules.
 
 #### Scoring Tests ```underlings.scoring.ScoreTests```
 
-
+- [x] The temperature bonus should not occur with two players
+  - ```underlings.scoring.ScoreTests.testTwoPlayers()```
+- [x] The temperature bonus should occur with three or more players
+  - ```underlings.scoring.ScoreTests.testTwoNeutralOneEmpty()```
+  - ```underlings.scoring.ScoreTests.testTwoNeutralOneEmptyOneCool()```
+  - ```underlings.scoring.ScoreTests.testAll()```
+- [x] Each players scores should be displayed
+  - ```underlings.scoring.ScoreTests.testDisplayScores()```
+- [x] The winners should be displayed
+  - ```underlings.scoring.ScoreTests.testDisplayWinners()```
 
 
