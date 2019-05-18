@@ -5,6 +5,7 @@ import java.util.List;
 import org.easymock.EasyMock;
 import org.junit.After;
 import underlings.card.Card;
+import underlings.card.effect.Effect;
 import underlings.element.ElementBag;
 import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
@@ -39,6 +40,7 @@ public abstract class MockTest {
     protected ElementSpace[] elementSpaces;
     protected EggHatchingLogic eggHatchingLogic;
     protected Handler handler;
+    protected Effect effect1, effect2;
 
     protected List<Object> mocks = new ArrayList<>();
 
