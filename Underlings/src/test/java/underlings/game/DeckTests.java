@@ -1,6 +1,7 @@
 package underlings.game;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 import java.util.Stack;
 
@@ -51,6 +52,16 @@ public class DeckTests {
         Card card = new Card();
         this.deck.addCard(card);
         assertEquals(51, this.deck.getSize());
+    }
+
+    @Test
+    public void testAddEmptyCard() {
+        Card card = EmptyCard.getInstance();
+        this.deck.addCard(card);
+        assertEquals(50, this.deck.getSize());
+        for (int i = 0; i < 50; i++) {
+            assertNotEquals(EmptyCard.getInstance(), deck.draw());
+        }
     }
 
     @Test

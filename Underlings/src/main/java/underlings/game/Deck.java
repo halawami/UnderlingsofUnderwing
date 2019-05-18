@@ -27,7 +27,9 @@ public class Deck {
     }
 
     public void addCard(Card card) {
-        this.cards.add(card);
+        if (card != EmptyCard.getInstance()) {
+            this.cards.add(card);
+        }
         // TODO: shuffle here
         // TODO: ^^ don't shuffle here, but instead make a shuffle function and call it separately, because of 'Lusura'
     }
