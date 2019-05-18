@@ -23,8 +23,11 @@ import underlings.handler.HandlerState;
 import underlings.handler.WildHandler;
 import underlings.player.Player;
 import underlings.utilities.LocaleWrap;
+import underlings.utilities.PlacementUtilities;
 
 public class PlacementPhaseTests extends MockTest {
+
+    private PlacementUtilities placementUtilities;
 
     @Before
     public void init() {
@@ -33,6 +36,7 @@ public class PlacementPhaseTests extends MockTest {
         this.deck = this.mock(Deck.class);
         this.elementSpaceLogic = this.mock(ElementSpaceLogic.class);
         this.gui = this.mock(Gui.class);
+        this.placementUtilities = this.mock(PlacementUtilities.class);
     }
 
     public <T> Object getField(Class<T> fieldClass, PlacementPhase phase, String fieldName)
@@ -192,6 +196,18 @@ public class PlacementPhaseTests extends MockTest {
 
 
         assertTrue(result);
+    }
+
+    @Test
+    public void testTurnOver() {
+        PlacementPhase placementPhase = EasyMock.partialMockBuilder(PlacementPhase.class)
+                .addMockedMethod("checkAndDecrementTurnCount").createMock();
+
+        EasyMock.expect(placementPhase.checkAndDecrementTurnCount(this.player)).andReturn(true);
+
+        this.replayAll();
+
+        placementPhase.turn(this.player);
     }
 
 }
