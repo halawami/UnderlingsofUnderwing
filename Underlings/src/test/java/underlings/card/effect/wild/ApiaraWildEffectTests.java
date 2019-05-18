@@ -3,9 +3,9 @@ package underlings.card.effect.wild;
 import java.util.ArrayList;
 import java.util.List;
 import org.easymock.EasyMock;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.effect.Effect;
 import underlings.game.Deck;
@@ -13,7 +13,7 @@ import underlings.game.HatchingGround;
 import underlings.player.Player;
 import underlings.utilities.EggHatchingLogic;
 
-public class ApiaraWildEffectTests {
+public class ApiaraWildEffectTests extends MockTest {
 
     private Card apiara;
     private HatchingGround hatchingGround;
@@ -25,20 +25,12 @@ public class ApiaraWildEffectTests {
     @Before
     public void init() {
         this.apiara = new Card();
-        this.hatchingGround = EasyMock.mock(HatchingGround.class);
-        this.deck = EasyMock.mock(Deck.class);
         this.effect = new ApiaraWildEffect();
-        this.player = EasyMock.mock(Player.class);
-        this.logic = EasyMock.mock(EggHatchingLogic.class);
-    }
 
-    @After
-    public void verify() {
-        EasyMock.verify(this.hatchingGround, this.deck, this.logic, this.player);
-    }
-
-    private void replay() {
-        EasyMock.replay(this.hatchingGround, this.deck, this.logic, this.player);
+        this.hatchingGround = this.mock(HatchingGround.class);
+        this.deck = this.mock(Deck.class);
+        this.player = this.mock(Player.class);
+        this.logic = this.mock(EggHatchingLogic.class);
     }
 
     @Test
