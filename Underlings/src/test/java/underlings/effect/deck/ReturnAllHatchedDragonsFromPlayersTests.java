@@ -2,6 +2,7 @@ package underlings.effect.deck;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.easymock.EasyMock;
@@ -67,9 +68,20 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
     }
 
     @Test
+    public void testRemoveFromNoHatchedCards() {
+        ReturnAllHatchedDragonsFromPlayers effect = new ReturnAllHatchedDragonsFromPlayers();
+        this.player.hatchedCards = new ArrayList<>();
+
+        this.replayAll();
+
+        effect.removeCardsOfTemperature(this.deck, Arrays.asList(Temperature.NEUTRAL), this.player);
+
+        assertEquals(0, this.player.hatchedCards.size());
+    }
+
+    @Test
     public void testRemoveFromOneHatchedCards() {
         ReturnAllHatchedDragonsFromPlayers effect = new ReturnAllHatchedDragonsFromPlayers();
-        effect.temperatures = new Temperature[]{Temperature.NEUTRAL};
         this.player.hatchedCards = this.mockListOf(Card.class).withLengthOf(1);
         this.player.hatchedCards.get(0).temperature = Temperature.NEUTRAL;
 
@@ -81,7 +93,6 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
 
         assertEquals(0, this.player.hatchedCards.size());
     }
-
 
     @Test
     public void testToString() {
