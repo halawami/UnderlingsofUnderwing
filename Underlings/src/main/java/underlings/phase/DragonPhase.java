@@ -2,7 +2,6 @@ package underlings.phase;
 
 import java.util.LinkedList;
 import java.util.List;
-
 import underlings.card.Card;
 import underlings.element.ElementBag;
 import underlings.field.Field;
@@ -58,6 +57,11 @@ public class DragonPhase extends SequentialPhase {
             }
         }
         this.setPhaseComplete(true);
+    }
+
+    @Override
+    public void teardown() {
+        return;
     }
 
 }
