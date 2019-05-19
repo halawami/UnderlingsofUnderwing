@@ -261,4 +261,32 @@ public class PlacementPhaseTests extends MockTest {
         placementPhase.turn(this.player);
     }
 
+    @Test
+    public void testTurnCardCompleteDomestic() {
+        PlacementPhase placementPhase = EasyMock.partialMockBuilder(PlacementPhase.class)
+                .addMockedMethod("checkAndDecrementTurnCount").createMock();
+        placementPhase.utils = this.placementUtilities;
+        placementPhase.gui = this.gui;
+        placementPhase.hatchingGround = this.hatchingGround;
+        this.addMock(placementPhase);
+
+        EasyMock.expect(placementPhase.checkAndDecrementTurnCount(this.player)).andReturn(true);
+        EasyMock.expect(this.placementUtilities.getPlayableCards(this.player.elementSpaceLogic, this.player.elements))
+                .andReturn(Arrays.asList(new Card()));
+        placementPhase.setPhaseComplete(false);
+
+        Card card = this.mock(Card.class);
+        card.handler = new Handler(HandlerState.CARD);
+        ElementSpace elementSpace = this.mock(ElementSpace.class);
+
+        EasyMock.expect(this.placementUtilities.selectCard(EasyMock.anyObject(), EasyMock.anyObject())).andReturn(card);
+        EasyMock.expect(this.placementUtilities.selectElementSpace(card, this.player)).andReturn(elementSpace);
+        this.placementUtilities.placeElements(elementSpace, this.player);
+        EasyMock.expect(this.hatchingGround.logic.isComplete(card)).andReturn(true);
+
+        this.replayAll();
+
+        placementPhase.turn(this.player);
+    }
+
 }
