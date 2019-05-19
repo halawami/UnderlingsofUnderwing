@@ -24,7 +24,7 @@ public class CollectFiveElementsEffect extends ElementEffect {
         StringBuilder elements = new StringBuilder();
         for (ElementColor color : this.elementColors) {
             elements.append(color);
-            elements.append(LocaleWrap.get("space"));
+            elements.append(" ");
         }
         return LocaleWrap.format("collect_five_element_effect", elements);
     }

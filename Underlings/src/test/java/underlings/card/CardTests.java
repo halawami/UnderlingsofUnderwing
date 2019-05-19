@@ -1,7 +1,6 @@
 package underlings.card;
 
 import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
 
 public class CardTests {
@@ -9,9 +8,9 @@ public class CardTests {
     @Test
     public void testToString() {
         Card card = new Card();
-        card.name = "test card";
+        card.name = "test";
 
-        assertEquals("test card", card.toString());
+        assertEquals("test", card.toString());
     }
 
 }

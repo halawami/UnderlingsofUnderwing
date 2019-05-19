@@ -55,7 +55,7 @@ public class TakeHatchedDragonFromPlayer extends PlayersEffect {
         StringBuilder temperature = new StringBuilder();
         for (Temperature temp : this.temperatures) {
             temperature.append(temp);
-            temperature.append(LocaleWrap.get("space"));
+            temperature.append(" ");
         }
         return LocaleWrap.format("take_hatched_dragon", temperature, this.points);
     }

@@ -33,7 +33,7 @@ public class HatchAllUnclaimedEffect extends AdjacentEggsEffect {
         StringBuilder families = new StringBuilder();
         for (Family family : this.dragonFamilies) {
             families.append(family);
-            families.append(LocaleWrap.get("space"));
+            families.append(" ");
         }
         return LocaleWrap.format("hatch_all_unclaimed_adjacent_eggs_effect", families);
     }

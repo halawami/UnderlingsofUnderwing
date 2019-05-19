@@ -48,7 +48,7 @@ public class AddElementsEffect extends AdjacentEggsEffect {
         StringBuilder elements = new StringBuilder();
         for (ElementColor color : this.elementColors) {
             elements.append(color);
-            elements.append(LocaleWrap.get("space"));
+            elements.append(" ");
         }
         return LocaleWrap.format("place_element_on_all_eggs_effect", elements);
     }

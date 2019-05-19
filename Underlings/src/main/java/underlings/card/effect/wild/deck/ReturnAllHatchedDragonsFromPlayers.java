@@ -37,7 +37,7 @@ public class ReturnAllHatchedDragonsFromPlayers extends DeckEffects {
         StringBuilder temperature = new StringBuilder();
         for (Temperature temp : this.temperatures) {
             temperature.append(temp);
-            temperature.append(LocaleWrap.get("space"));
+            temperature.append(" ");
         }
         return LocaleWrap.format("return_hatched_dragons", temperature);
     }
