@@ -12,7 +12,7 @@ import underlings.gui.DrawChoice;
 import underlings.player.Player;
 import underlings.utilities.LocaleUtilities;
 
-public class DrawElementsOfChoiceEffect extends ElementEffect implements ObserverEffect {
+public class DrawElementsOfChoiceNextPhaseEffect extends ElementEffect implements ObserverEffect {
 
     public ElementGiverFactory elementGiverFactory;
     public ElementBag bag;

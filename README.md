@@ -230,7 +230,7 @@ The definition of done is created by examining and applying BVA on the rules.
 
 - Dragons
   - Lasura
-- [x] This effect let the player look at the top three cards of deck and reorder them as desired
+- [x] The top three cards will be in the order of player
   - Deck has 0 cards
      - ```underlings.card.effect.domestic.deck.ReorderTopThreeCardsEffectTests.testNoCardsLeft()```
   - Deck has 1 card
@@ -246,7 +246,7 @@ The definition of done is created by examining and applying BVA on the rules.
 
 - Dragons
   - SKY WHELP, WATER WHELP, ARBOR WHELP, BLOOD WHELP, BRIMSTONE WHELP, ELECTRIC WHELP, TWILIGHT WHELP, HARVEST WHELP, VOID WHELP, UNDINE WHELP, STORM WHELP, STEAM WHELP, NATURE WHELP, ETHEREAL WHELP, ETHEREAL DRAKE, BLOOD DRAKE, SKY DRAKE, WATER DRAKE, AEON WHELP, NEBULA WHELP, CHROMATIC WHELP, CHROMATIC DRAKE, OPALESCENT DRAKE, BLOOD WYVERN, SKY WYVERN, WATER WYVERN
-- [x] This effect let the player collect one element of a color from a list of colors, from the element bag
+- [x] Player will get an element of color from a list of colors, from the element bag
   - Collect 1 element from a list of [1] color
      - ```underlings.card.effect.domestic.element.CollectElementEffectTests.testOneColor()```
   - Collect 1 element from a list of [2,MAX] colors
@@ -259,7 +259,7 @@ The definition of done is created by examining and applying BVA on the rules.
 
 - Dragons
   - TIAMAT
-- [x] This effect let the player collect one element of each color from a list of 5 colors, from the element bag
+- [x] Player will get 5 elements of each color from a list of 5 colors 
   - Collect 5 elements, 1 element for each color from list [RED, BLUE, GREEN, BLACK, WHITE]
      - ```underlings.card.effect.domestic.element.CollectFiveElementsEffectTests.testEffect()```
 - [x] The player should know that the effect has been run
