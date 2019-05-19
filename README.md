@@ -279,13 +279,13 @@ The definition of done is created by examining and applying BVA on the rules.
 - Dragons
   - Apiara
 - [x] This effect should shuffle the card back into the deck, when redrawn, all unclaimed eggs in the hatching ground must hatch
-	- Run effect once
+	- Run draw once
 		- ```underlings.card.effect.wild.ApiaraWildEffectTests.testEffect()```
-	- Run effect twice no cards
+	- Run draw twice no cards
 		- ```underlings.card.effect.wild.ApiaraWildEffectTests.testEffectTwiceNoCards()```
-	- Run effect twice one card
+	- Run draw twice one card
 		- ```underlings.card.effect.wild.ApiaraWildEffectTests.testEffectTwiceOneCard()```
-	- Run effect twice two cards
+	- Run draw twice two cards
 		- ```underlings.card.effect.wild.ApiaraWildEffectTests.testEffectTwiceTwoCards()```
 - [x] The player should know the effect has been run
   - ```underlings.card.effect.wild.ApiaraWildEffectTests.testToString()```
