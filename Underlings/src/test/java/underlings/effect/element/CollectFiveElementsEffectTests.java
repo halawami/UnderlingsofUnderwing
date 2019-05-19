@@ -25,11 +25,11 @@ public class CollectFiveElementsEffectTests extends MockTest {
 
     @Test
     public void testEffect() {
-        ElementBag elementBag = EasyMock.mock(ElementBag.class);
-        Player player = EasyMock.mock(Player.class);
-        CollectFiveElementsEffect testedEffect = new CollectFiveElementsEffect();
-        ElementColor[] colors = new ElementColor[] {RED, BLUE, GREEN, BLACK, WHITE};
-        testedEffect.elementColors = colors;
+        ElementBag elementBag = this.mock(ElementBag.class);
+        Player player = this.mock(Player.class);
+        CollectFiveElementsEffect effect = new CollectFiveElementsEffect();
+        ElementColor[] colors = new ElementColor[]{RED, BLUE, GREEN, BLACK, WHITE};
+        effect.elementColors = colors;
         List<Element> mockElements = this.mockListOf(Element.class).withLengthOf(5);
 
         for (int i = 0; i < 5; i++) {
@@ -37,19 +37,15 @@ public class CollectFiveElementsEffectTests extends MockTest {
             player.addElement(mockElements.get(i));
         }
 
-        EasyMock.replay(elementBag, player);
-        mockElements.forEach(EasyMock::replay);
+        this.replayAll();
 
-        testedEffect.on(elementBag).on(player).apply();
-
-        EasyMock.verify(elementBag, player);
-        mockElements.forEach(EasyMock::verify);
+        effect.on(elementBag).on(player).apply();
     }
 
     @Test
     public void testToString() {
         CollectFiveElementsEffect effect = new CollectFiveElementsEffect();
-        effect.elementColors = new ElementColor[] {ElementColor.BLACK};
+        effect.elementColors = new ElementColor[]{ElementColor.BLACK};
         StringBuilder elements = new StringBuilder();
         for (ElementColor color : effect.elementColors) {
             elements.append(color);
