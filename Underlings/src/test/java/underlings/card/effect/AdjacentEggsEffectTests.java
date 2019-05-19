@@ -53,4 +53,35 @@ public class AdjacentEggsEffectTests extends MockTest {
                 .on(handlerMovementLogic).apply();
     }
 
+    @Test
+    public void testApplyOnAdjacentEggDoNothing() {
+        Card centerCard = this.mock(Card.class);
+        HatchingGround hatchingGround = this.mock(HatchingGround.class);
+        ElementBag elementBag = this.mock(ElementBag.class);
+        Player player = this.mock(Player.class);
+        player.elementSpaceLogic = this.mock(ElementSpaceUtilities.class);
+        HandlerMovementLogic handlerMovementLogic = this.mock(HandlerMovementLogic.class);
+        EggHatchingUtilities eggHatchingLogic = this.mock(EggHatchingUtilities.class);
+        Deck deck = this.mock(Deck.class);
+        AdjacentEggsEffect testedEffect = EasyMock.partialMockBuilder(AdjacentEggsEffect.class).createMock();
+        this.addMock(testedEffect);
+
+        List<Card> mockedCards = this.mockListOf(Card.class).withLengthOf(2);
+        EasyMock.expect(hatchingGround.getAdjacentCards(centerCard)).andReturn(mockedCards);
+        for (Card mockedCard : mockedCards) {
+            testedEffect.applyOnAdjacentEgg(mockedCard, player.elementSpaceLogic, elementBag);
+            testedEffect.applyOnAdjacentEgg(mockedCard, eggHatchingLogic);
+            testedEffect.applyOnAdjacentEgg(mockedCard, handlerMovementLogic);
+            testedEffect.applyOnAdjacentEgg(mockedCard, deck, handlerMovementLogic, hatchingGround);
+
+
+        }
+
+        this.replayAll();
+
+        testedEffect.on(centerCard).on(hatchingGround).on(elementBag).on(eggHatchingLogic).on(player).on(deck)
+                .on(handlerMovementLogic).apply();
+    }
+
+
 }
