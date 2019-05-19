@@ -2,6 +2,7 @@ package underlings.gui;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import com.google.common.base.Charsets;
@@ -30,6 +31,7 @@ import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementFactory;
 import underlings.element.ElementSpace;
+import underlings.element.ElementSpacePosition;
 import underlings.element.NullElement;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.Deck;
@@ -377,6 +379,25 @@ public class GuiTests {
         assertEquals(cards[1][1], capture.getValue()[1][1]);
 
         EasyMock.verify(hatchingGround);
+    }
+
+    @Test
+    public void testElementGrid() {
+        List<ElementSpace> spaces = new ArrayList<>();
+        spaces.add(new ElementSpace(ElementColor.RED));
+        spaces.add(new ElementSpace(ElementColor.RED));
+        spaces.add(new ElementSpace(ElementColor.RED));
+        spaces.get(0).position = ElementSpacePosition.L3_1;
+        spaces.get(1).position = ElementSpacePosition.R3_2;
+        spaces.get(2).position = ElementSpacePosition.L4_4;
+        ElementSpace[][] grid = this.gui.getElementSpaceGrid(spaces);
+
+        assertEquals(spaces.get(0), grid[0][0]);
+        assertEquals(spaces.get(1), grid[1][1]);
+        assertNull(grid[2][1]);
+        assertEquals(spaces.get(2), grid[3][0]);
+
+        this.replay();
     }
 
 }
