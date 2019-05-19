@@ -1,6 +1,7 @@
 package underlings.card.effect.wild.alleggsinplay;
 
 import java.util.List;
+
 import underlings.card.Card;
 import underlings.card.effect.DiverseHatchingGroundEffect;
 import underlings.element.ElementBag;
@@ -15,15 +16,21 @@ public abstract class AllEggsInPlayEffect extends DiverseHatchingGroundEffect {
 
     @Override
     protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag,
-            Player currentPlayer, EggHatchingUtilities eggHatchingLogic, Deck deck,
+            Player currentPlayer, EggHatchingUtilities eggHatchingUtilities, Deck deck,
             HandlerMovementLogic handlerMovementLogic) {
         List<Card> cardsInPlay = hatchingGround.getAllCards();
         for (Card cardInPlay : cardsInPlay) {
+            this.applyOnCardInPlay(cardInPlay);
             this.applyOnCardInPlay(cardInPlay, currentPlayer.elementSpaceLogic, elementBag, handlerMovementLogic);
         }
     }
 
-    public abstract void applyOnCardInPlay(Card cardInPlay, ElementSpaceUtilities elementSpaceLogic, ElementBag elementBag,
-            HandlerMovementLogic handlerMovementLogic);
+    public void applyOnCardInPlay(Card cardInPlay) {
+    }
+
+    public void applyOnCardInPlay(Card cardInPlay, ElementSpaceUtilities elementSpaceLogic, ElementBag elementBag,
+            HandlerMovementLogic handlerMovementLogic) {
+    }
+
 
 }

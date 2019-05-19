@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.easymock.EasyMock;
 import org.junit.Test;
+
 import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.effect.wild.alleggsinplay.AddElementToAllEggsInPlayEffect;
@@ -17,6 +18,7 @@ import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.gui.Gui;
 import underlings.handler.Handler;
+import underlings.handler.HandlerMovementLogic;
 import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
 import underlings.utilities.EggHatchingUtilities;
@@ -51,12 +53,17 @@ public class AllEggsInPlayEffectTests extends MockTest {
         List<Card> mockedCards = this.mockListOf(Card.class).withLengthOf(numberOfCards);
         EggHatchingUtilities eggHatchingLogic = this.mock(EggHatchingUtilities.class);
         AllEggsInPlayEffect effect = EasyMock.partialMockBuilder(AllEggsInPlayEffect.class)
-                .addMockedMethod("applyOnCardInPlay").createMock();
+                .addMockedMethod("applyOnCardInPlay", Card.class)
+                .addMockedMethod("applyOnCardInPlay", Card.class, ElementSpaceUtilities.class, ElementBag.class,
+                        HandlerMovementLogic.class)
+                .createMock();
         this.addMock(effect);
 
         EasyMock.expect(hatchingGround.getAllCards()).andReturn(mockedCards);
         for (Card mockedCard : mockedCards) {
+            effect.applyOnCardInPlay(mockedCard);
             effect.applyOnCardInPlay(mockedCard, elementSpaceLogic, elementBag, null);
+
         }
 
         this.replayAll();
@@ -123,15 +130,13 @@ public class AllEggsInPlayEffectTests extends MockTest {
         cardInPlay.handler = this.mock(Handler.class);
         List<ElementSpace> mockSpaces = this.mockListOf(ElementSpace.class).withLengthOf(8);
         cardInPlay.elementSpaces = mockSpaces.toArray(new ElementSpace[8]);
-        ElementSpaceUtilities elementSpaceLogic = this.mock(ElementSpaceUtilities.class);
-        ElementBag elementBag = this.mock(ElementBag.class);
 
         mockSpaces.forEach(ElementSpace::destroyAllElements);
 
         this.replayAll();
 
         DestroyAllElementsOnAllEggsInPlay effect = new DestroyAllElementsOnAllEggsInPlay();
-        effect.applyOnCardInPlay(cardInPlay, elementSpaceLogic, elementBag, null);
+        effect.applyOnCardInPlay(cardInPlay);
     }
 
     @Test
@@ -144,7 +149,8 @@ public class AllEggsInPlayEffectTests extends MockTest {
     public void testToStringPlace() {
         AddElementToAllEggsInPlayEffect effect = new AddElementToAllEggsInPlayEffect();
         effect.elementColor = ElementColor.BLACK;
-        assertEquals(LocaleUtilities.format("place_element_on_all_eggs_effect", effect.elementColor), effect.toString());
+        assertEquals(LocaleUtilities.format("place_element_on_all_eggs_effect", effect.elementColor),
+                effect.toString());
     }
 
 }
