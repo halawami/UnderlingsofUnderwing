@@ -91,9 +91,9 @@ The definition of done is created by examining and applying BVA on the rules.
 #### Temperature Tests ```underlings.scoring.TemperatureTests```
 
 - [x] Players with no cards should have a perfect balance
-  - ```underlings.scoring.TemperatureTests.testNoCards()```
+  - ```underlings.scoring.TemperatureTests.testNoCardsPerfectBalance()```
 - [x] Players with equal warm and cool cards should have a perfect balance
-  - ```underlings.scoring.TemperatureTests.testPerfectBalance()```
+  - ```underlings.scoring.TemperatureTests.testCardsPerfectBalance()```
 - [x] Players with net warm cards should have a warm balance
   - ```underlings.scoring.TemperatureTests.testWarmBalance()```
 - [x] Players with net cool cards should have a cool balance
@@ -132,3 +132,4 @@ The definition of done is created by examining and applying BVA on the rules.
   - ```card.effect.domestic.package.ClassName.test()```
 - [x] Should do ...
   - ```card.effect.domestic.package.ClassName.test()```
+
