@@ -20,9 +20,9 @@ import underlings.gui.DrawChoice;
 import underlings.player.Player;
 import underlings.utilities.LocaleUtilities;
 
-public class DrawElementsOfChoiceEffectTests extends MockTest {
+public class DrawElementsOfChoiceNextPhaseEffectTests extends MockTest {
 
-    private DrawElementsOfChoiceEffect effect;
+    private DrawElementsOfChoiceNextPhaseEffect effect;
 
     @Before
     public void init() {
@@ -32,7 +32,7 @@ public class DrawElementsOfChoiceEffectTests extends MockTest {
 
     @Test
     public void testApply() {
-        this.effect = new DrawElementsOfChoiceEffect();
+        this.effect = new DrawElementsOfChoiceNextPhaseEffect();
         this.player.addObserverEffect(this.effect);
 
         this.replayAll();
@@ -44,7 +44,7 @@ public class DrawElementsOfChoiceEffectTests extends MockTest {
 
     @Test
     public void testOnFirstPhaseOne() {
-        this.effect = EasyMock.partialMockBuilder(DrawElementsOfChoiceEffect.class)
+        this.effect = EasyMock.partialMockBuilder(DrawElementsOfChoiceNextPhaseEffect.class)
                 .addMockedMethod("getEffectElementGivers").createMock();
         this.addMock(this.effect);
         this.effect.bag = this.elementBag;
@@ -66,7 +66,7 @@ public class DrawElementsOfChoiceEffectTests extends MockTest {
 
     @Test
     public void testOnSecondPhaseOne() {
-        this.effect = EasyMock.partialMockBuilder(DrawElementsOfChoiceEffect.class)
+        this.effect = EasyMock.partialMockBuilder(DrawElementsOfChoiceNextPhaseEffect.class)
                 .addMockedMethod("getEffectElementGivers").createMock();
         this.effect.beenUsed = true;
 
@@ -92,7 +92,7 @@ public class DrawElementsOfChoiceEffectTests extends MockTest {
     }
 
     private void testGetEffectElementGivers(int numberOfElementGivers) {
-        this.effect = new DrawElementsOfChoiceEffect();
+        this.effect = new DrawElementsOfChoiceNextPhaseEffect();
         ElementGiverFactory elementGiverFactory = this.mock(ElementGiverFactory.class);
         this.effect.elementGiverFactory = elementGiverFactory;
         this.effect.bag = this.elementBag;
@@ -117,7 +117,7 @@ public class DrawElementsOfChoiceEffectTests extends MockTest {
     @Test
     public void testToString() {
         this.replayAll();
-        Effect effect = new DrawElementsOfChoiceEffect();
+        Effect effect = new DrawElementsOfChoiceNextPhaseEffect();
         assertEquals(LocaleUtilities.get("draw_elements_of_choice"), effect.toString());
     }
 
