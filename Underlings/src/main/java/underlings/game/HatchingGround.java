@@ -61,21 +61,22 @@ public class HatchingGround implements Iterable<Card> {
         Point cardCoordinates = this.getCardCoordinates(centerCard);
         List<Card> cardsToReturn = new LinkedList<>();
 
-        for (int diffY = -1; diffY <= 1; diffY++) {
-            for (int diffX = -1; diffX <= 1; diffX++) {
-                int distanceFromCard = Math.abs(diffX) + Math.abs(diffY);
-                int adjacentCardY = cardCoordinates.y + diffY;
-                int adjacentCardX = cardCoordinates.x + diffX;
-                if (distanceFromCard == 1 && this.coordinatesInBounds(adjacentCardY, adjacentCardX)) {
-                    cardsToReturn.add(this.cards[adjacentCardY][adjacentCardX]);
-                }
-            }
+        int y = cardCoordinates.y;
+        int x = cardCoordinates.x;
+        if (y > 0) {
+            cardsToReturn.add(this.cards[y - 1][x]);
         }
-        return cardsToReturn;
-    }
+        if (x > 0) {
+            cardsToReturn.add(this.cards[y][x - 1]);
+        }
+        if (y < this.height - 1) {
+            cardsToReturn.add(this.cards[y + 1][x]);
+        }
+        if (x < this.width - 1) {
+            cardsToReturn.add(this.cards[y][x + 1]);
+        }
 
-    private boolean coordinatesInBounds(int y, int x) {
-        return (y >= 0 && x >= 0 && y < this.height && x < this.width);
+        return cardsToReturn;
     }
 
     public Point getCardCoordinates(Card centerCard) {
