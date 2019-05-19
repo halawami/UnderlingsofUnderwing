@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import underlings.card.Card;
+import underlings.card.EmptyCard;
 import underlings.card.effect.PlayersEffect;
 import underlings.gui.Gui;
 import underlings.player.FakePlayer;
@@ -49,8 +50,11 @@ public class PlayersTradeDragon extends PlayersEffect {
     protected void tradeCards(Gui gui, Player playerWithMinCards, Player secondPlayer) {
         Card cardToTrade =
                 gui.promptChoice(LocaleWrap.get("prompt_card_to_trade"), secondPlayer.hatchedCards, secondPlayer.id);
-        Card secondCardToTrade = gui.promptChoice(LocaleWrap.get("prompt_card_to_trade"),
-                playerWithMinCards.hatchedCards, playerWithMinCards.id);
+        Card secondCardToTrade = EmptyCard.getInstance();
+        if (!playerWithMinCards.hatchedCards.isEmpty()) {
+            secondCardToTrade = gui.promptChoice(LocaleWrap.get("prompt_card_to_trade"),
+                    playerWithMinCards.hatchedCards, playerWithMinCards.id);
+        }
         secondPlayer.hatchedCards.remove(cardToTrade);
         playerWithMinCards.hatchedCards.add(cardToTrade);
         secondPlayer.hatchedCards.add(secondCardToTrade);

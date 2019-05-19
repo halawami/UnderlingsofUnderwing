@@ -12,7 +12,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import underlings.card.Card;
-import underlings.card.EmptyCard;
 import underlings.card.effect.Effect;
 import underlings.gui.Gui;
 import underlings.player.Player;
@@ -44,25 +43,6 @@ public class PlayersTradeDragonTests {
         this.player.hatchedCards = new ArrayList<>();
         this.player.hatchedCards.add(card);
         this.player2.hatchedCards = new ArrayList<>();
-    }
-
-    @Test
-    public void testApplyTwoPlayersOneCard() {
-        effect.on(Arrays.asList(player, player2)).on(gui);
-        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_card_to_trade"), player.hatchedCards, 0))
-                .andReturn(card);
-        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_card_to_trade"), player2.hatchedCards, 0))
-                .andReturn(EmptyCard.getInstance());
-
-        EasyMock.replay(player, player2, mockedEffect, gui);
-
-        effect.apply();
-        assertTrue(player2.hatchedCards.contains(card));
-        assertFalse(player.hatchedCards.contains(card));
-        assertTrue(player.hatchedCards.contains(EmptyCard.getInstance()));
-        assertEquals(1, player.hatchedCards.size());
-
-        EasyMock.verify(player, player2, mockedEffect, gui);
     }
 
     @Test
