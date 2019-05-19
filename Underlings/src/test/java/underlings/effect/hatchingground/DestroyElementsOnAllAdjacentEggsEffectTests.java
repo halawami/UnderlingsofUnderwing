@@ -24,33 +24,26 @@ public class DestroyElementsOnAllAdjacentEggsEffectTests extends MockTest {
 
     @Test
     public void testApplyOneElementColor() {
-        ElementSpaceLogic elementSpaceLogic = this.mock(ElementSpaceLogic.class);
-        Card adjacentCard = this.mock(Card.class);
-        ElementsEffect effect = EasyMock.partialMockBuilder(ElementsEffect.class)
-                .addMockedMethod("destroyElementsOfColorOnCard").createMock();
-        this.addMock(effect);
-        effect.elementColors = new ElementColor[]{ElementColor.BLUE};
-        EggHatchingLogic eggHatchingLogic = this.mock(EggHatchingLogic.class);
-
-        effect.destroyElementsOfColorOnCard(ElementColor.BLUE, adjacentCard, elementSpaceLogic);
-
-        this.replayAll();
-
-        effect.applyOnAdjacentEgg(adjacentCard, null, elementSpaceLogic, eggHatchingLogic, null, null, null);
+        this.testApplyElementColors(ElementColor.BLUE);
     }
 
     @Test
     public void testApplyTwoElementColor() {
+        this.testApplyElementColors(ElementColor.BLUE, ElementColor.RED);
+    }
+
+    private void testApplyElementColors(ElementColor... elementColors) {
         ElementSpaceLogic elementSpaceLogic = this.mock(ElementSpaceLogic.class);
         Card adjacentCard = this.mock(Card.class);
         ElementsEffect effect = EasyMock.partialMockBuilder(ElementsEffect.class)
                 .addMockedMethod("destroyElementsOfColorOnCard").createMock();
         this.addMock(effect);
-        effect.elementColors = new ElementColor[]{ElementColor.BLUE, ElementColor.RED};
+        effect.elementColors = elementColors;
         EggHatchingLogic eggHatchingLogic = this.mock(EggHatchingLogic.class);
 
-        effect.destroyElementsOfColorOnCard(ElementColor.BLUE, adjacentCard, elementSpaceLogic);
-        effect.destroyElementsOfColorOnCard(ElementColor.RED, adjacentCard, elementSpaceLogic);
+        for (ElementColor elementColor : elementColors) {
+            effect.destroyElementsOfColorOnCard(elementColor, adjacentCard, elementSpaceLogic);
+        }
 
         this.replayAll();
 
