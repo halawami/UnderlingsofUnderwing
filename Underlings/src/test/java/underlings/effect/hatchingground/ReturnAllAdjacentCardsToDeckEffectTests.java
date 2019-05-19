@@ -2,7 +2,6 @@ package underlings.effect.hatchingground;
 
 import static org.junit.Assert.assertEquals;
 
-import org.easymock.EasyMock;
 import org.junit.Test;
 
 import underlings.MockTest;
@@ -23,21 +22,7 @@ public class ReturnAllAdjacentCardsToDeckEffectTests extends MockTest {
 
     @Test
     public void testApplyNoHandler() {
-        Card adjacentCard = this.mock(Card.class);
-        HandlerMovementLogic handlerMovementLogic = this.mock(HandlerMovementLogic.class);
-        HatchingGround hatchingGround = this.mock(HatchingGround.class);
-
-        EasyMock.expect(adjacentCard.isClaimed()).andReturn(false);
-        handlerMovementLogic.removeHandlerFromCard(adjacentCard);
-        hatchingGround.replaceCard(adjacentCard);
-
-        Deck deck = this.mock(Deck.class);
-        deck.addCard(adjacentCard, true);
-
-        this.replayAll();
-
-        ReturnAllAdjacentCardsToDeckEffect effect = new ReturnAllAdjacentCardsToDeckEffect();
-        effect.applyOnAdjacentEgg(adjacentCard, null, null, null, deck, handlerMovementLogic, hatchingGround);
+        this.testApplyWithHandler(null);
     }
 
     @Test
@@ -56,7 +41,6 @@ public class ReturnAllAdjacentCardsToDeckEffectTests extends MockTest {
         HandlerMovementLogic handlerMovementLogic = this.mock(HandlerMovementLogic.class);
         HatchingGround hatchingGround = this.mock(HatchingGround.class);
 
-        EasyMock.expect(adjacentCard.isClaimed()).andReturn(true);
         handlerMovementLogic.move(adjacentCard.handler, HandlerChoice.BREAK_ROOM, FakePlayer.getInstance());
         handlerMovementLogic.removeHandlerFromCard(adjacentCard);
         hatchingGround.replaceCard(adjacentCard);

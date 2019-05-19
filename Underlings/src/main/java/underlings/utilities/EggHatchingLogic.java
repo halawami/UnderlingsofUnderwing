@@ -11,6 +11,7 @@ import underlings.element.ElementSpace;
 import underlings.game.Deck;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
+import underlings.handler.HandlerMovementLogic;
 import underlings.handler.HandlerState;
 import underlings.handler.WildHandler;
 import underlings.player.Player;
@@ -23,15 +24,17 @@ public class EggHatchingLogic {
     private Runnable displayMethod;
     private List<Player> players;
     private Deck deck;
+    private HandlerMovementLogic handlerMovementLogic;
 
     public EggHatchingLogic(Gui gui, ElementBag elementBag, HatchingGround hatchingGround, Runnable displayMethod,
-            List<Player> players, Deck deck) {
+            List<Player> players, Deck deck, HandlerMovementLogic handlerMovementLogic) {
         this.gui = gui;
         this.elementBag = elementBag;
         this.hatchingGround = hatchingGround;
         this.displayMethod = displayMethod;
         this.players = players;
         this.deck = deck;
+        this.handlerMovementLogic = handlerMovementLogic;
     }
 
     public void hatchEgg(Card card, Player player) {
@@ -47,7 +50,7 @@ public class EggHatchingLogic {
         }
         for (int i = 0; i < effects.length; i++) {
             effects[i].on(card).on(this.elementBag).on(this.hatchingGround).on(player).on(this.gui).on(this)
-                    .on(this.deck).on(this.players).apply();
+                    .on(this.deck).on(this.players).on(handlerMovementLogic).apply();
             this.gui.notifyAction(player.getId(), LocaleWrap.format("effect_applied", effects[i].toString()));
             this.displayMethod.run();
         }
