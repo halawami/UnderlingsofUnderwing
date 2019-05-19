@@ -26,6 +26,9 @@ public class RemoveAllHandlersFromAllEggsInPlayEffectTests extends MockTest {
         RemoveAllHandlersFromAllEggsInPlay testedEffect = new RemoveAllHandlersFromAllEggsInPlay();
 
         handlerMovementLogic.move(null, HandlerChoice.BREAK_ROOM, FakePlayer.getInstance());
+        handlerMovementLogic.removeHandlerFromCard(cardWithNoHandler);
+
+        this.replayAll();
 
         testedEffect.applyOnCardInPlay(cardWithNoHandler, null, null, handlerMovementLogic);
     }

@@ -4,9 +4,9 @@ import underlings.card.Card;
 import underlings.card.effect.wild.alleggsinplay.AllEggsInPlayEffect;
 import underlings.element.ElementBag;
 import underlings.element.utilities.ElementSpaceLogic;
+import underlings.handler.HandlerChoice;
 import underlings.handler.HandlerMovementLogic;
-import underlings.handler.HandlerState;
-import underlings.handler.WildHandler;
+import underlings.player.FakePlayer;
 import underlings.utilities.LocaleWrap;
 
 public class RemoveAllHandlersFromAllEggsInPlay extends AllEggsInPlayEffect {
@@ -14,10 +14,8 @@ public class RemoveAllHandlersFromAllEggsInPlay extends AllEggsInPlayEffect {
     @Override
     public void applyOnCardInPlay(Card cardInPlay, ElementSpaceLogic elementSpaceLogic, ElementBag elementBag,
             HandlerMovementLogic handlerMovementLogic) {
-        if (cardInPlay.handler != null && cardInPlay.handler != WildHandler.getInstance()) {
-            cardInPlay.handler.moveToState(HandlerState.BREAK_ROOM);
-            cardInPlay.handler = null;
-        }
+        handlerMovementLogic.move(cardInPlay.handler, HandlerChoice.BREAK_ROOM, FakePlayer.getInstance());
+        handlerMovementLogic.removeHandlerFromCard(cardInPlay);
     }
 
     @Override
