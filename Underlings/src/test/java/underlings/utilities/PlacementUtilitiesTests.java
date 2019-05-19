@@ -74,7 +74,7 @@ public class PlacementUtilitiesTests extends MockTest {
 
         Gui gui = EasyMock.mock(Gui.class);
         addMock(gui);
-        EasyMock.expect(gui.getElementSpace("Pick an element space to place an element on", spaces, 10))
+        EasyMock.expect(gui.getElementSpace(LocaleWrap.get("prompt_element_space"), spaces, 10))
                 .andReturn(card.elementSpaces[0]);
 
         this.replayAll();

@@ -2,7 +2,6 @@ package underlings.card.effect.wild.deck;
 
 import java.util.Arrays;
 import java.util.List;
-
 import underlings.card.Card;
 import underlings.card.Temperature;
 import underlings.card.effect.DeckEffects;

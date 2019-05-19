@@ -3,10 +3,8 @@ package underlings.gui;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
-
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,15 +12,12 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
-
 import javax.swing.JOptionPane;
-
 import org.easymock.Capture;
 import org.easymock.EasyMock;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.card.Card;
 import underlings.card.EmptyCard;
 import underlings.element.Element;
@@ -64,7 +59,8 @@ public class GuiTests {
         EasyMock.expect(this.deck.draw()).andStubReturn(new Card());
         EasyMock.replay(this.deck);
 
-        List<String> recipes = Resources.readLines(Resources.getResource("DefaultRecipeList.txt"), Charsets.UTF_8);
+        List<String> recipes =
+                Resources.readLines(Resources.getResource(LocaleWrap.get("default_recipe_list")), Charsets.UTF_8);
 
         ElementSpaceLogic logic = EasyMock.niceMock(ElementSpaceLogic.class);
         EasyMock.replay(logic);
@@ -146,7 +142,7 @@ public class GuiTests {
 
     @Test
     public void testGetPlayerCountTwoPlayers() {
-        EasyMock.expect(this.promptHandler.promptInt("Enter Player Count", 2, 6)).andReturn(2);
+        EasyMock.expect(this.promptHandler.promptInt(LocaleWrap.get("prompt_player_count"), 2, 6)).andReturn(2);
 
         EasyMock.replay(this.promptHandler, this.display);
         this.game.promptPlayerCount();
@@ -157,7 +153,7 @@ public class GuiTests {
 
     @Test
     public void testGetPlayerCountSixPlayers() {
-        EasyMock.expect(this.promptHandler.promptInt("Enter Player Count", 2, 6)).andReturn(6);
+        EasyMock.expect(this.promptHandler.promptInt(LocaleWrap.get("prompt_player_count"), 2, 6)).andReturn(6);
 
         EasyMock.replay(this.promptHandler, this.display);
         this.game.promptPlayerCount();
@@ -167,42 +163,42 @@ public class GuiTests {
 
     @Test
     public void testNotify() {
-        this.promptHandler.displayMessage("test", 0, JOptionPane.PLAIN_MESSAGE);
+        this.promptHandler.displayMessage("test_message", 0, JOptionPane.PLAIN_MESSAGE);
         this.replay();
 
-        this.gui.notifyAction(0, "test");
+        this.gui.notifyAction(0, "test_message");
     }
 
     @Test
     public void testAlertNoPlayerId() {
-        this.promptHandler.displayMessage("test", JOptionPane.PLAIN_MESSAGE);
+        this.promptHandler.displayMessage("test_message", JOptionPane.PLAIN_MESSAGE);
         this.replay();
 
-        this.gui.alert("test", PromptType.REGULAR);
+        this.gui.alert("test_message", PromptType.REGULAR);
     }
 
     @Test
     public void testAlertRegular() {
-        this.promptHandler.displayMessage("test", 1, JOptionPane.PLAIN_MESSAGE);
+        this.promptHandler.displayMessage("test_message", 1, JOptionPane.PLAIN_MESSAGE);
         this.replay();
 
-        this.gui.alert("test", 1, PromptType.REGULAR);
+        this.gui.alert("test_message", 1, PromptType.REGULAR);
     }
 
     @Test
     public void testAlertWarning() {
-        this.promptHandler.displayMessage("test", 1, JOptionPane.WARNING_MESSAGE);
+        this.promptHandler.displayMessage("test_message", 1, JOptionPane.WARNING_MESSAGE);
         this.replay();
 
-        this.gui.alert("test", 1, PromptType.WARNING);
+        this.gui.alert("test_message", 1, PromptType.WARNING);
     }
 
     @Test
     public void testAlertError() {
-        this.promptHandler.displayMessage("test", 1, JOptionPane.ERROR_MESSAGE);
+        this.promptHandler.displayMessage("test_message", 1, JOptionPane.ERROR_MESSAGE);
         this.replay();
 
-        this.gui.alert("test", 1, PromptType.ERROR);
+        this.gui.alert("test_message", 1, PromptType.ERROR);
     }
 
     @Test
@@ -212,7 +208,7 @@ public class GuiTests {
         this.replay();
 
         List<Integer> ints = new ArrayList<>();
-        Integer result = this.gui.promptChoice("test", ints, 0);
+        Integer result = this.gui.promptChoice("test_message", ints, 0);
 
         assertEquals(1, result.intValue());
     }
@@ -222,14 +218,14 @@ public class GuiTests {
     public void testChoiceYesToString() {
         this.replay();
         YesNoChoice choice = YesNoChoice.YES;
-        assertEquals("Yes", choice.toString());
+        assertEquals(LocaleWrap.get("YES"), choice.toString());
     }
 
     @Test
     public void testChoiceNoToString() {
         this.replay();
         YesNoChoice choice = YesNoChoice.NO;
-        assertEquals("No", choice.toString());
+        assertEquals(LocaleWrap.get("NO"), choice.toString());
     }
 
     @Test
@@ -348,10 +344,10 @@ public class GuiTests {
         hatchingGround.cards[1][0] = new Card();
         hatchingGround.cards[1][1] = new Card();
 
-        hatchingGround.cards[0][0].name = "1";
-        hatchingGround.cards[0][1].name = "2";
-        hatchingGround.cards[1][0].name = "3";
-        hatchingGround.cards[1][1].name = "4";
+        hatchingGround.cards[0][0].name = "test_name_1";
+        hatchingGround.cards[0][1].name = "test_name_2";
+        hatchingGround.cards[1][0].name = "test_name_3";
+        hatchingGround.cards[1][1].name = "test_name_4";
 
         List<Card> validCards = new ArrayList<>();
         validCards.add(hatchingGround.cards[0][1]);
