@@ -3,10 +3,8 @@ package underlings.gui;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
-
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,15 +12,12 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
-
 import javax.swing.JOptionPane;
-
 import org.easymock.Capture;
 import org.easymock.EasyMock;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.card.Card;
 import underlings.card.EmptyCard;
 import underlings.element.Element;
@@ -168,42 +163,42 @@ public class GuiTests {
 
     @Test
     public void testNotify() {
-        this.promptHandler.displayMessage(LocaleWrap.get("test_message"), 0, JOptionPane.PLAIN_MESSAGE);
+        this.promptHandler.displayMessage("test_message", 0, JOptionPane.PLAIN_MESSAGE);
         this.replay();
 
-        this.gui.notifyAction(0, LocaleWrap.get("test_message"));
+        this.gui.notifyAction(0, "test_message");
     }
 
     @Test
     public void testAlertNoPlayerId() {
-        this.promptHandler.displayMessage(LocaleWrap.get("test_message"), JOptionPane.PLAIN_MESSAGE);
+        this.promptHandler.displayMessage("test_message", JOptionPane.PLAIN_MESSAGE);
         this.replay();
 
-        this.gui.alert(LocaleWrap.get("test_message"), PromptType.REGULAR);
+        this.gui.alert("test_message", PromptType.REGULAR);
     }
 
     @Test
     public void testAlertRegular() {
-        this.promptHandler.displayMessage(LocaleWrap.get("test_message"), 1, JOptionPane.PLAIN_MESSAGE);
+        this.promptHandler.displayMessage("test_message", 1, JOptionPane.PLAIN_MESSAGE);
         this.replay();
 
-        this.gui.alert(LocaleWrap.get("test_message"), 1, PromptType.REGULAR);
+        this.gui.alert("test_message", 1, PromptType.REGULAR);
     }
 
     @Test
     public void testAlertWarning() {
-        this.promptHandler.displayMessage(LocaleWrap.get("test_message"), 1, JOptionPane.WARNING_MESSAGE);
+        this.promptHandler.displayMessage("test_message", 1, JOptionPane.WARNING_MESSAGE);
         this.replay();
 
-        this.gui.alert(LocaleWrap.get("test_message"), 1, PromptType.WARNING);
+        this.gui.alert("test_message", 1, PromptType.WARNING);
     }
 
     @Test
     public void testAlertError() {
-        this.promptHandler.displayMessage(LocaleWrap.get("test_message"), 1, JOptionPane.ERROR_MESSAGE);
+        this.promptHandler.displayMessage("test_message", 1, JOptionPane.ERROR_MESSAGE);
         this.replay();
 
-        this.gui.alert(LocaleWrap.get("test_message"), 1, PromptType.ERROR);
+        this.gui.alert("test_message", 1, PromptType.ERROR);
     }
 
     @Test
@@ -213,7 +208,7 @@ public class GuiTests {
         this.replay();
 
         List<Integer> ints = new ArrayList<>();
-        Integer result = this.gui.promptChoice(LocaleWrap.get("test_message"), ints, 0);
+        Integer result = this.gui.promptChoice("test_message", ints, 0);
 
         assertEquals(1, result.intValue());
     }
@@ -349,10 +344,10 @@ public class GuiTests {
         hatchingGround.cards[1][0] = new Card();
         hatchingGround.cards[1][1] = new Card();
 
-        hatchingGround.cards[0][0].name = LocaleWrap.get("test_name_1");
-        hatchingGround.cards[0][1].name = LocaleWrap.get("test_name_2");
-        hatchingGround.cards[1][0].name = LocaleWrap.get("test_name_3");
-        hatchingGround.cards[1][1].name = LocaleWrap.get("test_name_4");
+        hatchingGround.cards[0][0].name = "test_name_1";
+        hatchingGround.cards[0][1].name = "test_name_2";
+        hatchingGround.cards[1][0].name = "test_name_3";
+        hatchingGround.cards[1][1].name = "test_name_4";
 
         List<Card> validCards = new ArrayList<>();
         validCards.add(hatchingGround.cards[0][1]);
