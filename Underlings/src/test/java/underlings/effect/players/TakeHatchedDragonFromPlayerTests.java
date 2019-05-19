@@ -52,18 +52,18 @@ public class TakeHatchedDragonFromPlayerTests {
 
     @Test
     public void testApplyMultipleDragons() {
-        Player player = EasyMock.mock(Player.class);
-        Player player2 = EasyMock.mock(Player.class);
-        Player player3 = EasyMock.mock(Player.class);
         Card card = new Card();
         card.temperature = Temperature.WARM;
         card.points = 9;
         Card card2 = new Card();
         card2.temperature = Temperature.NEUTRAL;
         card2.points = 9;
+        Player player = EasyMock.mock(Player.class);
         player.hatchedCards = new LinkedList<>();
         player.hatchedCards.add(card);
+        Player player2 = EasyMock.mock(Player.class);
         player2.hatchedCards = new LinkedList<>();
+        Player player3 = EasyMock.mock(Player.class);
         player3.hatchedCards = new LinkedList<>();
         player3.hatchedCards.add(card2);
         Gui gui = EasyMock.mock(Gui.class);
@@ -89,18 +89,18 @@ public class TakeHatchedDragonFromPlayerTests {
 
     @Test
     public void testApplyMultipleDragonsHigherPoints() {
-        Player player = EasyMock.mock(Player.class);
-        Player player2 = EasyMock.mock(Player.class);
-        Player player3 = EasyMock.mock(Player.class);
         Card card = new Card();
         card.temperature = Temperature.NEUTRAL;
         card.points = 10;
         Card card2 = new Card();
         card2.temperature = Temperature.NEUTRAL;
         card2.points = 8;
+        Player player = EasyMock.mock(Player.class);
         player.hatchedCards = new LinkedList<>();
         player.hatchedCards.add(card);
+        Player player2 = EasyMock.mock(Player.class);
         player2.hatchedCards = new LinkedList<>();
+        Player player3 = EasyMock.mock(Player.class);
         player3.hatchedCards = new LinkedList<>();
         player3.hatchedCards.add(card2);
         Gui gui = EasyMock.mock(Gui.class);

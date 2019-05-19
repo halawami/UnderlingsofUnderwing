@@ -123,10 +123,9 @@ public class GsonLearningTests {
     }
 
     private Gson getGsonWithRegisteredEffects() {
-        RuntimeTypeAdapterFactory<Effect> effectsTypeAdapter = RuntimeTypeAdapterFactory.of(Effect.class, "effect")
-                .registerSubtype(UseBlackOrWhiteInPlaceEffect.class)
-                .registerSubtype(CollectElementEffect.class)
-                .registerSubtype(AddElementsEffect.class);
+        RuntimeTypeAdapterFactory<Effect> effectsTypeAdapter =
+                RuntimeTypeAdapterFactory.of(Effect.class, "effect").registerSubtype(UseBlackOrWhiteInPlaceEffect.class)
+                        .registerSubtype(CollectElementEffect.class).registerSubtype(AddElementsEffect.class);
 
         return new GsonBuilder().registerTypeAdapterFactory(effectsTypeAdapter).create();
     }

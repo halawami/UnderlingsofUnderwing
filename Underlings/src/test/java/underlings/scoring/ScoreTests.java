@@ -29,42 +29,42 @@ public class ScoreTests {
         this.gui = EasyMock.mock(Gui.class);
         this.players = new Player[5];
 
-        this.players[0] = TestUtils.Player(0);
+        this.players[0] = TestUtils.makePlayer(0);
         this.players[0].hatchedCards = new ArrayList<Card>() {
             {
-                this.add(TestUtils.Card(12, Temperature.WARM));
-                this.add(TestUtils.Card(3, Temperature.COOL));
-                this.add(TestUtils.Card(6, Temperature.NEUTRAL));
-                this.add(TestUtils.Card(19, Temperature.COOL));
-                this.add(TestUtils.Card(3, Temperature.WARM));
+                this.add(TestUtils.makeCard(12, Temperature.WARM));
+                this.add(TestUtils.makeCard(3, Temperature.COOL));
+                this.add(TestUtils.makeCard(6, Temperature.NEUTRAL));
+                this.add(TestUtils.makeCard(19, Temperature.COOL));
+                this.add(TestUtils.makeCard(3, Temperature.WARM));
             }
         };
 
-        this.players[1] = TestUtils.Player(1);
+        this.players[1] = TestUtils.makePlayer(1);
         this.players[1].hatchedCards = new ArrayList<Card>() {
             {
-                this.add(TestUtils.Card(16, Temperature.WARM));
-                this.add(TestUtils.Card(19, Temperature.COOL));
-                this.add(TestUtils.Card(10, Temperature.NEUTRAL));
+                this.add(TestUtils.makeCard(16, Temperature.WARM));
+                this.add(TestUtils.makeCard(19, Temperature.COOL));
+                this.add(TestUtils.makeCard(10, Temperature.NEUTRAL));
             }
         };
 
-        this.players[2] = TestUtils.Player(2);
+        this.players[2] = TestUtils.makePlayer(2);
         this.players[2].hatchedCards = new ArrayList<Card>();
 
-        this.players[3] = TestUtils.Player(3);
+        this.players[3] = TestUtils.makePlayer(3);
         this.players[3].hatchedCards = new ArrayList<Card>() {
             {
-                this.add(TestUtils.Card(3, Temperature.COOL));
-                this.add(TestUtils.Card(10, Temperature.COOL));
+                this.add(TestUtils.makeCard(3, Temperature.COOL));
+                this.add(TestUtils.makeCard(10, Temperature.COOL));
             }
         };
 
-        this.players[4] = TestUtils.Player(4);
+        this.players[4] = TestUtils.makePlayer(4);
         this.players[4].hatchedCards = new ArrayList<Card>() {
             {
-                this.add(TestUtils.Card(3, Temperature.WARM));
-                this.add(TestUtils.Card(3, Temperature.WARM));
+                this.add(TestUtils.makeCard(3, Temperature.WARM));
+                this.add(TestUtils.makeCard(3, Temperature.WARM));
             }
         };
 
@@ -73,7 +73,7 @@ public class ScoreTests {
 
     @Test
     public void testTwoPlayers() {
-        this.scoreUtils = TestUtils.ScoreUtils(this.players[0], this.players[1]);
+        this.scoreUtils = TestUtils.makeScoreUtils(this.players[0], this.players[1]);
         this.scoreUtils.calculateScores();
 
         assertEquals(43, this.players[0].score);
@@ -83,7 +83,7 @@ public class ScoreTests {
 
     @Test
     public void testTwoNeutralOneEmpty() {
-        this.scoreUtils = TestUtils.ScoreUtils(this.players[0], this.players[1], this.players[2]);
+        this.scoreUtils = TestUtils.makeScoreUtils(this.players[0], this.players[1], this.players[2]);
         this.scoreUtils.calculateScores();
 
         assertEquals(63, this.players[0].score);
@@ -95,7 +95,7 @@ public class ScoreTests {
 
     @Test
     public void testTwoNeutralOneEmptyOneCool() {
-        this.scoreUtils = TestUtils.ScoreUtils(this.players[0], this.players[1], this.players[2], this.players[3]);
+        this.scoreUtils = TestUtils.makeScoreUtils(this.players[0], this.players[1], this.players[2], this.players[3]);
         this.scoreUtils.calculateScores();
 
         assertEquals(63, this.players[0].score);
@@ -108,7 +108,7 @@ public class ScoreTests {
 
     @Test
     public void testAll() {
-        this.scoreUtils = TestUtils.ScoreUtils(this.players[0], this.players[1], this.players[2], this.players[3],
+        this.scoreUtils = TestUtils.makeScoreUtils(this.players[0], this.players[1], this.players[2], this.players[3],
                 this.players[4]);
         this.scoreUtils.calculateScores();
 
@@ -123,7 +123,7 @@ public class ScoreTests {
 
     @Test
     public void testDisplayScores() {
-        this.scoreUtils = TestUtils.ScoreUtils(this.gui, this.players[0], this.players[1]);
+        this.scoreUtils = TestUtils.makeScoreUtils(this.gui, this.players[0], this.players[1]);
         this.players[0].score = 1;
         this.players[1].score = 5;
 
@@ -141,7 +141,7 @@ public class ScoreTests {
 
     @Test
     public void testDisplayWinners() {
-        this.scoreUtils = TestUtils.ScoreUtils(this.gui, this.players[0], this.players[1]);
+        this.scoreUtils = TestUtils.makeScoreUtils(this.gui, this.players[0], this.players[1]);
         this.players[0].score = 5;
         this.players[1].score = 10;
         List<Player> winners = new ArrayList<>();

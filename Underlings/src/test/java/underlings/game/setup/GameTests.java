@@ -1,13 +1,17 @@
 package underlings.game.setup;
 
 import static org.junit.Assert.assertEquals;
+
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
+
 import java.io.IOException;
 import java.util.List;
+
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.element.ElementBag;
 import underlings.game.Game;
 import underlings.game.HatchingGround;

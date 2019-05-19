@@ -1,8 +1,10 @@
 package underlings.scoring;
 
 import static org.junit.Assert.assertEquals;
+
 import java.util.Arrays;
 import java.util.Collections;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,9 +21,9 @@ public class TemperatureTests {
     public void init() {
         this.scoreUtils = new ScoreUtils(null, null);
         this.cards = new Card[4];
-        this.cards[0] = TestUtils.Card(Temperature.WARM);
-        this.cards[1] = TestUtils.Card(Temperature.COOL);
-        this.cards[2] = TestUtils.Card(Temperature.NEUTRAL);
+        this.cards[0] = TestUtils.makeCard(Temperature.WARM);
+        this.cards[1] = TestUtils.makeCard(Temperature.COOL);
+        this.cards[2] = TestUtils.makeCard(Temperature.NEUTRAL);
         this.cards[3] = new Card();
     }
 
@@ -41,7 +43,7 @@ public class TemperatureTests {
 
     @Test
     public void testWarmBalance() {
-        this.cards[3] = TestUtils.Card(Temperature.WARM);
+        this.cards[3] = TestUtils.makeCard(Temperature.WARM);
         int balance = this.scoreUtils.calculateTemperature(Arrays.asList(this.cards));
 
         assertEquals(1, balance);
@@ -49,7 +51,7 @@ public class TemperatureTests {
 
     @Test
     public void testCoolBalance() {
-        this.cards[3] = TestUtils.Card(Temperature.COOL);
+        this.cards[3] = TestUtils.makeCard(Temperature.COOL);
         int balance = this.scoreUtils.calculateTemperature(Arrays.asList(this.cards));
 
         assertEquals(-1, balance);

@@ -1,12 +1,15 @@
 package underlings.effect.hatchingground;
 
 import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
 import org.easymock.EasyMock;
 import org.junit.Test;
+
 import underlings.card.Card;
 import underlings.card.effect.wild.adjacenteggs.destroy.AllElementsEffect;
 import underlings.card.effect.wild.adjacenteggs.destroy.ElementsEffect;

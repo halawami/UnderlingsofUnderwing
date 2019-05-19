@@ -1,6 +1,7 @@
 package underlings.card.effect.domestic;
 
 import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 import underlings.TestUtils;
@@ -12,7 +13,7 @@ public class TwoHandlersOnFieldSpaceEffectTests {
 
     @Test
     public void testEffect() {
-        Player player = TestUtils.Player();
+        Player player = TestUtils.makePlayer();
 
         Effect effect = new TwoHandlersOnFieldSpaceEffect();
         effect.on(player).apply();

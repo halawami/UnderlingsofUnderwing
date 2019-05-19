@@ -69,8 +69,6 @@ public class GetElementSpaceWithColorsTests {
         card.elementSpaces[0].position = ElementSpacePosition.L3_1;
         card.elementSpaces[0].addElements(new Element(ElementColor.RED));
 
-        ElementColor[] colorChoices = {ElementColor.RED};
-
         PromptHandler prompt = EasyMock.mock(PromptHandler.class);
         EasyMock.expect(
                 prompt.promptChoice("Would you like to take an element from a card?", YesNoChoice.getChoices(), 1))
@@ -82,6 +80,7 @@ public class GetElementSpaceWithColorsTests {
 
         Gui gui = new Gui(prompt, null);
         List<Card> cards = Arrays.asList(card);
+        ElementColor[] colorChoices = {ElementColor.RED};
         ElementSpace space = gui.getElementSpaceWithColors(cards, colorChoices, 1);
         assertEquals(card.elementSpaces[0], space);
 
@@ -100,8 +99,6 @@ public class GetElementSpaceWithColorsTests {
         card.elementSpaces[1].addElements(new Element(ElementColor.BLUE));
         card.elementSpaces[1].position = ElementSpacePosition.L3_1;
 
-        ElementColor[] colorChoices = {ElementColor.RED, ElementColor.BLUE};
-
         PromptHandler prompt = EasyMock.mock(PromptHandler.class);
         EasyMock.expect(
                 prompt.promptChoice("Would you like to take an element from a card?", YesNoChoice.getChoices(), 1))
@@ -113,6 +110,7 @@ public class GetElementSpaceWithColorsTests {
 
         Gui gui = new Gui(prompt, null);
         List<Card> cards = Arrays.asList(card);
+        ElementColor[] colorChoices = {ElementColor.RED, ElementColor.BLUE};
         ElementSpace space = gui.getElementSpaceWithColors(cards, colorChoices, 1);
         assertEquals(card.elementSpaces[1], space);
 
@@ -129,8 +127,6 @@ public class GetElementSpaceWithColorsTests {
         card.elementSpaces[1] = new ElementSpace(ElementColor.BLUE);
         card.elementSpaces[1].addElements(new Element(ElementColor.BLUE));
 
-        ElementColor[] colorChoices = {ElementColor.RED, ElementColor.BLUE};
-
         PromptHandler prompt = EasyMock.mock(PromptHandler.class);
         EasyMock.expect(
                 prompt.promptChoice("Would you like to take an element from a card?", YesNoChoice.getChoices(), 1))
@@ -139,6 +135,7 @@ public class GetElementSpaceWithColorsTests {
 
         Gui gui = new Gui(prompt, null);
         List<Card> cards = Arrays.asList(card);
+        ElementColor[] colorChoices = {ElementColor.RED, ElementColor.BLUE};
         ElementSpace space = gui.getElementSpaceWithColors(cards, colorChoices, 1);
         assertEquals(null, space);
 
@@ -157,8 +154,6 @@ public class GetElementSpaceWithColorsTests {
         card.elementSpaces[1].addElements(new Element(ElementColor.BLUE));
         card.elementSpaces[1].position = ElementSpacePosition.L3_1;
 
-        ElementColor[] colorChoices = {ElementColor.RED, ElementColor.BLUE};
-
         PromptHandler prompt = EasyMock.mock(PromptHandler.class);
         EasyMock.expect(
                 prompt.promptChoice("Would you like to take an element from a card?", YesNoChoice.getChoices(), 1))
@@ -170,6 +165,7 @@ public class GetElementSpaceWithColorsTests {
 
         Gui gui = new Gui(prompt, null);
         List<Card> cards = Arrays.asList(card);
+        ElementColor[] colorChoices = {ElementColor.RED, ElementColor.BLUE};
         ElementSpace space = gui.getElementSpaceWithColors(cards, colorChoices, 1);
         assertEquals(card.elementSpaces[1], space);
 
@@ -188,8 +184,6 @@ public class GetElementSpaceWithColorsTests {
         card.elementSpaces[1].addElements(new Element(ElementColor.BLUE));
         card.elementSpaces[1].position = ElementSpacePosition.L3_1;
 
-        ElementColor[] colorChoices = {ElementColor.RED};
-
         PromptHandler prompt = EasyMock.mock(PromptHandler.class);
         EasyMock.expect(
                 prompt.promptChoice("Would you like to take an element from a card?", YesNoChoice.getChoices(), 2))
@@ -201,6 +195,7 @@ public class GetElementSpaceWithColorsTests {
 
         Gui gui = new Gui(prompt, null);
         List<Card> cards = Arrays.asList(card);
+        ElementColor[] colorChoices = {ElementColor.RED};
         ElementSpace space = gui.getElementSpaceWithColors(cards, colorChoices, 2);
         assertEquals(card.elementSpaces[0], space);
 

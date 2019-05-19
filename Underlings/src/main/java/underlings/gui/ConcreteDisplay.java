@@ -122,8 +122,8 @@ public class ConcreteDisplay implements Display {
                 (int) (-25 + ratio * (height / 2 + offsetY + (height + gapY) * row) + 6));
 
         for (ElementSpace space : card.elementSpaces) {
-            int x = (int) ((ratio * (40 + offsetX + (width + gapX) * col)) + 255 * ratio * space.position.x);
-            int y = (int) (space.position.y * 15 - 5 + ratio * (height / 2 + offsetY + (height + gapY) * row));
+            int x = (int) ((ratio * (40 + offsetX + (width + gapX) * col)) + 255 * ratio * space.position.posX);
+            int y = (int) (space.position.posY * 15 - 5 + ratio * (height / 2 + offsetY + (height + gapY) * row));
 
             this.gr.setColor(this.colorMap.get(space.color));
             this.gr.fillRect(x - 5, y - 5, 5, 5);

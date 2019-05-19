@@ -163,7 +163,7 @@ public class Gui {
     public ElementSpace[][] getElementSpaceGrid(List<ElementSpace> validSpaces) {
         ElementSpace[][] spaceGrid = new ElementSpace[4][2];
         for (ElementSpace space : validSpaces) {
-            spaceGrid[space.position.y][space.position.x] = space;
+            spaceGrid[space.position.posY][space.position.posX] = space;
         }
         return spaceGrid;
     }

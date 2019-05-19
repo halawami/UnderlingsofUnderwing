@@ -8,9 +8,7 @@ import underlings.player.Player;
 public abstract class HandlerEffect extends Effect {
 
     @Override
-    protected abstract void apply(Player currentPlayer,
-            HatchingGround hatchingGround,
-            HandlerMovementLogic handlerLogic,
-            Gui gui);
+    protected abstract void apply(Player currentPlayer, HatchingGround hatchingGround,
+            HandlerMovementLogic handlerLogic, Gui gui);
 
 }

@@ -2,11 +2,14 @@ package underlings.phase;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 import org.easymock.EasyMock;
 import org.junit.Test;
+
 import underlings.MockTest;
 import underlings.element.Element;
 import underlings.element.ElementBag;
@@ -23,7 +26,6 @@ public class DrawingPhaseTests extends MockTest {
     @Test
     public void testTurn() {
         Gui gui = EasyMock.mock(Gui.class);
-        ElementBag elementBag = EasyMock.mock(ElementBag.class);
 
         Player player = new Player(6, new HandlerFactory(), 0);
 
@@ -37,6 +39,7 @@ public class DrawingPhaseTests extends MockTest {
         EasyMock.expect(
                 gui.promptChoice(LocaleWrap.get("gui_draw_choice"), player.getElementGivers().get(0).drawChoices, 0))
                 .andReturn(DrawChoice.RANDOM);
+        ElementBag elementBag = EasyMock.mock(ElementBag.class);
         EasyMock.expect(elementBag.drawElement(DrawChoice.RANDOM)).andReturn(element);
 
         DrawingPhase drawingPhase =
@@ -60,7 +63,6 @@ public class DrawingPhaseTests extends MockTest {
     @Test
     public void testTurnNullElement() {
         Gui gui = EasyMock.mock(Gui.class);
-        ElementBag elementBag = EasyMock.mock(ElementBag.class);
 
         Player player = new Player(6, new HandlerFactory(), 0);
 
@@ -72,6 +74,7 @@ public class DrawingPhaseTests extends MockTest {
         EasyMock.expect(
                 gui.promptChoice(LocaleWrap.get("gui_draw_choice"), player.getElementGivers().get(0).drawChoices, 0))
                 .andReturn(DrawChoice.RANDOM);
+        ElementBag elementBag = EasyMock.mock(ElementBag.class);
         EasyMock.expect(elementBag.drawElement(DrawChoice.RANDOM)).andReturn(NullElement.getInstance());
 
         Phase drawingPhase = new DrawingPhase(players, gui, elementBag, null, null, null);

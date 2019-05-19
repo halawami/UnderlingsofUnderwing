@@ -39,7 +39,6 @@ public class UptoElementsFromAnyEggInPlayEffectTests {
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         List<ElementSpace> mockSpaces = this.getMockedObjects(ElementSpace.class, numberOfSlectedElements);
         List<Element> mockElements = this.getMockedObjects(Element.class, numberOfSlectedElements);
-        List<Card> mockCards = this.getMockedObjects(Card.class, 6);
         Gui gui = EasyMock.mock(Gui.class);
         UptoElementsFromAnyEggInPlayEffect testedEffect =
                 EasyMock.partialMockBuilder(UptoElementsFromAnyEggInPlayEffect.class)
@@ -48,6 +47,7 @@ public class UptoElementsFromAnyEggInPlayEffectTests {
         testedEffect.upTo = numberOfSlectedElements;
         testedEffect.on(gui).on(currentPlayer).on(hatchingGround);
 
+        List<Card> mockCards = this.getMockedObjects(Card.class, 6);
         EasyMock.expect(hatchingGround.getAllCards()).andReturn(mockCards);
 
         for (int i = 0; i < numberOfSlectedElements; i++) {

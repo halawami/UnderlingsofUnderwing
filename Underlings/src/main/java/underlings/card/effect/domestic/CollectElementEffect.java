@@ -1,6 +1,7 @@
 package underlings.card.effect.domestic;
 
 import java.text.MessageFormat;
+
 import underlings.card.effect.ElementEffect;
 import underlings.element.Element;
 import underlings.element.ElementBag;

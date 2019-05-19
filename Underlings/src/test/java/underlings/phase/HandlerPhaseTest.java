@@ -2,11 +2,14 @@ package underlings.phase;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+
 import java.util.ArrayList;
 import java.util.Collections;
+
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.MockTest;
 import underlings.TestUtils;
 import underlings.game.HatchingGround;
@@ -25,7 +28,7 @@ public class HandlerPhaseTest extends MockTest {
         this.hatchingGround = this.mock(HatchingGround.class);
         this.handlerMovementLogic = this.mock(HandlerMovementLogic.class);
         this.displayMethod = this.mock(Runnable.class);
-        this.player = TestUtils.Player();
+        this.player = TestUtils.makePlayer();
         this.players = new ArrayList<Player>();
         this.players.add(this.player);
     }

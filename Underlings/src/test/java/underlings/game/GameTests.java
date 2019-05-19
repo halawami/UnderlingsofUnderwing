@@ -1,13 +1,16 @@
 package underlings.game;
 
 import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.element.ElementBag;
 import underlings.gui.Gui;
 import underlings.phase.FinalPhase;
@@ -48,7 +51,6 @@ public class GameTests {
 
     @Test
     public void testSetup() {
-        List<Phase> phases = new ArrayList<>();
         Map<FinalPhaseType, FinalPhase> finalPhaseMap = new HashMap<>();
         FinalPhase finalPhase = EasyMock.mock(FinalPhase.class);
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
@@ -72,6 +74,7 @@ public class GameTests {
 
         EasyMock.replay(mockedGame, finalPhase, hatchingGround);
 
+        List<Phase> phases = new ArrayList<>();
         mockedGame.start(phases, finalPhaseMap);
 
         EasyMock.verify(mockedGame, finalPhase, hatchingGround);
@@ -138,8 +141,6 @@ public class GameTests {
         FinalPhase wildFinalPhase = EasyMock.mock(FinalPhase.class);
         finalPhaseMap.put(FinalPhaseType.WILD, wildFinalPhase);
 
-        FinalPhase finalPhase = EasyMock.mock(FinalPhase.class);
-
         Game mockedGame = EasyMock.createMockBuilder(Game.class).addMockedMethod("display").createMock();
 
         mockedGame.numberOfPlayers = 2;
@@ -151,6 +152,7 @@ public class GameTests {
         phaseOne.execute(0);
         phaseOne.gameComplete = true;
 
+        FinalPhase finalPhase = EasyMock.mock(FinalPhase.class);
         EasyMock.replay(phaseOne, phaseTwo, wildFinalPhase, finalPhase, mockedGame);
 
         mockedGame.gameLoop();

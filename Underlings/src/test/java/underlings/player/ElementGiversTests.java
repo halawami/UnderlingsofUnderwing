@@ -102,8 +102,7 @@ public class ElementGiversTests extends MockTest {
         EasyMock.expect(elementGiverCard1.getElementGivers()).andReturn(Arrays.asList(cardElementGiver1));
         EasyMock.expect(elementGiverCard2.getElementGivers()).andReturn(Arrays.asList(cardElementGiver2));
 
-        EasyMock.replay(mockHandlerFactory, cardElementGiver1, cardElementGiver2, elementGiverCard1,
-                elementGiverCard2);
+        EasyMock.replay(mockHandlerFactory, cardElementGiver1, cardElementGiver2, elementGiverCard1, elementGiverCard2);
 
         Player testedPlayer = new Player(6, mockHandlerFactory, 0);
         testedPlayer.hatchedCards.add(elementGiverCard1);
@@ -118,8 +117,7 @@ public class ElementGiversTests extends MockTest {
         Assert.assertEquals(cardElementGiver1, elementGivers.get(2));
         Assert.assertEquals(cardElementGiver2, elementGivers.get(3));
 
-        EasyMock.verify(mockHandlerFactory, cardElementGiver1, cardElementGiver2, elementGiverCard1,
-                elementGiverCard2);
+        EasyMock.verify(mockHandlerFactory, cardElementGiver1, cardElementGiver2, elementGiverCard1, elementGiverCard2);
     }
 
     @Test
@@ -139,8 +137,8 @@ public class ElementGiversTests extends MockTest {
     @Test
     public void testEffectElementGiversTrueThenFalse() {
         List<ElementGiver> effectElementGivers = this.mockListOf(ElementGiver.class).withLengthOf(2);
-        Player player = EasyMock.partialMockBuilder(Player.class)
-                .addMockedMethod("getNormalElementGivers").createMock();
+        Player player =
+                EasyMock.partialMockBuilder(Player.class).addMockedMethod("getNormalElementGivers").createMock();
         player.effectElementGivers = effectElementGivers;
 
         EasyMock.expect(player.getNormalElementGivers()).andReturn(Collections.emptyList());

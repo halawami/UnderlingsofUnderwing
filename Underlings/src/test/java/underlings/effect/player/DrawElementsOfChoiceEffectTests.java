@@ -111,16 +111,15 @@ public class DrawElementsOfChoiceEffectTests extends MockTest {
         ElementGiverFactory elementGiverFactory = EasyMock.mock(ElementGiverFactory.class);
         this.testedEffect.elementGiverFactory = elementGiverFactory;
         this.testedEffect.bag = this.elementBag;
-        List<ElementGiver> elementGivers = this.mockListOf(ElementGiver.class).withLengthOf(numberOfElementGivers);
         List<DrawChoice> availableDrawChoices = Arrays.asList(DrawChoice.BLUE, DrawChoice.RED);
-        List<ElementGiver> mockEffectGivers =
-                this.mockListOf(ElementGiver.class).withLengthOf(numberOfElementGivers);
+        List<ElementGiver> mockEffectGivers = this.mockListOf(ElementGiver.class).withLengthOf(numberOfElementGivers);
 
         EasyMock.expect(this.elementBag.getAvailableDrawChoices()).andReturn(availableDrawChoices);
         for (ElementGiver effectElementGiver : mockEffectGivers) {
             EasyMock.expect(elementGiverFactory.createElementGiver(availableDrawChoices)).andReturn(effectElementGiver);
         }
 
+        List<ElementGiver> elementGivers = this.mockListOf(ElementGiver.class).withLengthOf(numberOfElementGivers);
         EasyMock.replay(this.elementBag, elementGiverFactory);
         elementGivers.forEach(EasyMock::replay);
         mockEffectGivers.forEach(EasyMock::replay);

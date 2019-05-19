@@ -2,12 +2,16 @@ package underlings.elementspace.add.single;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
+
 import java.util.Arrays;
 import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;

@@ -84,7 +84,6 @@ public class GuiTests {
 
     @Test
     public void testGetHandlerDecisionWithCard() {
-        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         Handler handler = EasyMock.mock(Handler.class);
         List<Handler> handlers = new ArrayList<>();
         handlers.add(handler);
@@ -93,6 +92,7 @@ public class GuiTests {
         EasyMock.expect(this.promptHandler.promptChoice(LocaleWrap.get("gui_handler"), handlers, 0)).andReturn(handler);
         EasyMock.expect(handler.getPossibleChoices()).andReturn(handlerChoices);
 
+        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         EasyMock.expect(hatchingGround.getUnclaimedEggs()).andReturn(Arrays.asList(new Card()));
         EasyMock.expect(this.promptHandler
                 .promptChoice(MessageFormat.format(LocaleWrap.get("gui_handler_choice"), handler), handlerChoices, 0))
@@ -112,7 +112,6 @@ public class GuiTests {
 
     @Test
     public void testGetHandlerDecisioNoCards() {
-        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         Handler handler = EasyMock.mock(Handler.class);
         List<Handler> handlers = new ArrayList<>();
         handlers.add(handler);
@@ -123,6 +122,7 @@ public class GuiTests {
         EasyMock.expect(this.promptHandler.promptChoice(LocaleWrap.get("gui_handler"), handlers, 0)).andReturn(handler);
         EasyMock.expect(handler.getPossibleChoices()).andReturn(handlerChoices);
 
+        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         EasyMock.expect(hatchingGround.getUnclaimedEggs()).andReturn(Collections.emptyList());
 
         EasyMock.expect(this.promptHandler.promptChoice(
@@ -174,7 +174,7 @@ public class GuiTests {
     }
 
     @Test
-    public void testAlertNoPlayerID() {
+    public void testAlertNoPlayerId() {
         this.promptHandler.displayMessage("test", JOptionPane.PLAIN_MESSAGE);
         this.replay();
 
@@ -301,9 +301,6 @@ public class GuiTests {
 
     @Test
     public void testGetElementOfColorsFromSpaceNoChoices() {
-        ElementColor[] choices = new ElementColor[0];
-        ElementSpace space = new ElementSpace(ElementColor.BLACK);
-
         List<Element> elements = new ArrayList<>();
         elements.add(NullElement.getInstance());
         EasyMock.expect(this.promptHandler.promptChoice(LocaleWrap.get("gui_element_collect"), elements, 0))
@@ -311,6 +308,8 @@ public class GuiTests {
 
         this.replay();
 
+        ElementColor[] choices = new ElementColor[0];
+        ElementSpace space = new ElementSpace(ElementColor.BLACK);
         Element element = this.gui.getElementOfColorsFromSpace(choices, space, 0);
 
         assertEquals(NullElement.getInstance(), element);

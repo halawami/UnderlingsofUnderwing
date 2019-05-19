@@ -25,7 +25,7 @@ public class DestroyBlackAndWhiteElementsTests extends MockTest {
         space.destroyAllElementsOfColor(ElementColor.WHITE);
 
         Card card = new Card();
-        card.elementSpaces = new ElementSpace[]{space};
+        card.elementSpaces = new ElementSpace[] {space};
         ElementSpaceLogic logic = this.mock(ElementSpaceLogic.class);
 
         this.replayAll();

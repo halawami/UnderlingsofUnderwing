@@ -45,19 +45,19 @@ public class ReplaceHandlerWithYourOwnEffectTests extends MockTest {
         Player currentPlayer = EasyMock.mock(Player.class);
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         List<Card> mockClaimedEggs = this.mockListOf(Card.class).withLengthOf(6);
-        List<Handler> mockHandlers = this.mockListOf(Handler.class).withLengthOf(2);
         Handler toBeReplaced = EasyMock.mock(Handler.class);
         mockClaimedEggs.get(2).handler = toBeReplaced;
-        HandlerMovementLogic handlerMovementLogic = EasyMock.mock(HandlerMovementLogic.class);
         Gui gui = EasyMock.mock(Gui.class);
 
         EasyMock.expect(currentPlayer.getId()).andReturn(0).anyTimes();
         EasyMock.expect(hatchingGround.getClaimedEggs()).andReturn(mockClaimedEggs);
         EasyMock.expect(gui.promptChoice("Choose a card to replace its handler", mockClaimedEggs, 0))
                 .andReturn(mockClaimedEggs.get(2));
+        List<Handler> mockHandlers = this.mockListOf(Handler.class).withLengthOf(2);
         currentPlayer.handlers = mockHandlers;
         EasyMock.expect(gui.promptChoice("Choose a handler to replace with", mockHandlers, 0))
                 .andReturn(mockHandlers.get(1));
+        HandlerMovementLogic handlerMovementLogic = EasyMock.mock(HandlerMovementLogic.class);
         handlerMovementLogic.move(toBeReplaced, HandlerChoice.BREAK_ROOM, currentPlayer);
         handlerMovementLogic.moveToCard(mockHandlers.get(1), mockClaimedEggs.get(2));
 

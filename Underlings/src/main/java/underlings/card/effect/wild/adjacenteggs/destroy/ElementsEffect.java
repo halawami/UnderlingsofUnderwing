@@ -1,6 +1,7 @@
 package underlings.card.effect.wild.adjacenteggs.destroy;
 
 import java.util.List;
+
 import underlings.card.Card;
 import underlings.card.effect.wild.adjacenteggs.AdjacentEggsEffect;
 import underlings.element.ElementBag;

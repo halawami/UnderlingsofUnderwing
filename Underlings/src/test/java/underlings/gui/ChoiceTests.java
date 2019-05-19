@@ -2,10 +2,13 @@ package underlings.gui;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+
 import java.util.List;
+
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.field.Field;
 import underlings.field.FieldSpace;
 import underlings.field.FieldSpaceFactory;
