@@ -10,7 +10,7 @@ import org.junit.Test;
 import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.effect.wild.adjacenteggs.elements.destroy.AllElementsEffect;
-import underlings.card.effect.wild.adjacenteggs.elements.destroy.ElementsEffect;
+import underlings.card.effect.wild.adjacenteggs.elements.destroy.DestroyElementsEffect;
 import underlings.card.effect.wild.adjacenteggs.elements.destroy.OneElementEffect;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
@@ -33,7 +33,7 @@ public class DestroyElementsOnAllAdjacentEggsEffectTests extends MockTest {
     private void testApplyElementColors(ElementColor... elementColors) {
         ElementSpaceLogic elementSpaceLogic = this.mock(ElementSpaceLogic.class);
         Card adjacentCard = this.mock(Card.class);
-        ElementsEffect effect = EasyMock.partialMockBuilder(ElementsEffect.class)
+        DestroyElementsEffect effect = EasyMock.partialMockBuilder(DestroyElementsEffect.class)
                 .addMockedMethod("destroyElementsOfColorOnCard").createMock();
         this.addMock(effect);
         effect.elementColors = elementColors;
@@ -70,7 +70,7 @@ public class DestroyElementsOnAllAdjacentEggsEffectTests extends MockTest {
         List<ElementSpace> mockedDestroyableSpaces = this.mockListOf(ElementSpace.class)
                 .withLengthOf(numberOfDestroyableSpaces);
 
-        ElementsEffect effect = EasyMock.partialMockBuilder(ElementsEffect.class)
+        DestroyElementsEffect effect = EasyMock.partialMockBuilder(DestroyElementsEffect.class)
                 .addMockedMethod("destroyElementsOfColorOnSpace").createMock();
         this.addMock(effect);
 

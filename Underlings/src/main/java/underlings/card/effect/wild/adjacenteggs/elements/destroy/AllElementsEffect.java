@@ -4,7 +4,7 @@ import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.utilities.LocaleWrap;
 
-public class AllElementsEffect extends ElementsEffect {
+public class AllElementsEffect extends DestroyElementsEffect {
 
     @Override
     public void destroyElementsOfColorOnSpace(ElementSpace destroyableSpace, ElementColor elementColorToDestroy) {

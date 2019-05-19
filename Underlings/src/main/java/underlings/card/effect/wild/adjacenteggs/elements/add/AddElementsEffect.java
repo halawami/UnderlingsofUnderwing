@@ -3,33 +3,26 @@ package underlings.card.effect.wild.adjacenteggs.elements.add;
 import java.util.List;
 
 import underlings.card.Card;
-import underlings.card.effect.AdjacentEggsEffect;
+import underlings.card.effect.wild.adjacenteggs.elements.ElementsEffect;
 import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.NullElement;
 import underlings.element.utilities.ElementSpaceLogic;
-import underlings.game.Deck;
-import underlings.game.HatchingGround;
-import underlings.handler.HandlerMovementLogic;
 import underlings.handler.WildHandler;
-import underlings.utilities.EggHatchingLogic;
 import underlings.utilities.LocaleWrap;
 
-public class AddElementsEffect extends AdjacentEggsEffect {
+public class AddElementsEffect extends ElementsEffect {
 
     public ElementColor[] elementColors;
 
     @Override
-    public void applyOnAdjacentEgg(Card adjacentEgg, ElementBag elementBag, ElementSpaceLogic elementSpaceLogic,
-            EggHatchingLogic eggHatchingLogic, Deck deck, HandlerMovementLogic handlerMovementLogic,
-            HatchingGround hatchingGround) {
-        if (adjacentEgg.handler == WildHandler.getInstance()) {
-            return;
-        }
-        for (ElementColor elementColorToAdd : this.elementColors) {
-            this.addElementToCard(elementColorToAdd, adjacentEgg, elementSpaceLogic, elementBag);
+    public void applyOnAdjacentEgg(Card adjacentEgg, ElementSpaceLogic elementSpaceLogic, ElementBag elementBag) {
+        if (adjacentEgg.handler != WildHandler.getInstance()) {
+            for (ElementColor elementColorToAdd : this.elementColors) {
+                this.addElementToCard(elementColorToAdd, adjacentEgg, elementSpaceLogic, elementBag);
+            }
         }
     }
 
@@ -53,5 +46,4 @@ public class AddElementsEffect extends AdjacentEggsEffect {
         }
         return LocaleWrap.format("place_element_on_all_eggs_effect", elements);
     }
-
 }

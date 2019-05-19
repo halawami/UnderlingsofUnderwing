@@ -13,7 +13,7 @@ import underlings.game.HatchingGround;
 import underlings.handler.HandlerMovementLogic;
 import underlings.utilities.EggHatchingLogic;
 
-public abstract class ElementsEffect extends AdjacentEggsEffect {
+public abstract class DestroyElementsEffect extends AdjacentEggsEffect {
 
     public ElementColor[] elementColors;
 
