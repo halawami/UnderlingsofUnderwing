@@ -3,8 +3,10 @@ package underlings.gui;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
+
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,11 +14,15 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
+
 import javax.swing.JOptionPane;
+
+import org.easymock.Capture;
 import org.easymock.EasyMock;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.card.Card;
 import underlings.card.EmptyCard;
 import underlings.element.Element;
@@ -354,14 +360,21 @@ public class GuiTests {
         cards[0][1] = validCards.get(0);
         cards[1][0] = validCards.get(1);
 
-        EasyMock.expect(this.promptHandler.pickFromGrid(EasyMock.anyString(), EasyMock.anyObject(Card[][].class),
-                EasyMock.anyInt())).andReturn(validCards.get(0));
+        Capture<Card[][]> capture = EasyMock.newCapture();
+        EasyMock.expect(
+                this.promptHandler.pickFromGrid(EasyMock.anyString(), EasyMock.capture(capture), EasyMock.anyInt()))
+                .andReturn(validCards.get(0));
 
         EasyMock.replay(hatchingGround);
         this.replay();
 
         Card card = this.gui.getCard(1, " ", hatchingGround, validCards);
         assertEquals(validCards.get(0), card);
+
+        assertEquals(cards[0][0], capture.getValue()[0][0]);
+        assertEquals(cards[0][1], capture.getValue()[0][1]);
+        assertEquals(cards[1][0], capture.getValue()[1][0]);
+        assertEquals(cards[1][1], capture.getValue()[1][1]);
 
         EasyMock.verify(hatchingGround);
     }
