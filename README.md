@@ -143,7 +143,31 @@ The definition of done is created by examining and applying BVA on the rules.
     - ```underlings.hatchingground.DeckTests.testAddCardShuffle()```
   - An empty card can not be added to the deck
     - ```underlings.hatchingground.DeckTests.testAddEmptyCard()```
-  
+
+### HatchingGround ```underlings.hatchingground```
+
+- [x] The hatching ground can return the adjacent cards of a card
+  - A card in the middle returns the card above, below, left, and right of it
+    - ```underlings.hatchingground.AdjacentCardsTests.testMiddleCard()```
+  - A card on the left edge returns the card above, below, and right of it
+    - ```underlings.hatchingground.AdjacentCardsTests.testLeftEdgeCard()```
+  - A card on the top edge returns the card below, left, and right of it
+    - ```underlings.hatchingground.AdjacentCardsTests.testTopEdgeCard()```
+  - A card on the bottom edge returns the card above, left, and right of it
+    - ```underlings.hatchingground.AdjacentCardsTests.testBottomEdgeCard()```
+  - A card on the right edge returns the card above, bottom, and left of it
+    - ```underlings.hatchingground.AdjacentCardsTests.testRightEdgeCard()```
+- [x] The hatching ground can return the coordinates of a card
+  - ```underlings.hatchingground.AdjacentCardsTests.testGetCardCoordinatesFirstCard()```
+  - ```underlings.hatchingground.AdjacentCardsTests.testGetCardCoordinatesLeftEdge()```
+  - ```underlings.hatchingground.AdjacentCardsTests.testGetCardCoordinatesTopEdge()```
+  - ```underlings.hatchingground.AdjacentCardsTests.testGetCardCoordinatesRightEdge()```
+  - ```underlings.hatchingground.AdjacentCardsTests.testGetCardCoordinatesBottomEdge()```
+  - ```underlings.hatchingground.AdjacentCardsTests.testGetCardCoordinatesMiddleEdge()```
+  - ```underlings.hatchingground.AdjacentCardsTests.testGetCardCoordinatesInvalidCard()```
+
+####
+
 ### Scoring ```underlings.scoring```
 
 #### Temperature Tests ```underlings.scoring.TemperatureTests```
