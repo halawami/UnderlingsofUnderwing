@@ -19,7 +19,7 @@ public class CollectUpToElementsFromAnyEggInPlayEffect extends UptoElementsFromA
         StringBuilder elements = new StringBuilder();
         for (ElementColor color : this.elementChoices) {
             elements.append(color);
-            elements.append(" ");
+            elements.append(LocaleWrap.get("space"));
         }
         return LocaleWrap.format("up_to_effect", LocaleWrap.get("collect"), this.upTo, elements);
     }

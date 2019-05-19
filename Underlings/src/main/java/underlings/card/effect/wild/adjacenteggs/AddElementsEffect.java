@@ -1,7 +1,6 @@
 package underlings.card.effect.wild.adjacenteggs;
 
 import java.util.List;
-
 import underlings.card.Card;
 import underlings.element.Element;
 import underlings.element.ElementBag;
@@ -48,7 +47,7 @@ public class AddElementsEffect extends AdjacentEggsEffect {
         StringBuilder elements = new StringBuilder();
         for (ElementColor color : this.elementColors) {
             elements.append(color);
-            elements.append(" ");
+            elements.append(LocaleWrap.get("space"));
         }
         return LocaleWrap.format("place_element_on_all_eggs_effect", elements);
     }

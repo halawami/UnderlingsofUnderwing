@@ -2,7 +2,6 @@ package underlings.card.effect.domestic;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import underlings.card.effect.ElementEffect;
 import underlings.card.effect.ObserverEffect;
 import underlings.element.ElementBag;
@@ -10,6 +9,7 @@ import underlings.element.ElementGiver;
 import underlings.element.ElementGiverFactory;
 import underlings.gui.DrawChoice;
 import underlings.player.Player;
+import underlings.utilities.LocaleWrap;
 
 public class DrawElementsOfChoiceEffect extends ElementEffect implements ObserverEffect {
 
@@ -26,7 +26,7 @@ public class DrawElementsOfChoiceEffect extends ElementEffect implements Observe
     @Override
     public void onPhaseOne(Player player) {
         if (!this.beenUsed) {
-            player.effectElementGivers = this.getEffectElementGivers(player.getElementGivers(), bag);
+            player.effectElementGivers = this.getEffectElementGivers(player.getElementGivers(), this.bag);
             player.useEffectElementGivers(true);
             this.beenUsed = true;
         }
@@ -41,6 +41,9 @@ public class DrawElementsOfChoiceEffect extends ElementEffect implements Observe
         return effectedElementGivers;
     }
 
-    // TODO: to string?
+    @Override
+    public String toString() {
+        return LocaleWrap.get("elements_of_choice");
+    }
 
 }

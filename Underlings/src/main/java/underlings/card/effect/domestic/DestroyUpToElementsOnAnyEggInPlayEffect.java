@@ -18,7 +18,7 @@ public class DestroyUpToElementsOnAnyEggInPlayEffect extends UptoElementsFromAny
         StringBuilder elements = new StringBuilder();
         for (ElementColor color : this.elementChoices) {
             elements.append(color);
-            elements.append(" ");
+            elements.append(LocaleWrap.get("space"));
         }
         return LocaleWrap.format("up_to_effect", LocaleWrap.get("destroy"), this.upTo, elements);
     }
