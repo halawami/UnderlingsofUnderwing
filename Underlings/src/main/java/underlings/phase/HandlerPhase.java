@@ -24,7 +24,7 @@ public class HandlerPhase extends RotationPhase {
     }
 
     protected Map<Player, List<Handler>> unmovedHandlers;
-    private HandlerMovementLogic handlerMovementLogic;
+    protected HandlerMovementLogic handlerMovementLogic;
 
     @Override
     public void setup() {

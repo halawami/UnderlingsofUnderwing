@@ -42,14 +42,23 @@ public class HandlerPhaseTest extends MockTest {
 
         this.replayAll();
 
-        Phase handlerPhase = new HandlerPhase(this.players, this.gui, null, this.hatchingGround, this.displayMethod,
-                null, this.handlerMovementLogic);
+        HandlerPhase handlerPhase =
+                EasyMock.partialMockBuilder(HandlerPhase.class).addMockedMethod("setPhaseComplete").createMock();
+        handlerPhase.players = this.players;
+        handlerPhase.gui = this.gui;
+        handlerPhase.hatchingGround = this.hatchingGround;
+        handlerPhase.displayMethod = this.displayMethod;
+        handlerPhase.handlerMovementLogic = this.handlerMovementLogic;
 
+        handlerPhase.setPhaseComplete(false);
+
+        EasyMock.replay(handlerPhase);
 
         handlerPhase.setup();
         handlerPhase.turn(this.player);
-        assertFalse(this.hatchingGround.lateHatching);
 
+        assertFalse(this.hatchingGround.lateHatching);
+        EasyMock.verify(handlerPhase);
     }
 
     @Test
