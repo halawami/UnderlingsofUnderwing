@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
-import org.easymock.EasyMock;
 import org.junit.Test;
 
 import underlings.MockTest;
@@ -25,8 +24,6 @@ public class LoseHandlerEffectTests extends MockTest {
         this.replayAll();
 
         testedEffect.on(mockPlayers).apply();
-
-        mockPlayers.forEach(EasyMock::verify);
     }
 
     @Test
