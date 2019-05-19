@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
-import org.easymock.EasyMock;
 import org.junit.Test;
 
 import underlings.MockTest;
@@ -25,18 +24,16 @@ public class DestroyAllPlayersStoredElementsTests extends MockTest {
         this.testApplyOnPlayers(6);
     }
 
-    public void testApplyOnPlayers(int numberOfPlayers) {
+    private void testApplyOnPlayers(int numberOfPlayers) {
         List<Player> players = this.mockListOf(Player.class).withLengthOf(numberOfPlayers);
-        Effect testedEffect = new DestroyAllPlayersStoredElements();
-        testedEffect.on(players);
+        Effect effect = new DestroyAllPlayersStoredElements();
+        effect.on(players);
 
         players.forEach(Player::destroyAllElements);
 
-        players.forEach(EasyMock::replay);
+        this.replayAll();
 
-        testedEffect.apply();
-
-        players.forEach(EasyMock::verify);
+        effect.apply();
     }
 
     @Test
