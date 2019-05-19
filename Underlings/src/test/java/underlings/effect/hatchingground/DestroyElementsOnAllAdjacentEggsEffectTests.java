@@ -9,9 +9,9 @@ import org.junit.Test;
 
 import underlings.MockTest;
 import underlings.card.Card;
-import underlings.card.effect.wild.adjacenteggs.destroy.AllElementsEffect;
-import underlings.card.effect.wild.adjacenteggs.destroy.ElementsEffect;
-import underlings.card.effect.wild.adjacenteggs.destroy.OneElementEffect;
+import underlings.card.effect.wild.adjacenteggs.elements.destroy.AllElementsEffect;
+import underlings.card.effect.wild.adjacenteggs.elements.destroy.ElementsEffect;
+import underlings.card.effect.wild.adjacenteggs.elements.destroy.OneElementEffect;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;

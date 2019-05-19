@@ -1,6 +1,7 @@
-package underlings.card.effect.wild.adjacenteggs;
+package underlings.card.effect.wild.adjacenteggs.elements.add;
 
 import java.util.List;
+
 import underlings.card.Card;
 import underlings.card.effect.AdjacentEggsEffect;
 import underlings.element.Element;

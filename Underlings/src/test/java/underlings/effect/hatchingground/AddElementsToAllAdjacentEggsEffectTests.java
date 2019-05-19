@@ -12,7 +12,7 @@ import org.junit.Test;
 
 import underlings.MockTest;
 import underlings.card.Card;
-import underlings.card.effect.wild.adjacenteggs.AddElementsEffect;
+import underlings.card.effect.wild.adjacenteggs.elements.add.AddElementsEffect;
 import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
