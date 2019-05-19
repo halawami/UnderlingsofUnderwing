@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-
 import underlings.card.Card;
 import underlings.card.Temperature;
 import underlings.card.effect.PlayersEffect;
@@ -54,10 +53,10 @@ public class TakeHatchedDragonFromPlayer extends PlayersEffect {
     @Override
     public String toString() {
         StringBuilder temperature = new StringBuilder();
-        for (Temperature temp : temperatures) {
+        for (Temperature temp : this.temperatures) {
             temperature.append(temp);
-            temperature.append(" ");
+            temperature.append(LocaleWrap.get("space"));
         }
-        return LocaleWrap.format("take_hatched_dragon", temperature, points);
+        return LocaleWrap.format("take_hatched_dragon", temperature, this.points);
     }
 }
