@@ -7,18 +7,20 @@ import java.util.List;
 
 import org.junit.Test;
 
+import underlings.utilities.LocaleWrap;
+
 public class ElementSpaceTests {
 
     @Test
     public void testToString() {
-        assertEquals("Red Element Space", this.getString(ElementColor.RED));
-        assertEquals("Blue Element Space", this.getString(ElementColor.BLUE));
-        assertEquals("Yellow Element Space", this.getString(ElementColor.YELLOW));
-        assertEquals("Orange Element Space", this.getString(ElementColor.ORANGE));
-        assertEquals("Purple Element Space", this.getString(ElementColor.PURPLE));
-        assertEquals("Green Element Space", this.getString(ElementColor.GREEN));
-        assertEquals("Black Element Space", this.getString(ElementColor.BLACK));
-        assertEquals("White Element Space", this.getString(ElementColor.WHITE));
+        assertEquals(LocaleWrap.format("element_space", ElementColor.RED), this.getString(ElementColor.RED));
+        assertEquals(LocaleWrap.format("element_space", ElementColor.BLUE), this.getString(ElementColor.BLUE));
+        assertEquals(LocaleWrap.format("element_space", ElementColor.YELLOW), this.getString(ElementColor.YELLOW));
+        assertEquals(LocaleWrap.format("element_space", ElementColor.ORANGE), this.getString(ElementColor.ORANGE));
+        assertEquals(LocaleWrap.format("element_space", ElementColor.PURPLE), this.getString(ElementColor.PURPLE));
+        assertEquals(LocaleWrap.format("element_space", ElementColor.GREEN), this.getString(ElementColor.GREEN));
+        assertEquals(LocaleWrap.format("element_space", ElementColor.BLACK), this.getString(ElementColor.BLACK));
+        assertEquals(LocaleWrap.format("element_space", ElementColor.WHITE), this.getString(ElementColor.WHITE));
     }
 
     private String getString(ElementColor color) {
