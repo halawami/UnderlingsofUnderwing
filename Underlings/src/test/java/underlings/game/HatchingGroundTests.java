@@ -2,11 +2,14 @@ package underlings.game;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.card.Card;
 import underlings.card.effect.Effect;
 import underlings.element.utilities.ElementSpaceLogic;
@@ -124,7 +127,6 @@ public class HatchingGroundTests {
         EasyMock.expect(deck.draw()).andReturn(card4);
         EasyMock.expect(deck.draw()).andReturn(new Card());
 
-        // HatchingGround hatchingGround = new HatchingGround(deck, logic);
         HatchingGround hatchingGround =
                 EasyMock.partialMockBuilder(HatchingGround.class).addMockedMethod("placeCard").createMock();
         hatchingGround.placeCard(EasyMock.anyInt(), EasyMock.anyInt(), EasyMock.anyObject());
