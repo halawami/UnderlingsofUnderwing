@@ -3,14 +3,11 @@ package underlings.handler;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
-
 import java.util.Arrays;
 import java.util.List;
-
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.card.Card;
 import underlings.field.Field;
 import underlings.field.FieldSpaceFactory;
@@ -19,7 +16,7 @@ import underlings.gui.Gui;
 import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
 
-public class LogicTests {
+public class MovementLogicTests {
 
     private HatchingGround hatchingGround;
     private Gui gui;
@@ -38,7 +35,6 @@ public class LogicTests {
 
     @Test
     public void testCardBreakRoom() {
-
         Card card = new Card();
         Handler handler = new Handler(HandlerState.CARD);
 
@@ -47,7 +43,7 @@ public class LogicTests {
         EasyMock.expect(this.hatchingGround.findCard(handler)).andReturn(card);
         EasyMock.replay(this.hatchingGround, this.gui);
 
-        this.logic.move(handler, HandlerChoice.BREAK_ROOM, player);
+        this.logic.move(handler, HandlerChoice.BREAK_ROOM, this.player);
 
         EasyMock.verify(this.hatchingGround, this.gui);
         assertNull(card.handler);
@@ -58,11 +54,11 @@ public class LogicTests {
     public void testFieldStay() {
         Handler handler = new Handler(HandlerState.READY_ROOM);
 
-        EasyMock.expect(this.gui.getFieldSpace(player, this.field)).andReturn(this.field.field.get(0));
+        EasyMock.expect(this.gui.getFieldSpace(this.player, this.field)).andReturn(this.field.field.get(0));
         EasyMock.replay(this.hatchingGround, this.gui);
 
-        this.logic.move(handler, HandlerChoice.FIELD, player);
-        this.logic.move(handler, HandlerChoice.STAY, player);
+        this.logic.move(handler, HandlerChoice.FIELD, this.player);
+        this.logic.move(handler, HandlerChoice.STAY, this.player);
 
         EasyMock.verify(this.hatchingGround, this.gui);
         assertEquals(HandlerState.FIELD, handler.getState());
@@ -73,10 +69,10 @@ public class LogicTests {
     public void testField() {
         Handler handler = new Handler(HandlerState.READY_ROOM);
 
-        EasyMock.expect(this.gui.getFieldSpace(player, this.field)).andReturn(this.field.field.get(0));
+        EasyMock.expect(this.gui.getFieldSpace(this.player, this.field)).andReturn(this.field.field.get(0));
         EasyMock.replay(this.hatchingGround, this.gui);
 
-        this.logic.move(handler, HandlerChoice.FIELD, player);
+        this.logic.move(handler, HandlerChoice.FIELD, this.player);
 
         EasyMock.verify(this.hatchingGround, this.gui);
         assertEquals(HandlerState.FIELD, handler.getState());
@@ -96,7 +92,7 @@ public class LogicTests {
         EasyMock.replay(this.hatchingGround, this.gui);
 
         Handler handler = new Handler(HandlerState.READY_ROOM);
-        this.logic.move(handler, HandlerChoice.CARD, player);
+        this.logic.move(handler, HandlerChoice.CARD, this.player);
 
         EasyMock.verify(this.hatchingGround, this.gui);
         assertEquals(HandlerState.CARD, handler.getState());
@@ -111,7 +107,7 @@ public class LogicTests {
 
         EasyMock.replay(this.hatchingGround, this.gui);
 
-        this.logic.move(handler, HandlerChoice.FIELD_WHITESPACE, player);
+        this.logic.move(handler, HandlerChoice.FIELD_WHITESPACE, this.player);
 
         EasyMock.verify(this.hatchingGround, this.gui);
         assertEquals(HandlerState.FIELD_WHITESPACE, handler.getState());
@@ -126,7 +122,7 @@ public class LogicTests {
 
         EasyMock.replay(this.hatchingGround, this.gui);
 
-        this.logic.move(handler, HandlerChoice.BREAK_ROOM, player);
+        this.logic.move(handler, HandlerChoice.BREAK_ROOM, this.player);
 
         EasyMock.verify(this.hatchingGround, this.gui);
         assertEquals(HandlerState.BREAK_ROOM, handler.getState());
@@ -138,7 +134,7 @@ public class LogicTests {
 
         EasyMock.replay(this.hatchingGround, this.gui);
 
-        this.logic.move(handler, HandlerChoice.STAY, player);
+        this.logic.move(handler, HandlerChoice.STAY, this.player);
 
         EasyMock.verify(this.hatchingGround, this.gui);
         assertEquals(HandlerState.READY_ROOM, handler.getState());
@@ -150,7 +146,7 @@ public class LogicTests {
 
         EasyMock.replay(this.hatchingGround, this.gui);
 
-        this.logic.move(handler, HandlerChoice.READY_ROOM, player);
+        this.logic.move(handler, HandlerChoice.READY_ROOM, this.player);
 
         EasyMock.verify(this.hatchingGround, this.gui);
         assertEquals(HandlerState.READY_ROOM, handler.getState());
@@ -163,7 +159,7 @@ public class LogicTests {
 
         EasyMock.replay(this.hatchingGround, this.gui);
 
-        this.logic.move(handler, HandlerChoice.BREAK_ROOM, player);
+        this.logic.move(handler, HandlerChoice.BREAK_ROOM, this.player);
 
         EasyMock.verify(this.hatchingGround, this.gui);
 
@@ -180,7 +176,7 @@ public class LogicTests {
 
         EasyMock.replay(this.hatchingGround, this.gui);
 
-        this.logic.move(handler, HandlerChoice.BREAK_ROOM, player);
+        this.logic.move(handler, HandlerChoice.BREAK_ROOM, this.player);
 
         EasyMock.verify(this.hatchingGround, this.gui);
 
@@ -196,22 +192,24 @@ public class LogicTests {
 
         EasyMock.replay(this.hatchingGround, this.gui);
 
-        this.logic.move(handler, HandlerChoice.BREAK_ROOM, player);
+        this.logic.move(handler, HandlerChoice.BREAK_ROOM, this.player);
 
         EasyMock.verify(this.hatchingGround, this.gui);
         assertEquals(HandlerState.CARD, WildHandler.getInstance().getState());
     }
 
     @Test
-    public void testNoHandler() {
+    public void testNullHandler() {
         Card card = new Card();
 
         EasyMock.replay(this.hatchingGround, this.gui);
 
-        this.logic.move(card.handler, HandlerChoice.BREAK_ROOM, player);
+        this.logic.move(card.handler, HandlerChoice.BREAK_ROOM, this.player);
 
         EasyMock.verify(this.hatchingGround, this.gui);
         assertNull(card.handler);
     }
+
+
 
 }
