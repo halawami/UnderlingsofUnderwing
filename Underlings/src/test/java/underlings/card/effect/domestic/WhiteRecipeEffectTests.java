@@ -4,15 +4,14 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.MockTest;
 import underlings.card.effect.Effect;
 import underlings.card.effect.domestic.playerhatchingground.WhiteRecipeEffect;
 import underlings.element.ElementColor;
-import underlings.element.utilities.ElementSpaceLogic;
-import underlings.game.HatchingGround;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.ElementSpaceUtilities;
+import underlings.utilities.LocaleUtilities;
 
 public class WhiteRecipeEffectTests extends MockTest {
 
@@ -33,8 +32,8 @@ public class WhiteRecipeEffectTests extends MockTest {
 
     @Test
     public void testEffect() {
-        this.hatchingGround.logic = this.mock(ElementSpaceLogic.class);
-        this.player.elementSpaceLogic = this.mock(ElementSpaceLogic.class);
+        this.hatchingGround.logic = this.mock(ElementSpaceUtilities.class);
+        this.player.elementSpaceLogic = this.mock(ElementSpaceUtilities.class);
 
         this.hatchingGround.logic.addRecipe(ElementColor.WHITE, this.recipe000.split(","));
         this.hatchingGround.logic.addRecipe(ElementColor.WHITE, this.recipe001.split(","));
@@ -64,7 +63,7 @@ public class WhiteRecipeEffectTests extends MockTest {
     public void testToStringDestroy() {
         this.replayAll();
         WhiteRecipeEffect effect = new WhiteRecipeEffect();
-        assertEquals(LocaleWrap.get("combine_primary_secondary_for_white"), effect.toString());
+        assertEquals(LocaleUtilities.get("combine_primary_secondary_for_white"), effect.toString());
     }
 
 }

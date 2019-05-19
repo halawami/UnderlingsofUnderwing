@@ -5,17 +5,17 @@ import java.util.List;
 import underlings.gui.Gui;
 import underlings.gui.Gui.PromptType;
 import underlings.player.Player;
-import underlings.scoring.ScoreUtils;
-import underlings.utilities.LocaleWrap;
+import underlings.scoring.Scoring;
+import underlings.utilities.LocaleUtilities;
 
 public class RegularFinalPhase implements FinalPhase {
 
     private Gui gui;
     private List<Player> players;
     private Phase dragonPhase;
-    private ScoreUtils scoreUtils;
+    private Scoring scoreUtils;
 
-    public RegularFinalPhase(List<Player> players, Gui gui, Phase dragonPhase, ScoreUtils scoreUtils) {
+    public RegularFinalPhase(List<Player> players, Gui gui, Phase dragonPhase, Scoring scoreUtils) {
         this.players = players;
         this.gui = gui;
         this.dragonPhase = dragonPhase;
@@ -30,7 +30,7 @@ public class RegularFinalPhase implements FinalPhase {
             this.turn(player);
         }
 
-        this.gui.alert(LocaleWrap.get("game_over"), PromptType.WARNING);
+        this.gui.alert(LocaleUtilities.get("game_over"), PromptType.WARNING);
         this.scoreUtils.calculateScores();
         this.scoreUtils.displayScores();
         this.scoreUtils.displayWinners();

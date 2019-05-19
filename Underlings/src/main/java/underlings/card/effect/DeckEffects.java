@@ -1,9 +1,8 @@
 package underlings.card.effect;
 
 import java.util.List;
-
-import underlings.game.Deck;
 import underlings.gui.Gui;
+import underlings.hatchingground.Deck;
 import underlings.player.Player;
 
 public abstract class DeckEffects extends Effect {

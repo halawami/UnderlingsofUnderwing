@@ -4,17 +4,15 @@ import static org.junit.Assert.assertEquals;
 
 import org.easymock.EasyMock;
 import org.junit.Test;
-
 import underlings.card.Card;
-import underlings.element.utilities.ElementSpaceLogic;
-import underlings.game.Deck;
-import underlings.game.HatchingGround;
+import underlings.hatchingground.HatchingGround;
+import underlings.utilities.ElementSpaceUtilities;
 
 public class HatchingGroundTests {
 
     @Test
     public void testReplaceCard() {
-        ElementSpaceLogic logic = EasyMock.mock(ElementSpaceLogic.class);
+        ElementSpaceUtilities logic = EasyMock.mock(ElementSpaceUtilities.class);
         EasyMock.expect(logic.isComplete(EasyMock.anyObject(Card.class))).andReturn(false).anyTimes();
 
         Deck deck = EasyMock.mock(Deck.class);
@@ -35,7 +33,7 @@ public class HatchingGroundTests {
 
     @Test
     public void testReplaceCardBigger() {
-        ElementSpaceLogic logic = EasyMock.mock(ElementSpaceLogic.class);
+        ElementSpaceUtilities logic = EasyMock.mock(ElementSpaceUtilities.class);
         EasyMock.expect(logic.isComplete(EasyMock.anyObject(Card.class))).andReturn(false).anyTimes();
 
         Deck deck = EasyMock.mock(Deck.class);

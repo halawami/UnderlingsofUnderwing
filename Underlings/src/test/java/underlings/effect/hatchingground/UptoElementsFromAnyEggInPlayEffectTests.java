@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.easymock.EasyMock;
 import org.junit.Test;
-
 import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.effect.domestic.playerhatchingground.uptoelements.CollectUpToElementsFromAnyEggInPlayEffect;
@@ -16,10 +15,10 @@ import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.NullElement;
-import underlings.game.HatchingGround;
 import underlings.gui.Gui;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class UptoElementsFromAnyEggInPlayEffectTests extends MockTest {
 
@@ -98,6 +97,27 @@ public class UptoElementsFromAnyEggInPlayEffectTests extends MockTest {
         this.testCollectElement(this.mock(Element.class), ElementColor.BLUE);
     }
 
+    @Test
+    public void testCollectNonExistingElement() {
+        Player currentPlayer = this.mock(Player.class);
+        EasyMock.expect(currentPlayer.getId()).andReturn(10).anyTimes();
+        HatchingGround hatchingGround = this.mock(HatchingGround.class);
+        Gui gui = this.mock(Gui.class);
+        UptoElementsFromAnyEggInPlayEffect effect =
+                EasyMock.partialMockBuilder(UptoElementsFromAnyEggInPlayEffect.class)
+                        .addMockedMethod("applyOnSelectedElement").createMock();
+        this.addMock(effect);
+        effect.elementChoices = new ElementColor[] {ElementColor.BLUE};
+        effect.upTo = 1;
+
+        List<Card> mockCards = this.mockListOf(Card.class).withLengthOf(6);
+        EasyMock.expect(hatchingGround.getAllCards()).andReturn(mockCards);
+        EasyMock.expect(gui.getElementSpaceWithColors(mockCards, effect.elementChoices, 10)).andReturn(null);
+        this.replayAll();
+
+        effect.on(gui).on(currentPlayer).on(hatchingGround).apply();
+    }
+
     private void testCollectElement(Element elementPicked, ElementColor elementColor) {
         Player currentPlayer = this.mock(Player.class);
         ElementSpace elementSpace = this.mock(ElementSpace.class);
@@ -123,7 +143,7 @@ public class UptoElementsFromAnyEggInPlayEffectTests extends MockTest {
             elements.append(color);
             elements.append(" ");
         }
-        assertEquals(LocaleWrap.format("collect_up_to_effect", effect.upTo, elements), effect.toString());
+        assertEquals(LocaleUtilities.format("collect_up_to_effect", effect.upTo, elements), effect.toString());
     }
 
     @Test
@@ -135,6 +155,6 @@ public class UptoElementsFromAnyEggInPlayEffectTests extends MockTest {
             elements.append(color);
             elements.append(" ");
         }
-        assertEquals(LocaleWrap.format("destroy_up_to_effect", effect.upTo, elements), effect.toString());
+        assertEquals(LocaleUtilities.format("destroy_up_to_effect", effect.upTo, elements), effect.toString());
     }
 }

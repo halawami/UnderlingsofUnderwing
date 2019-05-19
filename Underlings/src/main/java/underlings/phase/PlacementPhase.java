@@ -3,27 +3,26 @@ package underlings.phase;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import underlings.card.Card;
 import underlings.element.ElementSpace;
-import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.gui.Gui.PromptType;
 import underlings.handler.WildHandler;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.FakePlayer;
 import underlings.player.Player;
-import underlings.utilities.EggHatchingLogic;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.EggHatchingUtilities;
+import underlings.utilities.LocaleUtilities;
 import underlings.utilities.PlacementUtilities;
 
 public class PlacementPhase extends RotationPhase {
 
     private Map<Player, Integer> turnCounts;
-    protected EggHatchingLogic wildEggHatchingLogic;
+    protected EggHatchingUtilities wildEggHatchingLogic;
     protected PlacementUtilities utils;
 
     public PlacementPhase(List<Player> players, Gui gui, HatchingGround hatchingGround, Runnable displayMethod,
-            EggHatchingLogic eggHatchingLogic, PlacementUtilities utils) {
+            EggHatchingUtilities eggHatchingLogic, PlacementUtilities utils) {
         super(players, gui, null, hatchingGround, displayMethod, null);
         this.wildEggHatchingLogic = eggHatchingLogic;
         this.utils = utils;
@@ -45,7 +44,7 @@ public class PlacementPhase extends RotationPhase {
 
         List<Card> cards = this.utils.getPlayableCards(player.elementSpaceLogic, player.elements);
         if (cards.isEmpty()) {
-            this.gui.alert(LocaleWrap.get("no_placements"), player.id, PromptType.WARNING);
+            this.gui.alert(LocaleUtilities.get("no_placements"), player.id, PromptType.WARNING);
             return;
         } else {
             this.setPhaseComplete(false);

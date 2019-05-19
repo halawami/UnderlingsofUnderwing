@@ -8,14 +8,13 @@ import java.util.List;
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.MockTest;
 import underlings.card.Card;
-import underlings.game.Deck;
-import underlings.game.HatchingGround;
+import underlings.hatchingground.Deck;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
-import underlings.utilities.EggHatchingLogic;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.EggHatchingUtilities;
+import underlings.utilities.LocaleUtilities;
 
 public class ApiaraWildEffectTests extends MockTest {
 
@@ -27,7 +26,7 @@ public class ApiaraWildEffectTests extends MockTest {
         this.hatchingGround = this.mock(HatchingGround.class);
         this.deck = this.mock(Deck.class);
         this.player = this.mock(Player.class);
-        this.eggHatchingLogic = this.mock(EggHatchingLogic.class);
+        this.eggHatchingLogic = this.mock(EggHatchingUtilities.class);
     }
 
     @Test
@@ -103,6 +102,6 @@ public class ApiaraWildEffectTests extends MockTest {
     public void testToStringDestroy() {
         this.replayAll();
         ApiaraWildEffect effect = new ApiaraWildEffect();
-        assertEquals(LocaleWrap.get("apiara_wild_effect"), effect.toString());
+        assertEquals(LocaleUtilities.get("apiara_wild_effect"), effect.toString());
     }
 }

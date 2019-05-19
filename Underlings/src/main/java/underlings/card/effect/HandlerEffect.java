@@ -1,8 +1,8 @@
 package underlings.card.effect;
 
-import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.handler.HandlerMovementLogic;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
 
 public abstract class HandlerEffect extends Effect {

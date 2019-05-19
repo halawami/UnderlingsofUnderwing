@@ -10,7 +10,7 @@ import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.ElementSpacePosition;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class GetElementSpaceWithColorsTests {
 
@@ -68,9 +68,9 @@ public class GetElementSpaceWithColorsTests {
         card.elementSpaces[0].addElements(new Element(ElementColor.RED));
 
         PromptHandler prompt = EasyMock.mock(PromptHandler.class);
-        EasyMock.expect(prompt.promptChoice(LocaleWrap.get("take_element_yesno"), YesNoChoice.getChoices(), 1))
+        EasyMock.expect(prompt.promptChoice(LocaleUtilities.get("take_element_yesno"), YesNoChoice.getChoices(), 1))
                 .andReturn(YesNoChoice.YES);
-        EasyMock.expect(prompt.promptChoice(LocaleWrap.get("take_element_card"), Arrays.asList(card), 1))
+        EasyMock.expect(prompt.promptChoice(LocaleUtilities.get("take_element_card"), Arrays.asList(card), 1))
                 .andReturn(card);
         EasyMock.expect(prompt.pickFromGrid(EasyMock.anyString(), EasyMock.anyObject(ElementSpace[][].class),
                 EasyMock.anyInt())).andReturn(card.elementSpaces[0]);
@@ -98,9 +98,9 @@ public class GetElementSpaceWithColorsTests {
         card.elementSpaces[1].position = ElementSpacePosition.L3_1;
 
         PromptHandler prompt = EasyMock.mock(PromptHandler.class);
-        EasyMock.expect(prompt.promptChoice(LocaleWrap.get("take_element_yesno"), YesNoChoice.getChoices(), 1))
+        EasyMock.expect(prompt.promptChoice(LocaleUtilities.get("take_element_yesno"), YesNoChoice.getChoices(), 1))
                 .andReturn(YesNoChoice.YES);
-        EasyMock.expect(prompt.promptChoice(LocaleWrap.get("take_element_card"), Arrays.asList(card), 1))
+        EasyMock.expect(prompt.promptChoice(LocaleUtilities.get("take_element_card"), Arrays.asList(card), 1))
                 .andReturn(card);
         EasyMock.expect(prompt.pickFromGrid(EasyMock.anyString(), EasyMock.anyObject(ElementSpace[][].class),
                 EasyMock.anyInt())).andReturn(card.elementSpaces[1]);
@@ -126,7 +126,7 @@ public class GetElementSpaceWithColorsTests {
         card.elementSpaces[1].addElements(new Element(ElementColor.BLUE));
 
         PromptHandler prompt = EasyMock.mock(PromptHandler.class);
-        EasyMock.expect(prompt.promptChoice(LocaleWrap.get("take_element_yesno"), YesNoChoice.getChoices(), 1))
+        EasyMock.expect(prompt.promptChoice(LocaleUtilities.get("take_element_yesno"), YesNoChoice.getChoices(), 1))
                 .andReturn(YesNoChoice.NO);
         EasyMock.replay(prompt);
 
@@ -152,9 +152,9 @@ public class GetElementSpaceWithColorsTests {
         card.elementSpaces[1].position = ElementSpacePosition.L3_1;
 
         PromptHandler prompt = EasyMock.mock(PromptHandler.class);
-        EasyMock.expect(prompt.promptChoice(LocaleWrap.get("take_element_yesno"), YesNoChoice.getChoices(), 1))
+        EasyMock.expect(prompt.promptChoice(LocaleUtilities.get("take_element_yesno"), YesNoChoice.getChoices(), 1))
                 .andReturn(YesNoChoice.YES);
-        EasyMock.expect(prompt.promptChoice(LocaleWrap.get("take_element_card"), Arrays.asList(card), 1))
+        EasyMock.expect(prompt.promptChoice(LocaleUtilities.get("take_element_card"), Arrays.asList(card), 1))
                 .andReturn(card);
         EasyMock.expect(prompt.pickFromGrid(EasyMock.anyString(), EasyMock.anyObject(ElementSpace[][].class),
                 EasyMock.anyInt())).andReturn(card.elementSpaces[1]);
@@ -182,9 +182,9 @@ public class GetElementSpaceWithColorsTests {
         card.elementSpaces[1].position = ElementSpacePosition.L3_1;
 
         PromptHandler prompt = EasyMock.mock(PromptHandler.class);
-        EasyMock.expect(prompt.promptChoice(LocaleWrap.get("take_element_yesno"), YesNoChoice.getChoices(), 2))
+        EasyMock.expect(prompt.promptChoice(LocaleUtilities.get("take_element_yesno"), YesNoChoice.getChoices(), 2))
                 .andReturn(YesNoChoice.YES);
-        EasyMock.expect(prompt.promptChoice(LocaleWrap.get("take_element_card"), Arrays.asList(card), 2))
+        EasyMock.expect(prompt.promptChoice(LocaleUtilities.get("take_element_card"), Arrays.asList(card), 2))
                 .andReturn(card);
         EasyMock.expect(prompt.pickFromGrid(EasyMock.anyString(), EasyMock.anyObject(ElementSpace[][].class),
                 EasyMock.anyInt())).andReturn(card.elementSpaces[0]);

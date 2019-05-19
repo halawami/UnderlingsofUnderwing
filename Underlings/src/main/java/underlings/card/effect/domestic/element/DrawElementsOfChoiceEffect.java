@@ -9,7 +9,7 @@ import underlings.element.ElementGiver;
 import underlings.element.ElementGiverFactory;
 import underlings.gui.DrawChoice;
 import underlings.player.Player;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class DrawElementsOfChoiceEffect extends ElementEffect implements ObserverEffect {
 
@@ -43,6 +43,6 @@ public class DrawElementsOfChoiceEffect extends ElementEffect implements Observe
 
     @Override
     public String toString() {
-        return LocaleWrap.get("draw_elements_of_choice");
+        return LocaleUtilities.get("draw_elements_of_choice");
     }
 }

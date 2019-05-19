@@ -5,7 +5,7 @@ import java.util.List;
 import underlings.card.effect.PlayersEffect;
 import underlings.gui.Gui;
 import underlings.player.Player;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class LoseHandlerEffect extends PlayersEffect {
 
@@ -16,6 +16,6 @@ public class LoseHandlerEffect extends PlayersEffect {
 
     @Override
     public String toString() {
-        return LocaleWrap.get("lose_handler_effect");
+        return LocaleUtilities.get("lose_handler_effect");
     }
 }

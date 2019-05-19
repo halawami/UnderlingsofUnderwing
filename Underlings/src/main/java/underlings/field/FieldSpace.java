@@ -5,7 +5,7 @@ import java.util.List;
 
 import underlings.gui.DrawChoice;
 import underlings.handler.Handler;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class FieldSpace {
 
@@ -20,7 +20,7 @@ public class FieldSpace {
     public void addHandler(Handler handler) {
         this.handlers.add(handler);
         handler.addDrawChoice(this.color);
-        handler.setLocation(LocaleWrap.get(this.color.name()));
+        handler.setLocation(LocaleUtilities.get(this.color.name()));
     }
 
     public boolean contains(Handler handler) {
@@ -35,7 +35,7 @@ public class FieldSpace {
 
     @Override
     public String toString() {
-        return LocaleWrap.format("field_space_string", this.color);
+        return LocaleUtilities.format("field_space_string", this.color);
     }
 
 }

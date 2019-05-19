@@ -12,7 +12,7 @@ import underlings.card.effect.Effect;
 import underlings.card.effect.domestic.players.StealAllStoredElements;
 import underlings.gui.Gui;
 import underlings.player.Player;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class StealAllStoredElementsTests extends MockTest {
 
@@ -23,7 +23,7 @@ public class StealAllStoredElementsTests extends MockTest {
         Gui gui = this.mock(Gui.class);
         Effect effect = new StealAllStoredElements();
 
-        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_war_players"), players, 0)).andReturn(players.get(3));
+        EasyMock.expect(gui.promptChoice(LocaleUtilities.get("prompt_war_players"), players, 0)).andReturn(players.get(3));
         currentPlayer.stealAllElementsFromPlayer(players.get(3));
 
         this.replayAll();
@@ -34,7 +34,7 @@ public class StealAllStoredElementsTests extends MockTest {
     @Test
     public void testToString() {
         Effect effect = new StealAllStoredElements();
-        assertEquals(LocaleWrap.get("take_all_elements_effect"), effect.toString());
+        assertEquals(LocaleUtilities.get("take_all_elements_effect"), effect.toString());
     }
 
 }

@@ -12,9 +12,9 @@ import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.Temperature;
 import underlings.card.effect.wild.deck.ReturnAllHatchedDragonsFromPlayers;
-import underlings.game.Deck;
+import underlings.hatchingground.Deck;
 import underlings.player.Player;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
 
@@ -147,7 +147,7 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
             temperature.append(temp);
             temperature.append(" ");
         }
-        assertEquals(LocaleWrap.format("return_hatched_dragons", temperature), effect.toString());
+        assertEquals(LocaleUtilities.format("return_hatched_dragons", temperature), effect.toString());
     }
 
 }

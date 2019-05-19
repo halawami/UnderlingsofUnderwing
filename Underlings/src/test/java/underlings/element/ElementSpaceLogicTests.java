@@ -13,17 +13,16 @@ import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import underlings.element.utilities.ElementSpaceLogic;
+import underlings.utilities.ElementSpaceUtilities;
 
 public class ElementSpaceLogicTests {
 
-    ElementSpaceLogic logic;
+    ElementSpaceUtilities logic;
 
     @Before
     public void init() throws IOException {
         List<String> recipes = Resources.readLines(Resources.getResource("DefaultRecipeList.txt"), Charsets.UTF_8);
-        logic = new ElementSpaceLogic(recipes);
+        logic = new ElementSpaceUtilities(recipes);
     }
 
     @Test

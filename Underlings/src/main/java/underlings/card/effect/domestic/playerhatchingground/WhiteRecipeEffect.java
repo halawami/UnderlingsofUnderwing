@@ -2,13 +2,12 @@ package underlings.card.effect.domestic.playerhatchingground;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import underlings.element.ElementColor;
-import underlings.game.HatchingGround;
 import underlings.gui.Gui;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
-import underlings.utilities.EggHatchingLogic;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.EggHatchingUtilities;
+import underlings.utilities.LocaleUtilities;
 
 public class WhiteRecipeEffect extends PlayerHatchingGroundEffect {
 
@@ -22,7 +21,7 @@ public class WhiteRecipeEffect extends PlayerHatchingGroundEffect {
     private String recipe111 = "RED,YELLOW,BLUE,RED,BLUE,RED,YELLOW,BLUE,YELLOW";
 
     @Override
-    protected void apply(HatchingGround hatchingGround, EggHatchingLogic hatchingLogic, Player currentPlayer, Gui gui) {
+    protected void apply(HatchingGround hatchingGround, EggHatchingUtilities hatchingLogic, Player currentPlayer, Gui gui) {
         List<String[]> recipes = new ArrayList<>();
         recipes.add(this.recipe000.split(","));
         recipes.add(this.recipe001.split(","));
@@ -41,7 +40,7 @@ public class WhiteRecipeEffect extends PlayerHatchingGroundEffect {
 
     @Override
     public String toString() {
-        return LocaleWrap.get("combine_primary_secondary_for_white");
+        return LocaleUtilities.get("combine_primary_secondary_for_white");
     }
 
 

@@ -10,11 +10,9 @@ import java.util.List;
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.card.Card;
 import underlings.field.Field;
 import underlings.field.FieldSpaceFactory;
-import underlings.game.HatchingGround;
 import underlings.gui.DrawChoice;
 import underlings.gui.Gui;
 import underlings.handler.Handler;
@@ -23,6 +21,7 @@ import underlings.handler.HandlerFactory;
 import underlings.handler.HandlerMovementLogic;
 import underlings.handler.HandlerState;
 import underlings.handler.WildHandler;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
 
 public class LogicTests {

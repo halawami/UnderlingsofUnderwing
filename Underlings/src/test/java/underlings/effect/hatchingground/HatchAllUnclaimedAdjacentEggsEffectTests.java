@@ -10,19 +10,18 @@ import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.Family;
 import underlings.card.effect.Effect;
 import underlings.card.effect.wild.adjacenteggs.HatchAllUnclaimedEffect;
 import underlings.element.ElementBag;
-import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.handler.Handler;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.FakePlayer;
-import underlings.utilities.EggHatchingLogic;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.EggHatchingUtilities;
+import underlings.utilities.LocaleUtilities;
 
 public class HatchAllUnclaimedAdjacentEggsEffectTests extends MockTest {
 
@@ -33,7 +32,7 @@ public class HatchAllUnclaimedAdjacentEggsEffectTests extends MockTest {
         this.cards = this.mockListOf(Card.class).withLengthOf(1);
         this.cards.get(0).wildEffects = new Effect[1];
         this.cards.get(0).wildEffects[0] = this.effect;
-        this.eggHatchingLogic = this.mock(EggHatchingLogic.class);
+        this.eggHatchingLogic = this.mock(EggHatchingUtilities.class);
         this.hatchingGround = this.mock(HatchingGround.class);
         this.elementBag = this.mock(ElementBag.class);
         List<String> recipes = Resources.readLines(Resources.getResource("DefaultRecipeList.txt"), Charsets.UTF_8);
@@ -85,6 +84,6 @@ public class HatchAllUnclaimedAdjacentEggsEffectTests extends MockTest {
             families.append(family);
             families.append(" ");
         }
-        assertEquals(LocaleWrap.format("hatch_all_unclaimed_adjacent_eggs_effect", families), effect.toString());
+        assertEquals(LocaleUtilities.format("hatch_all_unclaimed_adjacent_eggs_effect", families), effect.toString());
     }
 }

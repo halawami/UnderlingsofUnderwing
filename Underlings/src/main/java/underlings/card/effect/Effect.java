@@ -1,16 +1,15 @@
 package underlings.card.effect;
 
 import java.util.List;
-
 import underlings.card.Card;
 import underlings.element.ElementBag;
 import underlings.element.ElementGiver;
-import underlings.game.Deck;
-import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.handler.HandlerMovementLogic;
+import underlings.hatchingground.Deck;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
-import underlings.utilities.EggHatchingLogic;
+import underlings.utilities.EggHatchingUtilities;
 
 public abstract class Effect extends ElementGiver {
 
@@ -19,7 +18,7 @@ public abstract class Effect extends ElementGiver {
     private ElementBag elementBag;
     private Card centerCard;
     private Gui gui;
-    private EggHatchingLogic eggHatchingLogic;
+    private EggHatchingUtilities eggHatchingLogic;
     private List<Player> players;
     private Deck deck;
     private HandlerMovementLogic handlerMovementLogic;
@@ -49,7 +48,7 @@ public abstract class Effect extends ElementGiver {
         return this;
     }
 
-    public Effect on(EggHatchingLogic eggHatchingLogic) {
+    public Effect on(EggHatchingUtilities eggHatchingLogic) {
         this.eggHatchingLogic = eggHatchingLogic;
         return this;
     }
@@ -100,11 +99,11 @@ public abstract class Effect extends ElementGiver {
             Gui gui) {
     }
 
-    protected void apply(HatchingGround hatchingGround, EggHatchingLogic hatchingLogic, Player currentPlayer, Gui gui) {
+    protected void apply(HatchingGround hatchingGround, EggHatchingUtilities hatchingLogic, Player currentPlayer, Gui gui) {
     }
 
     protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag,
-            Player currentPlayer, EggHatchingLogic eggHatchingLogic, Deck deck,
+            Player currentPlayer, EggHatchingUtilities eggHatchingLogic, Deck deck,
             HandlerMovementLogic handlerMovementLogic) {
     }
 }

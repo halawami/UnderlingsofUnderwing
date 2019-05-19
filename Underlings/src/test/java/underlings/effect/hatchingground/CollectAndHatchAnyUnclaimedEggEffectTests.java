@@ -7,16 +7,15 @@ import java.util.List;
 
 import org.easymock.EasyMock;
 import org.junit.Test;
-
 import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.EmptyCard;
 import underlings.card.effect.domestic.playerhatchingground.CollectAndHatchAnyUnclaimedEggEffect;
-import underlings.game.HatchingGround;
 import underlings.gui.Gui;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
-import underlings.utilities.EggHatchingLogic;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.EggHatchingUtilities;
+import underlings.utilities.LocaleUtilities;
 
 public class CollectAndHatchAnyUnclaimedEggEffectTests extends MockTest {
 
@@ -32,10 +31,10 @@ public class CollectAndHatchAnyUnclaimedEggEffectTests extends MockTest {
         EasyMock.expect(currentPlayer.getId()).andReturn(0);
 
         Gui gui = this.mock(Gui.class);
-        EasyMock.expect(gui.getCard(0, LocaleWrap.get("gui_card"), hatchingGround, mockedCards))
+        EasyMock.expect(gui.getCard(0, LocaleUtilities.get("gui_card"), hatchingGround, mockedCards))
                 .andReturn(mockedCards.get(0));
 
-        EggHatchingLogic eggHatchingLogic = this.mock(EggHatchingLogic.class);
+        EggHatchingUtilities eggHatchingLogic = this.mock(EggHatchingUtilities.class);
         eggHatchingLogic.hatchEgg(mockedCards.get(0), currentPlayer);
 
         this.replayAll();
@@ -57,9 +56,9 @@ public class CollectAndHatchAnyUnclaimedEggEffectTests extends MockTest {
         EasyMock.expect(currentPlayer.getId()).andReturn(0);
         Gui gui = this.mock(Gui.class);
 
-        EasyMock.expect(gui.getCard(0, LocaleWrap.get("gui_card"), hatchingGround, mockedCards))
+        EasyMock.expect(gui.getCard(0, LocaleUtilities.get("gui_card"), hatchingGround, mockedCards))
                 .andReturn(EmptyCard.getInstance());
-        EggHatchingLogic eggHatchingLogic = this.mock(EggHatchingLogic.class);
+        EggHatchingUtilities eggHatchingLogic = this.mock(EggHatchingUtilities.class);
         CollectAndHatchAnyUnclaimedEggEffect effect =
                 new CollectAndHatchAnyUnclaimedEggEffect();
 
@@ -72,6 +71,6 @@ public class CollectAndHatchAnyUnclaimedEggEffectTests extends MockTest {
     @Test
     public void testToString() {
         CollectAndHatchAnyUnclaimedEggEffect effect = new CollectAndHatchAnyUnclaimedEggEffect();
-        assertEquals(LocaleWrap.format("hatch_unclaimed_dragon_effect", effect.points), effect.toString());
+        assertEquals(LocaleUtilities.format("hatch_unclaimed_dragon_effect", effect.points), effect.toString());
     }
 }

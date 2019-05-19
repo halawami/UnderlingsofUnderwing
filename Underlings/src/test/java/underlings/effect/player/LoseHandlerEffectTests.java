@@ -10,7 +10,7 @@ import underlings.MockTest;
 import underlings.card.effect.Effect;
 import underlings.card.effect.wild.players.LoseHandlerEffect;
 import underlings.player.Player;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class LoseHandlerEffectTests extends MockTest {
 
@@ -41,7 +41,7 @@ public class LoseHandlerEffectTests extends MockTest {
     @Test
     public void testToString() {
         Effect effect = new LoseHandlerEffect();
-        assertEquals(LocaleWrap.get("lose_handler_effect"), effect.toString());
+        assertEquals(LocaleUtilities.get("lose_handler_effect"), effect.toString());
     }
 
 }

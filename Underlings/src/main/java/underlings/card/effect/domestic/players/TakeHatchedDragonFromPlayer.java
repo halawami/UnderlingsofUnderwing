@@ -12,7 +12,7 @@ import underlings.card.effect.PlayersEffect;
 import underlings.gui.Gui;
 import underlings.gui.Gui.PromptType;
 import underlings.player.Player;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class TakeHatchedDragonFromPlayer extends PlayersEffect {
 
@@ -37,13 +37,13 @@ public class TakeHatchedDragonFromPlayer extends PlayersEffect {
             }
         }
         if (playerCards.isEmpty()) {
-            gui.alert(LocaleWrap.get("no_player_has_hatched_cards"), PromptType.REGULAR);
+            gui.alert(LocaleUtilities.get("no_player_has_hatched_cards"), PromptType.REGULAR);
             return;
         }
 
-        Player playerToSteal = gui.promptChoice(LocaleWrap.get("prompt_player_to_steal"),
+        Player playerToSteal = gui.promptChoice(LocaleUtilities.get("prompt_player_to_steal"),
                 new ArrayList<>(playerCards.keySet()), currentPlayer.id);
-        Card toSteal = gui.promptChoice(LocaleWrap.get("prompt_card_to_steal"), playerCards.get(playerToSteal),
+        Card toSteal = gui.promptChoice(LocaleUtilities.get("prompt_card_to_steal"), playerCards.get(playerToSteal),
                 currentPlayer.getId());
 
         currentPlayer.hatchedCards.add(toSteal);
@@ -57,6 +57,6 @@ public class TakeHatchedDragonFromPlayer extends PlayersEffect {
             temperature.append(temp);
             temperature.append(" ");
         }
-        return LocaleWrap.format("take_hatched_dragon", temperature, this.points);
+        return LocaleUtilities.format("take_hatched_dragon", temperature, this.points);
     }
 }

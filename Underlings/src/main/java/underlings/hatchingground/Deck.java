@@ -1,16 +1,15 @@
-package underlings.game;
+package underlings.hatchingground;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
-
 import underlings.card.Card;
 import underlings.card.EmptyCard;
 
 @SuppressWarnings("rawtypes")
 public class Deck {
 
-    protected List<Card> cards;
+    public List<Card> cards;
 
     Consumer<List> shuffleFunction;
 
@@ -32,7 +31,7 @@ public class Deck {
         }
 
         if (shuffle) {
-            shuffle();
+            this.shuffle();
         }
     }
 

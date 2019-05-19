@@ -2,14 +2,14 @@ package underlings.card.effect.wild.alleggsinplay;
 
 import underlings.card.Card;
 import underlings.element.ElementBag;
-import underlings.element.utilities.ElementSpaceLogic;
 import underlings.handler.HandlerMovementLogic;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.ElementSpaceUtilities;
+import underlings.utilities.LocaleUtilities;
 
 public class DestroyAllElementsOnAllEggsInPlay extends AllEggsInPlayEffect {
 
     @Override
-    public void applyOnCardInPlay(Card cardInPlay, ElementSpaceLogic elementSpaceLogic, ElementBag elementBag,
+    public void applyOnCardInPlay(Card cardInPlay, ElementSpaceUtilities elementSpaceLogic, ElementBag elementBag,
             HandlerMovementLogic handlerMovementLogic) {
         if (cardInPlay.isClaimed()) {
             for (int i = 0; i < cardInPlay.elementSpaces.length; i++) {
@@ -20,6 +20,6 @@ public class DestroyAllElementsOnAllEggsInPlay extends AllEggsInPlayEffect {
 
     @Override
     public String toString() {
-        return LocaleWrap.get("destroy_all_elements_on_all_eggs_effect");
+        return LocaleUtilities.get("destroy_all_elements_on_all_eggs_effect");
     }
 }

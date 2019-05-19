@@ -9,7 +9,6 @@ import java.util.List;
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.effect.wild.adjacenteggs.elements.add.AddElementsEffect;
@@ -18,21 +17,21 @@ import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.NullElement;
-import underlings.element.utilities.ElementSpaceLogic;
-import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.handler.WildHandler;
-import underlings.utilities.EggHatchingLogic;
-import underlings.utilities.LocaleWrap;
+import underlings.hatchingground.HatchingGround;
+import underlings.utilities.EggHatchingUtilities;
+import underlings.utilities.ElementSpaceUtilities;
+import underlings.utilities.LocaleUtilities;
 
 public class AddElementsToAllAdjacentEggsEffectTests extends MockTest {
 
     @Before
     public void init() {
         this.elementBag = this.mock(ElementBag.class);
-        this.elementSpaceLogic = this.mock(ElementSpaceLogic.class);
+        this.elementSpaceLogic = this.mock(ElementSpaceUtilities.class);
         this.card = this.mock(Card.class);
-        this.eggHatchingLogic = this.mock(EggHatchingLogic.class);
+        this.eggHatchingLogic = this.mock(EggHatchingUtilities.class);
         this.gui = this.mock(Gui.class);
         this.hatchingGround = this.mock(HatchingGround.class);
     }
@@ -150,7 +149,7 @@ public class AddElementsToAllAdjacentEggsEffectTests extends MockTest {
             elements.append(color);
             elements.append(" ");
         }
-        assertEquals(LocaleWrap.format("place_element_on_all_eggs_effect", elements), effect.toString());
+        assertEquals(LocaleUtilities.format("place_element_on_all_eggs_effect", elements), effect.toString());
     }
 
 }

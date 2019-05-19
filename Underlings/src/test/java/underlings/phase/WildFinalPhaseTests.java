@@ -13,7 +13,7 @@ import underlings.MockTest;
 import underlings.gui.Gui;
 import underlings.gui.Gui.PromptType;
 import underlings.player.FakePlayer;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class WildFinalPhaseTests extends MockTest {
 
@@ -25,7 +25,7 @@ public class WildFinalPhaseTests extends MockTest {
     @Test
     public void testRunWildFinalPhase() throws IOException {
 
-        this.gui.alert(LocaleWrap.get("wild_game_over"), PromptType.ERROR);
+        this.gui.alert(LocaleUtilities.get("wild_game_over"), PromptType.ERROR);
 
         FinalPhase finalPhase = new WildFinalPhase(this.gui);
         List<String> recipes = Resources.readLines(Resources.getResource("DefaultRecipeList.txt"), Charsets.UTF_8);

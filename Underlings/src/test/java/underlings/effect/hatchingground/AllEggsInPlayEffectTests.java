@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.easymock.EasyMock;
 import org.junit.Test;
-
 import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.effect.wild.alleggsinplay.AddElementToAllEggsInPlayEffect;
@@ -16,14 +15,14 @@ import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
-import underlings.element.utilities.ElementSpaceLogic;
-import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.handler.Handler;
 import underlings.handler.HandlerMovementLogic;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
-import underlings.utilities.EggHatchingLogic;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.EggHatchingUtilities;
+import underlings.utilities.ElementSpaceUtilities;
+import underlings.utilities.LocaleUtilities;
 
 public class AllEggsInPlayEffectTests extends MockTest {
 
@@ -44,14 +43,14 @@ public class AllEggsInPlayEffectTests extends MockTest {
 
     private void testApplyOnCardInPlay(int numberOfCards) {
         ElementBag elementBag = this.mock(ElementBag.class);
-        ElementSpaceLogic elementSpaceLogic = this.mock(ElementSpaceLogic.class);
+        ElementSpaceUtilities elementSpaceLogic = this.mock(ElementSpaceUtilities.class);
         Card centerCard = this.mock(Card.class);
         HatchingGround hatchingGround = this.mock(HatchingGround.class);
         Gui gui = this.mock(Gui.class);
         Player player = new Player(0, null, 0);
         player.elementSpaceLogic = elementSpaceLogic;
         List<Card> mockedCards = this.mockListOf(Card.class).withLengthOf(numberOfCards);
-        EggHatchingLogic eggHatchingLogic = this.mock(EggHatchingLogic.class);
+        EggHatchingUtilities eggHatchingLogic = this.mock(EggHatchingUtilities.class);
         AllEggsInPlayEffect effect = EasyMock.partialMockBuilder(AllEggsInPlayEffect.class)
                 .addMockedMethod("applyOnCardInPlay", Card.class)
                 .addMockedMethod("applyOnCardInPlay", Card.class, ElementSpaceLogic.class, ElementBag.class,
@@ -90,7 +89,7 @@ public class AllEggsInPlayEffectTests extends MockTest {
     private void testAddElementsToCardWithPlayableSpace(int numberOfPlayableSpaces) {
         ElementColor blue = ElementColor.BLUE;
         Card mockedCard = this.mock(Card.class);
-        ElementSpaceLogic elementSpaceLogic = this.mock(ElementSpaceLogic.class);
+        ElementSpaceUtilities elementSpaceLogic = this.mock(ElementSpaceUtilities.class);
         ElementBag elementBag = this.mock(ElementBag.class);
         Element stubElement = this.mock(Element.class);
         List<ElementSpace> mockedPlayableSpaces = this.mockListOf(ElementSpace.class)
@@ -115,7 +114,7 @@ public class AllEggsInPlayEffectTests extends MockTest {
         Card cardInPlay = new Card();
         List<ElementSpace> mockSpaces = this.mockListOf(ElementSpace.class).withLengthOf(8);
         cardInPlay.elementSpaces = mockSpaces.toArray(new ElementSpace[8]);
-        ElementSpaceLogic elementSpaceLogic = this.mock(ElementSpaceLogic.class);
+        ElementSpaceUtilities elementSpaceLogic = this.mock(ElementSpaceUtilities.class);
         ElementBag elementBag = this.mock(ElementBag.class);
 
         this.replayAll();
@@ -130,7 +129,7 @@ public class AllEggsInPlayEffectTests extends MockTest {
         cardInPlay.handler = this.mock(Handler.class);
         List<ElementSpace> mockSpaces = this.mockListOf(ElementSpace.class).withLengthOf(8);
         cardInPlay.elementSpaces = mockSpaces.toArray(new ElementSpace[8]);
-        ElementSpaceLogic elementSpaceLogic = this.mock(ElementSpaceLogic.class);
+        ElementSpaceUtilities elementSpaceLogic = this.mock(ElementSpaceUtilities.class);
         ElementBag elementBag = this.mock(ElementBag.class);
 
         mockSpaces.forEach(ElementSpace::destroyAllElements);
@@ -144,14 +143,14 @@ public class AllEggsInPlayEffectTests extends MockTest {
     @Test
     public void testToStringDestroy() {
         DestroyAllElementsOnAllEggsInPlay effect = new DestroyAllElementsOnAllEggsInPlay();
-        assertEquals(LocaleWrap.get("destroy_all_elements_on_all_eggs_effect"), effect.toString());
+        assertEquals(LocaleUtilities.get("destroy_all_elements_on_all_eggs_effect"), effect.toString());
     }
 
     @Test
     public void testToStringPlace() {
         AddElementToAllEggsInPlayEffect effect = new AddElementToAllEggsInPlayEffect();
         effect.elementColor = ElementColor.BLACK;
-        assertEquals(LocaleWrap.format("place_element_on_all_eggs_effect", effect.elementColor), effect.toString());
+        assertEquals(LocaleUtilities.format("place_element_on_all_eggs_effect", effect.elementColor), effect.toString());
     }
 
 }

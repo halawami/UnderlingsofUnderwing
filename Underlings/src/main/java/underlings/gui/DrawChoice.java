@@ -1,7 +1,7 @@
 package underlings.gui;
 
 import underlings.element.ElementColor;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public enum DrawChoice {
     BLUE, RED, GREEN, PURPLE, ORANGE, YELLOW, BLACK, WHITE, RANDOM, COOL, WARM, NULL;
@@ -31,6 +31,6 @@ public enum DrawChoice {
 
     @Override
     public String toString() {
-        return LocaleWrap.format("draw_choice", LocaleWrap.get(this.name()));
+        return LocaleUtilities.format("draw_choice", LocaleUtilities.get(this.name()));
     }
 }

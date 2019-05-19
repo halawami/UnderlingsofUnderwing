@@ -19,7 +19,7 @@ import underlings.gui.DrawChoice;
 import underlings.gui.Gui;
 import underlings.handler.HandlerFactory;
 import underlings.player.Player;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class DrawingPhaseTests extends MockTest {
 
@@ -34,10 +34,10 @@ public class DrawingPhaseTests extends MockTest {
 
         Element element = new Element(ElementColor.BLUE);
 
-        EasyMock.expect(gui.promptChoice(LocaleWrap.get("gui_element_giver"), player.getElementGivers(), 0))
+        EasyMock.expect(gui.promptChoice(LocaleUtilities.get("gui_element_giver"), player.getElementGivers(), 0))
                 .andReturn(player.getElementGivers().get(0));
         EasyMock.expect(
-                gui.promptChoice(LocaleWrap.get("gui_draw_choice"), player.getElementGivers().get(0).drawChoices, 0))
+                gui.promptChoice(LocaleUtilities.get("gui_draw_choice"), player.getElementGivers().get(0).drawChoices, 0))
                 .andReturn(DrawChoice.RANDOM);
         ElementBag elementBag = EasyMock.mock(ElementBag.class);
         EasyMock.expect(elementBag.drawElement(DrawChoice.RANDOM)).andReturn(element);
@@ -69,10 +69,10 @@ public class DrawingPhaseTests extends MockTest {
         List<Player> players = new ArrayList<>();
         players.add(player);
 
-        EasyMock.expect(gui.promptChoice(LocaleWrap.get("gui_element_giver"), player.getElementGivers(), 0))
+        EasyMock.expect(gui.promptChoice(LocaleUtilities.get("gui_element_giver"), player.getElementGivers(), 0))
                 .andReturn(player.getElementGivers().get(0));
         EasyMock.expect(
-                gui.promptChoice(LocaleWrap.get("gui_draw_choice"), player.getElementGivers().get(0).drawChoices, 0))
+                gui.promptChoice(LocaleUtilities.get("gui_draw_choice"), player.getElementGivers().get(0).drawChoices, 0))
                 .andReturn(DrawChoice.RANDOM);
         ElementBag elementBag = EasyMock.mock(ElementBag.class);
         EasyMock.expect(elementBag.drawElement(DrawChoice.RANDOM)).andReturn(NullElement.getInstance());

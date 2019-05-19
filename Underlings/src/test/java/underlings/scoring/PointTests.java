@@ -13,7 +13,7 @@ import underlings.card.Card;
 
 public class PointTests {
 
-    private ScoreUtils scoreUtils;
+    private Scoring scoreUtils;
 
     @Before
     public void init() {

@@ -2,12 +2,12 @@ package underlings.card.effect.wild.adjacenteggs;
 
 import underlings.card.Card;
 import underlings.card.effect.AdjacentEggsEffect;
-import underlings.game.Deck;
-import underlings.game.HatchingGround;
 import underlings.handler.HandlerChoice;
 import underlings.handler.HandlerMovementLogic;
+import underlings.hatchingground.Deck;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.FakePlayer;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class ReturnAllAdjacentCardsToDeckEffect extends AdjacentEggsEffect {
 
@@ -22,6 +22,6 @@ public class ReturnAllAdjacentCardsToDeckEffect extends AdjacentEggsEffect {
 
     @Override
     public String toString() {
-        return LocaleWrap.get("return_adjacent_eggs_effect");
+        return LocaleUtilities.get("return_adjacent_eggs_effect");
     }
 }

@@ -11,12 +11,11 @@ import java.util.List;
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.element.ElementBag;
 import underlings.game.Game;
-import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.handler.HandlerFactory;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.PlayerFactory;
 
 public class GameTests {

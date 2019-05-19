@@ -8,7 +8,7 @@ import underlings.card.effect.Effect;
 import underlings.card.effect.domestic.players.player.NextEggHatchesImmediatelyEffect;
 import underlings.handler.HandlerFactory;
 import underlings.player.Player;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class NextEggHatchesImmediatelyEffectTests {
 
@@ -25,7 +25,7 @@ public class NextEggHatchesImmediatelyEffectTests {
     @Test
     public void testToString() {
         Effect effect = new NextEggHatchesImmediatelyEffect();
-        assertEquals(LocaleWrap.get("egg_hatches_early_effect"), effect.toString());
+        assertEquals(LocaleUtilities.get("egg_hatches_early_effect"), effect.toString());
     }
 
 }
