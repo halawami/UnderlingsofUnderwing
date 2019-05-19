@@ -9,13 +9,13 @@ import underlings.gui.Gui.PromptType;
 import underlings.player.Player;
 import underlings.utilities.LocaleUtilities;
 
-public class ScoreUtils {
+public class Scoring {
 
     private List<Player> players;
     private Gui gui;
     protected int winningScore;
 
-    public ScoreUtils(List<Player> players, Gui gui) {
+    public Scoring(List<Player> players, Gui gui) {
         this.players = players;
         this.gui = gui;
     }

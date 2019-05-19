@@ -34,7 +34,7 @@ import underlings.phase.RegularFinalPhase;
 import underlings.phase.WildFinalPhase;
 import underlings.player.FakePlayer;
 import underlings.player.PlayerFactory;
-import underlings.scoring.ScoreUtils;
+import underlings.scoring.Scoring;
 import underlings.utilities.EggHatchingUtilities;
 import underlings.utilities.LocaleUtilities;
 import underlings.utilities.PlacementUtilities;
@@ -85,7 +85,7 @@ public class Main {
                 field, eggHatchingLogic);
         phases.add(dragonPhase);
         Map<FinalPhaseType, FinalPhase> finalPhaseMap = new HashMap<>();
-        ScoreUtils scoreUtils = new ScoreUtils(game.getPlayers(), gui);
+        Scoring scoreUtils = new Scoring(game.getPlayers(), gui);
         finalPhaseMap.put(FinalPhaseType.REGULAR,
                 new RegularFinalPhase(game.getPlayers(), gui, dragonPhase, scoreUtils));
         finalPhaseMap.put(FinalPhaseType.WILD, new WildFinalPhase(gui));

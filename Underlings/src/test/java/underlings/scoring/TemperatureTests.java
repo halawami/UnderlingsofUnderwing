@@ -14,12 +14,12 @@ import underlings.card.Temperature;
 
 public class TemperatureTests {
 
-    private ScoreUtils scoreUtils;
+    private Scoring scoreUtils;
     private Card[] cards;
 
     @Before
     public void init() {
-        this.scoreUtils = new ScoreUtils(null, null);
+        this.scoreUtils = new Scoring(null, null);
         this.cards = new Card[4];
         this.cards[0] = TestUtils.makeCard(Temperature.WARM);
         this.cards[1] = TestUtils.makeCard(Temperature.COOL);

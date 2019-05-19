@@ -19,7 +19,7 @@ import underlings.hatchingground.Deck;
 import underlings.hatchingground.HatchingGround;
 import underlings.phase.Phase;
 import underlings.player.Player;
-import underlings.scoring.ScoreUtils;
+import underlings.scoring.Scoring;
 import underlings.utilities.EggHatchingUtilities;
 
 public abstract class MockTest {
@@ -31,7 +31,7 @@ public abstract class MockTest {
     protected Runnable displayMethod;
     protected Player player;
     protected List<Player> players;
-    protected ScoreUtils scoreUtils;
+    protected Scoring scoreUtils;
     protected Phase dragonPhase;
     protected Deck deck;
     protected Display display;

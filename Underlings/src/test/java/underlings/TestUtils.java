@@ -7,20 +7,20 @@ import underlings.card.Temperature;
 import underlings.gui.Gui;
 import underlings.handler.HandlerFactory;
 import underlings.player.Player;
-import underlings.scoring.ScoreUtils;
+import underlings.scoring.Scoring;
 
 public class TestUtils {
 
-    public static ScoreUtils makeScoreUtils(Gui gui, Player... players) {
-        return new ScoreUtils(Arrays.asList(players), gui);
+    public static Scoring makeScoreUtils(Gui gui, Player... players) {
+        return new Scoring(Arrays.asList(players), gui);
     }
 
-    public static ScoreUtils makeScoreUtils(Player... players) {
-        return new ScoreUtils(Arrays.asList(players), null);
+    public static Scoring makeScoreUtils(Player... players) {
+        return new Scoring(Arrays.asList(players), null);
     }
 
-    public static ScoreUtils makeScoreUtils() {
-        return new ScoreUtils(null, null);
+    public static Scoring makeScoreUtils() {
+        return new Scoring(null, null);
     }
 
     public static Card makeCard(Temperature temperature) {

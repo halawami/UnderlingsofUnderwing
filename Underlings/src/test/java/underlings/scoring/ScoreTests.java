@@ -19,7 +19,7 @@ import underlings.utilities.LocaleUtilities;
 
 public class ScoreTests {
 
-    private ScoreUtils scoreUtils;
+    private Scoring scoreUtils;
     private Player[] players;
     private Gui gui;
 
