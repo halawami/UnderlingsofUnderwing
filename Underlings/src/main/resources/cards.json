@@ -1720,7 +1720,7 @@
     ],
     "domesticEffects": [
       {
-		"effect": "CollectUpToElementsFromAnyEggInPlayEffect",
+        "effect": "CollectUpToElementsFromAnyEggInPlayEffect",
         "upTo": 1,
         "elementChoices": [
           "RED"
@@ -3721,7 +3721,7 @@
       {
         "effect": "ReplaceHandlerWithYourOwnEffect"
       },
-	  {
+      {
         "effect": "GainHandlersEffect",
         "numberOfHandlers": 1
       }
@@ -3878,6 +3878,98 @@
     "wildEffects": [
       {
         "effect": "ApiaraWildEffect"
+      }
+    ]
+  },
+  {
+    "name": "TYCHE",
+    "points": 16,
+    "temperature": "NEUTRAL",
+    "family": "LEGENDARY",
+    "elementSpaces": [
+      {
+        "color": "YELLOW",
+        "position": "L4_1"
+      },
+      {
+        "color": "ORANGE",
+        "position": "L4_2"
+      },
+      {
+        "color": "ORANGE",
+        "position": "L4_3"
+      },
+      {
+        "color": "YELLOW",
+        "position": "L4_4"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R4_1"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R4_2"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R4_3"
+      },
+      {
+        "color": "BLACK",
+        "position": "R4_4"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "DrawElementsOfChoiceEffect"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "ReturnAllAdjacentHandlersEffect"
+      }
+    ]
+  },
+  {
+    "name": "LASURA",
+    "points": 14,
+    "temperature": "COOL",
+    "family": "LEGENDARY",
+    "elementSpaces": [
+      {
+        "color": "GREEN",
+        "position": "L3_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "L3_2"
+      },
+      {
+        "color": "GREEN",
+        "position": "L3_3"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_1"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_2"
+      },
+      {
+        "color": "BLACK",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "ReorderTopThreeCardsEffect"
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "DrawOneLessElementEffect"
       }
     ]
   }
