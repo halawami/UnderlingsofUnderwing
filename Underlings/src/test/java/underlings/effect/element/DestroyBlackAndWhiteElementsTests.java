@@ -31,7 +31,7 @@ public class DestroyBlackAndWhiteElementsTests extends MockTest {
         this.replayAll();
 
         AllEggsInPlayEffect effect = new DestroyAllBlackAndWhiteElementsEffect();
-        effect.applyOnCardInPlay(card, logic, null);
+        effect.applyOnCardInPlay(card, logic, null, null);
     }
 
     @Test
@@ -50,7 +50,7 @@ public class DestroyBlackAndWhiteElementsTests extends MockTest {
         this.replayAll();
 
         AllEggsInPlayEffect effect = new DestroyAllBlackAndWhiteElementsEffect();
-        effect.applyOnCardInPlay(card, logic, null);
+        effect.applyOnCardInPlay(card, logic, null, null);
     }
 
     @Test
