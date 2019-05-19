@@ -1,0 +1,12 @@
+[
+  {
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "WHITE"
+        ]
+      }
+    ]
+  }
+]

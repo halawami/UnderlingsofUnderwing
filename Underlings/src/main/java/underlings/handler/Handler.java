@@ -1,18 +1,19 @@
 package underlings.handler;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import underlings.element.ElementGiver;
-import underlings.gui.Choice;
 import underlings.gui.DrawChoice;
+import underlings.utilities.LocaleUtilities;
 
-public class Handler implements Choice {
+public class Handler extends ElementGiver {
 
-    public ElementGiver elementGiver;
-    private HandlerState state;
-    private String location;
+    public HandlerState state;
+    public String location;
 
     public Handler(HandlerState state) {
+        super(DrawChoice.RANDOM);
         this.moveToState(state);
     }
 
@@ -22,24 +23,15 @@ public class Handler implements Choice {
 
     public void moveToState(HandlerState state) {
         this.state = state;
-        this.elementGiver = new ElementGiver("Handler " + state.displayString, DrawChoice.RANDOM);
-    }
-
-    public List<HandlerState> getPossibleStates() {
-        return this.state.allowedStates;
     }
 
     public List<HandlerChoice> getPossibleChoices() {
-        return HandlerChoice.getMovements(this.state);
+        return new ArrayList<>(HandlerChoice.getMovements(this.state));
     }
 
     @Override
     public String toString() {
-        if (this.state == HandlerState.CARD || this.state == HandlerState.FIELD
-                || this.state == HandlerState.FIELD_WHITESPACE) {
-            return "Handler on " + this.location;
-        }
-        return "Handler " + this.state.displayString;
+        return LocaleUtilities.format("HANDLER_" + this.state.name(), this.location);
     }
 
     public void setLocation(String location) {

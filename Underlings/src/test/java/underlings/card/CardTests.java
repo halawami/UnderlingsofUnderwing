@@ -9,9 +9,9 @@ public class CardTests {
     @Test
     public void testToString() {
         Card card = new Card();
-        card.name = "test card";
+        card.name = "test";
 
-        assertEquals("test card", card.toString());
+        assertEquals("test", card.toString());
     }
 
 }

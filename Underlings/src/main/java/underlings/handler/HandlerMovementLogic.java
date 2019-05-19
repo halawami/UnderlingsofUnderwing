@@ -1,11 +1,12 @@
 package underlings.handler;
 
-import java.util.function.Function;
-
 import underlings.card.Card;
 import underlings.field.Field;
-import underlings.game.HatchingGround;
+import underlings.field.FieldSpace;
 import underlings.gui.Gui;
+import underlings.hatchingground.HatchingGround;
+import underlings.player.Player;
+import underlings.utilities.LocaleUtilities;
 
 public class HandlerMovementLogic {
 
@@ -19,29 +20,33 @@ public class HandlerMovementLogic {
         this.field = field;
     }
 
-    public void move(Handler handler, HandlerChoice choice, int playerId) {
+    public void move(Handler handler, HandlerChoice choice, Player player) {
+        if (handler == null || handler == WildHandler.getInstance()) {
+            return;
+        }
         switch (choice) {
             case BREAK_ROOM:
+                if (handler.getState() == HandlerState.FIELD || handler.getState() == HandlerState.FIELD_WHITESPACE) {
+                    this.field.removeHandler(handler);
+                }
                 if (handler.getState() == HandlerState.CARD) {
                     Card card = this.hatchingGround.findCard(handler);
-                    card.handler = null;
+                    this.removeHandlerFromCard(card);
                 }
                 handler.moveToState(choice.getState());
                 break;
             case CARD:
-                handler.moveToState(choice.getState());
 
-                Function<Card, Boolean> f = (Card c) -> {
-                    return hatchingGround.getUnclaimedEggs().contains(c);
-                };
-                Card chosenCard = this.gui.getCard(playerId, this.hatchingGround, f);
-                chosenCard.handler = handler;
-                handler.setLocation(chosenCard.name);
+                Card chosenCard = this.gui.getCard(player.getId(), LocaleUtilities.get("handler_movement_card"),
+                        this.hatchingGround, this.hatchingGround.getUnclaimedEggs());
+
+                moveToCard(handler, chosenCard);
                 break;
             case FIELD:
                 handler.moveToState(choice.getState());
-                int fieldSpace = this.gui.getFieldSpace();
-                this.field.addHandler(fieldSpace, handler);
+                FieldSpace space = this.gui.getFieldSpace(player, field);
+                int spaceIndex = field.field.indexOf(space);
+                this.field.addHandler(spaceIndex, handler);
                 break;
             case FIELD_WHITESPACE:
                 handler.moveToState(choice.getState());
@@ -56,6 +61,16 @@ public class HandlerMovementLogic {
                 handler.moveToState(choice.getState());
         }
 
+    }
+
+    public void removeHandlerFromCard(Card card) {
+        card.handler = null;
+    }
+
+    public void moveToCard(Handler handler, Card card) {
+        handler.moveToState(HandlerChoice.CARD.getState());
+        card.handler = handler;
+        handler.setLocation(card.name);
     }
 
 }

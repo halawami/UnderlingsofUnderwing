@@ -1,181 +1,332 @@
 package underlings.phase;
 
-import java.util.ArrayList;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.Arrays;
-import java.util.List;
-import java.util.Stack;
+import java.util.Collections;
+import java.util.Map;
 
 import org.easymock.EasyMock;
+import org.junit.Before;
 import org.junit.Test;
 
+import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.effect.Effect;
-import underlings.element.Element;
-import underlings.element.ElementBag;
-import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
-import underlings.element.utilities.ElementSpaceLogic;
-import underlings.game.Deck;
-import underlings.game.HatchingGround;
-import underlings.gui.Display;
+import underlings.element.ElementSpaceUtilities;
+import underlings.element.PlacementUtilities;
 import underlings.gui.Gui;
-import underlings.gui.PromptHandler;
+import underlings.gui.Gui.PromptType;
+import underlings.gui.YesNoChoice;
 import underlings.handler.Handler;
+import underlings.handler.HandlerState;
+import underlings.handler.WildHandler;
+import underlings.hatchingground.Deck;
+import underlings.hatchingground.EggHatchingUtilities;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.FakePlayer;
 import underlings.player.Player;
-import underlings.utilities.EggHatchingLogic;
+import underlings.utilities.LocaleUtilities;
 
-public class PlacementPhaseTests {
+public class PlacementPhaseTests extends MockTest {
 
-    @SuppressWarnings("unchecked")
+    private PlacementUtilities placementUtilities;
+
+    @Before
+    public void init() {
+        this.player = this.mock(Player.class);
+        this.players = Arrays.asList(this.player);
+        this.deck = this.mock(Deck.class);
+        this.elementSpaceLogic = this.mock(ElementSpaceUtilities.class);
+        this.gui = this.mock(Gui.class);
+        this.placementUtilities = this.mock(PlacementUtilities.class);
+        this.hatchingGround = this.mock(HatchingGround.class);
+        this.hatchingGround.logic = this.mock(ElementSpaceUtilities.class);
+    }
+
+    public <T> Object getField(Class<T> fieldClass, PlacementPhase phase, String fieldName)
+            throws Exception, SecurityException {
+        Field field = fieldClass.getDeclaredField(fieldName);
+        field.setAccessible(true);
+        return field.get(phase);
+    }
+
+    @SuppressWarnings("rawtypes")
+    public Method getMethod(PlacementPhase phase, String methodName, Class... params) throws Exception {
+        Method method = phase.getClass().getDeclaredMethod(methodName, params);
+        method.setAccessible(true);
+        return method;
+    }
+
     @Test
-    public void basicTest() {
-        // create players and define actions
-        Player player = EasyMock.createMock(Player.class);
-        final List<Player> players = Arrays.asList(player);
+    public void testSetup() throws Exception {
+        EasyMock.expect(this.player.getHandlerCount()).andReturn(2).anyTimes();
 
-        EasyMock.expect(player.getHandlerCount()).andReturn(1).anyTimes();
-        EasyMock.expect(player.getPlayerId()).andReturn(1).anyTimes();
+        this.replayAll();
+        PlacementPhase phase = new PlacementPhase(this.players, null, null, null, null, null);
+        phase.setup();
 
-        ElementSpaceLogic logic = EasyMock.mock(ElementSpaceLogic.class);
-        player.elementSpaceLogic = logic;
+        @SuppressWarnings("unchecked")
+        Map<Player, Integer> map = (Map<Player, Integer>) this.getField(phase.getClass(), phase, "turnCounts");
+        assertEquals(new Integer(2), map.get(this.player));
+    }
 
-        List<Element> playerElements = new ArrayList<Element>();
-        Element blue1 = new Element(ElementColor.BLUE);
-        playerElements.add(blue1);
-        Element blue2 = new Element(ElementColor.BLUE);
-        playerElements.add(blue2);
-        Element white = new Element(ElementColor.WHITE);
-        playerElements.add(white);
-        EasyMock.expect(player.getElements()).andReturn(playerElements).anyTimes();
+    @Test
+    public void testCheckTurnTwoHandlers() throws Exception {
+        EasyMock.expect(this.player.getHandlerCount()).andReturn(2).anyTimes();
 
-        // create hatchingGround and define actions
+        this.replayAll();
+        PlacementPhase phase = new PlacementPhase(this.players, null, null, null, null, null);
+        phase.setup();
+        Method turnCountMethod = this.getMethod(phase, "checkAndDecrementTurnCount", Player.class);
+        @SuppressWarnings("unchecked")
+        Map<Player, Integer> map = (Map<Player, Integer>) this.getField(phase.getClass(), phase, "turnCounts");
+        assertTrue((boolean) (turnCountMethod.invoke(phase, this.player)));
+        assertEquals(new Integer(1), map.get(this.player));
+        assertTrue((boolean) (turnCountMethod.invoke(phase, this.player)));
+        assertEquals(new Integer(0), map.get(this.player));
+        assertFalse((boolean) (turnCountMethod.invoke(phase, this.player)));
+        assertEquals(new Integer(0), map.get(this.player));
+
+    }
+
+    @Test
+    public void testCheckTurnThreeHandlers() throws Exception {
+        EasyMock.expect(this.player.getHandlerCount()).andReturn(3).anyTimes();
+
+        this.replayAll();
+        PlacementPhase phase = new PlacementPhase(this.players, null, null, null, null, null);
+        phase.setup();
+        Method turnCountMethod = this.getMethod(phase, "checkAndDecrementTurnCount", Player.class);
+        @SuppressWarnings("unchecked")
+        Map<Player, Integer> map = (Map<Player, Integer>) this.getField(phase.getClass(), phase, "turnCounts");
+        assertTrue((boolean) (turnCountMethod.invoke(phase, this.player)));
+        assertEquals(new Integer(2), map.get(this.player));
+        assertTrue((boolean) (turnCountMethod.invoke(phase, this.player)));
+        assertEquals(new Integer(1), map.get(this.player));
+        assertTrue((boolean) (turnCountMethod.invoke(phase, this.player)));
+        assertEquals(new Integer(0), map.get(this.player));
+        assertFalse((boolean) (turnCountMethod.invoke(phase, this.player)));
+        assertEquals(new Integer(0), map.get(this.player));
+
+    }
+
+    @Test
+    public void testCheckGameover() throws Exception {
+        EasyMock.expect(this.elementSpaceLogic.isComplete(EasyMock.anyObject(Card.class))).andReturn(false).anyTimes();
+        EasyMock.expect(this.player.getHandlerCount()).andReturn(3).anyTimes();
+
         Card card = new Card();
+        card.handler = new Handler(HandlerState.CARD);
+
+        EasyMock.expect(this.deck.draw()).andReturn(card);
+        HatchingGround hatchingGround = new HatchingGround(this.deck, this.elementSpaceLogic);
+
+        this.replayAll();
+        hatchingGround.setDimensions(1, 1);
+        hatchingGround.populate();
+        PlacementPhase phase = new PlacementPhase(this.players, null, hatchingGround, null, null, null);
+        phase.setup();
+        Method gameoverMethod = this.getMethod(phase, "checkGameover");
+        gameoverMethod.invoke(phase);
+
+        assertFalse((boolean) this.getField(Phase.class, phase, "gameComplete"));
+        assertFalse((boolean) this.getField(Phase.class, phase, "phaseComplete"));
+    }
+
+    @Test
+    public void testCheckGameoverNoCards() throws Exception {
+        EasyMock.expect(this.player.getHandlerCount()).andReturn(3).anyTimes();
+        HatchingGround hatchingGround = new HatchingGround(null, null);
+
+        this.replayAll();
+        PlacementPhase phase = new PlacementPhase(this.players, null, hatchingGround, null, null, null);
+        phase.setup();
+        Method gameoverMethod = this.getMethod(phase, "checkGameover");
+        gameoverMethod.invoke(phase);
+
+        assertTrue((boolean) this.getField(Phase.class, phase, "gameComplete"));
+        assertTrue((boolean) this.getField(Phase.class, phase, "phaseComplete"));
+    }
+
+    @Test
+    public void testCheckGameoverLost() throws Exception {
+        EasyMock.expect(this.elementSpaceLogic.isComplete(EasyMock.anyObject(Card.class))).andReturn(false).anyTimes();
+        EasyMock.expect(this.player.getHandlerCount()).andReturn(3).anyTimes();
+
+        Card card = new Card();
+        card.handler = WildHandler.getInstance();
         card.wildEffects = new Effect[0];
-        card.handler = EasyMock.mock(Handler.class);
-        Stack<Card> cardStack = new Stack<>();
-        cardStack.push(card);
-        Deck deck = new Deck(cardStack);
-        HatchingGround hatchingGround = new HatchingGround(deck);
+
+        EasyMock.expect(this.deck.draw()).andReturn(card);
+        HatchingGround hatchingGround = new HatchingGround(this.deck, this.elementSpaceLogic);
+
+        this.replayAll();
         hatchingGround.setDimensions(1, 1);
         hatchingGround.populate();
-        ElementSpace redSpace = EasyMock.mock(ElementSpace.class);
-        ElementSpace blueSpace = EasyMock.mock(ElementSpace.class);
-        ElementSpace greenSpace = EasyMock.mock(ElementSpace.class);
-        ElementSpace whiteSpace = EasyMock.mock(ElementSpace.class);
-        ElementSpace[] spaces = {redSpace, blueSpace, greenSpace, whiteSpace};
-        card.elementSpaces = spaces;
+        PlacementPhase phase = new PlacementPhase(this.players, null, hatchingGround, null, null, null);
+        phase.setup();
+        Method gameoverMethod = this.getMethod(phase, "checkGameover");
+        gameoverMethod.invoke(phase);
 
-        // create other fields
-        final PromptHandler promptHandler = EasyMock.mock(PromptHandler.class);
-        final Display display = EasyMock.mock(Display.class);
-        final ElementBag elementBag = EasyMock.createMock(ElementBag.class);
-        final Runnable runnable = EasyMock.mock(Runnable.class);
-        final EggHatchingLogic eggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
-
-        // define expected flow of activity
-        EasyMock.expect(logic.getPlayableSpaces(EasyMock.anyObject(Card.class), EasyMock.anyObject(List.class)))
-                .andReturn(Arrays.asList(blueSpace, greenSpace, whiteSpace)).anyTimes();
-        EasyMock.expect(promptHandler.promptChoice("Pick a card to place an element on.", Arrays.asList(card), 1))
-                .andReturn(card);
-        EasyMock.expect(promptHandler.promptChoice("Pick an element space to place an element on.",
-                Arrays.asList(blueSpace, greenSpace, whiteSpace), 1)).andReturn(blueSpace);
-        EasyMock.expect(logic.getValidAdditions(blueSpace)).andReturn(Arrays.asList(ElementColor.BLUE));
-        EasyMock.expect(promptHandler.promptChoice("Pick an element to place", Arrays.asList(blue1, blue2), 1))
-                .andReturn(blue1);
-        blueSpace.addElements(blue1);
-        player.removeElement(blue1);
-        runnable.run();
-        EasyMock.expectLastCall().anyTimes();
-        EasyMock.expect(logic.getValidAdditions(blueSpace)).andReturn(Arrays.asList(ElementColor.BLUE));
-        EasyMock.expect(promptHandler.promptDecision("Would you like to place another element?", 1)).andReturn(false);
-        EasyMock.expect(logic.isComplete(card)).andReturn(true).anyTimes();
-
-        // assert expected actions occurred
-        EasyMock.replay(player, promptHandler, display, elementBag, runnable);
-        EasyMock.replay(logic, redSpace, blueSpace, greenSpace, whiteSpace, eggHatchingLogic);
-        Gui gui = new Gui(promptHandler, display);
-        Phase phase = new PlacementPhase(players, gui, elementBag, hatchingGround, runnable, null, eggHatchingLogic);
-        phase.execute(1);
-        EasyMock.verify(player, promptHandler, display, elementBag, runnable);
-        EasyMock.verify(logic, redSpace, blueSpace, greenSpace, whiteSpace, eggHatchingLogic);
+        assertTrue((boolean) this.getField(Phase.class, phase, "gameComplete"));
+        assertTrue((boolean) this.getField(Phase.class, phase, "phaseComplete"));
     }
 
-    @SuppressWarnings("unchecked")
     @Test
-    public void testOneWildEffect() {
-        Player player = EasyMock.createMock(Player.class);
-        final List<Player> players = Arrays.asList(player);
-        ElementSpaceLogic logic = EasyMock.mock(ElementSpaceLogic.class);
-        player.elementSpaceLogic = logic;
-        EasyMock.expect(player.getHandlerCount()).andReturn(1).anyTimes();
-        EasyMock.expect(player.getPlayerId()).andReturn(1).anyTimes();
+    public void testMoreMovesNoChoices() {
+        EasyMock.expect(this.gui.promptChoice(LocaleUtilities.get("gui_more_moves"), YesNoChoice.getChoices(), 0))
+                .andReturn(YesNoChoice.NO);
 
-        List<Element> playerElements = new ArrayList<Element>();
-        Element blue1 = new Element(ElementColor.BLUE);
-        playerElements.add(blue1);
-        Element blue2 = new Element(ElementColor.BLUE);
-        playerElements.add(blue2);
-        Element white = new Element(ElementColor.WHITE);
-        playerElements.add(white);
-        EasyMock.expect(player.getElements()).andReturn(playerElements).anyTimes();
+        this.replayAll();
 
-        // create hatchingGround and define actions
-        Card card = new Card();
-        card.handler = null;
-        card.wildEffects = new Effect[1];
-        card.wildEffects[0] = EasyMock.mock(Effect.class);
-        Stack<Card> cardStack = new Stack<>();
-        cardStack.push(card);
-        Deck deck = new Deck(cardStack);
-        HatchingGround hatchingGround = new HatchingGround(deck);
-        hatchingGround.setDimensions(1, 1);
-        hatchingGround.populate();
-        ElementSpace redSpace = EasyMock.mock(ElementSpace.class);
-        ElementSpace blueSpace = EasyMock.mock(ElementSpace.class);
-        ElementSpace greenSpace = EasyMock.mock(ElementSpace.class);
-        ElementSpace whiteSpace = EasyMock.mock(ElementSpace.class);
-        ElementSpace[] spaces = {redSpace, blueSpace, greenSpace, whiteSpace};
-        card.elementSpaces = spaces;
+        boolean result =
+                this.gui.promptChoice(LocaleUtilities.get("gui_more_moves"), YesNoChoice.getChoices(), 0).booleanValue;
 
-        // create other fields
-        PromptHandler promptHandler = EasyMock.mock(PromptHandler.class);
-        Display display = EasyMock.mock(Display.class);
-        final Gui gui = EasyMock.mock(Gui.class);
-        gui.display = display;
-        gui.promptHandler = promptHandler;
-        final ElementBag elementBag = EasyMock.createMock(ElementBag.class);
-        final Runnable runnable = EasyMock.mock(Runnable.class);
-        final EggHatchingLogic eggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
-
-        // define expected flow of activity
-        eggHatchingLogic.hatchEgg(card, true, FakePlayer.getInstance());
-        EasyMock.expect(logic.getPlayableSpaces(EasyMock.anyObject(Card.class), EasyMock.anyObject(List.class)))
-                .andReturn(Arrays.asList(blueSpace, greenSpace, whiteSpace)).anyTimes();
-        EasyMock.expect(promptHandler.promptChoice("Pick a card to place an element on.", Arrays.asList(card), 1))
-                .andReturn(card);
-        EasyMock.expect(promptHandler.promptChoice("Pick an element space to place an element on.",
-                Arrays.asList(blueSpace, greenSpace, whiteSpace), 1)).andReturn(blueSpace);
-        EasyMock.expect(logic.getValidAdditions(blueSpace)).andReturn(Arrays.asList(ElementColor.BLUE));
-        EasyMock.expect(promptHandler.promptChoice("Pick an element to place", Arrays.asList(blue1, blue2), 1))
-                .andReturn(blue1);
-        blueSpace.addElements(blue1);
-        player.removeElement(blue1);
-        runnable.run();
-        EasyMock.expectLastCall().anyTimes();
-        EasyMock.expect(promptHandler.promptDecision("Would you like to place another element?", 1)).andReturn(false);
-        EasyMock.expectLastCall().anyTimes();
-        EasyMock.expect(logic.getValidAdditions(blueSpace)).andReturn(Arrays.asList(ElementColor.BLUE));
-        EasyMock.expect(gui.getMoreMovesDecision(2, 1)).andReturn(false);
-        EasyMock.expect(logic.isComplete(card)).andReturn(true).anyTimes();
-
-        // assert expected actions occurred
-        EasyMock.replay(player, promptHandler, display, elementBag, runnable, gui, eggHatchingLogic);
-        EasyMock.replay(logic, redSpace, blueSpace, greenSpace, whiteSpace, card.wildEffects[0]);
-        Phase phase = new PlacementPhase(players, gui, elementBag, hatchingGround, runnable, null, eggHatchingLogic);
-        phase.execute(1);
-        EasyMock.verify(player, promptHandler, display, elementBag, runnable, gui, eggHatchingLogic);
-        EasyMock.verify(logic, redSpace, blueSpace, greenSpace, whiteSpace, card.wildEffects[0]);
+        assertFalse(result);
     }
+
+    @Test
+    public void testMoreMovesTrue() {
+        EasyMock.expect(this.gui.promptChoice(LocaleUtilities.get("gui_more_moves"), YesNoChoice.getChoices(), 0))
+                .andReturn(YesNoChoice.YES);
+
+        this.replayAll();
+
+        boolean result =
+                this.gui.promptChoice(LocaleUtilities.get("gui_more_moves"), YesNoChoice.getChoices(), 0).booleanValue;
+
+        assertTrue(result);
+    }
+
+    @Test
+    public void testTurnOver() {
+        PlacementPhase placementPhase =
+                EasyMock.partialMockBuilder(PlacementPhase.class).addMockedMethod("checkAndDecrementTurnCount")
+                        .addMockedMethod("checkGameover").addMockedMethod("setPhaseComplete").createMock();
+        this.addMock(placementPhase);
+
+        EasyMock.expect(placementPhase.checkAndDecrementTurnCount(this.player)).andReturn(false);
+
+        this.replayAll();
+
+        placementPhase.turn(this.player);
+    }
+
+    @Test
+    public void testTurnNoPlayableCards() {
+        PlacementPhase placementPhase =
+                EasyMock.partialMockBuilder(PlacementPhase.class).addMockedMethod("checkAndDecrementTurnCount")
+                        .addMockedMethod("checkGameover").addMockedMethod("setPhaseComplete").createMock();
+        placementPhase.utils = this.placementUtilities;
+        placementPhase.gui = this.gui;
+        this.addMock(placementPhase);
+
+        EasyMock.expect(placementPhase.checkAndDecrementTurnCount(this.player)).andReturn(true);
+        EasyMock.expect(this.placementUtilities.getPlayableCards(this.player.elementSpaceLogic, this.player.elements))
+                .andReturn(Collections.emptyList());
+        this.gui.alert(LocaleUtilities.get("no_placements"), this.player.id, PromptType.WARNING);
+
+        this.replayAll();
+
+        placementPhase.turn(this.player);
+    }
+
+    @Test
+    public void testTurnCardNotComplete() {
+        PlacementPhase placementPhase =
+                EasyMock.partialMockBuilder(PlacementPhase.class).addMockedMethod("checkAndDecrementTurnCount")
+                        .addMockedMethod("checkGameover").addMockedMethod("setPhaseComplete").createMock();
+        placementPhase.utils = this.placementUtilities;
+        placementPhase.gui = this.gui;
+        placementPhase.hatchingGround = this.hatchingGround;
+        this.addMock(placementPhase);
+
+        EasyMock.expect(placementPhase.checkAndDecrementTurnCount(this.player)).andReturn(true);
+        EasyMock.expect(this.placementUtilities.getPlayableCards(this.player.elementSpaceLogic, this.player.elements))
+                .andReturn(Arrays.asList(new Card()));
+        placementPhase.setPhaseComplete(false);
+
+        Card card = this.mock(Card.class);
+        ElementSpace elementSpace = this.mock(ElementSpace.class);
+
+        EasyMock.expect(this.placementUtilities.selectCard(EasyMock.anyObject(), EasyMock.anyObject())).andReturn(card);
+        EasyMock.expect(this.placementUtilities.selectElementSpace(card, this.player)).andReturn(elementSpace);
+        this.placementUtilities.placeElements(elementSpace, this.player);
+        EasyMock.expect(this.hatchingGround.logic.isComplete(card)).andReturn(false);
+
+        this.replayAll();
+
+        placementPhase.turn(this.player);
+    }
+
+    @Test
+    public void testTurnCardCompleteDomestic() {
+        PlacementPhase placementPhase =
+                EasyMock.partialMockBuilder(PlacementPhase.class).addMockedMethod("checkAndDecrementTurnCount")
+                        .addMockedMethod("checkGameover").addMockedMethod("setPhaseComplete").createMock();
+        placementPhase.utils = this.placementUtilities;
+        placementPhase.gui = this.gui;
+        placementPhase.hatchingGround = this.hatchingGround;
+        this.addMock(placementPhase);
+
+        EasyMock.expect(placementPhase.checkAndDecrementTurnCount(this.player)).andReturn(true);
+        EasyMock.expect(this.placementUtilities.getPlayableCards(this.player.elementSpaceLogic, this.player.elements))
+                .andReturn(Arrays.asList(new Card()));
+        placementPhase.setPhaseComplete(false);
+
+        Card card = this.mock(Card.class);
+        card.handler = new Handler(HandlerState.CARD);
+        ElementSpace elementSpace = this.mock(ElementSpace.class);
+
+        EasyMock.expect(this.placementUtilities.selectCard(EasyMock.anyObject(), EasyMock.anyObject())).andReturn(card);
+        EasyMock.expect(this.placementUtilities.selectElementSpace(card, this.player)).andReturn(elementSpace);
+        this.placementUtilities.placeElements(elementSpace, this.player);
+        EasyMock.expect(this.hatchingGround.logic.isComplete(card)).andReturn(true);
+
+        this.replayAll();
+
+        placementPhase.turn(this.player);
+    }
+
+    @Test
+    public void testTurnCardCompleteWild() {
+        PlacementPhase placementPhase =
+                EasyMock.partialMockBuilder(PlacementPhase.class).addMockedMethod("checkAndDecrementTurnCount")
+                        .addMockedMethod("checkGameover").addMockedMethod("setPhaseComplete").createMock();
+        placementPhase.utils = this.placementUtilities;
+        placementPhase.gui = this.gui;
+        placementPhase.hatchingGround = this.hatchingGround;
+        EggHatchingUtilities wildEggHatchingLogic = EasyMock.mock(EggHatchingUtilities.class);
+        placementPhase.wildEggHatchingLogic = wildEggHatchingLogic;
+        this.addMock(wildEggHatchingLogic);
+        this.addMock(placementPhase);
+
+        EasyMock.expect(placementPhase.checkAndDecrementTurnCount(this.player)).andReturn(true);
+        EasyMock.expect(this.placementUtilities.getPlayableCards(this.player.elementSpaceLogic, this.player.elements))
+                .andReturn(Arrays.asList(new Card()));
+        placementPhase.setPhaseComplete(false);
+
+        Card card = this.mock(Card.class);
+        ElementSpace elementSpace = this.mock(ElementSpace.class);
+
+        EasyMock.expect(this.placementUtilities.selectCard(EasyMock.anyObject(), EasyMock.anyObject())).andReturn(card);
+        EasyMock.expect(this.placementUtilities.selectElementSpace(card, this.player)).andReturn(elementSpace);
+        this.placementUtilities.placeElements(elementSpace, this.player);
+        EasyMock.expect(this.hatchingGround.logic.isComplete(card)).andReturn(true);
+
+        wildEggHatchingLogic.hatchEgg(card, FakePlayer.getInstance());
+        placementPhase.checkGameover();
+
+        this.replayAll();
+
+        placementPhase.turn(this.player);
+    }
+
 
 }

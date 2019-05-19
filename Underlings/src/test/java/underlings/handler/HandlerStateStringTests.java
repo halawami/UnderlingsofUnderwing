@@ -6,54 +6,60 @@ import org.junit.Test;
 
 import underlings.field.FieldSpace;
 import underlings.gui.DrawChoice;
+import underlings.utilities.LocaleUtilities;
 
 public class HandlerStateStringTests {
 
     @Test
     public void testToStringReadyRoom() {
         Handler handler = new Handler(HandlerState.READY_ROOM);
-        assertEquals("Handler in Ready Room", handler.toString());
+        assertEquals(LocaleUtilities.format("HANDLER_" + HandlerState.READY_ROOM), handler.toString());
     }
 
     @Test
     public void testToStringBreakRoom() {
         Handler handler = new Handler(HandlerState.BREAK_ROOM);
-        assertEquals("Handler in Break Room", handler.toString());
+        assertEquals(LocaleUtilities.format("HANDLER_" + HandlerState.BREAK_ROOM), handler.toString());
     }
 
     @Test
     public void testToStringCard() {
         Handler handler = new Handler(HandlerState.CARD);
-        handler.setLocation("testCard");
-        assertEquals("Handler on testCard", handler.toString());
+        handler.setLocation("test");
+        assertEquals(LocaleUtilities.format("HANDLER_" + HandlerState.CARD, "test"), handler.toString());
     }
 
     @Test
     public void testToStringIncubation() {
         Handler handler = new Handler(HandlerState.INCUBATION);
-        assertEquals("Handler in Incubation", handler.toString());
+        assertEquals(LocaleUtilities.format("HANDLER_" + HandlerState.INCUBATION), handler.toString());
     }
 
     @Test
-    public void testToStringFieldBlue() {
+    public void testToStringField() {
+        assertEquals(LocaleUtilities.format("field_space_element_giver", LocaleUtilities.get("BLUE")),
+                this.getStringField(DrawChoice.BLUE));
+        assertEquals(LocaleUtilities.format("field_space_element_giver", LocaleUtilities.get("RED")),
+                this.getStringField(DrawChoice.RED));
+        assertEquals(LocaleUtilities.format("field_space_element_giver", LocaleUtilities.get("YELLOW")),
+                this.getStringField(DrawChoice.YELLOW));
+        assertEquals(LocaleUtilities.format("field_space_element_giver", LocaleUtilities.get("GREEN")),
+                this.getStringField(DrawChoice.GREEN));
+        assertEquals(LocaleUtilities.format("field_space_element_giver", LocaleUtilities.get("ORANGE")),
+                this.getStringField(DrawChoice.ORANGE));
+        assertEquals(LocaleUtilities.format("field_space_element_giver", LocaleUtilities.get("PURPLE")),
+                this.getStringField(DrawChoice.PURPLE));
+        assertEquals(LocaleUtilities.format("field_space_element_giver", LocaleUtilities.get("BLACK")),
+                this.getStringField(DrawChoice.BLACK));
+        assertEquals(LocaleUtilities.format("field_space_element_giver", LocaleUtilities.get("WHITE")),
+                this.getStringField(DrawChoice.WHITE));
+    }
+
+    private String getStringField(DrawChoice drawChoice) {
         Handler handler = new Handler(HandlerState.FIELD);
-        FieldSpace fieldSpace = new FieldSpace(DrawChoice.BLUE);
+        FieldSpace fieldSpace = new FieldSpace(drawChoice);
         fieldSpace.addHandler(handler);
-        assertEquals("Handler on BLUE Element Field Space", handler.toString());
+        return handler.toString();
     }
 
-    @Test
-    public void testToStringFieldRed() {
-        Handler handler = new Handler(HandlerState.FIELD);
-        FieldSpace fieldSpace = new FieldSpace(DrawChoice.RED);
-        fieldSpace.addHandler(handler);
-        assertEquals("Handler on RED Element Field Space", handler.toString());
-    }
-
-    @Test
-    public void testToStringFieldWhiteSpace() {
-        Handler handler = new Handler(HandlerState.FIELD_WHITESPACE);
-        handler.setLocation("Field White Space");
-        assertEquals("Handler on Field White Space", handler.toString());
-    }
 }

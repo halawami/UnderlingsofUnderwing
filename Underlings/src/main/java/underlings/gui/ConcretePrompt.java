@@ -3,6 +3,7 @@ package underlings.gui;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.MessageFormat;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -10,19 +11,20 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import underlings.card.Card;
+import underlings.utilities.LocaleUtilities;
 
 public class ConcretePrompt implements PromptHandler {
 
     @Override
-    public <T extends Choice> T promptChoice(String prompt, List<T> choices, int playerId) {
-        int index = this.displayOptions(choices.toArray(), "Player " + playerId, prompt);
+    public <T> T promptChoice(String prompt, List<T> choices, int playerId) {
+        int index = this.displayOptions(choices.toArray(), this.getPlayer(playerId), prompt);
         return choices.get(index);
     }
 
+    @SuppressWarnings("unchecked")
     @Override
-    public Card pickCard(String prompt, Card[][] cards, int playerId) {
-        if (cards.length == 0) {
+    public <T> T pickFromGrid(String prompt, T[][] objects, int playerId) {
+        if (objects.length == 0) {
             return null;
         }
 
@@ -32,21 +34,21 @@ public class ConcretePrompt implements PromptHandler {
         optionPane.setOptionType(JOptionPane.DEFAULT_OPTION);
 
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(cards.length, cards[0].length));
+        panel.setLayout(new GridLayout(objects.length, objects[0].length));
 
-        for (int w = 0; w < cards.length; w++) {
-            for (int h = 0; h < cards[0].length; h++) {
-                if (cards[w][h] == null) {
+        for (int w = 0; w < objects.length; w++) {
+            for (int h = 0; h < objects[0].length; h++) {
+                if (objects[w][h] == null) {
                     panel.add(new JPanel());
                 } else {
-                    JButton button = new JButton(cards[w][h].toString());
+                    JButton button = new JButton(objects[w][h].toString());
 
-                    final Card returnCard = cards[w][h];
+                    final T object = objects[w][h];
                     button.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             JOptionPane pane = (JOptionPane) ((JButton) e.getSource()).getParent().getParent();
-                            pane.setValue(returnCard);
+                            pane.setValue(object);
                         }
                     });
 
@@ -57,16 +59,16 @@ public class ConcretePrompt implements PromptHandler {
         optionPane.add(panel, 1);
         optionPane.remove(2);
 
-        JDialog dialog = optionPane.createDialog(null, "Player " + playerId);
+        JDialog dialog = optionPane.createDialog(null, this.getPlayer(playerId));
         dialog.setVisible(true);
 
         Object value = optionPane.getValue();
 
-        if (value == null || value instanceof Integer) {
+        if (value == null) {
             System.exit(0);
         }
 
-        return (Card) value;
+        return (T) value;
     }
 
     private int displayOptions(Object[] options, String title, String message) {
@@ -80,14 +82,13 @@ public class ConcretePrompt implements PromptHandler {
     }
 
     @Override
-    public boolean promptDecision(String question, int playerId) {
-        int option = JOptionPane.showConfirmDialog(null, question, "Player " + playerId, JOptionPane.YES_NO_OPTION);
-        return option == JOptionPane.YES_OPTION;
+    public void displayMessage(String message, int playerId, int icon) {
+        JOptionPane.showMessageDialog(null, message, this.getPlayer(playerId), icon);
     }
 
     @Override
-    public void displayMessage(String message, int playerId, int icon) {
-        JOptionPane.showMessageDialog(null, message, "Player " + playerId, icon);
+    public void displayMessage(String message, int icon) {
+        JOptionPane.showMessageDialog(null, message, "", icon);
     }
 
     @Override
@@ -95,13 +96,27 @@ public class ConcretePrompt implements PromptHandler {
         int result = 0;
         do {
             try {
-                result = Integer.parseInt(JOptionPane.showInputDialog(prompt + " [" + min + ", " + max + "]"));
+                result = Integer
+                        .parseInt(JOptionPane.showInputDialog(LocaleUtilities.format("prompt_int", prompt, min, max)));
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Please enter a number in [" + min + ", " + max + "].");
+                JOptionPane.showMessageDialog(null, LocaleUtilities.format("prompt_int_error", min, max));
             }
         } while (result > max || result < min);
 
         return result;
     }
 
+    @Override
+    public <T> T promptChoiceDropdown(String prompt, List<T> choices, T defaultChoice) {
+
+        @SuppressWarnings("unchecked")
+        T choice = (T) JOptionPane.showInputDialog(null, prompt, "", JOptionPane.QUESTION_MESSAGE, null,
+                choices.toArray(), defaultChoice);
+
+        return choice;
+    }
+
+    private String getPlayer(int playerId) {
+        return MessageFormat.format(LocaleUtilities.get("player_number"), playerId);
+    }
 }

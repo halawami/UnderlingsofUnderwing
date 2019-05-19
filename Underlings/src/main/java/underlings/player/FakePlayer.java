@@ -1,5 +1,8 @@
 package underlings.player;
 
+import java.util.List;
+
+import underlings.element.ElementSpaceUtilities;
 import underlings.handler.HandlerFactory;
 
 public class FakePlayer extends Player {
@@ -12,5 +15,9 @@ public class FakePlayer extends Player {
 
     public static Player getInstance() {
         return instance;
+    }
+
+    public static void initPlayer(List<String> recipes) {
+        instance.elementSpaceLogic = new ElementSpaceUtilities(recipes);
     }
 }

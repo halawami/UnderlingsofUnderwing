@@ -1,16 +1,18 @@
 package underlings.gui;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.easymock.EasyMock;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import underlings.element.ElementGiver;
+import underlings.field.Field;
+import underlings.field.FieldSpace;
+import underlings.field.FieldSpaceFactory;
+import underlings.player.FakePlayer;
 
 public class ChoiceTests {
 
@@ -25,48 +27,41 @@ public class ChoiceTests {
         this.gui = new Gui(this.promptHandler, this.display);
     }
 
-    @After
-    public void verify() {
-        EasyMock.verify(this.promptHandler, this.display);
-    }
-
-    @Test
-    public void testRandomDrawChoice() {
-        List<ElementGiver> elementGivers = new ArrayList<ElementGiver>();
-        ElementGiver elementGiver = new ElementGiver("", DrawChoice.RANDOM);
-        elementGivers.add(elementGiver);
-
-        EasyMock.expect(this.promptHandler.promptChoice("Choose an Element Giver", elementGivers, 0))
-                .andReturn(elementGiver);
-        EasyMock.expect(this.promptHandler.promptChoice("Choose a Draw Choice", elementGiver.drawChoices, 0))
-                .andReturn(DrawChoice.RANDOM);
-        EasyMock.replay(this.promptHandler, this.display);
-
-        DrawChoice drawChoice = this.gui.getDrawChoice(elementGivers, 0);
-
-        assertEquals(drawChoice, DrawChoice.RANDOM);
-        assertEquals(0, elementGivers.size());
-
-    }
-
     @Test
     public void testFieldSpace0() {
-        EasyMock.expect(this.promptHandler.promptInt("Enter Field Space", 0, 21)).andReturn(0);
+        Field field = new Field(new FieldSpaceFactory());
+
+        EasyMock.expect(this.promptHandler.pickFromGrid(EasyMock.anyString(), EasyMock.anyObject(FieldSpace[][].class),
+                EasyMock.anyInt())).andReturn(field.field.get(0));
+
         EasyMock.replay(this.promptHandler, this.display);
+        FieldSpace fieldSpace = this.gui.getFieldSpace(FakePlayer.getInstance(), field);
+        EasyMock.verify(this.promptHandler, this.display);
 
-        int fieldSpace = this.gui.getFieldSpace();
-
-        assertEquals(0, fieldSpace);
+        assertEquals(field.field.get(0), fieldSpace);
     }
 
     @Test
     public void testFieldSpace21() {
-        EasyMock.expect(this.promptHandler.promptInt("Enter Field Space", 0, 21)).andReturn(21);
+        Field field = new Field(new FieldSpaceFactory());
+
+        EasyMock.expect(this.promptHandler.pickFromGrid(EasyMock.anyString(), EasyMock.anyObject(FieldSpace[][].class),
+                EasyMock.anyInt())).andReturn(field.field.get(21));
+
         EasyMock.replay(this.promptHandler, this.display);
+        FieldSpace fieldSpace = this.gui.getFieldSpace(FakePlayer.getInstance(), field);
+        EasyMock.verify(this.promptHandler, this.display);
 
-        int fieldSpace = this.gui.getFieldSpace();
+        assertEquals(field.field.get(21), fieldSpace);
+    }
 
-        assertEquals(21, fieldSpace);
+    @Test
+    public void testYesNoChoices() {
+        List<YesNoChoice> choices = YesNoChoice.getChoices();
+
+        assertEquals(2, choices.size());
+        assertTrue(choices.contains(YesNoChoice.YES));
+        assertTrue(choices.contains(YesNoChoice.NO));
     }
 
 }

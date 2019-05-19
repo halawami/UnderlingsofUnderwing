@@ -4,17 +4,24 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import underlings.utilities.LocaleUtilities;
+
 public class ElementTests {
 
     @Test
-    public void testToStringRed() {
-        Element element = new Element(ElementColor.RED);
-        assertEquals(ElementColor.RED.toString(), element.toString());
+    public void testToString() {
+        assertEquals(LocaleUtilities.get("RED"), this.getString(ElementColor.RED));
+        assertEquals(LocaleUtilities.get("BLUE"), this.getString(ElementColor.BLUE));
+        assertEquals(LocaleUtilities.get("YELLOW"), this.getString(ElementColor.YELLOW));
+        assertEquals(LocaleUtilities.get("ORANGE"), this.getString(ElementColor.ORANGE));
+        assertEquals(LocaleUtilities.get("PURPLE"), this.getString(ElementColor.PURPLE));
+        assertEquals(LocaleUtilities.get("GREEN"), this.getString(ElementColor.GREEN));
+        assertEquals(LocaleUtilities.get("BLACK"), this.getString(ElementColor.BLACK));
+        assertEquals(LocaleUtilities.get("WHITE"), this.getString(ElementColor.WHITE));
     }
 
-    @Test
-    public void testToStringBlue() {
-        Element element = new Element(ElementColor.BLUE);
-        assertEquals(ElementColor.BLUE.toString(), element.toString());
+    private String getString(ElementColor color) {
+        Element element = new Element(color);
+        return element.toString();
     }
 }

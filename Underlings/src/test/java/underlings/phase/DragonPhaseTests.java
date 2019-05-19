@@ -1,187 +1,312 @@
 package underlings.phase;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import java.util.HashMap;
 
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
 
+import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.effect.Effect;
+import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
-import underlings.element.utilities.ElementSpaceLogic;
-import underlings.game.HatchingGround;
+import underlings.element.ElementSpaceUtilities;
 import underlings.gui.Gui;
 import underlings.handler.Handler;
+import underlings.handler.HandlerFactory;
+import underlings.handler.HandlerState;
+import underlings.hatchingground.EggHatchingUtilities;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
-import underlings.utilities.EggHatchingLogic;
+import underlings.utilities.LocaleUtilities;
 
-public class DragonPhaseTests {
-
-    private HatchingGround hatchingGround;
-    private ElementBag bag;
-    private Player player;
-    private List<Player> players;
-    private Card card;
-    private ElementSpace[] spaces;
-    private List<Card> eggs;
-    private EggHatchingLogic eggHatchingLogic;
-    Handler handler;
+public class DragonPhaseTests extends MockTest {
 
     @Before
     public void init() {
-        this.hatchingGround = EasyMock.mock(HatchingGround.class);
-        this.bag = EasyMock.mock(ElementBag.class);
-        this.player = EasyMock.mock(Player.class);
-        this.handler = EasyMock.mock(Handler.class);
+        this.hatchingGround = this.mock(HatchingGround.class);
+        this.elementBag = this.mock(ElementBag.class);
+        this.player = this.mock(Player.class);
+        this.handler = this.mock(Handler.class);
+        this.player.elementSpaceLogic = this.mock(ElementSpaceUtilities.class);
+
         this.card = new Card();
         this.player.hatchedCards = new ArrayList<>();
-        this.player.unhatchedCards = new ArrayList<>();
-        this.player.elementSpaceLogic = EasyMock.mock(ElementSpaceLogic.class);
-        this.players = Arrays.asList(player);
+        this.player.unhatchedCards = new HashMap<>();
+
+        this.players = Arrays.asList(this.player);
         this.card.handler = this.handler;
         this.card.domesticEffects = new Effect[1];
-        this.card.domesticEffects[0] = EasyMock.mock(Effect.class);
-        this.spaces = new ElementSpace[1];
-        this.spaces[0] = new ElementSpace(ElementColor.PURPLE);
-        this.card.elementSpaces = this.spaces;
-        this.eggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
-        this.spaces[0].elements = Arrays.asList(ElementColor.BLUE, ElementColor.RED);
-        this.eggs = Arrays.asList(card);
+        this.card.domesticEffects[0] = this.mock(Effect.class);
+        this.elementSpaces = new ElementSpace[1];
+        this.elementSpaces[0] = new ElementSpace(ElementColor.PURPLE);
+        this.card.elementSpaces = this.elementSpaces;
+        this.eggHatchingLogic = this.mock(EggHatchingUtilities.class);
+        this.elementSpaces[0].elements = Arrays.asList(new Element(ElementColor.BLUE), new Element(ElementColor.RED));
+        this.gui = this.mock(Gui.class);
 
-        EasyMock.expect(player.getHandlerCount()).andReturn(1).anyTimes();
-        EasyMock.expect(player.getHandlers()).andReturn(Arrays.asList(handler)).anyTimes();
-    }
-
-    @Test
-    public void testInit() {
-        new DragonPhase(null, null, null, null, null, null, null);
+        EasyMock.expect(this.player.getHandlerCount()).andReturn(1).anyTimes();
+        this.player.handlers = Arrays.asList(this.handler);
     }
 
     @Test
     public void testOneUnhatchedEgg() {
-        EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList());
-        player.unhatchedCards.add(card);
-        eggHatchingLogic.hatchEgg(card, false, player);
-        EasyMock.expect(player.getPlayerId()).andReturn(1).anyTimes();
+        EasyMock.expect(this.hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList());
+        this.player.unhatchedCards.put(this.card, 1);
+        this.eggHatchingLogic.hatchEgg(this.card, this.player);
+        EasyMock.expect(this.player.getId()).andReturn(1).anyTimes();
 
-        EasyMock.replay(hatchingGround, bag, player, card.domesticEffects[0], handler, eggHatchingLogic);
+        this.replayAll();
 
-        Phase phase = new DragonPhase(players, null, bag, hatchingGround, null, null, eggHatchingLogic);
+        DragonPhase phase = new DragonPhase(this.players, null, this.elementBag, this.hatchingGround, null, null,
+                this.eggHatchingLogic);
         phase.setup();
-        assertEquals(1, player.unhatchedCards.size());
-        phase.turn(player);
-        assertEquals(0, player.unhatchedCards.size());
-        EasyMock.verify(hatchingGround, bag, player, card.domesticEffects[0], handler, eggHatchingLogic);
+        assertEquals(1, this.player.unhatchedCards.size());
+        phase.turn(this.player);
+        phase.teardown();
+        assertEquals(0, this.player.unhatchedCards.size());
+        assertTrue(phase.isPhaseComplete());
+
     }
 
     @Test
     public void testTwoUnhatchedEgg() {
-        EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList());
-        player.unhatchedCards.add(card);
-        player.unhatchedCards.add(card);
-        eggHatchingLogic.hatchEgg(card, false, player);
-        EasyMock.expectLastCall().times(2);
-        EasyMock.expect(player.getPlayerId()).andReturn(1).anyTimes();
+        EasyMock.expect(this.hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList());
+        Card card2 = new Card();
+        card2.domesticEffects = new Effect[]{EasyMock.mock(Effect.class)};
+        this.player.unhatchedCards.put(this.card, 1);
+        this.player.unhatchedCards.put(card2, 1);
+        this.eggHatchingLogic.hatchEgg(this.card, this.player);
+        this.eggHatchingLogic.hatchEgg(card2, this.player);
+        EasyMock.expect(this.player.getId()).andReturn(1).anyTimes();
 
-        EasyMock.replay(hatchingGround, bag, player, card.domesticEffects[0], handler, eggHatchingLogic);
+        this.replayAll();
 
-        Phase phase = new DragonPhase(players, null, bag, hatchingGround, null, null, eggHatchingLogic);
+        DragonPhase phase = new DragonPhase(this.players, null, this.elementBag, this.hatchingGround, null, null,
+                this.eggHatchingLogic);
         phase.setup();
-        assertEquals(2, player.unhatchedCards.size());
-        phase.turn(player);
-        assertEquals(0, player.unhatchedCards.size());
-
-        EasyMock.verify(hatchingGround, bag, player, card.domesticEffects[0], handler, eggHatchingLogic);
+        assertEquals(2, this.player.unhatchedCards.size());
+        phase.turn(this.player);
+        phase.teardown();
+        assertEquals(0, this.player.unhatchedCards.size());
+        assertTrue(phase.isPhaseComplete());
     }
 
     @Test
     public void testNoUnhatchedEggs() {
-        EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList());
+        EasyMock.expect(this.hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList());
 
-        EasyMock.replay(hatchingGround, bag, player);
+        this.replayAll();
 
-        Phase phase = new DragonPhase(players, null, bag, hatchingGround, null, null, null);
+        DragonPhase phase = new DragonPhase(this.players, null, this.elementBag, this.hatchingGround, null, null, null);
         phase.setup();
-        phase.turn(player);
-        EasyMock.verify(hatchingGround, bag, player);
+        phase.turn(this.player);
+        phase.teardown();
+        assertTrue(phase.isPhaseComplete());
     }
 
     @Test
     public void testOneUncompletedEgg() {
-        final Gui gui = EasyMock.mock(Gui.class);
-        final int playerId = 0;
-        card.name = "tempName";
-        final String message = card.name + " is going to incubation state";
-        card.domesticEffects = new Effect[0];
-        EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList(card));
-        EasyMock.expect(player.getPlayerId()).andReturn(playerId).anyTimes();
-        EasyMock.expect(player.hasCard(card)).andReturn(true);
-        eggHatchingLogic.returnElementsToBag(card);
-        gui.notifyAction(playerId, message);
+        this.player = new Player(2, new HandlerFactory(), 0);
+        this.card.handler = this.player.handlers.get(0);
+        this.card.name = "tempName";
+        final String message = LocaleUtilities.format("incubation_state", this.card.name);
+        this.card.domesticEffects = new Effect[0];
+        EasyMock.expect(this.hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList(this.card));
+        this.eggHatchingLogic.returnElementsToBag(this.card);
+        this.gui.notifyAction(this.player.getId(), message);
 
-        EasyMock.replay(hatchingGround, bag, player, handler, gui, eggHatchingLogic);
+        this.replayAll();
 
-        Phase phase = new DragonPhase(players, gui, bag, hatchingGround, null, null, eggHatchingLogic);
+        DragonPhase phase = new DragonPhase(this.players, this.gui, this.elementBag, this.hatchingGround, null, null,
+                this.eggHatchingLogic);
         phase.setup();
-        phase.turn(player);
-        EasyMock.verify(hatchingGround, bag, player, handler, gui, eggHatchingLogic);
+        phase.turn(this.player);
+        phase.teardown();
+        assertTrue(phase.isPhaseComplete());
     }
 
     @Test
     public void testTwoUncompletedEgg() {
-        final Gui gui = EasyMock.mock(Gui.class);
-        final int playerId = 0;
-        card.name = "tempName";
-        final String message = card.name + " is going to incubation state";
-        card.domesticEffects = new Effect[0];
-        EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList(card, card));
-        EasyMock.expect(player.getPlayerId()).andReturn(playerId).anyTimes();
-        EasyMock.expect(player.hasCard(card)).andReturn(true).times(2);
-        eggHatchingLogic.returnElementsToBag(card);
+        this.player = new Player(2, new HandlerFactory(), 0);
+        this.card.handler = this.player.handlers.get(0);
+        this.card.name = "tempName";
+        final String message = LocaleUtilities.format("incubation_state", this.card.name);
+        this.card.domesticEffects = new Effect[0];
+        EasyMock.expect(this.hatchingGround.pullAndReplaceCompleteEggs())
+                .andReturn(Arrays.asList(this.card, this.card));
+        this.eggHatchingLogic.returnElementsToBag(this.card);
         EasyMock.expectLastCall().times(2);
-        gui.notifyAction(playerId, message);
+        this.gui.notifyAction(this.player.getId(), message);
         EasyMock.expectLastCall().times(2);
+        this.replayAll();
 
-        EasyMock.replay(hatchingGround, bag, player, handler, gui, eggHatchingLogic);
-
-        Phase phase = new DragonPhase(players, gui, bag, hatchingGround, null, null, eggHatchingLogic);
+        DragonPhase phase = new DragonPhase(this.players, this.gui, this.elementBag, this.hatchingGround, null, null,
+                this.eggHatchingLogic);
         phase.setup();
-        phase.turn(player);
-        EasyMock.verify(hatchingGround, bag, player, handler, gui, eggHatchingLogic);
+        phase.turn(this.player);
+        phase.teardown();
+        assertTrue(phase.isPhaseComplete());
     }
 
     @Test
     public void testOneUncompletedEggNotThePlayerEgg() {
-        final Gui gui = EasyMock.mock(Gui.class);
-        card.domesticEffects = new Effect[0];
-        EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList(card));
-        eggHatchingLogic.returnElementsToBag(card);
-        EasyMock.expect(player.hasCard(card)).andReturn(false);
+        this.card.domesticEffects = new Effect[0];
+        this.player = new Player(2, new HandlerFactory(), 0);
+        EasyMock.expect(this.hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList(this.card));
+        this.eggHatchingLogic.returnElementsToBag(this.card);
 
-        EasyMock.replay(hatchingGround, bag, player, handler, gui);
+        this.replayAll();
 
-        Phase phase = new DragonPhase(players, gui, bag, hatchingGround, null, null, eggHatchingLogic);
+        DragonPhase phase = new DragonPhase(this.players, this.gui, this.elementBag, this.hatchingGround, null, null,
+                this.eggHatchingLogic);
         phase.setup();
-        phase.turn(player);
-        EasyMock.verify(hatchingGround, bag, player, handler, gui);
+        phase.turn(this.player);
+        phase.teardown();
+        assertTrue(phase.isPhaseComplete());
     }
 
     @Test
     public void testNoUncompletedEgg() {
-        EasyMock.expect(hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList());
+        EasyMock.expect(this.hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList());
 
-        EasyMock.replay(hatchingGround, bag, player, handler);
+        this.replayAll();
 
-        Phase phase = new DragonPhase(players, null, bag, hatchingGround, null, null, null);
+        DragonPhase phase = new DragonPhase(this.players, null, this.elementBag, this.hatchingGround, null, null, null);
+        phase.setup();
+        phase.turn(this.player);
+        phase.teardown();
+        assertTrue(phase.isPhaseComplete());
+    }
+
+    @Test
+    public void testHatchingTimeZero() {
+        this.player.hatchingTime = 0;
+        EasyMock.expect(this.hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList(this.card));
+        this.eggHatchingLogic.returnElementsToBag(this.card);
+
+        this.eggHatchingLogic.hatchEgg(this.card, this.player);
+
+        this.replayAll();
+
+        DragonPhase phase = new DragonPhase(this.players, null, this.elementBag, this.hatchingGround, null, null,
+                this.eggHatchingLogic);
+        phase.setup();
+        phase.turn(this.player);
+        phase.teardown();
+
+        assertTrue(phase.isPhaseComplete());
+        assertEquals(0, this.player.unhatchedCards.size());
+        assertEquals(1, this.player.hatchingTime);
+    }
+
+    @Test
+    public void testHatchingTimeZeroTwoEggs() {
+        this.player = new Player(2, new HandlerFactory(), 0);
+        this.player.hatchingTime = 0;
+        this.card.handler = this.player.handlers.get(0);
+        Card card2 = new Card();
+        card2.name = "tempName";
+        final String message = LocaleUtilities.format("incubation_state", card2.name);
+        card2.handler = this.player.handlers.get(1);
+        EasyMock.expect(this.hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList(this.card, card2));
+        this.eggHatchingLogic.returnElementsToBag(this.card);
+        this.eggHatchingLogic.hatchEgg(this.card, this.player);
+        this.eggHatchingLogic.returnElementsToBag(card2);
+        this.gui.notifyAction(this.player.getId(), message);
+
+        this.replayAll();
+
+        DragonPhase phase = new DragonPhase(this.players, this.gui, this.elementBag, this.hatchingGround, null, null,
+                this.eggHatchingLogic);
+        phase.setup();
+        phase.turn(this.player);
+        phase.teardown();
+
+        assertEquals(1, this.player.hatchingTime);
+        assertEquals(1, this.player.unhatchedCards.size());
+        assertTrue(phase.isPhaseComplete());
+        assertEquals(HandlerState.INCUBATION, card2.handler.getState());
+    }
+
+    @Test
+    public void testHatchLateEgg() {
+        Player player = new Player(6, new HandlerFactory(), 1);
+        this.card.handler = player.handlers.get(0);
+        this.card.name = "tempName";
+        final String message = LocaleUtilities.format("incubation_state", this.card.name);
+        this.hatchingGround.lateHatching = true;
+        EasyMock.expect(this.hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList(this.card));
+        this.eggHatchingLogic.returnElementsToBag(this.card);
+        this.gui.notifyAction(player.getId(), message);
+
+        this.replayAll();
+
+        DragonPhase phase = new DragonPhase(this.players, this.gui, this.elementBag, this.hatchingGround, null, null,
+                this.eggHatchingLogic);
         phase.setup();
         phase.turn(player);
-        EasyMock.verify(hatchingGround, bag, player, handler);
+        phase.teardown();
+        assertEquals(new Integer(2), player.unhatchedCards.get(this.card));
     }
+
+    @Test
+    public void testThreeRoundsLateEgg() {
+        Player player = new Player(6, new HandlerFactory(), 1);
+        this.card.handler = player.handlers.get(0);
+        this.card.name = "tempName";
+        final String message = LocaleUtilities.format("incubation_state", this.card.name);
+        this.hatchingGround.lateHatching = true;
+        EasyMock.expect(this.hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList(this.card));
+        EasyMock.expect(this.hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList());
+        EasyMock.expectLastCall().times(2);
+        this.eggHatchingLogic.returnElementsToBag(this.card);
+        this.gui.notifyAction(player.getId(), message);
+        this.eggHatchingLogic.hatchEgg(this.card, player);
+
+        this.replayAll();
+
+        DragonPhase phase = new DragonPhase(this.players, this.gui, this.elementBag, this.hatchingGround, null, null,
+                this.eggHatchingLogic);
+        phase.setup();
+        phase.turn(player);
+        phase.setup();
+        phase.turn(player);
+        phase.setup();
+        phase.turn(player);
+        phase.teardown();
+    }
+
+    @Test
+    public void testTwoRoundsLateEgg() {
+        Player player = new Player(6, new HandlerFactory(), 1);
+        this.card.handler = player.handlers.get(0);
+        this.card.name = "tempName";
+        final String message = LocaleUtilities.format("incubation_state", this.card.name);
+        this.hatchingGround.lateHatching = true;
+        EasyMock.expect(this.hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList(this.card));
+        EasyMock.expect(this.hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList());
+        this.eggHatchingLogic.returnElementsToBag(this.card);
+        this.gui.notifyAction(player.getId(), message);
+
+        this.replayAll();
+
+        DragonPhase phase = new DragonPhase(this.players, this.gui, this.elementBag, this.hatchingGround, null, null,
+                this.eggHatchingLogic);
+        phase.setup();
+        phase.turn(player);
+        phase.setup();
+        phase.turn(player);
+        phase.teardown();
+    }
+
+
 }

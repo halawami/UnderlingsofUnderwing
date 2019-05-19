@@ -1,23 +1,28 @@
 package underlings.card.effect;
 
+import java.util.List;
+
 import underlings.card.Card;
 import underlings.element.ElementBag;
-import underlings.element.utilities.ElementSpaceLogic;
-import underlings.game.HatchingGround;
+import underlings.element.ElementGiver;
 import underlings.gui.Gui;
+import underlings.handler.HandlerMovementLogic;
+import underlings.hatchingground.Deck;
+import underlings.hatchingground.EggHatchingUtilities;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
-import underlings.utilities.EggHatchingLogic;
 
-public abstract class Effect {
+public abstract class Effect extends ElementGiver {
 
-
-    private Player player;
+    private Player currentPlayer;
     private HatchingGround hatchingGround;
     private ElementBag elementBag;
     private Card centerCard;
-    private ElementSpaceLogic elementSpaceLogic;
     private Gui gui;
-    private EggHatchingLogic eggHatchingLogic;
+    private EggHatchingUtilities eggHatchingLogic;
+    private List<Player> players;
+    private Deck deck;
+    private HandlerMovementLogic handlerMovementLogic;
 
     public Effect on(HatchingGround hatchingGround) {
         this.hatchingGround = hatchingGround;
@@ -29,18 +34,13 @@ public abstract class Effect {
         return this;
     }
 
-    public Effect on(ElementSpaceLogic elementSpaceLogic) {
-        this.elementSpaceLogic = elementSpaceLogic;
-        return this;
-    }
-
     public Effect on(ElementBag elementBag) {
         this.elementBag = elementBag;
         return this;
     }
 
-    public Effect on(Player player) {
-        this.player = player;
+    public Effect on(Player currentPlayer) {
+        this.currentPlayer = currentPlayer;
         return this;
     }
 
@@ -49,23 +49,75 @@ public abstract class Effect {
         return this;
     }
 
-    public Effect on(EggHatchingLogic eggHatchingLogic) {
+    public Effect on(EggHatchingUtilities eggHatchingLogic) {
         this.eggHatchingLogic = eggHatchingLogic;
         return this;
     }
 
+    public Effect on(List<Player> players) {
+        this.players = players;
+        return this;
+    }
+
+    public Effect on(Deck deck) {
+        this.deck = deck;
+        return this;
+    }
+
+    public Effect on(HandlerMovementLogic handlerMovementLogic) {
+        this.handlerMovementLogic = handlerMovementLogic;
+        return this;
+    }
+
     public void apply() {
-        this.apply(this.centerCard, this.hatchingGround, this.elementBag, this.elementSpaceLogic, this.gui, this.player,
-                this.eggHatchingLogic);
-        this.apply(this.player, elementBag);
-        this.apply(this.player);
+        this.apply(this.currentPlayer);
+        this.apply(this.currentPlayer, this.elementBag);
+        this.apply(this.hatchingGround);
+        this.apply(this.players, this.deck, this.gui);
+        this.apply(this.currentPlayer, this.players, this.gui);
+        this.apply(this.currentPlayer, this.hatchingGround, this.handlerMovementLogic, this.gui);
+        this.apply(this.hatchingGround, this.eggHatchingLogic, this.currentPlayer, this.gui);
+        this.apply(this.centerCard, this.hatchingGround, this.currentPlayer, this.eggHatchingLogic, this.deck);
+        this.apply(this.hatchingGround, this.elementBag, this.currentPlayer, this.handlerMovementLogic);
+        this.apply(this.centerCard, this.hatchingGround, this.elementBag, this.currentPlayer, this.eggHatchingLogic,
+                this.deck,
+                this.handlerMovementLogic);
+    }
+
+    protected void apply(Player currentPlayer, ElementBag elementBag) {
+    }
+
+    protected void apply(Player currentPlayer) {
+    }
+
+    protected void apply(HatchingGround hatchingGround) {
+    }
+
+    protected void apply(Player currentPlayer, List<Player> players, Gui gui) {
+    }
+
+    protected void apply(List<Player> players, Deck deck, Gui gui) {
+    }
+
+    protected void apply(Player currentPlayer, HatchingGround hatchingGround, HandlerMovementLogic handlerLogic,
+            Gui gui) {
+    }
+
+    protected void apply(HatchingGround hatchingGround, EggHatchingUtilities hatchingLogic, Player currentPlayer,
+            Gui gui) {
+    }
+
+    protected void apply(Card centerCard, HatchingGround hatchingGround, Player currentPlayer,
+            EggHatchingUtilities eggHatchingLogic, Deck deck) {
+    }
+
+    protected void apply(HatchingGround hatchingGround, ElementBag elementBag, Player currentPlayer,
+            HandlerMovementLogic handlerMovementLogic) {
     }
 
     protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag,
-            ElementSpaceLogic elementSpaceLogic, Gui gui, Player currentPlayer, EggHatchingLogic eggHatchingLogic) {}
+            Player currentPlayer, EggHatchingUtilities eggHatchingLogic, Deck deck,
+            HandlerMovementLogic handlerMovementLogic) {
 
-    protected void apply(Player player, ElementBag elementBag) {}
-
-    protected void apply(Player player) {}
-
+    }
 }

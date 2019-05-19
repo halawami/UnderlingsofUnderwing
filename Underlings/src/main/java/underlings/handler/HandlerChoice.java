@@ -4,9 +4,9 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-import underlings.gui.Choice;
+import underlings.utilities.LocaleUtilities;
 
-public enum HandlerChoice implements Choice {
+public enum HandlerChoice {
 
     STAY, FIELD_WHITESPACE, FIELD, CARD, READY_ROOM, BREAK_ROOM;
 
@@ -38,10 +38,10 @@ public enum HandlerChoice implements Choice {
 
     @Override
     public String toString() {
-        if (this.name().equals("STAY")) {
-            return "Stay";
+        if (this == HandlerChoice.STAY) {
+            return LocaleUtilities.get("handler_choice_stay");
         }
-        return "Move to " + this.name();
+        return LocaleUtilities.format("handler_choice_move", LocaleUtilities.get(this.name()));
     }
 
     public HandlerState getState() {

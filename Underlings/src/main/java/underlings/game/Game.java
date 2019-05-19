@@ -2,11 +2,15 @@ package underlings.game;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
+import underlings.card.Card;
 import underlings.element.ElementBag;
 import underlings.gui.Gui;
-import underlings.handler.Handler;
+import underlings.handler.WildHandler;
+import underlings.hatchingground.HatchingGround;
 import underlings.phase.FinalPhase;
+import underlings.phase.FinalPhase.FinalPhaseType;
 import underlings.phase.Phase;
 import underlings.player.Player;
 import underlings.player.PlayerFactory;
@@ -17,14 +21,17 @@ public class Game {
     private static final int MAX_PLAYERS = 6;
 
     private int maxHandlers;
-    private int numberOfPlayers;
-    private int roundsLeft;
+    public int numberOfPlayers;
+    public int roundsLeft;
     private int currentPhase = 0;
     private int turnLeader = 0;
-    private HatchingGround hatchingGround;
+    public HatchingGround hatchingGround;
     private Gui gui;
     private PlayerFactory playerFactory;
     private ElementBag elementBag;
+    protected FinalPhase finalPhase;
+    protected List<Phase> phases;
+    protected Map<FinalPhaseType, FinalPhase> finalPhaseMap;
 
     private List<Player> players = new LinkedList<>();
 
@@ -41,7 +48,7 @@ public class Game {
         this.setUpPlayerList(numberOfPlayers);
     }
 
-    private void setUpProperties(int numberOfPlayers) {
+    public void setUpProperties(int numberOfPlayers) {
         GameProperties correspondingProps = GameProperties.getPropertiesOf(numberOfPlayers);
 
         this.roundsLeft = correspondingProps.numberOfRounds;
@@ -56,67 +63,62 @@ public class Game {
         }
     }
 
-    public int getRoundsLeft() {
-        return this.roundsLeft;
-    }
-
-    public HatchingGround getHatchingGround() {
-        return this.hatchingGround;
-    }
-
     public List<Player> getPlayers() {
         return this.players;
     }
 
-    public void start(List<Phase> phases, FinalPhase finalPhase) {
+    public void start(List<Phase> phases, Map<FinalPhaseType, FinalPhase> finalPhaseMap) {
+        this.phases = phases;
+        this.finalPhaseMap = finalPhaseMap;
+        this.finalPhase = finalPhaseMap.get(FinalPhaseType.REGULAR);
+
         this.promptPlayerCount();
         this.setUp(this.numberOfPlayers);
 
-        boolean gameOver = false;
-        while (this.roundsLeft > 0 && !gameOver) {
+        this.gameLoop();
 
-            for (Phase phase : phases) {
+        this.display();
+        this.finalPhase.execute();
+    }
+
+    public void gameLoop() {
+        while (this.roundsLeft > 0) {
+
+            for (Phase phase : this.phases) {
                 this.currentPhase++;
                 this.display();
                 phase.execute(this.turnLeader);
-                gameOver = phase.isGameComplete();
-                if (gameOver) {
+                if (this.checkGameover(phase)) {
+                    this.roundsLeft = 0;
+                    this.finalPhase = this.finalPhaseMap.get(FinalPhaseType.WILD);
                     break;
                 }
             }
+
             this.currentPhase = 0;
-            this.turnLeader++;
-            this.turnLeader %= 4;
+            this.turnLeader = (this.turnLeader + 1) % this.numberOfPlayers;
             this.roundsLeft--;
         }
+    }
 
-        finalPhase.execute();
-
+    public boolean checkGameover(Phase phase) {
+        if (phase.gameComplete) {
+            return true;
+        }
+        for (Card card : this.hatchingGround) {
+            if (card.handler != WildHandler.getInstance()) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public void promptPlayerCount() {
         this.numberOfPlayers = this.gui.getPlayerCount(MIN_PLAYERS, MAX_PLAYERS);
     }
 
-    public int getPlayerCount() {
-        return this.numberOfPlayers;
-    }
-
     public void display() {
-        this.gui.display.displayBackground();
-        this.gui.display.displayHatchingGround(this.hatchingGround);
-        this.displayPlayers();
-        this.gui.display.displayStats(this.elementBag, this.roundsLeft, this.currentPhase, this.turnLeader + 1);
-
-        this.gui.display.update();
-    }
-
-    public void displayPlayers() {
-        for (int playerNumber = 0; playerNumber < this.players.size(); playerNumber++) {
-            Player player = this.players.get(playerNumber);
-            this.gui.display.displayPlayer(playerNumber, player);
-            List<Handler> handlers = player.getHandlers();
-            this.gui.display.displayHandlers(playerNumber, handlers);
-        }
+        this.gui.display(this.roundsLeft, this.currentPhase, this.turnLeader, this.hatchingGround, this.players,
+                this.elementBag);
     }
 }

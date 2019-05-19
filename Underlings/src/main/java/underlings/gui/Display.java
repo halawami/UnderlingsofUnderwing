@@ -2,17 +2,16 @@ package underlings.gui;
 
 import java.util.List;
 
-import underlings.card.Card;
 import underlings.element.ElementBag;
-import underlings.game.HatchingGround;
 import underlings.handler.Handler;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
 
 public interface Display {
 
-    void displayCard(int row, int col, Card card);
+    void displayHatchingGround(HatchingGround hatchingGround);
 
-    void displayPlayer(int playerNumber, Player player);
+    void displayPlayers(List<Player> players);
 
     void displayHandlers(int playerNumber, List<Handler> handler);
 
@@ -21,6 +20,4 @@ public interface Display {
     void update();
 
     void displayStats(ElementBag elementBag, int roundsLeft, int currentPhase, int leadTurn);
-
-    void displayHatchingGround(HatchingGround hatchingGround);
 }

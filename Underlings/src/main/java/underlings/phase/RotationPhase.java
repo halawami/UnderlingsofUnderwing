@@ -4,8 +4,8 @@ import java.util.List;
 
 import underlings.element.ElementBag;
 import underlings.field.Field;
-import underlings.game.HatchingGround;
 import underlings.gui.Gui;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
 
 public abstract class RotationPhase extends Phase {
@@ -17,15 +17,16 @@ public abstract class RotationPhase extends Phase {
 
     @Override
     public void execute(int turnLeader) {
-        this.phaseComplete = false;
+        this.setPhaseComplete(false);
         this.setup();
 
-        while (!this.phaseComplete) {
-            this.phaseComplete = true;
+        while (!this.isPhaseComplete()) {
+            this.setPhaseComplete(true);
             for (int i = turnLeader; i < turnLeader + this.players.size(); i++) {
                 this.turn(this.players.get(i % this.players.size()));
                 this.displayMethod.run();
             }
         }
     }
+
 }

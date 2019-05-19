@@ -1,0 +1,34 @@
+[
+  {
+    "name": "first",
+    "points": 1,
+    "temperature": "COOL",
+    "family": "TRIADIC",
+    "elementSpaces": [
+      {
+        "color": "BLUE",
+        "position": "L3_2"
+      },
+      {
+        "color": "RED",
+        "position": "R3_2"
+      }
+    ]
+  },
+  {
+    "name": "second",
+    "points": 2,
+    "temperature": "NEUTRAL",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "GREEN",
+        "position": "L3_3"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_3"
+      }
+    ]
+  }
+]

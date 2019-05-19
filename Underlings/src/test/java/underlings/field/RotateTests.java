@@ -1,5 +1,6 @@
 package underlings.field;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -13,7 +14,8 @@ public class RotateTests extends FieldTests {
         this.field.addHandler(0, this.handler);
         this.field.rotate(this.handler);
 
-        assertTrue(this.handler.elementGiver.drawChoices.contains(DrawChoice.BLUE));
+        this.testHandlerNotOnMultipleSpots();
+        assertTrue(this.handler.drawChoices.contains(DrawChoice.BLUE));
     }
 
     @Test
@@ -21,7 +23,19 @@ public class RotateTests extends FieldTests {
         this.field.addHandler(21, this.handler);
         this.field.rotate(this.handler);
 
-        assertTrue(this.handler.elementGiver.drawChoices.contains(DrawChoice.RED));
+        this.testHandlerNotOnMultipleSpots();
+        assertTrue(this.handler.drawChoices.contains(DrawChoice.RED));
+    }
+
+    private void testHandlerNotOnMultipleSpots() {
+        int amt = 0;
+        for (FieldSpace space : this.field.field) {
+            if (space.contains(this.handler)) {
+                amt++;
+            }
+        }
+
+        assertEquals(1, amt);
     }
 
 }

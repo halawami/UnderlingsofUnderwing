@@ -1,9 +1,10 @@
 package underlings.gui;
 
 import underlings.element.ElementColor;
+import underlings.utilities.LocaleUtilities;
 
-public enum DrawChoice implements Choice {
-    BLUE, RED, GREEN, PURPLE, ORANGE, YELLOW, BLACK, WHITE, RANDOM, COOL, WARM;
+public enum DrawChoice {
+    BLUE, RED, GREEN, PURPLE, ORANGE, YELLOW, BLACK, WHITE, RANDOM, COOL, WARM, NULL;
 
     public ElementColor elementColor;
 
@@ -18,8 +19,18 @@ public enum DrawChoice implements Choice {
         WHITE.elementColor = ElementColor.WHITE;
     }
 
+    public static DrawChoice getChoiceFromColor(ElementColor color) {
+        DrawChoice choice = NULL;
+        for (DrawChoice drawChoice : DrawChoice.values()) {
+            if (drawChoice.elementColor == color) {
+                choice = drawChoice;
+            }
+        }
+        return choice;
+    }
+
     @Override
     public String toString() {
-        return this.name() + " Element";
+        return LocaleUtilities.format("draw_choice", LocaleUtilities.get(this.name()));
     }
 }

@@ -1,35 +1,32 @@
 package underlings.phase;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.swing.JOptionPane;
-
 import underlings.card.Card;
-import underlings.element.Element;
-import underlings.element.ElementBag;
-import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
-import underlings.element.utilities.ElementSpaceLogic;
-import underlings.field.Field;
-import underlings.game.HatchingGround;
+import underlings.element.PlacementUtilities;
 import underlings.gui.Gui;
+import underlings.gui.Gui.PromptType;
 import underlings.handler.WildHandler;
+import underlings.hatchingground.EggHatchingUtilities;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.FakePlayer;
 import underlings.player.Player;
-import underlings.utilities.EggHatchingLogic;
+import underlings.utilities.LocaleUtilities;
 
 public class PlacementPhase extends RotationPhase {
 
     private Map<Player, Integer> turnCounts;
-    private EggHatchingLogic wildEggHatchingLogic;
+    protected EggHatchingUtilities wildEggHatchingLogic;
+    protected PlacementUtilities utils;
 
-    public PlacementPhase(List<Player> players, Gui gui, ElementBag elementBag, HatchingGround hatchingGround,
-            Runnable displayMethod, Field field, EggHatchingLogic eggHatchingLogic) {
-        super(players, gui, elementBag, hatchingGround, displayMethod, field);
+    public PlacementPhase(List<Player> players, Gui gui, HatchingGround hatchingGround, Runnable displayMethod,
+            EggHatchingUtilities eggHatchingLogic, PlacementUtilities utils) {
+        super(players, gui, null, hatchingGround, displayMethod, null);
         this.wildEggHatchingLogic = eggHatchingLogic;
+        this.utils = utils;
     }
 
     @Override
@@ -40,82 +37,44 @@ public class PlacementPhase extends RotationPhase {
         }
     }
 
-
     @Override
     public void turn(Player player) {
-        if (!checkAndDecrementTurnCount(player)) {
+        if (!this.checkAndDecrementTurnCount(player)) {
             return;
         }
 
-        int playerNum = player.getPlayerId();
-
-        ElementSpaceLogic logic = player.elementSpaceLogic;
-        List<Card> cards = this.getPlayableCards(logic, player.getElements());
-
+        List<Card> cards = this.utils.getPlayableCards(player.elementSpaceLogic, player.elements);
         if (cards.isEmpty()) {
-            this.gui.promptHandler.displayMessage("Player has no valid placements", playerNum,
-                    JOptionPane.WARNING_MESSAGE);
+            this.gui.alert(LocaleUtilities.get("no_placements"), player.id, PromptType.WARNING);
             return;
+        } else {
+            this.setPhaseComplete(false);
         }
 
-        this.phaseComplete = false;
-        Card card = this.gui.promptHandler.promptChoice("Pick a card to place an element on.", cards, playerNum);
-        List<ElementSpace> spaces = logic.getPlayableSpaces(card, player.getElements());
-        ElementSpace space =
-                this.gui.promptHandler.promptChoice("Pick an element space to place an element on.", spaces, playerNum);
+        Card card = this.utils.selectCard(cards, player);
+        ElementSpace space = this.utils.selectElementSpace(card, player);
 
-        List<Element> choices = this.playableElements(logic.getValidAdditions(space), player.getElements());
-        boolean moreMoves = true;
-        while (moreMoves) {
-            Element element = this.gui.promptHandler.promptChoice("Pick an element to place", choices, playerNum);
+        this.utils.placeElements(space, player);
 
-            space.addElements(element);
-            player.removeElement(element);
-            this.displayMethod.run();
-
-            choices = this.playableElements(logic.getValidAdditions(space), player.getElements());
-            moreMoves = this.gui.getMoreMovesDecision(choices.size(), playerNum);
-        }
-
-        if (logic.isComplete(card) && card.handler == null) {
-            hatchWildDragon(card);
+        if (this.hatchingGround.logic.isComplete(card) && card.handler == null) {
+            this.wildEggHatchingLogic.hatchEgg(card, FakePlayer.getInstance());
+            this.checkGameover();
         }
     }
 
-    public void hatchWildDragon(Card card) {
-        this.wildEggHatchingLogic.hatchEgg(card, true, FakePlayer.getInstance());
+    protected void checkGameover() {
         this.gameComplete = true;
-        this.phaseComplete = true;
+        this.setPhaseComplete(true);
         for (Card groundCard : this.hatchingGround) {
             if (groundCard.handler != WildHandler.getInstance()) {
                 this.gameComplete = false;
-                this.phaseComplete = false;
+                this.setPhaseComplete(false);
             }
         }
     }
 
-    public List<Element> playableElements(List<ElementColor> list, List<Element> elements) {
-        elements = new ArrayList<Element>(elements);
-        for (int i = 0; i < elements.size(); i++) {
-            if (!list.contains(elements.get(i).getColor())) {
-                elements.remove(i--);
-            }
-        }
-        return elements;
-    }
-
-    public List<Card> getPlayableCards(ElementSpaceLogic logic, List<Element> elements) {
-        List<Card> cards = new ArrayList<Card>();
-        for (Card card : this.hatchingGround) {
-            if (!logic.getPlayableSpaces(card, elements).isEmpty()) {
-                cards.add(card);
-            }
-        }
-        return cards;
-    }
-
-    private boolean checkAndDecrementTurnCount(Player player) {
-        int playerTurns = turnCounts.get(player);
+    protected boolean checkAndDecrementTurnCount(Player player) {
+        int playerTurns = this.turnCounts.get(player);
         if (playerTurns <= 0) {
             return false;
         }

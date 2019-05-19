@@ -2,6 +2,7 @@ package underlings.element;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -67,11 +68,11 @@ public class ElementBag {
                 ElementColor.GREEN, ElementColor.ORANGE, ElementColor.WHITE, ElementColor.BLACK);
     }
 
-    public Element drawRandomPrimaryElement() {
+    public Element drawPrimaryElement() {
         return this.drawElementFromList(ElementColor.BLUE, ElementColor.RED, ElementColor.YELLOW);
     }
 
-    public Element drawRandomSecondayElement() {
+    public Element drawSecondayElement() {
         return this.drawElementFromList(ElementColor.PURPLE, ElementColor.GREEN, ElementColor.ORANGE);
     }
 
@@ -100,4 +101,13 @@ public class ElementBag {
         this.elementCount.put(color, this.elementCount.get(color) + 1);
     }
 
+    public List<DrawChoice> getAvailableDrawChoices() {
+        List<DrawChoice> availableDrawChoices = new ArrayList<>();
+        for (ElementColor color : this.elementCount.keySet()) {
+            if (this.elementCount.get(color) > 0) {
+                availableDrawChoices.add(DrawChoice.getChoiceFromColor(color));
+            }
+        }
+        return availableDrawChoices;
+    }
 }

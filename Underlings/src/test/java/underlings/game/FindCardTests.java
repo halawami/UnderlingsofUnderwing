@@ -6,14 +6,17 @@ import org.easymock.EasyMock;
 import org.junit.Test;
 
 import underlings.card.Card;
+import underlings.element.ElementSpaceUtilities;
 import underlings.handler.Handler;
 import underlings.handler.HandlerState;
+import underlings.hatchingground.Deck;
+import underlings.hatchingground.HatchingGround;
 
 public class FindCardTests {
 
     @Test
     public void testFindCardEmpty() {
-        HatchingGround ground = new HatchingGround(null);
+        HatchingGround ground = new HatchingGround(null, null);
         ground.setDimensions(0, 0);
         ground.populate();
         Card foundCard = ground.findCard(new Handler(HandlerState.CARD));
@@ -34,14 +37,16 @@ public class FindCardTests {
         EasyMock.expect(mockedDeck.draw()).andReturn(card1);
         EasyMock.expect(mockedDeck.draw()).andReturn(card2);
 
-        EasyMock.replay(mockedDeck);
+        ElementSpaceUtilities logic = EasyMock.niceMock(ElementSpaceUtilities.class);
 
-        HatchingGround ground = new HatchingGround(mockedDeck);
+        EasyMock.replay(mockedDeck, logic);
+
+        HatchingGround ground = new HatchingGround(mockedDeck, logic);
         ground.setDimensions(2, 2);
         ground.populate();
         Card foundCard = ground.findCard(card1.handler);
 
-        EasyMock.verify(mockedDeck);
+        EasyMock.verify(mockedDeck, logic);
 
         assertEquals(card1, foundCard);
     }
@@ -54,14 +59,16 @@ public class FindCardTests {
 
         EasyMock.expect(mockedDeck.draw()).andReturn(card1).times(4);
 
-        EasyMock.replay(mockedDeck);
+        ElementSpaceUtilities logic = EasyMock.niceMock(ElementSpaceUtilities.class);
 
-        HatchingGround ground = new HatchingGround(mockedDeck);
+        EasyMock.replay(mockedDeck, logic);
+
+        HatchingGround ground = new HatchingGround(mockedDeck, logic);
         ground.setDimensions(2, 2);
         ground.populate();
         Card foundCard = ground.findCard(new Handler(HandlerState.CARD));
 
-        EasyMock.verify(mockedDeck);
+        EasyMock.verify(mockedDeck, logic);
 
         assertEquals(null, foundCard);
     }

@@ -14,22 +14,22 @@ public enum GameProperties {
     public int hatchingGroundHeight;
     public int maxHandlers;
 
-    private GameProperties haveRoundsOf(int numberOfRounds) {
+    GameProperties haveRoundsOf(int numberOfRounds) {
         this.numberOfRounds = numberOfRounds;
         return this;
     }
 
-    private GameProperties hatchingGroundOfWidth(int width) {
+    GameProperties hatchingGroundOfWidth(int width) {
         this.hatchingGroundWidth = width;
         return this;
     }
 
-    private GameProperties andHeight(int height) {
+    GameProperties andHeight(int height) {
         this.hatchingGroundHeight = height;
         return this;
     }
 
-    private void andMaxHandlers(int maxHandlers) {
+    void andMaxHandlers(int maxHandlers) {
         this.maxHandlers = maxHandlers;
     }
 
