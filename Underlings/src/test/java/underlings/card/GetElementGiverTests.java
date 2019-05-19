@@ -2,13 +2,10 @@ package underlings.card;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.MockTest;
 import underlings.card.effect.Effect;
 import underlings.card.effect.domestic.ElementGiverEffect;
@@ -103,7 +100,7 @@ public class GetElementGiverTests extends MockTest {
         testedCard.domesticEffects = new Effect[] {this.effect};
         this.effect.drawChoices = null;
 
-        replayAll();
+        this.replayAll();
 
         List<ElementGiver> elementGivers = testedCard.getElementGivers();
 
@@ -116,7 +113,7 @@ public class GetElementGiverTests extends MockTest {
         testedCard.domesticEffects = new Effect[] {this.effect};
         this.effect.drawChoices = new ArrayList<>();
 
-        replayAll();
+        this.replayAll();
 
         List<ElementGiver> elementGivers = testedCard.getElementGivers();
 
