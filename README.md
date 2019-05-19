@@ -8,6 +8,22 @@ Hussein Alawami, Mohammad Baqer, George Main IV, Wesley Siebenthaler
 
 The definition of done is created by examining and applying BVA on the rules.
 
+#### Game Setup ```underlings.game.SetupTests```
+
+- [x] The players should be created for [2, 6] players
+  - When there are 2 players, the game should have 2 players
+    - ```underlings.game.SetupTests.test2PlayerCount()```
+  - When there are 6 players, the game should have 6 players
+    - ```underlings.game.SetupTests.test6PlayerCount()```
+- [x] The number of rounds should be set for [2, 6] players
+  - When there are 2 players, there should be 15 rounds
+    - ```underlings.game.SetupTests.test2PlayerRounds()```
+  - When there are 3 players, there should be 13 rounds
+    - ```underlings.game.SetupTests.test3PlayerRounds()```
+  - When there are [4, 6] players, there should be 12 rounds
+    - ```underlings.game.SetupTests.test4PlayerRounds()```
+    - ```underlings.game.SetupTests.test6PlayerRounds()```
+
 ### Players ```underlings.player```
 
 #### Player ID ```underlings.player.IdTests```
