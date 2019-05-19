@@ -14,8 +14,8 @@ import underlings.card.effect.wild.adjacenteggs.elements.destroy.DestroyElements
 import underlings.card.effect.wild.adjacenteggs.elements.destroy.OneElementEffect;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
-import underlings.element.utilities.ElementSpaceLogic;
 import underlings.utilities.EggHatchingUtilities;
+import underlings.utilities.ElementSpaceUtilities;
 import underlings.utilities.LocaleUtilities;
 
 public class DestroyElementsOnAllAdjacentEggsEffectTests extends MockTest {
@@ -31,7 +31,7 @@ public class DestroyElementsOnAllAdjacentEggsEffectTests extends MockTest {
     }
 
     private void testApplyElementColors(ElementColor... elementColors) {
-        ElementSpaceLogic elementSpaceLogic = this.mock(ElementSpaceLogic.class);
+        ElementSpaceUtilities elementSpaceLogic = this.mock(ElementSpaceUtilities.class);
         Card adjacentCard = this.mock(Card.class);
         DestroyElementsEffect effect = EasyMock.partialMockBuilder(DestroyElementsEffect.class)
                 .addMockedMethod("destroyElementsOfColorOnCard").createMock();
@@ -66,7 +66,7 @@ public class DestroyElementsOnAllAdjacentEggsEffectTests extends MockTest {
     private void testDestroyElementsOnCardWithDestroyableSpaces(int numberOfDestroyableSpaces) {
         ElementColor blue = ElementColor.BLUE;
         Card mockedCard = this.mock(Card.class);
-        ElementSpaceLogic elementSpaceLogic = this.mock(ElementSpaceLogic.class);
+        ElementSpaceUtilities elementSpaceLogic = this.mock(ElementSpaceUtilities.class);
         List<ElementSpace> mockedDestroyableSpaces = this.mockListOf(ElementSpace.class)
                 .withLengthOf(numberOfDestroyableSpaces);
 

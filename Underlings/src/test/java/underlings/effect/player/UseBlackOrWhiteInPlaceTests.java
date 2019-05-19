@@ -9,8 +9,8 @@ import underlings.card.effect.Effect;
 import underlings.card.effect.PlayerEffect;
 import underlings.card.effect.domestic.players.player.UseBlackOrWhiteInPlaceEffect;
 import underlings.element.ElementColor;
-import underlings.element.utilities.ElementSpaceLogic;
 import underlings.player.Player;
+import underlings.utilities.ElementSpaceUtilities;
 import underlings.utilities.LocaleUtilities;
 
 public class UseBlackOrWhiteInPlaceTests extends MockTest {
@@ -18,7 +18,7 @@ public class UseBlackOrWhiteInPlaceTests extends MockTest {
     @Test
     public void testEffect() {
         Player player = this.mock(Player.class);
-        ElementSpaceLogic logic = this.mock(ElementSpaceLogic.class);
+        ElementSpaceUtilities logic = this.mock(ElementSpaceUtilities.class);
 
         player.elementSpaceLogic = logic;
         logic.setOpenElement(ElementColor.BLACK);

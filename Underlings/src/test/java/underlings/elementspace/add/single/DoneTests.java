@@ -14,16 +14,16 @@ import org.junit.Test;
 import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
-import underlings.element.utilities.ElementSpaceLogic;
+import underlings.utilities.ElementSpaceUtilities;
 
 public class DoneTests {
 
-    ElementSpaceLogic logic;
+    ElementSpaceUtilities logic;
 
     @Before
     public void init() throws Exception {
         List<String> recipes = Resources.readLines(Resources.getResource("DefaultRecipeList.txt"), Charsets.UTF_8);
-        logic = new ElementSpaceLogic(recipes);
+        logic = new ElementSpaceUtilities(recipes);
     }
 
     @Test

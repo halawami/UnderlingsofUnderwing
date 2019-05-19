@@ -15,12 +15,12 @@ import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
-import underlings.element.utilities.ElementSpaceLogic;
 import underlings.gui.Gui;
 import underlings.handler.Handler;
 import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
 import underlings.utilities.EggHatchingUtilities;
+import underlings.utilities.ElementSpaceUtilities;
 import underlings.utilities.LocaleUtilities;
 
 public class AllEggsInPlayEffectTests extends MockTest {
@@ -42,7 +42,7 @@ public class AllEggsInPlayEffectTests extends MockTest {
 
     private void testApplyOnCardInPlay(int numberOfCards) {
         ElementBag elementBag = this.mock(ElementBag.class);
-        ElementSpaceLogic elementSpaceLogic = this.mock(ElementSpaceLogic.class);
+        ElementSpaceUtilities elementSpaceLogic = this.mock(ElementSpaceUtilities.class);
         Card centerCard = this.mock(Card.class);
         HatchingGround hatchingGround = this.mock(HatchingGround.class);
         Gui gui = this.mock(Gui.class);
@@ -83,7 +83,7 @@ public class AllEggsInPlayEffectTests extends MockTest {
     private void testAddElementsToCardWithPlayableSpace(int numberOfPlayableSpaces) {
         ElementColor blue = ElementColor.BLUE;
         Card mockedCard = this.mock(Card.class);
-        ElementSpaceLogic elementSpaceLogic = this.mock(ElementSpaceLogic.class);
+        ElementSpaceUtilities elementSpaceLogic = this.mock(ElementSpaceUtilities.class);
         ElementBag elementBag = this.mock(ElementBag.class);
         Element stubElement = this.mock(Element.class);
         List<ElementSpace> mockedPlayableSpaces = this.mockListOf(ElementSpace.class)
@@ -108,7 +108,7 @@ public class AllEggsInPlayEffectTests extends MockTest {
         Card cardInPlay = new Card();
         List<ElementSpace> mockSpaces = this.mockListOf(ElementSpace.class).withLengthOf(8);
         cardInPlay.elementSpaces = mockSpaces.toArray(new ElementSpace[8]);
-        ElementSpaceLogic elementSpaceLogic = this.mock(ElementSpaceLogic.class);
+        ElementSpaceUtilities elementSpaceLogic = this.mock(ElementSpaceUtilities.class);
         ElementBag elementBag = this.mock(ElementBag.class);
 
         this.replayAll();
@@ -123,7 +123,7 @@ public class AllEggsInPlayEffectTests extends MockTest {
         cardInPlay.handler = this.mock(Handler.class);
         List<ElementSpace> mockSpaces = this.mockListOf(ElementSpace.class).withLengthOf(8);
         cardInPlay.elementSpaces = mockSpaces.toArray(new ElementSpace[8]);
-        ElementSpaceLogic elementSpaceLogic = this.mock(ElementSpaceLogic.class);
+        ElementSpaceUtilities elementSpaceLogic = this.mock(ElementSpaceUtilities.class);
         ElementBag elementBag = this.mock(ElementBag.class);
 
         mockSpaces.forEach(ElementSpace::destroyAllElements);

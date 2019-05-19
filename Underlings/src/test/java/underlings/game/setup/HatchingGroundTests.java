@@ -10,13 +10,13 @@ import org.junit.Before;
 import org.junit.Test;
 import underlings.card.Card;
 import underlings.element.ElementBag;
-import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.Game;
 import underlings.gui.Gui;
 import underlings.handler.HandlerFactory;
 import underlings.hatchingground.Deck;
 import underlings.hatchingground.HatchingGround;
 import underlings.player.PlayerFactory;
+import underlings.utilities.ElementSpaceUtilities;
 
 public class HatchingGroundTests {
 
@@ -26,7 +26,7 @@ public class HatchingGroundTests {
 
     @Before
     public void init() {
-        ElementSpaceLogic logic = EasyMock.niceMock(ElementSpaceLogic.class);
+        ElementSpaceUtilities logic = EasyMock.niceMock(ElementSpaceUtilities.class);
         EasyMock.replay(logic);
 
         this.cards = new Stack<Card>();

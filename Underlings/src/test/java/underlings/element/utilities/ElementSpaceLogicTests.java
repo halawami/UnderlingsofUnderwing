@@ -12,6 +12,7 @@ import org.junit.Test;
 import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
+import underlings.utilities.ElementSpaceUtilities;
 
 public class ElementSpaceLogicTests {
 
@@ -22,7 +23,7 @@ public class ElementSpaceLogicTests {
 
         List<String> recipes = new ArrayList<>();
         recipes.add("ORANGE:ORANGE RED,YELLOW");
-        ElementSpaceLogic logic = new ElementSpaceLogic(recipes);
+        ElementSpaceUtilities logic = new ElementSpaceUtilities(recipes);
 
         List<ElementColor> recipe1 = Arrays.asList(ElementColor.ORANGE);
         assertFalse(logic.isValidRecipe(recipe1, space));

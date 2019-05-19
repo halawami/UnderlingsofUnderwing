@@ -10,7 +10,7 @@ import org.junit.Test;
 import underlings.MockTest;
 import underlings.card.Card;
 import underlings.element.ElementSpace;
-import underlings.element.utilities.ElementSpaceLogic;
+import underlings.utilities.ElementSpaceUtilities;
 
 public class IsCompleteTests extends MockTest {
 
@@ -19,7 +19,7 @@ public class IsCompleteTests extends MockTest {
         this.card = new Card();
         this.elementSpace = this.mock(ElementSpace.class);
         this.elementSpace2 = this.mock(ElementSpace.class);
-        this.elementSpaceLogic = EasyMock.partialMockBuilder(ElementSpaceLogic.class)
+        this.elementSpaceLogic = EasyMock.partialMockBuilder(ElementSpaceUtilities.class)
                 .addMockedMethod("isComplete", ElementSpace.class).createMock();
         this.addMock(this.elementSpaceLogic);
     }

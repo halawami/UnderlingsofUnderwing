@@ -27,7 +27,6 @@ import underlings.element.ElementFactory;
 import underlings.element.ElementSpace;
 import underlings.element.ElementSpacePosition;
 import underlings.element.NullElement;
-import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.Game;
 import underlings.gui.Gui.PromptType;
 import underlings.handler.Handler;
@@ -38,6 +37,7 @@ import underlings.handler.HandlerState;
 import underlings.hatchingground.Deck;
 import underlings.hatchingground.HatchingGround;
 import underlings.player.PlayerFactory;
+import underlings.utilities.ElementSpaceUtilities;
 import underlings.utilities.LocaleUtilities;
 
 public class GuiTests {
@@ -62,7 +62,7 @@ public class GuiTests {
         List<String> recipes =
                 Resources.readLines(Resources.getResource(LocaleUtilities.get("default_recipe_list")), Charsets.UTF_8);
 
-        ElementSpaceLogic logic = EasyMock.niceMock(ElementSpaceLogic.class);
+        ElementSpaceUtilities logic = EasyMock.niceMock(ElementSpaceUtilities.class);
         EasyMock.replay(logic);
         this.hatchingGround = new HatchingGround(this.deck, logic);
         this.game = new Game(this.gui, this.hatchingGround, new PlayerFactory(new HandlerFactory(), recipes),

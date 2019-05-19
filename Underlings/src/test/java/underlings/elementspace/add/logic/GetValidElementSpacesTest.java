@@ -17,11 +17,11 @@ import underlings.card.Card;
 import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
-import underlings.element.utilities.ElementSpaceLogic;
+import underlings.utilities.ElementSpaceUtilities;
 
 public class GetValidElementSpacesTest {
 
-    ElementSpaceLogic logic;
+    ElementSpaceUtilities logic;
     ElementSpace redSpace;
     ElementSpace blueSpace;
     Element redElement;
@@ -36,7 +36,7 @@ public class GetValidElementSpacesTest {
         blueElement = new Element(ElementColor.BLUE);
 
         List<String> recipes = Resources.readLines(Resources.getResource("DefaultRecipeList.txt"), Charsets.UTF_8);
-        logic = new ElementSpaceLogic(recipes);
+        logic = new ElementSpaceUtilities(recipes);
     }
 
     @Test

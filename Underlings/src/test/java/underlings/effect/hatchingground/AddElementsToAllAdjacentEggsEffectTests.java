@@ -17,11 +17,11 @@ import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.NullElement;
-import underlings.element.utilities.ElementSpaceLogic;
 import underlings.gui.Gui;
 import underlings.handler.WildHandler;
 import underlings.hatchingground.HatchingGround;
 import underlings.utilities.EggHatchingUtilities;
+import underlings.utilities.ElementSpaceUtilities;
 import underlings.utilities.LocaleUtilities;
 
 public class AddElementsToAllAdjacentEggsEffectTests extends MockTest {
@@ -29,7 +29,7 @@ public class AddElementsToAllAdjacentEggsEffectTests extends MockTest {
     @Before
     public void init() {
         this.elementBag = this.mock(ElementBag.class);
-        this.elementSpaceLogic = this.mock(ElementSpaceLogic.class);
+        this.elementSpaceLogic = this.mock(ElementSpaceUtilities.class);
         this.card = this.mock(Card.class);
         this.eggHatchingLogic = this.mock(EggHatchingUtilities.class);
         this.gui = this.mock(Gui.class);

@@ -5,11 +5,11 @@ import static org.junit.Assert.assertEquals;
 import org.easymock.EasyMock;
 import org.junit.Test;
 import underlings.card.Card;
-import underlings.element.utilities.ElementSpaceLogic;
 import underlings.handler.Handler;
 import underlings.handler.HandlerState;
 import underlings.hatchingground.Deck;
 import underlings.hatchingground.HatchingGround;
+import underlings.utilities.ElementSpaceUtilities;
 
 public class FindCardTests {
 
@@ -36,7 +36,7 @@ public class FindCardTests {
         EasyMock.expect(mockedDeck.draw()).andReturn(card1);
         EasyMock.expect(mockedDeck.draw()).andReturn(card2);
 
-        ElementSpaceLogic logic = EasyMock.niceMock(ElementSpaceLogic.class);
+        ElementSpaceUtilities logic = EasyMock.niceMock(ElementSpaceUtilities.class);
 
         EasyMock.replay(mockedDeck, logic);
 
@@ -58,7 +58,7 @@ public class FindCardTests {
 
         EasyMock.expect(mockedDeck.draw()).andReturn(card1).times(4);
 
-        ElementSpaceLogic logic = EasyMock.niceMock(ElementSpaceLogic.class);
+        ElementSpaceUtilities logic = EasyMock.niceMock(ElementSpaceUtilities.class);
 
         EasyMock.replay(mockedDeck, logic);
 

@@ -22,7 +22,6 @@ import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementFactory;
 import underlings.element.ElementSpace;
-import underlings.element.utilities.ElementSpaceLogic;
 import underlings.gui.Gui;
 import underlings.handler.Handler;
 import underlings.handler.HandlerMovementLogic;
@@ -173,7 +172,7 @@ public class EggHatchingLogicTests {
         card2.elementSpaces = new ElementSpace[0];
 
         EasyMock.expect(this.hatchingGround.getUnclaimedEggs()).andReturn(Arrays.asList(card1, card2));
-        this.hatchingGround.logic = EasyMock.mock(ElementSpaceLogic.class);
+        this.hatchingGround.logic = EasyMock.mock(ElementSpaceUtilities.class);
         EasyMock.expect(this.hatchingGround.logic.isComplete(card1)).andReturn(false);
         EasyMock.expect(this.hatchingGround.logic.isComplete(card2)).andReturn(true);
         EasyMock.expect(this.hatchingGround.getUnclaimedEggs()).andReturn(Arrays.asList());

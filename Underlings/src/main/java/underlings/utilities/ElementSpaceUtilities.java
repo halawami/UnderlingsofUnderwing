@@ -1,4 +1,4 @@
-package underlings.element.utilities;
+package underlings.utilities;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,12 +14,12 @@ import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 
-public class ElementSpaceLogic {
+public class ElementSpaceUtilities {
 
     private Map<ElementColor, List<List<ElementColor>>> recipeMap;
     private List<ElementColor> openElements;
 
-    public ElementSpaceLogic(List<String> recipes) {
+    public ElementSpaceUtilities(List<String> recipes) {
         this.initMap(recipes);
         this.openElements = new ArrayList<>();
     }

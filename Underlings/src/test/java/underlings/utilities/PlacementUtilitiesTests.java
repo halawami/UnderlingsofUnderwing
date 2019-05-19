@@ -16,7 +16,6 @@ import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.ElementSpacePosition;
-import underlings.element.utilities.ElementSpaceLogic;
 import underlings.gui.Gui;
 import underlings.gui.PromptHandler;
 import underlings.gui.YesNoChoice;
@@ -33,7 +32,7 @@ public class PlacementUtilitiesTests extends MockTest {
         this.gui = this.mock(Gui.class);
         this.displayMethod = this.mock(Runnable.class);
         this.player = this.mock(Player.class);
-        this.elementSpaceLogic = this.mock(ElementSpaceLogic.class);
+        this.elementSpaceLogic = this.mock(ElementSpaceUtilities.class);
         this.promptHandler = this.mock(PromptHandler.class);
     }
 

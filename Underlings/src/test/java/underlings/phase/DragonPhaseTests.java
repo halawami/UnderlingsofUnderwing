@@ -17,7 +17,6 @@ import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
-import underlings.element.utilities.ElementSpaceLogic;
 import underlings.gui.Gui;
 import underlings.handler.Handler;
 import underlings.handler.HandlerFactory;
@@ -25,6 +24,7 @@ import underlings.handler.HandlerState;
 import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
 import underlings.utilities.EggHatchingUtilities;
+import underlings.utilities.ElementSpaceUtilities;
 import underlings.utilities.LocaleUtilities;
 
 public class DragonPhaseTests extends MockTest {
@@ -35,7 +35,7 @@ public class DragonPhaseTests extends MockTest {
         this.elementBag = this.mock(ElementBag.class);
         this.player = this.mock(Player.class);
         this.handler = this.mock(Handler.class);
-        this.player.elementSpaceLogic = this.mock(ElementSpaceLogic.class);
+        this.player.elementSpaceLogic = this.mock(ElementSpaceUtilities.class);
 
         this.card = new Card();
         this.player.hatchedCards = new ArrayList<>();

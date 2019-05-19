@@ -1,9 +1,8 @@
 package underlings.player;
 
 import java.util.List;
-
-import underlings.element.utilities.ElementSpaceLogic;
 import underlings.handler.HandlerFactory;
+import underlings.utilities.ElementSpaceUtilities;
 
 public class PlayerFactory {
 
@@ -19,7 +18,7 @@ public class PlayerFactory {
 
     public Player createPlayer(int maxHandlers) {
         Player player = new Player(maxHandlers, this.handlerFactory, ++this.playerCount);
-        player.elementSpaceLogic = new ElementSpaceLogic(this.recipes);
+        player.elementSpaceLogic = new ElementSpaceUtilities(this.recipes);
 
         return player;
     }

@@ -13,7 +13,6 @@ import java.util.Random;
 import underlings.card.CardFactory;
 import underlings.element.ElementBag;
 import underlings.element.ElementFactory;
-import underlings.element.utilities.ElementSpaceLogic;
 import underlings.field.Field;
 import underlings.field.FieldSpaceFactory;
 import underlings.game.Game;
@@ -36,6 +35,7 @@ import underlings.player.FakePlayer;
 import underlings.player.PlayerFactory;
 import underlings.scoring.Scoring;
 import underlings.utilities.EggHatchingUtilities;
+import underlings.utilities.ElementSpaceUtilities;
 import underlings.utilities.LocaleUtilities;
 import underlings.utilities.PlacementUtilities;
 
@@ -56,7 +56,7 @@ public class Main {
         CardFactory cardFactory = new CardFactory(CARDS_JSON_FILE_NAME);
         Deck deck = new Deck(cardFactory.getCards(), Collections::shuffle);
         deck.shuffle();
-        HatchingGround hatchingGround = new HatchingGround(deck, new ElementSpaceLogic(recipes));
+        HatchingGround hatchingGround = new HatchingGround(deck, new ElementSpaceUtilities(recipes));
         HandlerFactory handlerFactory = new HandlerFactory();
         PlayerFactory playerFactory = new PlayerFactory(handlerFactory, recipes);
         FieldSpaceFactory fieldSpaceFactory = new FieldSpaceFactory();

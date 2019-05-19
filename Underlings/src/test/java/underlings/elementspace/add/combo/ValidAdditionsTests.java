@@ -17,16 +17,16 @@ import org.junit.Test;
 import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
-import underlings.element.utilities.ElementSpaceLogic;
+import underlings.utilities.ElementSpaceUtilities;
 
 public class ValidAdditionsTests {
 
-    ElementSpaceLogic logic;
+    ElementSpaceUtilities logic;
 
     @Before
     public void init() throws Exception {
         List<String> recipes = Resources.readLines(Resources.getResource("DefaultRecipeList.txt"), Charsets.UTF_8);
-        this.logic = new ElementSpaceLogic(recipes);
+        this.logic = new ElementSpaceUtilities(recipes);
     }
 
     @Test
@@ -115,7 +115,7 @@ public class ValidAdditionsTests {
     @Test
     public void testValidAdditionsDone() {
         List<String> recipes = Arrays.asList("PURPLE:RED,BLUE RED");
-        ElementSpaceLogic logic = new ElementSpaceLogic(recipes);
+        ElementSpaceUtilities logic = new ElementSpaceUtilities(recipes);
 
         ElementSpace elementSpace = new ElementSpace(ElementColor.PURPLE);
         elementSpace.addElements(new Element(ElementColor.RED));

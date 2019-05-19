@@ -17,7 +17,6 @@ import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.effect.Effect;
 import underlings.element.ElementSpace;
-import underlings.element.utilities.ElementSpaceLogic;
 import underlings.gui.Gui;
 import underlings.gui.Gui.PromptType;
 import underlings.gui.YesNoChoice;
@@ -29,6 +28,7 @@ import underlings.hatchingground.HatchingGround;
 import underlings.player.FakePlayer;
 import underlings.player.Player;
 import underlings.utilities.EggHatchingUtilities;
+import underlings.utilities.ElementSpaceUtilities;
 import underlings.utilities.LocaleUtilities;
 import underlings.utilities.PlacementUtilities;
 
@@ -41,11 +41,11 @@ public class PlacementPhaseTests extends MockTest {
         this.player = this.mock(Player.class);
         this.players = Arrays.asList(this.player);
         this.deck = this.mock(Deck.class);
-        this.elementSpaceLogic = this.mock(ElementSpaceLogic.class);
+        this.elementSpaceLogic = this.mock(ElementSpaceUtilities.class);
         this.gui = this.mock(Gui.class);
         this.placementUtilities = this.mock(PlacementUtilities.class);
         this.hatchingGround = this.mock(HatchingGround.class);
-        this.hatchingGround.logic = this.mock(ElementSpaceLogic.class);
+        this.hatchingGround.logic = this.mock(ElementSpaceUtilities.class);
     }
 
     public <T> Object getField(Class<T> fieldClass, PlacementPhase phase, String fieldName)

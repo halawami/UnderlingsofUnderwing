@@ -12,10 +12,10 @@ import underlings.card.effect.ObserverEffect;
 import underlings.element.Element;
 import underlings.element.ElementGiver;
 import underlings.element.NullElement;
-import underlings.element.utilities.ElementSpaceLogic;
 import underlings.handler.Handler;
 import underlings.handler.HandlerFactory;
 import underlings.handler.HandlerState;
+import underlings.utilities.ElementSpaceUtilities;
 import underlings.utilities.LocaleUtilities;
 
 public class Player {
@@ -30,7 +30,7 @@ public class Player {
     public int id;
     public List<Card> hatchedCards;
     public Map<Card, Integer> unhatchedCards;
-    public ElementSpaceLogic elementSpaceLogic;
+    public ElementSpaceUtilities elementSpaceLogic;
     public int maxHandlersOnSpace;
     private List<ObserverEffect> observerEffects;
     public List<ElementGiver> effectElementGivers;

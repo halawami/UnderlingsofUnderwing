@@ -9,8 +9,8 @@ import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.NullElement;
-import underlings.element.utilities.ElementSpaceLogic;
 import underlings.handler.WildHandler;
+import underlings.utilities.ElementSpaceUtilities;
 import underlings.utilities.LocaleUtilities;
 
 public class AddElementsEffect extends ElementsEffect {
@@ -18,7 +18,7 @@ public class AddElementsEffect extends ElementsEffect {
     public ElementColor[] elementColors;
 
     @Override
-    public void applyOnAdjacentEgg(Card adjacentEgg, ElementSpaceLogic elementSpaceLogic, ElementBag elementBag) {
+    public void applyOnAdjacentEgg(Card adjacentEgg, ElementSpaceUtilities elementSpaceLogic, ElementBag elementBag) {
         if (adjacentEgg.handler != WildHandler.getInstance()) {
             for (ElementColor elementColorToAdd : this.elementColors) {
                 this.addElementToCard(elementColorToAdd, adjacentEgg, elementSpaceLogic, elementBag);
@@ -26,7 +26,7 @@ public class AddElementsEffect extends ElementsEffect {
         }
     }
 
-    public void addElementToCard(ElementColor elementColorToAdd, Card card, ElementSpaceLogic elementSpaceLogic,
+    public void addElementToCard(ElementColor elementColorToAdd, Card card, ElementSpaceUtilities elementSpaceLogic,
             ElementBag elementBag) {
         List<ElementSpace> playableSpaces = elementSpaceLogic.getPlayableSpaces(card, elementColorToAdd);
         if (!playableSpaces.isEmpty()) {

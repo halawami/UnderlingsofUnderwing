@@ -10,15 +10,15 @@ import underlings.MockTest;
 import underlings.card.effect.Effect;
 import underlings.card.effect.wild.players.RemoveBlackRecipesEffect;
 import underlings.element.ElementColor;
-import underlings.element.utilities.ElementSpaceLogic;
 import underlings.player.Player;
+import underlings.utilities.ElementSpaceUtilities;
 import underlings.utilities.LocaleUtilities;
 
 public class RemoveBlackTests extends MockTest {
 
     @Test
     public void testEffect() {
-        List<ElementSpaceLogic> logics = this.mockListOf(ElementSpaceLogic.class).withLengthOf(4);
+        List<ElementSpaceUtilities> logics = this.mockListOf(ElementSpaceUtilities.class).withLengthOf(4);
         List<Player> players = this.mockListOf(Player.class).withLengthOf(4);
         for (int i = 0; i < 4; i++) {
             logics.get(i).resetRecipes(ElementColor.BLACK);
