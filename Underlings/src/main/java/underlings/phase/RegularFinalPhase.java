@@ -6,7 +6,7 @@ import underlings.gui.Gui;
 import underlings.gui.Gui.PromptType;
 import underlings.player.Player;
 import underlings.scoring.ScoreUtils;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class RegularFinalPhase implements FinalPhase {
 
@@ -30,7 +30,7 @@ public class RegularFinalPhase implements FinalPhase {
             this.turn(player);
         }
 
-        this.gui.alert(LocaleWrap.get("game_over"), PromptType.WARNING);
+        this.gui.alert(LocaleUtilities.get("game_over"), PromptType.WARNING);
         this.scoreUtils.calculateScores();
         this.scoreUtils.displayScores();
         this.scoreUtils.displayWinners();

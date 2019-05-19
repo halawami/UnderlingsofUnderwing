@@ -16,7 +16,7 @@ import underlings.handler.HandlerChoice;
 import underlings.handler.HandlerMovementLogic;
 import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class ReplaceHandlerWithYourOwnEffectTests extends MockTest {
 
@@ -48,10 +48,10 @@ public class ReplaceHandlerWithYourOwnEffectTests extends MockTest {
 
         EasyMock.expect(currentPlayer.getId()).andReturn(0).anyTimes();
         EasyMock.expect(hatchingGround.getClaimedEggs()).andReturn(mockClaimedEggs);
-        EasyMock.expect(gui.promptChoice(LocaleWrap.get("choose_card_replace_handler"), mockClaimedEggs, 0))
+        EasyMock.expect(gui.promptChoice(LocaleUtilities.get("choose_card_replace_handler"), mockClaimedEggs, 0))
                 .andReturn(mockClaimedEggs.get(2));
         currentPlayer.handlers = mockHandlers;
-        EasyMock.expect(gui.promptChoice(LocaleWrap.get("choose_replace_handler"), mockHandlers, 0))
+        EasyMock.expect(gui.promptChoice(LocaleUtilities.get("choose_replace_handler"), mockHandlers, 0))
                 .andReturn(mockHandlers.get(1));
         handlerMovementLogic.move(toBeReplaced, HandlerChoice.BREAK_ROOM, currentPlayer);
         handlerMovementLogic.moveToCard(mockHandlers.get(1), mockClaimedEggs.get(2));
@@ -65,6 +65,6 @@ public class ReplaceHandlerWithYourOwnEffectTests extends MockTest {
     @Test
     public void testToString() {
         Effect effect = new ReplaceHandlerWithYourOwnEffect();
-        assertEquals(LocaleWrap.get("replace_handler_effect"), effect.toString());
+        assertEquals(LocaleUtilities.get("replace_handler_effect"), effect.toString());
     }
 }

@@ -4,12 +4,12 @@ import java.text.MessageFormat;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class LocaleWrap {
+public class LocaleUtilities {
 
     protected static Locale locale = Locale.ENGLISH;
 
     public void setLocale(Locale locale) {
-        LocaleWrap.locale = locale;
+        LocaleUtilities.locale = locale;
     }
 
     public static String get(String string) {
@@ -17,6 +17,6 @@ public class LocaleWrap {
     }
 
     public static String format(String string, Object... arguments) {
-        return MessageFormat.format(LocaleWrap.get(string), arguments);
+        return MessageFormat.format(LocaleUtilities.get(string), arguments);
     }
 }

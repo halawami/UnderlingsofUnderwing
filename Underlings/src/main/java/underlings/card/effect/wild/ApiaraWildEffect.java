@@ -8,8 +8,8 @@ import underlings.handler.HandlerMovementLogic;
 import underlings.hatchingground.Deck;
 import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
-import underlings.utilities.EggHatchingLogic;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.EggHatchingUtilities;
+import underlings.utilities.LocaleUtilities;
 
 public class ApiaraWildEffect extends DiverseHatchingGroundEffect {
 
@@ -21,7 +21,7 @@ public class ApiaraWildEffect extends DiverseHatchingGroundEffect {
 
     @Override
     protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag,
-            Player currentPlayer, EggHatchingLogic eggHatchingLogic, Deck deck,
+            Player currentPlayer, EggHatchingUtilities eggHatchingLogic, Deck deck,
             HandlerMovementLogic handlerMovementLogic) {
         if (!this.redraw) {
             hatchingGround.replaceCard(centerCard);
@@ -39,6 +39,6 @@ public class ApiaraWildEffect extends DiverseHatchingGroundEffect {
 
     @Override
     public String toString() {
-        return LocaleWrap.get("apiara_wild_effect");
+        return LocaleUtilities.get("apiara_wild_effect");
     }
 }

@@ -2,7 +2,7 @@ package underlings.card.effect.wild.adjacenteggs.elements.destroy;
 
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class AllElementsEffect extends DestroyElementsEffect {
 
@@ -18,6 +18,6 @@ public class AllElementsEffect extends DestroyElementsEffect {
             elements.append(color);
             elements.append(" ");
         }
-        return LocaleWrap.format("destroy_all_elements_on_adjacent_eggs_effect", elements);
+        return LocaleUtilities.format("destroy_all_elements_on_adjacent_eggs_effect", elements);
     }
 }

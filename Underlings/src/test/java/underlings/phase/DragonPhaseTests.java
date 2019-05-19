@@ -24,8 +24,8 @@ import underlings.handler.HandlerFactory;
 import underlings.handler.HandlerState;
 import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
-import underlings.utilities.EggHatchingLogic;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.EggHatchingUtilities;
+import underlings.utilities.LocaleUtilities;
 
 public class DragonPhaseTests extends MockTest {
 
@@ -48,7 +48,7 @@ public class DragonPhaseTests extends MockTest {
         this.elementSpaces = new ElementSpace[1];
         this.elementSpaces[0] = new ElementSpace(ElementColor.PURPLE);
         this.card.elementSpaces = this.elementSpaces;
-        this.eggHatchingLogic = this.mock(EggHatchingLogic.class);
+        this.eggHatchingLogic = this.mock(EggHatchingUtilities.class);
         this.elementSpaces[0].elements = Arrays.asList(new Element(ElementColor.BLUE), new Element(ElementColor.RED));
         this.gui = this.mock(Gui.class);
 
@@ -117,7 +117,7 @@ public class DragonPhaseTests extends MockTest {
         this.player = new Player(2, new HandlerFactory(), 0);
         this.card.handler = this.player.handlers.get(0);
         this.card.name = "tempName";
-        final String message = LocaleWrap.format("incubation_state", this.card.name);
+        final String message = LocaleUtilities.format("incubation_state", this.card.name);
         this.card.domesticEffects = new Effect[0];
         EasyMock.expect(this.hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList(this.card));
         this.eggHatchingLogic.returnElementsToBag(this.card);
@@ -138,7 +138,7 @@ public class DragonPhaseTests extends MockTest {
         this.player = new Player(2, new HandlerFactory(), 0);
         this.card.handler = this.player.handlers.get(0);
         this.card.name = "tempName";
-        final String message = LocaleWrap.format("incubation_state", this.card.name);
+        final String message = LocaleUtilities.format("incubation_state", this.card.name);
         this.card.domesticEffects = new Effect[0];
         EasyMock.expect(this.hatchingGround.pullAndReplaceCompleteEggs())
                 .andReturn(Arrays.asList(this.card, this.card));
@@ -214,7 +214,7 @@ public class DragonPhaseTests extends MockTest {
         this.card.handler = this.player.handlers.get(0);
         Card card2 = new Card();
         card2.name = "tempName";
-        final String message = LocaleWrap.format("incubation_state", card2.name);
+        final String message = LocaleUtilities.format("incubation_state", card2.name);
         card2.handler = this.player.handlers.get(1);
         EasyMock.expect(this.hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList(this.card, card2));
         this.eggHatchingLogic.returnElementsToBag(this.card);
@@ -241,7 +241,7 @@ public class DragonPhaseTests extends MockTest {
         Player player = new Player(6, new HandlerFactory(), 1);
         this.card.handler = player.handlers.get(0);
         this.card.name = "tempName";
-        final String message = LocaleWrap.format("incubation_state", this.card.name);
+        final String message = LocaleUtilities.format("incubation_state", this.card.name);
         this.hatchingGround.lateHatching = true;
         EasyMock.expect(this.hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList(this.card));
         this.eggHatchingLogic.returnElementsToBag(this.card);
@@ -262,7 +262,7 @@ public class DragonPhaseTests extends MockTest {
         Player player = new Player(6, new HandlerFactory(), 1);
         this.card.handler = player.handlers.get(0);
         this.card.name = "tempName";
-        final String message = LocaleWrap.format("incubation_state", this.card.name);
+        final String message = LocaleUtilities.format("incubation_state", this.card.name);
         this.hatchingGround.lateHatching = true;
         EasyMock.expect(this.hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList(this.card));
         EasyMock.expect(this.hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList());
@@ -289,7 +289,7 @@ public class DragonPhaseTests extends MockTest {
         Player player = new Player(6, new HandlerFactory(), 1);
         this.card.handler = player.handlers.get(0);
         this.card.name = "tempName";
-        final String message = LocaleWrap.format("incubation_state", this.card.name);
+        final String message = LocaleUtilities.format("incubation_state", this.card.name);
         this.hatchingGround.lateHatching = true;
         EasyMock.expect(this.hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList(this.card));
         EasyMock.expect(this.hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList());

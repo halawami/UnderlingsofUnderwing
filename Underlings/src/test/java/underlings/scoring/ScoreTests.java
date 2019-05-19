@@ -15,7 +15,7 @@ import underlings.card.Temperature;
 import underlings.gui.Gui;
 import underlings.gui.Gui.PromptType;
 import underlings.player.Player;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class ScoreTests {
 
@@ -127,9 +127,9 @@ public class ScoreTests {
         this.players[0].score = 1;
         this.players[1].score = 5;
 
-        this.gui.alert(LocaleWrap.format("player_score", this.players[0], this.players[0].score), this.players[0].id,
+        this.gui.alert(LocaleUtilities.format("player_score", this.players[0], this.players[0].score), this.players[0].id,
                 PromptType.REGULAR);
-        this.gui.alert(LocaleWrap.format("player_score", this.players[1], this.players[1].score), this.players[1].id,
+        this.gui.alert(LocaleUtilities.format("player_score", this.players[1], this.players[1].score), this.players[1].id,
                 PromptType.REGULAR);
 
         EasyMock.replay(this.gui);
@@ -147,7 +147,7 @@ public class ScoreTests {
         List<Player> winners = new ArrayList<>();
         winners.add(this.players[1]);
         this.scoreUtils.winningScore = 10;
-        this.gui.alert(LocaleWrap.format("winners", winners), PromptType.REGULAR);
+        this.gui.alert(LocaleUtilities.format("winners", winners), PromptType.REGULAR);
 
         EasyMock.replay(this.gui);
 

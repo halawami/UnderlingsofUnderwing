@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class ElementSpace {
 
@@ -42,7 +42,7 @@ public class ElementSpace {
 
     @Override
     public String toString() {
-        return LocaleWrap.format("element_space", this.color);
+        return LocaleUtilities.format("element_space", this.color);
     }
 
     public List<ElementColor> getElementColors() {

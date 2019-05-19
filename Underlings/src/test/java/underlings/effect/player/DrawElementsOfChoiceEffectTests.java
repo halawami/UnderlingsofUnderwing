@@ -19,7 +19,7 @@ import underlings.element.ElementGiver;
 import underlings.element.ElementGiverFactory;
 import underlings.gui.DrawChoice;
 import underlings.player.Player;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class DrawElementsOfChoiceEffectTests extends MockTest {
 
@@ -118,7 +118,7 @@ public class DrawElementsOfChoiceEffectTests extends MockTest {
     public void testToString() {
         replayAll();
         Effect effect = new DrawElementsOfChoiceEffect();
-        assertEquals(LocaleWrap.get("draw_elements_of_choice"), effect.toString());
+        assertEquals(LocaleUtilities.get("draw_elements_of_choice"), effect.toString());
     }
 
 }

@@ -4,7 +4,7 @@ import underlings.card.Card;
 import underlings.element.ElementBag;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.handler.HandlerMovementLogic;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class DestroyAllElementsOnAllEggsInPlay extends AllEggsInPlayEffect {
 
@@ -20,6 +20,6 @@ public class DestroyAllElementsOnAllEggsInPlay extends AllEggsInPlayEffect {
 
     @Override
     public String toString() {
-        return LocaleWrap.get("destroy_all_elements_on_all_eggs_effect");
+        return LocaleUtilities.get("destroy_all_elements_on_all_eggs_effect");
     }
 }

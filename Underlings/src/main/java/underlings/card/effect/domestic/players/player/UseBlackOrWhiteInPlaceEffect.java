@@ -3,7 +3,7 @@ package underlings.card.effect.domestic.players.player;
 import underlings.card.effect.PlayerEffect;
 import underlings.element.ElementColor;
 import underlings.player.Player;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class UseBlackOrWhiteInPlaceEffect extends PlayerEffect {
 
@@ -15,6 +15,6 @@ public class UseBlackOrWhiteInPlaceEffect extends PlayerEffect {
 
     @Override
     public String toString() {
-        return LocaleWrap.get("black_white_inplace_effect");
+        return LocaleUtilities.get("black_white_inplace_effect");
     }
 }

@@ -18,7 +18,7 @@ import underlings.element.NullElement;
 import underlings.gui.Gui;
 import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class UptoElementsFromAnyEggInPlayEffectTests extends MockTest {
 
@@ -143,7 +143,7 @@ public class UptoElementsFromAnyEggInPlayEffectTests extends MockTest {
             elements.append(color);
             elements.append(" ");
         }
-        assertEquals(LocaleWrap.format("collect_up_to_effect", effect.upTo, elements), effect.toString());
+        assertEquals(LocaleUtilities.format("collect_up_to_effect", effect.upTo, elements), effect.toString());
     }
 
     @Test
@@ -155,6 +155,6 @@ public class UptoElementsFromAnyEggInPlayEffectTests extends MockTest {
             elements.append(color);
             elements.append(" ");
         }
-        assertEquals(LocaleWrap.format("destroy_up_to_effect", effect.upTo, elements), effect.toString());
+        assertEquals(LocaleUtilities.format("destroy_up_to_effect", effect.upTo, elements), effect.toString());
     }
 }

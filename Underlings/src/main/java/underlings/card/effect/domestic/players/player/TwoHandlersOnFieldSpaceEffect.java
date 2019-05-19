@@ -2,7 +2,7 @@ package underlings.card.effect.domestic.players.player;
 
 import underlings.card.effect.PlayerEffect;
 import underlings.player.Player;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class TwoHandlersOnFieldSpaceEffect extends PlayerEffect {
 
@@ -13,7 +13,7 @@ public class TwoHandlersOnFieldSpaceEffect extends PlayerEffect {
 
     @Override
     public String toString() {
-        return LocaleWrap.get("two_handler_effect");
+        return LocaleUtilities.get("two_handler_effect");
     }
 
 }

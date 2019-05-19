@@ -11,7 +11,7 @@ import underlings.element.ElementColor;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class WhiteRecipeEffectTests extends MockTest {
 
@@ -63,7 +63,7 @@ public class WhiteRecipeEffectTests extends MockTest {
     public void testToStringDestroy() {
         this.replayAll();
         WhiteRecipeEffect effect = new WhiteRecipeEffect();
-        assertEquals(LocaleWrap.get("combine_primary_secondary_for_white"), effect.toString());
+        assertEquals(LocaleUtilities.get("combine_primary_secondary_for_white"), effect.toString());
     }
 
 }

@@ -15,8 +15,8 @@ import underlings.card.effect.wild.adjacenteggs.elements.destroy.OneElementEffec
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
-import underlings.utilities.EggHatchingLogic;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.EggHatchingUtilities;
+import underlings.utilities.LocaleUtilities;
 
 public class DestroyElementsOnAllAdjacentEggsEffectTests extends MockTest {
 
@@ -37,7 +37,7 @@ public class DestroyElementsOnAllAdjacentEggsEffectTests extends MockTest {
                 .addMockedMethod("destroyElementsOfColorOnCard").createMock();
         this.addMock(effect);
         effect.elementColors = elementColors;
-        EggHatchingLogic eggHatchingLogic = this.mock(EggHatchingLogic.class);
+        EggHatchingUtilities eggHatchingLogic = this.mock(EggHatchingUtilities.class);
 
         for (ElementColor elementColor : elementColors) {
             effect.destroyElementsOfColorOnCard(elementColor, adjacentCard, elementSpaceLogic);
@@ -122,7 +122,7 @@ public class DestroyElementsOnAllAdjacentEggsEffectTests extends MockTest {
             elements.append(color);
             elements.append(" ");
         }
-        assertEquals(LocaleWrap.format("destroy_all_elements_on_adjacent_eggs_effect", elements), effect.toString());
+        assertEquals(LocaleUtilities.format("destroy_all_elements_on_adjacent_eggs_effect", elements), effect.toString());
     }
 
 }

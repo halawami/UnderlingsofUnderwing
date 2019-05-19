@@ -11,7 +11,7 @@ import underlings.card.effect.domestic.players.player.UseBlackOrWhiteInPlaceEffe
 import underlings.element.ElementColor;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.player.Player;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class UseBlackOrWhiteInPlaceTests extends MockTest {
 
@@ -33,6 +33,6 @@ public class UseBlackOrWhiteInPlaceTests extends MockTest {
     @Test
     public void testToString() {
         Effect effect = new UseBlackOrWhiteInPlaceEffect();
-        assertEquals(LocaleWrap.get("black_white_inplace_effect"), effect.toString());
+        assertEquals(LocaleUtilities.get("black_white_inplace_effect"), effect.toString());
     }
 }

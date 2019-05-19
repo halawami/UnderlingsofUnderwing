@@ -10,10 +10,10 @@ public class LocalWrapTests {
 
     @Test
     public void testSetLocale() {
-        LocaleWrap localeWrap = new LocaleWrap();
+        LocaleUtilities localeWrap = new LocaleUtilities();
         localeWrap.setLocale(Locale.CANADA);
 
-        assertEquals(Locale.CANADA, LocaleWrap.locale);
+        assertEquals(Locale.CANADA, LocaleUtilities.locale);
     }
 
 }

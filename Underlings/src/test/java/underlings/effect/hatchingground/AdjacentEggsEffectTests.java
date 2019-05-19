@@ -12,7 +12,7 @@ import underlings.element.utilities.ElementSpaceLogic;
 import underlings.gui.Gui;
 import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
-import underlings.utilities.EggHatchingLogic;
+import underlings.utilities.EggHatchingUtilities;
 
 public class AdjacentEggsEffectTests extends MockTest {
 
@@ -24,7 +24,7 @@ public class AdjacentEggsEffectTests extends MockTest {
         Player player = this.mock(Player.class);
         player.elementSpaceLogic = this.mock(ElementSpaceLogic.class);
         Gui gui = this.mock(Gui.class);
-        EggHatchingLogic eggHatchingLogic = this.mock(EggHatchingLogic.class);
+        EggHatchingUtilities eggHatchingLogic = this.mock(EggHatchingUtilities.class);
         AdjacentEggsEffect testedEffect = EasyMock.partialMockBuilder(AdjacentEggsEffect.class)
                 .addMockedMethod("applyOnAdjacentEgg", Card.class, ElementSpaceLogic.class, ElementBag.class)
                 .createNiceMock();

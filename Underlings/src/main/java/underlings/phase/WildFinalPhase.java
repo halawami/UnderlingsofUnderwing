@@ -3,7 +3,7 @@ package underlings.phase;
 import underlings.gui.Gui;
 import underlings.gui.Gui.PromptType;
 import underlings.player.Player;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class WildFinalPhase implements FinalPhase {
 
@@ -15,7 +15,7 @@ public class WildFinalPhase implements FinalPhase {
 
     @Override
     public void execute() {
-        this.gui.alert(LocaleWrap.get("wild_game_over"), PromptType.ERROR);
+        this.gui.alert(LocaleUtilities.get("wild_game_over"), PromptType.ERROR);
     }
 
     @Override

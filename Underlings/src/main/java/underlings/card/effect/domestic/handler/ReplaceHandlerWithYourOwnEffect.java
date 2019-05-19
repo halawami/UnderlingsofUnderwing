@@ -9,7 +9,7 @@ import underlings.handler.HandlerChoice;
 import underlings.handler.HandlerMovementLogic;
 import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class ReplaceHandlerWithYourOwnEffect extends HandlerEffect {
 
@@ -19,8 +19,8 @@ public class ReplaceHandlerWithYourOwnEffect extends HandlerEffect {
         List<Card> claimedEggs = hatchingGround.getClaimedEggs();
         if (!claimedEggs.isEmpty()) {
             Card chosenEgg =
-                    gui.promptChoice(LocaleWrap.get("choose_card_replace_handler"), claimedEggs, currentPlayer.id);
-            Handler chosenHandler = gui.promptChoice(LocaleWrap.get("choose_replace_handler"), currentPlayer.handlers,
+                    gui.promptChoice(LocaleUtilities.get("choose_card_replace_handler"), claimedEggs, currentPlayer.id);
+            Handler chosenHandler = gui.promptChoice(LocaleUtilities.get("choose_replace_handler"), currentPlayer.handlers,
                     currentPlayer.getId());
             handlerLogic.move(chosenEgg.handler, HandlerChoice.BREAK_ROOM, currentPlayer);
             handlerLogic.moveToCard(chosenHandler, chosenEgg);
@@ -29,6 +29,6 @@ public class ReplaceHandlerWithYourOwnEffect extends HandlerEffect {
 
     @Override
     public String toString() {
-        return LocaleWrap.get("replace_handler_effect");
+        return LocaleUtilities.get("replace_handler_effect");
     }
 }

@@ -35,18 +35,18 @@ import underlings.phase.WildFinalPhase;
 import underlings.player.FakePlayer;
 import underlings.player.PlayerFactory;
 import underlings.scoring.ScoreUtils;
-import underlings.utilities.EggHatchingLogic;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.EggHatchingUtilities;
+import underlings.utilities.LocaleUtilities;
 import underlings.utilities.PlacementUtilities;
 
 public class Main {
 
-    private static final String CARDS_JSON_FILE_NAME = LocaleWrap.get("cards_json");
+    private static final String CARDS_JSON_FILE_NAME = LocaleUtilities.get("cards_json");
 
     public static void main(String[] args) {
         List<String> recipes = null;
         try {
-            recipes = Resources.readLines(Resources.getResource(LocaleWrap.get("default_recipe_list")), Charsets.UTF_8);
+            recipes = Resources.readLines(Resources.getResource(LocaleUtilities.get("default_recipe_list")), Charsets.UTF_8);
         } catch (IOException e) {
             e.printStackTrace();
             System.exit(1);
@@ -70,8 +70,8 @@ public class Main {
         Game game = new Game(gui, hatchingGround, playerFactory, elementBag);
         Runnable gameDisplay = game::display;
 
-        EggHatchingLogic eggHatchingLogic =
-                new EggHatchingLogic(gui, elementBag, hatchingGround, gameDisplay, game.getPlayers(), deck, handlerMovementLogic);
+        EggHatchingUtilities eggHatchingLogic =
+                new EggHatchingUtilities(gui, elementBag, hatchingGround, gameDisplay, game.getPlayers(), deck, handlerMovementLogic);
 
         List<Phase> phases = new ArrayList<>();
         phases.add(new DrawingPhase(game.getPlayers(), gui, elementBag, hatchingGround, gameDisplay, field));
@@ -91,7 +91,7 @@ public class Main {
         finalPhaseMap.put(FinalPhaseType.WILD, new WildFinalPhase(gui));
 
         Locale locale = gui.promptLocale(Locale.getAvailableLocales());
-        new LocaleWrap().setLocale(locale);
+        new LocaleUtilities().setLocale(locale);
 
         game.start(phases, finalPhaseMap);
 

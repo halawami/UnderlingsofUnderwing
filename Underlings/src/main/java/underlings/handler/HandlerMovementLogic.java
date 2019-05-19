@@ -6,7 +6,7 @@ import underlings.field.FieldSpace;
 import underlings.gui.Gui;
 import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class HandlerMovementLogic {
 
@@ -37,7 +37,7 @@ public class HandlerMovementLogic {
                 break;
             case CARD:
 
-                Card chosenCard = this.gui.getCard(player.getId(), LocaleWrap.get("handler_movement_card"),
+                Card chosenCard = this.gui.getCard(player.getId(), LocaleUtilities.get("handler_movement_card"),
                         this.hatchingGround, this.hatchingGround.getUnclaimedEggs());
 
                 moveToCard(handler, chosenCard);

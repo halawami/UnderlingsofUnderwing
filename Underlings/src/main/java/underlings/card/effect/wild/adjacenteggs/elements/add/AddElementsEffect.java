@@ -11,7 +11,7 @@ import underlings.element.ElementSpace;
 import underlings.element.NullElement;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.handler.WildHandler;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class AddElementsEffect extends ElementsEffect {
 
@@ -44,6 +44,6 @@ public class AddElementsEffect extends ElementsEffect {
             elements.append(color);
             elements.append(" ");
         }
-        return LocaleWrap.format("place_element_on_all_eggs_effect", elements);
+        return LocaleUtilities.format("place_element_on_all_eggs_effect", elements);
     }
 }

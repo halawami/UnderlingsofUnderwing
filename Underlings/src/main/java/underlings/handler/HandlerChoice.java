@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public enum HandlerChoice {
 
@@ -39,9 +39,9 @@ public enum HandlerChoice {
     @Override
     public String toString() {
         if (this == HandlerChoice.STAY) {
-            return LocaleWrap.get("handler_choice_stay");
+            return LocaleUtilities.get("handler_choice_stay");
         }
-        return LocaleWrap.format("handler_choice_move", LocaleWrap.get(this.name()));
+        return LocaleUtilities.format("handler_choice_move", LocaleUtilities.get(this.name()));
     }
 
     public HandlerState getState() {

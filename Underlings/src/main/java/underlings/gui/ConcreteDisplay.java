@@ -22,7 +22,7 @@ import underlings.handler.Handler;
 import underlings.handler.WildHandler;
 import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class ConcreteDisplay implements Display {
 
@@ -51,7 +51,7 @@ public class ConcreteDisplay implements Display {
         this.colorMap.put(ElementColor.ORANGE, Color.ORANGE);
         this.colorMap.put(ElementColor.GREEN, Color.GREEN);
 
-        this.frame = new JFrame(LocaleWrap.get("game_title"));
+        this.frame = new JFrame(LocaleUtilities.get("game_title"));
 
         this.frame.setSize(WIDTH + OFFSET_X, HEIGHT + OFFSET_Y);
         this.frame.getContentPane().setSize(WIDTH, HEIGHT);
@@ -75,7 +75,7 @@ public class ConcreteDisplay implements Display {
 
     private void getImages() {
         try {
-            this.background = ImageIO.read(new File(LocaleWrap.get("background")));
+            this.background = ImageIO.read(new File(LocaleUtilities.get("background")));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -112,11 +112,11 @@ public class ConcreteDisplay implements Display {
 
         this.gr.setColor(Color.BLACK);
         this.gr.setFont(this.fontSmall);
-        this.gr.drawString(LocaleWrap.format("card_name", card.name),
+        this.gr.drawString(LocaleUtilities.format("card_name", card.name),
                 (int) (ratio * (30 + offsetX + (width + gapX) * col)) - 5,
                 (int) (-25 + ratio * (height / 2 + offsetY + (height + gapY) * row)) - 6);
         this.gr.setFont(this.fontBig);
-        this.gr.drawString(LocaleWrap.format("card_points", card.points),
+        this.gr.drawString(LocaleUtilities.format("card_points", card.points),
                 (int) (ratio * (30 + offsetX + (width + gapX) * col)) - 5,
                 (int) (-25 + ratio * (height / 2 + offsetY + (height + gapY) * row) + 6));
 
@@ -130,11 +130,11 @@ public class ConcreteDisplay implements Display {
             this.gr.setColor(Color.BLACK);
             String s = "";
             if (space.elements.isEmpty()) {
-                s = LocaleWrap.get("empty");
+                s = LocaleUtilities.get("empty");
             }
             for (int i = 0; i < space.elements.size(); i++) {
                 String elementName = "GUI_" + space.getElementColors().get(i).name();
-                s += LocaleWrap.get(elementName);
+                s += LocaleUtilities.get(elementName);
             }
 
             this.gr.drawString(s, x, y);
@@ -158,11 +158,11 @@ public class ConcreteDisplay implements Display {
                 (int) (ratio * (offsetY + (height + gapY) * row)), (int) (ratio * width), (int) (ratio * height));
 
         this.gr.setColor(Color.BLACK);
-        this.gr.drawString(LocaleWrap.format("card_name", card.name),
+        this.gr.drawString(LocaleUtilities.format("card_name", card.name),
                 (int) (ratio * (30 + offsetX + (width + gapX) * col)),
                 (int) (-25 + ratio * (height / 2 + offsetY + (height + gapY) * row)));
 
-        this.gr.drawString(LocaleWrap.get("hatched_wild"), (int) (ratio * (30 + offsetX + (width + gapX) * col)),
+        this.gr.drawString(LocaleUtilities.get("hatched_wild"), (int) (ratio * (30 + offsetX + (width + gapX) * col)),
                 (int) (-5 + ratio * (height / 2 + offsetY + (height + gapY) * row)));
     }
 
@@ -192,16 +192,16 @@ public class ConcreteDisplay implements Display {
             for (Element e : player.getElements()) {
                 elements += e.getColor() + " ";
                 if (++i == 6) {
-                    elements += LocaleWrap.get("line_break");
+                    elements += LocaleUtilities.get("line_break");
                     i = 0;
                 }
             }
             this.gr.setColor(Color.BLACK);
-            this.gr.drawString(LocaleWrap.format("player_number", player.id),
+            this.gr.drawString(LocaleUtilities.format("player_number", player.id),
                     (int) (ratio * (offsetX + (width + gapX) * col)) + 5,
                     (int) (ratio * (offsetY + (height + gapY) * row)) + 15);
             int index = 0;
-            for (String element : elements.split(LocaleWrap.get("line_break"))) {
+            for (String element : elements.split(LocaleUtilities.get("line_break"))) {
                 this.gr.drawString(element, (int) (ratio * (30 + offsetX + (width + gapX) * col)),
                         (int) (-50 + index++ * 25 + ratio * (height / 2 + offsetY + (height + gapY) * row)));
             }
@@ -248,19 +248,19 @@ public class ConcreteDisplay implements Display {
         this.gr.setColor(Color.BLACK);
 
         StringBuilder stats = new StringBuilder();
-        stats.append(LocaleWrap.get("elements_remaining"));
+        stats.append(LocaleUtilities.get("elements_remaining"));
         for (ElementColor color : new ElementColor[] {ElementColor.RED, ElementColor.BLUE, ElementColor.YELLOW,
                 ElementColor.GREEN, ElementColor.ORANGE, ElementColor.PURPLE, ElementColor.BLACK, ElementColor.WHITE}) {
-            stats.append(LocaleWrap.format("color_remaining", color.toString(), elementBag.getNumberRemaining(color)));
+            stats.append(LocaleUtilities.format("color_remaining", color.toString(), elementBag.getNumberRemaining(color)));
         }
-        stats.append(LocaleWrap.format("rounds_left", roundsLeft));
-        stats.append(LocaleWrap.format("current_phase", currentPhase));
-        stats.append(LocaleWrap.format("turn_lead", leadTurn));
+        stats.append(LocaleUtilities.format("rounds_left", roundsLeft));
+        stats.append(LocaleUtilities.format("current_phase", currentPhase));
+        stats.append(LocaleUtilities.format("turn_lead", leadTurn));
 
 
         int y = 15;
 
-        for (String item : stats.toString().split(LocaleWrap.get("line_break"))) {
+        for (String item : stats.toString().split(LocaleUtilities.get("line_break"))) {
             this.gr.drawString(item, WIDTH - 200, y);
             y += 15;
         }

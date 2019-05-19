@@ -20,7 +20,7 @@ import underlings.hatchingground.HatchingGround;
 import underlings.phase.Phase;
 import underlings.player.Player;
 import underlings.scoring.ScoreUtils;
-import underlings.utilities.EggHatchingLogic;
+import underlings.utilities.EggHatchingUtilities;
 
 public abstract class MockTest {
 
@@ -40,7 +40,7 @@ public abstract class MockTest {
     protected Card card;
     protected Card card2;
     protected ElementSpace[] elementSpaces;
-    protected EggHatchingLogic eggHatchingLogic;
+    protected EggHatchingUtilities eggHatchingLogic;
     protected Handler handler;
     protected Effect effect;
     protected Effect effect2;

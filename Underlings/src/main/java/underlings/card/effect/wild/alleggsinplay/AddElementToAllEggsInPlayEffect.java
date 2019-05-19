@@ -9,7 +9,7 @@ import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.handler.HandlerMovementLogic;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class AddElementToAllEggsInPlayEffect extends AllEggsInPlayEffect {
 
@@ -32,6 +32,6 @@ public class AddElementToAllEggsInPlayEffect extends AllEggsInPlayEffect {
 
     @Override
     public String toString() {
-        return LocaleWrap.format("place_element_on_all_eggs_effect", elementColor);
+        return LocaleUtilities.format("place_element_on_all_eggs_effect", elementColor);
     }
 }

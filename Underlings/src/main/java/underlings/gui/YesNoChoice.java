@@ -3,7 +3,7 @@ package underlings.gui;
 import java.util.Arrays;
 import java.util.List;
 
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public enum YesNoChoice {
     YES, NO;
@@ -17,7 +17,7 @@ public enum YesNoChoice {
 
     @Override
     public String toString() {
-        return LocaleWrap.get(this.name());
+        return LocaleUtilities.get(this.name());
     }
 
     public static List<YesNoChoice> getChoices() {

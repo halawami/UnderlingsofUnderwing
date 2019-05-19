@@ -7,7 +7,7 @@ import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.player.Player;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class CollectElementEffect extends ElementEffect {
 
@@ -26,6 +26,6 @@ public class CollectElementEffect extends ElementEffect {
             elements.append(color);
             elements.append(" ");
         }
-        return MessageFormat.format(LocaleWrap.get("collect_element_effect"), elements);
+        return MessageFormat.format(LocaleUtilities.get("collect_element_effect"), elements);
     }
 }

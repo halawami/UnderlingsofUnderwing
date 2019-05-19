@@ -7,7 +7,7 @@ import underlings.element.utilities.ElementSpaceLogic;
 import underlings.handler.HandlerChoice;
 import underlings.handler.HandlerMovementLogic;
 import underlings.player.FakePlayer;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class RemoveAllHandlersFromAllEggsInPlay extends AllEggsInPlayEffect {
 
@@ -20,6 +20,6 @@ public class RemoveAllHandlersFromAllEggsInPlay extends AllEggsInPlayEffect {
 
     @Override
     public String toString() {
-        return LocaleWrap.get("remove_all_handlers_from_eggs_effect");
+        return LocaleUtilities.get("remove_all_handlers_from_eggs_effect");
     }
 }

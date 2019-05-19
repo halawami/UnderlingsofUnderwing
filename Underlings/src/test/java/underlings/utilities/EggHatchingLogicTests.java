@@ -43,7 +43,7 @@ public class EggHatchingLogicTests {
     private Player player;
     private Gui gui;
     private Runnable displayMethod;
-    private EggHatchingLogic eggHatchingLogic;
+    private EggHatchingUtilities eggHatchingLogic;
     private Deck deck;
     private List<Player> players;
     private HandlerMovementLogic handlerMovementLogic;
@@ -70,7 +70,7 @@ public class EggHatchingLogicTests {
         this.deck = EasyMock.mock(Deck.class);
         this.players = Arrays.asList(this.player);
         this.handlerMovementLogic = EasyMock.mock(HandlerMovementLogic.class);
-        this.eggHatchingLogic = new EggHatchingLogic(this.gui, this.elementBag, this.hatchingGround, this.displayMethod,
+        this.eggHatchingLogic = new EggHatchingUtilities(this.gui, this.elementBag, this.hatchingGround, this.displayMethod,
                 this.players, this.deck, this.handlerMovementLogic);
     }
 

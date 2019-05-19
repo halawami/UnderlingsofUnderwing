@@ -16,7 +16,7 @@ import underlings.card.effect.wild.deck.ReturnMostValuableDragonEffect;
 import underlings.gui.Gui;
 import underlings.hatchingground.Deck;
 import underlings.player.Player;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class ReturnMostValuableDragonEffectTests extends MockTest {
 
@@ -68,7 +68,7 @@ public class ReturnMostValuableDragonEffectTests extends MockTest {
         player.hatchedCards = new ArrayList<>(mostValuableDragons);
 
         EasyMock.expect(player.getMostValuableDragons()).andReturn(mostValuableDragons);
-        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_dragon_return_deck"), mostValuableDragons, 0))
+        EasyMock.expect(gui.promptChoice(LocaleUtilities.get("prompt_dragon_return_deck"), mostValuableDragons, 0))
                 .andReturn(mostValuableDragons.get(0));
         Deck deck = this.mock(Deck.class);
         deck.addCard(mostValuableDragons.get(0), true);
@@ -89,7 +89,7 @@ public class ReturnMostValuableDragonEffectTests extends MockTest {
         player.hatchedCards = new ArrayList<>(mostValuableDragons);
 
         EasyMock.expect(player.getMostValuableDragons()).andReturn(mostValuableDragons);
-        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_dragon_return_deck"), mostValuableDragons, 0))
+        EasyMock.expect(gui.promptChoice(LocaleUtilities.get("prompt_dragon_return_deck"), mostValuableDragons, 0))
                 .andReturn(mostValuableDragons.get(1));
         Deck deck = this.mock(Deck.class);
         deck.addCard(mostValuableDragons.get(1), true);
@@ -105,7 +105,7 @@ public class ReturnMostValuableDragonEffectTests extends MockTest {
     @Test
     public void testToString() {
         ReturnMostValuableDragonEffect effect = new ReturnMostValuableDragonEffect();
-        assertEquals(LocaleWrap.get("return_most_valuable_dragon_effect"), effect.toString());
+        assertEquals(LocaleUtilities.get("return_most_valuable_dragon_effect"), effect.toString());
     }
 
 }

@@ -5,7 +5,7 @@ import java.util.List;
 
 import underlings.element.ElementGiver;
 import underlings.gui.DrawChoice;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class Handler extends ElementGiver {
 
@@ -31,7 +31,7 @@ public class Handler extends ElementGiver {
 
     @Override
     public String toString() {
-        return LocaleWrap.format("HANDLER_" + this.state.name(), this.location);
+        return LocaleUtilities.format("HANDLER_" + this.state.name(), this.location);
     }
 
     public void setLocation(String location) {

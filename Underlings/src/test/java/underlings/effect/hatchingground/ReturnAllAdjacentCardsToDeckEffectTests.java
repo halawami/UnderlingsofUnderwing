@@ -15,7 +15,7 @@ import underlings.handler.WildHandler;
 import underlings.hatchingground.Deck;
 import underlings.hatchingground.HatchingGround;
 import underlings.player.FakePlayer;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class ReturnAllAdjacentCardsToDeckEffectTests extends MockTest {
 
@@ -56,6 +56,6 @@ public class ReturnAllAdjacentCardsToDeckEffectTests extends MockTest {
     @Test
     public void testToString() {
         Effect effect = new ReturnAllAdjacentCardsToDeckEffect();
-        assertEquals(LocaleWrap.get("return_adjacent_eggs_effect"), effect.toString());
+        assertEquals(LocaleUtilities.get("return_adjacent_eggs_effect"), effect.toString());
     }
 }

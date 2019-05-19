@@ -26,13 +26,13 @@ public class PlacementUtilities {
     }
 
     public Card selectCard(List<Card> cards, Player player) {
-        String prompt = LocaleWrap.get("prompt_element_card");
+        String prompt = LocaleUtilities.get("prompt_element_card");
         return this.gui.getCard(player.getId(), prompt, this.hatchingGround, cards);
     }
 
     public ElementSpace selectElementSpace(Card card, Player player) {
         List<ElementSpace> spaces = player.elementSpaceLogic.getPlayableSpaces(card, player.getElements());
-        ElementSpace space = this.gui.getElementSpace(LocaleWrap.get("prompt_element_space"), spaces, player.getId());
+        ElementSpace space = this.gui.getElementSpace(LocaleUtilities.get("prompt_element_space"), spaces, player.getId());
         return space;
     }
 
@@ -40,12 +40,12 @@ public class PlacementUtilities {
         List<Element> choices = player.elementSpaceLogic.getPlayableElements(space, player.getElements());
         boolean moreMoves = true;
         while (moreMoves) {
-            Element element = this.gui.promptChoice(LocaleWrap.get("prompt_element"), choices, player.getId());
+            Element element = this.gui.promptChoice(LocaleUtilities.get("prompt_element"), choices, player.getId());
 
             if (player.elementSpaceLogic.isOpenElement(element.getColor())) {
                 List<ElementColor> validAdditions = player.elementSpaceLogic.getValidAdditions(space);
                 ElementColor color =
-                        this.gui.promptChoice(LocaleWrap.get("prompt_element_color"), validAdditions, player.getId());
+                        this.gui.promptChoice(LocaleUtilities.get("prompt_element_color"), validAdditions, player.getId());
                 element.setAlias(color);
             }
 
@@ -57,7 +57,7 @@ public class PlacementUtilities {
             if (choices.size() == 0) {
                 moreMoves = false;
             } else {
-                moreMoves = this.gui.promptChoice(LocaleWrap.get("gui_more_moves"), YesNoChoice.getChoices(),
+                moreMoves = this.gui.promptChoice(LocaleUtilities.get("gui_more_moves"), YesNoChoice.getChoices(),
                         player.getId()).booleanValue;
             }
 

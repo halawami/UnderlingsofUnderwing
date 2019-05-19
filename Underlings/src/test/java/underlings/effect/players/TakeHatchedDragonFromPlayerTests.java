@@ -18,7 +18,7 @@ import underlings.card.effect.domestic.players.TakeHatchedDragonFromPlayer;
 import underlings.gui.Gui;
 import underlings.gui.Gui.PromptType;
 import underlings.player.Player;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class TakeHatchedDragonFromPlayerTests {
 
@@ -40,9 +40,9 @@ public class TakeHatchedDragonFromPlayerTests {
         effect.on(gui).on(Arrays.asList(player, player2)).on(player2);
         Map<Player, List<Card>> map = new HashMap<>();
         map.put(player, Arrays.asList(card));
-        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_player_to_steal"), new ArrayList<>(map.keySet()), 0))
+        EasyMock.expect(gui.promptChoice(LocaleUtilities.get("prompt_player_to_steal"), new ArrayList<>(map.keySet()), 0))
                 .andReturn(player);
-        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_card_to_steal"), map.get(player), 1)).andReturn(card);
+        EasyMock.expect(gui.promptChoice(LocaleUtilities.get("prompt_card_to_steal"), map.get(player), 1)).andReturn(card);
 
         EasyMock.replay(player, gui, player2);
 
@@ -73,9 +73,9 @@ public class TakeHatchedDragonFromPlayerTests {
         effect.on(gui).on(Arrays.asList(player, player2, player3)).on(player2);
         Map<Player, List<Card>> map = new HashMap<>();
         map.put(player, Arrays.asList(card));
-        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_player_to_steal"), new ArrayList<>(map.keySet()), 0))
+        EasyMock.expect(gui.promptChoice(LocaleUtilities.get("prompt_player_to_steal"), new ArrayList<>(map.keySet()), 0))
                 .andReturn(player);
-        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_card_to_steal"), map.get(player), 1)).andReturn(card);
+        EasyMock.expect(gui.promptChoice(LocaleUtilities.get("prompt_card_to_steal"), map.get(player), 1)).andReturn(card);
 
         EasyMock.replay(player, gui, player2, player3);
 
@@ -95,7 +95,7 @@ public class TakeHatchedDragonFromPlayerTests {
         Gui gui = EasyMock.mock(Gui.class);
         TakeHatchedDragonFromPlayer effect = new TakeHatchedDragonFromPlayer();
         effect.on(gui).on(Arrays.asList(player, player2)).on(player2);
-        gui.alert(LocaleWrap.get("no_player_has_hatched_cards"), PromptType.REGULAR);
+        gui.alert(LocaleUtilities.get("no_player_has_hatched_cards"), PromptType.REGULAR);
 
         EasyMock.replay(player, gui, player2);
 
@@ -129,9 +129,9 @@ public class TakeHatchedDragonFromPlayerTests {
         Map<Player, List<Card>> map = new HashMap<>();
         map.put(player3, Arrays.asList(card2));
 
-        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_player_to_steal"), new ArrayList<>(map.keySet()), 0))
+        EasyMock.expect(gui.promptChoice(LocaleUtilities.get("prompt_player_to_steal"), new ArrayList<>(map.keySet()), 0))
                 .andReturn(player3);
-        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_card_to_steal"), map.get(player3), 1)).andReturn(card2);
+        EasyMock.expect(gui.promptChoice(LocaleUtilities.get("prompt_card_to_steal"), map.get(player3), 1)).andReturn(card2);
 
         EasyMock.replay(player, gui, player2, player3);
 
@@ -157,7 +157,7 @@ public class TakeHatchedDragonFromPlayerTests {
         effect.on(gui).on(Arrays.asList(player, player2)).on(player2);
         Map<Player, List<Card>> map = new HashMap<>();
 
-        gui.alert(LocaleWrap.get("no_player_has_hatched_cards"), PromptType.REGULAR);
+        gui.alert(LocaleUtilities.get("no_player_has_hatched_cards"), PromptType.REGULAR);
 
         EasyMock.replay(player, gui, player2);
 
@@ -177,7 +177,7 @@ public class TakeHatchedDragonFromPlayerTests {
             temperature.append(temp);
             temperature.append(" ");
         }
-        assertEquals(LocaleWrap.format("take_hatched_dragon", temperature, effect.points), effect.toString());
+        assertEquals(LocaleUtilities.format("take_hatched_dragon", temperature, effect.points), effect.toString());
     }
 
 }

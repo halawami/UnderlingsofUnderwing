@@ -7,7 +7,7 @@ import underlings.card.Temperature;
 import underlings.gui.Gui;
 import underlings.gui.Gui.PromptType;
 import underlings.player.Player;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class ScoreUtils {
 
@@ -69,7 +69,7 @@ public class ScoreUtils {
 
     public void displayScores() {
         for (Player player : this.players) {
-            this.gui.alert(LocaleWrap.format("player_score", player, player.score), player.id, PromptType.REGULAR);
+            this.gui.alert(LocaleUtilities.format("player_score", player, player.score), player.id, PromptType.REGULAR);
         }
     }
 
@@ -80,7 +80,7 @@ public class ScoreUtils {
                 winners.add(player);
             }
         }
-        this.gui.alert(LocaleWrap.format("winners", winners), PromptType.REGULAR);
+        this.gui.alert(LocaleUtilities.format("winners", winners), PromptType.REGULAR);
     }
 
 }

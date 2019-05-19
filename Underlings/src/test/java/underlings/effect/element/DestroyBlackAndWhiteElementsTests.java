@@ -14,7 +14,7 @@ import underlings.card.effect.wild.alleggsinplay.AllEggsInPlayEffect;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class DestroyBlackAndWhiteElementsTests extends MockTest {
 
@@ -56,7 +56,7 @@ public class DestroyBlackAndWhiteElementsTests extends MockTest {
     @Test
     public void testToString() {
         DestroyAllBlackAndWhiteElementsEffect effect = new DestroyAllBlackAndWhiteElementsEffect();
-        assertEquals(LocaleWrap.get("destroy_white_black_elements"), effect.toString());
+        assertEquals(LocaleUtilities.get("destroy_white_black_elements"), effect.toString());
     }
 
 }

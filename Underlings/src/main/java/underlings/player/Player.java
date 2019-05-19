@@ -16,7 +16,7 @@ import underlings.element.utilities.ElementSpaceLogic;
 import underlings.handler.Handler;
 import underlings.handler.HandlerFactory;
 import underlings.handler.HandlerState;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class Player {
 
@@ -134,7 +134,7 @@ public class Player {
 
     @Override
     public String toString() {
-        return MessageFormat.format(LocaleWrap.get("player_number"), this.getId());
+        return MessageFormat.format(LocaleUtilities.get("player_number"), this.getId());
     }
 
     public void destroyAllElements() {

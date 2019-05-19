@@ -12,7 +12,7 @@ import underlings.gui.DrawChoice;
 import underlings.gui.Gui;
 import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class DrawingPhase extends SequentialPhase {
 
@@ -26,13 +26,13 @@ public class DrawingPhase extends SequentialPhase {
     @Override
     public void turn(Player player) {
 
-        ElementGiver elementGiver = this.gui.promptChoice(LocaleWrap.get("gui_element_giver"),
+        ElementGiver elementGiver = this.gui.promptChoice(LocaleUtilities.get("gui_element_giver"),
                 this.playerElementGivers.get(player), player.id);
 
         this.playerElementGivers.get(player).remove(elementGiver);
 
         DrawChoice drawChoice =
-                this.gui.promptChoice(LocaleWrap.get("gui_draw_choice"), elementGiver.drawChoices, player.id);
+                this.gui.promptChoice(LocaleUtilities.get("gui_draw_choice"), elementGiver.drawChoices, player.id);
 
 
         Element element = this.elementBag.drawElement(drawChoice);

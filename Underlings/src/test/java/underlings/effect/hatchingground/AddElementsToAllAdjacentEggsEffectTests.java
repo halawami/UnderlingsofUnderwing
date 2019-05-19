@@ -21,8 +21,8 @@ import underlings.element.utilities.ElementSpaceLogic;
 import underlings.gui.Gui;
 import underlings.handler.WildHandler;
 import underlings.hatchingground.HatchingGround;
-import underlings.utilities.EggHatchingLogic;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.EggHatchingUtilities;
+import underlings.utilities.LocaleUtilities;
 
 public class AddElementsToAllAdjacentEggsEffectTests extends MockTest {
 
@@ -31,7 +31,7 @@ public class AddElementsToAllAdjacentEggsEffectTests extends MockTest {
         this.elementBag = this.mock(ElementBag.class);
         this.elementSpaceLogic = this.mock(ElementSpaceLogic.class);
         this.card = this.mock(Card.class);
-        this.eggHatchingLogic = this.mock(EggHatchingLogic.class);
+        this.eggHatchingLogic = this.mock(EggHatchingUtilities.class);
         this.gui = this.mock(Gui.class);
         this.hatchingGround = this.mock(HatchingGround.class);
     }
@@ -149,7 +149,7 @@ public class AddElementsToAllAdjacentEggsEffectTests extends MockTest {
             elements.append(color);
             elements.append(" ");
         }
-        assertEquals(LocaleWrap.format("place_element_on_all_eggs_effect", elements), effect.toString());
+        assertEquals(LocaleUtilities.format("place_element_on_all_eggs_effect", elements), effect.toString());
     }
 
 }

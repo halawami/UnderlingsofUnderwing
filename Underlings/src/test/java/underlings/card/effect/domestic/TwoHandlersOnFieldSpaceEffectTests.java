@@ -8,7 +8,7 @@ import underlings.TestUtils;
 import underlings.card.effect.Effect;
 import underlings.card.effect.domestic.players.player.TwoHandlersOnFieldSpaceEffect;
 import underlings.player.Player;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class TwoHandlersOnFieldSpaceEffectTests {
 
@@ -25,6 +25,6 @@ public class TwoHandlersOnFieldSpaceEffectTests {
     @Test
     public void testToString() {
         Effect effect = new TwoHandlersOnFieldSpaceEffect();
-        assertEquals(LocaleWrap.get("two_handler_effect"), effect.toString());
+        assertEquals(LocaleUtilities.get("two_handler_effect"), effect.toString());
     }
 }

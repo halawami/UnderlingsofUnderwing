@@ -12,7 +12,7 @@ import underlings.card.effect.wild.players.RemoveBlackRecipesEffect;
 import underlings.element.ElementColor;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.player.Player;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class RemoveBlackTests extends MockTest {
 
@@ -34,6 +34,6 @@ public class RemoveBlackTests extends MockTest {
     @Test
     public void testToString() {
         Effect effect = new RemoveBlackRecipesEffect();
-        assertEquals(LocaleWrap.get("remove_black_recipes_effect"), effect.toString());
+        assertEquals(LocaleUtilities.get("remove_black_recipes_effect"), effect.toString());
     }
 }

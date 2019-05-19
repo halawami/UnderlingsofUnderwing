@@ -6,7 +6,7 @@ import underlings.card.effect.DeckEffects;
 import underlings.gui.Gui;
 import underlings.hatchingground.Deck;
 import underlings.player.Player;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class ReturnMostValuableDragonEffect extends DeckEffects {
 
@@ -19,7 +19,7 @@ public class ReturnMostValuableDragonEffect extends DeckEffects {
         List<Card> mostValuableDragons = player.getMostValuableDragons();
         if (!mostValuableDragons.isEmpty()) {
             Card mostValuableDragon =
-                    gui.promptChoice(LocaleWrap.get("prompt_dragon_return_deck"), mostValuableDragons, player.id);
+                    gui.promptChoice(LocaleUtilities.get("prompt_dragon_return_deck"), mostValuableDragons, player.id);
             player.hatchedCards.remove(mostValuableDragon);
             deck.addCard(mostValuableDragon, true);
         }
@@ -27,6 +27,6 @@ public class ReturnMostValuableDragonEffect extends DeckEffects {
 
     @Override
     public String toString() {
-        return LocaleWrap.get("return_most_valuable_dragon_effect");
+        return LocaleUtilities.get("return_most_valuable_dragon_effect");
     }
 }

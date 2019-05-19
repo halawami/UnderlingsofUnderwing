@@ -21,7 +21,7 @@ import underlings.handler.HandlerChoice;
 import underlings.handler.HandlerDecision;
 import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class Gui {
 
@@ -47,7 +47,7 @@ public class Gui {
     }
 
     public HandlerDecision getHandlerDecision(List<Handler> handlers, int playerId, HatchingGround hatchingGround) {
-        Handler handler = this.promptHandler.promptChoice(LocaleWrap.get("gui_handler"), handlers, playerId);
+        Handler handler = this.promptHandler.promptChoice(LocaleUtilities.get("gui_handler"), handlers, playerId);
 
         handlers.remove(handler);
 
@@ -57,7 +57,7 @@ public class Gui {
         }
 
         HandlerChoice handlerChoice = this.promptHandler.promptChoice(
-                MessageFormat.format(LocaleWrap.get("gui_handler_choice"), handler), possibleChoices, playerId);
+                MessageFormat.format(LocaleUtilities.get("gui_handler_choice"), handler), possibleChoices, playerId);
 
         return new HandlerDecision(handler, handlerChoice);
     }
@@ -82,14 +82,14 @@ public class Gui {
     public FieldSpace getFieldSpace(Player player, Field field) {
         FieldSpace[][] grid = field.getValidFieldSpaces(player);
 
-        String prompt = LocaleWrap.get("gui_field_space");
+        String prompt = LocaleUtilities.get("gui_field_space");
         FieldSpace val = this.promptHandler.pickFromGrid(prompt, grid, player.getId());
 
         return val;
     }
 
     public int getPlayerCount(int minPlayers, int maxPlayers) {
-        return this.promptHandler.promptInt(LocaleWrap.get("prompt_player_count"), minPlayers, maxPlayers);
+        return this.promptHandler.promptInt(LocaleUtilities.get("prompt_player_count"), minPlayers, maxPlayers);
     }
 
     public Element getElementOfColorsFromSpace(ElementColor[] elementChoices, ElementSpace elementSpace,
@@ -105,13 +105,13 @@ public class Gui {
         colors.add(NullElement.getInstance());
 
         List<Element> choices = new ArrayList<>(colors);
-        return this.promptHandler.promptChoice(LocaleWrap.get("gui_element_collect"), choices, playerNum);
+        return this.promptHandler.promptChoice(LocaleUtilities.get("gui_element_collect"), choices, playerNum);
     }
 
     public Locale promptLocale(Locale[] locales) {
         Locale locale;
         do {
-            locale = this.promptHandler.promptChoiceDropdown(LocaleWrap.get("choose_language"), Arrays.asList(locales),
+            locale = this.promptHandler.promptChoiceDropdown(LocaleUtilities.get("choose_language"), Arrays.asList(locales),
                     Locale.ENGLISH);
         } while (locale == null);
         return locale;
@@ -141,16 +141,16 @@ public class Gui {
             return null;
         }
 
-        YesNoChoice choice = this.promptHandler.promptChoice(LocaleWrap.get("take_element_yesno"),
+        YesNoChoice choice = this.promptHandler.promptChoice(LocaleUtilities.get("take_element_yesno"),
                 YesNoChoice.getChoices(), playerId);
         if (choice == YesNoChoice.NO) {
             return null;
         }
 
-        Card card = this.promptHandler.promptChoice(LocaleWrap.get("take_element_card"), cardOptions, playerId);
+        Card card = this.promptHandler.promptChoice(LocaleUtilities.get("take_element_card"), cardOptions, playerId);
 
         List<ElementSpace> validSpaces = this.getSpacesWithColors(card, colorChoices);
-        return getElementSpace(LocaleWrap.get("take_element_space"), validSpaces, playerId);
+        return getElementSpace(LocaleUtilities.get("take_element_space"), validSpaces, playerId);
     }
 
     public ElementSpace getElementSpace(String prompt, List<ElementSpace> spaces, int playerId) {
@@ -195,7 +195,7 @@ public class Gui {
 
         List<Card> ordered = new ArrayList<>();
         while (!cards.isEmpty()) {
-            Card card = this.promptChoice(LocaleWrap.get("choose_card"), cards, 0);
+            Card card = this.promptChoice(LocaleUtilities.get("choose_card"), cards, 0);
             cards.remove(card);
             ordered.add(card);
         }
