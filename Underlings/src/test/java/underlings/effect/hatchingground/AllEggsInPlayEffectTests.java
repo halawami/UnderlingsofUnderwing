@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.easymock.EasyMock;
 import org.junit.Test;
+
 import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.effect.wild.alleggsinplay.AddElementToAllEggsInPlayEffect;
@@ -53,7 +54,7 @@ public class AllEggsInPlayEffectTests extends MockTest {
         EggHatchingUtilities eggHatchingLogic = this.mock(EggHatchingUtilities.class);
         AllEggsInPlayEffect effect = EasyMock.partialMockBuilder(AllEggsInPlayEffect.class)
                 .addMockedMethod("applyOnCardInPlay", Card.class)
-                .addMockedMethod("applyOnCardInPlay", Card.class, ElementSpaceLogic.class, ElementBag.class,
+                .addMockedMethod("applyOnCardInPlay", Card.class, ElementSpaceUtilities.class, ElementBag.class,
                         HandlerMovementLogic.class)
                 .createMock();
         this.addMock(effect);

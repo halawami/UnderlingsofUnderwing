@@ -14,7 +14,7 @@ import underlings.handler.HandlerMovementLogic;
 import underlings.handler.HandlerState;
 import underlings.handler.WildHandler;
 import underlings.player.FakePlayer;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class ReturnAllAdjacentHandlersEffectTests extends MockTest {
 
@@ -50,7 +50,7 @@ public class ReturnAllAdjacentHandlersEffectTests extends MockTest {
     @Test
     public void testToString() {
         Effect effect = new ReturnAllAdjacentHandlersEffect();
-        assertEquals(LocaleWrap.get("return_adjacent_handlers"), effect.toString());
+        assertEquals(LocaleUtilities.get("return_adjacent_handlers"), effect.toString());
     }
 
 }

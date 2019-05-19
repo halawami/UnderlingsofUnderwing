@@ -12,8 +12,6 @@ import underlings.card.effect.wild.alleggsinplay.AllEggsInPlayEffect;
 import underlings.card.effect.wild.alleggsinplay.DestroyAllBlackAndWhiteElementsEffect;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
-import underlings.utilities.LocaleWrap;
-import underlings.utilities.ElementSpaceUtilities;
 import underlings.utilities.LocaleUtilities;
 
 public class DestroyBlackAndWhiteElementsTests extends MockTest {
@@ -25,8 +23,7 @@ public class DestroyBlackAndWhiteElementsTests extends MockTest {
         space.destroyAllElementsOfColor(ElementColor.WHITE);
 
         Card card = new Card();
-        card.elementSpaces = new ElementSpace[] {space};
-        ElementSpaceUtilities logic = this.mock(ElementSpaceUtilities.class);
+        card.elementSpaces = new ElementSpace[]{space};
 
         this.replayAll();
 
@@ -45,7 +42,6 @@ public class DestroyBlackAndWhiteElementsTests extends MockTest {
 
         Card card = new Card();
         card.elementSpaces = spaces.toArray(new ElementSpace[0]);
-        ElementSpaceUtilities logic = EasyMock.mock(ElementSpaceUtilities.class);
 
         this.replayAll();
 

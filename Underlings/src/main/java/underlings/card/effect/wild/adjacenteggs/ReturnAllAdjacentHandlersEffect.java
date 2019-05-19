@@ -5,7 +5,7 @@ import underlings.card.effect.AdjacentEggsEffect;
 import underlings.handler.HandlerChoice;
 import underlings.handler.HandlerMovementLogic;
 import underlings.player.FakePlayer;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class ReturnAllAdjacentHandlersEffect extends AdjacentEggsEffect {
 
@@ -16,6 +16,6 @@ public class ReturnAllAdjacentHandlersEffect extends AdjacentEggsEffect {
 
     @Override
     public String toString() {
-        return LocaleWrap.get("return_adjacent_handlers");
+        return LocaleUtilities.get("return_adjacent_handlers");
     }
 }

@@ -2,9 +2,6 @@ package underlings.card.effect.wild.alleggsinplay;
 
 import underlings.card.Card;
 import underlings.element.ElementColor;
-import underlings.utilities.LocaleWrap;
-import underlings.handler.HandlerMovementLogic;
-import underlings.utilities.ElementSpaceUtilities;
 import underlings.utilities.LocaleUtilities;
 
 public class DestroyAllBlackAndWhiteElementsEffect extends AllEggsInPlayEffect {
