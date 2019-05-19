@@ -184,6 +184,27 @@ The definition of done is created by examining and applying BVA on the rules.
   - The player has no handlers
     - ```underlings.phase.HandlerPhaseTests.testTurnNoHandlers```
 
+### Placement Phase
+
+- Phase
+  - [x] The player places one element for each of its handlers
+    - ```underlings.phase.PlacementPhaseTests.testCheckTurnTwoHandlers```
+	- ```underlings.phase.PlacementPhaseTests.testCheckTurnThreeHandlers```
+  - [x] The game ends during the PlacementPhase if all dragons are hatched wild
+    - ```underlings.phase.PlacementPhaseTests.testCheckGameover```
+	- ```underlings.phase.PlacementPhaseTests.testCheckGameoverNoCards```
+	- ```underlings.phase.PlacementPhaseTests.testCheckGameoverLost```
+  - [x] The player can only choose to place another element in the same turn if they can put it on the same element space
+    - ```underlings.phase.PlacementPhaseTests.testMoreMovesNoChoices```
+	- ```underlings.phase.PlacementPhaseTests.testMoreMovesTrue```
+  - [x] The player can only place an element if they have another turn and there are places to put it
+    - ```underlings.phase.PlacementPhaseTests.testTurnOver```
+    - ```underlings.phase.PlacementPhaseTests.testTurnNoPlayableCards```
+  - [x] If the player completes an unclaimed egg, it hatches in the wild
+    - ```underlings.phase.PlacementPhaseTests.testTurnCardNotComplete```
+	- ```underlings.phase.PlacementPhaseTests.testTurnCardCompleteDomestic```
+	- ```underlings.phase.PlacementPhaseTests.testTurnCardCompleteWild```
+
 ### Scoring ```underlings.scoring```
 
 #### Temperature Tests ```underlings.scoring.TemperatureTests```
