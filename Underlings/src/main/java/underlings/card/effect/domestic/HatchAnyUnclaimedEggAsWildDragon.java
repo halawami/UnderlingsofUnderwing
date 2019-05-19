@@ -22,7 +22,6 @@ public class HatchAnyUnclaimedEggAsWildDragon extends PlayerHatchingGroundEffect
     protected void apply(HatchingGround hatchingGround, EggHatchingLogic hatchingLogic, Player currentPlayer, Gui gui) {
         YesNoChoice choice = gui.promptChoice(LocaleWrap.get("prompt_choice_hatch_wildly"), YesNoChoice.getChoices(),
                 currentPlayer.getId());
-
         if (choice == YesNoChoice.YES) {
             List<Card> unclaimedEggs = hatchingGround.getUnclaimedEggs();
             if (unclaimedEggs.size() == 0) {
