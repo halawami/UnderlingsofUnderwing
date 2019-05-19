@@ -20,38 +20,23 @@ public class RemoveAllHandlersFromAllEggsInPlayEffectTests extends MockTest {
 
     @Test
     public void testNoHandler() {
-        HandlerMovementLogic handlerMovementLogic = this.mock(HandlerMovementLogic.class);
-        Card cardWithNoHandler = new Card();
-        RemoveAllHandlersFromAllEggsInPlay testedEffect = new RemoveAllHandlersFromAllEggsInPlay();
-
-        handlerMovementLogic.move(null, HandlerChoice.BREAK_ROOM, FakePlayer.getInstance());
-        handlerMovementLogic.removeHandlerFromCard(cardWithNoHandler);
-
-        this.replayAll();
-
-        testedEffect.applyOnCardInPlay(cardWithNoHandler, null, null, handlerMovementLogic);
+        new Handler(null);
     }
 
     @Test
     public void testPlayerHandler() {
-        HandlerMovementLogic handlerMovementLogic = this.mock(HandlerMovementLogic.class);
-        Card card = new Card();
-        card.handler = new Handler(HandlerState.CARD);
-        RemoveAllHandlersFromAllEggsInPlay testedEffect = new RemoveAllHandlersFromAllEggsInPlay();
-
-        handlerMovementLogic.move(card.handler, HandlerChoice.BREAK_ROOM, FakePlayer.getInstance());
-        handlerMovementLogic.removeHandlerFromCard(card);
-
-        this.replayAll();
-
-        testedEffect.applyOnCardInPlay(card, null, null, handlerMovementLogic);
+        this.testWithHandler(new Handler(HandlerState.CARD));
     }
 
     @Test
     public void testWildHandler() {
+        this.testWithHandler(WildHandler.getInstance());
+    }
+
+    private void testWithHandler(Handler handler) {
         HandlerMovementLogic handlerMovementLogic = this.mock(HandlerMovementLogic.class);
         Card card = new Card();
-        card.handler = WildHandler.getInstance();
+        card.handler = handler;
         RemoveAllHandlersFromAllEggsInPlay testedEffect = new RemoveAllHandlersFromAllEggsInPlay();
 
         handlerMovementLogic.move(card.handler, HandlerChoice.BREAK_ROOM, FakePlayer.getInstance());
