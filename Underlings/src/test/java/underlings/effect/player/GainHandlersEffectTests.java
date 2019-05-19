@@ -14,29 +14,29 @@ public class GainHandlersEffectTests extends MockTest {
     @Test
     public void testOneHandler() {
         Player player = this.mock(Player.class);
-        GainHandlersEffect gainOneHandler = new GainHandlersEffect();
-        gainOneHandler.numberOfHandlers = 1;
-        gainOneHandler.on(player);
+        GainHandlersEffect effect = new GainHandlersEffect();
+        effect.numberOfHandlers = 1;
+        effect.on(player);
         player.gainHandler();
 
         this.replayAll();
 
-        gainOneHandler.apply();
+        effect.apply();
     }
 
     @Test
     public void testFourHandlers() {
         Player player = this.mock(Player.class);
-        GainHandlersEffect gainOneHandler = new GainHandlersEffect();
-        gainOneHandler.numberOfHandlers = 4;
-        gainOneHandler.on(player);
+        GainHandlersEffect effect = new GainHandlersEffect();
+        effect.numberOfHandlers = 4;
+        effect.on(player);
         for (int i = 0; i < 4; i++) {
             player.gainHandler();
         }
 
         this.replayAll();
 
-        gainOneHandler.apply();
+        effect.apply();
     }
 
     @Test
