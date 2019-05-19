@@ -11,11 +11,11 @@ import underlings.card.Card;
 import underlings.card.effect.ObserverEffect;
 import underlings.element.Element;
 import underlings.element.ElementGiver;
+import underlings.element.ElementSpaceUtilities;
 import underlings.element.NullElement;
 import underlings.handler.Handler;
 import underlings.handler.HandlerFactory;
 import underlings.handler.HandlerState;
-import underlings.utilities.ElementSpaceUtilities;
 import underlings.utilities.LocaleUtilities;
 
 public class Player {

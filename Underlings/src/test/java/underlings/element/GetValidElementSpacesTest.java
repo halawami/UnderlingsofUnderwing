@@ -1,4 +1,4 @@
-package underlings.elementspace.add.logic;
+package underlings.element;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -14,10 +14,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import underlings.card.Card;
-import underlings.element.Element;
-import underlings.element.ElementColor;
-import underlings.element.ElementSpace;
-import underlings.utilities.ElementSpaceUtilities;
 import underlings.utilities.LocaleUtilities;
 
 public class GetValidElementSpacesTest {

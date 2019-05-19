@@ -10,7 +10,7 @@ import org.junit.Test;
 import underlings.MockTest;
 import underlings.card.Card;
 import underlings.element.ElementSpace;
-import underlings.utilities.ElementSpaceUtilities;
+import underlings.element.ElementSpaceUtilities;
 
 public class IsCompleteTests extends MockTest {
 

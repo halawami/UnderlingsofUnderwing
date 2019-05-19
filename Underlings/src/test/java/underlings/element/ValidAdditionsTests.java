@@ -1,4 +1,4 @@
-package underlings.elementspace.add.combo;
+package underlings.element;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -14,10 +14,6 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import underlings.element.Element;
-import underlings.element.ElementColor;
-import underlings.element.ElementSpace;
-import underlings.utilities.ElementSpaceUtilities;
 import underlings.utilities.LocaleUtilities;
 
 public class ValidAdditionsTests {
@@ -123,5 +119,68 @@ public class ValidAdditionsTests {
         elementSpace.addElements(new Element(ElementColor.RED));
 
         assertTrue(logic.getValidAdditions(elementSpace).isEmpty());
+    }
+
+    @Test
+    public void testEmptyRed() {
+        ElementSpace elementSpace = new ElementSpace(ElementColor.RED);
+        List<ElementColor> expected = Arrays.asList(ElementColor.RED);
+
+        assertEquals(expected, this.logic.getValidAdditions(elementSpace));
+    }
+
+    @Test
+    public void testEmptyBlue() {
+        ElementSpace elementSpace = new ElementSpace(ElementColor.BLUE);
+        List<ElementColor> expected = Arrays.asList(ElementColor.BLUE);
+
+        assertEquals(expected, this.logic.getValidAdditions(elementSpace));
+    }
+
+    public void testColor(ElementColor color) {
+        ElementSpace elementSpace = new ElementSpace(color);
+        elementSpace.addElements(new Element(color));
+
+        assertTrue(this.logic.getValidAdditions(elementSpace).isEmpty());
+    }
+
+    @Test
+    public void testRed() {
+        this.testColor(ElementColor.RED);
+    }
+
+    @Test
+    public void testGreen() {
+        this.testColor(ElementColor.GREEN);
+    }
+
+    @Test
+    public void testBlue() {
+        this.testColor(ElementColor.BLUE);
+    }
+
+    @Test
+    public void testOrange() {
+        this.testColor(ElementColor.ORANGE);
+    }
+
+    @Test
+    public void testYellow() {
+        this.testColor(ElementColor.YELLOW);
+    }
+
+    @Test
+    public void testPurple() {
+        this.testColor(ElementColor.PURPLE);
+    }
+
+    @Test
+    public void testWhite() {
+        this.testColor(ElementColor.WHITE);
+    }
+
+    @Test
+    public void testBlack() {
+        this.testColor(ElementColor.BLACK);
     }
 }

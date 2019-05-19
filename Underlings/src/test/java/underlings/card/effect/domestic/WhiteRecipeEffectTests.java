@@ -9,9 +9,9 @@ import underlings.MockTest;
 import underlings.card.effect.Effect;
 import underlings.card.effect.domestic.playerhatchingground.WhiteRecipeEffect;
 import underlings.element.ElementColor;
+import underlings.element.ElementSpaceUtilities;
 import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
-import underlings.utilities.ElementSpaceUtilities;
 import underlings.utilities.LocaleUtilities;
 
 public class WhiteRecipeEffectTests extends MockTest {

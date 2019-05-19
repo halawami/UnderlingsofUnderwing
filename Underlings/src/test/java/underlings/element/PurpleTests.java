@@ -1,4 +1,4 @@
-package underlings.elementspace.add.combo;
+package underlings.element;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -6,36 +6,33 @@ import static org.junit.Assert.assertTrue;
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import underlings.element.Element;
-import underlings.element.ElementColor;
-import underlings.element.ElementSpace;
-import underlings.utilities.ElementSpaceUtilities;
 import underlings.utilities.LocaleUtilities;
 
-public class GreenTests {
+public class PurpleTests {
 
     private ElementSpace elementSpace;
     private Element elementOne;
     private Element elementTwo;
 
-    private ElementColor desired = ElementColor.GREEN;
+    private ElementColor desired = ElementColor.PURPLE;
     private ElementColor elementOneColor = ElementColor.BLUE;
-    private ElementColor elementTwoColor = ElementColor.YELLOW;
+    private ElementColor elementTwoColor = ElementColor.RED;
     ElementSpaceUtilities logic;
 
     @Before
-    public void init() throws Exception {
+    public void init() throws IOException {
         this.elementSpace = new ElementSpace(this.desired);
         this.elementOne = new Element(this.elementOneColor);
         this.elementTwo = new Element(this.elementTwoColor);
         List<String> recipes =
                 Resources.readLines(Resources.getResource(LocaleUtilities.get("default_recipe_list")), Charsets.UTF_8);
-        this.logic = new ElementSpaceUtilities(recipes);
+        logic = new ElementSpaceUtilities(recipes);
     }
 
     @Test
@@ -45,29 +42,30 @@ public class GreenTests {
     }
 
     @Test
-    public void testYellow() {
+    public void testRed() {
         this.elementSpace.addElements(this.elementTwo);
         assertFalse(logic.isComplete(this.elementSpace));
     }
 
     @Test
-    public void testBlueThenYellow() {
+    public void testBlueThenRed() {
         this.elementSpace.addElements(this.elementOne);
         this.elementSpace.addElements(this.elementTwo);
         assertTrue(logic.isComplete(this.elementSpace));
     }
 
     @Test
-    public void testYellowThenBlue() {
+    public void testRedThenBlue() {
         this.elementSpace.addElements(this.elementTwo);
         this.elementSpace.addElements(this.elementOne);
         assertTrue(logic.isComplete(this.elementSpace));
     }
 
     @Test
-    public void testBlueAndYellow() {
+    public void testBlueAndRed() {
         this.elementSpace.addElements(this.elementOne, this.elementTwo);
         assertTrue(logic.isComplete(this.elementSpace));
     }
+
 
 }

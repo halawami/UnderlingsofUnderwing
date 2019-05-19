@@ -18,9 +18,9 @@ import underlings.card.effect.Effect;
 import underlings.element.ElementBag;
 import underlings.gui.Gui;
 import underlings.handler.Handler;
+import underlings.hatchingground.EggHatchingUtilities;
 import underlings.hatchingground.HatchingGround;
 import underlings.player.FakePlayer;
-import underlings.utilities.EggHatchingUtilities;
 import underlings.utilities.LocaleUtilities;
 
 public class HatchAllUnclaimedAdjacentEggsEffectTests extends MockTest {

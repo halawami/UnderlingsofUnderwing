@@ -6,7 +6,7 @@ import org.easymock.EasyMock;
 import org.junit.Test;
 
 import underlings.card.Card;
-import underlings.utilities.ElementSpaceUtilities;
+import underlings.element.ElementSpaceUtilities;
 
 public class HatchingGroundTests {
 

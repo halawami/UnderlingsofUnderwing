@@ -1,11 +1,7 @@
-package underlings.elementspace.destroy;
+package underlings.element;
 
 import org.junit.Assert;
 import org.junit.Test;
-
-import underlings.element.Element;
-import underlings.element.ElementColor;
-import underlings.element.ElementSpace;
 
 public class DestroyAllElementsTests {
 

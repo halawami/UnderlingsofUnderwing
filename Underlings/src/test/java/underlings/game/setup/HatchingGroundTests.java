@@ -11,13 +11,13 @@ import org.junit.Test;
 
 import underlings.card.Card;
 import underlings.element.ElementBag;
+import underlings.element.ElementSpaceUtilities;
 import underlings.game.Game;
 import underlings.gui.Gui;
 import underlings.handler.HandlerFactory;
 import underlings.hatchingground.Deck;
 import underlings.hatchingground.HatchingGround;
 import underlings.player.PlayerFactory;
-import underlings.utilities.ElementSpaceUtilities;
 
 public class HatchingGroundTests {
 

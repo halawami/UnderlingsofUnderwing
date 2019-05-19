@@ -9,8 +9,8 @@ import org.junit.Test;
 import underlings.MockTest;
 import underlings.card.effect.Effect;
 import underlings.element.ElementColor;
+import underlings.element.ElementSpaceUtilities;
 import underlings.player.Player;
-import underlings.utilities.ElementSpaceUtilities;
 import underlings.utilities.LocaleUtilities;
 
 public class RemoveBlackTests extends MockTest {

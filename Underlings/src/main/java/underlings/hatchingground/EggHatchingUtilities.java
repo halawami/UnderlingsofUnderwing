@@ -1,7 +1,8 @@
-package underlings.utilities;
+package underlings.hatchingground;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import underlings.card.Card;
 import underlings.card.effect.Effect;
 import underlings.element.Element;
@@ -11,9 +12,8 @@ import underlings.gui.Gui;
 import underlings.handler.HandlerMovementLogic;
 import underlings.handler.HandlerState;
 import underlings.handler.WildHandler;
-import underlings.hatchingground.Deck;
-import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
+import underlings.utilities.LocaleUtilities;
 
 public class EggHatchingUtilities {
 

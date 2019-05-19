@@ -1,4 +1,4 @@
-package underlings.elements.giver;
+package underlings.handler;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -9,8 +9,6 @@ import org.junit.Test;
 
 import underlings.field.FieldSpace;
 import underlings.gui.DrawChoice;
-import underlings.handler.Handler;
-import underlings.handler.HandlerState;
 
 public class HandlerTests {
 

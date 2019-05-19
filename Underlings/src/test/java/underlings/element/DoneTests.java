@@ -1,4 +1,4 @@
-package underlings.elementspace.add.single;
+package underlings.element;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -11,10 +11,6 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import underlings.element.Element;
-import underlings.element.ElementColor;
-import underlings.element.ElementSpace;
-import underlings.utilities.ElementSpaceUtilities;
 import underlings.utilities.LocaleUtilities;
 
 public class DoneTests {

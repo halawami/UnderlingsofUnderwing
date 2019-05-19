@@ -11,8 +11,8 @@ import underlings.MockTest;
 import underlings.card.Card;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
-import underlings.utilities.EggHatchingUtilities;
-import underlings.utilities.ElementSpaceUtilities;
+import underlings.element.ElementSpaceUtilities;
+import underlings.hatchingground.EggHatchingUtilities;
 import underlings.utilities.LocaleUtilities;
 
 public class DestroyElementsOnAllAdjacentEggsEffectTests extends MockTest {

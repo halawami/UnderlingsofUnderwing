@@ -10,18 +10,18 @@ import underlings.card.Card;
 import underlings.card.effect.Effect;
 import underlings.element.ElementBag;
 import underlings.element.ElementSpace;
+import underlings.element.ElementSpaceUtilities;
 import underlings.gui.Display;
 import underlings.gui.Gui;
 import underlings.gui.PromptHandler;
 import underlings.handler.Handler;
 import underlings.handler.HandlerMovementLogic;
 import underlings.hatchingground.Deck;
+import underlings.hatchingground.EggHatchingUtilities;
 import underlings.hatchingground.HatchingGround;
 import underlings.phase.Phase;
 import underlings.player.Player;
 import underlings.scoring.Scoring;
-import underlings.utilities.EggHatchingUtilities;
-import underlings.utilities.ElementSpaceUtilities;
 
 public abstract class MockTest {
 

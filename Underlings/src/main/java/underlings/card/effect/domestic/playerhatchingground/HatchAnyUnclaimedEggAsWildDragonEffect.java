@@ -5,10 +5,10 @@ import java.util.List;
 import underlings.card.Card;
 import underlings.gui.Gui;
 import underlings.gui.YesNoChoice;
+import underlings.hatchingground.EggHatchingUtilities;
 import underlings.hatchingground.HatchingGround;
 import underlings.player.FakePlayer;
 import underlings.player.Player;
-import underlings.utilities.EggHatchingUtilities;
 import underlings.utilities.LocaleUtilities;
 
 public class HatchAnyUnclaimedEggAsWildDragonEffect extends PlayerHatchingGroundEffect {

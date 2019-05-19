@@ -17,6 +17,8 @@ import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.ElementSpacePosition;
+import underlings.element.ElementSpaceUtilities;
+import underlings.element.PlacementUtilities;
 import underlings.gui.Gui;
 import underlings.gui.PromptHandler;
 import underlings.gui.YesNoChoice;

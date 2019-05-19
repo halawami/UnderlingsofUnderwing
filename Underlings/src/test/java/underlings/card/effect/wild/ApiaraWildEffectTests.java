@@ -12,9 +12,9 @@ import org.junit.Test;
 import underlings.MockTest;
 import underlings.card.Card;
 import underlings.hatchingground.Deck;
+import underlings.hatchingground.EggHatchingUtilities;
 import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
-import underlings.utilities.EggHatchingUtilities;
 import underlings.utilities.LocaleUtilities;
 
 public class ApiaraWildEffectTests extends MockTest {

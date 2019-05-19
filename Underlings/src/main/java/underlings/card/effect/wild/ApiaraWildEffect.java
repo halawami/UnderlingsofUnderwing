@@ -5,9 +5,9 @@ import java.util.List;
 import underlings.card.Card;
 import underlings.card.effect.Effect;
 import underlings.hatchingground.Deck;
+import underlings.hatchingground.EggHatchingUtilities;
 import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
-import underlings.utilities.EggHatchingUtilities;
 import underlings.utilities.LocaleUtilities;
 
 public class ApiaraWildEffect extends Effect {

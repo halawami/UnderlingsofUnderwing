@@ -1,4 +1,4 @@
-package underlings.elementspace.destroy;
+package underlings.element;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
@@ -10,10 +10,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import underlings.card.Card;
-import underlings.element.Element;
-import underlings.element.ElementColor;
-import underlings.element.ElementSpace;
-import underlings.utilities.ElementSpaceUtilities;
 import underlings.utilities.LocaleUtilities;
 
 public class GetDestroyableSpacesTests {

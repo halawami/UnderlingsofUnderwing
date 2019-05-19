@@ -3,17 +3,18 @@ package underlings.phase;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import underlings.card.Card;
 import underlings.element.ElementSpace;
+import underlings.element.PlacementUtilities;
 import underlings.gui.Gui;
 import underlings.gui.Gui.PromptType;
 import underlings.handler.WildHandler;
+import underlings.hatchingground.EggHatchingUtilities;
 import underlings.hatchingground.HatchingGround;
 import underlings.player.FakePlayer;
 import underlings.player.Player;
-import underlings.utilities.EggHatchingUtilities;
 import underlings.utilities.LocaleUtilities;
-import underlings.utilities.PlacementUtilities;
 
 public class PlacementPhase extends RotationPhase {
 

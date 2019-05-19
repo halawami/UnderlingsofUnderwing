@@ -7,7 +7,7 @@ import underlings.card.effect.wild.adjacenteggs.elements.ElementsEffect;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
-import underlings.utilities.ElementSpaceUtilities;
+import underlings.element.ElementSpaceUtilities;
 
 public abstract class DestroyElementsEffect extends ElementsEffect {
 

@@ -8,9 +8,9 @@ import underlings.element.ElementGiver;
 import underlings.gui.Gui;
 import underlings.handler.HandlerMovementLogic;
 import underlings.hatchingground.Deck;
+import underlings.hatchingground.EggHatchingUtilities;
 import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
-import underlings.utilities.EggHatchingUtilities;
 
 public abstract class Effect extends ElementGiver {
 

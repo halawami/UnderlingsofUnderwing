@@ -1,9 +1,11 @@
 package underlings.card.effect.wild.adjacenteggs.elements.add;
 
 import static org.junit.Assert.assertEquals;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,12 +16,12 @@ import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
+import underlings.element.ElementSpaceUtilities;
 import underlings.element.NullElement;
 import underlings.gui.Gui;
 import underlings.handler.WildHandler;
+import underlings.hatchingground.EggHatchingUtilities;
 import underlings.hatchingground.HatchingGround;
-import underlings.utilities.EggHatchingUtilities;
-import underlings.utilities.ElementSpaceUtilities;
 import underlings.utilities.LocaleUtilities;
 
 public class AddElementsToAllAdjacentEggsEffectTests extends MockTest {

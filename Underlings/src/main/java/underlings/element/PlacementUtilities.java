@@ -1,16 +1,15 @@
-package underlings.utilities;
+package underlings.element;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import underlings.card.Card;
-import underlings.element.Element;
-import underlings.element.ElementColor;
-import underlings.element.ElementSpace;
 import underlings.gui.Gui;
 import underlings.gui.YesNoChoice;
 import underlings.handler.WildHandler;
 import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
+import underlings.utilities.LocaleUtilities;
 
 public class PlacementUtilities {
 

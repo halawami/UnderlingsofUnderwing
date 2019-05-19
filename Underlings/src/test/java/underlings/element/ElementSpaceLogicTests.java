@@ -15,7 +15,6 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import underlings.utilities.ElementSpaceUtilities;
 import underlings.utilities.LocaleUtilities;
 
 public class ElementSpaceLogicTests {

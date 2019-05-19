@@ -1,4 +1,4 @@
-package underlings.elements.drawing;
+package underlings.element;
 
 import static org.junit.Assert.assertEquals;
 
@@ -7,11 +7,6 @@ import java.util.Random;
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
-
-import underlings.element.Element;
-import underlings.element.ElementBag;
-import underlings.element.ElementColor;
-import underlings.element.ElementFactory;
 
 public class SpecificTests {
 

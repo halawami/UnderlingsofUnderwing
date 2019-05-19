@@ -24,12 +24,14 @@ import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementFactory;
 import underlings.element.ElementSpace;
+import underlings.element.ElementSpaceUtilities;
 import underlings.gui.Gui;
 import underlings.handler.Handler;
 import underlings.handler.HandlerMovementLogic;
 import underlings.handler.HandlerState;
 import underlings.handler.WildHandler;
 import underlings.hatchingground.Deck;
+import underlings.hatchingground.EggHatchingUtilities;
 import underlings.hatchingground.HatchingGround;
 import underlings.player.FakePlayer;
 

@@ -1,4 +1,4 @@
-package underlings.elements.giver;
+package underlings.element;
 
 import java.util.Arrays;
 import java.util.List;
@@ -6,8 +6,6 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
-import underlings.element.ElementGiver;
-import underlings.element.ElementGiverFactory;
 import underlings.gui.DrawChoice;
 
 public class ElementGiverFactoryTests {
