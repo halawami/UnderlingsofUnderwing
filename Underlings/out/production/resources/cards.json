@@ -1,1332 +1,2292 @@
 [
-	 {
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
-    "family": "LEGENDARY",
+  {
+    "name": "SKY WHELP",
+    "points": 5,
+    "temperature": "WARM",
+    "family": "MONOCHROMATIC",
     "elementSpaces": [
       {
-        "color": "BLUE",
-        "position": "L4_1"
+        "color": "YELLOW",
+        "position": "L3_2"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
-      },
+        "color": "WHITE",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
       {
-        "color": "RED",
-        "position": "R4_2"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       },
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "YELLOW"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "WHITE"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "WATER WHELP",
+    "points": 5,
+    "temperature": "COOL",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
       {
         "color": "BLUE",
-        "position": "R4_1"
+        "position": "L3_2"
+      },
+      {
+        "color": "BLACK",
+        "position": "R3_2"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
+      },
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "BLUE"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "BLACK"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
+  },
+  {
+    "name": "ARBOR WHELP",
+    "points": 6,
     "temperature": "COOL",
-    "family": "LEGENDARY",
+    "family": "MONOCHROMATIC",
     "elementSpaces": [
       {
-        "color": "BLUE",
-        "position": "L4_1"
+        "color": "GREEN",
+        "position": "L3_2"
       },
+      {
+        "color": "WHITE",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "YELLOW",
+          "BLUE"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "GREEN"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "BLOOD WHELP",
+    "points": 5,
+    "temperature": "WARM",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
       {
         "color": "RED",
-        "position": "L4_2"
+        "position": "L3_2"
+      },
+      {
+        "color": "WHITE",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "RED"
+        ]
       },
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "WHITE"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "BRIMSTONE WHELP",
+    "points": 3,
+    "temperature": "WARM",
+    "family": "TERTIARY",
+    "elementSpaces": [
       {
         "color": "RED",
-        "position": "R4_2"
+        "position": "L3_2"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "ORANGE",
+        "position": "R3_2"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "RED",
+          "ORANGE"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "ORANGE"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
-    "family": "LEGENDARY",
+  },
+  {
+    "name": "ELECTRIC WHELP",
+    "points": 3,
+    "temperature": "NEUTRAL",
+    "family": "COMPLEMENTARY",
     "elementSpaces": [
       {
-        "color": "BLUE",
-        "position": "L4_1"
+        "color": "YELLOW",
+        "position": "L3_2"
       },
+      {
+        "color": "PURPLE",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "PURPLE",
+          "YELLOW"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "PURPLE"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "TWILIGHT WHELP",
+    "points": 3,
+    "temperature": "COOL",
+    "family": "TERTIARY",
+    "elementSpaces": [
       {
         "color": "RED",
-        "position": "L4_2"
+        "position": "L3_2"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "PURPLE",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "PURPLE",
+          "RED"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "RED"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "HARVEST WHELP",
+    "points": 6,
+    "temperature": "WARM",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "ORANGE",
+        "position": "L3_2"
       },
+      {
+        "color": "WHITE",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "YELLOW",
+          "RED"
+        ]
+      }
+    ],
+    "wildEffects": [
       {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "ORANGE"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "VOID WHELP",
+    "points": 3,
+    "temperature": "COOL",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
         "color": "BLUE",
-        "position": "R4_1"
+        "position": "L3_2"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_2"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "PURPLE",
+          "BLUE"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "PURPLE"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
+  },
+  {
+    "name": "UNDINE WHELP",
+    "points": 3,
     "temperature": "COOL",
-    "family": "LEGENDARY",
+    "family": "TERTIARY",
     "elementSpaces": [
       {
         "color": "BLUE",
-        "position": "L4_1"
+        "position": "L3_2"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "GREEN",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "BLUE",
+          "GREEN"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "BLUE"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "SUNSTONE WHELP",
+    "points": 3,
+    "temperature": "WARM",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "YELLOW",
+        "position": "L3_2"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "ORANGE",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "YELLOW",
+          "ORANGE"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "YELLOW"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "STORM WHELP",
+    "points": 6,
+    "temperature": "BLUE",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "PURPLE",
+        "position": "L3_2"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "BLACK",
+        "position": "R3_2"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "BLUE",
+          "RED"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "PURPLE"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
-    "family": "LEGENDARY",
+  },
+  {
+    "name": "STEAM WHELP",
+    "points": 3,
+    "temperature": "WARM",
+    "family": "COMPLEMENTARY",
     "elementSpaces": [
       {
         "color": "BLUE",
-        "position": "L4_1"
+        "position": "L3_2"
       },
+      {
+        "color": "ORANGE",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "BLUE",
+          "ORANGE"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "ORANGE"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "NATURE WHELP",
+    "points": 3,
+    "temperature": "NEUTRAL",
+    "family": "COMPLEMENTARY",
+    "elementSpaces": [
       {
         "color": "RED",
-        "position": "L4_2"
+        "position": "L3_2"
       },
+      {
+        "color": "GREEN",
+        "position": "R3_2"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "RED",
+          "GREEN"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "GREEN"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ETHEREAL WHELP",
+    "points": 3,
+    "temperature": "COOL",
+    "family": "TERTIARY",
+    "elementSpaces": [
       {
         "color": "RED",
-        "position": "R4_2"
+        "position": "L3_2"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "GREEN",
+        "position": "R3_2"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "YELLOW",
+          "GREEN"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "GREEN"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
+  },
+  {
+    "name": "ETHEREAL DRAKE",
+    "points": 5,
     "temperature": "COOL",
-    "family": "LEGENDARY",
+    "family": "TERTIARY",
     "elementSpaces": [
       {
-        "color": "BLUE",
-        "position": "L4_1"
+        "color": "YELLOW",
+        "position": "L3_2"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "GREEN",
+        "position": "R3_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "GREEN"
+        ]
       },
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "BLUE"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "BLOOD DRAKE",
+    "points": 9,
+    "temperature": "WARM",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
       {
         "color": "RED",
-        "position": "R4_2"
+        "position": "L3_2"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "WHITE",
+        "position": "R3_1"
+      },
+      {
+        "color": "WHITE",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
+      },
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "YELLOW",
+          "GREEN",
+          "BLUE",
+          "RED",
+          "PURPLE",
+          "WHITE",
+          "BLACK",
+          "ORANGE"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "WHITE"
+        ]
+      },
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "RED"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
+  },
+  {
+    "name": "SKY DRAKE",
+    "points": 9,
+    "temperature": "WARM",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "YELLOW",
+        "position": "L3_2"
+      },
+      {
+        "color": "WHITE",
+        "position": "R3_1"
+      },
+      {
+        "color": "WHITE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
+      },
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "YELLOW",
+          "GREEN",
+          "BLUE",
+          "RED",
+          "PURPLE",
+          "WHITE",
+          "BLACK",
+          "ORANGE"
+        ]
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "WHITE"
+        ]
+      },
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "YELLOW"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "STORM DRAKE",
+    "points": 9,
     "temperature": "COOL",
-    "family": "LEGENDARY",
+    "family": "MONOCHROMATIC",
     "elementSpaces": [
       {
-        "color": "BLUE",
-        "position": "L4_1"
+        "color": "BLACK",
+        "position": "L3_2"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "PURPLE",
+        "position": "R3_1"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "PURPLE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "PURPLE"
+        ]
       },
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "PURPLE"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "WATER DRAKE",
+    "points": 9,
+    "temperature": "COOL",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
       {
         "color": "BLUE",
-        "position": "R4_1"
+        "position": "L3_2"
+      },
+      {
+        "color": "BLACK",
+        "position": "R3_1"
+      },
+      {
+        "color": "BLACK",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
+      },
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "YELLOW",
+          "GREEN",
+          "BLUE",
+          "RED",
+          "PURPLE",
+          "WHITE",
+          "BLACK",
+          "ORANGE"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "BLUE"
+        ]
+      },
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "BLACK"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
+  },
+  {
+    "name": "UNDINE DRAKE",
+    "points": 5,
     "temperature": "COOL",
-    "family": "LEGENDARY",
+    "family": "TERTIARY",
     "elementSpaces": [
       {
         "color": "BLUE",
-        "position": "L4_1"
+        "position": "L3_2"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "GREEN",
+        "position": "R3_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "BLUE"
+        ]
       },
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "GREEN"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "BRIMSTONE DRAKE",
+    "points": 5,
+    "temperature": "WARM",
+    "family": "TERTIARY",
+    "elementSpaces": [
       {
         "color": "RED",
-        "position": "R4_2"
+        "position": "L3_2"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "ORANGE",
+        "position": "R3_1"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "ORANGE"
+        ]
+      },
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "RED"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
+  },
+  {
+    "name": "VOID DRAKE",
+    "points": 5,
     "temperature": "COOL",
-    "family": "LEGENDARY",
+    "family": "TERTIARY",
     "elementSpaces": [
       {
         "color": "BLUE",
-        "position": "L4_1"
+        "position": "L3_2"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "PURPLE",
+        "position": "R3_1"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "PURPLE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "PURPLE"
+        ]
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "RED"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "ARBOR DRAKE",
+    "points": 9,
+    "temperature": "COOL",
+    "family": "MONOCHROMATIC",
+    "elementSpaces": [
+      {
+        "color": "WHITE",
+        "position": "L3_2"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "GREEN"
+        ]
+      },
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "GREEN"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
-    "family": "LEGENDARY",
+  },
+  {
+    "name": "HARVEST DRAKE",
+    "points": 9,
+    "temperature": "WARM",
+    "family": "MONOCHROMATIC",
     "elementSpaces": [
       {
-        "color": "BLUE",
-        "position": "L4_1"
+        "color": "WHITE",
+        "position": "L3_2"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "ORANGE",
+        "position": "R3_1"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "ORANGE",
+        "position": "R3_3"
+      }
+    ],
+    "domesticEffects": [
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
+      }
+    ],
+    "wildEffects": [
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "ORANGE"
+        ]
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "ORANGE"
+        ]
       }
+    ]
+  },
+  {
+    "name": "SUNSTONE DRAKE",
+    "points": 5,
+    "temperature": "WARM",
+    "family": "TERTIARY",
+    "elementSpaces": [
+      {
+        "color": "YELLOW",
+        "position": "L3_2"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_1"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_3"
+      }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "YELLOW"
+        ]
+      },
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "ORANGE"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
+  },
+  {
+    "name": "TWILIGHT DRAKE",
+    "points": 5,
     "temperature": "COOL",
-    "family": "LEGENDARY",
+    "family": "TERTIARY",
     "elementSpaces": [
-      {
-        "color": "BLUE",
-        "position": "L4_1"
-      },
       {
         "color": "RED",
-        "position": "L4_2"
+        "position": "L3_2"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "PURPLE",
+        "position": "R3_1"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "PURPLE",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "RED"
+        ]
+      },
+      {
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "PURPLE"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
-    "family": "LEGENDARY",
+  },
+  {
+    "name": "AEON WHELP",
+    "points": 6,
+    "temperature": "NEUTRAL",
+    "family": "TETRADIC",
     "elementSpaces": [
       {
-        "color": "BLUE",
-        "position": "L4_1"
+        "color": "YELLOW",
+        "position": "L3_1"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "ORANGE",
+        "position": "L3_3"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "BLUE",
+        "position": "R3_1"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "PURPLE",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "GREEN",
+          "RED"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "AllElementsEffect",
+        "elementColors": [
+          "RED",
+          "GREEN"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
+  },
+  {
+    "name": "ICESHARD WHELP",
+    "points": 5,
     "temperature": "COOL",
-    "family": "LEGENDARY",
+    "family": "HARMONIC",
     "elementSpaces": [
-      {
-        "color": "BLUE",
-        "position": "L4_1"
-      },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "GREEN",
+        "position": "L3_2"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "BLUE",
+        "position": "R3_1"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "PURPLE",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "DestroyUpToElementsOnAnyEggInPlayEffect",
+        "upTo": 2,
+        "elementChoices": [
+          "RED",
+          "YELLOW",
+          "ORANGE"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "AllElementsEffect",
+        "elementColors": [
+          "RED",
+          "YELLOW",
+          "ORANGE"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
-    "family": "LEGENDARY",
+  },
+  {
+    "name": "NEBULA WHELP",
+    "points": 6,
+    "temperature": "NEUTRAL",
+    "family": "TETRADIC",
     "elementSpaces": [
       {
-        "color": "BLUE",
-        "position": "L4_1"
+        "color": "RED",
+        "position": "L3_1"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "YELLOW",
+        "position": "L3_3"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "PURPLE",
+        "position": "R3_1"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "GREEN",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "BLUE",
+          "ORANGE"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "AllElementsEffect",
+        "elementColors": [
+          "BLUE",
+          "ORANGE"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
-    "family": "LEGENDARY",
+  },
+  {
+    "name": "ABYSSAL WHELP",
+    "points": 6,
+    "temperature": "NEUTRAL",
+    "family": "MONOCHROMATIC",
     "elementSpaces": [
-      {
-        "color": "BLUE",
-        "position": "L4_1"
-      },
       {
         "color": "RED",
-        "position": "L4_2"
+        "position": "L3_1"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "ORANGE",
+        "position": "L3_3"
       },
       {
         "color": "BLUE",
-        "position": "R4_1"
+        "position": "R3_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "PURPLE",
+          "YELLOW"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "AllElementsEffect",
+        "elementColors": [
+          "YELLOW",
+          "PURPLE"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
-    "family": "LEGENDARY",
+  },
+  {
+    "name": "FLAMEWREATHED WHELP",
+    "points": 4,
+    "temperature": "WARM",
+    "family": "HARMONIC",
     "elementSpaces": [
-      {
-        "color": "BLUE",
-        "position": "L4_1"
-      },
       {
         "color": "RED",
-        "position": "L4_2"
+        "position": "L3_2"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "ORANGE",
+        "position": "R3_1"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "YELLOW",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "DestroyUpToElementsOnAnyEggInPlayEffect",
+        "upTo": 2,
+        "elementChoices": [
+          "PURPLE",
+          "GREEN",
+          "BLUE"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "AllElementsEffect",
+        "elementColors": [
+          "PURPLE",
+          "GREEN",
+          "BLUE"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
-    "family": "LEGENDARY",
+  },
+  {
+    "name": "OPALESCENT WHELP",
+    "points": 6,
+    "temperature": "NEUTRAL",
+    "family": "TRIADIC",
     "elementSpaces": [
-      {
-        "color": "BLUE",
-        "position": "L4_1"
-      },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "GREEN",
+        "position": "L3_1"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "PURPLE",
+        "position": "L3_3"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "YELLOW",
+        "position": "R3_2"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TRIADIC"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
-    "family": "LEGENDARY",
+  },
+  {
+    "name": "CHROMATIC WHELP",
+    "points": 3,
+    "temperature": "NEUTRAL",
+    "family": "TRIADIC",
     "elementSpaces": [
-      {
-        "color": "BLUE",
-        "position": "L4_1"
-      },
       {
         "color": "RED",
-        "position": "L4_2"
+        "position": "L3_1"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "YELLOW",
+        "position": "L3_3"
       },
       {
         "color": "BLUE",
-        "position": "R4_1"
+        "position": "R3_2"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "RED",
+          "YELLOW",
+          "BLUE"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TRIADIC"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
-    "family": "LEGENDARY",
+  },
+  {
+    "name": "STEAM DRAKE",
+    "points": 5,
+    "temperature": "WARM",
+    "family": "COMPLEMENTARY",
     "elementSpaces": [
       {
         "color": "BLUE",
-        "position": "L4_1"
+        "position": "L3_2"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
-      },
-      {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "ORANGE",
+        "position": "R3_1"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "ORANGE",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "OneElementEffect",
+        "elementColors": [
+          "PURPLE"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
-    "family": "LEGENDARY",
+  },
+  {
+    "name": "ELECTRIC DRAKE",
+    "points": 5,
+    "temperature": "NEUTRAL",
+    "family": "COMPLEMENTARY",
     "elementSpaces": [
-      {
-        "color": "BLUE",
-        "position": "L4_1"
-      },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "YELLOW",
+        "position": "L3_2"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "PURPLE",
+        "position": "R3_1"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "PURPLE",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "OneElementEffect",
+        "elementColors": [
+          "ORANGE"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
-    "family": "LEGENDARY",
+  },
+  {
+    "name": "CHROMATIC DRAKE",
+    "points": 6,
+    "temperature": "NEUTRAL",
+    "family": "TRIADIC",
     "elementSpaces": [
       {
-        "color": "BLUE",
-        "position": "L4_1"
+        "color": "RED",
+        "position": "L3_1"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "YELLOW",
+        "position": "L3_2"
+      },
+      {
+        "color": "YELLOW",
+        "position": "L3_3"
       },
       {
         "color": "RED",
-        "position": "R4_2"
+        "position": "R3_1"
       },
       {
         "color": "BLUE",
-        "position": "R4_1"
+        "position": "R3_2"
+      },
+      {
+        "color": "BLUE",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "RED",
+          "YELLOW",
+          "BLUE"
+        ]
+      },
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "OneElementEffect",
+        "elementColors": [
+          "RED",
+          "YELLOW",
+          "BLUE"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
-    "family": "LEGENDARY",
+  },
+  {
+    "name": "NATURE DRAKE",
+    "points": 5,
+    "temperature": "NEUTRAL",
+    "family": "COMPLEMENTARY",
     "elementSpaces": [
-      {
-        "color": "BLUE",
-        "position": "L4_1"
-      },
       {
         "color": "RED",
-        "position": "L4_2"
+        "position": "L3_2"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "GREEN",
+        "position": "R3_1"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "GREEN",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "OneElementEffect",
+        "elementColors": [
+          "GREEN"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
-    "family": "LEGENDARY",
+  },
+  {
+    "name": "OPALESCENT DRAKE",
+    "points": 10,
+    "temperature": "NEUTRAL",
+    "family": "TRIADIC",
     "elementSpaces": [
       {
-        "color": "BLUE",
-        "position": "L4_1"
+        "color": "GREEN",
+        "position": "L3_1"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "PURPLE",
+        "position": "L3_3"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "ORANGE",
+        "position": "R3_1"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "BLACK",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "PURPLE",
+          "ORANGE",
+          "GREEN"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "OneElementEffect",
+        "elementColors": [
+          "PURPLE",
+          "ORANGE",
+          "GREEN"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
-    "family": "LEGENDARY",
+  },
+  {
+    "name": "FLAMEWREATHED WYVERN",
+    "points": 8,
+    "temperature": "WARM",
+    "family": "HARMONIC",
     "elementSpaces": [
       {
-        "color": "BLUE",
-        "position": "L4_1"
+        "color": "RED",
+        "position": "L3_1"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "ORANGE",
+        "position": "L3_2"
       },
       {
+        "color": "YELLOW",
+        "position": "L3_3"
+      },
+      {
         "color": "RED",
-        "position": "R4_2"
+        "position": "R3_1"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "ORANGE",
+        "position": "L3_3"
+      },
+      {
+        "color": "YELLOW",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "CollectUpToElementsFromAnyEggInPlayEffect",
+        "upTo": 2,
+        "elementChoices": [
+          "PURPLE",
+          "GREEN",
+          "BLUE"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
-    "family": "LEGENDARY",
+  },
+  {
+    "name": "BLOOD WYVERN",
+    "points": 10,
+    "temperature": "WARM",
+    "family": "MONOCHROMATIC",
     "elementSpaces": [
       {
-        "color": "BLUE",
-        "position": "L4_1"
+        "color": "RED",
+        "position": "L3_1"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "WHITE",
+        "position": "L3_3"
       },
       {
         "color": "RED",
-        "position": "R4_2"
+        "position": "R3_1"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "WHITE",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
+      },
+      {
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "WHITE"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "MONOCHROMATIC"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
+  },
+  {
+    "name": "ETHEREAL WYVERN",
+    "points": 9,
     "temperature": "COOL",
-    "family": "LEGENDARY",
+    "family": "TERTIARY",
     "elementSpaces": [
       {
-        "color": "BLUE",
-        "position": "L4_1"
+        "color": "YELLOW",
+        "position": "L3_1"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "WHITE",
+        "position": "L3_3"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "GREEN",
+        "position": "R3_1"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "GREEN",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "ElementGiverEffect",
+        "choices": [
+          "YELLOW"
+        ],
+        "display": "YELLOW ELEMENT"
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TERTIARY"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
-    "family": "LEGENDARY",
+  },
+  {
+    "name": "ELECTRIC WYVERN",
+    "points": 9,
+    "temperature": "NEUTRAL",
+    "family": "COMPLEMENTARY",
     "elementSpaces": [
-      {
-        "color": "BLUE",
-        "position": "L4_1"
+      {
+        "color": "YELLOW",
+        "position": "L3_1"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "BLACK",
+        "position": "L3_3"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "PURPLE",
+        "position": "R3_1"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "PURPLE",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "ElementGiverEffect",
+        "choices": [
+          "YELLOW"
+        ],
+        "display": "YELLOW ELEMENT"
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "COMPLEMENTARY"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
-    "family": "LEGENDARY",
+  },
+  {
+    "name": "CHROMATIC WYVERN_R",
+    "points": 9,
+    "temperature": "NEUTRAL",
+    "family": "TRIADIC",
     "elementSpaces": [
       {
-        "color": "BLUE",
-        "position": "L4_1"
+        "color": "RED",
+        "position": "L3_1"
       },
       {
         "color": "RED",
-        "position": "L4_2"
+        "position": "L3_2"
       },
       {
         "color": "RED",
-        "position": "R4_2"
+        "position": "L3_3"
+      },
+      {
+        "color": "YELLOW",
+        "position": "R3_1"
       },
       {
         "color": "BLUE",
-        "position": "R4_1"
+        "position": "R3_2"
+      },
+      {
+        "color": "WHITE",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "CollectUpToElementsFromAnyEggInPlayEffect",
+        "upTo": 1,
+        "elementChoices": [
+          "RED"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "RED",
+          "BLUE",
+          "YELLOW"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
-    "family": "LEGENDARY",
+  },
+  {
+    "name": "CHROMATIC WYVERN_Y",
+    "points": 9,
+    "temperature": "NEUTRAL",
+    "family": "TRIADIC",
     "elementSpaces": [
       {
-        "color": "BLUE",
-        "position": "L4_1"
+        "color": "YELLOW",
+        "position": "L3_1"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "YELLOW",
+        "position": "L3_2"
+      },
+      {
+        "color": "YELLOW",
+        "position": "L3_3"
       },
       {
         "color": "RED",
-        "position": "R4_2"
+        "position": "R3_1"
       },
       {
         "color": "BLUE",
-        "position": "R4_1"
+        "position": "R3_2"
+      },
+      {
+        "color": "WHITE",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "CollectUpToElementsFromAnyEggInPlayEffect",
+        "upTo": 1,
+        "elementChoices": [
+          "YELLOW"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "RED",
+          "BLUE",
+          "YELLOW"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
-    "family": "LEGENDARY",
+  },
+  {
+    "name": "CHROMATIC WYVERN_B",
+    "points": 9,
+    "temperature": "NEUTRAL",
+    "family": "TRIADIC",
     "elementSpaces": [
       {
         "color": "BLUE",
-        "position": "L4_1"
+        "position": "L3_1"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "BLUE",
+        "position": "L3_2"
+      },
+      {
+        "color": "BLUE",
+        "position": "L3_3"
       },
       {
         "color": "RED",
-        "position": "R4_2"
+        "position": "R3_1"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "YELLOW",
+        "position": "R3_2"
+      },
+      {
+        "color": "BLACK",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "CollectUpToElementsFromAnyEggInPlayEffect",
+        "upTo": 1,
+        "elementChoices": [
+          "BLUE"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "AddElementsEffect",
+        "elementColors": [
+          "RED",
+          "BLUE",
+          "YELLOW"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
+  },
+  {
+    "name": "ETHEREAL WYRM",
+    "points": 13,
     "temperature": "COOL",
-    "family": "LEGENDARY",
+    "family": "TERTIARY",
     "elementSpaces": [
       {
-        "color": "BLUE",
-        "position": "L4_1"
+        "color": "WHITE",
+        "position": "L3_1"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "YELLOW",
+        "position": "L3_2"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "WHITE",
+        "position": "L3_3"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "GREEN",
+        "position": "R3_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "CollectAndHatchAnyUnclaimedEggEffect",
+        "points": 5
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
+  },
+  {
+    "name": "ICESHARD WYVERN",
+    "points": 10,
     "temperature": "COOL",
-    "family": "LEGENDARY",
+    "family": "HARMONIC",
     "elementSpaces": [
       {
         "color": "BLUE",
-        "position": "L4_1"
+        "position": "L3_1"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "GREEN",
+        "position": "L3_2"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "PURPLE",
+        "position": "L3_3"
       },
       {
         "color": "BLUE",
-        "position": "R4_1"
+        "position": "R3_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_2"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "CollectUpToElementsFromAnyEggInPlayEffect",
+        "upTo": 2,
+        "elementChoices": [
+          "RED",
+          "ORANGE",
+          "YELLOW"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
-    "family": "LEGENDARY",
+  },
+  {
+    "name": "NATURE WYVERN",
+    "points": 9,
+    "temperature": "NEUTRAL",
+    "family": "COMPLEMENTARY",
     "elementSpaces": [
       {
-        "color": "BLUE",
-        "position": "L4_1"
+        "color": "RED",
+        "position": "L3_1"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "BLACK",
+        "position": "L3_3"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "GREEN",
+        "position": "R3_1"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "GREEN",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "ElementGiverEffect",
+        "choices": [
+          "RED"
+        ],
+        "display": "RED ELEMENT"
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "COMPLEMENTARY"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
-    "family": "LEGENDARY",
+  },
+  {
+    "name": "SKY WYVERN",
+    "points": 10,
+    "temperature": "WARM",
+    "family": "MONOCHROMATIC",
     "elementSpaces": [
       {
-        "color": "BLUE",
-        "position": "L4_1"
+        "color": "YELLOW",
+        "position": "L3_1"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "WHITE",
+        "position": "L3_3"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "YELLOW",
+        "position": "R3_1"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "WHITE",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "YELLOW"
+        ]
+      },
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "MONOCHROMATIC"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
-    "family": "LEGENDARY",
+  },
+  {
+    "name": "STEAM WYVERN",
+    "points": 9,
+    "temperature": "WARM",
+    "family": "COMPLEMENTARY",
     "elementSpaces": [
       {
         "color": "BLUE",
-        "position": "L4_1"
+        "position": "L3_1"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "BLACK",
+        "position": "L3_3"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "ORANGE",
+        "position": "R3_1"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "ORANGE",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "ElementGiverEffect",
+        "choices": [
+          "BLUE"
+        ],
+        "display": "BLUE ELEMENT"
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "COMPLEMENTARY"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
-    "family": "LEGENDARY",
+  },
+  {
+    "name": "SUNSTONE WYVERN",
+    "points": 9,
+    "temperature": "WARM",
+    "family": "TERTIARY",
     "elementSpaces": [
       {
-        "color": "BLUE",
-        "position": "L4_1"
+        "color": "YELLOW",
+        "position": "L3_1"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "WHITE",
+        "position": "L3_3"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "ORANGE",
+        "position": "R3_1"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "ORANGE",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "ElementGiverEffect",
+        "choices": [
+          "YELLOW"
+        ],
+        "display": "YELLOW ELEMENT"
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TERTIARY"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
+  },
+  {
+    "name": "TWILIGHT WYVERN",
+    "points": 9,
     "temperature": "COOL",
-    "family": "LEGENDARY",
+    "family": "TERTIARY",
     "elementSpaces": [
       {
-        "color": "BLUE",
-        "position": "L4_1"
+        "color": "RED",
+        "position": "L3_1"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "BLACK",
+        "position": "L3_3"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "PURPLE",
+        "position": "R3_1"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "PURPLE",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "ElementGiverEffect",
+        "choices": [
+          "RED"
+        ],
+        "display": "RED ELEMENT"
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TERTIARY"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
+  },
+  {
+    "name": "UNDINE WYVERN",
+    "points": 9,
     "temperature": "COOL",
-    "family": "LEGENDARY",
+    "family": "TERTIARY",
     "elementSpaces": [
       {
         "color": "BLUE",
-        "position": "L4_1"
+        "position": "L3_1"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "BLACK",
+        "position": "L3_3"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "GREEN",
+        "position": "R3_1"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "GREEN",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "ElementGiverEffect",
+        "choices": [
+          "BLUE"
+        ],
+        "display": "BLUE ELEMENT"
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TERTIARY"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
+  },
+  {
+    "name": "VOID WYVERN",
+    "points": 9,
     "temperature": "COOL",
-    "family": "LEGENDARY",
+    "family": "TERTIARY",
     "elementSpaces": [
       {
         "color": "BLUE",
-        "position": "L4_1"
+        "position": "L3_1"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "BLACK",
+        "position": "L3_3"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "PURPLE",
+        "position": "R3_1"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "PURPLE",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "ElementGiverEffect",
+        "choices": [
+          "BLUE"
+        ],
+        "display": "BLUE ELEMENT"
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TERTIARY"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
+  },
+  {
+    "name": "WATER WYVERN",
+    "points": 10,
     "temperature": "COOL",
-    "family": "LEGENDARY",
+    "family": "MONOCHROMATIC",
     "elementSpaces": [
       {
         "color": "BLUE",
-        "position": "L4_1"
+        "position": "L3_1"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "BLACK",
+        "position": "L3_3"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "BLUE",
+        "position": "R3_1"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "BLACK",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "CollectElementEffect",
+        "elementChoices": [
+          "BLACK"
+        ]
+      },
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "MONOCHROMATIC"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
-    "family": "LEGENDARY",
+  },
+  {
+    "name": "ABYSSAL WYRM",
+    "points": 12,
+    "temperature": "NEUTRAL",
+    "family": "TRIADIC",
     "elementSpaces": [
       {
-        "color": "BLUE",
+        "color": "RED",
         "position": "L4_1"
       },
       {
@@ -1334,362 +2294,562 @@
         "position": "L4_2"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "ORANGE",
+        "position": "L4_3"
       },
       {
+        "color": "ORANGE",
+        "position": "L4_4"
+      },
+      {
         "color": "BLUE",
         "position": "R4_1"
+      },
+      {
+        "color": "BLUE",
+        "position": "R4_2"
+      },
+      {
+        "color": "GREEN",
+        "position": "R4_3"
+      },
+      {
+        "color": "GREEN",
+        "position": "R4_4"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
-    "family": "LEGENDARY",
+  },
+  {
+    "name": "AEON WYRM",
+    "points": 12,
+    "temperature": "NEUTRAL",
+    "family": "TETRADIC",
     "elementSpaces": [
       {
-        "color": "BLUE",
+        "color": "YELLOW",
         "position": "L4_1"
       },
       {
-        "color": "RED",
+        "color": "YELLOW",
         "position": "L4_2"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "ORANGE",
+        "position": "L4_3"
       },
       {
+        "color": "ORANGE",
+        "position": "L4_4"
+      },
+      {
         "color": "BLUE",
         "position": "R4_1"
+      },
+      {
+        "color": "BLUE",
+        "position": "R4_2"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R4_3"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R4_4"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
-    "family": "LEGENDARY",
+  },
+  {
+    "name": "BLOOD WYRM",
+    "points": 12,
+    "temperature": "WARM",
+    "family": "MONOCHROMATIC",
     "elementSpaces": [
       {
-        "color": "BLUE",
-        "position": "L4_1"
+        "color": "RED",
+        "position": "L3_1"
       },
       {
         "color": "RED",
-        "position": "L4_2"
+        "position": "L3_2"
       },
       {
+        "color": "BLACK",
+        "position": "L3_3"
+      },
+      {
         "color": "RED",
-        "position": "R4_2"
+        "position": "R3_1"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "RED",
+        "position": "R3_2"
+      },
+      {
+        "color": "BLACK",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
+      {
+        "effect": "ElementGiverEffect",
+        "choices": [
+          "RED"
+        ],
+        "display": "RED ELEMENT"
+      },
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
-    "family": "LEGENDARY",
+  },
+  {
+    "name": "BRIMSTONE WYRM",
+    "points": 11,
+    "temperature": "WARM",
+    "family": "TERTIARY",
     "elementSpaces": [
       {
-        "color": "BLUE",
-        "position": "L4_1"
+        "color": "RED",
+        "position": "L3_1"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "WHITE",
+        "position": "L3_3"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "ORANGE",
+        "position": "R3_1"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "ORANGE",
+        "position": "R3_2"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "CollectAndHatchAnyUnclaimedEggEffect",
+        "points": 5
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
-    "family": "LEGENDARY",
+  },
+  {
+    "name": "ELECTRIC WYRM",
+    "points": 11,
+    "temperature": "NEUTRAL",
+    "family": "COMPLEMENTARY",
     "elementSpaces": [
       {
-        "color": "BLUE",
-        "position": "L4_1"
+        "color": "YELLOW",
+        "position": "L3_1"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "BLACK",
+        "position": "L3_3"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "PURPLE",
+        "position": "R3_1"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "PURPLE",
+        "position": "R3_2"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "CollectAndHatchAnyUnclaimedEggEffect",
+        "points": 5
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
-    "family": "LEGENDARY",
+  },
+  {
+    "name": "NATURE WYRM",
+    "points": 11,
+    "temperature": "NEUTRAL",
+    "family": "COMPLEMENTARY",
     "elementSpaces": [
       {
-        "color": "BLUE",
-        "position": "L4_1"
+        "color": "RED",
+        "position": "L3_1"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "BLACK",
+        "position": "L3_3"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "GREEN",
+        "position": "R3_1"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "GREEN",
+        "position": "R3_2"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "CollectAndHatchAnyUnclaimedEggEffect",
+        "points": 5
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
-    "family": "LEGENDARY",
+  },
+  {
+    "name": "STEAM WYRM",
+    "points": 11,
+    "temperature": "WARM",
+    "family": "COMPLEMENTARY",
     "elementSpaces": [
       {
         "color": "BLUE",
-        "position": "L4_1"
+        "position": "L3_1"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "BLACK",
+        "position": "L3_3"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "ORANGE",
+        "position": "R3_1"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "ORANGE",
+        "position": "R3_2"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "CollectAndHatchAnyUnclaimedEggEffect",
+        "points": 5
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
-    "family": "LEGENDARY",
+  },
+  {
+    "name": "SUNSTONE WYRM",
+    "points": 11,
+    "temperature": "WARM",
+    "family": "TERTIARY",
     "elementSpaces": [
       {
-        "color": "BLUE",
-        "position": "L4_1"
+        "color": "YELLOW",
+        "position": "L3_1"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "BLACK",
+        "position": "L3_3"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "ORANGE",
+        "position": "R3_1"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "WHITE",
+        "position": "R3_2"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "CollectAndHatchAnyUnclaimedEggEffect",
+        "points": 5
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
+  },
+  {
+    "name": "TWILIGHT WYRM",
+    "points": 13,
     "temperature": "COOL",
-    "family": "LEGENDARY",
+    "family": "TERTIARY",
     "elementSpaces": [
       {
-        "color": "BLUE",
-        "position": "L4_1"
+        "color": "BLACK",
+        "position": "L3_1"
       },
       {
         "color": "RED",
-        "position": "L4_2"
+        "position": "L3_2"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "BLACK",
+        "position": "L3_3"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "PURPLE",
+        "position": "R3_1"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "CollectAndHatchAnyUnclaimedEggEffect",
+        "points": 5
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
+  },
+  {
+    "name": "UNDINE WYRM",
+    "points": 13,
     "temperature": "COOL",
-    "family": "LEGENDARY",
+    "family": "TERTIARY",
     "elementSpaces": [
+      {
+        "color": "BLACK",
+        "position": "L3_1"
+      },
       {
         "color": "BLUE",
-        "position": "L4_1"
+        "position": "L3_2"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "BLACK",
+        "position": "L3_3"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "GREEN",
+        "position": "R3_1"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "GREEN",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "CollectAndHatchAnyUnclaimedEggEffect",
+        "points": 5
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
+  },
+  {
+    "name": "VOID WYRM",
+    "points": 13,
     "temperature": "COOL",
-    "family": "LEGENDARY",
+    "family": "TERTIARY",
     "elementSpaces": [
+      {
+        "color": "BLACK",
+        "position": "L3_1"
+      },
       {
         "color": "BLUE",
-        "position": "L4_1"
+        "position": "L3_2"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "BLACK",
+        "position": "L3_3"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "PURPLE",
+        "position": "R3_1"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "PURPLE",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "CollectAndHatchAnyUnclaimedEggEffect",
+        "points": 5
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
-    "family": "LEGENDARY",
+  },
+  {
+    "name": "NEBULA WYRM",
+    "points": 12,
+    "temperature": "NEUTRAL",
+    "family": "TETRADIC",
     "elementSpaces": [
       {
-        "color": "BLUE",
+        "color": "RED",
         "position": "L4_1"
       },
       {
@@ -1697,276 +2857,489 @@
         "position": "L4_2"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "YELLOW",
+        "position": "L4_3"
       },
       {
-        "color": "BLUE",
+        "color": "YELLOW",
+        "position": "L4_4"
+      },
+      {
+        "color": "PURPLE",
         "position": "R4_1"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R4_2"
+      },
+      {
+        "color": "GREEN",
+        "position": "R4_3"
+      },
+      {
+        "color": "GREEN",
+        "position": "R4_4"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
-    "family": "LEGENDARY",
+  },
+  {
+    "name": "SKY WYRM",
+    "points": 12,
+    "temperature": "WARM",
+    "family": "MONOCHROMATIC",
     "elementSpaces": [
       {
-        "color": "BLUE",
-        "position": "L4_1"
+        "color": "YELLOW",
+        "position": "L3_1"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "YELLOW",
+        "position": "L3_2"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "WHITE",
+        "position": "L3_3"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "YELLOW",
+        "position": "R3_1"
+      },
+      {
+        "color": "YELLOW",
+        "position": "R3_2"
+      },
+      {
+        "color": "WHITE",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "ElementGiverEffect",
+        "choices": [
+          "YELLOW"
+        ],
+        "display": "YELLOW ELEMENT"
+      },
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
+  },
+  {
+    "name": "WATER WYRM",
+    "points": 12,
     "temperature": "COOL",
-    "family": "LEGENDARY",
+    "family": "MONOCHROMATIC",
     "elementSpaces": [
       {
         "color": "BLUE",
-        "position": "L4_1"
+        "position": "L3_1"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "BLUE",
+        "position": "L3_2"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "BLACK",
+        "position": "L3_3"
       },
       {
         "color": "BLUE",
-        "position": "R4_1"
+        "position": "R3_1"
+      },
+      {
+        "color": "BLUE",
+        "position": "R3_2"
+      },
+      {
+        "color": "BLACK",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "ElementGiverEffect",
+        "choices": [
+          "BLUE"
+        ],
+        "display": "BLUE ELEMENT"
+      },
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
-    "family": "LEGENDARY",
+  },
+  {
+    "name": "OPALESCENT WYRM_G",
+    "points": 14,
+    "temperature": "NEUTRAL",
+    "family": "TRIADIC",
     "elementSpaces": [
       {
-        "color": "BLUE",
+        "color": "PURPLE",
         "position": "L4_1"
       },
       {
-        "color": "RED",
+        "color": "ORANGE",
         "position": "L4_2"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "PURPLE",
+        "position": "L4_3"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "ORANGE",
+        "position": "L4_4"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_2"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "CollectUpToElementsFromAnyEggInPlayEffect",
+        "upTo": 1,
+        "elementChoices": [
+          "GREEN"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
-    "family": "LEGENDARY",
+  },
+  {
+    "name": "OPALESCENT WYRM_O",
+    "points": 14,
+    "temperature": "NEUTRAL",
+    "family": "TRIADIC",
     "elementSpaces": [
       {
-        "color": "BLUE",
+        "color": "PURPLE",
         "position": "L4_1"
       },
       {
-        "color": "RED",
+        "color": "GREEN",
         "position": "L4_2"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "PURPLE",
+        "position": "L4_3"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "GREEN",
+        "position": "L4_4"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_1"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_2"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "CollectUpToElementsFromAnyEggInPlayEffect",
+        "upTo": 1,
+        "elementChoices": [
+          "ORANGE"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
-    "family": "LEGENDARY",
+  },
+  {
+    "name": "OPALESCENT WYRM_P",
+    "points": 14,
+    "temperature": "NEUTRAL",
+    "family": "TRIADIC",
     "elementSpaces": [
       {
-        "color": "BLUE",
+        "color": "GREEN",
         "position": "L4_1"
       },
       {
-        "color": "RED",
+        "color": "ORANGE",
         "position": "L4_2"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "GREEN",
+        "position": "L4_3"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "ORANGE",
+        "position": "L4_4"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_1"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_2"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "CollectUpToElementsFromAnyEggInPlayEffect",
+        "upTo": 1,
+        "elementChoices": [
+          "PURPLE"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "HatchAllUnclaimedEffect",
+        "dragonFamilies": [
+          "TETRADIC",
+          "MONOCHROMATIC",
+          "COMPLEMENTARY",
+          "HARMONIC",
+          "TERTIARY",
+          "LEGENDARY",
+          "TRIADIC"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
+  },
+  {
+    "name": "DE'LONS",
+    "points": 14,
+    "temperature": "WARM",
     "family": "LEGENDARY",
     "elementSpaces": [
       {
-        "color": "BLUE",
+        "color": "ORANGE",
         "position": "L4_1"
       },
       {
-        "color": "RED",
+        "color": "ORANGE",
         "position": "L4_2"
+      },
+      {
+        "color": "ORANGE",
+        "position": "L4_3"
+      },
+      {
+        "color": "WHITE",
+        "position": "L4_4"
       },
       {
         "color": "RED",
+        "position": "R4_1"
+      },
+      {
+        "color": "RED",
         "position": "R4_2"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "RED",
+        "position": "R4_3"
+      },
+      {
+        "color": "YELLOW",
+        "position": "R4_4"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "ElementGiverEffect",
+        "choices": [
+          "YELLOW",
+          "RED",
+          "ORANGE"
+        ],
+        "display": "WARM ELEMENT"
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "AddElementToAllEggsInPlayEffect",
+        "ElementColor": "RED"
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
+  },
+  {
+    "name": "XANDUS",
+    "points": 15,
     "temperature": "COOL",
     "family": "LEGENDARY",
     "elementSpaces": [
+      {
+        "color": "BLACK",
+        "position": "L3_1"
+      },
+      {
+        "color": "BLACK",
+        "position": "L3_2"
+      },
       {
         "color": "BLUE",
-        "position": "L4_1"
+        "position": "L3_3"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "WHITE",
+        "position": "R3_1"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "BLUE",
+        "position": "R3_2"
       },
       {
         "color": "BLUE",
-        "position": "R4_1"
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "ElementGiverEffect",
+        "choices": [
+          "YELLOW",
+          "RED",
+          "ORANGE"
+        ],
+        "display": "WARM ELEMENT"
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "AddElementToAllEggsInPlayEffect",
+        "ElementColor": "RED"
       }
     ]
-  },{
+  },
+  {
     "name": "CORDATH",
     "points": 20,
     "temperature": "COOL",
     "family": "LEGENDARY",
     "elementSpaces": [
       {
-        "color": "BLUE",
+        "color": "GREEN",
         "position": "L4_1"
       },
       {
-        "color": "RED",
+        "color": "GREEN",
         "position": "L4_2"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "GREEN",
+        "position": "L4_3"
       },
       {
-        "color": "BLUE",
+        "color": "BLACK",
+        "position": "L4_4"
+      },
+      {
+        "color": "PURPLE",
         "position": "R4_1"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R4_2"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R4_3"
+      },
+      {
+        "color": "BLACK",
+        "position": "R4_4"
       }
     ],
     "domesticEffects": [
@@ -1979,311 +3352,444 @@
         "effect": "PlayersTradeDragon"
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
+  },
+  {
+    "name": "WHYTE",
+    "points": 17,
+    "temperature": "NEUTRAL",
     "family": "LEGENDARY",
     "elementSpaces": [
       {
-        "color": "BLUE",
+        "color": "RED",
         "position": "L4_1"
       },
       {
-        "color": "RED",
+        "color": "ORANGE",
         "position": "L4_2"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "YELLOW",
+        "position": "L4_3"
+      },
+      {
+        "color": "WHITE",
+        "position": "L4_4"
       },
       {
         "color": "BLUE",
         "position": "R4_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "R4_2"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R4_3"
+      },
+      {
+        "color": "BLACK",
+        "position": "R4_4"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "ElementGiverEffect",
+        "choices": [
+          "RED",
+          "BLUE",
+          "YELLOW",
+          "GREEN",
+          "PURPLE",
+          "ORANGE",
+          "WHITE",
+          "BLACK"
+        ],
+        "display": "RANDOM ELEMENT"
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "DestroyAllElementsOnAllEggsInPlay"
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
+  },
+  {
+    "name": "DRACEUTRUM",
+    "points": 14,
+    "temperature": "NEUTRAL",
     "family": "LEGENDARY",
     "elementSpaces": [
       {
-        "color": "BLUE",
+        "color": "RED",
         "position": "L4_1"
       },
       {
         "color": "RED",
         "position": "L4_2"
+      },
+      {
+        "color": "WHITE",
+        "position": "L4_3"
+      },
+      {
+        "color": "BLUE",
+        "position": "L4_4"
       },
       {
         "color": "RED",
+        "position": "R4_1"
+      },
+      {
+        "color": "WHITE",
         "position": "R4_2"
       },
       {
         "color": "BLUE",
-        "position": "R4_1"
+        "position": "R4_3"
+      },
+      {
+        "color": "BLUE",
+        "position": "R4_4"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "TakeHatchedDragonFromPlayer",
+        "points": 9,
+        "temperatures": [
+          "NEUTRAL"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "ReturnAllHatchedDragonsFromPlayers",
+        "temperatures": [
+          "NEUTRAL"
+        ]
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
+  },
+  {
+    "name": "KEL'DROTH",
+    "points": 16,
     "temperature": "COOL",
     "family": "LEGENDARY",
     "elementSpaces": [
       {
-        "color": "BLUE",
-        "position": "L4_1"
+        "color": "GREEN",
+        "position": "L3_1"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "PURPLE",
+        "position": "L3_2"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "GREEN",
+        "position": "L3_3"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "BLACK",
+        "position": "R3_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "R3_2"
+      },
+      {
+        "color": "BLACK",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 4
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "LoseHandlerEffect"
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
+  },
+  {
+    "name": "ARTIFELES",
+    "points": 16,
+    "temperature": "NEUTRAL",
     "family": "LEGENDARY",
     "elementSpaces": [
       {
-        "color": "BLUE",
-        "position": "L4_1"
+        "color": "BLACK",
+        "position": "L3_1"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "WHITE",
+        "position": "L3_3"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "WHITE",
+        "position": "R3_1"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "BLACK",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "UseBlackOrWhiteInPlaceEffect"
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "DestroyAllBlackAndWhiteElementsEffect"
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
+  },
+  {
+    "name": "IGNATIUS",
+    "points": 15,
+    "temperature": "WARM",
     "family": "LEGENDARY",
     "elementSpaces": [
       {
-        "color": "BLUE",
+        "color": "YELLOW",
         "position": "L4_1"
       },
       {
-        "color": "RED",
+        "color": "YELLOW",
         "position": "L4_2"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "ORANGE",
+        "position": "L4_3"
       },
       {
-        "color": "BLUE",
+        "color": "WHITE",
+        "position": "L4_4"
+      },
+      {
+        "color": "YELLOW",
         "position": "R4_1"
+      },
+      {
+        "color": "YELLOW",
+        "position": "R4_2"
+      },
+      {
+        "color": "RED",
+        "position": "R4_3"
+      },
+      {
+        "color": "BLACK",
+        "position": "R4_4"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "StealAllStoredElements"
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "DestroyAllPlayersStoredElements"
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
+  },
+  {
+    "name": "AERYSTRASZA",
+    "points": 16,
+    "temperature": "WARM",
     "family": "LEGENDARY",
     "elementSpaces": [
       {
-        "color": "BLUE",
-        "position": "L4_1"
+        "color": "ORANGE",
+        "position": "L3_1"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "WHITE",
+        "position": "L3_2"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "ORANGE",
+        "position": "L3_3"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "ORANGE",
+        "position": "R3_1"
+      },
+      {
+        "color": "WHITE",
+        "position": "R3_2"
+      },
+      {
+        "color": "ORANGE",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "CollectUpToElementsFromAnyEggInPlayEffect",
+        "upTo": 3,
+        "elementChoices": [
+          "ORANGE"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "ReturnMostValuableDragonEffect"
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
+  },
+  {
+    "name": "AERILLIA",
+    "points": 15,
+    "temperature": "WARM",
     "family": "LEGENDARY",
     "elementSpaces": [
       {
-        "color": "BLUE",
-        "position": "L4_1"
+        "color": "WHITE",
+        "position": "L3_1"
       },
       {
         "color": "RED",
-        "position": "L4_2"
+        "position": "L3_2"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "YELLOW",
+        "position": "L3_3"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "WHITE",
+        "position": "R3_1"
+      },
+      {
+        "color": "BLACK",
+        "position": "R3_2"
+      },
+      {
+        "color": "YELLOW",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "WhiteRecipeEffect"
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "RemoveBlackRecipesEffect"
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
+  },
+  {
+    "name": "VADRENOX",
+    "points": 17,
     "temperature": "COOL",
     "family": "LEGENDARY",
     "elementSpaces": [
+      {
+        "color": "PURPLE",
+        "position": "L3_1"
+      },
       {
         "color": "BLUE",
-        "position": "L4_1"
+        "position": "L3_2"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "PURPLE",
+        "position": "L3_3"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "BLACK",
+        "position": "R3_1"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "BLACK",
+        "position": "R3_2"
+      },
+      {
+        "color": "BLACK",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "ReplaceHandlerWithYourOwnEffect"
+      },
+      {
+        "effect": "GainHandlersEffect",
+        "numberOfHandlers": 1
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "RemoveAllHandlersFromAllEggsInPlay"
       }
     ]
-  },{
-    "name": "CORDATH",
+  },
+  {
+    "name": "NORRUTH",
     "points": 20,
-    "temperature": "COOL",
+    "temperature": "NEUTRAL",
     "family": "LEGENDARY",
     "elementSpaces": [
       {
-        "color": "BLUE",
+        "color": "PURPLE",
         "position": "L4_1"
       },
       {
-        "color": "RED",
+        "color": "ORANGE",
         "position": "L4_2"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "ORANGE",
+        "position": "L4_3"
       },
       {
-        "color": "BLUE",
+        "color": "WHITE",
+        "position": "L4_4"
+      },
+      {
+        "color": "PURPLE",
         "position": "R4_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "R4_2"
+      },
+      {
+        "color": "GREEN",
+        "position": "R4_3"
+      },
+      {
+        "color": "BLACK",
+        "position": "R4_4"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "NextEggHatchesImmediatelyEffect"
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "AllEggsHatchLateEffect"
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
+  },
+  {
+    "name": "TIAMAT",
+    "points": 16,
+    "temperature": "NEUTRAL",
     "family": "LEGENDARY",
     "elementSpaces": [
       {
-        "color": "BLUE",
+        "color": "RED",
         "position": "L4_1"
       },
       {
@@ -2291,121 +3797,179 @@
         "position": "L4_2"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "BLACK",
+        "position": "L4_3"
+      },
+      {
+        "color": "WHITE",
+        "position": "L4_4"
       },
       {
         "color": "BLUE",
         "position": "R4_1"
+      },
+      {
+        "color": "GREEN",
+        "position": "R4_2"
+      },
+      {
+        "color": "BLUE",
+        "position": "R4_3"
+      },
+      {
+        "color": "GREEN",
+        "position": "R4_4"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "CollectFiveElementsEffect",
+        "elementColors": [
+          "RED",
+          "BLUE",
+          "GREEN",
+          "BLACK",
+          "WHITE"
+        ]
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "ReturnAllAdjacentCardsToDeckEffect"
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
+  },
+  {
+    "name": "APIARA",
+    "points": 15,
+    "temperature": "WARM",
     "family": "LEGENDARY",
     "elementSpaces": [
       {
-        "color": "BLUE",
-        "position": "L4_1"
+        "color": "BLACK",
+        "position": "L3_1"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "WHITE",
+        "position": "L3_2"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "BLACK",
+        "position": "L3_3"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "YELLOW",
+        "position": "R3_1"
+      },
+      {
+        "color": "YELLOW",
+        "position": "R3_2"
+      },
+      {
+        "color": "YELLOW",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "TwoHandlersOnFieldSpaceEffect"
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "ApiaraWildEffect"
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
-    "temperature": "COOL",
+  },
+  {
+    "name": "TYCHE",
+    "points": 16,
+    "temperature": "NEUTRAL",
     "family": "LEGENDARY",
     "elementSpaces": [
       {
-        "color": "BLUE",
+        "color": "YELLOW",
         "position": "L4_1"
       },
       {
-        "color": "RED",
+        "color": "ORANGE",
         "position": "L4_2"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "ORANGE",
+        "position": "L4_3"
       },
       {
-        "color": "BLUE",
+        "color": "YELLOW",
+        "position": "L4_4"
+      },
+      {
+        "color": "PURPLE",
         "position": "R4_1"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R4_2"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R4_3"
+      },
+      {
+        "color": "BLACK",
+        "position": "R4_4"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "DrawElementsOfChoiceEffect"
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "ReturnAllAdjacentHandlersEffect"
       }
     ]
-  },{
-    "name": "CORDATH",
-    "points": 20,
+  },
+  {
+    "name": "LASURA",
+    "points": 14,
     "temperature": "COOL",
     "family": "LEGENDARY",
     "elementSpaces": [
       {
-        "color": "BLUE",
-        "position": "L4_1"
+        "color": "GREEN",
+        "position": "L3_1"
       },
       {
-        "color": "RED",
-        "position": "L4_2"
+        "color": "GREEN",
+        "position": "L3_2"
       },
       {
-        "color": "RED",
-        "position": "R4_2"
+        "color": "GREEN",
+        "position": "L3_3"
       },
       {
-        "color": "BLUE",
-        "position": "R4_1"
+        "color": "PURPLE",
+        "position": "R3_1"
+      },
+      {
+        "color": "PURPLE",
+        "position": "R3_2"
+      },
+      {
+        "color": "BLACK",
+        "position": "R3_3"
       }
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "ReorderTopThreeCardsEffect"
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "DrawOneLessElementEffect"
       }
     ]
   }

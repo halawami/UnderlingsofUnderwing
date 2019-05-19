@@ -2,43 +2,41 @@ package underlings.effect.player;
 
 import static org.junit.Assert.assertEquals;
 
-import org.easymock.EasyMock;
 import org.junit.Test;
 
+import underlings.MockTest;
 import underlings.card.effect.domestic.GainHandlersEffect;
 import underlings.player.Player;
 import underlings.utilities.LocaleWrap;
 
-public class GainHandlersEffectTests {
+public class GainHandlersEffectTests extends MockTest {
 
     @Test
     public void testOneHandler() {
-        Player player = EasyMock.mock(Player.class);
+        Player player = this.mock(Player.class);
         GainHandlersEffect gainOneHandler = new GainHandlersEffect();
         gainOneHandler.numberOfHandlers = 1;
         gainOneHandler.on(player);
         player.gainHandler();
-        EasyMock.replay(player);
+
+        this.replayAll();
 
         gainOneHandler.apply();
-
-        EasyMock.verify(player);
     }
 
     @Test
     public void testFourHandlers() {
-        Player player = EasyMock.mock(Player.class);
+        Player player = this.mock(Player.class);
         GainHandlersEffect gainOneHandler = new GainHandlersEffect();
         gainOneHandler.numberOfHandlers = 4;
         gainOneHandler.on(player);
         for (int i = 0; i < 4; i++) {
             player.gainHandler();
         }
-        EasyMock.replay(player);
+
+        this.replayAll();
 
         gainOneHandler.apply();
-
-        EasyMock.verify(player);
     }
 
     @Test
