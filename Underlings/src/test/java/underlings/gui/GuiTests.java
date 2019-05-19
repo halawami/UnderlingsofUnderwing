@@ -168,42 +168,42 @@ public class GuiTests {
 
     @Test
     public void testNotify() {
-        this.promptHandler.displayMessage(LocaleWrap.get("test_message"), 0, JOptionPane.PLAIN_MESSAGE);
+        this.promptHandler.displayMessage("test", 0, JOptionPane.PLAIN_MESSAGE);
         this.replay();
 
-        this.gui.notifyAction(0, LocaleWrap.get("test_message"));
+        this.gui.notifyAction(0, "test");
     }
 
     @Test
     public void testAlertNoPlayerId() {
-        this.promptHandler.displayMessage(LocaleWrap.get("test_message"), JOptionPane.PLAIN_MESSAGE);
+        this.promptHandler.displayMessage("test", JOptionPane.PLAIN_MESSAGE);
         this.replay();
 
-        this.gui.alert(LocaleWrap.get("test_message"), PromptType.REGULAR);
+        this.gui.alert("test", PromptType.REGULAR);
     }
 
     @Test
     public void testAlertRegular() {
-        this.promptHandler.displayMessage(LocaleWrap.get("test_message"), 1, JOptionPane.PLAIN_MESSAGE);
+        this.promptHandler.displayMessage("test", 1, JOptionPane.PLAIN_MESSAGE);
         this.replay();
 
-        this.gui.alert(LocaleWrap.get("test_message"), 1, PromptType.REGULAR);
+        this.gui.alert("test", 1, PromptType.REGULAR);
     }
 
     @Test
     public void testAlertWarning() {
-        this.promptHandler.displayMessage(LocaleWrap.get("test_message"), 1, JOptionPane.WARNING_MESSAGE);
+        this.promptHandler.displayMessage("test", 1, JOptionPane.WARNING_MESSAGE);
         this.replay();
 
-        this.gui.alert(LocaleWrap.get("test_message"), 1, PromptType.WARNING);
+        this.gui.alert("test", 1, PromptType.WARNING);
     }
 
     @Test
     public void testAlertError() {
-        this.promptHandler.displayMessage(LocaleWrap.get("test_message"), 1, JOptionPane.ERROR_MESSAGE);
+        this.promptHandler.displayMessage("test", 1, JOptionPane.ERROR_MESSAGE);
         this.replay();
 
-        this.gui.alert(LocaleWrap.get("test_message"), 1, PromptType.ERROR);
+        this.gui.alert("test", 1, PromptType.ERROR);
     }
 
     @Test
@@ -213,7 +213,7 @@ public class GuiTests {
         this.replay();
 
         List<Integer> ints = new ArrayList<>();
-        Integer result = this.gui.promptChoice(LocaleWrap.get("test_message"), ints, 0);
+        Integer result = this.gui.promptChoice("test", ints, 0);
 
         assertEquals(1, result.intValue());
     }
@@ -349,10 +349,10 @@ public class GuiTests {
         hatchingGround.cards[1][0] = new Card();
         hatchingGround.cards[1][1] = new Card();
 
-        hatchingGround.cards[0][0].name = LocaleWrap.get("test_name_1");
-        hatchingGround.cards[0][1].name = LocaleWrap.get("test_name_2");
-        hatchingGround.cards[1][0].name = LocaleWrap.get("test_name_3");
-        hatchingGround.cards[1][1].name = LocaleWrap.get("test_name_4");
+        hatchingGround.cards[0][0].name = "1";
+        hatchingGround.cards[0][1].name = "2";
+        hatchingGround.cards[1][0].name = "3";
+        hatchingGround.cards[1][1].name = "4";
 
         List<Card> validCards = new ArrayList<>();
         validCards.add(hatchingGround.cards[0][1]);

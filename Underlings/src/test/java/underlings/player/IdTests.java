@@ -2,11 +2,13 @@ package underlings.player;
 
 import static org.junit.Assert.assertEquals;
 
+import java.text.MessageFormat;
 import java.util.Arrays;
 
 import org.junit.Test;
 
 import underlings.handler.HandlerFactory;
+import underlings.utilities.LocaleWrap;
 
 public class IdTests {
 
@@ -26,7 +28,7 @@ public class IdTests {
     public void testToString() {
         Player p = new Player(2, new HandlerFactory(), 1);
 
-        assertEquals("Player 1", p.toString());
+        assertEquals(MessageFormat.format(LocaleWrap.get("player_number"), p.getId()), p.toString());
     }
 
     @Test

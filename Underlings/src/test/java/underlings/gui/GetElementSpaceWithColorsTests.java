@@ -20,7 +20,7 @@ public class GetElementSpaceWithColorsTests {
     @Test
     public void testNoSpaces() {
         Card card = new Card();
-        card.name = LocaleWrap.get("test_card");
+        card.name = "test card";
         card.elementSpaces = new ElementSpace[0];
 
         List<Card> cards = Arrays.asList(card);
@@ -33,7 +33,7 @@ public class GetElementSpaceWithColorsTests {
     @Test
     public void testNoColors() {
         Card card = new Card();
-        card.name = LocaleWrap.get("test_card");
+        card.name = "test card";
         card.elementSpaces = new ElementSpace[1];
         card.elementSpaces[0] = new ElementSpace(ElementColor.RED);
 
@@ -48,7 +48,7 @@ public class GetElementSpaceWithColorsTests {
     @Test
     public void testOneSpaceOneColorInvalid() {
         Card card = new Card();
-        card.name = LocaleWrap.get("test_card");
+        card.name = "test card";
         card.elementSpaces = new ElementSpace[1];
         card.elementSpaces[0] = new ElementSpace(ElementColor.RED);
         card.elementSpaces[0].addElements(new Element(ElementColor.RED));
@@ -64,7 +64,7 @@ public class GetElementSpaceWithColorsTests {
     @Test
     public void testOneSpaceOneColorValid() {
         Card card = new Card();
-        card.name = LocaleWrap.get("test_card");
+        card.name = "test card";
         card.elementSpaces = new ElementSpace[1];
         card.elementSpaces[0] = new ElementSpace(ElementColor.RED);
         card.elementSpaces[0].position = ElementSpacePosition.L3_1;
@@ -91,7 +91,7 @@ public class GetElementSpaceWithColorsTests {
     @Test
     public void testTwoSpacesMultiColorsValid() {
         Card card = new Card();
-        card.name = LocaleWrap.get("test_card");
+        card.name = "test card";
         card.elementSpaces = new ElementSpace[2];
         card.elementSpaces[0] = new ElementSpace(ElementColor.RED);
         card.elementSpaces[0].addElements(new Element(ElementColor.RED));
@@ -121,7 +121,7 @@ public class GetElementSpaceWithColorsTests {
     @Test
     public void testChoseNo() {
         Card card = new Card();
-        card.name = LocaleWrap.get("test_card");
+        card.name = "test card";
         card.elementSpaces = new ElementSpace[2];
         card.elementSpaces[0] = new ElementSpace(ElementColor.RED);
         card.elementSpaces[0].addElements(new Element(ElementColor.RED));
@@ -145,7 +145,7 @@ public class GetElementSpaceWithColorsTests {
     @Test
     public void testSecondaryColors() {
         Card card = new Card();
-        card.name = LocaleWrap.get("test_card");
+        card.name = "test card";
         card.elementSpaces = new ElementSpace[2];
         card.elementSpaces[0] = new ElementSpace(ElementColor.ORANGE);
         card.elementSpaces[0].addElements(new Element(ElementColor.RED));
@@ -175,7 +175,7 @@ public class GetElementSpaceWithColorsTests {
     @Test
     public void testCardWithValidAndInvalidSpaces() {
         Card card = new Card();
-        card.name = LocaleWrap.get("test_card");
+        card.name = "test card";
         card.elementSpaces = new ElementSpace[2];
         card.elementSpaces[0] = new ElementSpace(ElementColor.ORANGE);
         card.elementSpaces[0].addElements(new Element(ElementColor.RED));
