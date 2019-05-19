@@ -39,28 +39,6 @@ The definition of done is created by examining and applying BVA on the rules.
   - ```underlings.hatchingground.SetupTests.testDeal4By3()```
   - ```underlings.hatchingground.SetupTests.testDeal4By4()```
 
-
-#### Handler Setup ```underlings.handler.SetupTests```
-
-- [x] Players start off with 2 handlers for [2, 6] players
-  - When there are 2 players, each player has 2 handlers
-    - ```underlings.handler.SetupTests.test2PlayerHandlerCount()```
-  - When there are 6 players, each player has 2 handlers
-    - ```underlings.handler.SetupTests.test6PlayerHandlerCount()```
-- [x] Handlers should start in the ready room for [2, 6] players
-  - When there are 2 players, each handler for each player should start in the ready room
-    - ```underlings.handler.SetupTests.test2PlayerReadyRoom()```
-  - When there are 6 players, each handler for each player should start in the ready room
-    - ```underlings.handler.SetupTests.test6PlayerReadyRoom()```
-- [x] The maximum number of handlers should be set for [2, 6] players
-  - When there are 2 players, the maximum number of handlers is 4
-    - ```underlings.handler.SetupTests.test2PlayerMaxHandlers()```
-  - When there are 3 players, the maximum number of handlers is 5
-    - ```underlings.handler.SetupTests.test3PlayerMaxHandlers()```
-  - When there are [4, 6] players, the maximum number of handlers is 6
-    - ```underlings.handler.SetupTests.test4PlayerMaxHandlers()```
-    - ```underlings.handler.SetupTests.test6PlayerMaxHandlers()```
-
 ### Game ```underlings.game.GameTests```
 
 - [x] The game should be setup when the program is ran
@@ -202,12 +180,24 @@ The definition of done is created by examining and applying BVA on the rules.
   - ```underlings.hatchingground.AdjacentCardsTests.testGetCardCoordinatesBottomEdge()```
   - ```underlings.hatchingground.AdjacentCardsTests.testGetCardCoordinatesMiddleEdge()```
   - ```underlings.hatchingground.AdjacentCardsTests.testGetCardCoordinatesInvalidCard()```
-- [x] The hatching ground can find and return a card given a handler
-  - ```underlings.hatchingground.FindCardTests.testFindCardEmpty()```
-  - ```underlings.hatchingground.FindCardTests.testFindCardSuccessful()```
-  - ```underlings.hatchingground.FindCardTests.testFindCardUnsuccessful()```
 
-####
+### Drawing Phase ```underlings.phase.DrawingPhaseTests```
+
+- [x] The player draws elements based on their element givers
+  - If the bag is not empty, they get an element
+    - ```underlings.phase.DrawingPhaseTests.testTurn```
+  - If the bag is empty, they do not get an element
+    - ```underlings.phase.DrawingPhaseTests.testTurnNullElement```
+
+### HandlerPhase ```underlings.phase.HandlerPhaseTests```
+
+- [x] The player chooses a place to move a handler to
+  - The player has a handler outside the break room
+    - ```underlings.phase.HandlerPhaseTests.testTurn```
+  - The player has a handler in the break room
+    - ```underlings.phase.HandlerPhaseTests.testTurnHandlerInBreakRoom```
+  - The player has no handlers
+    - ```underlings.phase.HandlerPhaseTests.testTurnNoHandlers```
 
 ### Scoring ```underlings.scoring```
 
@@ -271,7 +261,7 @@ The definition of done is created by examining and applying BVA on the rules.
 
 - Dragons
   - Lasura
-- [x] This effect let the player look at the top three cards of deck and reorder them as desired
+- [x] The top three cards will be in the order of player
   - Deck has 0 cards
      - ```underlings.card.effect.domestic.deck.ReorderTopThreeCardsEffectTests.testNoCardsLeft()```
   - Deck has 1 card
@@ -287,10 +277,29 @@ The definition of done is created by examining and applying BVA on the rules.
 
 - Dragons
   - SKY WHELP, WATER WHELP, ARBOR WHELP, BLOOD WHELP, BRIMSTONE WHELP, ELECTRIC WHELP, TWILIGHT WHELP, HARVEST WHELP, VOID WHELP, UNDINE WHELP, STORM WHELP, STEAM WHELP, NATURE WHELP, ETHEREAL WHELP, ETHEREAL DRAKE, BLOOD DRAKE, SKY DRAKE, WATER DRAKE, AEON WHELP, NEBULA WHELP, CHROMATIC WHELP, CHROMATIC DRAKE, OPALESCENT DRAKE, BLOOD WYVERN, SKY WYVERN, WATER WYVERN
-- [x] This effect let the player collect one element of a color from a list of colors, from the element bad
+- [x] Player will get an element of color from a list of colors, from the element bag
   - Collect 1 element from a list of [1] color
      - ```underlings.card.effect.domestic.element.CollectElementEffectTests.testOneColor()```
   - Collect 1 element from a list of [2,MAX] colors
      - ```underlings.card.effect.domestic.element.CollectElementEffectTests.testTwoColors()```
 - [x] The player should know that the effect has been run
   - ```underlings.card.effect.domestic.element.CollectElementEffectTests.testToString()```
+
+  
+#### Collect 5 elements of each color ```underlings.card.effect.domestic.element.CollectFiveElementsEffectTests```
+
+- Dragons
+  - TIAMAT
+- [x] Player will get 5 elements of each color from a list of 5 colors 
+  - Collect 5 elements, 1 element for each color from list [RED, BLUE, GREEN, BLACK, WHITE]
+     - ```underlings.card.effect.domestic.element.CollectFiveElementsEffectTests.testEffect()```
+- [x] The player should know that the effect has been run
+  - ```underlings.card.effect.domestic.element.CollectFiveElementsEffectTests.testToString()```
+#### ALL Eggs claimed this round take +1 round to hatch  ```underlings.card.effect.wild.AllEggsHatchLateEffectTests```
+
+- Dragons
+  - Norruth
+- [x] This effect modifies the hatching ground to allow for late hatching for that round
+  - ```underlings.card.effect.wild.AllEggsHatchLateEffectTests.testApply()```
+- [x] The player should know the effect has been run
+  - ```underlings.card.effect.wild.AllEggsHatchLateEffectTests.testToString()```
