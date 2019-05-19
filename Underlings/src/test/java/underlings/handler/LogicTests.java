@@ -1,4 +1,4 @@
-package underlings.handler.movement;
+package underlings.handler;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -16,12 +16,6 @@ import underlings.field.Field;
 import underlings.field.FieldSpaceFactory;
 import underlings.gui.DrawChoice;
 import underlings.gui.Gui;
-import underlings.handler.Handler;
-import underlings.handler.HandlerChoice;
-import underlings.handler.HandlerFactory;
-import underlings.handler.HandlerMovementLogic;
-import underlings.handler.HandlerState;
-import underlings.handler.WildHandler;
 import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
 
