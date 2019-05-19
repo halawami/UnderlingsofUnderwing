@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-
 import underlings.card.Card;
 import underlings.card.effect.Effect;
 import underlings.element.utilities.ElementSpaceLogic;
@@ -17,7 +16,7 @@ public class HatchingGround implements Iterable<Card> {
     private int height;
     private int width;
     public Card[][] cards;
-    private Deck deck;
+    protected Deck deck;
     public ElementSpaceLogic logic;
     public boolean lateHatching;
 
@@ -44,17 +43,17 @@ public class HatchingGround implements Iterable<Card> {
         this.cards = new Card[this.height][this.width];
         for (int row = 0; row < this.height; row++) {
             for (int col = 0; col < this.width; col++) {
-                placeCard(row, col, this.deck.draw());
+                this.placeCard(row, col, this.deck.draw());
             }
         }
     }
 
     public List<Card> getUnclaimedEggs() {
-        return getDragons(Integer.MAX_VALUE, true);
+        return this.getDragons(Integer.MAX_VALUE, true);
     }
 
     public List<Card> getClaimedEggs() {
-        return getDragons(Integer.MAX_VALUE, false);
+        return this.getDragons(Integer.MAX_VALUE, false);
     }
 
     public List<Card> getAdjacentCards(Card centerCard) {
@@ -122,9 +121,9 @@ public class HatchingGround implements Iterable<Card> {
         for (int row = 0; row < this.height; row++) {
             for (int col = 0; col < this.width; col++) {
                 Card currentCard = this.cards[row][col];
-                if (logic.isComplete(currentCard) && currentCard.handler != WildHandler.getInstance()) {
+                if (this.logic.isComplete(currentCard) && currentCard.handler != WildHandler.getInstance()) {
                     completeEggs.add(this.cards[row][col]);
-                    placeCard(row, col, this.deck.draw());
+                    this.placeCard(row, col, this.deck.draw());
                 }
             }
         }
@@ -135,7 +134,7 @@ public class HatchingGround implements Iterable<Card> {
         for (int row = 0; row < this.height; row++) {
             for (int col = 0; col < this.width; col++) {
                 if (this.cards[row][col] == card) {
-                    placeCard(row, col, this.deck.draw());
+                    this.placeCard(row, col, this.deck.draw());
                 }
             }
         }

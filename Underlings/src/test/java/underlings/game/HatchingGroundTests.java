@@ -2,14 +2,11 @@ package underlings.game;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.card.Card;
 import underlings.card.effect.Effect;
 import underlings.element.utilities.ElementSpaceLogic;
@@ -127,15 +124,26 @@ public class HatchingGroundTests {
         EasyMock.expect(deck.draw()).andReturn(card4);
         EasyMock.expect(deck.draw()).andReturn(new Card());
 
-        EasyMock.replay(logic, deck);
-        HatchingGround hatchingGround = new HatchingGround(deck, logic);
+        // HatchingGround hatchingGround = new HatchingGround(deck, logic);
+        HatchingGround hatchingGround =
+                EasyMock.partialMockBuilder(HatchingGround.class).addMockedMethod("placeCard").createMock();
+        hatchingGround.placeCard(EasyMock.anyInt(), EasyMock.anyInt(), EasyMock.anyObject());
+        EasyMock.expectLastCall().times(5);
+        EasyMock.replay(logic, deck, hatchingGround);
+        hatchingGround.logic = logic;
+        hatchingGround.deck = deck;
         hatchingGround.setDimensions(2, 2);
         hatchingGround.populate();
+        hatchingGround.cards[0][0] = card1;
+        hatchingGround.cards[0][1] = card2;
+        hatchingGround.cards[1][0] = card3;
+        hatchingGround.cards[1][1] = card4;
         card1.handler = WildHandler.getInstance();
         card3.handler = WildHandler.getInstance();
         List<Card> cards = hatchingGround.pullAndReplaceCompleteEggs();
 
-        EasyMock.verify(logic, deck);
+
+        EasyMock.verify(logic, deck, hatchingGround);
 
         assertEquals(1, cards.size());
         assertTrue(cards.contains(card4));

@@ -1,16 +1,13 @@
 package underlings.game;
 
 import static org.junit.Assert.assertEquals;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.element.ElementBag;
 import underlings.gui.Gui;
 import underlings.phase.FinalPhase;
@@ -54,24 +51,30 @@ public class GameTests {
         List<Phase> phases = new ArrayList<>();
         Map<FinalPhaseType, FinalPhase> finalPhaseMap = new HashMap<>();
         FinalPhase finalPhase = EasyMock.mock(FinalPhase.class);
+        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         finalPhaseMap.put(FinalPhaseType.REGULAR, finalPhase);
 
         Game mockedGame = EasyMock.createMockBuilder(Game.class).addMockedMethod("promptPlayerCount")
-                .addMockedMethod("setUp").addMockedMethod("gameLoop").addMockedMethod("display").createMock();
+                .addMockedMethod("gameLoop").addMockedMethod("display").addMockedMethod("setUpProperties")
+                .addMockedMethod("setUpPlayerList").createMock();
+        mockedGame.hatchingGround = hatchingGround;
 
         mockedGame.numberOfPlayers = 2;
 
         mockedGame.promptPlayerCount();
-        mockedGame.setUp(2);
+
+        mockedGame.setUpProperties(EasyMock.anyInt());
+        hatchingGround.populate();
+        mockedGame.setUpPlayerList(EasyMock.anyInt());
         mockedGame.gameLoop();
         mockedGame.display();
         finalPhase.execute();
 
-        EasyMock.replay(mockedGame, finalPhase);
+        EasyMock.replay(mockedGame, finalPhase, hatchingGround);
 
         mockedGame.start(phases, finalPhaseMap);
 
-        EasyMock.verify(mockedGame, finalPhase);
+        EasyMock.verify(mockedGame, finalPhase, hatchingGround);
 
         assertEquals(mockedGame.phases, phases);
         assertEquals(mockedGame.finalPhaseMap, finalPhaseMap);

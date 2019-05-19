@@ -1,13 +1,10 @@
 package underlings.effect.element;
 
 import static org.junit.Assert.assertEquals;
-
 import java.text.MessageFormat;
-
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.MockTest;
 import underlings.card.effect.domestic.CollectElementEffect;
 import underlings.element.Element;
@@ -20,18 +17,18 @@ public class CollectElementEffectTests extends MockTest {
 
     @Before
     public void init() {
-        this.player = EasyMock.mock(Player.class);
-        this.elementBag = EasyMock.mock(ElementBag.class);
+        this.player = this.mock(Player.class);
+        this.elementBag = this.mock(ElementBag.class);
     }
 
     @Test
     public void testOneColor() {
-        this.testColors(new ElementColor[]{ElementColor.BLUE});
+        this.testColors(new ElementColor[] {ElementColor.BLUE});
     }
 
     @Test
     public void testTwoColors() {
-        this.testColors(new ElementColor[]{ElementColor.BLUE, ElementColor.RED});
+        this.testColors(new ElementColor[] {ElementColor.BLUE, ElementColor.RED});
     }
 
     private void testColors(ElementColor[] elementChoices) {
@@ -53,7 +50,7 @@ public class CollectElementEffectTests extends MockTest {
     public void testToString() {
         this.replayAll();
         CollectElementEffect effect = new CollectElementEffect();
-        effect.elementChoices = new ElementColor[]{ElementColor.BLACK};
+        effect.elementChoices = new ElementColor[] {ElementColor.BLACK};
         StringBuilder elements = new StringBuilder();
         for (ElementColor color : effect.elementChoices) {
             elements.append(color);
