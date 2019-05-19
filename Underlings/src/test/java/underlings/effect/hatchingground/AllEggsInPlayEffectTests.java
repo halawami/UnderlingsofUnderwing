@@ -130,15 +130,13 @@ public class AllEggsInPlayEffectTests extends MockTest {
         cardInPlay.handler = this.mock(Handler.class);
         List<ElementSpace> mockSpaces = this.mockListOf(ElementSpace.class).withLengthOf(8);
         cardInPlay.elementSpaces = mockSpaces.toArray(new ElementSpace[8]);
-        ElementSpaceUtilities elementSpaceLogic = this.mock(ElementSpaceUtilities.class);
-        ElementBag elementBag = this.mock(ElementBag.class);
 
         mockSpaces.forEach(ElementSpace::destroyAllElements);
 
         this.replayAll();
 
         DestroyAllElementsOnAllEggsInPlay effect = new DestroyAllElementsOnAllEggsInPlay();
-        effect.applyOnCardInPlay(cardInPlay, elementSpaceLogic, elementBag, null);
+        effect.applyOnCardInPlay(cardInPlay);
     }
 
     @Test
@@ -151,7 +149,8 @@ public class AllEggsInPlayEffectTests extends MockTest {
     public void testToStringPlace() {
         AddElementToAllEggsInPlayEffect effect = new AddElementToAllEggsInPlayEffect();
         effect.elementColor = ElementColor.BLACK;
-        assertEquals(LocaleUtilities.format("place_element_on_all_eggs_effect", effect.elementColor), effect.toString());
+        assertEquals(LocaleUtilities.format("place_element_on_all_eggs_effect", effect.elementColor),
+                effect.toString());
     }
 
 }
