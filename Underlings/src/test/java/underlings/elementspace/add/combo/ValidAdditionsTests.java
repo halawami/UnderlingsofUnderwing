@@ -111,4 +111,15 @@ public class ValidAdditionsTests {
         List<ElementColor> actual = logic.getValidAdditions(elementSpace);
         assertTrue(actual.isEmpty());
     }
+
+    @Test
+    public void testValidAdditionsDone() {
+        List<String> recipes = Arrays.asList("PURPLE:RED,BLUE RED");
+        ElementSpaceLogic logic = new ElementSpaceLogic(recipes);
+
+        ElementSpace elementSpace = new ElementSpace(ElementColor.PURPLE);
+        elementSpace.addElements(new Element(ElementColor.RED));
+
+        assertTrue(logic.getValidAdditions(elementSpace).isEmpty());
+    }
 }
