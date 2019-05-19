@@ -1,42 +1,40 @@
 package underlings.handler;
 
 import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
-
 import underlings.field.FieldSpace;
 import underlings.gui.DrawChoice;
 import underlings.utilities.LocaleUtilities;
 
-public class HandlerStateStringTests {
+public class StateStringTests {
 
     @Test
-    public void testToStringReadyRoom() {
+    public void testReadyRoom() {
         Handler handler = new Handler(HandlerState.READY_ROOM);
         assertEquals(LocaleUtilities.format("HANDLER_" + HandlerState.READY_ROOM), handler.toString());
     }
 
     @Test
-    public void testToStringBreakRoom() {
+    public void testBreakRoom() {
         Handler handler = new Handler(HandlerState.BREAK_ROOM);
         assertEquals(LocaleUtilities.format("HANDLER_" + HandlerState.BREAK_ROOM), handler.toString());
     }
 
     @Test
-    public void testToStringCard() {
+    public void testCard() {
         Handler handler = new Handler(HandlerState.CARD);
         handler.setLocation("test");
         assertEquals(LocaleUtilities.format("HANDLER_" + HandlerState.CARD, "test"), handler.toString());
     }
 
     @Test
-    public void testToStringIncubation() {
+    public void testIncubation() {
         Handler handler = new Handler(HandlerState.INCUBATION);
         assertEquals(LocaleUtilities.format("HANDLER_" + HandlerState.INCUBATION), handler.toString());
     }
 
     @Test
-    public void testToStringField() {
+    public void testField() {
         assertEquals(LocaleUtilities.format("field_space_element_giver", LocaleUtilities.get("BLUE")),
                 this.getStringField(DrawChoice.BLUE));
         assertEquals(LocaleUtilities.format("field_space_element_giver", LocaleUtilities.get("RED")),
