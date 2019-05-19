@@ -15,9 +15,4 @@ public class WildHandler extends Handler {
         return instance;
     }
 
-    @Override
-    public void moveToState(HandlerState state) {
-        super.moveToState(HandlerState.CARD);
-    }
-
 }
