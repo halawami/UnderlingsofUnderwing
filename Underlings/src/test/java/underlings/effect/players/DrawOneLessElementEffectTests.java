@@ -9,7 +9,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import underlings.MockTest;
-import underlings.card.effect.wild.DrawOneLessElementEffect;
+import underlings.card.effect.wild.players.DrawOneLessElementEffect;
 import underlings.element.ElementGiver;
 import underlings.player.Player;
 

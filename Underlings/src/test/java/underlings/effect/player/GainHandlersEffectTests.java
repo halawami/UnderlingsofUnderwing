@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import underlings.MockTest;
-import underlings.card.effect.domestic.GainHandlersEffect;
+import underlings.card.effect.domestic.players.player.GainHandlersEffect;
 import underlings.player.Player;
 import underlings.utilities.LocaleWrap;
 

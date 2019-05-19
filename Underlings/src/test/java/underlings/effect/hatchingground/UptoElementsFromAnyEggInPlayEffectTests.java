@@ -44,7 +44,7 @@ public class UptoElementsFromAnyEggInPlayEffectTests extends MockTest {
                 EasyMock.partialMockBuilder(UptoElementsFromAnyEggInPlayEffect.class)
                         .addMockedMethod("applyOnSelectedElement").createMock();
         this.addMock(effect);
-        effect.elementChoices = new ElementColor[]{ElementColor.BLUE};
+        effect.elementChoices = new ElementColor[] {ElementColor.BLUE};
         effect.upTo = numberOfSelectedElements;
 
         List<Card> mockCards = this.mockListOf(Card.class).withLengthOf(6);
@@ -117,24 +117,24 @@ public class UptoElementsFromAnyEggInPlayEffectTests extends MockTest {
     @Test
     public void testToStringCollect() {
         CollectUpToElementsFromAnyEggInPlayEffect effect = new CollectUpToElementsFromAnyEggInPlayEffect();
-        effect.elementChoices = new ElementColor[]{ElementColor.BLACK};
+        effect.elementChoices = new ElementColor[] {ElementColor.BLACK};
         StringBuilder elements = new StringBuilder();
         for (ElementColor color : effect.elementChoices) {
             elements.append(color);
             elements.append(" ");
         }
-        assertEquals(LocaleWrap.format("up_to_effect", "Collect", effect.upTo, elements), effect.toString());
+        assertEquals(LocaleWrap.format("collect_up_to_effect", effect.upTo, elements), effect.toString());
     }
 
     @Test
     public void testToStringDestroy() {
         DestroyUpToElementsOnAnyEggInPlayEffect effect = new DestroyUpToElementsOnAnyEggInPlayEffect();
-        effect.elementChoices = new ElementColor[]{ElementColor.BLACK};
+        effect.elementChoices = new ElementColor[] {ElementColor.BLACK};
         StringBuilder elements = new StringBuilder();
         for (ElementColor color : effect.elementChoices) {
             elements.append(color);
             elements.append(" ");
         }
-        assertEquals(LocaleWrap.format("up_to_effect", "Destroy", effect.upTo, elements), effect.toString());
+        assertEquals(LocaleWrap.format("destroy_up_to_effect", effect.upTo, elements), effect.toString());
     }
 }

@@ -2,6 +2,7 @@ package underlings.card.effect.wild.adjacenteggs;
 
 import java.util.List;
 import underlings.card.Card;
+import underlings.card.effect.AdjacentEggsEffect;
 import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;

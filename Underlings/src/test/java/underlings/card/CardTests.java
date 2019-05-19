@@ -4,14 +4,16 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import underlings.utilities.LocaleWrap;
+
 public class CardTests {
 
     @Test
     public void testToString() {
         Card card = new Card();
-        card.name = "test card";
+        card.name = LocaleWrap.get("test_card");
 
-        assertEquals("test card", card.toString());
+        assertEquals(LocaleWrap.get("test_card"), card.toString());
     }
 
 }

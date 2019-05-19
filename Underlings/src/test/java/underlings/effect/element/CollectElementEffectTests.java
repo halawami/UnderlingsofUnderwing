@@ -9,7 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import underlings.MockTest;
-import underlings.card.effect.domestic.CollectElementEffect;
+import underlings.card.effect.domestic.element.CollectElementEffect;
 import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;

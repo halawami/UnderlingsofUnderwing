@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import underlings.MockTest;
 import underlings.card.effect.Effect;
-import underlings.card.effect.domestic.StealAllStoredElements;
+import underlings.card.effect.domestic.players.StealAllStoredElements;
 import underlings.gui.Gui;
 import underlings.player.Player;
 import underlings.utilities.LocaleWrap;
@@ -18,22 +18,17 @@ public class StealAllStoredElementsTests extends MockTest {
 
     @Test
     public void testEffect() {
-        Player currentPlayer = EasyMock.mock(Player.class);
+        Player currentPlayer = this.mock(Player.class);
         List<Player> players = this.mockListOf(Player.class).withLengthOf(6);
-        Gui gui = EasyMock.mock(Gui.class);
-        Effect testedEffect = new StealAllStoredElements();
-        testedEffect.on(currentPlayer).on(players).on(gui);
+        Gui gui = this.mock(Gui.class);
+        Effect effect = new StealAllStoredElements();
 
         EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_war_players"), players, 0)).andReturn(players.get(3));
         currentPlayer.stealAllElementsFromPlayer(players.get(3));
 
-        EasyMock.replay(currentPlayer, gui);
-        players.forEach(EasyMock::replay);
+        this.replayAll();
 
-        testedEffect.apply();
-
-        EasyMock.verify(currentPlayer, gui);
-        players.forEach(EasyMock::verify);
+        effect.on(currentPlayer).on(players).on(gui).apply();
     }
 
     @Test

@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import underlings.card.Card;
 import underlings.card.Family;
+import underlings.card.effect.AdjacentEggsEffect;
 import underlings.element.ElementBag;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.Deck;

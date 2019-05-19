@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import underlings.MockTest;
 import underlings.card.effect.Effect;
-import underlings.card.effect.wild.LoseHandlerEffect;
+import underlings.card.effect.wild.players.LoseHandlerEffect;
 import underlings.player.Player;
 import underlings.utilities.LocaleWrap;
 

@@ -10,7 +10,7 @@ import org.junit.Test;
 import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.EmptyCard;
-import underlings.card.effect.domestic.ReorderTopThreeCardsEffect;
+import underlings.card.effect.domestic.deck.ReorderTopThreeCardsEffect;
 import underlings.game.Deck;
 import underlings.gui.Gui;
 

@@ -21,6 +21,6 @@ public class CollectUpToElementsFromAnyEggInPlayEffect extends UptoElementsFromA
             elements.append(color);
             elements.append(LocaleWrap.get("space"));
         }
-        return LocaleWrap.format("up_to_effect", LocaleWrap.get("collect"), this.upTo, elements);
+        return LocaleWrap.format("collect_up_to_effect", this.upTo, elements);
     }
 }

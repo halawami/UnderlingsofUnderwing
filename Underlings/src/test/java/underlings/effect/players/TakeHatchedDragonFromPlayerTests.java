@@ -14,7 +14,7 @@ import org.junit.Test;
 
 import underlings.card.Card;
 import underlings.card.Temperature;
-import underlings.card.effect.domestic.TakeHatchedDragonFromPlayer;
+import underlings.card.effect.domestic.players.TakeHatchedDragonFromPlayer;
 import underlings.gui.Gui;
 import underlings.gui.Gui.PromptType;
 import underlings.player.Player;
