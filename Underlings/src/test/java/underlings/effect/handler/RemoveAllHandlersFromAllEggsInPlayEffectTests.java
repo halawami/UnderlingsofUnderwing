@@ -5,33 +5,40 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Assert;
 import org.junit.Test;
 
+import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.effect.Effect;
 import underlings.card.effect.wild.RemoveAllHandlersFromAllEggsInPlay;
 import underlings.handler.Handler;
+import underlings.handler.HandlerChoice;
+import underlings.handler.HandlerMovementLogic;
 import underlings.handler.HandlerState;
 import underlings.handler.WildHandler;
+import underlings.player.FakePlayer;
 import underlings.utilities.LocaleWrap;
 
-public class RemoveAllHandlersFromAllEggsInPlayEffectTests {
+public class RemoveAllHandlersFromAllEggsInPlayEffectTests extends MockTest {
 
     @Test
     public void testNoHandler() {
-        // TODO: figure out a better test for this case
+        HandlerMovementLogic handlerMovementLogic = this.mock(HandlerMovementLogic.class);
         Card cardWithNoHandler = new Card();
         RemoveAllHandlersFromAllEggsInPlay testedEffect = new RemoveAllHandlersFromAllEggsInPlay();
 
-        testedEffect.applyOnCardInPlay(cardWithNoHandler, null, null);
+        handlerMovementLogic.move(null, HandlerChoice.BREAK_ROOM, FakePlayer.getInstance());
+
+        testedEffect.applyOnCardInPlay(cardWithNoHandler, null, null, handlerMovementLogic);
     }
 
     @Test
     public void testPlayerHandler() {
+        HandlerMovementLogic handlerMovementLogic = this.mock(HandlerMovementLogic.class);
         Card card = new Card();
         Handler handler = new Handler(HandlerState.CARD);
         card.handler = handler;
         RemoveAllHandlersFromAllEggsInPlay testedEffect = new RemoveAllHandlersFromAllEggsInPlay();
 
-        testedEffect.applyOnCardInPlay(card, null, null);
+        testedEffect.applyOnCardInPlay(card, null, null, handlerMovementLogic);
 
         Assert.assertNull(card.handler);
         Assert.assertEquals(HandlerState.BREAK_ROOM, handler.getState());
@@ -44,7 +51,7 @@ public class RemoveAllHandlersFromAllEggsInPlayEffectTests {
         card.handler = handler;
         RemoveAllHandlersFromAllEggsInPlay testedEffect = new RemoveAllHandlersFromAllEggsInPlay();
 
-        testedEffect.applyOnCardInPlay(card, null, null);
+        testedEffect.applyOnCardInPlay(card, null, null, this.handlerMovementLogic);
 
         Assert.assertEquals(WildHandler.getInstance(), card.handler);
         Assert.assertEquals(HandlerState.CARD, handler.getState());

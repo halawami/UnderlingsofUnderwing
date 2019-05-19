@@ -21,10 +21,11 @@ public abstract class AllEggsInPlayEffect extends DiverseHatchingGroundEffect {
             HandlerMovementLogic handlerMovementLogic) {
         List<Card> cardsInPlay = hatchingGround.getAllCards();
         for (Card cardInPlay : cardsInPlay) {
-            applyOnCardInPlay(cardInPlay, currentPlayer.elementSpaceLogic, elementBag);
+            this.applyOnCardInPlay(cardInPlay, currentPlayer.elementSpaceLogic, elementBag, handlerMovementLogic);
         }
     }
 
-    public abstract void applyOnCardInPlay(Card cardInPlay, ElementSpaceLogic elementSpaceLogic, ElementBag elementBag);
+    public abstract void applyOnCardInPlay(Card cardInPlay, ElementSpaceLogic elementSpaceLogic, ElementBag elementBag,
+            HandlerMovementLogic handlerMovementLogic);
 
 }
