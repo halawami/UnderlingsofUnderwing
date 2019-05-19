@@ -177,3 +177,10 @@ The definition of done is created by examining and applying BVA on the rules.
      - ```underlings.card.effect.domestic.players.player.GainHandlersEffectTests.testFourHandlers()```
 - [x] The player should know that the effect has been run
   - ```underlings.card.effect.domestic.players.player.GainHandlersEffectTests.testToString()```
+
+#### Select 1 Player; Steal all of their stored elements  ```underlings.card.effect.domestic.players.StealAllStoredElementsEffectTests```
+
+- Dragons
+  - Ignatius
+- [x] This effect let the player steal all of stored elements from another player
+  - ```underlings.card.effect.domestic.players.StealAllStoredElementsEffectTests.testEffect()```
