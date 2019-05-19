@@ -20,7 +20,6 @@ public class PlayersTradeDragon extends PlayersEffect {
         Player playerWithMinCards = players.get(0);
         Map<Integer, List<Player>> playersNumberOfCards = new HashMap<Integer, List<Player>>();
         int minNumberOfCards = findMin(playersNumberOfCards, players);
-
         if (playersNumberOfCards.get(minNumberOfCards).size() > 1) {
             gui.notifyAction(FakePlayer.getInstance().getId(), LocaleWrap.get("notify_no_player_least_dragons"));
         } else {
@@ -54,11 +53,11 @@ public class PlayersTradeDragon extends PlayersEffect {
         if (!playerWithMinCards.hatchedCards.isEmpty()) {
             secondCardToTrade = gui.promptChoice(LocaleWrap.get("prompt_card_to_trade"),
                     playerWithMinCards.hatchedCards, playerWithMinCards.id);
+            secondPlayer.hatchedCards.add(secondCardToTrade);
+            playerWithMinCards.hatchedCards.remove(secondCardToTrade);
         }
         secondPlayer.hatchedCards.remove(cardToTrade);
         playerWithMinCards.hatchedCards.add(cardToTrade);
-        secondPlayer.hatchedCards.add(secondCardToTrade);
-        playerWithMinCards.hatchedCards.remove(secondCardToTrade);
     }
 
     @Override
