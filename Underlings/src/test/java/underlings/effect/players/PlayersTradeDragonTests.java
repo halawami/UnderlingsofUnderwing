@@ -96,13 +96,13 @@ public class PlayersTradeDragonTests {
     @Test
     public void testApplyMultiplePlayers() {
 
+        Player player3 = EasyMock.mock(Player.class);
         Card card3 = new Card();
         card3.points = 12;
         card3.domesticEffects = new Effect[] {mockedEffect};
         player.hatchedCards.add(card3);
         player2.hatchedCards.add(card2);
         player2.hatchedCards.add(card3);
-        Player player3 = EasyMock.mock(Player.class);
         player3.hatchedCards = new ArrayList<>();
         player3.hatchedCards.add(card3);
         effect.on(Arrays.asList(player, player2, player3)).on(gui);
@@ -150,12 +150,12 @@ public class PlayersTradeDragonTests {
 
     @Test
     public void testApplyMultipleSameNumberOfDragons() {
+        Player player3 = EasyMock.mock(Player.class);
+        Player player4 = EasyMock.mock(Player.class);
         player.hatchedCards.add(card2);
         player2.hatchedCards.add(card2);
-        Player player3 = EasyMock.mock(Player.class);
         player3.hatchedCards = new ArrayList<>();
         player3.hatchedCards.add(card2);
-        Player player4 = EasyMock.mock(Player.class);
         player4.hatchedCards = new ArrayList<>();
         player4.hatchedCards.add(card2);
         player4.hatchedCards.add(card);
