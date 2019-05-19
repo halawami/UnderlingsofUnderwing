@@ -2,15 +2,12 @@ package underlings.effect.deck;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.Temperature;
@@ -47,7 +44,7 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
         this.addMock(effect);
         effect.temperatures = new Temperature[] {Temperature.NEUTRAL};
 
-        for (Player player : players) {
+        for (Player player : this.players) {
             effect.removeCardsOfTemperature(this.deck, Arrays.asList(effect.temperatures), player);
         }
 
