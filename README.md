@@ -8,6 +8,34 @@ Hussein Alawami, Mohammad Baqer, George Main IV, Wesley Siebenthaler
 
 The definition of done is created by examining and applying BVA on the rules.
 
+### Game Setup ```underlings.game.SetupTests```
+
+- [x] The players should be created for [2, 6] players
+  - When there are 2 players, the game should have 2 players
+    - ```underlings.game.SetupTests.test2PlayerCount()```
+  - When there are 6 players, the game should have 6 players
+    - ```underlings.game.SetupTests.test6PlayerCount()```
+- [x] The number of rounds should be set for [2, 6] players
+  - When there are 2 players, there should be 15 rounds
+    - ```underlings.game.SetupTests.test2PlayerRounds()```
+  - When there are 3 players, there should be 13 rounds
+    - ```underlings.game.SetupTests.test3PlayerRounds()```
+  - When there are [4, 6] players, there should be 12 rounds
+    - ```underlings.game.SetupTests.test4PlayerRounds()```
+    - ```underlings.game.SetupTests.test6PlayerRounds()```
+
+### Game ```underlings.game.GameTests```
+
+- [x] The game should be setup when the program is ran
+  - ```underlings.game.GameTests.testSetup()```
+- [x] The game should be displayed to the player
+  - ```underlings.game.GameTests.testDisplay()```
+- [x] The game should start and run until the game is over
+  - The game can run until the round count reaches zero
+    - ```underlings.game.GameTests.testGameLoopRoundsCompleted()```
+  - The game can run until all eggs have been hatched wild
+    - ```underlings.game.GameTests.testGameLoopWildHatched()```
+  
 ### Players ```underlings.player```
 
 #### Player ID ```underlings.player.IdTests```
@@ -91,9 +119,9 @@ The definition of done is created by examining and applying BVA on the rules.
 #### Temperature Tests ```underlings.scoring.TemperatureTests```
 
 - [x] Players with no cards should have a perfect balance
-  - ```underlings.scoring.TemperatureTests.testNoCards()```
+  - ```underlings.scoring.TemperatureTests.testNoCardsPerfectBalance()```
 - [x] Players with equal warm and cool cards should have a perfect balance
-  - ```underlings.scoring.TemperatureTests.testPerfectBalance()```
+  - ```underlings.scoring.TemperatureTests.testCardsPerfectBalance()```
 - [x] Players with net warm cards should have a warm balance
   - ```underlings.scoring.TemperatureTests.testWarmBalance()```
 - [x] Players with net cool cards should have a cool balance
@@ -122,3 +150,16 @@ The definition of done is created by examining and applying BVA on the rules.
   - ```underlings.scoring.ScoreTests.testDisplayWinners()```
 
 
+### Domestic Card Effects ```underlings.card.effect```
+
+#### Gain Handlers  ```underlings.card.effect.domestic.players.player.GainHandlersEffectTests```
+
+- Dragons
+  - Abyssal Wyrm, Aeon Wyrm, Nebula Wyrm, Opalescent Whelp, Water Wyvern, Sky Wyvern, Blood Wyvern, Water Wyrm, Sky Wyrm, Blood Wyrm, Electric Drake, Steam Drake, Chromatic Drake, Nature Drake, Vadrenox, Blood Whelp, Water Whelp, Water Drake, Blood Drake, Sky Drake, Sky Whelp, Sunstone Drake, Brimstone Drake, Undine Drake, Twilight Drake, Harvest Drake, Ethereal Drake, Arbor Drake, Void Drake, Storm Drake
+- [x] This effect gives the player 1 or 4 handlers 
+  - The player can gain 1 handler
+     - ```underlings.card.effect.domestic.players.player.GainHandlersEffectTests.testOneHandler()```
+  - The player can gain 4 handlers
+     - ```underlings.card.effect.domestic.players.player.GainHandlersEffectTests.testFourHandlers()```
+- [x] The player should know that the effect has been run
+  - ```underlings.card.effect.domestic.players.player.GainHandlersEffectTests.testToString()```
