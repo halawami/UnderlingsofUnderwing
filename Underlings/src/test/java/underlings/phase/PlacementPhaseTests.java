@@ -14,6 +14,7 @@ import org.junit.Test;
 import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.effect.Effect;
+import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.Deck;
 import underlings.game.HatchingGround;
@@ -39,6 +40,8 @@ public class PlacementPhaseTests extends MockTest {
         this.elementSpaceLogic = this.mock(ElementSpaceLogic.class);
         this.gui = this.mock(Gui.class);
         this.placementUtilities = this.mock(PlacementUtilities.class);
+        this.hatchingGround = this.mock(HatchingGround.class);
+        this.hatchingGround.logic = this.mock(ElementSpaceLogic.class);
     }
 
     public <T> Object getField(Class<T> fieldClass, PlacementPhase phase, String fieldName)
@@ -216,7 +219,7 @@ public class PlacementPhaseTests extends MockTest {
     @Test
     public void testTurnNoPlayableCards() {
         PlacementPhase placementPhase = EasyMock.partialMockBuilder(PlacementPhase.class)
-                .addMockedMethod("checkAndDecrementTurnCount").createMock();
+                .addMockedMethod("checkAndDecrementTurnCount").addMockedMethod("setPhaseComplete").createMock();
         placementPhase.utils = this.placementUtilities;
         placementPhase.gui = this.gui;
         this.addMock(placementPhase);
@@ -225,6 +228,33 @@ public class PlacementPhaseTests extends MockTest {
         EasyMock.expect(this.placementUtilities.getPlayableCards(this.player.elementSpaceLogic, this.player.elements))
                 .andReturn(Collections.emptyList());
         this.gui.alert(LocaleWrap.get("no_placements"), this.player.id, PromptType.WARNING);
+
+        this.replayAll();
+
+        placementPhase.turn(this.player);
+    }
+
+    @Test
+    public void testTurnCardNotComplete() {
+        PlacementPhase placementPhase = EasyMock.partialMockBuilder(PlacementPhase.class)
+                .addMockedMethod("checkAndDecrementTurnCount").createMock();
+        placementPhase.utils = this.placementUtilities;
+        placementPhase.gui = this.gui;
+        placementPhase.hatchingGround = this.hatchingGround;
+        this.addMock(placementPhase);
+
+        EasyMock.expect(placementPhase.checkAndDecrementTurnCount(this.player)).andReturn(true);
+        EasyMock.expect(this.placementUtilities.getPlayableCards(this.player.elementSpaceLogic, this.player.elements))
+                .andReturn(Arrays.asList(new Card()));
+        placementPhase.setPhaseComplete(false);
+
+        Card card = this.mock(Card.class);
+        ElementSpace elementSpace = this.mock(ElementSpace.class);
+
+        EasyMock.expect(this.placementUtilities.selectCard(EasyMock.anyObject(), EasyMock.anyObject())).andReturn(card);
+        EasyMock.expect(this.placementUtilities.selectElementSpace(card, this.player)).andReturn(elementSpace);
+        this.placementUtilities.placeElements(elementSpace, this.player);
+        EasyMock.expect(this.hatchingGround.logic.isComplete(card)).andReturn(false);
 
         this.replayAll();
 
