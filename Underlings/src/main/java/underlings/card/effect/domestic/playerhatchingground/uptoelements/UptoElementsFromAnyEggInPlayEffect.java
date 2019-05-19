@@ -1,36 +1,34 @@
-package underlings.card.effect.domestic;
+package underlings.card.effect.domestic.playerhatchingground.uptoelements;
 
 import java.util.List;
 
 import underlings.card.Card;
-import underlings.card.effect.DiverseHatchingGroundEffect;
+import underlings.card.effect.domestic.playerhatchingground.PlayerHatchingGroundEffect;
 import underlings.element.Element;
-import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
-import underlings.game.Deck;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
-import underlings.handler.HandlerMovementLogic;
 import underlings.player.Player;
 import underlings.utilities.EggHatchingLogic;
 
-public abstract class UptoElementsFromAnyEggInPlayEffect extends DiverseHatchingGroundEffect {
+public abstract class UptoElementsFromAnyEggInPlayEffect extends PlayerHatchingGroundEffect {
 
     public ElementColor[] elementChoices;
     public int upTo;
 
     @Override
-    protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag, Gui gui,
-            Player currentPlayer, EggHatchingLogic eggHatchingLogic, Deck deck,
-            HandlerMovementLogic handlerMovementLogic) {
+    protected void apply(HatchingGround hatchingGround, EggHatchingLogic hatchingLogic, Player currentPlayer, Gui gui) {
         List<Card> allCards = hatchingGround.getAllCards();
+
         for (int i = 0; i < this.upTo; i++) {
-            ElementSpace selectedSpace =
-                    gui.getElementSpaceWithColors(allCards, this.elementChoices, currentPlayer.getId());
+            ElementSpace selectedSpace = gui
+                    .getElementSpaceWithColors(allCards, this.elementChoices, currentPlayer.getId());
+
             Element selectedElement =
                     gui.getElementOfColorsFromSpace(this.elementChoices, selectedSpace, currentPlayer.getId());
-            applyOnSelectedElement(selectedElement, selectedSpace, currentPlayer);
+
+            this.applyOnSelectedElement(selectedElement, selectedSpace, currentPlayer);
         }
     }
 

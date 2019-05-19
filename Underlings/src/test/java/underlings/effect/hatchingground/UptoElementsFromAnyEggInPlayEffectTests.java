@@ -9,9 +9,9 @@ import org.junit.Test;
 
 import underlings.MockTest;
 import underlings.card.Card;
-import underlings.card.effect.domestic.CollectUpToElementsFromAnyEggInPlayEffect;
-import underlings.card.effect.domestic.DestroyUpToElementsOnAnyEggInPlayEffect;
-import underlings.card.effect.domestic.UptoElementsFromAnyEggInPlayEffect;
+import underlings.card.effect.domestic.playerhatchingground.uptoelements.CollectUpToElementsFromAnyEggInPlayEffect;
+import underlings.card.effect.domestic.playerhatchingground.uptoelements.DestroyUpToElementsOnAnyEggInPlayEffect;
+import underlings.card.effect.domestic.playerhatchingground.uptoelements.UptoElementsFromAnyEggInPlayEffect;
 import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;

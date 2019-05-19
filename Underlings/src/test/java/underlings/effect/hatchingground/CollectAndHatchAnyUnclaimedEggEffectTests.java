@@ -11,7 +11,7 @@ import org.junit.Test;
 import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.EmptyCard;
-import underlings.card.effect.domestic.CollectAndHatchAnyUnclaimedEggEffect;
+import underlings.card.effect.domestic.playerhatchingground.CollectAndHatchAnyUnclaimedEggEffect;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.player.Player;

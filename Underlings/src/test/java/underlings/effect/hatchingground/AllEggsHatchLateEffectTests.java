@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import underlings.MockTest;
 import underlings.card.effect.Effect;
-import underlings.card.effect.wild.alleggsinplay.AllEggsHatchLateEffect;
+import underlings.card.effect.wild.AllEggsHatchLateEffect;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.utilities.LocaleWrap;
