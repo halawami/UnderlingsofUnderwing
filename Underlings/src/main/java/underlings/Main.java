@@ -49,7 +49,7 @@ public class Main {
     public static void main(String[] args) {
         List<String> recipes = null;
         try {
-            recipes = Resources.readLines(Resources.getResource("DefaultRecipeList.txt"), Charsets.UTF_8);
+            recipes = Resources.readLines(Resources.getResource(LocaleWrap.get("default_recipe_list")), Charsets.UTF_8);
         } catch (IOException e) {
             e.printStackTrace();
             System.exit(1);
