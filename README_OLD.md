@@ -151,64 +151,6 @@ The definition of done is created by examining and applying BVA on the rules.
 
 ### Move & Assign Dragon Handlers (Phase 2) ```tests.handler```
 
-#### Handler Movement States ```tests.handler.movement.StateTests```
-
-- [x] When the handler is in the Ready Room
-  - ```tests.handler.movement.StateTest.testReadyRoomPossibleStates()```
-  - The handler state can change to card
-    - ```tests.handler.movement.StateTest.testReadyRoomToUnclaimedEggs()```
-  - The handler state can change to field
-  	- ```tests.handler.movement.StateTest.testReadyRoomToField()```
-  - The handler state can change to field whitespace
-  	- ```tests.handler.movement.StateTest.testReadyRoomToFieldWhite()```
-  - The handler state can remain at ready room
-  	- ```tests.handler.movement.StateTest.testReadyRoomToReadyRoom()```
-
-- [x] Handler in Field
-  - ```tests.handler.movement.StateTest.testFieldPossibleStates()```
-  - The handler can remain at field
-  	- ```tests.handler.movement.StateTest.testFieldMoveClockwise()```
-  - The handler can change to break room
-  	- ```tests.handler.movement.StateTest.testFieldToBreakRoom()```
-
-- [x] Handler on Unclaimed Egg
-  - ```tests.handler.movement.StateTest.testCardPossibleStates()```
-  - The handler can change to break room
-  	- ```tests.handler.movement.StateTest.testUnclaimedEggToBreakRoom()```
-  - The handler remains on card
-  	- ```tests.handler.movement.StateTest.testUnclaimedEggToBreakRoom()```
-
-- [x] Handler in Break Room
-  - ```tests.handler.movement.StateTest.testBreakRoomPossibleStates()```
-  - The handler can change to ready room
-  	- ```tests.handler.movement.StateTest.testBreakRoomToReadyRoom()```
-
-- [x] Handler in Field White
-  - ```tests.handler.movement.StateTest.testFieldWhiteSpacePossibleStates()```
-  - The handler can change to break room
-  	- ```tests.handler.movement.StateTest.testFieldWhiteToBreakRoom()```
-
-- [x] Handler during Incubation
-  - The handler can remain in incubation
-  	- ```tests.handler.movement.StateTest.testIncubationToIncubation()```
-  - The handler can change to ready room
-  	- ```tests.handler.movement.StateTest.testIncubationToBreakRoom()```
-
-#### Handler To String ```tests.handler.StringTests```
-
-- [x] Handler's string should describe the handler and location
-  - Handler in the handler room should be "Handler in Ready Room"
-    - ```tests.handler.StringTests.testToStringReadyRoom()```
-  - Handler on a card should be "Handler on CARD NAME"
-    - ```tests.handler.StringTests.testToStringCard()```
-  - Handler in the break room should be "Handler in Break Room"
-    - ```tests.handler.StringTests.testToStringBreakRoom()```
-  - Handler in incubation should be be "Handler in Incubation"
-    - ```tests.handler.StringTests.testToStringIncubation```
-  - Handler on field should be "Handler on COLOR Field Space"
-    - ```tests.handler.StringTests.testToStringFieldBlue()```
-    - ```tests.handler.StringTests.testToStringFieldRed()```
-
 ### Placing Elements on Eggs (Phase 3)
 
 #### Place a Single Non-Combo Element to Complete Element Space ```tests.elementspace.single.DoneTests```

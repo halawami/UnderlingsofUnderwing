@@ -10,7 +10,7 @@ import org.junit.Test;
 import underlings.field.FieldSpace;
 import underlings.gui.DrawChoice;
 
-public class HandlerTests {
+public class ElementGiverTests {
 
     @Test
     public void testNotField() {

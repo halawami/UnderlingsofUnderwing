@@ -96,6 +96,13 @@ The definition of done is created by examining and applying BVA on the rules.
   - ```underlings.handler.StateStringTests.testIncubation()```
   - ```underlings.handler.StateStringTests.testField()```
 
+#### Handlers ```underlings.handler.ElementGiverTests```
+
+- [x] Handlers in the field should give a random element or field space element
+  - ```underlings.handler.ElementGiverTests.testFieldAll()```
+- [x] Handlers not in the field should give a random element
+  - ```underlings.handler.ElementGiverTests.testNotField()```
+  
 ### Players ```underlings.player```
 
 #### Player ID ```underlings.player.IdTests```
