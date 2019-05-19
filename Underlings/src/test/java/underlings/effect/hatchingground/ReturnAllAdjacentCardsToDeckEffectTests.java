@@ -2,7 +2,6 @@ package underlings.effect.hatchingground;
 
 import static org.junit.Assert.assertEquals;
 
-import org.easymock.EasyMock;
 import org.junit.Test;
 
 import underlings.MockTest;
@@ -42,7 +41,6 @@ public class ReturnAllAdjacentCardsToDeckEffectTests extends MockTest {
         HandlerMovementLogic handlerMovementLogic = this.mock(HandlerMovementLogic.class);
         HatchingGround hatchingGround = this.mock(HatchingGround.class);
 
-        EasyMock.expect(adjacentCard.isClaimed()).andReturn(true);
         handlerMovementLogic.move(adjacentCard.handler, HandlerChoice.BREAK_ROOM, FakePlayer.getInstance());
         handlerMovementLogic.removeHandlerFromCard(adjacentCard);
         hatchingGround.replaceCard(adjacentCard);
