@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-
 import underlings.card.Card;
 import underlings.card.effect.Effect;
 import underlings.handler.Handler;
@@ -17,7 +16,7 @@ public class HatchingGround implements Iterable<Card> {
     private int height;
     private int width;
     public Card[][] cards;
-    protected Deck deck;
+    public Deck deck;
     public ElementSpaceUtilities logic;
     public boolean lateHatching;
 
