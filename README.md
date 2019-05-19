@@ -122,3 +122,13 @@ The definition of done is created by examining and applying BVA on the rules.
   - ```underlings.scoring.ScoreTests.testDisplayWinners()```
 
 
+### Domestic Card Effects
+
+#### Effect Name ```card.effect.domestic.package.ClassName```
+
+- Dragons
+  - Dragon 1, Dragon 2, Dragon 3
+- [x] Should do ...
+  - ```card.effect.domestic.package.ClassName.test()```
+- [x] Should do ...
+  - ```card.effect.domestic.package.ClassName.test()```
