@@ -21,7 +21,10 @@ public class HandlerMovementLogic {
     }
 
     public void move(Handler handler, HandlerChoice choice, Player player) {
-        if (handler == WildHandler.getInstance() || handler == null) {
+        System.out.println("here123");
+        System.out.println("handler: " + handler);
+        System.out.println("player: " + player);
+        if (handler == null || handler == WildHandler.getInstance()) {
             return;
         }
         switch (choice) {
