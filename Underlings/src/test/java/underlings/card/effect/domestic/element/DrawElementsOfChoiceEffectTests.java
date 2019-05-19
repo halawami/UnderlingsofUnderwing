@@ -2,12 +2,15 @@ package underlings.card.effect.domestic.element;
 
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
+
 import java.util.Arrays;
 import java.util.List;
+
 import org.easymock.EasyMock;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.MockTest;
 import underlings.card.effect.Effect;
 import underlings.element.ElementBag;

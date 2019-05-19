@@ -1,9 +1,12 @@
 package underlings.card.effect.domestic.playerhatchingground.uptoelements;
 
 import static org.junit.Assert.assertEquals;
+
 import java.util.List;
+
 import org.easymock.EasyMock;
 import org.junit.Test;
+
 import underlings.MockTest;
 import underlings.card.Card;
 import underlings.element.Element;

@@ -1,14 +1,17 @@
 package underlings.card.effect.domestic.players;
 
 import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+
 import org.easymock.EasyMock;
 import org.junit.Test;
+
 import underlings.card.Card;
 import underlings.card.Temperature;
 import underlings.gui.Gui;

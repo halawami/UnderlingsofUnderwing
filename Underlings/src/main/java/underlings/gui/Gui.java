@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
+
 import javax.swing.JOptionPane;
+
 import underlings.card.Card;
 import underlings.card.EmptyCard;
 import underlings.element.Element;

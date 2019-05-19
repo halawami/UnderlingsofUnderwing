@@ -2,6 +2,7 @@ package underlings.card.effect.domestic.element;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import underlings.card.effect.ElementEffect;
 import underlings.card.effect.ObserverEffect;
 import underlings.element.ElementBag;

@@ -2,6 +2,7 @@ package underlings.element;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import underlings.card.Card;
 import underlings.gui.Gui;
 import underlings.gui.YesNoChoice;
