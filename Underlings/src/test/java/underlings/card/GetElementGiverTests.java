@@ -11,7 +11,7 @@ import org.junit.Test;
 
 import underlings.MockTest;
 import underlings.card.effect.Effect;
-import underlings.card.effect.domestic.ElementGiverEffect;
+import underlings.card.effect.domestic.element.ElementGiverEffect;
 import underlings.element.ElementGiver;
 import underlings.gui.DrawChoice;
 

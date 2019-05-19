@@ -7,7 +7,7 @@ import org.junit.Test;
 import underlings.MockTest;
 import underlings.card.effect.Effect;
 import underlings.card.effect.PlayerEffect;
-import underlings.card.effect.domestic.UseBlackOrWhiteInPlaceEffect;
+import underlings.card.effect.domestic.players.player.UseBlackOrWhiteInPlaceEffect;
 import underlings.element.ElementColor;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.player.Player;

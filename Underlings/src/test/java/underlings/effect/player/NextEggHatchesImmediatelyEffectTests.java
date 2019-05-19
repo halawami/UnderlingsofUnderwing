@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import underlings.card.effect.Effect;
-import underlings.card.effect.domestic.NextEggHatchesImmediatelyEffect;
+import underlings.card.effect.domestic.players.player.NextEggHatchesImmediatelyEffect;
 import underlings.handler.HandlerFactory;
 import underlings.player.Player;
 import underlings.utilities.LocaleWrap;

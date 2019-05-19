@@ -12,7 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import underlings.MockTest;
-import underlings.card.effect.domestic.DrawElementsOfChoiceEffect;
+import underlings.card.effect.domestic.element.DrawElementsOfChoiceEffect;
 import underlings.element.ElementBag;
 import underlings.element.ElementGiver;
 import underlings.element.ElementGiverFactory;

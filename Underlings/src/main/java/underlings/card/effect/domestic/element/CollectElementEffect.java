@@ -1,4 +1,4 @@
-package underlings.card.effect.domestic;
+package underlings.card.effect.domestic.element;
 
 import java.text.MessageFormat;
 

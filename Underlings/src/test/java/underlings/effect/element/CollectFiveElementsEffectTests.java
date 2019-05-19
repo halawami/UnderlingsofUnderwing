@@ -14,7 +14,7 @@ import org.easymock.EasyMock;
 import org.junit.Test;
 
 import underlings.MockTest;
-import underlings.card.effect.domestic.CollectFiveElementsEffect;
+import underlings.card.effect.domestic.element.CollectFiveElementsEffect;
 import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;

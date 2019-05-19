@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import underlings.MockTest;
 import underlings.card.effect.Effect;
-import underlings.card.effect.domestic.StealAllStoredElements;
+import underlings.card.effect.domestic.players.StealAllStoredElements;
 import underlings.gui.Gui;
 import underlings.player.Player;
 import underlings.utilities.LocaleWrap;
