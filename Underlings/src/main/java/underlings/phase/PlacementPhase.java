@@ -19,7 +19,7 @@ public class PlacementPhase extends RotationPhase {
 
     private Map<Player, Integer> turnCounts;
     private EggHatchingLogic wildEggHatchingLogic;
-    private PlacementUtilities utils;
+    protected PlacementUtilities utils;
 
     public PlacementPhase(List<Player> players, Gui gui, HatchingGround hatchingGround, Runnable displayMethod,
             EggHatchingLogic eggHatchingLogic, PlacementUtilities utils) {
@@ -42,9 +42,9 @@ public class PlacementPhase extends RotationPhase {
             return;
         }
 
-        List<Card> cards = this.utils.getPlayableCards(player.elementSpaceLogic, player.getElements());
+        List<Card> cards = this.utils.getPlayableCards(player.elementSpaceLogic, player.elements);
         if (cards.isEmpty()) {
-            this.gui.alert(LocaleWrap.get("no_placements"), player.getId(), PromptType.WARNING);
+            this.gui.alert(LocaleWrap.get("no_placements"), player.id, PromptType.WARNING);
             return;
         } else {
             this.setPhaseComplete(false);
