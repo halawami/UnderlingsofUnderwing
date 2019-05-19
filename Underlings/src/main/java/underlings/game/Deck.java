@@ -1,7 +1,7 @@
 package underlings.game;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 import java.util.function.Consumer;
 
 import underlings.card.Card;
@@ -15,8 +15,7 @@ public class Deck {
     Consumer<List> shuffleFunction;
 
     public Deck(List<Card> cards, Consumer<List> shuffleFunction) {
-        this.cards = new Stack<>();
-        this.cards.addAll(cards);
+        this.cards = new ArrayList<>(cards);
         this.shuffleFunction = shuffleFunction;
     }
 
@@ -33,8 +32,12 @@ public class Deck {
         }
 
         if (shuffle) {
-            this.shuffleFunction.accept(this.cards);
+            shuffle();
         }
+    }
+
+    public void shuffle() {
+        this.shuffleFunction.accept(this.cards);
     }
 
 
