@@ -165,6 +165,10 @@ The definition of done is created by examining and applying BVA on the rules.
   - ```underlings.hatchingground.AdjacentCardsTests.testGetCardCoordinatesBottomEdge()```
   - ```underlings.hatchingground.AdjacentCardsTests.testGetCardCoordinatesMiddleEdge()```
   - ```underlings.hatchingground.AdjacentCardsTests.testGetCardCoordinatesInvalidCard()```
+- [x] The hatching ground can find and return a card given a handler
+  - ```underlings.hatchingground.FindCardTests.testFindCardEmpty()```
+  - ```underlings.hatchingground.FindCardTests.testFindCardSuccessful()```
+  - ```underlings.hatchingground.FindCardTests.testFindCardUnsuccessful()```
 
 ####
 
