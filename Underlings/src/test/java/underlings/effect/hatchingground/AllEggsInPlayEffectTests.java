@@ -20,6 +20,7 @@ import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.handler.Handler;
+import underlings.handler.HandlerMovementLogic;
 import underlings.player.Player;
 import underlings.utilities.EggHatchingLogic;
 import underlings.utilities.LocaleWrap;
@@ -52,12 +53,17 @@ public class AllEggsInPlayEffectTests extends MockTest {
         List<Card> mockedCards = this.mockListOf(Card.class).withLengthOf(numberOfCards);
         EggHatchingLogic eggHatchingLogic = this.mock(EggHatchingLogic.class);
         AllEggsInPlayEffect effect = EasyMock.partialMockBuilder(AllEggsInPlayEffect.class)
-                .addMockedMethod("applyOnCardInPlay").createMock();
+                .addMockedMethod("applyOnCardInPlay", Card.class)
+                .addMockedMethod("applyOnCardInPlay", Card.class, ElementSpaceLogic.class, ElementBag.class,
+                        HandlerMovementLogic.class)
+                .createMock();
         this.addMock(effect);
 
         EasyMock.expect(hatchingGround.getAllCards()).andReturn(mockedCards);
         for (Card mockedCard : mockedCards) {
+            effect.applyOnCardInPlay(mockedCard);
             effect.applyOnCardInPlay(mockedCard, elementSpaceLogic, elementBag, null);
+
         }
 
         this.replayAll();

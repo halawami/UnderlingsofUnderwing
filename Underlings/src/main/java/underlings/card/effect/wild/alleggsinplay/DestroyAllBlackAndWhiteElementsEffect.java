@@ -7,7 +7,7 @@ import underlings.utilities.LocaleWrap;
 public class DestroyAllBlackAndWhiteElementsEffect extends AllEggsInPlayEffect {
 
     @Override
-    public void applyOnCardInPlayer(Card cardInPlay) {
+    public void applyOnCardInPlay(Card cardInPlay) {
         for (int i = 0; i < cardInPlay.elementSpaces.length; i++) {
             cardInPlay.elementSpaces[i].destroyAllElementsOfColor(ElementColor.BLACK);
             cardInPlay.elementSpaces[i].destroyAllElementsOfColor(ElementColor.WHITE);
