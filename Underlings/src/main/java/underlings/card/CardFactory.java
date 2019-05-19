@@ -82,10 +82,7 @@ public class CardFactory {
 
     public List<Card> getCards() {
         Card[] cards = this.constructCards();
-
         List<Card> cardList = Arrays.asList(cards);
-        Collections.shuffle(cardList);
-
         return cardList;
     }
 
