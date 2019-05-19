@@ -21,12 +21,13 @@ public abstract class UptoElementsFromAnyEggInPlayEffect extends PlayerHatchingG
         List<Card> allCards = hatchingGround.getAllCards();
 
         for (int i = 0; i < this.upTo; i++) {
-            ElementSpace selectedSpace = gui
-                    .getElementSpaceWithColors(allCards, this.elementChoices, currentPlayer.getId());
-
+            ElementSpace selectedSpace =
+                    gui.getElementSpaceWithColors(allCards, this.elementChoices, currentPlayer.getId());
+            if (selectedSpace == null) {
+                return;
+            }
             Element selectedElement =
                     gui.getElementOfColorsFromSpace(this.elementChoices, selectedSpace, currentPlayer.getId());
-
             this.applyOnSelectedElement(selectedElement, selectedSpace, currentPlayer);
         }
     }

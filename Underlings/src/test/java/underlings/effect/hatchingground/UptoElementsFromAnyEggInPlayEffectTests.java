@@ -97,6 +97,27 @@ public class UptoElementsFromAnyEggInPlayEffectTests extends MockTest {
         this.testCollectElement(this.mock(Element.class), ElementColor.BLUE);
     }
 
+    @Test
+    public void testCollectNonExistingElement() {
+        Player currentPlayer = this.mock(Player.class);
+        EasyMock.expect(currentPlayer.getId()).andReturn(10).anyTimes();
+        HatchingGround hatchingGround = this.mock(HatchingGround.class);
+        Gui gui = this.mock(Gui.class);
+        UptoElementsFromAnyEggInPlayEffect effect =
+                EasyMock.partialMockBuilder(UptoElementsFromAnyEggInPlayEffect.class)
+                        .addMockedMethod("applyOnSelectedElement").createMock();
+        this.addMock(effect);
+        effect.elementChoices = new ElementColor[] {ElementColor.BLUE};
+        effect.upTo = 1;
+
+        List<Card> mockCards = this.mockListOf(Card.class).withLengthOf(6);
+        EasyMock.expect(hatchingGround.getAllCards()).andReturn(mockCards);
+        EasyMock.expect(gui.getElementSpaceWithColors(mockCards, effect.elementChoices, 10)).andReturn(null);
+        this.replayAll();
+
+        effect.on(gui).on(currentPlayer).on(hatchingGround).apply();
+    }
+
     private void testCollectElement(Element elementPicked, ElementColor elementColor) {
         Player currentPlayer = this.mock(Player.class);
         ElementSpace elementSpace = this.mock(ElementSpace.class);
