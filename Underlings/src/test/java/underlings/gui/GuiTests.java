@@ -3,10 +3,8 @@ package underlings.gui;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
-
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,15 +12,12 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
-
 import javax.swing.JOptionPane;
-
 import org.easymock.Capture;
 import org.easymock.EasyMock;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.card.Card;
 import underlings.card.EmptyCard;
 import underlings.element.Element;
@@ -270,15 +265,16 @@ public class GuiTests {
 
     @Test
     public void testDisplay() {
+        ElementBag elementBag = new ElementBag(new ElementFactory(), new Random());
         this.display.displayBackground();
         this.display.displayHatchingGround(this.hatchingGround);
         this.display.displayPlayers(EasyMock.anyObject());
-        this.display.displayStats(EasyMock.anyObject(), EasyMock.anyInt(), EasyMock.anyInt(), EasyMock.anyInt());
+        this.display.displayStats(elementBag, 0, 0, 1);
         this.display.update();
 
         this.replay();
 
-        this.gui.display(0, 0, 0, this.hatchingGround, Collections.emptyList(), EasyMock.mock(ElementBag.class));
+        this.gui.display(0, 0, 0, this.hatchingGround, Collections.emptyList(), elementBag);
     }
 
     @Test
