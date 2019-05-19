@@ -8,7 +8,7 @@ Hussein Alawami, Mohammad Baqer, George Main IV, Wesley Siebenthaler
 
 The definition of done is created by examining and applying BVA on the rules.
 
-#### Game Setup ```underlings.game.SetupTests```
+### Game Setup ```underlings.game.SetupTests```
 
 - [x] The players should be created for [2, 6] players
   - When there are 2 players, the game should have 2 players
@@ -24,6 +24,18 @@ The definition of done is created by examining and applying BVA on the rules.
     - ```underlings.game.SetupTests.test4PlayerRounds()```
     - ```underlings.game.SetupTests.test6PlayerRounds()```
 
+### Game ```underlings.game.GameTests```
+
+- [x] The game should be setup when the program is ran
+  - ```underlings.game.GameTests.testSetup()```
+- [x] The game should be displayed to the player
+  - ```underlings.game.GameTests.testDisplay()```
+- [x] The game should start and run until the game is over
+  - The game can run until the round count reaches zero
+    - ```underlings.game.GameTests.testGameLoopRoundsCompleted()```
+  - The game can run until all eggs have been hatched wild
+    - ```underlings.game.GameTests.testGameLoopWildHatched()```
+  
 ### Players ```underlings.player```
 
 #### Player ID ```underlings.player.IdTests```
