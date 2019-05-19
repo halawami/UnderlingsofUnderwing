@@ -78,7 +78,7 @@ public class AddElementsToAllAdjacentEggsEffectTests extends MockTest {
 
         this.replayAll();
 
-        effect.applyOnAdjacentEgg(adjacentCard, null, null, null, null, null, null);
+        effect.applyOnAdjacentEgg(adjacentCard, null, null, null);
     }
 
     @Test

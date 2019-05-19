@@ -51,7 +51,7 @@ public class ReturnAllAdjacentCardsToDeckEffectTests extends MockTest {
         this.replayAll();
 
         ReturnAllAdjacentCardsToDeckEffect effect = new ReturnAllAdjacentCardsToDeckEffect();
-        effect.applyOnAdjacentEgg(adjacentCard, null, null, null, deck, handlerMovementLogic, hatchingGround);
+        effect.applyOnAdjacentEgg(adjacentCard, deck, handlerMovementLogic, hatchingGround);
     }
 
     @Test

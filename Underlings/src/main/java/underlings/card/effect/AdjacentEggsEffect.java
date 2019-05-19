@@ -22,8 +22,7 @@ public abstract class AdjacentEggsEffect extends DiverseHatchingGroundEffect {
             this.applyOnAdjacentEgg(adjacentCard, currentPlayer.elementSpaceLogic, elementBag);
             this.applyOnAdjacentEgg(adjacentCard, eggHatchingLogic);
             this.applyOnAdjacentEgg(adjacentCard, handlerMovementLogic);
-            this.applyOnAdjacentEgg(adjacentCard, elementBag, currentPlayer.elementSpaceLogic, eggHatchingLogic, deck,
-                    handlerMovementLogic, hatchingGround);
+            this.applyOnAdjacentEgg(adjacentCard, deck, handlerMovementLogic, hatchingGround);
         }
     }
 
@@ -36,8 +35,7 @@ public abstract class AdjacentEggsEffect extends DiverseHatchingGroundEffect {
     public void applyOnAdjacentEgg(Card adjacentEgg, HandlerMovementLogic handlerMovementLogic) {
     }
 
-    public void applyOnAdjacentEgg(Card adjacentEgg, ElementBag elementBag,
-            ElementSpaceLogic elementSpaceLogic, EggHatchingLogic eggHatchingLogic, Deck deck,
-            HandlerMovementLogic handlerMovementLogic, HatchingGround hatchingGround) {
+    public void applyOnAdjacentEgg(Card adjacentEgg, Deck deck, HandlerMovementLogic handlerMovementLogic,
+            HatchingGround hatchingGround) {
     }
 }
