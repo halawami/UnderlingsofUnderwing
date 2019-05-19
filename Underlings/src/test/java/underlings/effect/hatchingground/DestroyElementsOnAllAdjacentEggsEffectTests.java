@@ -14,9 +14,9 @@ import underlings.card.effect.wild.adjacenteggs.elements.destroy.DestroyElements
 import underlings.card.effect.wild.adjacenteggs.elements.destroy.OneElementEffect;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
-import underlings.element.utilities.ElementSpaceLogic;
-import underlings.utilities.EggHatchingLogic;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.EggHatchingUtilities;
+import underlings.utilities.ElementSpaceUtilities;
+import underlings.utilities.LocaleUtilities;
 
 public class DestroyElementsOnAllAdjacentEggsEffectTests extends MockTest {
 
@@ -31,13 +31,13 @@ public class DestroyElementsOnAllAdjacentEggsEffectTests extends MockTest {
     }
 
     private void testApplyElementColors(ElementColor... elementColors) {
-        ElementSpaceLogic elementSpaceLogic = this.mock(ElementSpaceLogic.class);
+        ElementSpaceUtilities elementSpaceLogic = this.mock(ElementSpaceUtilities.class);
         Card adjacentCard = this.mock(Card.class);
         DestroyElementsEffect effect = EasyMock.partialMockBuilder(DestroyElementsEffect.class)
                 .addMockedMethod("destroyElementsOfColorOnCard").createMock();
         this.addMock(effect);
         effect.elementColors = elementColors;
-        EggHatchingLogic eggHatchingLogic = this.mock(EggHatchingLogic.class);
+        EggHatchingUtilities eggHatchingLogic = this.mock(EggHatchingUtilities.class);
 
         for (ElementColor elementColor : elementColors) {
             effect.destroyElementsOfColorOnCard(elementColor, adjacentCard, elementSpaceLogic);
@@ -66,7 +66,7 @@ public class DestroyElementsOnAllAdjacentEggsEffectTests extends MockTest {
     private void testDestroyElementsOnCardWithDestroyableSpaces(int numberOfDestroyableSpaces) {
         ElementColor blue = ElementColor.BLUE;
         Card mockedCard = this.mock(Card.class);
-        ElementSpaceLogic elementSpaceLogic = this.mock(ElementSpaceLogic.class);
+        ElementSpaceUtilities elementSpaceLogic = this.mock(ElementSpaceUtilities.class);
         List<ElementSpace> mockedDestroyableSpaces = this.mockListOf(ElementSpace.class)
                 .withLengthOf(numberOfDestroyableSpaces);
 
@@ -122,7 +122,7 @@ public class DestroyElementsOnAllAdjacentEggsEffectTests extends MockTest {
             elements.append(color);
             elements.append(" ");
         }
-        assertEquals(LocaleWrap.format("destroy_all_elements_on_adjacent_eggs_effect", elements), effect.toString());
+        assertEquals(LocaleUtilities.format("destroy_all_elements_on_adjacent_eggs_effect", elements), effect.toString());
     }
 
 }

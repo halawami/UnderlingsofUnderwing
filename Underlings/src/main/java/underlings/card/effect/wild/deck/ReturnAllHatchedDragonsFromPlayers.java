@@ -5,10 +5,10 @@ import java.util.List;
 import underlings.card.Card;
 import underlings.card.Temperature;
 import underlings.card.effect.DeckEffects;
-import underlings.game.Deck;
 import underlings.gui.Gui;
+import underlings.hatchingground.Deck;
 import underlings.player.Player;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class ReturnAllHatchedDragonsFromPlayers extends DeckEffects {
 
@@ -39,6 +39,6 @@ public class ReturnAllHatchedDragonsFromPlayers extends DeckEffects {
             temperature.append(temp);
             temperature.append(" ");
         }
-        return LocaleWrap.format("return_hatched_dragons", temperature);
+        return LocaleUtilities.format("return_hatched_dragons", temperature);
     }
 }

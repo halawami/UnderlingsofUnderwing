@@ -8,7 +8,7 @@ import java.util.Arrays;
 import org.junit.Test;
 
 import underlings.handler.HandlerFactory;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class IdTests {
 
@@ -28,7 +28,7 @@ public class IdTests {
     public void testToString() {
         Player p = new Player(2, new HandlerFactory(), 1);
 
-        assertEquals(MessageFormat.format(LocaleWrap.get("player_number"), p.getId()), p.toString());
+        assertEquals(MessageFormat.format(LocaleUtilities.get("player_number"), p.getId()), p.toString());
     }
 
     @Test

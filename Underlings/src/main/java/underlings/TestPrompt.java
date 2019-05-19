@@ -8,7 +8,7 @@ import java.util.Random;
 import underlings.card.Card;
 import underlings.gui.ConcretePrompt;
 import underlings.handler.HandlerChoice;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class TestPrompt extends ConcretePrompt {
     Random rand;
@@ -95,7 +95,7 @@ public class TestPrompt extends ConcretePrompt {
         this.printGrid(objects);
         System.out.println("picked " + object + "\n");
 
-        if (prompt.equals(LocaleWrap.get("prompt_element_card"))) {
+        if (prompt.equals(LocaleUtilities.get("prompt_element_card"))) {
             for (int i = 0; i < objects.length; i++) {
                 for (int j = 0; j < objects[i].length; j++) {
                     if (this.cards.get(playerId).contains(objects[i][j])) {
@@ -105,7 +105,7 @@ public class TestPrompt extends ConcretePrompt {
             }
         }
 
-        if (prompt.equals(LocaleWrap.get("handler_movement_card"))) {
+        if (prompt.equals(LocaleUtilities.get("handler_movement_card"))) {
             this.cards.get(playerId).add((Card) object);
         }
         return object;

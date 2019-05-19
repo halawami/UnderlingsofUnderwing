@@ -14,7 +14,7 @@ import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.player.Player;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class CollectElementEffectTests extends MockTest {
 
@@ -59,7 +59,7 @@ public class CollectElementEffectTests extends MockTest {
             elements.append(color);
             elements.append(" ");
         }
-        assertEquals(MessageFormat.format(LocaleWrap.get("collect_element_effect"), elements), effect.toString());
+        assertEquals(MessageFormat.format(LocaleUtilities.get("collect_element_effect"), elements), effect.toString());
     }
 
 }

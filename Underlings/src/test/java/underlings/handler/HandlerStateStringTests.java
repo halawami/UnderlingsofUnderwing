@@ -6,52 +6,52 @@ import org.junit.Test;
 
 import underlings.field.FieldSpace;
 import underlings.gui.DrawChoice;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class HandlerStateStringTests {
 
     @Test
     public void testToStringReadyRoom() {
         Handler handler = new Handler(HandlerState.READY_ROOM);
-        assertEquals(LocaleWrap.format("HANDLER_" + HandlerState.READY_ROOM), handler.toString());
+        assertEquals(LocaleUtilities.format("HANDLER_" + HandlerState.READY_ROOM), handler.toString());
     }
 
     @Test
     public void testToStringBreakRoom() {
         Handler handler = new Handler(HandlerState.BREAK_ROOM);
-        assertEquals(LocaleWrap.format("HANDLER_" + HandlerState.BREAK_ROOM), handler.toString());
+        assertEquals(LocaleUtilities.format("HANDLER_" + HandlerState.BREAK_ROOM), handler.toString());
     }
 
     @Test
     public void testToStringCard() {
         Handler handler = new Handler(HandlerState.CARD);
         handler.setLocation("test");
-        assertEquals(LocaleWrap.format("HANDLER_" + HandlerState.CARD, "test"), handler.toString());
+        assertEquals(LocaleUtilities.format("HANDLER_" + HandlerState.CARD, "test"), handler.toString());
     }
 
     @Test
     public void testToStringIncubation() {
         Handler handler = new Handler(HandlerState.INCUBATION);
-        assertEquals(LocaleWrap.format("HANDLER_" + HandlerState.INCUBATION), handler.toString());
+        assertEquals(LocaleUtilities.format("HANDLER_" + HandlerState.INCUBATION), handler.toString());
     }
 
     @Test
     public void testToStringField() {
-        assertEquals(LocaleWrap.format("field_space_element_giver", LocaleWrap.get("BLUE")),
+        assertEquals(LocaleUtilities.format("field_space_element_giver", LocaleUtilities.get("BLUE")),
                 this.getStringField(DrawChoice.BLUE));
-        assertEquals(LocaleWrap.format("field_space_element_giver", LocaleWrap.get("RED")),
+        assertEquals(LocaleUtilities.format("field_space_element_giver", LocaleUtilities.get("RED")),
                 this.getStringField(DrawChoice.RED));
-        assertEquals(LocaleWrap.format("field_space_element_giver", LocaleWrap.get("YELLOW")),
+        assertEquals(LocaleUtilities.format("field_space_element_giver", LocaleUtilities.get("YELLOW")),
                 this.getStringField(DrawChoice.YELLOW));
-        assertEquals(LocaleWrap.format("field_space_element_giver", LocaleWrap.get("GREEN")),
+        assertEquals(LocaleUtilities.format("field_space_element_giver", LocaleUtilities.get("GREEN")),
                 this.getStringField(DrawChoice.GREEN));
-        assertEquals(LocaleWrap.format("field_space_element_giver", LocaleWrap.get("ORANGE")),
+        assertEquals(LocaleUtilities.format("field_space_element_giver", LocaleUtilities.get("ORANGE")),
                 this.getStringField(DrawChoice.ORANGE));
-        assertEquals(LocaleWrap.format("field_space_element_giver", LocaleWrap.get("PURPLE")),
+        assertEquals(LocaleUtilities.format("field_space_element_giver", LocaleUtilities.get("PURPLE")),
                 this.getStringField(DrawChoice.PURPLE));
-        assertEquals(LocaleWrap.format("field_space_element_giver", LocaleWrap.get("BLACK")),
+        assertEquals(LocaleUtilities.format("field_space_element_giver", LocaleUtilities.get("BLACK")),
                 this.getStringField(DrawChoice.BLACK));
-        assertEquals(LocaleWrap.format("field_space_element_giver", LocaleWrap.get("WHITE")),
+        assertEquals(LocaleUtilities.format("field_space_element_giver", LocaleUtilities.get("WHITE")),
                 this.getStringField(DrawChoice.WHITE));
     }
 

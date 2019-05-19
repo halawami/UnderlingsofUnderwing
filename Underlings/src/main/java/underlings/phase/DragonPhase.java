@@ -2,23 +2,22 @@ package underlings.phase;
 
 import java.util.LinkedList;
 import java.util.List;
-
 import underlings.card.Card;
 import underlings.element.ElementBag;
 import underlings.field.Field;
-import underlings.game.HatchingGround;
 import underlings.gui.Gui;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
-import underlings.utilities.EggHatchingLogic;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.EggHatchingUtilities;
+import underlings.utilities.LocaleUtilities;
 
 public class DragonPhase extends SequentialPhase {
 
     private List<Card> completeEggs;
-    private EggHatchingLogic domesticEggHatchingLogic;
+    private EggHatchingUtilities domesticEggHatchingLogic;
 
     public DragonPhase(List<Player> players, Gui gui, ElementBag elementBag, HatchingGround hatchingGround,
-            Runnable displayMethod, Field field, EggHatchingLogic eggHatchingLogic) {
+            Runnable displayMethod, Field field, EggHatchingUtilities eggHatchingLogic) {
         super(players, gui, elementBag, hatchingGround, displayMethod, field);
         this.domesticEggHatchingLogic = eggHatchingLogic;
     }
@@ -50,10 +49,10 @@ public class DragonPhase extends SequentialPhase {
                     player.hatchingTime = 1;
                 } else if (this.hatchingGround.lateHatching) {
                     player.moveToIncubation(completeCard, player.hatchingTime + 1);
-                    this.gui.notifyAction(player.getId(), LocaleWrap.format("incubation_state", completeCard.name));
+                    this.gui.notifyAction(player.getId(), LocaleUtilities.format("incubation_state", completeCard.name));
                 } else {
                     player.moveToIncubation(completeCard, player.hatchingTime);
-                    this.gui.notifyAction(player.getId(), LocaleWrap.format("incubation_state", completeCard.name));
+                    this.gui.notifyAction(player.getId(), LocaleUtilities.format("incubation_state", completeCard.name));
                 }
             }
         }

@@ -14,7 +14,7 @@ import underlings.handler.HandlerMovementLogic;
 import underlings.handler.HandlerState;
 import underlings.handler.WildHandler;
 import underlings.player.FakePlayer;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class RemoveAllHandlersFromAllEggsInPlayEffectTests extends MockTest {
 
@@ -50,6 +50,6 @@ public class RemoveAllHandlersFromAllEggsInPlayEffectTests extends MockTest {
     @Test
     public void testToString() {
         Effect effect = new RemoveAllHandlersFromAllEggsInPlay();
-        assertEquals(LocaleWrap.get("remove_all_handlers_from_eggs_effect"), effect.toString());
+        assertEquals(LocaleUtilities.get("remove_all_handlers_from_eggs_effect"), effect.toString());
     }
 }

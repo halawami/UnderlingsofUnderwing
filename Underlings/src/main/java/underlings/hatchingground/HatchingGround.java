@@ -1,4 +1,4 @@
-package underlings.game;
+package underlings.hatchingground;
 
 import java.awt.Point;
 import java.util.ArrayList;
@@ -8,9 +8,9 @@ import java.util.List;
 
 import underlings.card.Card;
 import underlings.card.effect.Effect;
-import underlings.element.utilities.ElementSpaceLogic;
 import underlings.handler.Handler;
 import underlings.handler.WildHandler;
+import underlings.utilities.ElementSpaceUtilities;
 
 public class HatchingGround implements Iterable<Card> {
 
@@ -18,10 +18,10 @@ public class HatchingGround implements Iterable<Card> {
     private int width;
     public Card[][] cards;
     protected Deck deck;
-    public ElementSpaceLogic logic;
+    public ElementSpaceUtilities logic;
     public boolean lateHatching;
 
-    public HatchingGround(Deck deck, ElementSpaceLogic logic) {
+    public HatchingGround(Deck deck, ElementSpaceUtilities logic) {
         this.deck = deck;
         this.logic = logic;
         this.lateHatching = false;

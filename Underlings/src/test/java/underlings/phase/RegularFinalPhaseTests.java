@@ -10,7 +10,7 @@ import underlings.MockTest;
 import underlings.gui.Gui;
 import underlings.gui.Gui.PromptType;
 import underlings.player.Player;
-import underlings.scoring.ScoreUtils;
+import underlings.scoring.Scoring;
 
 public class RegularFinalPhaseTests extends MockTest {
 
@@ -19,7 +19,7 @@ public class RegularFinalPhaseTests extends MockTest {
         gui = mock(Gui.class);
         player = mock(Player.class);
         dragonPhase = mock(DragonPhase.class);
-        scoreUtils = mock(ScoreUtils.class);
+        scoreUtils = mock(Scoring.class);
     }
 
     @Test

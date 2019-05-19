@@ -6,7 +6,7 @@ import underlings.card.effect.PlayersEffect;
 import underlings.element.ElementColor;
 import underlings.gui.Gui;
 import underlings.player.Player;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class RemoveBlackRecipesEffect extends PlayersEffect {
 
@@ -19,6 +19,6 @@ public class RemoveBlackRecipesEffect extends PlayersEffect {
 
     @Override
     public String toString() {
-        return LocaleWrap.get("remove_black_recipes_effect");
+        return LocaleUtilities.get("remove_black_recipes_effect");
     }
 }

@@ -5,7 +5,7 @@ import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.player.Player;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class CollectFiveElementsEffect extends ElementEffect {
 
@@ -26,6 +26,6 @@ public class CollectFiveElementsEffect extends ElementEffect {
             elements.append(color);
             elements.append(" ");
         }
-        return LocaleWrap.format("collect_five_element_effect", elements);
+        return LocaleUtilities.format("collect_five_element_effect", elements);
     }
 }

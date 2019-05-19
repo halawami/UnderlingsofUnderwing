@@ -7,21 +7,21 @@ import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
-import underlings.element.utilities.ElementSpaceLogic;
 import underlings.handler.HandlerMovementLogic;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.ElementSpaceUtilities;
+import underlings.utilities.LocaleUtilities;
 
 public class AddElementToAllEggsInPlayEffect extends AllEggsInPlayEffect {
 
     public ElementColor elementColor;
 
     @Override
-    public void applyOnCardInPlay(Card cardInPlay, ElementSpaceLogic elementSpaceLogic, ElementBag elementBag,
+    public void applyOnCardInPlay(Card cardInPlay, ElementSpaceUtilities elementSpaceLogic, ElementBag elementBag,
             HandlerMovementLogic handlerMovementLogic) {
         this.addElementsToCard(this.elementColor, cardInPlay, elementSpaceLogic, elementBag);
     }
 
-    public void addElementsToCard(ElementColor color, Card cardToAddTo, ElementSpaceLogic elementSpaceLogic,
+    public void addElementsToCard(ElementColor color, Card cardToAddTo, ElementSpaceUtilities elementSpaceLogic,
             ElementBag elementBag) {
         List<ElementSpace> playableSpaces = elementSpaceLogic.getPlayableSpaces(cardToAddTo, color);
         for (ElementSpace playableSpace : playableSpaces) {
@@ -32,6 +32,6 @@ public class AddElementToAllEggsInPlayEffect extends AllEggsInPlayEffect {
 
     @Override
     public String toString() {
-        return LocaleWrap.format("place_element_on_all_eggs_effect", elementColor);
+        return LocaleUtilities.format("place_element_on_all_eggs_effect", elementColor);
     }
 }

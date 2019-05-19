@@ -15,7 +15,6 @@ import java.util.Random;
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.card.Card;
 import underlings.card.effect.Effect;
 import underlings.element.Element;
@@ -23,14 +22,13 @@ import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementFactory;
 import underlings.element.ElementSpace;
-import underlings.element.utilities.ElementSpaceLogic;
-import underlings.game.Deck;
-import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.handler.Handler;
 import underlings.handler.HandlerMovementLogic;
 import underlings.handler.HandlerState;
 import underlings.handler.WildHandler;
+import underlings.hatchingground.Deck;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.FakePlayer;
 import underlings.player.Player;
 
@@ -44,7 +42,7 @@ public class EggHatchingLogicTests {
     private Player player;
     private Gui gui;
     private Runnable displayMethod;
-    private EggHatchingLogic eggHatchingLogic;
+    private EggHatchingUtilities eggHatchingLogic;
     private Deck deck;
     private List<Player> players;
     private HandlerMovementLogic handlerMovementLogic;
@@ -71,7 +69,7 @@ public class EggHatchingLogicTests {
         this.deck = EasyMock.mock(Deck.class);
         this.players = Arrays.asList(this.player);
         this.handlerMovementLogic = EasyMock.mock(HandlerMovementLogic.class);
-        this.eggHatchingLogic = new EggHatchingLogic(this.gui, this.elementBag, this.hatchingGround, this.displayMethod,
+        this.eggHatchingLogic = new EggHatchingUtilities(this.gui, this.elementBag, this.hatchingGround, this.displayMethod,
                 this.players, this.deck, this.handlerMovementLogic);
     }
 
@@ -174,7 +172,7 @@ public class EggHatchingLogicTests {
         card2.elementSpaces = new ElementSpace[0];
 
         EasyMock.expect(this.hatchingGround.getUnclaimedEggs()).andReturn(Arrays.asList(card1, card2));
-        this.hatchingGround.logic = EasyMock.mock(ElementSpaceLogic.class);
+        this.hatchingGround.logic = EasyMock.mock(ElementSpaceUtilities.class);
         EasyMock.expect(this.hatchingGround.logic.isComplete(card1)).andReturn(false);
         EasyMock.expect(this.hatchingGround.logic.isComplete(card2)).andReturn(true);
         EasyMock.expect(this.hatchingGround.getUnclaimedEggs()).andReturn(Arrays.asList());

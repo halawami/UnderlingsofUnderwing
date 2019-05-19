@@ -10,9 +10,9 @@ import java.util.Map;
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.element.ElementBag;
 import underlings.gui.Gui;
+import underlings.hatchingground.HatchingGround;
 import underlings.phase.FinalPhase;
 import underlings.phase.FinalPhase.FinalPhaseType;
 import underlings.phase.Phase;

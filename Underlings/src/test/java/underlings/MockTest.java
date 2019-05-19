@@ -5,34 +5,33 @@ import java.util.List;
 
 import org.easymock.EasyMock;
 import org.junit.After;
-
 import underlings.card.Card;
 import underlings.card.effect.Effect;
 import underlings.element.ElementBag;
 import underlings.element.ElementSpace;
-import underlings.element.utilities.ElementSpaceLogic;
-import underlings.game.Deck;
-import underlings.game.HatchingGround;
 import underlings.gui.Display;
 import underlings.gui.Gui;
 import underlings.gui.PromptHandler;
 import underlings.handler.Handler;
 import underlings.handler.HandlerMovementLogic;
+import underlings.hatchingground.Deck;
+import underlings.hatchingground.HatchingGround;
 import underlings.phase.Phase;
 import underlings.player.Player;
-import underlings.scoring.ScoreUtils;
-import underlings.utilities.EggHatchingLogic;
+import underlings.scoring.Scoring;
+import underlings.utilities.EggHatchingUtilities;
+import underlings.utilities.ElementSpaceUtilities;
 
 public abstract class MockTest {
 
     protected Gui gui;
     protected HatchingGround hatchingGround;
     protected HandlerMovementLogic handlerMovementLogic;
-    protected ElementSpaceLogic elementSpaceLogic;
+    protected ElementSpaceUtilities elementSpaceLogic;
     protected Runnable displayMethod;
     protected Player player;
     protected List<Player> players;
-    protected ScoreUtils scoreUtils;
+    protected Scoring scoreUtils;
     protected Phase dragonPhase;
     protected Deck deck;
     protected Display display;
@@ -41,7 +40,7 @@ public abstract class MockTest {
     protected Card card;
     protected Card card2;
     protected ElementSpace[] elementSpaces;
-    protected EggHatchingLogic eggHatchingLogic;
+    protected EggHatchingUtilities eggHatchingLogic;
     protected Handler handler;
     protected Effect effect;
     protected Effect effect2;

@@ -7,7 +7,7 @@ import org.junit.Test;
 import underlings.MockTest;
 import underlings.card.effect.domestic.players.player.GainHandlersEffect;
 import underlings.player.Player;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class GainHandlersEffectTests extends MockTest {
 
@@ -42,7 +42,7 @@ public class GainHandlersEffectTests extends MockTest {
     @Test
     public void testToString() {
         GainHandlersEffect effect = new GainHandlersEffect();
-        assertEquals(LocaleWrap.format("gain_handler_effect", effect.numberOfHandlers), effect.toString());
+        assertEquals(LocaleUtilities.format("gain_handler_effect", effect.numberOfHandlers), effect.toString());
     }
 
 }

@@ -2,21 +2,20 @@ package underlings.utilities;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import underlings.card.Card;
 import underlings.card.effect.Effect;
 import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementSpace;
-import underlings.game.Deck;
-import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.handler.HandlerMovementLogic;
 import underlings.handler.HandlerState;
 import underlings.handler.WildHandler;
+import underlings.hatchingground.Deck;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
 
-public class EggHatchingLogic {
+public class EggHatchingUtilities {
 
     private Gui gui;
     private ElementBag elementBag;
@@ -26,7 +25,7 @@ public class EggHatchingLogic {
     private Deck deck;
     private HandlerMovementLogic handlerMovementLogic;
 
-    public EggHatchingLogic(Gui gui, ElementBag elementBag, HatchingGround hatchingGround, Runnable displayMethod,
+    public EggHatchingUtilities(Gui gui, ElementBag elementBag, HatchingGround hatchingGround, Runnable displayMethod,
             List<Player> players, Deck deck, HandlerMovementLogic handlerMovementLogic) {
         this.gui = gui;
         this.elementBag = elementBag;
@@ -51,7 +50,7 @@ public class EggHatchingLogic {
         for (int i = 0; i < effects.length; i++) {
             effects[i].on(card).on(this.elementBag).on(this.hatchingGround).on(player).on(this.gui).on(this)
                     .on(this.deck).on(this.players).on(handlerMovementLogic).apply();
-            this.gui.notifyAction(player.getId(), LocaleWrap.format("effect_applied", effects[i].toString()));
+            this.gui.notifyAction(player.getId(), LocaleUtilities.format("effect_applied", effects[i].toString()));
             this.displayMethod.run();
         }
         for (Card egg : hatchingGround.getUnclaimedEggs()) {

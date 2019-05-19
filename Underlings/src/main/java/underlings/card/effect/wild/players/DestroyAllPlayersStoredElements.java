@@ -5,7 +5,7 @@ import java.util.List;
 import underlings.card.effect.PlayersEffect;
 import underlings.gui.Gui;
 import underlings.player.Player;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class DestroyAllPlayersStoredElements extends PlayersEffect {
 
@@ -16,6 +16,6 @@ public class DestroyAllPlayersStoredElements extends PlayersEffect {
 
     @Override
     public String toString() {
-        return LocaleWrap.get("destroy_all_players_stored_elemetns");
+        return LocaleUtilities.get("destroy_all_players_stored_elemetns");
     }
 }

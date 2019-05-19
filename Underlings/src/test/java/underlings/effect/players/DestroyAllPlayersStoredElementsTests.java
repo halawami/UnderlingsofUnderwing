@@ -10,7 +10,7 @@ import underlings.MockTest;
 import underlings.card.effect.Effect;
 import underlings.card.effect.wild.players.DestroyAllPlayersStoredElements;
 import underlings.player.Player;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class DestroyAllPlayersStoredElementsTests extends MockTest {
 
@@ -39,7 +39,7 @@ public class DestroyAllPlayersStoredElementsTests extends MockTest {
     @Test
     public void testToString() {
         Effect effect = new DestroyAllPlayersStoredElements();
-        assertEquals(LocaleWrap.get("destroy_all_players_stored_elemetns"), effect.toString());
+        assertEquals(LocaleUtilities.get("destroy_all_players_stored_elemetns"), effect.toString());
     }
 
 }

@@ -9,21 +9,22 @@ import java.util.List;
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.card.Card;
 import underlings.card.effect.Effect;
-import underlings.element.utilities.ElementSpaceLogic;
 import underlings.handler.Handler;
 import underlings.handler.HandlerState;
 import underlings.handler.WildHandler;
+import underlings.hatchingground.Deck;
+import underlings.hatchingground.HatchingGround;
+import underlings.utilities.ElementSpaceUtilities;
 
 public class HatchingGroundTests {
 
-    private ElementSpaceLogic niceLogic;
+    private ElementSpaceUtilities niceLogic;
 
     @Before
     public void loadRecipes() {
-        this.niceLogic = EasyMock.niceMock(ElementSpaceLogic.class);
+        this.niceLogic = EasyMock.niceMock(ElementSpaceUtilities.class);
         EasyMock.replay(this.niceLogic);
     }
 
@@ -106,7 +107,7 @@ public class HatchingGroundTests {
 
     @Test
     public void testPullAndReplace() {
-        ElementSpaceLogic logic = EasyMock.mock(ElementSpaceLogic.class);
+        ElementSpaceUtilities logic = EasyMock.mock(ElementSpaceUtilities.class);
 
         Card card1 = new Card();
         EasyMock.expect(logic.isComplete(card1)).andReturn(false);

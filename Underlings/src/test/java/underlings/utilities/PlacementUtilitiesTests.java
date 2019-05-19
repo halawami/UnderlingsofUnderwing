@@ -10,20 +10,18 @@ import java.util.List;
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.MockTest;
 import underlings.card.Card;
 import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.ElementSpacePosition;
-import underlings.element.utilities.ElementSpaceLogic;
-import underlings.game.Deck;
-import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.gui.PromptHandler;
 import underlings.gui.YesNoChoice;
 import underlings.handler.WildHandler;
+import underlings.hatchingground.Deck;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
 
 public class PlacementUtilitiesTests extends MockTest {
@@ -34,7 +32,7 @@ public class PlacementUtilitiesTests extends MockTest {
         this.gui = this.mock(Gui.class);
         this.displayMethod = this.mock(Runnable.class);
         this.player = this.mock(Player.class);
-        this.elementSpaceLogic = this.mock(ElementSpaceLogic.class);
+        this.elementSpaceLogic = this.mock(ElementSpaceUtilities.class);
         this.promptHandler = this.mock(PromptHandler.class);
     }
 
@@ -74,7 +72,7 @@ public class PlacementUtilitiesTests extends MockTest {
 
         Gui gui = EasyMock.mock(Gui.class);
         addMock(gui);
-        EasyMock.expect(gui.getElementSpace(LocaleWrap.get("prompt_element_space"), spaces, 10))
+        EasyMock.expect(gui.getElementSpace(LocaleUtilities.get("prompt_element_space"), spaces, 10))
                 .andReturn(card.elementSpaces[0]);
 
         this.replayAll();
@@ -93,7 +91,7 @@ public class PlacementUtilitiesTests extends MockTest {
         ElementSpace space = new ElementSpace(ElementColor.BLACK);
         EasyMock.expect(this.elementSpaceLogic.getPlayableElements(space, elements)).andReturn(elements);
 
-        EasyMock.expect(this.gui.promptChoice(LocaleWrap.get("prompt_element"), elements, 10))
+        EasyMock.expect(this.gui.promptChoice(LocaleUtilities.get("prompt_element"), elements, 10))
                 .andReturn(elements.get(0));
 
         EasyMock.expect(this.elementSpaceLogic.isOpenElement(ElementColor.BLACK)).andReturn(false);
@@ -105,17 +103,17 @@ public class PlacementUtilitiesTests extends MockTest {
         EasyMock.expect(this.player.getElements()).andReturn(elements2);
         EasyMock.expect(this.elementSpaceLogic.getPlayableElements(space, elements2)).andReturn(elements2);
 
-        EasyMock.expect(this.gui.promptChoice(LocaleWrap.get("gui_more_moves"), YesNoChoice.getChoices(), 10))
+        EasyMock.expect(this.gui.promptChoice(LocaleUtilities.get("gui_more_moves"), YesNoChoice.getChoices(), 10))
                 .andReturn(YesNoChoice.YES);
 
-        EasyMock.expect(this.gui.promptChoice(LocaleWrap.get("prompt_element"), elements2, 10))
+        EasyMock.expect(this.gui.promptChoice(LocaleUtilities.get("prompt_element"), elements2, 10))
                 .andReturn(elements2.get(0));
 
         EasyMock.expect(this.elementSpaceLogic.isOpenElement(ElementColor.WHITE)).andReturn(true);
 
         List<ElementColor> colors = Arrays.asList(ElementColor.BLACK);
         EasyMock.expect(this.elementSpaceLogic.getValidAdditions(space)).andReturn(colors);
-        EasyMock.expect(this.gui.promptChoice(LocaleWrap.get("prompt_element_color"), colors, 10))
+        EasyMock.expect(this.gui.promptChoice(LocaleUtilities.get("prompt_element_color"), colors, 10))
                 .andReturn(ElementColor.BLACK);
 
         this.player.removeElement(elements2.get(0));

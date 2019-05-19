@@ -13,24 +13,23 @@ import java.util.Map;
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.effect.Effect;
 import underlings.element.ElementSpace;
-import underlings.element.utilities.ElementSpaceLogic;
-import underlings.game.Deck;
-import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.gui.Gui.PromptType;
 import underlings.gui.YesNoChoice;
 import underlings.handler.Handler;
 import underlings.handler.HandlerState;
 import underlings.handler.WildHandler;
+import underlings.hatchingground.Deck;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.FakePlayer;
 import underlings.player.Player;
-import underlings.utilities.EggHatchingLogic;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.EggHatchingUtilities;
+import underlings.utilities.ElementSpaceUtilities;
+import underlings.utilities.LocaleUtilities;
 import underlings.utilities.PlacementUtilities;
 
 public class PlacementPhaseTests extends MockTest {
@@ -42,11 +41,11 @@ public class PlacementPhaseTests extends MockTest {
         this.player = this.mock(Player.class);
         this.players = Arrays.asList(this.player);
         this.deck = this.mock(Deck.class);
-        this.elementSpaceLogic = this.mock(ElementSpaceLogic.class);
+        this.elementSpaceLogic = this.mock(ElementSpaceUtilities.class);
         this.gui = this.mock(Gui.class);
         this.placementUtilities = this.mock(PlacementUtilities.class);
         this.hatchingGround = this.mock(HatchingGround.class);
-        this.hatchingGround.logic = this.mock(ElementSpaceLogic.class);
+        this.hatchingGround.logic = this.mock(ElementSpaceUtilities.class);
     }
 
     public <T> Object getField(Class<T> fieldClass, PlacementPhase phase, String fieldName)
@@ -183,26 +182,26 @@ public class PlacementPhaseTests extends MockTest {
 
     @Test
     public void testMoreMovesNoChoices() {
-        EasyMock.expect(this.gui.promptChoice(LocaleWrap.get("gui_more_moves"), YesNoChoice.getChoices(), 0))
+        EasyMock.expect(this.gui.promptChoice(LocaleUtilities.get("gui_more_moves"), YesNoChoice.getChoices(), 0))
                 .andReturn(YesNoChoice.NO);
 
         this.replayAll();
 
         boolean result =
-                this.gui.promptChoice(LocaleWrap.get("gui_more_moves"), YesNoChoice.getChoices(), 0).booleanValue;
+                this.gui.promptChoice(LocaleUtilities.get("gui_more_moves"), YesNoChoice.getChoices(), 0).booleanValue;
 
         assertFalse(result);
     }
 
     @Test
     public void testMoreMovesTrue() {
-        EasyMock.expect(this.gui.promptChoice(LocaleWrap.get("gui_more_moves"), YesNoChoice.getChoices(), 0))
+        EasyMock.expect(this.gui.promptChoice(LocaleUtilities.get("gui_more_moves"), YesNoChoice.getChoices(), 0))
                 .andReturn(YesNoChoice.YES);
 
         this.replayAll();
 
         boolean result =
-                this.gui.promptChoice(LocaleWrap.get("gui_more_moves"), YesNoChoice.getChoices(), 0).booleanValue;
+                this.gui.promptChoice(LocaleUtilities.get("gui_more_moves"), YesNoChoice.getChoices(), 0).booleanValue;
 
 
         assertTrue(result);
@@ -234,7 +233,7 @@ public class PlacementPhaseTests extends MockTest {
         EasyMock.expect(placementPhase.checkAndDecrementTurnCount(this.player)).andReturn(true);
         EasyMock.expect(this.placementUtilities.getPlayableCards(this.player.elementSpaceLogic, this.player.elements))
                 .andReturn(Collections.emptyList());
-        this.gui.alert(LocaleWrap.get("no_placements"), this.player.id, PromptType.WARNING);
+        this.gui.alert(LocaleUtilities.get("no_placements"), this.player.id, PromptType.WARNING);
 
         this.replayAll();
 
@@ -306,7 +305,7 @@ public class PlacementPhaseTests extends MockTest {
         placementPhase.utils = this.placementUtilities;
         placementPhase.gui = this.gui;
         placementPhase.hatchingGround = this.hatchingGround;
-        EggHatchingLogic wildEggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
+        EggHatchingUtilities wildEggHatchingLogic = EasyMock.mock(EggHatchingUtilities.class);
         placementPhase.wildEggHatchingLogic = wildEggHatchingLogic;
         this.addMock(wildEggHatchingLogic);
         this.addMock(placementPhase);

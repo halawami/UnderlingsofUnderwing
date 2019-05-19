@@ -15,7 +15,7 @@ import org.junit.Test;
 import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
-import underlings.element.utilities.ElementSpaceLogic;
+import underlings.utilities.ElementSpaceUtilities;
 
 public class OrangeTests {
 
@@ -26,7 +26,7 @@ public class OrangeTests {
     private ElementColor desired = ElementColor.ORANGE;
     private ElementColor elementOneColor = ElementColor.RED;
     private ElementColor elementTwoColor = ElementColor.YELLOW;
-    ElementSpaceLogic logic;
+    ElementSpaceUtilities logic;
 
     @Before
     public void init() throws IOException {
@@ -34,7 +34,7 @@ public class OrangeTests {
         this.elementOne = new Element(this.elementOneColor);
         this.elementTwo = new Element(this.elementTwoColor);
         List<String> recipes = Resources.readLines(Resources.getResource("DefaultRecipeList.txt"), Charsets.UTF_8);
-        logic = new ElementSpaceLogic(recipes);
+        logic = new ElementSpaceUtilities(recipes);
     }
 
     @Test

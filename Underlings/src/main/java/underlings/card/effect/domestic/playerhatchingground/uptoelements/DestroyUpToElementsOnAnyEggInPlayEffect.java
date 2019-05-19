@@ -4,7 +4,7 @@ import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.player.Player;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class DestroyUpToElementsOnAnyEggInPlayEffect extends UptoElementsFromAnyEggInPlayEffect {
 
@@ -20,6 +20,6 @@ public class DestroyUpToElementsOnAnyEggInPlayEffect extends UptoElementsFromAny
             elements.append(color);
             elements.append(" ");
         }
-        return LocaleWrap.format("destroy_up_to_effect", this.upTo, elements);
+        return LocaleUtilities.format("destroy_up_to_effect", this.upTo, elements);
     }
 }

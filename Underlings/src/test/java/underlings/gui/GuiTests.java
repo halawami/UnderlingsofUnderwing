@@ -27,18 +27,18 @@ import underlings.element.ElementFactory;
 import underlings.element.ElementSpace;
 import underlings.element.ElementSpacePosition;
 import underlings.element.NullElement;
-import underlings.element.utilities.ElementSpaceLogic;
-import underlings.game.Deck;
 import underlings.game.Game;
-import underlings.game.HatchingGround;
 import underlings.gui.Gui.PromptType;
 import underlings.handler.Handler;
 import underlings.handler.HandlerChoice;
 import underlings.handler.HandlerDecision;
 import underlings.handler.HandlerFactory;
 import underlings.handler.HandlerState;
+import underlings.hatchingground.Deck;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.PlayerFactory;
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.ElementSpaceUtilities;
+import underlings.utilities.LocaleUtilities;
 
 public class GuiTests {
 
@@ -60,9 +60,9 @@ public class GuiTests {
         EasyMock.replay(this.deck);
 
         List<String> recipes =
-                Resources.readLines(Resources.getResource(LocaleWrap.get("default_recipe_list")), Charsets.UTF_8);
+                Resources.readLines(Resources.getResource(LocaleUtilities.get("default_recipe_list")), Charsets.UTF_8);
 
-        ElementSpaceLogic logic = EasyMock.niceMock(ElementSpaceLogic.class);
+        ElementSpaceUtilities logic = EasyMock.niceMock(ElementSpaceUtilities.class);
         EasyMock.replay(logic);
         this.hatchingGround = new HatchingGround(this.deck, logic);
         this.game = new Game(this.gui, this.hatchingGround, new PlayerFactory(new HandlerFactory(), recipes),
@@ -85,13 +85,13 @@ public class GuiTests {
         handlers.add(handler);
         List<HandlerChoice> handlerChoices = HandlerChoice.getMovements(HandlerState.READY_ROOM);
 
-        EasyMock.expect(this.promptHandler.promptChoice(LocaleWrap.get("gui_handler"), handlers, 0)).andReturn(handler);
+        EasyMock.expect(this.promptHandler.promptChoice(LocaleUtilities.get("gui_handler"), handlers, 0)).andReturn(handler);
         EasyMock.expect(handler.getPossibleChoices()).andReturn(handlerChoices);
 
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         EasyMock.expect(hatchingGround.getUnclaimedEggs()).andReturn(Arrays.asList(new Card()));
         EasyMock.expect(this.promptHandler
-                .promptChoice(MessageFormat.format(LocaleWrap.get("gui_handler_choice"), handler), handlerChoices, 0))
+                .promptChoice(MessageFormat.format(LocaleUtilities.get("gui_handler_choice"), handler), handlerChoices, 0))
                 .andReturn(HandlerChoice.CARD);
 
         EasyMock.replay(hatchingGround, handler);
@@ -115,14 +115,14 @@ public class GuiTests {
         List<HandlerChoice> mockHandlerChoices = new ArrayList<>(handlerChoices);
         mockHandlerChoices.remove(HandlerChoice.CARD);
 
-        EasyMock.expect(this.promptHandler.promptChoice(LocaleWrap.get("gui_handler"), handlers, 0)).andReturn(handler);
+        EasyMock.expect(this.promptHandler.promptChoice(LocaleUtilities.get("gui_handler"), handlers, 0)).andReturn(handler);
         EasyMock.expect(handler.getPossibleChoices()).andReturn(handlerChoices);
 
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         EasyMock.expect(hatchingGround.getUnclaimedEggs()).andReturn(Collections.emptyList());
 
         EasyMock.expect(this.promptHandler.promptChoice(
-                MessageFormat.format(LocaleWrap.get("gui_handler_choice"), handler), mockHandlerChoices, 0))
+                MessageFormat.format(LocaleUtilities.get("gui_handler_choice"), handler), mockHandlerChoices, 0))
                 .andReturn(HandlerChoice.FIELD);
 
 
@@ -142,7 +142,7 @@ public class GuiTests {
 
     @Test
     public void testGetPlayerCountTwoPlayers() {
-        EasyMock.expect(this.promptHandler.promptInt(LocaleWrap.get("prompt_player_count"), 2, 6)).andReturn(2);
+        EasyMock.expect(this.promptHandler.promptInt(LocaleUtilities.get("prompt_player_count"), 2, 6)).andReturn(2);
 
         EasyMock.replay(this.promptHandler, this.display);
         this.game.promptPlayerCount();
@@ -153,7 +153,7 @@ public class GuiTests {
 
     @Test
     public void testGetPlayerCountSixPlayers() {
-        EasyMock.expect(this.promptHandler.promptInt(LocaleWrap.get("prompt_player_count"), 2, 6)).andReturn(6);
+        EasyMock.expect(this.promptHandler.promptInt(LocaleUtilities.get("prompt_player_count"), 2, 6)).andReturn(6);
 
         EasyMock.replay(this.promptHandler, this.display);
         this.game.promptPlayerCount();
@@ -218,14 +218,14 @@ public class GuiTests {
     public void testChoiceYesToString() {
         this.replay();
         YesNoChoice choice = YesNoChoice.YES;
-        assertEquals(LocaleWrap.get("YES"), choice.toString());
+        assertEquals(LocaleUtilities.get("YES"), choice.toString());
     }
 
     @Test
     public void testChoiceNoToString() {
         this.replay();
         YesNoChoice choice = YesNoChoice.NO;
-        assertEquals(LocaleWrap.get("NO"), choice.toString());
+        assertEquals(LocaleUtilities.get("NO"), choice.toString());
     }
 
     @Test
@@ -251,9 +251,9 @@ public class GuiTests {
         cardsToChoose.add(cardTwo);
         cardsToChoose.add(EmptyCard.getInstance());
 
-        EasyMock.expect(this.promptHandler.promptChoice(LocaleWrap.get("choose_card"), cardsToChoose, 0))
+        EasyMock.expect(this.promptHandler.promptChoice(LocaleUtilities.get("choose_card"), cardsToChoose, 0))
                 .andReturn(cardTwo);
-        EasyMock.expect(this.promptHandler.promptChoice(LocaleWrap.get("choose_card"), cardsToChoose, 0))
+        EasyMock.expect(this.promptHandler.promptChoice(LocaleUtilities.get("choose_card"), cardsToChoose, 0))
                 .andReturn(cardOne);
 
         this.replay();
@@ -284,7 +284,7 @@ public class GuiTests {
         EasyMock.expect(
                 this.promptHandler.promptChoiceDropdown(EasyMock.anyString(), EasyMock.anyObject(), EasyMock.anyInt()))
                 .andReturn(null);
-        EasyMock.expect(this.promptHandler.promptChoiceDropdown(LocaleWrap.get("choose_language"),
+        EasyMock.expect(this.promptHandler.promptChoiceDropdown(LocaleUtilities.get("choose_language"),
                 new ArrayList<Locale>(), Locale.ENGLISH)).andReturn(Locale.CANADA);
 
         this.replay();
@@ -299,7 +299,7 @@ public class GuiTests {
     public void testGetElementOfColorsFromSpaceNoChoices() {
         List<Element> elements = new ArrayList<>();
         elements.add(NullElement.getInstance());
-        EasyMock.expect(this.promptHandler.promptChoice(LocaleWrap.get("gui_element_collect"), elements, 0))
+        EasyMock.expect(this.promptHandler.promptChoice(LocaleUtilities.get("gui_element_collect"), elements, 0))
                 .andReturn(NullElement.getInstance());
 
         this.replay();
@@ -323,7 +323,7 @@ public class GuiTests {
         List<Element> elements = new ArrayList<>();
         elements.add(space.elements.get(0));
         elements.add(NullElement.getInstance());
-        EasyMock.expect(this.promptHandler.promptChoice(LocaleWrap.get("gui_element_collect"), elements, 0))
+        EasyMock.expect(this.promptHandler.promptChoice(LocaleUtilities.get("gui_element_collect"), elements, 0))
                 .andReturn(NullElement.getInstance());
 
         this.replay();

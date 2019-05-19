@@ -9,15 +9,14 @@ import java.util.Collections;
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.MockTest;
 import underlings.TestUtils;
-import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.handler.HandlerChoice;
 import underlings.handler.HandlerDecision;
 import underlings.handler.HandlerMovementLogic;
 import underlings.handler.HandlerState;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
 
 public class HandlerPhaseTest extends MockTest {

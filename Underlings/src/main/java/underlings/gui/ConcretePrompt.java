@@ -11,7 +11,7 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import underlings.utilities.LocaleWrap;
+import underlings.utilities.LocaleUtilities;
 
 public class ConcretePrompt implements PromptHandler {
 
@@ -97,9 +97,9 @@ public class ConcretePrompt implements PromptHandler {
         do {
             try {
                 result = Integer
-                        .parseInt(JOptionPane.showInputDialog(LocaleWrap.format("prompt_int", prompt, min, max)));
+                        .parseInt(JOptionPane.showInputDialog(LocaleUtilities.format("prompt_int", prompt, min, max)));
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, LocaleWrap.format("prompt_int_error", min, max));
+                JOptionPane.showMessageDialog(null, LocaleUtilities.format("prompt_int_error", min, max));
             }
         } while (result > max || result < min);
 
@@ -117,6 +117,6 @@ public class ConcretePrompt implements PromptHandler {
     }
 
     private String getPlayer(int playerId) {
-        return MessageFormat.format(LocaleWrap.get("player_number"), playerId);
+        return MessageFormat.format(LocaleUtilities.get("player_number"), playerId);
     }
 }
