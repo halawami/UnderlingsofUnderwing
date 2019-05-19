@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Map;
 import org.easymock.EasyMock;
 import org.junit.Before;
@@ -17,6 +18,7 @@ import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.Deck;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
+import underlings.gui.Gui.PromptType;
 import underlings.gui.YesNoChoice;
 import underlings.handler.Handler;
 import underlings.handler.HandlerState;
@@ -202,8 +204,27 @@ public class PlacementPhaseTests extends MockTest {
     public void testTurnOver() {
         PlacementPhase placementPhase = EasyMock.partialMockBuilder(PlacementPhase.class)
                 .addMockedMethod("checkAndDecrementTurnCount").createMock();
+        this.addMock(placementPhase);
+
+        EasyMock.expect(placementPhase.checkAndDecrementTurnCount(this.player)).andReturn(false);
+
+        this.replayAll();
+
+        placementPhase.turn(this.player);
+    }
+
+    @Test
+    public void testTurnNoPlayableCards() {
+        PlacementPhase placementPhase = EasyMock.partialMockBuilder(PlacementPhase.class)
+                .addMockedMethod("checkAndDecrementTurnCount").createMock();
+        placementPhase.utils = this.placementUtilities;
+        placementPhase.gui = this.gui;
+        this.addMock(placementPhase);
 
         EasyMock.expect(placementPhase.checkAndDecrementTurnCount(this.player)).andReturn(true);
+        EasyMock.expect(this.placementUtilities.getPlayableCards(this.player.elementSpaceLogic, this.player.elements))
+                .andReturn(Collections.emptyList());
+        this.gui.alert(LocaleWrap.get("no_placements"), this.player.id, PromptType.WARNING);
 
         this.replayAll();
 

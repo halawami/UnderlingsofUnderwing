@@ -1,7 +1,9 @@
 package underlings.card;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
@@ -22,7 +24,7 @@ public class GetElementGiverTests extends MockTest {
     }
 
     @Test
-    public void testNoElementGivers() {
+    public void testNoEffects() {
         Card testedCard = new Card();
         testedCard.domesticEffects = new Effect[0];
 
@@ -37,7 +39,7 @@ public class GetElementGiverTests extends MockTest {
     public void testOneElementGiversFirst() {
         ElementGiverEffect elementGiverEffect = new ElementGiverEffect(DrawChoice.RED);
         Card testedCard = new Card();
-        testedCard.domesticEffects = new Effect[]{elementGiverEffect};
+        testedCard.domesticEffects = new Effect[] {elementGiverEffect};
 
         this.replayAll();
 
@@ -52,7 +54,7 @@ public class GetElementGiverTests extends MockTest {
         ElementGiverEffect elementGiverEffect = new ElementGiverEffect(DrawChoice.RED);
 
         Card testedCard = new Card();
-        testedCard.domesticEffects = new Effect[]{this.effect, elementGiverEffect, this.effect2};
+        testedCard.domesticEffects = new Effect[] {this.effect, elementGiverEffect, this.effect2};
 
         this.replayAll();
 
@@ -67,7 +69,7 @@ public class GetElementGiverTests extends MockTest {
         ElementGiverEffect elementGiverEffect = new ElementGiverEffect(DrawChoice.RED);
 
         Card testedCard = new Card();
-        testedCard.domesticEffects = new Effect[]{this.effect, this.effect2, elementGiverEffect};
+        testedCard.domesticEffects = new Effect[] {this.effect, this.effect2, elementGiverEffect};
 
         this.replayAll();
 
@@ -84,7 +86,7 @@ public class GetElementGiverTests extends MockTest {
         ElementGiverEffect elementGiverEffect2 = new ElementGiverEffect(DrawChoice.BLUE);
 
         Card testedCard = new Card();
-        testedCard.domesticEffects = new Effect[]{this.effect, elementGiverEffect1, elementGiverEffect2};
+        testedCard.domesticEffects = new Effect[] {this.effect, elementGiverEffect1, elementGiverEffect2};
 
         this.replayAll();
 
@@ -93,6 +95,32 @@ public class GetElementGiverTests extends MockTest {
         assertEquals(2, elementGivers.size());
         assertEquals(elementGiverEffect1, elementGivers.get(0));
         assertEquals(elementGiverEffect2, elementGivers.get(1));
+    }
+
+    @Test
+    public void testNullElementGivers() {
+        Card testedCard = new Card();
+        testedCard.domesticEffects = new Effect[] {this.effect};
+        this.effect.drawChoices = null;
+
+        replayAll();
+
+        List<ElementGiver> elementGivers = testedCard.getElementGivers();
+
+        assertTrue(elementGivers.isEmpty());
+    }
+
+    @Test
+    public void testNoElementGivers() {
+        Card testedCard = new Card();
+        testedCard.domesticEffects = new Effect[] {this.effect};
+        this.effect.drawChoices = new ArrayList<>();
+
+        replayAll();
+
+        List<ElementGiver> elementGivers = testedCard.getElementGivers();
+
+        assertTrue(elementGivers.isEmpty());
     }
 
 }
