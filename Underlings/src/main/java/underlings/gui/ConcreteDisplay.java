@@ -10,8 +10,10 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
+
 import underlings.card.Card;
 import underlings.element.Element;
 import underlings.element.ElementBag;
@@ -227,7 +229,7 @@ public class ConcreteDisplay implements Display {
 
             this.gr.setColor(Color.BLACK);
             this.gr.drawString(handlers.get(i).toString(), (int) (ratio * (30 + offsetX + (width + gapX) * col)),
-                    (int) (i * 25 + ratio * (height / 2 + offsetY + (height + gapY) * row)));
+                    (int) (i * 17 + ratio * (height / 2 + offsetY + (height + gapY) * row)));
         }
     }
 
