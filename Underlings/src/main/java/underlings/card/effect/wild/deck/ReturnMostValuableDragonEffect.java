@@ -20,7 +20,7 @@ public class ReturnMostValuableDragonEffect extends DeckEffects {
         List<Card> mostValuableDragons = player.getMostValuableDragons();
         if (!mostValuableDragons.isEmpty()) {
             Card mostValuableDragon =
-                    gui.promptChoice("Pick a dragon to return to deck", mostValuableDragons, player.id);
+                    gui.promptChoice(LocaleWrap.get("prompt_dragon_return_deck"), mostValuableDragons, player.id);
             player.hatchedCards.remove(mostValuableDragon);
             deck.addCard(mostValuableDragon, true);
         }

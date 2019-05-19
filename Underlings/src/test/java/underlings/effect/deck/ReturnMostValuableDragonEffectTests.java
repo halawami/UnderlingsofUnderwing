@@ -68,7 +68,7 @@ public class ReturnMostValuableDragonEffectTests extends MockTest {
         player.hatchedCards = new ArrayList<>(mostValuableDragons);
 
         EasyMock.expect(player.getMostValuableDragons()).andReturn(mostValuableDragons);
-        EasyMock.expect(gui.promptChoice("Pick a dragon to return to deck", mostValuableDragons, 0))
+        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_dragon_return_deck"), mostValuableDragons, 0))
                 .andReturn(mostValuableDragons.get(0));
         Deck deck = this.mock(Deck.class);
         deck.addCard(mostValuableDragons.get(0), true);
@@ -89,7 +89,7 @@ public class ReturnMostValuableDragonEffectTests extends MockTest {
         player.hatchedCards = new ArrayList<>(mostValuableDragons);
 
         EasyMock.expect(player.getMostValuableDragons()).andReturn(mostValuableDragons);
-        EasyMock.expect(gui.promptChoice("Pick a dragon to return to deck", mostValuableDragons, 0))
+        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_dragon_return_deck"), mostValuableDragons, 0))
                 .andReturn(mostValuableDragons.get(1));
         Deck deck = this.mock(Deck.class);
         deck.addCard(mostValuableDragons.get(1), true);
