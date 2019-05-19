@@ -65,8 +65,7 @@ public class AddElementsToAllAdjacentEggsEffectTests extends MockTest {
 
         this.replayAll();
 
-        effect.applyOnAdjacentEgg(this.card, this.elementBag, this.elementSpaceLogic, this.eggHatchingLogic, null,
-                null, null);
+        effect.applyOnAdjacentEgg(this.card, this.elementSpaceLogic, this.elementBag);
     }
 
     @Test
