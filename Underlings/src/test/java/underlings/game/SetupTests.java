@@ -1,4 +1,4 @@
-package underlings.game.setup;
+package underlings.game;
 
 import static org.junit.Assert.assertEquals;
 
@@ -13,14 +13,13 @@ import org.junit.Before;
 import org.junit.Test;
 
 import underlings.element.ElementBag;
-import underlings.game.Game;
 import underlings.gui.Gui;
 import underlings.handler.HandlerFactory;
 import underlings.hatchingground.HatchingGround;
 import underlings.player.PlayerFactory;
 import underlings.utilities.LocaleUtilities;
 
-public class GameTests {
+public class SetupTests {
 
     private Game game;
 

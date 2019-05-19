@@ -1,4 +1,4 @@
-package underlings.game.setup;
+package underlings.element;
 
 import static org.junit.Assert.assertEquals;
 
@@ -7,11 +7,7 @@ import java.util.Random;
 import org.junit.Before;
 import org.junit.Test;
 
-import underlings.element.ElementBag;
-import underlings.element.ElementColor;
-import underlings.element.ElementFactory;
-
-public class ElementBagTests {
+public class ElementBagSetupTests {
 
     private ElementBag elementBag;
 
