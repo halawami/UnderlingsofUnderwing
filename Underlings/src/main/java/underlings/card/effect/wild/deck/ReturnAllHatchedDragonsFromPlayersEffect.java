@@ -2,6 +2,7 @@ package underlings.card.effect.wild.deck;
 
 import java.util.Arrays;
 import java.util.List;
+
 import underlings.card.Card;
 import underlings.card.Temperature;
 import underlings.card.effect.DeckEffects;
@@ -10,7 +11,7 @@ import underlings.hatchingground.Deck;
 import underlings.player.Player;
 import underlings.utilities.LocaleUtilities;
 
-public class ReturnAllHatchedDragonsFromPlayers extends DeckEffects {
+public class ReturnAllHatchedDragonsFromPlayersEffect extends DeckEffects {
 
     public Temperature[] temperatures;
 

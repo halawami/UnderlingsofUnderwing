@@ -14,13 +14,13 @@ import org.junit.Test;
 
 import underlings.card.Card;
 import underlings.card.Temperature;
-import underlings.card.effect.domestic.players.TakeHatchedDragonFromPlayer;
+import underlings.card.effect.domestic.players.TakeHatchedDragonFromPlayerEffect;
 import underlings.gui.Gui;
 import underlings.gui.Gui.PromptType;
 import underlings.player.Player;
 import underlings.utilities.LocaleUtilities;
 
-public class TakeHatchedDragonFromPlayerTests {
+public class TakeHatchedDragonFromPlayerEffectTests {
 
     @Test
     public void testApply() {
@@ -36,7 +36,7 @@ public class TakeHatchedDragonFromPlayerTests {
         card.points = 8;
         Gui gui = EasyMock.mock(Gui.class);
         EasyMock.expect(player2.getId()).andReturn(1);
-        TakeHatchedDragonFromPlayer effect = new TakeHatchedDragonFromPlayer();
+        TakeHatchedDragonFromPlayerEffect effect = new TakeHatchedDragonFromPlayerEffect();
         effect.on(gui).on(Arrays.asList(player, player2)).on(player2);
         Map<Player, List<Card>> map = new HashMap<>();
         map.put(player, Arrays.asList(card));
@@ -69,7 +69,7 @@ public class TakeHatchedDragonFromPlayerTests {
         card.points = 8;
         Gui gui = EasyMock.mock(Gui.class);
         EasyMock.expect(player2.getId()).andReturn(1);
-        TakeHatchedDragonFromPlayer effect = new TakeHatchedDragonFromPlayer();
+        TakeHatchedDragonFromPlayerEffect effect = new TakeHatchedDragonFromPlayerEffect();
         effect.on(gui).on(Arrays.asList(player, player2, player3)).on(player2);
         Map<Player, List<Card>> map = new HashMap<>();
         map.put(player, Arrays.asList(card));
@@ -93,7 +93,7 @@ public class TakeHatchedDragonFromPlayerTests {
         player.hatchedCards = new LinkedList<>();
         player2.hatchedCards = new LinkedList<>();
         Gui gui = EasyMock.mock(Gui.class);
-        TakeHatchedDragonFromPlayer effect = new TakeHatchedDragonFromPlayer();
+        TakeHatchedDragonFromPlayerEffect effect = new TakeHatchedDragonFromPlayerEffect();
         effect.on(gui).on(Arrays.asList(player, player2)).on(player2);
         gui.alert(LocaleUtilities.get("no_player_has_hatched_cards"), PromptType.REGULAR);
 
@@ -124,7 +124,7 @@ public class TakeHatchedDragonFromPlayerTests {
         player3.hatchedCards.add(card2);
         Gui gui = EasyMock.mock(Gui.class);
         EasyMock.expect(player2.getId()).andReturn(1);
-        TakeHatchedDragonFromPlayer effect = new TakeHatchedDragonFromPlayer();
+        TakeHatchedDragonFromPlayerEffect effect = new TakeHatchedDragonFromPlayerEffect();
         effect.on(gui).on(Arrays.asList(player, player2, player3)).on(player2);
         Map<Player, List<Card>> map = new HashMap<>();
         map.put(player3, Arrays.asList(card2));
@@ -153,7 +153,7 @@ public class TakeHatchedDragonFromPlayerTests {
         Player player2 = EasyMock.mock(Player.class);
         player2.hatchedCards = new LinkedList<>();
         Gui gui = EasyMock.mock(Gui.class);
-        TakeHatchedDragonFromPlayer effect = new TakeHatchedDragonFromPlayer();
+        TakeHatchedDragonFromPlayerEffect effect = new TakeHatchedDragonFromPlayerEffect();
         effect.on(gui).on(Arrays.asList(player, player2)).on(player2);
         Map<Player, List<Card>> map = new HashMap<>();
 
@@ -170,7 +170,7 @@ public class TakeHatchedDragonFromPlayerTests {
 
     @Test
     public void testToString() {
-        TakeHatchedDragonFromPlayer effect = new TakeHatchedDragonFromPlayer();
+        TakeHatchedDragonFromPlayerEffect effect = new TakeHatchedDragonFromPlayerEffect();
         effect.temperatures = new Temperature[] {Temperature.COOL};
         StringBuilder temperature = new StringBuilder();
         for (Temperature temp : effect.temperatures) {

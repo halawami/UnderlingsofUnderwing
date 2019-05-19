@@ -7,7 +7,7 @@ import underlings.gui.Gui;
 import underlings.player.Player;
 import underlings.utilities.LocaleUtilities;
 
-public class DestroyAllPlayersStoredElements extends PlayersEffect {
+public class DestroyAllPlayersStoredElementsEffect extends PlayersEffect {
 
     @Override
     protected void apply(Player currentPlayer, List<Player> players, Gui gui) {

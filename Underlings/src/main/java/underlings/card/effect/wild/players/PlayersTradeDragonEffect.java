@@ -13,7 +13,7 @@ import underlings.player.FakePlayer;
 import underlings.player.Player;
 import underlings.utilities.LocaleUtilities;
 
-public class PlayersTradeDragon extends PlayersEffect {
+public class PlayersTradeDragonEffect extends PlayersEffect {
 
     @Override
     protected void apply(Player currentPlayer, List<Player> players, Gui gui) {

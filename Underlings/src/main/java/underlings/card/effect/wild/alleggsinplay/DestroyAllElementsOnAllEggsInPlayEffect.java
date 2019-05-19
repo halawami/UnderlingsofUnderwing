@@ -4,7 +4,7 @@ import underlings.card.Card;
 import underlings.card.effect.AllEggsInPlayEffect;
 import underlings.utilities.LocaleUtilities;
 
-public class DestroyAllElementsOnAllEggsInPlay extends AllEggsInPlayEffect {
+public class DestroyAllElementsOnAllEggsInPlayEffect extends AllEggsInPlayEffect {
 
     @Override
     public void applyOnCardInPlay(Card cardInPlay) {

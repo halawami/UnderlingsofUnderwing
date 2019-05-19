@@ -17,7 +17,7 @@ import underlings.gui.Gui;
 import underlings.player.Player;
 import underlings.utilities.LocaleUtilities;
 
-public class PlayersTradeDragonTests {
+public class PlayersTradeDragonEffectTests {
 
     private Player player;
     private Player player2;
@@ -39,7 +39,7 @@ public class PlayersTradeDragonTests {
         this.card2.points = 12;
         this.card.domesticEffects = new Effect[] {mockedEffect};
         this.mockedEffect = EasyMock.mock(Effect.class);
-        this.effect = new PlayersTradeDragon();
+        this.effect = new PlayersTradeDragonEffect();
         this.player.hatchedCards = new ArrayList<>();
         this.player.hatchedCards.add(card);
         this.player2.hatchedCards = new ArrayList<>();
@@ -134,7 +134,7 @@ public class PlayersTradeDragonTests {
 
         EasyMock.replay(player, player2, mockedEffect, gui);
 
-        PlayersTradeDragon effect = new PlayersTradeDragon();
+        PlayersTradeDragonEffect effect = new PlayersTradeDragonEffect();
         effect.tradeCards(gui, player2, player);
 
         EasyMock.verify(player, player2, mockedEffect, gui);
@@ -163,7 +163,7 @@ public class PlayersTradeDragonTests {
 
     @Test
     public void testToString() {
-        Effect effect = new PlayersTradeDragon();
+        Effect effect = new PlayersTradeDragonEffect();
         assertEquals(LocaleUtilities.get("trade_dragons_effect"), effect.toString());
     }
 

@@ -16,7 +16,7 @@ import org.junit.Test;
 import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.effect.Effect;
-import underlings.card.effect.domestic.playerhatchingground.HatchAnyUnclaimedEggAsWildDragon;
+import underlings.card.effect.domestic.playerhatchingground.HatchAnyUnclaimedEggAsWildDragonEffect;
 import underlings.element.ElementBag;
 import underlings.gui.Gui;
 import underlings.gui.YesNoChoice;
@@ -26,7 +26,7 @@ import underlings.player.Player;
 import underlings.utilities.EggHatchingUtilities;
 import underlings.utilities.LocaleUtilities;
 
-public class HatchAnyUnclaimedEggAsWildDragonTests extends MockTest {
+public class HatchAnyUnclaimedEggAsWildDragonEffectTests extends MockTest {
 
     @Before
     public void init() {
@@ -36,7 +36,7 @@ public class HatchAnyUnclaimedEggAsWildDragonTests extends MockTest {
         this.gui = this.mock(Gui.class);
         this.player = this.mock(Player.class);
         this.eggHatchingLogic = this.mock(EggHatchingUtilities.class);
-        this.effect = new HatchAnyUnclaimedEggAsWildDragon();
+        this.effect = new HatchAnyUnclaimedEggAsWildDragonEffect();
     }
 
     @Test
@@ -91,7 +91,7 @@ public class HatchAnyUnclaimedEggAsWildDragonTests extends MockTest {
     @Test
     public void testToString() {
         this.replayAll();
-        Effect effect = new HatchAnyUnclaimedEggAsWildDragon();
+        Effect effect = new HatchAnyUnclaimedEggAsWildDragonEffect();
         assertEquals(LocaleUtilities.get("hatch_egg_as_wild_dragon_effect"), effect.toString());
     }
 

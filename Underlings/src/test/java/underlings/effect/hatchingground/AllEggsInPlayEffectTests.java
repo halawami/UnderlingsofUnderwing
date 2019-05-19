@@ -11,7 +11,7 @@ import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.effect.AllEggsInPlayEffect;
 import underlings.card.effect.wild.alleggsinplay.AddElementToAllEggsInPlayEffect;
-import underlings.card.effect.wild.alleggsinplay.DestroyAllElementsOnAllEggsInPlay;
+import underlings.card.effect.wild.alleggsinplay.DestroyAllElementsOnAllEggsInPlayEffect;
 import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
@@ -120,7 +120,7 @@ public class AllEggsInPlayEffectTests extends MockTest {
 
         this.replayAll();
 
-        DestroyAllElementsOnAllEggsInPlay effect = new DestroyAllElementsOnAllEggsInPlay();
+        DestroyAllElementsOnAllEggsInPlayEffect effect = new DestroyAllElementsOnAllEggsInPlayEffect();
         effect.applyOnCardInPlay(cardInPlay, elementSpaceLogic, elementBag, null);
     }
 
@@ -135,13 +135,13 @@ public class AllEggsInPlayEffectTests extends MockTest {
 
         this.replayAll();
 
-        DestroyAllElementsOnAllEggsInPlay effect = new DestroyAllElementsOnAllEggsInPlay();
+        DestroyAllElementsOnAllEggsInPlayEffect effect = new DestroyAllElementsOnAllEggsInPlayEffect();
         effect.applyOnCardInPlay(cardInPlay);
     }
 
     @Test
     public void testToStringDestroy() {
-        DestroyAllElementsOnAllEggsInPlay effect = new DestroyAllElementsOnAllEggsInPlay();
+        DestroyAllElementsOnAllEggsInPlayEffect effect = new DestroyAllElementsOnAllEggsInPlayEffect();
         assertEquals(LocaleUtilities.get("destroy_all_elements_on_all_eggs_effect"), effect.toString());
     }
 

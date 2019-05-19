@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+
 import underlings.card.Card;
 import underlings.card.Temperature;
 import underlings.card.effect.PlayersEffect;
@@ -14,7 +15,7 @@ import underlings.gui.Gui.PromptType;
 import underlings.player.Player;
 import underlings.utilities.LocaleUtilities;
 
-public class TakeHatchedDragonFromPlayer extends PlayersEffect {
+public class TakeHatchedDragonFromPlayerEffect extends PlayersEffect {
 
     public int points;
     public Temperature[] temperatures;

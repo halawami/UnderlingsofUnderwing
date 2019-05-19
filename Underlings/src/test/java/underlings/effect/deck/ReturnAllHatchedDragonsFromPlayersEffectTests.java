@@ -2,21 +2,24 @@ package underlings.effect.deck;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.Temperature;
-import underlings.card.effect.wild.deck.ReturnAllHatchedDragonsFromPlayers;
+import underlings.card.effect.wild.deck.ReturnAllHatchedDragonsFromPlayersEffect;
 import underlings.hatchingground.Deck;
 import underlings.player.Player;
 import underlings.utilities.LocaleUtilities;
 
-public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
+public class ReturnAllHatchedDragonsFromPlayersEffectTests extends MockTest {
 
     @Before
     public void init() {
@@ -38,8 +41,8 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
     public void testApplyOnPlayers(int numberOfPlayers) {
         this.players = this.mockListOf(Player.class).withLengthOf(numberOfPlayers);
 
-        ReturnAllHatchedDragonsFromPlayers effect =
-                EasyMock.partialMockBuilder(ReturnAllHatchedDragonsFromPlayers.class)
+        ReturnAllHatchedDragonsFromPlayersEffect effect =
+                EasyMock.partialMockBuilder(ReturnAllHatchedDragonsFromPlayersEffect.class)
                         .addMockedMethod("removeCardsOfTemperature").createMock();
         this.addMock(effect);
         effect.temperatures = new Temperature[] {Temperature.NEUTRAL};
@@ -55,7 +58,7 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
 
     @Test
     public void testRemoveFromNoHatchedCards() {
-        ReturnAllHatchedDragonsFromPlayers effect = new ReturnAllHatchedDragonsFromPlayers();
+        ReturnAllHatchedDragonsFromPlayersEffect effect = new ReturnAllHatchedDragonsFromPlayersEffect();
 
         this.player.hatchedCards = new ArrayList<>();
 
@@ -75,7 +78,7 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
 
         this.replayAll();
 
-        ReturnAllHatchedDragonsFromPlayers effect = new ReturnAllHatchedDragonsFromPlayers();
+        ReturnAllHatchedDragonsFromPlayersEffect effect = new ReturnAllHatchedDragonsFromPlayersEffect();
         effect.removeCardsOfTemperature(this.deck, Arrays.asList(Temperature.NEUTRAL), this.player);
 
         assertEquals(0, this.player.hatchedCards.size());
@@ -91,7 +94,7 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
 
         this.replayAll();
 
-        ReturnAllHatchedDragonsFromPlayers effect = new ReturnAllHatchedDragonsFromPlayers();
+        ReturnAllHatchedDragonsFromPlayersEffect effect = new ReturnAllHatchedDragonsFromPlayersEffect();
         effect.removeCardsOfTemperature(this.deck, Arrays.asList(Temperature.NEUTRAL), this.player);
 
         assertEquals(5, this.player.hatchedCards.size());
@@ -110,7 +113,7 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
 
         this.replayAll();
 
-        ReturnAllHatchedDragonsFromPlayers effect = new ReturnAllHatchedDragonsFromPlayers();
+        ReturnAllHatchedDragonsFromPlayersEffect effect = new ReturnAllHatchedDragonsFromPlayersEffect();
         effect.removeCardsOfTemperature(this.deck, Arrays.asList(Temperature.NEUTRAL), this.player);
 
         assertEquals(1, this.player.hatchedCards.size());
@@ -131,7 +134,7 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
 
         this.replayAll();
 
-        ReturnAllHatchedDragonsFromPlayers effect = new ReturnAllHatchedDragonsFromPlayers();
+        ReturnAllHatchedDragonsFromPlayersEffect effect = new ReturnAllHatchedDragonsFromPlayersEffect();
         effect.removeCardsOfTemperature(this.deck, Arrays.asList(Temperature.NEUTRAL), this.player);
 
         assertEquals(0, this.player.hatchedCards.size());
@@ -140,7 +143,7 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
     @Test
     public void testToString() {
         this.replayAll();
-        ReturnAllHatchedDragonsFromPlayers effect = new ReturnAllHatchedDragonsFromPlayers();
+        ReturnAllHatchedDragonsFromPlayersEffect effect = new ReturnAllHatchedDragonsFromPlayersEffect();
         effect.temperatures = new Temperature[] {Temperature.COOL};
         StringBuilder temperature = new StringBuilder();
         for (Temperature temp : effect.temperatures) {

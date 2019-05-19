@@ -7,7 +7,7 @@ import underlings.handler.HandlerMovementLogic;
 import underlings.player.FakePlayer;
 import underlings.utilities.LocaleUtilities;
 
-public class RemoveAllHandlersFromAllEggsInPlay extends AllEggsInPlayEffect {
+public class RemoveAllHandlersFromAllEggsInPlayEffect extends AllEggsInPlayEffect {
 
     @Override
     public void applyOnCardInPlay(Card cardInPlay, HandlerMovementLogic handlerMovementLogic) {
