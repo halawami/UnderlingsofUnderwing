@@ -50,10 +50,12 @@ public class DragonPhase extends SequentialPhase {
                     player.hatchingTime = 1;
                 } else if (this.hatchingGround.lateHatching) {
                     player.moveToIncubation(completeCard, player.hatchingTime + 1);
-                    this.gui.notifyAction(player.getId(), LocaleUtilities.format("incubation_state", completeCard.name));
+                    this.gui.notifyAction(player.getId(),
+                            LocaleUtilities.format("incubation_state", completeCard.name));
                 } else {
                     player.moveToIncubation(completeCard, player.hatchingTime);
-                    this.gui.notifyAction(player.getId(), LocaleUtilities.format("incubation_state", completeCard.name));
+                    this.gui.notifyAction(player.getId(),
+                            LocaleUtilities.format("incubation_state", completeCard.name));
                 }
             }
         }

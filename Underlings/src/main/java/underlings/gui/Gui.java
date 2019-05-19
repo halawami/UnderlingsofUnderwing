@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
-
 import javax.swing.JOptionPane;
 import underlings.card.Card;
 import underlings.card.EmptyCard;
@@ -111,8 +110,8 @@ public class Gui {
     public Locale promptLocale(Locale[] locales) {
         Locale locale;
         do {
-            locale = this.promptHandler.promptChoiceDropdown(LocaleUtilities.get("choose_language"), Arrays.asList(locales),
-                    Locale.ENGLISH);
+            locale = this.promptHandler.promptChoiceDropdown(LocaleUtilities.get("choose_language"),
+                    Arrays.asList(locales), Locale.ENGLISH);
         } while (locale == null);
         return locale;
     }
@@ -150,11 +149,11 @@ public class Gui {
         Card card = this.promptHandler.promptChoice(LocaleUtilities.get("take_element_card"), cardOptions, playerId);
 
         List<ElementSpace> validSpaces = this.getSpacesWithColors(card, colorChoices);
-        return getElementSpace(LocaleUtilities.get("take_element_space"), validSpaces, playerId);
+        return this.getElementSpace(LocaleUtilities.get("take_element_space"), validSpaces, playerId);
     }
 
     public ElementSpace getElementSpace(String prompt, List<ElementSpace> spaces, int playerId) {
-        ElementSpace[][] spaceGrid = getElementSpaceGrid(spaces);
+        ElementSpace[][] spaceGrid = this.getElementSpaceGrid(spaces);
         ElementSpace space = this.promptHandler.pickFromGrid(prompt, spaceGrid, playerId);
         return space;
     }

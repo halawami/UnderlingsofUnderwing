@@ -48,7 +48,8 @@ public class Main {
     public static void main(String[] args) {
         List<String> recipes = null;
         try {
-            recipes = Resources.readLines(Resources.getResource(LocaleUtilities.get("default_recipe_list")), Charsets.UTF_8);
+            recipes = Resources.readLines(Resources.getResource(LocaleUtilities.get("default_recipe_list")),
+                    Charsets.UTF_8);
         } catch (IOException e) {
             e.printStackTrace();
             System.exit(1);
@@ -72,8 +73,8 @@ public class Main {
         Game game = new Game(gui, hatchingGround, playerFactory, elementBag);
         Runnable gameDisplay = game::display;
 
-        EggHatchingUtilities eggHatchingLogic =
-                new EggHatchingUtilities(gui, elementBag, hatchingGround, gameDisplay, game.getPlayers(), deck, handlerMovementLogic);
+        EggHatchingUtilities eggHatchingLogic = new EggHatchingUtilities(gui, elementBag, hatchingGround, gameDisplay,
+                game.getPlayers(), deck, handlerMovementLogic);
 
         List<Phase> phases = new ArrayList<>();
         phases.add(new DrawingPhase(game.getPlayers(), gui, elementBag, hatchingGround, gameDisplay, field));

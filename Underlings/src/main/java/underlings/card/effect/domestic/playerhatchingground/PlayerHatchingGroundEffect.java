@@ -9,8 +9,8 @@ import underlings.player.Player;
 public abstract class PlayerHatchingGroundEffect extends Effect {
 
     @Override
-    protected abstract void apply(HatchingGround hatchingGround, EggHatchingUtilities hatchingLogic, Player currentPlayer,
-            Gui gui);
+    protected abstract void apply(HatchingGround hatchingGround, EggHatchingUtilities hatchingLogic,
+            Player currentPlayer, Gui gui);
 
 
 }

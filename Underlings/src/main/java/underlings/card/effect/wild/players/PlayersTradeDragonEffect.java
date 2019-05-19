@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-
 import underlings.card.Card;
 import underlings.card.EmptyCard;
 import underlings.card.effect.PlayersEffect;
@@ -19,14 +18,14 @@ public class PlayersTradeDragonEffect extends PlayersEffect {
     protected void apply(Player currentPlayer, List<Player> players, Gui gui) {
         Player playerWithMinCards = players.get(0);
         Map<Integer, List<Player>> playersNumberOfCards = new HashMap<Integer, List<Player>>();
-        int minNumberOfCards = findMin(playersNumberOfCards, players);
+        int minNumberOfCards = this.findMin(playersNumberOfCards, players);
         if (playersNumberOfCards.get(minNumberOfCards).size() > 1) {
             gui.notifyAction(FakePlayer.getInstance().getId(), LocaleUtilities.get("notify_no_player_least_dragons"));
         } else {
             playerWithMinCards = playersNumberOfCards.get(minNumberOfCards).get(0);
             for (Player player : players) {
                 if (player != playerWithMinCards) {
-                    tradeCards(gui, playerWithMinCards, player);
+                    this.tradeCards(gui, playerWithMinCards, player);
                 }
             }
         }
@@ -47,8 +46,8 @@ public class PlayersTradeDragonEffect extends PlayersEffect {
     }
 
     protected void tradeCards(Gui gui, Player playerWithMinCards, Player secondPlayer) {
-        Card cardToTrade =
-                gui.promptChoice(LocaleUtilities.get("prompt_card_to_trade"), secondPlayer.hatchedCards, secondPlayer.id);
+        Card cardToTrade = gui.promptChoice(LocaleUtilities.get("prompt_card_to_trade"), secondPlayer.hatchedCards,
+                secondPlayer.id);
         Card secondCardToTrade = EmptyCard.getInstance();
         if (!playerWithMinCards.hatchedCards.isEmpty()) {
             secondCardToTrade = gui.promptChoice(LocaleUtilities.get("prompt_card_to_trade"),
