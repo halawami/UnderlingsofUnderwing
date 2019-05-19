@@ -66,6 +66,15 @@ The definition of done is created by examining and applying BVA on the rules.
 - [x] Handler choices should be displayed to the players
   - ```underlings.handler.ChoiceTests.testToString()```
 
+#### Handler State Display ```underlings.handler.StateStringTests```
+
+- [x] Handlers in should display their current location
+  - ```underlings.handler.StateStringTests.testReadyRoom()```
+  - ```underlings.handler.StateStringTests.testBreakRoom()```
+  - ```underlings.handler.StateStringTests.testCard()```
+  - ```underlings.handler.StateStringTests.testIncubation()```
+  - ```underlings.handler.StateStringTests.testField()```
+
 ### Players ```underlings.player```
 
 #### Player ID ```underlings.player.IdTests```
