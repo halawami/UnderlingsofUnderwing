@@ -26,9 +26,11 @@ public class TakeHatchedDragonFromPlayerTests {
         Player player = EasyMock.mock(Player.class);
         Player player2 = EasyMock.mock(Player.class);
         Card card = new Card();
+        Card card2 = new Card();
         player.hatchedCards = new LinkedList<>();
         player.hatchedCards.add(card);
         player2.hatchedCards = new LinkedList<>();
+        player2.hatchedCards.add(card2);
         card.temperature = Temperature.NEUTRAL;
         card.points = 8;
         Gui gui = EasyMock.mock(Gui.class);
@@ -48,6 +50,39 @@ public class TakeHatchedDragonFromPlayerTests {
         effect.apply();
 
         EasyMock.verify(player, gui, player2);
+    }
+
+    @Test
+    public void testApplyNoHatchedDragon() {
+        Player player = EasyMock.mock(Player.class);
+        Player player2 = EasyMock.mock(Player.class);
+        Player player3 = EasyMock.mock(Player.class);
+        Card card = new Card();
+        Card card2 = new Card();
+        player.hatchedCards = new LinkedList<>();
+        player.hatchedCards.add(card);
+        player2.hatchedCards = new LinkedList<>();
+        player2.hatchedCards.add(card2);
+        player3.hatchedCards = new LinkedList<>();
+        card.temperature = Temperature.NEUTRAL;
+        card.points = 8;
+        Gui gui = EasyMock.mock(Gui.class);
+        EasyMock.expect(player2.getId()).andReturn(1);
+        TakeHatchedDragonFromPlayer effect = new TakeHatchedDragonFromPlayer();
+        effect.on(gui).on(Arrays.asList(player, player2, player3)).on(player2);
+        Map<Player, List<Card>> map = new HashMap<>();
+        map.put(player, Arrays.asList(card));
+        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_player_to_steal"), new ArrayList<>(map.keySet()), 0))
+                .andReturn(player);
+        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_card_to_steal"), map.get(player), 1)).andReturn(card);
+
+        EasyMock.replay(player, gui, player2, player3);
+
+        effect.points = 9;
+        effect.temperatures = new Temperature[] {Temperature.NEUTRAL};
+        effect.apply();
+
+        EasyMock.verify(player, gui, player2, player3);
     }
 
     @Test
