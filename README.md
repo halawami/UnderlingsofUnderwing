@@ -114,6 +114,21 @@ The definition of done is created by examining and applying BVA on the rules.
   - When at 3 handlers, the handler count should remain at 3
     - ```underlings.player.HandlerDeficiencyTests.test25PointsTwice3Handlers()```
 
+### Deck ```underlings.hatchingground.DeckTests```
+
+- [x] The deck can be drawn from with [0, DECK_SIZE] cards
+  -  At [1, DECK_SIZE] cards, the deck return a card
+     - ```underlings.hatchingground.DeckTests.testDraw()```
+  - At 0 cards, the deck returns an empty card
+    - ```underlings.hatchingground.DeckTests.testDrawEmpty()```
+- [x] Cards can be added to the deck
+  - A card can be added to the deck without shuffling the deck
+    - ```underlings.hatchingground.DeckTests.testAddCardNoShuffle()```
+  - A card can be added to the deck and the deck can be shuffled
+    - ```underlings.hatchingground.DeckTests.testAddCardShuffle()```
+  - An empty card can not be added to the deck
+    - ```underlings.hatchingground.DeckTests.testAddEmptyCard()```
+  
 ### Scoring ```underlings.scoring```
 
 #### Temperature Tests ```underlings.scoring.TemperatureTests```
@@ -148,7 +163,6 @@ The definition of done is created by examining and applying BVA on the rules.
   - ```underlings.scoring.ScoreTests.testDisplayScores()```
 - [x] The winners should be displayed
   - ```underlings.scoring.ScoreTests.testDisplayWinners()```
-
 
 ### Domestic Card Effects ```underlings.card.effect```
 
