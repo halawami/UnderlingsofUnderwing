@@ -39,14 +39,21 @@ public class DrawingPhaseTests extends MockTest {
                 .andReturn(DrawChoice.RANDOM);
         EasyMock.expect(elementBag.drawElement(DrawChoice.RANDOM)).andReturn(element);
 
-        Phase drawingPhase = new DrawingPhase(players, gui, elementBag, null, null, null);
+        DrawingPhase drawingPhase =
+                EasyMock.partialMockBuilder(DrawingPhase.class).addMockedMethod("setPhaseComplete").createMock();
+        drawingPhase.players = players;
+        drawingPhase.gui = gui;
+        drawingPhase.players = players;
+        drawingPhase.elementBag = elementBag;
 
-        EasyMock.replay(gui, elementBag);
+        drawingPhase.setPhaseComplete(false);
+
+        EasyMock.replay(gui, elementBag, drawingPhase);
 
         drawingPhase.setup();
         drawingPhase.turn(player);
 
-        EasyMock.verify(gui, elementBag);
+        EasyMock.verify(gui, elementBag, drawingPhase);
         assertTrue(player.getElements().contains(element));
     }
 
