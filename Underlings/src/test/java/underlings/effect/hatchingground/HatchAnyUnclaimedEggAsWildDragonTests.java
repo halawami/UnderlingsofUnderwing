@@ -12,6 +12,7 @@ import java.util.List;
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.effect.Effect;
@@ -45,9 +46,11 @@ public class HatchAnyUnclaimedEggAsWildDragonTests extends MockTest {
                 this.gui.promptChoice(LocaleUtilities.get("prompt_choice_hatch_wildly"), YesNoChoice.getChoices(), -1))
                 .andReturn(YesNoChoice.YES);
         EasyMock.expect(this.hatchingGround.getUnclaimedEggs()).andReturn(Arrays.asList(this.card));
-        EasyMock.expect(this.gui.promptChoice(LocaleUtilities.get("prompt_card_hatch_wildly"), Arrays.asList(this.card), 0))
+        EasyMock.expect(
+                this.gui.promptChoice(LocaleUtilities.get("prompt_card_hatch_wildly"), Arrays.asList(this.card), 0))
                 .andReturn(this.card);
-        List<String> recipes = Resources.readLines(Resources.getResource("DefaultRecipeList.txt"), Charsets.UTF_8);
+        List<String> recipes =
+                Resources.readLines(Resources.getResource(LocaleUtilities.get("default_recipe_list")), Charsets.UTF_8);
         FakePlayer.initPlayer(recipes);
         this.eggHatchingLogic.hatchEgg(this.card, FakePlayer.getInstance());
 

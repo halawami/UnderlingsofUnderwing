@@ -15,6 +15,8 @@ import java.util.Random;
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
+
+import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.effect.Effect;
 import underlings.element.Element;
@@ -30,22 +32,11 @@ import underlings.handler.WildHandler;
 import underlings.hatchingground.Deck;
 import underlings.hatchingground.HatchingGround;
 import underlings.player.FakePlayer;
-import underlings.player.Player;
 
-public class EggHatchingLogicTests {
+public class EggHatchingLogicTests extends MockTest {
 
-    private Card card;
     private Effect wildEffect;
     private Effect domesticEffect;
-    private ElementBag elementBag;
-    private HatchingGround hatchingGround;
-    private Player player;
-    private Gui gui;
-    private Runnable displayMethod;
-    private EggHatchingUtilities eggHatchingLogic;
-    private Deck deck;
-    private List<Player> players;
-    private HandlerMovementLogic handlerMovementLogic;
 
     @Before
     public void init() throws IOException {
@@ -58,7 +49,8 @@ public class EggHatchingLogicTests {
         this.card.wildEffects[0] = this.wildEffect;
         this.elementBag = new ElementBag(new ElementFactory(), new Random());
         this.hatchingGround = EasyMock.mock(HatchingGround.class);
-        List<String> recipes = Resources.readLines(Resources.getResource("DefaultRecipeList.txt"), Charsets.UTF_8);
+        List<String> recipes = Resources.readLines(
+                Resources.getResource(LocaleUtilities.get(LocaleUtilities.get("default_recipe_list"))), Charsets.UTF_8);
         FakePlayer.initPlayer(recipes);
         this.player = FakePlayer.getInstance();
         this.gui = EasyMock.mock(Gui.class);
@@ -69,8 +61,8 @@ public class EggHatchingLogicTests {
         this.deck = EasyMock.mock(Deck.class);
         this.players = Arrays.asList(this.player);
         this.handlerMovementLogic = EasyMock.mock(HandlerMovementLogic.class);
-        this.eggHatchingLogic = new EggHatchingUtilities(this.gui, this.elementBag, this.hatchingGround, this.displayMethod,
-                this.players, this.deck, this.handlerMovementLogic);
+        this.eggHatchingLogic = new EggHatchingUtilities(this.gui, this.elementBag, this.hatchingGround,
+                this.displayMethod, this.players, this.deck, this.handlerMovementLogic);
     }
 
     private void expectToApply(Effect effect) {
