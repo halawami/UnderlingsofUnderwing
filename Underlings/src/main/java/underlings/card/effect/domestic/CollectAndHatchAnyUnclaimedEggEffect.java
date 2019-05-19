@@ -16,8 +16,10 @@ public class CollectAndHatchAnyUnclaimedEggEffect extends PlayerHatchingGroundEf
 
     @Override
     protected void apply(HatchingGround hatchingGround, EggHatchingLogic hatchingLogic, Player currentPlayer, Gui gui) {
-        List<Card> validCards = hatchingGround.getDragons(points, true);
+        List<Card> validCards = hatchingGround.getDragons(this.points, true);
+
         Card selectedCard = gui.getCard(currentPlayer.getId(), LocaleWrap.get("gui_card"), hatchingGround, validCards);
+
         if (selectedCard != EmptyCard.getInstance()) {
             hatchingLogic.hatchEgg(selectedCard, currentPlayer);
         }
@@ -25,7 +27,7 @@ public class CollectAndHatchAnyUnclaimedEggEffect extends PlayerHatchingGroundEf
 
     @Override
     public String toString() {
-        return LocaleWrap.format("hatch_unclaimed_dragon_effect", points);
+        return LocaleWrap.format("hatch_unclaimed_dragon_effect", this.points);
     }
 
 }
