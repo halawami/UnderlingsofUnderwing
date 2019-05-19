@@ -1,7 +1,6 @@
 package underlings.card.effect.domestic;
 
 import java.text.MessageFormat;
-
 import underlings.card.effect.ElementEffect;
 import underlings.element.Element;
 import underlings.element.ElementBag;
@@ -17,7 +16,6 @@ public class CollectElementEffect extends ElementEffect {
     protected void apply(Player player, ElementBag elementBag) {
         Element element = elementBag.drawElementFromList(this.elementChoices);
         player.addElement(element);
-
     }
 
     @Override
