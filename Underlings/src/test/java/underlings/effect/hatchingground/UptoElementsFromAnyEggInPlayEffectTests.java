@@ -76,7 +76,9 @@ public class UptoElementsFromAnyEggInPlayEffectTests extends MockTest {
         Player currentPlayer = this.mock(Player.class);
         ElementSpace elementSpace = this.mock(ElementSpace.class);
 
-        EasyMock.expect(elementPicked.getColor()).andReturn(elementColor);
+        if (elementPicked != NullElement.getInstance()) {
+            EasyMock.expect(elementPicked.getColor()).andReturn(elementColor);
+        }
         elementSpace.destroyOneElementOfColor(elementColor);
 
         this.replayAll();
@@ -87,34 +89,29 @@ public class UptoElementsFromAnyEggInPlayEffectTests extends MockTest {
 
     @Test
     public void testCollectNullElementPicked() {
-        Player currentPlayer = this.mock(Player.class);
-        ElementSpace elementSpace = this.mock(ElementSpace.class);
-        Element element = NullElement.getInstance();
-
-        currentPlayer.addElement(element);
-        elementSpace.destroyOneElementOfColor(element.getColor());
-
-        this.replayAll();
-
-        CollectUpToElementsFromAnyEggInPlayEffect effect = new CollectUpToElementsFromAnyEggInPlayEffect();
-        effect.applyOnSelectedElement(element, elementSpace, currentPlayer);
+        this.testCollectElement(NullElement.getInstance(), NullElement.getInstance().getColor());
     }
 
 
     @Test
     public void testCollectNormalElementPicked() {
+        this.testCollectElement(this.mock(Element.class), ElementColor.BLUE);
+    }
+
+    private void testCollectElement(Element elementPicked, ElementColor elementColor) {
         Player currentPlayer = this.mock(Player.class);
         ElementSpace elementSpace = this.mock(ElementSpace.class);
-        Element element = this.mock(Element.class);
 
-        currentPlayer.addElement(element);
-        EasyMock.expect(element.getColor()).andReturn(ElementColor.BLUE);
-        elementSpace.destroyOneElementOfColor(ElementColor.BLUE);
+        currentPlayer.addElement(elementPicked);
+        if (elementPicked != NullElement.getInstance()) {
+            EasyMock.expect(elementPicked.getColor()).andReturn(elementColor);
+        }
+        elementSpace.destroyOneElementOfColor(elementColor);
 
         this.replayAll();
 
         CollectUpToElementsFromAnyEggInPlayEffect effect = new CollectUpToElementsFromAnyEggInPlayEffect();
-        effect.applyOnSelectedElement(element, elementSpace, currentPlayer);
+        effect.applyOnSelectedElement(elementPicked, elementSpace, currentPlayer);
     }
 
     @Test
