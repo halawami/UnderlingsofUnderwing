@@ -46,7 +46,6 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
                 .addMockedMethod("removeCardsOfTemperature").createMock();
         this.addMock(effect);
         effect.temperatures = new Temperature[]{Temperature.NEUTRAL};
-        effect.on(this.players).on(this.deck);
 
         for (Player player : players) {
             effect.removeCardsOfTemperature(this.deck, Arrays.asList(effect.temperatures), player);
@@ -54,7 +53,7 @@ public class ReturnAllHatchedDragonsFromPlayersTests extends MockTest {
 
         this.replayAll();
 
-        effect.apply();
+        effect.on(this.players).on(this.deck).apply();
     }
 
     @Test

@@ -26,44 +26,19 @@ public class CollectElementEffectTests extends MockTest {
 
     @Test
     public void testOneColor() {
-        Element blueElement = new Element(ElementColor.BLUE);
-
-        CollectElementEffect collectElementEffect = new CollectElementEffect();
-        collectElementEffect.on(this.player).on(this.elementBag);
-        ElementColor[] elementChoices = new ElementColor[] {ElementColor.BLUE};
-        collectElementEffect.elementChoices = elementChoices;
-
-        EasyMock.expect(this.elementBag.drawElementFromList(elementChoices)).andReturn(blueElement);
-        this.player.addElement(blueElement);
-
-        this.replayAll();
-
-        collectElementEffect.apply();
+        this.testColors(new ElementColor[]{ElementColor.BLUE});
     }
 
     @Test
     public void testTwoColors() {
-        Element blueElement = new Element(ElementColor.BLUE);
-
-        CollectElementEffect collectElementEffect = new CollectElementEffect();
-        collectElementEffect.on(this.player).on(this.elementBag);
-        ElementColor[] elementChoices = new ElementColor[] {ElementColor.BLUE, ElementColor.RED};
-        collectElementEffect.elementChoices = elementChoices;
-
-        EasyMock.expect(this.elementBag.drawElementFromList(elementChoices)).andReturn(blueElement);
-        this.player.addElement(blueElement);
-
-        this.replayAll();
-
-        collectElementEffect.apply();
+        this.testColors(new ElementColor[]{ElementColor.BLUE, ElementColor.RED});
     }
 
-    private void testColors(int numberOfNumber){
+    private void testColors(ElementColor[] elementChoices) {
         Element blueElement = new Element(ElementColor.BLUE);
 
         CollectElementEffect collectElementEffect = new CollectElementEffect();
         collectElementEffect.on(this.player).on(this.elementBag);
-        ElementColor[] elementChoices = new ElementColor[] {ElementColor.BLUE, ElementColor.RED};
         collectElementEffect.elementChoices = elementChoices;
 
         EasyMock.expect(this.elementBag.drawElementFromList(elementChoices)).andReturn(blueElement);
@@ -78,7 +53,7 @@ public class CollectElementEffectTests extends MockTest {
     public void testToString() {
         this.replayAll();
         CollectElementEffect effect = new CollectElementEffect();
-        effect.elementChoices = new ElementColor[] {ElementColor.BLACK};
+        effect.elementChoices = new ElementColor[]{ElementColor.BLACK};
         StringBuilder elements = new StringBuilder();
         for (ElementColor color : effect.elementChoices) {
             elements.append(color);
