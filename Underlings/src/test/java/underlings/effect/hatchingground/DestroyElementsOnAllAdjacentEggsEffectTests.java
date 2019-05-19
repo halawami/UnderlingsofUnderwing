@@ -45,7 +45,7 @@ public class DestroyElementsOnAllAdjacentEggsEffectTests extends MockTest {
 
         this.replayAll();
 
-        effect.applyOnAdjacentEgg(adjacentCard, null, elementSpaceLogic, eggHatchingLogic, null, null, null);
+        effect.applyOnAdjacentEgg(adjacentCard, elementSpaceLogic, null);
     }
 
     @Test
