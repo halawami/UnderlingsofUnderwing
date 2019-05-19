@@ -2,10 +2,11 @@ package underlings.gui;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
+
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,12 +14,15 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
+
 import javax.swing.JOptionPane;
+
 import org.easymock.Capture;
 import org.easymock.EasyMock;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.card.Card;
 import underlings.card.EmptyCard;
 import underlings.element.Element;
@@ -378,20 +382,28 @@ public class GuiTests {
     }
 
     @Test
-    public void testElementGrid() {
+    public void testElementGridSix() {
         List<ElementSpace> spaces = new ArrayList<>();
         spaces.add(new ElementSpace(ElementColor.RED));
-        spaces.add(new ElementSpace(ElementColor.RED));
-        spaces.add(new ElementSpace(ElementColor.RED));
+        spaces.add(new ElementSpace(ElementColor.BLUE));
+        spaces.add(new ElementSpace(ElementColor.YELLOW));
+        spaces.add(new ElementSpace(ElementColor.ORANGE));
+        spaces.add(new ElementSpace(ElementColor.PURPLE));
+        spaces.add(new ElementSpace(ElementColor.GREEN));
         spaces.get(0).position = ElementSpacePosition.L3_1;
-        spaces.get(1).position = ElementSpacePosition.R3_2;
-        spaces.get(2).position = ElementSpacePosition.L4_4;
+        spaces.get(1).position = ElementSpacePosition.L3_2;
+        spaces.get(2).position = ElementSpacePosition.L3_3;
+        spaces.get(3).position = ElementSpacePosition.R3_1;
+        spaces.get(4).position = ElementSpacePosition.R3_2;
+        spaces.get(5).position = ElementSpacePosition.R3_3;
         ElementSpace[][] grid = this.gui.getElementSpaceGrid(spaces);
 
         assertEquals(spaces.get(0), grid[0][0]);
-        assertEquals(spaces.get(1), grid[1][1]);
-        assertNull(grid[2][1]);
-        assertEquals(spaces.get(2), grid[3][0]);
+        assertEquals(spaces.get(1), grid[1][0]);
+        assertEquals(spaces.get(2), grid[2][0]);
+        assertEquals(spaces.get(3), grid[0][1]);
+        assertEquals(spaces.get(4), grid[1][1]);
+        assertEquals(spaces.get(5), grid[2][1]);
 
         this.replay();
     }

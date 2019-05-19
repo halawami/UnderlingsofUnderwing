@@ -163,12 +163,7 @@ public class Gui {
     public ElementSpace[][] getElementSpaceGrid(List<ElementSpace> validSpaces) {
         ElementSpace[][] spaceGrid = new ElementSpace[4][2];
         for (ElementSpace space : validSpaces) {
-            int col = 0;
-            if (space.position.name().charAt(0) == 'R') {
-                col = 1;
-            }
-            int row = Integer.parseInt("" + space.position.name().charAt(3)) - 1;
-            spaceGrid[row][col] = space;
+            spaceGrid[space.position.y][space.position.x] = space;
         }
         return spaceGrid;
     }
