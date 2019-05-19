@@ -10,7 +10,7 @@ import org.junit.Test;
 import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.effect.Effect;
-import underlings.card.effect.domestic.ReplaceHandlerWithYourOwnEffect;
+import underlings.card.effect.domestic.handler.ReplaceHandlerWithYourOwnEffect;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.handler.Handler;
