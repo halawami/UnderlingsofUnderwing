@@ -64,31 +64,25 @@ public class UptoElementsFromAnyEggInPlayEffectTests extends MockTest {
 
     @Test
     public void testDestroyNullElementPicked() {
-        Player currentPlayer = this.mock(Player.class);
-        ElementSpace elementSpace = this.mock(ElementSpace.class);
-        Element element = NullElement.getInstance();
-        DestroyUpToElementsOnAnyEggInPlayEffect effect = new DestroyUpToElementsOnAnyEggInPlayEffect();
-
-        elementSpace.destroyOneElementOfColor(element.getColor());
-
-        this.replayAll();
-
-        effect.applyOnSelectedElement(element, elementSpace, currentPlayer);
+        this.testDestroyElement(NullElement.getInstance(), NullElement.getInstance().getColor());
     }
 
     @Test
     public void testDestroyNormalElementPicked() {
+        this.testDestroyElement(this.mock(Element.class), ElementColor.BLUE);
+    }
+
+    private void testDestroyElement(Element elementPicked, ElementColor elementColor) {
         Player currentPlayer = this.mock(Player.class);
         ElementSpace elementSpace = this.mock(ElementSpace.class);
-        Element element = this.mock(Element.class);
 
-        EasyMock.expect(element.getColor()).andReturn(ElementColor.BLUE);
-        elementSpace.destroyOneElementOfColor(ElementColor.BLUE);
+        EasyMock.expect(elementPicked.getColor()).andReturn(elementColor);
+        elementSpace.destroyOneElementOfColor(elementColor);
 
         this.replayAll();
 
         DestroyUpToElementsOnAnyEggInPlayEffect effect = new DestroyUpToElementsOnAnyEggInPlayEffect();
-        effect.applyOnSelectedElement(element, elementSpace, currentPlayer);
+        effect.applyOnSelectedElement(elementPicked, elementSpace, currentPlayer);
     }
 
     @Test
