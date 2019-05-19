@@ -264,3 +264,15 @@ The definition of done is created by examining and applying BVA on the rules.
      - ```underlings.card.effect.domestic.element.CollectFiveElementsEffectTests.testEffect()```
 - [x] The player should know that the effect has been run
   - ```underlings.card.effect.domestic.element.CollectFiveElementsEffectTests.testToString()```
+
+#### Next Phase 1, draw Elements of your choice ```underlings.card.effect.domestic.element.DrawElementsOfChoiceNextPhaseEffectTests```
+
+- Dragons
+  - TYCHE
+- [x] Player will be able to choose their elements from the element bag next phase 1, and return to normal afterward
+  - On next phase 1
+     - ```underlings.card.effect.domestic.element.DrawElementsOfChoiceNextPhaseEffectTests.testOnFirstPhaseOne()```
+  - On second next phase 1
+     - ```underlings.card.effect.domestic.element.DrawElementsOfChoiceNextPhaseEffectTests.testOnSecondPhaseOne()```
+- [x] The player should know that the effect has been run
+  - ```underlings.card.effect.domestic.element.DrawElementsOfChoiceNextPhaseEffectTests.testToString()```
