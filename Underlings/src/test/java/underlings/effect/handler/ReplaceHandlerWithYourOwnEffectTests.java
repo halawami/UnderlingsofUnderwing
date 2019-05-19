@@ -23,54 +23,44 @@ public class ReplaceHandlerWithYourOwnEffectTests extends MockTest {
 
     @Test
     public void testApplyEffectNoSelectableHandler() {
-        Player currentPlayer = EasyMock.mock(Player.class);
-        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
+        Player currentPlayer = this.mock(Player.class);
+        HatchingGround hatchingGround = this.mock(HatchingGround.class);
         List<Card> mockClaimedEggs = this.mockListOf(Card.class).withLengthOf(0);
-        HandlerMovementLogic handlerMovementLogic = EasyMock.mock(HandlerMovementLogic.class);
-        Gui gui = EasyMock.mock(Gui.class);
 
         EasyMock.expect(currentPlayer.getId()).andReturn(0).anyTimes();
         EasyMock.expect(hatchingGround.getClaimedEggs()).andReturn(mockClaimedEggs);
 
-        EasyMock.replay(currentPlayer, hatchingGround, handlerMovementLogic, gui);
+        this.replayAll();
 
-        Effect testedEffect = new ReplaceHandlerWithYourOwnEffect();
-        testedEffect.on(currentPlayer).on(hatchingGround).on(handlerMovementLogic).on(gui).apply();
-
-        EasyMock.verify(currentPlayer, hatchingGround, handlerMovementLogic, gui);
+        Effect effect = new ReplaceHandlerWithYourOwnEffect();
+        effect.on(currentPlayer).on(hatchingGround).apply();
     }
 
     @Test
     public void testApplyEffectSelectableHandler() {
-        Player currentPlayer = EasyMock.mock(Player.class);
-        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
+        Player currentPlayer = this.mock(Player.class);
+        HatchingGround hatchingGround = this.mock(HatchingGround.class);
         List<Card> mockClaimedEggs = this.mockListOf(Card.class).withLengthOf(6);
-        Handler toBeReplaced = EasyMock.mock(Handler.class);
+        List<Handler> mockHandlers = this.mockListOf(Handler.class).withLengthOf(2);
+        Handler toBeReplaced = this.mock(Handler.class);
         mockClaimedEggs.get(2).handler = toBeReplaced;
-        Gui gui = EasyMock.mock(Gui.class);
+        HandlerMovementLogic handlerMovementLogic = this.mock(HandlerMovementLogic.class);
+        Gui gui = this.mock(Gui.class);
 
         EasyMock.expect(currentPlayer.getId()).andReturn(0).anyTimes();
         EasyMock.expect(hatchingGround.getClaimedEggs()).andReturn(mockClaimedEggs);
         EasyMock.expect(gui.promptChoice("Choose a card to replace its handler", mockClaimedEggs, 0))
                 .andReturn(mockClaimedEggs.get(2));
-        List<Handler> mockHandlers = this.mockListOf(Handler.class).withLengthOf(2);
         currentPlayer.handlers = mockHandlers;
         EasyMock.expect(gui.promptChoice("Choose a handler to replace with", mockHandlers, 0))
                 .andReturn(mockHandlers.get(1));
-        HandlerMovementLogic handlerMovementLogic = EasyMock.mock(HandlerMovementLogic.class);
         handlerMovementLogic.move(toBeReplaced, HandlerChoice.BREAK_ROOM, currentPlayer);
         handlerMovementLogic.moveToCard(mockHandlers.get(1), mockClaimedEggs.get(2));
 
-        EasyMock.replay(currentPlayer, hatchingGround, toBeReplaced, handlerMovementLogic, gui);
-        mockClaimedEggs.forEach(EasyMock::replay);
-        mockHandlers.forEach(EasyMock::replay);
+        this.replayAll();
 
-        Effect testedEffect = new ReplaceHandlerWithYourOwnEffect();
-        testedEffect.on(currentPlayer).on(hatchingGround).on(handlerMovementLogic).on(gui).apply();
-
-        EasyMock.verify(currentPlayer, hatchingGround, toBeReplaced, handlerMovementLogic, gui);
-        mockClaimedEggs.forEach(EasyMock::verify);
-        mockHandlers.forEach(EasyMock::verify);
+        Effect effect = new ReplaceHandlerWithYourOwnEffect();
+        effect.on(currentPlayer).on(hatchingGround).on(handlerMovementLogic).on(gui).apply();
     }
 
     @Test

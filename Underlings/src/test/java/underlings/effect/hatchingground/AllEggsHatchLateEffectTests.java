@@ -3,28 +3,27 @@ package underlings.effect.hatchingground;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import org.easymock.EasyMock;
 import org.junit.Test;
 
+import underlings.MockTest;
 import underlings.card.effect.Effect;
 import underlings.card.effect.wild.alleggsinplay.AllEggsHatchLateEffect;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.utilities.LocaleWrap;
 
-public class AllEggsHatchLateEffectTests {
+public class AllEggsHatchLateEffectTests extends MockTest {
 
     @Test
     public void testApply() {
-        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
-        Gui gui = EasyMock.mock(Gui.class);
+        HatchingGround hatchingGround = this.mock(HatchingGround.class);
+        Gui gui = this.mock(Gui.class);
         AllEggsHatchLateEffect effect = new AllEggsHatchLateEffect();
-        effect.on(hatchingGround).on(gui);
-        EasyMock.replay(hatchingGround, gui);
 
-        effect.apply();
+        this.replayAll();
 
-        EasyMock.verify(hatchingGround, gui);
+        effect.on(hatchingGround).on(gui).apply();
+
         assertTrue(hatchingGround.lateHatching);
     }
 

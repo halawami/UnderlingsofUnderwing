@@ -43,8 +43,8 @@ public class RemoveAllHandlersFromAllEggsInPlayEffectTests extends MockTest {
 
         this.replayAll();
 
-        RemoveAllHandlersFromAllEggsInPlay testedEffect = new RemoveAllHandlersFromAllEggsInPlay();
-        testedEffect.applyOnCardInPlay(card, null, null, handlerMovementLogic);
+        RemoveAllHandlersFromAllEggsInPlay effect = new RemoveAllHandlersFromAllEggsInPlay();
+        effect.applyOnCardInPlay(card, null, null, handlerMovementLogic);
     }
 
     @Test
