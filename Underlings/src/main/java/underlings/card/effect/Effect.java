@@ -14,7 +14,7 @@ import underlings.utilities.EggHatchingLogic;
 
 public abstract class Effect extends ElementGiver {
 
-    private Player player;
+    private Player currentPlayer;
     private HatchingGround hatchingGround;
     private ElementBag elementBag;
     private Card centerCard;
@@ -39,8 +39,8 @@ public abstract class Effect extends ElementGiver {
         return this;
     }
 
-    public Effect on(Player player) {
-        this.player = player;
+    public Effect on(Player currentPlayer) {
+        this.currentPlayer = currentPlayer;
         return this;
     }
 
@@ -70,32 +70,42 @@ public abstract class Effect extends ElementGiver {
     }
 
     public void apply() {
-        this.apply(this.player);
-        this.apply(this.player, this.elementBag);
+        this.apply(this.currentPlayer);
+        this.apply(this.currentPlayer, this.elementBag);
         this.apply(this.hatchingGround, this.gui);
         this.apply(this.players, this.deck, this.gui);
-        this.apply(this.player, this.players, this.gui);
-        this.apply(this.player, this.hatchingGround, this.handlerMovementLogic, this.gui);
-        this.apply(this.centerCard, this.hatchingGround, this.elementBag, this.gui, this.player, this.eggHatchingLogic,
+        this.apply(this.currentPlayer, this.players, this.gui);
+        this.apply(this.currentPlayer, this.hatchingGround, this.handlerMovementLogic, this.gui);
+        this.apply(this.centerCard, this.hatchingGround, this.elementBag, this.gui, this.currentPlayer,
+                this.eggHatchingLogic,
                 this.deck, this.handlerMovementLogic);
+        this.apply(this.hatchingGround, this.eggHatchingLogic, this.currentPlayer, this.gui);
     }
 
     protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag, Gui gui,
             Player currentPlayer, EggHatchingLogic eggHatchingLogic, Deck deck,
-            HandlerMovementLogic handlerMovementLogic) {}
+            HandlerMovementLogic handlerMovementLogic) {
+    }
 
-    protected void apply(Player player, ElementBag elementBag) {}
+    protected void apply(Player currentPlayer, ElementBag elementBag) {
+    }
 
-    protected void apply(Player player) {}
+    protected void apply(Player currentPlayer) {
+    }
 
-    protected void apply(HatchingGround hatchingGround, Gui gui) {}
+    protected void apply(HatchingGround hatchingGround, Gui gui) {
+    }
 
-    protected void apply(Player currentPlayer, List<Player> players, Gui gui) {}
+    protected void apply(Player currentPlayer, List<Player> players, Gui gui) {
+    }
 
-    protected void apply(List<Player> players, Deck deck, Gui gui) {}
+    protected void apply(List<Player> players, Deck deck, Gui gui) {
+    }
 
     protected void apply(Player currentPlayer, HatchingGround hatchingGround, HandlerMovementLogic handlerLogic,
             Gui gui) {
+    }
 
+    protected void apply(HatchingGround hatchingGround, EggHatchingLogic hatchingLogic, Player currentPlayer, Gui gui) {
     }
 }
