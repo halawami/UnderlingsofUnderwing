@@ -1,17 +1,16 @@
 package underlings.card.effect.wild;
 
 import java.util.List;
+
 import underlings.card.Card;
-import underlings.card.effect.DiverseHatchingGroundEffect;
-import underlings.element.ElementBag;
-import underlings.handler.HandlerMovementLogic;
+import underlings.card.effect.Effect;
 import underlings.hatchingground.Deck;
 import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
 import underlings.utilities.EggHatchingUtilities;
 import underlings.utilities.LocaleUtilities;
 
-public class ApiaraWildEffect extends DiverseHatchingGroundEffect {
+public class ApiaraWildEffect extends Effect {
 
     private boolean redraw;
 
@@ -20,9 +19,8 @@ public class ApiaraWildEffect extends DiverseHatchingGroundEffect {
     }
 
     @Override
-    protected void apply(Card centerCard, HatchingGround hatchingGround, ElementBag elementBag,
-            Player currentPlayer, EggHatchingUtilities eggHatchingLogic, Deck deck,
-            HandlerMovementLogic handlerMovementLogic) {
+    protected void apply(Card centerCard, HatchingGround hatchingGround, Player currentPlayer,
+            EggHatchingUtilities eggHatchingLogic, Deck deck) {
         if (!this.redraw) {
             hatchingGround.replaceCard(centerCard);
             deck.addCard(centerCard, true);

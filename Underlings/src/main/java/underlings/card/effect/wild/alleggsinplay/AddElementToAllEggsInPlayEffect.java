@@ -3,6 +3,7 @@ package underlings.card.effect.wild.alleggsinplay;
 import java.util.List;
 
 import underlings.card.Card;
+import underlings.card.effect.AllEggsInPlayEffect;
 import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;

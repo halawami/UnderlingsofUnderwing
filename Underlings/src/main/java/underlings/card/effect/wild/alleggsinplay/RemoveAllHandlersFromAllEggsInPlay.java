@@ -1,6 +1,7 @@
 package underlings.card.effect.wild.alleggsinplay;
 
 import underlings.card.Card;
+import underlings.card.effect.AllEggsInPlayEffect;
 import underlings.handler.HandlerChoice;
 import underlings.handler.HandlerMovementLogic;
 import underlings.player.FakePlayer;

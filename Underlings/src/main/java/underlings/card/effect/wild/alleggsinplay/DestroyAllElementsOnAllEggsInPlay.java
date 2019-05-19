@@ -1,6 +1,7 @@
 package underlings.card.effect.wild.alleggsinplay;
 
 import underlings.card.Card;
+import underlings.card.effect.AllEggsInPlayEffect;
 import underlings.utilities.LocaleUtilities;
 
 public class DestroyAllElementsOnAllEggsInPlay extends AllEggsInPlayEffect {
