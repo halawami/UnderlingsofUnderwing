@@ -2,9 +2,12 @@ package underlings.effect.element;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.List;
+
 import org.easymock.EasyMock;
 import org.junit.Test;
 
+import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.effect.wild.DestroyAllBlackAndWhiteElementsEffect;
 import underlings.card.effect.wild.alleggsinplay.AllEggsInPlayEffect;
@@ -13,48 +16,41 @@ import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.utilities.LocaleWrap;
 
-public class DestroyBlackAndWhiteElementsTests {
+public class DestroyBlackAndWhiteElementsTests extends MockTest {
 
     @Test
     public void effectTest() {
-        ElementSpace space = EasyMock.mock(ElementSpace.class);
+        ElementSpace space = this.mock(ElementSpace.class);
         space.destroyAllElementsOfColor(ElementColor.BLACK);
         space.destroyAllElementsOfColor(ElementColor.WHITE);
 
-        ElementSpace[] spaces = {space};
         Card card = new Card();
-        card.elementSpaces = spaces;
-        ElementSpaceLogic logic = EasyMock.mock(ElementSpaceLogic.class);
+        card.elementSpaces = new ElementSpace[]{space};
+        ElementSpaceLogic logic = this.mock(ElementSpaceLogic.class);
 
-        EasyMock.replay(space, logic);
+        this.replayAll();
 
         AllEggsInPlayEffect effect = new DestroyAllBlackAndWhiteElementsEffect();
         effect.applyOnCardInPlay(card, logic, null);
-
-        EasyMock.verify(space, logic);
     }
 
     @Test
     public void effectTestMultipleSpaces() {
-        ElementSpace space1 = EasyMock.mock(ElementSpace.class);
-        space1.destroyAllElementsOfColor(ElementColor.BLACK);
-        space1.destroyAllElementsOfColor(ElementColor.WHITE);
+        List<ElementSpace> spaces = this.mockListOf(ElementSpace.class).withLengthOf(2);
 
-        ElementSpace space2 = EasyMock.mock(ElementSpace.class);
-        space2.destroyAllElementsOfColor(ElementColor.BLACK);
-        space2.destroyAllElementsOfColor(ElementColor.WHITE);
+        for (ElementSpace space : spaces) {
+            space.destroyAllElementsOfColor(ElementColor.BLACK);
+            space.destroyAllElementsOfColor(ElementColor.WHITE);
+        }
 
-        ElementSpace[] spaces = {space1, space2};
         Card card = new Card();
-        card.elementSpaces = spaces;
+        card.elementSpaces = spaces.toArray(new ElementSpace[0]);
         ElementSpaceLogic logic = EasyMock.mock(ElementSpaceLogic.class);
 
-        EasyMock.replay(space1, space2, logic);
+        this.replayAll();
 
         AllEggsInPlayEffect effect = new DestroyAllBlackAndWhiteElementsEffect();
         effect.applyOnCardInPlay(card, logic, null);
-
-        EasyMock.verify(space1, space2, logic);
     }
 
     @Test

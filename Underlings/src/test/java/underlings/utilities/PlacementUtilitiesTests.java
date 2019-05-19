@@ -3,6 +3,7 @@ package underlings.utilities;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,13 +17,15 @@ import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
+import underlings.game.Deck;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.gui.PromptHandler;
 import underlings.gui.YesNoChoice;
+import underlings.handler.WildHandler;
 import underlings.player.Player;
 
-public class PlacementUtilsTests extends MockTest {
+public class PlacementUtilitiesTests extends MockTest {
 
     @Before
     public void init() {
@@ -126,6 +129,44 @@ public class PlacementUtilsTests extends MockTest {
         assertTrue(space.elements.contains(elements.get(0)));
         assertTrue(space.elements.contains(elements2.get(0)));
         assertEquals(ElementColor.BLACK, elements2.get(0).getAlias());
+    }
+
+    @Test
+    public void testGetPlayableCards() {
+        Deck deck = EasyMock.mock(Deck.class);
+        Card card1 = new Card();
+        card1.name = "1";
+        EasyMock.expect(deck.draw()).andReturn(card1);
+        Card card2 = new Card();
+        card2.name = "2";
+        EasyMock.expect(deck.draw()).andReturn(card2);
+        Card card3 = new Card();
+        card3.name = "3";
+        EasyMock.expect(deck.draw()).andReturn(card3);
+        Card card4 = new Card();
+        card4.name = "4";
+        EasyMock.expect(deck.draw()).andReturn(card4);
+
+        EasyMock.replay(deck);
+        HatchingGround ground = new HatchingGround(deck, this.elementSpaceLogic);
+        ground.setDimensions(2, 2);
+        ground.populate();
+        card1.handler = WildHandler.getInstance();
+        card3.handler = WildHandler.getInstance();
+        EasyMock.verify(deck);
+
+        List<Element> elements = new ArrayList<>();
+        EasyMock.expect(this.elementSpaceLogic.getPlayableSpaces(card2, elements)).andReturn(new ArrayList<>());
+        List<ElementSpace> space = Arrays.asList(new ElementSpace(ElementColor.BLACK));
+        EasyMock.expect(this.elementSpaceLogic.getPlayableSpaces(card4, elements)).andReturn(space);
+
+        this.replayAll();
+
+        PlacementUtilities utils = new PlacementUtilities(ground, null, null);
+        List<Card> cards = utils.getPlayableCards(this.elementSpaceLogic, elements);
+
+        assertEquals(1, cards.size());
+        assertTrue(cards.contains(card4));
     }
 
 }
