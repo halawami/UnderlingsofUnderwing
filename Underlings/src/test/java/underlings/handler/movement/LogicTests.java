@@ -10,6 +10,7 @@ import java.util.List;
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.card.Card;
 import underlings.field.Field;
 import underlings.field.FieldSpaceFactory;

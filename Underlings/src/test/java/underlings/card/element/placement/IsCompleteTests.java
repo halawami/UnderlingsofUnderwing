@@ -26,7 +26,7 @@ public class IsCompleteTests extends MockTest {
 
     @Test
     public void testCompleteCardOneElementSpace() {
-        this.card.elementSpaces = new ElementSpace[] {this.elementSpace};
+        this.card.elementSpaces = new ElementSpace[]{this.elementSpace};
         EasyMock.expect(this.elementSpaceLogic.isComplete(this.elementSpace)).andReturn(true);
 
         this.replayAll();
@@ -36,7 +36,7 @@ public class IsCompleteTests extends MockTest {
 
     @Test
     public void testIncompleteCardOneElementSpace() {
-        this.card.elementSpaces = new ElementSpace[] {this.elementSpace};
+        this.card.elementSpaces = new ElementSpace[]{this.elementSpace};
         EasyMock.expect(this.elementSpaceLogic.isComplete(this.elementSpace)).andReturn(false);
 
         this.replayAll();
@@ -46,7 +46,7 @@ public class IsCompleteTests extends MockTest {
 
     @Test
     public void testCompleteCardTwoElementSpace() {
-        this.card.elementSpaces = new ElementSpace[] {this.elementSpace, this.elementSpace2};
+        this.card.elementSpaces = new ElementSpace[]{this.elementSpace, this.elementSpace2};
         EasyMock.expect(this.elementSpaceLogic.isComplete(this.elementSpace)).andReturn(true);
         EasyMock.expect(this.elementSpaceLogic.isComplete(this.elementSpace2)).andReturn(true);
 
@@ -57,7 +57,7 @@ public class IsCompleteTests extends MockTest {
 
     @Test
     public void testIncompleteCardTwoElementSpace() {
-        this.card.elementSpaces = new ElementSpace[] {this.elementSpace, this.elementSpace2};
+        this.card.elementSpaces = new ElementSpace[]{this.elementSpace, this.elementSpace2};
         EasyMock.expect(this.elementSpaceLogic.isComplete(this.elementSpace)).andReturn(true);
         EasyMock.expect(this.elementSpaceLogic.isComplete(this.elementSpace2)).andReturn(false);
 

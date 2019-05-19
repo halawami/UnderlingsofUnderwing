@@ -9,6 +9,7 @@ import java.util.List;
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.card.Card;
 import underlings.card.effect.Effect;
 import underlings.handler.Handler;
@@ -144,7 +145,6 @@ public class HatchingGroundTests {
         card1.handler = WildHandler.getInstance();
         card3.handler = WildHandler.getInstance();
         List<Card> cards = hatchingGround.pullAndReplaceCompleteEggs();
-
 
         EasyMock.verify(logic, deck, hatchingGround);
 

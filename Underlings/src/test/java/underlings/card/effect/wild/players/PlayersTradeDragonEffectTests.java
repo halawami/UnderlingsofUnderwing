@@ -34,10 +34,10 @@ public class PlayersTradeDragonEffectTests {
         this.gui = EasyMock.mock(Gui.class);
         this.card = new Card();
         this.card.points = 12;
-        this.card.domesticEffects = new Effect[] {mockedEffect};
+        this.card.domesticEffects = new Effect[]{mockedEffect};
         this.card2 = new Card();
         this.card2.points = 12;
-        this.card.domesticEffects = new Effect[] {mockedEffect};
+        this.card.domesticEffects = new Effect[]{mockedEffect};
         this.mockedEffect = EasyMock.mock(Effect.class);
         this.effect = new PlayersTradeDragonEffect();
         this.player.hatchedCards = new ArrayList<>();
@@ -49,7 +49,7 @@ public class PlayersTradeDragonEffectTests {
     public void testApplyTwoPlayersThreeCards() {
         Card card3 = new Card();
         card3.points = 12;
-        card3.domesticEffects = new Effect[] {mockedEffect};
+        card3.domesticEffects = new Effect[]{mockedEffect};
         player.hatchedCards.add(card3);
         player2.hatchedCards.add(card2);
         effect.on(Arrays.asList(player, player2)).on(gui);
@@ -78,7 +78,7 @@ public class PlayersTradeDragonEffectTests {
         Player player3 = EasyMock.mock(Player.class);
         Card card3 = new Card();
         card3.points = 12;
-        card3.domesticEffects = new Effect[] {mockedEffect};
+        card3.domesticEffects = new Effect[]{mockedEffect};
         player.hatchedCards.add(card3);
         player2.hatchedCards.add(card2);
         player2.hatchedCards.add(card3);

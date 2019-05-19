@@ -8,6 +8,7 @@ import java.util.List;
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.MockTest;
 import underlings.card.Card;
 import underlings.hatchingground.Deck;
@@ -61,7 +62,6 @@ public class ApiaraWildEffectTests extends MockTest {
         List<Card> cards = new ArrayList<>();
         cards.add(new Card());
         EasyMock.expect(this.hatchingGround.getUnclaimedEggs()).andReturn(cards);
-
 
         EasyMock.expect(this.player.getId()).andReturn(4).anyTimes();
 

@@ -13,6 +13,7 @@ import java.util.Map;
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.effect.Effect;
@@ -69,7 +70,6 @@ public class PlacementPhaseTests extends MockTest {
         this.replayAll();
         PlacementPhase phase = new PlacementPhase(this.players, null, null, null, null, null);
         phase.setup();
-
 
         @SuppressWarnings("unchecked")
         Map<Player, Integer> map = (Map<Player, Integer>) this.getField(phase.getClass(), phase, "turnCounts");
@@ -135,7 +135,6 @@ public class PlacementPhaseTests extends MockTest {
         Method gameoverMethod = this.getMethod(phase, "checkGameover");
         gameoverMethod.invoke(phase);
 
-
         assertFalse((boolean) this.getField(Phase.class, phase, "gameComplete"));
         assertFalse((boolean) this.getField(Phase.class, phase, "phaseComplete"));
     }
@@ -175,7 +174,6 @@ public class PlacementPhaseTests extends MockTest {
         Method gameoverMethod = this.getMethod(phase, "checkGameover");
         gameoverMethod.invoke(phase);
 
-
         assertTrue((boolean) this.getField(Phase.class, phase, "gameComplete"));
         assertTrue((boolean) this.getField(Phase.class, phase, "phaseComplete"));
     }
@@ -202,7 +200,6 @@ public class PlacementPhaseTests extends MockTest {
 
         boolean result =
                 this.gui.promptChoice(LocaleUtilities.get("gui_more_moves"), YesNoChoice.getChoices(), 0).booleanValue;
-
 
         assertTrue(result);
     }
