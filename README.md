@@ -122,13 +122,16 @@ The definition of done is created by examining and applying BVA on the rules.
   - ```underlings.scoring.ScoreTests.testDisplayWinners()```
 
 
-### Domestic Card Effects
+### Domestic Card Effects ```underlings.card.effect```
 
-#### Effect Name ```card.effect.domestic.package.ClassName```
+#### Gain Handlers  ```underlings.card.effect.domestic.players.player.GainHandlersEffectTests```
 
 - Dragons
-  - Dragon 1, Dragon 2, Dragon 3
-- [x] Should do ...
-  - ```card.effect.domestic.package.ClassName.test()```
-- [x] Should do ...
-  - ```card.effect.domestic.package.ClassName.test()```
+  - Abyssal Wyrm, Aeon Wyrm, Nebula Wyrm, Opalescent Whelp, Water Wyvern, Sky Wyvern, Blood Wyvern, Water Wyrm, Sky Wyrm, Blood Wyrm, Electric Drake, Steam Drake, Chromatic Drake, Nature Drake, Vadrenox, Blood Whelp, Water Whelp, Water Drake, Blood Drake, Sky Drake, Sky Whelp, Sunstone Drake, Brimstone Drake, Undine Drake, Twilight Drake, Harvest Drake, Ethereal Drake, Arbor Drake, Void Drake, Storm Drake
+- [x] This effect gives the player 1 or 4 handlers 
+  - The player can gain 1 handler
+     - ```underlings.card.effect.domestic.players.player.GainHandlersEffectTests.testOneHandler()```
+  - The player can gain 4 handlers
+     - ```underlings.card.effect.domestic.players.player.GainHandlersEffectTests.testFourHandlers()```
+- [x] The player should know that the effect has been run
+  - ```underlings.card.effect.domestic.players.player.GainHandlersEffectTests.testToString()```
