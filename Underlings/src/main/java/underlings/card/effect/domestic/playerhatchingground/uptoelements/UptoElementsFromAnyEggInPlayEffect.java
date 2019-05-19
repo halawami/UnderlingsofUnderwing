@@ -17,7 +17,8 @@ public abstract class UptoElementsFromAnyEggInPlayEffect extends PlayerHatchingG
     public int upTo;
 
     @Override
-    protected void apply(HatchingGround hatchingGround, EggHatchingUtilities hatchingLogic, Player currentPlayer, Gui gui) {
+    protected void apply(HatchingGround hatchingGround, EggHatchingUtilities hatchingLogic, Player currentPlayer,
+            Gui gui) {
         List<Card> allCards = hatchingGround.getAllCards();
 
         for (int i = 0; i < this.upTo; i++) {

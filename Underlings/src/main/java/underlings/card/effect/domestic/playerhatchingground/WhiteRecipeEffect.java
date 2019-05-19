@@ -21,7 +21,8 @@ public class WhiteRecipeEffect extends PlayerHatchingGroundEffect {
     private String recipe111 = "RED,YELLOW,BLUE,RED,BLUE,RED,YELLOW,BLUE,YELLOW";
 
     @Override
-    protected void apply(HatchingGround hatchingGround, EggHatchingUtilities hatchingLogic, Player currentPlayer, Gui gui) {
+    protected void apply(HatchingGround hatchingGround, EggHatchingUtilities hatchingLogic, Player currentPlayer,
+            Gui gui) {
         List<String[]> recipes = new ArrayList<>();
         recipes.add(this.recipe000.split(","));
         recipes.add(this.recipe001.split(","));
