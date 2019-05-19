@@ -17,25 +17,25 @@ public class LoseHandlerEffectTests extends MockTest {
     @Test
     public void testLoseHandlerTwoPlayers() {
         List<Player> mockPlayers = this.mockListOf(Player.class).withLengthOf(2);
-        LoseHandlerEffect testedEffect = new LoseHandlerEffect();
+        LoseHandlerEffect effect = new LoseHandlerEffect();
 
         mockPlayers.forEach(Player::loseHandler);
 
         this.replayAll();
 
-        testedEffect.on(mockPlayers).apply();
+        effect.on(mockPlayers).apply();
     }
 
     @Test
     public void testLoseHandlerSixPlayers() {
         List<Player> mockPlayers = this.mockListOf(Player.class).withLengthOf(6);
-        LoseHandlerEffect testedEffect = new LoseHandlerEffect();
+        LoseHandlerEffect effect = new LoseHandlerEffect();
 
         mockPlayers.forEach(Player::loseHandler);
 
         this.replayAll();
 
-        testedEffect.on(mockPlayers).apply();
+        effect.on(mockPlayers).apply();
     }
 
     @Test
