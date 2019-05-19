@@ -47,6 +47,7 @@ public abstract class MockTest {
     protected Effect effect2;
     protected ElementSpace elementSpace;
     protected ElementSpace elementSpace2;
+    protected List<Card> cards;
 
     protected List<Object> mocks = new ArrayList<>();
 

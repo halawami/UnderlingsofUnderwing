@@ -2,12 +2,12 @@ package underlings.effect.hatchingground;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.easymock.EasyMock;
 import org.junit.Test;
 
+import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.effect.wild.alleggsinplay.AddElementToAllEggsInPlayEffect;
 import underlings.card.effect.wild.alleggsinplay.AllEggsInPlayEffect;
@@ -24,74 +24,71 @@ import underlings.player.Player;
 import underlings.utilities.EggHatchingLogic;
 import underlings.utilities.LocaleWrap;
 
-public class AllEggsInPlayEffectTests {
+public class AllEggsInPlayEffectTests extends MockTest {
 
     @Test
     public void testApplyOnNoEggInPlay() {
-        testApplyOnCardInPlay(0);
+        this.testApplyOnCardInPlay(0);
     }
 
     @Test
     public void testApplyOnOneEggInPlay() {
-        testApplyOnCardInPlay(1);
+        this.testApplyOnCardInPlay(1);
     }
 
     @Test
     public void testApplyOnEggsInPlay() {
-        testApplyOnCardInPlay(2);
+        this.testApplyOnCardInPlay(2);
     }
 
-    public void testApplyOnCardInPlay(int numberOfCards) {
-        ElementBag elementBag = EasyMock.mock(ElementBag.class);
-        ElementSpaceLogic elementSpaceLogic = EasyMock.mock(ElementSpaceLogic.class);
-        Card centerCard = EasyMock.mock(Card.class);
-        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
-        Gui gui = EasyMock.mock(Gui.class);
+    private void testApplyOnCardInPlay(int numberOfCards) {
+        ElementBag elementBag = this.mock(ElementBag.class);
+        ElementSpaceLogic elementSpaceLogic = this.mock(ElementSpaceLogic.class);
+        Card centerCard = this.mock(Card.class);
+        HatchingGround hatchingGround = this.mock(HatchingGround.class);
+        Gui gui = this.mock(Gui.class);
         Player player = new Player(0, null, 0);
         player.elementSpaceLogic = elementSpaceLogic;
-        List<Card> mockedCards = getMockedCards(numberOfCards);
-        EggHatchingLogic eggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
-
-        AllEggsInPlayEffect testedEffect = EasyMock.partialMockBuilder(AllEggsInPlayEffect.class)
+        List<Card> mockedCards = this.mockListOf(Card.class).withLengthOf(numberOfCards);
+        EggHatchingLogic eggHatchingLogic = this.mock(EggHatchingLogic.class);
+        AllEggsInPlayEffect effect = EasyMock.partialMockBuilder(AllEggsInPlayEffect.class)
                 .addMockedMethod("applyOnCardInPlay").createMock();
-        testedEffect.on(elementBag).on(centerCard).on(hatchingGround).on(gui).on(eggHatchingLogic).on(player);
+        this.addMock(effect);
 
         EasyMock.expect(hatchingGround.getAllCards()).andReturn(mockedCards);
         for (Card mockedCard : mockedCards) {
-            testedEffect.applyOnCardInPlay(mockedCard, elementSpaceLogic, elementBag, null);
+            effect.applyOnCardInPlay(mockedCard, elementSpaceLogic, elementBag, null);
         }
-        EasyMock.replay(elementBag, centerCard, elementSpaceLogic, testedEffect, gui, hatchingGround);
-        EasyMock.replay(eggHatchingLogic);
 
-        testedEffect.apply();
+        this.replayAll();
 
-        EasyMock.verify(elementBag, centerCard, elementSpaceLogic, testedEffect, gui, hatchingGround);
-        EasyMock.verify(eggHatchingLogic);
+        effect.on(elementBag).on(centerCard).on(hatchingGround).on(gui).on(eggHatchingLogic).on(player).apply();
     }
 
     @Test
     public void testAddElementsToCardNoPlayableSpaces() {
-        testAddElementsToCardWithPlayableSpace(0);
+        this.testAddElementsToCardWithPlayableSpace(0);
     }
 
     @Test
     public void testAddElementsToCardOnePlayableSpace() {
-        testAddElementsToCardWithPlayableSpace(1);
+        this.testAddElementsToCardWithPlayableSpace(1);
     }
 
     @Test
     public void testAddElementsToCardEightPlayableSpace() {
-        testAddElementsToCardWithPlayableSpace(8);
+        this.testAddElementsToCardWithPlayableSpace(8);
     }
 
 
-    public void testAddElementsToCardWithPlayableSpace(int numberOfPlayableSpaces) {
+    private void testAddElementsToCardWithPlayableSpace(int numberOfPlayableSpaces) {
         ElementColor blue = ElementColor.BLUE;
-        Card mockedCard = EasyMock.mock(Card.class);
-        ElementSpaceLogic elementSpaceLogic = EasyMock.mock(ElementSpaceLogic.class);
-        ElementBag elementBag = EasyMock.mock(ElementBag.class);
-        Element stubElement = EasyMock.niceMock(Element.class);
-        List<ElementSpace> mockedPlayableSpaces = getMockSpaces(numberOfPlayableSpaces);
+        Card mockedCard = this.mock(Card.class);
+        ElementSpaceLogic elementSpaceLogic = this.mock(ElementSpaceLogic.class);
+        ElementBag elementBag = this.mock(ElementBag.class);
+        Element stubElement = this.mock(Element.class);
+        List<ElementSpace> mockedPlayableSpaces = this.mockListOf(ElementSpace.class)
+                .withLengthOf(numberOfPlayableSpaces);
 
         EasyMock.expect(elementSpaceLogic.getPlayableSpaces(mockedCard, blue)).andReturn(mockedPlayableSpaces);
 
@@ -100,70 +97,42 @@ public class AllEggsInPlayEffectTests {
             mockSpace.addElements(stubElement);
         }
 
-        EasyMock.replay(mockedCard, elementSpaceLogic, elementBag);
-        mockedPlayableSpaces.forEach(EasyMock::replay);
+        this.replayAll();
 
-        AddElementToAllEggsInPlayEffect testedEffect = new AddElementToAllEggsInPlayEffect();
-        testedEffect.elementColor = ElementColor.BLUE;
-        testedEffect.applyOnCardInPlay(mockedCard, elementSpaceLogic, elementBag, null);
-
-        EasyMock.verify(mockedCard, elementSpaceLogic, elementBag);
-        mockedPlayableSpaces.forEach(EasyMock::verify);
+        AddElementToAllEggsInPlayEffect effect = new AddElementToAllEggsInPlayEffect();
+        effect.elementColor = ElementColor.BLUE;
+        effect.applyOnCardInPlay(mockedCard, elementSpaceLogic, elementBag, null);
     }
 
     @Test
     public void testDestroyAllElementsOnUnclaimedCard() {
         Card cardInPlay = new Card();
-        List<ElementSpace> mockSpaces = getMockSpaces(8);
+        List<ElementSpace> mockSpaces = this.mockListOf(ElementSpace.class).withLengthOf(8);
         cardInPlay.elementSpaces = mockSpaces.toArray(new ElementSpace[8]);
-        ElementSpaceLogic elementSpaceLogic = EasyMock.mock(ElementSpaceLogic.class);
-        ElementBag elementBag = EasyMock.mock(ElementBag.class);
+        ElementSpaceLogic elementSpaceLogic = this.mock(ElementSpaceLogic.class);
+        ElementBag elementBag = this.mock(ElementBag.class);
 
-        EasyMock.replay(elementSpaceLogic, elementBag);
-        mockSpaces.forEach(EasyMock::replay);
+        this.replayAll();
 
-        DestroyAllElementsOnAllEggsInPlay testedEffect = new DestroyAllElementsOnAllEggsInPlay();
-        testedEffect.applyOnCardInPlay(cardInPlay, elementSpaceLogic, elementBag, null);
-
-        EasyMock.verify(elementSpaceLogic, elementBag);
-        mockSpaces.forEach(EasyMock::verify);
+        DestroyAllElementsOnAllEggsInPlay effect = new DestroyAllElementsOnAllEggsInPlay();
+        effect.applyOnCardInPlay(cardInPlay, elementSpaceLogic, elementBag, null);
     }
 
     @Test
     public void testDestroyAllElementsOnClaimedCard() {
         Card cardInPlay = new Card();
-        cardInPlay.handler = EasyMock.niceMock(Handler.class);
-        List<ElementSpace> mockSpaces = getMockSpaces(8);
+        cardInPlay.handler = this.mock(Handler.class);
+        List<ElementSpace> mockSpaces = this.mockListOf(ElementSpace.class).withLengthOf(8);
         cardInPlay.elementSpaces = mockSpaces.toArray(new ElementSpace[8]);
-        ElementSpaceLogic elementSpaceLogic = EasyMock.mock(ElementSpaceLogic.class);
-        ElementBag elementBag = EasyMock.mock(ElementBag.class);
+        ElementSpaceLogic elementSpaceLogic = this.mock(ElementSpaceLogic.class);
+        ElementBag elementBag = this.mock(ElementBag.class);
 
         mockSpaces.forEach(ElementSpace::destroyAllElements);
 
-        EasyMock.replay(elementSpaceLogic, elementBag);
-        mockSpaces.forEach(EasyMock::replay);
+        this.replayAll();
 
-        DestroyAllElementsOnAllEggsInPlay testedEffect = new DestroyAllElementsOnAllEggsInPlay();
-        testedEffect.applyOnCardInPlay(cardInPlay, elementSpaceLogic, elementBag, null);
-
-        EasyMock.verify(elementSpaceLogic, elementBag);
-        mockSpaces.forEach(EasyMock::verify);
-    }
-
-    private List<ElementSpace> getMockSpaces(int numberOfSpaces) {
-        List<ElementSpace> mockedPlayableSpaces = new ArrayList<>();
-        for (int i = 0; i < numberOfSpaces; i++) {
-            mockedPlayableSpaces.add(EasyMock.mock(ElementSpace.class));
-        }
-        return mockedPlayableSpaces;
-    }
-
-    private List<Card> getMockedCards(int numberOfCards) {
-        List<Card> mockedCards = new ArrayList<>();
-        for (int i = 0; i < numberOfCards; i++) {
-            mockedCards.add(EasyMock.niceMock(Card.class));
-        }
-        return mockedCards;
+        DestroyAllElementsOnAllEggsInPlay effect = new DestroyAllElementsOnAllEggsInPlay();
+        effect.applyOnCardInPlay(cardInPlay, elementSpaceLogic, elementBag, null);
     }
 
     @Test

@@ -6,13 +6,12 @@ import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
-import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
 
+import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.Family;
 import underlings.card.effect.Effect;
@@ -22,92 +21,67 @@ import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.handler.Handler;
 import underlings.player.FakePlayer;
-import underlings.player.Player;
 import underlings.utilities.EggHatchingLogic;
 import underlings.utilities.LocaleWrap;
 
-public class HatchAllUnclaimedAdjacentEggsEffectTests {
+public class HatchAllUnclaimedAdjacentEggsEffectTests extends MockTest {
 
-    private List<Card> mockedCards;
-    private Effect effect;
-    private EggHatchingLogic eggHatchingLogic;
-    private HatchingGround hatchingGround;
-    private ElementBag elementBag;
-    private Player fakePlayer;
-    private Gui gui;
-    private HatchAllUnclaimedEffect hatchAllUnclaimedAdjacentEggsEffect;
-
+    HatchAllUnclaimedEffect effect;
 
     @Before
     public void init() throws IOException {
-        this.mockedCards = getMockedCards(1);
-        this.mockedCards.get(0).wildEffects = new Effect[1];
-        this.effect = EasyMock.mock(Effect.class);
-        this.mockedCards.get(0).wildEffects[0] = effect;
-        this.eggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
-        this.hatchingGround = EasyMock.mock(HatchingGround.class);
-        this.elementBag = EasyMock.mock(ElementBag.class);
+        this.cards = this.mockListOf(Card.class).withLengthOf(1);
+        this.cards.get(0).wildEffects = new Effect[1];
+        this.cards.get(0).wildEffects[0] = this.effect;
+        this.eggHatchingLogic = this.mock(EggHatchingLogic.class);
+        this.hatchingGround = this.mock(HatchingGround.class);
+        this.elementBag = this.mock(ElementBag.class);
         List<String> recipes = Resources.readLines(Resources.getResource("DefaultRecipeList.txt"), Charsets.UTF_8);
         FakePlayer.initPlayer(recipes);
-        this.fakePlayer = FakePlayer.getInstance();
-        this.gui = EasyMock.mock(Gui.class);
-        this.hatchAllUnclaimedAdjacentEggsEffect = new HatchAllUnclaimedEffect();
+        this.player = FakePlayer.getInstance();
+        this.gui = this.mock(Gui.class);
+        this.effect = new HatchAllUnclaimedEffect();
     }
 
     @Test
     public void testHatchOneAdjacentUnclaimedEgg() {
-        mockedCards.get(0).family = Family.MONOCHROMATIC;
-        eggHatchingLogic.hatchEgg(mockedCards.get(0), fakePlayer);
+        this.cards.get(0).family = Family.MONOCHROMATIC;
+        this.eggHatchingLogic.hatchEgg(this.cards.get(0), this.player);
 
-        EasyMock.replay(hatchingGround, elementBag, effect, gui, eggHatchingLogic);
+        this.replayAll();
 
-        hatchAllUnclaimedAdjacentEggsEffect.dragonFamilies = new Family[] {Family.MONOCHROMATIC};
-        hatchAllUnclaimedAdjacentEggsEffect.applyOnAdjacentEgg(mockedCards.get(0), elementBag,
-                fakePlayer.elementSpaceLogic, eggHatchingLogic, null, null, null);
-
-        EasyMock.verify(hatchingGround, elementBag, effect, gui, eggHatchingLogic);
+        this.effect.dragonFamilies = new Family[]{Family.MONOCHROMATIC};
+        this.effect.applyOnAdjacentEgg(this.cards.get(0), this.elementBag,
+                this.player.elementSpaceLogic, this.eggHatchingLogic, null, null, null);
     }
 
     @Test
     public void testAttemptToHatchClaimedEgg() {
-        mockedCards.get(0).handler = EasyMock.mock(Handler.class);
+        this.cards.get(0).handler = this.mock(Handler.class);
 
-        EasyMock.replay(hatchingGround, elementBag, effect, gui, eggHatchingLogic);
+        this.replayAll();
 
-        HatchAllUnclaimedEffect hatchAllUnclaimedAdjacentEggsEffect = new HatchAllUnclaimedEffect();
-        hatchAllUnclaimedAdjacentEggsEffect.dragonFamilies = new Family[0];
-        hatchAllUnclaimedAdjacentEggsEffect.applyOnAdjacentEgg(mockedCards.get(0), elementBag,
-                fakePlayer.elementSpaceLogic, eggHatchingLogic, null, null, null);
-        EasyMock.verify(hatchingGround, elementBag, effect, gui, eggHatchingLogic);
+        this.effect.dragonFamilies = new Family[0];
+        this.effect.applyOnAdjacentEgg(this.cards.get(0), this.elementBag,
+                this.player.elementSpaceLogic, this.eggHatchingLogic, null, null, null);
     }
 
     @Test
     public void testAttemptToHatchDifferentFamilyDragon() {
-        mockedCards.get(0).family = Family.TRIADIC;
+        this.cards.get(0).family = Family.TRIADIC;
 
-        EasyMock.replay(hatchingGround, elementBag, effect, gui, eggHatchingLogic);
+        this.replayAll();
 
-        HatchAllUnclaimedEffect hatchAllUnclaimedAdjacentEggsEffect = new HatchAllUnclaimedEffect();
-        hatchAllUnclaimedAdjacentEggsEffect.dragonFamilies = new Family[] {Family.MONOCHROMATIC};
-
-        hatchAllUnclaimedAdjacentEggsEffect.applyOnAdjacentEgg(mockedCards.get(0), elementBag,
-                fakePlayer.elementSpaceLogic, eggHatchingLogic, null, null, null);
-
-        EasyMock.verify(hatchingGround, elementBag, effect, gui, eggHatchingLogic);
-    }
-
-    private List<Card> getMockedCards(int numberOfCards) {
-        List<Card> mockedCards = new ArrayList<>();
-        for (int i = 0; i < numberOfCards; i++) {
-            mockedCards.add(EasyMock.niceMock(Card.class));
-        }
-        return mockedCards;
+        this.effect.dragonFamilies = new Family[]{Family.MONOCHROMATIC};
+        this.effect.applyOnAdjacentEgg(this.cards.get(0), this.elementBag,
+                this.player.elementSpaceLogic, this.eggHatchingLogic, null, null, null);
     }
 
     @Test
     public void testToString() {
+        this.replayAll();
         HatchAllUnclaimedEffect effect = new HatchAllUnclaimedEffect();
-        effect.dragonFamilies = new Family[] {Family.MONOCHROMATIC};
+        effect.dragonFamilies = new Family[]{Family.MONOCHROMATIC};
         StringBuilder families = new StringBuilder();
         for (Family family : effect.dragonFamilies) {
             families.append(family);
