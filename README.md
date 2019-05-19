@@ -91,9 +91,9 @@ The definition of done is created by examining and applying BVA on the rules.
 #### Temperature Tests ```underlings.scoring.TemperatureTests```
 
 - [x] Players with no cards should have a perfect balance
-  - ```underlings.scoring.TemperatureTests.testNoCards()```
+  - ```underlings.scoring.TemperatureTests.testNoCardsPerfectBalance()```
 - [x] Players with equal warm and cool cards should have a perfect balance
-  - ```underlings.scoring.TemperatureTests.testPerfectBalance()```
+  - ```underlings.scoring.TemperatureTests.testCardsPerfectBalance()```
 - [x] Players with net warm cards should have a warm balance
   - ```underlings.scoring.TemperatureTests.testWarmBalance()```
 - [x] Players with net cool cards should have a cool balance
@@ -127,6 +127,7 @@ The definition of done is created by examining and applying BVA on the rules.
 #### Gain Handlers  ```underlings.card.effect.domestic.players.player.GainHandlersEffectTests```
 
 - Dragons
+<<<<<<< HEAD
   - Abyssal Wyrm, Aeon Wyrm, Nebula Wyrm, Opalescent Whelp, Water Wyvern, Sky Wyvern, Blood Wyvern, Water Wyrm, Sky Wyrm, Blood Wyrm, Electric Drake, Steam Drake, Chromatic Drake, Nature Drake, Vadrenox, Blood Whelp, Water Whelp, Water Drake, Blood Drake, Sky Drake, Sky Whelp, Sunstone Drake, Brimstone Drake, Undine Drake, Twilight Drake, Harvest Drake, Ethereal Drake, Arbor Drake, Void Drake, Storm Drake
 - [x] This effect gives the player 1 or 4 handlers 
   - The player can gain 1 handler
@@ -135,3 +136,11 @@ The definition of done is created by examining and applying BVA on the rules.
      - ```underlings.card.effect.domestic.players.player.GainHandlersEffectTests.testFourHandlers()```
 - [x] The player should know that the effect has been run
   - ```underlings.card.effect.domestic.players.player.GainHandlersEffectTests.testToString()```
+=======
+  - Dragon 1, Dragon 2, Dragon 3
+- [x] Should do ...
+  - ```card.effect.domestic.package.ClassName.test()```
+- [x] Should do ...
+  - ```card.effect.domestic.package.ClassName.test()```
+
+>>>>>>> 87a066eb5469250b348e77b151cad463f67e853f
