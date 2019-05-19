@@ -1,13 +1,20 @@
 package underlings;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
-
+import underlings.card.Card;
 import underlings.gui.ConcretePrompt;
+import underlings.handler.HandlerChoice;
+import underlings.utilities.LocaleWrap;
 
 public class TestPrompt extends ConcretePrompt {
     Random rand;
     long delay;
+
+    Map<Integer, List<Card>> cards = new HashMap<>();
 
     public TestPrompt() {
         this(10);
@@ -16,6 +23,9 @@ public class TestPrompt extends ConcretePrompt {
     public TestPrompt(long delay) {
         this.rand = new Random();
         this.delay = delay;
+        for (int i = 1; i <= 6; i++) {
+            this.cards.put(i, new ArrayList<Card>());
+        }
     }
 
     public void delay() {
@@ -26,12 +36,28 @@ public class TestPrompt extends ConcretePrompt {
         }
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public <T> T promptChoice(String prompt, List<T> choices, int playerId) {
+
+        if (choices.contains(HandlerChoice.STAY) && choices.size() == 2) {
+            if (!prompt.contains("Field")) {
+                return (T) HandlerChoice.STAY;
+            }
+        }
+
+        if (choices.get(0) instanceof HandlerChoice && this.rand.nextInt(2) == 1) {
+            if (choices.contains(HandlerChoice.CARD)) {
+
+                return (T) HandlerChoice.CARD;
+            }
+        }
         this.delay();
         System.out.println(choices);
         T val = choices.get(this.rand.nextInt(choices.size()));
         System.out.println(prompt + " choices: " + choices + " (return " + val + ")");
+
+
         return val;
     }
 
@@ -68,6 +94,20 @@ public class TestPrompt extends ConcretePrompt {
         System.out.println("\n" + playerId + ": " + prompt);
         this.printGrid(objects);
         System.out.println("picked " + object + "\n");
+
+        if (prompt.equals(LocaleWrap.get("prompt_element_card"))) {
+            for (int i = 0; i < objects.length; i++) {
+                for (int j = 0; j < objects[i].length; j++) {
+                    if (this.cards.get(playerId).contains(objects[i][j])) {
+                        return objects[i][j];
+                    }
+                }
+            }
+        }
+
+        if (prompt.equals(LocaleWrap.get("handler_movement_card"))) {
+            this.cards.get(playerId).add((Card) object);
+        }
         return object;
     }
 
