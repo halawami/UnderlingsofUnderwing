@@ -19,10 +19,10 @@ import underlings.card.effect.Effect;
 import underlings.element.ElementBag;
 import underlings.gui.Gui;
 import underlings.gui.YesNoChoice;
+import underlings.hatchingground.EggHatchingUtilities;
 import underlings.hatchingground.HatchingGround;
 import underlings.player.FakePlayer;
 import underlings.player.Player;
-import underlings.utilities.EggHatchingUtilities;
 import underlings.utilities.LocaleUtilities;
 
 public class HatchAnyUnclaimedEggAsWildDragonEffectTests extends MockTest {

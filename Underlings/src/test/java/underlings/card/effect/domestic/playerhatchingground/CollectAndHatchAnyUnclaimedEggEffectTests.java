@@ -12,9 +12,9 @@ import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.EmptyCard;
 import underlings.gui.Gui;
+import underlings.hatchingground.EggHatchingUtilities;
 import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
-import underlings.utilities.EggHatchingUtilities;
 import underlings.utilities.LocaleUtilities;
 
 public class CollectAndHatchAnyUnclaimedEggEffectTests extends MockTest {

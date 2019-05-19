@@ -9,8 +9,8 @@ import underlings.card.effect.Effect;
 import underlings.card.effect.PlayerEffect;
 import underlings.card.effect.domestic.players.player.UseBlackOrWhiteInPlaceEffect;
 import underlings.element.ElementColor;
+import underlings.element.ElementSpaceUtilities;
 import underlings.player.Player;
-import underlings.utilities.ElementSpaceUtilities;
 import underlings.utilities.LocaleUtilities;
 
 public class UseBlackOrWhiteInPlaceTests extends MockTest {

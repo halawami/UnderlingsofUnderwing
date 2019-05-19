@@ -2,13 +2,14 @@ package underlings.phase;
 
 import java.util.LinkedList;
 import java.util.List;
+
 import underlings.card.Card;
 import underlings.element.ElementBag;
 import underlings.field.Field;
 import underlings.gui.Gui;
+import underlings.hatchingground.EggHatchingUtilities;
 import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
-import underlings.utilities.EggHatchingUtilities;
 import underlings.utilities.LocaleUtilities;
 
 public class DragonPhase extends SequentialPhase {

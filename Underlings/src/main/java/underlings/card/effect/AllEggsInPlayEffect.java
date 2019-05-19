@@ -4,10 +4,10 @@ import java.util.List;
 
 import underlings.card.Card;
 import underlings.element.ElementBag;
+import underlings.element.ElementSpaceUtilities;
 import underlings.handler.HandlerMovementLogic;
 import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
-import underlings.utilities.ElementSpaceUtilities;
 
 public abstract class AllEggsInPlayEffect extends Effect {
 

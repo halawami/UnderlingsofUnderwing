@@ -3,7 +3,7 @@ package underlings.card.effect.wild.adjacenteggs.elements;
 import underlings.card.Card;
 import underlings.card.effect.AdjacentEggsEffect;
 import underlings.element.ElementBag;
-import underlings.utilities.ElementSpaceUtilities;
+import underlings.element.ElementSpaceUtilities;
 
 public abstract class ElementsEffect extends AdjacentEggsEffect {
 

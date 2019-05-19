@@ -1,8 +1,9 @@
 package underlings.player;
 
 import java.util.List;
+
+import underlings.element.ElementSpaceUtilities;
 import underlings.handler.HandlerFactory;
-import underlings.utilities.ElementSpaceUtilities;
 
 public class PlayerFactory {
 

@@ -2,6 +2,7 @@ package underlings;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,9 +11,12 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
+
 import underlings.card.CardFactory;
 import underlings.element.ElementBag;
 import underlings.element.ElementFactory;
+import underlings.element.ElementSpaceUtilities;
+import underlings.element.PlacementUtilities;
 import underlings.field.Field;
 import underlings.field.FieldSpaceFactory;
 import underlings.game.Game;
@@ -21,6 +25,7 @@ import underlings.gui.Gui;
 import underlings.handler.HandlerFactory;
 import underlings.handler.HandlerMovementLogic;
 import underlings.hatchingground.Deck;
+import underlings.hatchingground.EggHatchingUtilities;
 import underlings.hatchingground.HatchingGround;
 import underlings.phase.DragonPhase;
 import underlings.phase.DrawingPhase;
@@ -34,10 +39,7 @@ import underlings.phase.WildFinalPhase;
 import underlings.player.FakePlayer;
 import underlings.player.PlayerFactory;
 import underlings.scoring.Scoring;
-import underlings.utilities.EggHatchingUtilities;
-import underlings.utilities.ElementSpaceUtilities;
 import underlings.utilities.LocaleUtilities;
-import underlings.utilities.PlacementUtilities;
 
 public class Main {
 

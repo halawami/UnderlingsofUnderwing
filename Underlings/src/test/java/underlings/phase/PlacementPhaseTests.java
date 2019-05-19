@@ -18,6 +18,8 @@ import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.effect.Effect;
 import underlings.element.ElementSpace;
+import underlings.element.ElementSpaceUtilities;
+import underlings.element.PlacementUtilities;
 import underlings.gui.Gui;
 import underlings.gui.Gui.PromptType;
 import underlings.gui.YesNoChoice;
@@ -25,13 +27,11 @@ import underlings.handler.Handler;
 import underlings.handler.HandlerState;
 import underlings.handler.WildHandler;
 import underlings.hatchingground.Deck;
+import underlings.hatchingground.EggHatchingUtilities;
 import underlings.hatchingground.HatchingGround;
 import underlings.player.FakePlayer;
 import underlings.player.Player;
-import underlings.utilities.EggHatchingUtilities;
-import underlings.utilities.ElementSpaceUtilities;
 import underlings.utilities.LocaleUtilities;
-import underlings.utilities.PlacementUtilities;
 
 public class PlacementPhaseTests extends MockTest {
 

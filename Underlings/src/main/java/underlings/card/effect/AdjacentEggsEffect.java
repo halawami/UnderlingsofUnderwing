@@ -4,12 +4,12 @@ import java.util.List;
 
 import underlings.card.Card;
 import underlings.element.ElementBag;
+import underlings.element.ElementSpaceUtilities;
 import underlings.handler.HandlerMovementLogic;
 import underlings.hatchingground.Deck;
+import underlings.hatchingground.EggHatchingUtilities;
 import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
-import underlings.utilities.EggHatchingUtilities;
-import underlings.utilities.ElementSpaceUtilities;
 
 public abstract class AdjacentEggsEffect extends Effect {
 

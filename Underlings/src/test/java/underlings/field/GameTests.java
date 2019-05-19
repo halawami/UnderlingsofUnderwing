@@ -7,12 +7,12 @@ import org.easymock.EasyMock;
 import org.junit.Test;
 
 import underlings.card.Card;
+import underlings.element.ElementSpaceUtilities;
 import underlings.game.Game;
 import underlings.handler.WildHandler;
 import underlings.hatchingground.Deck;
 import underlings.hatchingground.HatchingGround;
 import underlings.phase.Phase;
-import underlings.utilities.ElementSpaceUtilities;
 
 public class GameTests {
 

@@ -8,8 +8,8 @@ import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
+import underlings.element.ElementSpaceUtilities;
 import underlings.handler.HandlerMovementLogic;
-import underlings.utilities.ElementSpaceUtilities;
 import underlings.utilities.LocaleUtilities;
 
 public class AddElementToAllEggsInPlayEffect extends AllEggsInPlayEffect {

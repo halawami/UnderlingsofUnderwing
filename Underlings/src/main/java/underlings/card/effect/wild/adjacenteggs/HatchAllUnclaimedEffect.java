@@ -6,8 +6,8 @@ import java.util.List;
 import underlings.card.Card;
 import underlings.card.Family;
 import underlings.card.effect.AdjacentEggsEffect;
+import underlings.hatchingground.EggHatchingUtilities;
 import underlings.player.FakePlayer;
-import underlings.utilities.EggHatchingUtilities;
 import underlings.utilities.LocaleUtilities;
 
 public class HatchAllUnclaimedEffect extends AdjacentEggsEffect {

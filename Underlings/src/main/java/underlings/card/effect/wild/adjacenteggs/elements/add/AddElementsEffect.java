@@ -1,15 +1,16 @@
 package underlings.card.effect.wild.adjacenteggs.elements.add;
 
 import java.util.List;
+
 import underlings.card.Card;
 import underlings.card.effect.wild.adjacenteggs.elements.ElementsEffect;
 import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
+import underlings.element.ElementSpaceUtilities;
 import underlings.element.NullElement;
 import underlings.handler.WildHandler;
-import underlings.utilities.ElementSpaceUtilities;
 import underlings.utilities.LocaleUtilities;
 
 public class AddElementsEffect extends ElementsEffect {

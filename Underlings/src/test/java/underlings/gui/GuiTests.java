@@ -31,6 +31,7 @@ import underlings.element.ElementColor;
 import underlings.element.ElementFactory;
 import underlings.element.ElementSpace;
 import underlings.element.ElementSpacePosition;
+import underlings.element.ElementSpaceUtilities;
 import underlings.element.NullElement;
 import underlings.game.Game;
 import underlings.gui.Gui.PromptType;
@@ -42,7 +43,6 @@ import underlings.handler.HandlerState;
 import underlings.hatchingground.Deck;
 import underlings.hatchingground.HatchingGround;
 import underlings.player.PlayerFactory;
-import underlings.utilities.ElementSpaceUtilities;
 import underlings.utilities.LocaleUtilities;
 
 public class GuiTests {
