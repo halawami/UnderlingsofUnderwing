@@ -1,12 +1,9 @@
 package underlings.card.effect.domestic.playerhatchingground.uptoelements;
 
 import static org.junit.Assert.assertEquals;
-
 import java.util.List;
-
 import org.easymock.EasyMock;
 import org.junit.Test;
-
 import underlings.MockTest;
 import underlings.card.Card;
 import underlings.element.Element;
@@ -33,7 +30,7 @@ public class UptoElementsFromAnyEggInPlayEffectTests extends MockTest {
     private void testApplyOnNumberOfSelectedElements(int numberOfSelectedElements) {
         Player currentPlayer = this.mock(Player.class);
         EasyMock.expect(currentPlayer.getId()).andReturn(10).anyTimes();
-        HatchingGround hatchingGround = this.mock(HatchingGround.class);
+        final HatchingGround hatchingGround = this.mock(HatchingGround.class);
         List<ElementSpace> mockSpaces = this.mockListOf(ElementSpace.class).withLengthOf(numberOfSelectedElements);
         List<Element> mockElements = this.mockListOf(Element.class).withLengthOf(numberOfSelectedElements);
         Gui gui = this.mock(Gui.class);
@@ -41,7 +38,7 @@ public class UptoElementsFromAnyEggInPlayEffectTests extends MockTest {
                 EasyMock.partialMockBuilder(UptoElementsFromAnyEggInPlayEffect.class)
                         .addMockedMethod("applyOnSelectedElement").createMock();
         this.addMock(effect);
-        effect.elementChoices = new ElementColor[]{ElementColor.BLUE};
+        effect.elementChoices = new ElementColor[] {ElementColor.BLUE};
         effect.upTo = numberOfSelectedElements;
 
         List<Card> mockCards = this.mockListOf(Card.class).withLengthOf(6);
@@ -70,7 +67,7 @@ public class UptoElementsFromAnyEggInPlayEffectTests extends MockTest {
     }
 
     private void testDestroyElement(Element elementPicked, ElementColor elementColor) {
-        Player currentPlayer = this.mock(Player.class);
+        final Player currentPlayer = this.mock(Player.class);
         ElementSpace elementSpace = this.mock(ElementSpace.class);
 
         if (elementPicked != NullElement.getInstance()) {
@@ -99,13 +96,13 @@ public class UptoElementsFromAnyEggInPlayEffectTests extends MockTest {
     public void testCollectNonExistingElement() {
         Player currentPlayer = this.mock(Player.class);
         EasyMock.expect(currentPlayer.getId()).andReturn(10).anyTimes();
-        HatchingGround hatchingGround = this.mock(HatchingGround.class);
-        Gui gui = this.mock(Gui.class);
+        final HatchingGround hatchingGround = this.mock(HatchingGround.class);
+        final Gui gui = this.mock(Gui.class);
         UptoElementsFromAnyEggInPlayEffect effect =
                 EasyMock.partialMockBuilder(UptoElementsFromAnyEggInPlayEffect.class)
                         .addMockedMethod("applyOnSelectedElement").createMock();
         this.addMock(effect);
-        effect.elementChoices = new ElementColor[]{ElementColor.BLUE};
+        effect.elementChoices = new ElementColor[] {ElementColor.BLUE};
         effect.upTo = 1;
 
         List<Card> mockCards = this.mockListOf(Card.class).withLengthOf(6);
@@ -135,7 +132,7 @@ public class UptoElementsFromAnyEggInPlayEffectTests extends MockTest {
     @Test
     public void testToStringCollect() {
         CollectUpToElementsFromAnyEggInPlayEffect effect = new CollectUpToElementsFromAnyEggInPlayEffect();
-        effect.elementChoices = new ElementColor[]{ElementColor.BLACK};
+        effect.elementChoices = new ElementColor[] {ElementColor.BLACK};
         StringBuilder elements = new StringBuilder();
         for (ElementColor color : effect.elementChoices) {
             elements.append(color);
@@ -147,7 +144,7 @@ public class UptoElementsFromAnyEggInPlayEffectTests extends MockTest {
     @Test
     public void testToStringDestroy() {
         DestroyUpToElementsOnAnyEggInPlayEffect effect = new DestroyUpToElementsOnAnyEggInPlayEffect();
-        effect.elementChoices = new ElementColor[]{ElementColor.BLACK};
+        effect.elementChoices = new ElementColor[] {ElementColor.BLACK};
         StringBuilder elements = new StringBuilder();
         for (ElementColor color : effect.elementChoices) {
             elements.append(color);

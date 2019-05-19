@@ -1,12 +1,9 @@
 package underlings.card.effect;
 
 import static org.junit.Assert.assertEquals;
-
 import java.util.List;
-
 import org.easymock.EasyMock;
 import org.junit.Test;
-
 import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.effect.wild.alleggsinplay.AddElementToAllEggsInPlayEffect;
@@ -54,13 +51,13 @@ public class AllEggsInPlayEffectTests extends MockTest {
     public void testApplyOnCardInPlayDoNothing() {
         ElementBag elementBag = this.mock(ElementBag.class);
         ElementSpaceUtilities elementSpaceLogic = this.mock(ElementSpaceUtilities.class);
-        Card centerCard = this.mock(Card.class);
+        final Card centerCard = this.mock(Card.class);
         HatchingGround hatchingGround = this.mock(HatchingGround.class);
         Player player = new Player(0, null, 0);
         player.elementSpaceLogic = elementSpaceLogic;
         HandlerMovementLogic handlerMovementLogic = this.mock(HandlerMovementLogic.class);
         List<Card> mockedCards = this.mockListOf(Card.class).withLengthOf(2);
-        EggHatchingUtilities eggHatchingLogic = this.mock(EggHatchingUtilities.class);
+        final EggHatchingUtilities eggHatchingLogic = this.mock(EggHatchingUtilities.class);
         AllEggsInPlayEffect effect = EasyMock.partialMockBuilder(AllEggsInPlayEffect.class).createMock();
         this.addMock(effect);
 
@@ -81,19 +78,19 @@ public class AllEggsInPlayEffectTests extends MockTest {
     private void testApplyOnCardInPlay(int numberOfCards) {
         ElementBag elementBag = this.mock(ElementBag.class);
         ElementSpaceUtilities elementSpaceLogic = this.mock(ElementSpaceUtilities.class);
-        Card centerCard = this.mock(Card.class);
+        final Card centerCard = this.mock(Card.class);
         HatchingGround hatchingGround = this.mock(HatchingGround.class);
         Player player = new Player(0, null, 0);
         player.elementSpaceLogic = elementSpaceLogic;
         HandlerMovementLogic handlerMovementLogic = this.mock(HandlerMovementLogic.class);
         List<Card> mockedCards = this.mockListOf(Card.class).withLengthOf(numberOfCards);
-        EggHatchingUtilities eggHatchingLogic = this.mock(EggHatchingUtilities.class);
-        AllEggsInPlayEffect effect = EasyMock.partialMockBuilder(AllEggsInPlayEffect.class)
-                .addMockedMethod("applyOnCardInPlay", Card.class)
-                .addMockedMethod("applyOnCardInPlay", Card.class, HandlerMovementLogic.class)
-                .addMockedMethod("applyOnCardInPlay", Card.class, ElementSpaceUtilities.class, ElementBag.class,
-                        HandlerMovementLogic.class)
-                .createMock();
+        final EggHatchingUtilities eggHatchingLogic = this.mock(EggHatchingUtilities.class);
+        AllEggsInPlayEffect effect =
+                EasyMock.partialMockBuilder(AllEggsInPlayEffect.class).addMockedMethod("applyOnCardInPlay", Card.class)
+                        .addMockedMethod("applyOnCardInPlay", Card.class, HandlerMovementLogic.class)
+                        .addMockedMethod("applyOnCardInPlay", Card.class, ElementSpaceUtilities.class, ElementBag.class,
+                                HandlerMovementLogic.class)
+                        .createMock();
         this.addMock(effect);
 
         EasyMock.expect(hatchingGround.getAllCards()).andReturn(mockedCards);

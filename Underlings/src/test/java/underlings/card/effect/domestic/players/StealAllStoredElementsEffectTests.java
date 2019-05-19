@@ -1,12 +1,9 @@
 package underlings.card.effect.domestic.players;
 
 import static org.junit.Assert.assertEquals;
-
 import java.util.List;
-
 import org.easymock.EasyMock;
 import org.junit.Test;
-
 import underlings.MockTest;
 import underlings.card.effect.Effect;
 import underlings.gui.Gui;
@@ -20,7 +17,7 @@ public class StealAllStoredElementsEffectTests extends MockTest {
         Player currentPlayer = this.mock(Player.class);
         List<Player> players = this.mockListOf(Player.class).withLengthOf(6);
         Gui gui = this.mock(Gui.class);
-        Effect effect = new StealAllStoredElementsEffect();
+        final Effect effect = new StealAllStoredElementsEffect();
 
         EasyMock.expect(gui.promptChoice(LocaleUtilities.get("prompt_war_players"), players, 0))
                 .andReturn(players.get(3));

@@ -1,12 +1,9 @@
 package underlings.card.effect.domestic.handler;
 
 import static org.junit.Assert.assertEquals;
-
 import java.util.List;
-
 import org.easymock.EasyMock;
 import org.junit.Test;
-
 import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.effect.Effect;
@@ -40,10 +37,10 @@ public class ReplaceHandlerWithYourOwnEffectTests extends MockTest {
         Player currentPlayer = this.mock(Player.class);
         HatchingGround hatchingGround = this.mock(HatchingGround.class);
         List<Card> mockClaimedEggs = this.mockListOf(Card.class).withLengthOf(6);
-        List<Handler> mockHandlers = this.mockListOf(Handler.class).withLengthOf(2);
+        final List<Handler> mockHandlers = this.mockListOf(Handler.class).withLengthOf(2);
         Handler toBeReplaced = this.mock(Handler.class);
         mockClaimedEggs.get(2).handler = toBeReplaced;
-        HandlerMovementLogic handlerMovementLogic = this.mock(HandlerMovementLogic.class);
+        final HandlerMovementLogic handlerMovementLogic = this.mock(HandlerMovementLogic.class);
         Gui gui = this.mock(Gui.class);
 
         EasyMock.expect(currentPlayer.getId()).andReturn(0).anyTimes();

@@ -2,15 +2,12 @@ package underlings.card.effect.domestic.element;
 
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
-
 import java.util.Arrays;
 import java.util.List;
-
 import org.easymock.EasyMock;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.MockTest;
 import underlings.card.effect.Effect;
 import underlings.element.ElementBag;
@@ -97,8 +94,9 @@ public class DrawElementsOfChoiceEffectTests extends MockTest {
         this.effect.elementGiverFactory = elementGiverFactory;
         this.effect.bag = this.elementBag;
         List<DrawChoice> availableDrawChoices = Arrays.asList(DrawChoice.BLUE, DrawChoice.RED);
-        List<ElementGiver> elementGivers = this.mockListOf(ElementGiver.class).withLengthOf(numberOfElementGivers);
-        List<ElementGiver> effectElementGivers =
+        final List<ElementGiver> elementGivers =
+                this.mockListOf(ElementGiver.class).withLengthOf(numberOfElementGivers);
+        final List<ElementGiver> effectElementGivers =
                 this.mockListOf(ElementGiver.class).withLengthOf(numberOfElementGivers);
 
         EasyMock.expect(this.elementBag.getAvailableDrawChoices()).andReturn(availableDrawChoices);
@@ -115,7 +113,7 @@ public class DrawElementsOfChoiceEffectTests extends MockTest {
 
     @Test
     public void testToString() {
-        replayAll();
+        this.replayAll();
         Effect effect = new DrawElementsOfChoiceEffect();
         assertEquals(LocaleUtilities.get("draw_elements_of_choice"), effect.toString());
     }

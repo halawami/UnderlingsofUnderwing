@@ -1,17 +1,14 @@
 package underlings.card.effect.domestic.players;
 
 import static org.junit.Assert.assertEquals;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-
 import org.easymock.EasyMock;
 import org.junit.Test;
-
 import underlings.card.Card;
 import underlings.card.Temperature;
 import underlings.gui.Gui;
@@ -26,7 +23,7 @@ public class TakeHatchedDragonFromPlayerEffectTests {
         Player player = EasyMock.mock(Player.class);
         Player player2 = EasyMock.mock(Player.class);
         Card card = new Card();
-        Card card2 = new Card();
+        final Card card2 = new Card();
         player.hatchedCards = new LinkedList<>();
         player.hatchedCards.add(card);
         player2.hatchedCards = new LinkedList<>();
@@ -48,7 +45,7 @@ public class TakeHatchedDragonFromPlayerEffectTests {
         EasyMock.replay(player, gui, player2);
 
         effect.points = 9;
-        effect.temperatures = new Temperature[]{Temperature.NEUTRAL};
+        effect.temperatures = new Temperature[] {Temperature.NEUTRAL};
         effect.apply();
 
         EasyMock.verify(player, gui, player2);
@@ -57,14 +54,14 @@ public class TakeHatchedDragonFromPlayerEffectTests {
     @Test
     public void testApplyNoHatchedDragon() {
         Player player = EasyMock.mock(Player.class);
-        Player player2 = EasyMock.mock(Player.class);
-        Player player3 = EasyMock.mock(Player.class);
         Card card = new Card();
-        Card card2 = new Card();
         player.hatchedCards = new LinkedList<>();
         player.hatchedCards.add(card);
+        Player player2 = EasyMock.mock(Player.class);
         player2.hatchedCards = new LinkedList<>();
+        Card card2 = new Card();
         player2.hatchedCards.add(card2);
+        Player player3 = EasyMock.mock(Player.class);
         player3.hatchedCards = new LinkedList<>();
         card.temperature = Temperature.NEUTRAL;
         card.points = 8;
@@ -83,7 +80,7 @@ public class TakeHatchedDragonFromPlayerEffectTests {
         EasyMock.replay(player, gui, player2, player3);
 
         effect.points = 9;
-        effect.temperatures = new Temperature[]{Temperature.NEUTRAL};
+        effect.temperatures = new Temperature[] {Temperature.NEUTRAL};
         effect.apply();
 
         EasyMock.verify(player, gui, player2, player3);
@@ -103,7 +100,7 @@ public class TakeHatchedDragonFromPlayerEffectTests {
         EasyMock.replay(player, gui, player2);
 
         effect.points = 9;
-        effect.temperatures = new Temperature[]{Temperature.NEUTRAL};
+        effect.temperatures = new Temperature[] {Temperature.NEUTRAL};
         effect.apply();
 
         EasyMock.verify(player, gui, player2);
@@ -141,7 +138,7 @@ public class TakeHatchedDragonFromPlayerEffectTests {
         EasyMock.replay(player, gui, player2, player3);
 
         effect.points = 9;
-        effect.temperatures = new Temperature[]{Temperature.NEUTRAL};
+        effect.temperatures = new Temperature[] {Temperature.NEUTRAL};
         effect.apply();
 
         EasyMock.verify(player, gui, player2, player3);
@@ -167,7 +164,7 @@ public class TakeHatchedDragonFromPlayerEffectTests {
         EasyMock.replay(player, gui, player2);
 
         effect.points = 9;
-        effect.temperatures = new Temperature[]{Temperature.NEUTRAL};
+        effect.temperatures = new Temperature[] {Temperature.NEUTRAL};
         effect.apply();
 
         EasyMock.verify(player, gui, player2);
@@ -176,7 +173,7 @@ public class TakeHatchedDragonFromPlayerEffectTests {
     @Test
     public void testToString() {
         TakeHatchedDragonFromPlayerEffect effect = new TakeHatchedDragonFromPlayerEffect();
-        effect.temperatures = new Temperature[]{Temperature.COOL};
+        effect.temperatures = new Temperature[] {Temperature.COOL};
         StringBuilder temperature = new StringBuilder();
         for (Temperature temp : effect.temperatures) {
             temperature.append(temp);
