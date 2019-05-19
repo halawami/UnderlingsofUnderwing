@@ -256,6 +256,14 @@ The definition of done is created by examining and applying BVA on the rules.
     - ```underlings.phase.PlacementPhaseTests.testTurnCardNotComplete```
 	- ```underlings.phase.PlacementPhaseTests.testTurnCardCompleteDomestic```
 	- ```underlings.phase.PlacementPhaseTests.testTurnCardCompleteWild```
+- Utilities
+  - [x] The player selects a card and element space on the card to place an element on
+    - ```underlings.utilities.PlacementUtilitiesTests.testSelectCard```
+	- ```underlings.utilities.PlacementUtilitiesTests.testSelectElementSpace```
+  - [x] The player places elements until either they have no more elements to place or they decide to stop
+    - ```underlings.utilities.PlacementUtilitiesTests.testPlaceElements```
+  - [x] The player can only place elements on cards that need the elements they have
+    - ```underlings.utilities.PlacementUtilitiesTests.testGetPlayableCards```
 
 ### Scoring ```underlings.scoring```
 
