@@ -15,7 +15,7 @@ public class DrawElementsOfChoiceEffect extends ElementEffect implements Observe
 
     public ElementGiverFactory elementGiverFactory;
     public ElementBag bag;
-    private boolean beenUsed;
+    public boolean beenUsed;
 
     @Override
     protected void apply(Player player, ElementBag elementBag) {

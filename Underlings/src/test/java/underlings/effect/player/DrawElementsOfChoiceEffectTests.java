@@ -1,5 +1,8 @@
 package underlings.effect.player;
 
+import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertTrue;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,8 +25,8 @@ public class DrawElementsOfChoiceEffectTests extends MockTest {
 
     @Before
     public void init() {
-        this.player = EasyMock.mock(Player.class);
-        this.elementBag = EasyMock.mock(ElementBag.class);
+        this.player = this.mock(Player.class);
+        this.elementBag = this.mock(ElementBag.class);
     }
 
     @Test
@@ -56,7 +59,8 @@ public class DrawElementsOfChoiceEffectTests extends MockTest {
 
         this.effect.onPhaseOne(this.player);
 
-        Assert.assertEquals(effectElementGivers, this.player.effectElementGivers);
+        assertEquals(effectElementGivers, this.player.effectElementGivers);
+        assertTrue(this.effect.beenUsed);
     }
 
     @Test
@@ -97,7 +101,7 @@ public class DrawElementsOfChoiceEffectTests extends MockTest {
     }
 
     private void testGetEffectElementGivers(int numberOfElementGivers) {
-
+        this.effect = new DrawElementsOfChoiceEffect();
         ElementGiverFactory elementGiverFactory = this.mock(ElementGiverFactory.class);
         this.effect.elementGiverFactory = elementGiverFactory;
         this.effect.bag = this.elementBag;
