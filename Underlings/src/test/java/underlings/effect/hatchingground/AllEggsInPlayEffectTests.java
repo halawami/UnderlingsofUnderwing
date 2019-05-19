@@ -58,7 +58,7 @@ public class AllEggsInPlayEffectTests {
 
         EasyMock.expect(hatchingGround.getAllCards()).andReturn(mockedCards);
         for (Card mockedCard : mockedCards) {
-            testedEffect.applyOnCardInPlay(mockedCard, elementSpaceLogic, elementBag);
+            testedEffect.applyOnCardInPlay(mockedCard, elementSpaceLogic, elementBag, null);
         }
         EasyMock.replay(elementBag, centerCard, elementSpaceLogic, testedEffect, gui, hatchingGround);
         EasyMock.replay(eggHatchingLogic);
@@ -105,7 +105,7 @@ public class AllEggsInPlayEffectTests {
 
         AddElementToAllEggsInPlayEffect testedEffect = new AddElementToAllEggsInPlayEffect();
         testedEffect.elementColor = ElementColor.BLUE;
-        testedEffect.applyOnCardInPlay(mockedCard, elementSpaceLogic, elementBag);
+        testedEffect.applyOnCardInPlay(mockedCard, elementSpaceLogic, elementBag, null);
 
         EasyMock.verify(mockedCard, elementSpaceLogic, elementBag);
         mockedPlayableSpaces.forEach(EasyMock::verify);
@@ -123,7 +123,7 @@ public class AllEggsInPlayEffectTests {
         mockSpaces.forEach(EasyMock::replay);
 
         DestroyAllElementsOnAllEggsInPlay testedEffect = new DestroyAllElementsOnAllEggsInPlay();
-        testedEffect.applyOnCardInPlay(cardInPlay, elementSpaceLogic, elementBag);
+        testedEffect.applyOnCardInPlay(cardInPlay, elementSpaceLogic, elementBag, null);
 
         EasyMock.verify(elementSpaceLogic, elementBag);
         mockSpaces.forEach(EasyMock::verify);
@@ -144,7 +144,7 @@ public class AllEggsInPlayEffectTests {
         mockSpaces.forEach(EasyMock::replay);
 
         DestroyAllElementsOnAllEggsInPlay testedEffect = new DestroyAllElementsOnAllEggsInPlay();
-        testedEffect.applyOnCardInPlay(cardInPlay, elementSpaceLogic, elementBag);
+        testedEffect.applyOnCardInPlay(cardInPlay, elementSpaceLogic, elementBag, null);
 
         EasyMock.verify(elementSpaceLogic, elementBag);
         mockSpaces.forEach(EasyMock::verify);

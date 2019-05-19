@@ -8,6 +8,7 @@ import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
+import underlings.handler.HandlerMovementLogic;
 import underlings.utilities.LocaleWrap;
 
 public class AddElementToAllEggsInPlayEffect extends AllEggsInPlayEffect {
@@ -15,7 +16,8 @@ public class AddElementToAllEggsInPlayEffect extends AllEggsInPlayEffect {
     public ElementColor elementColor;
 
     @Override
-    public void applyOnCardInPlay(Card cardInPlay, ElementSpaceLogic elementSpaceLogic, ElementBag elementBag) {
+    public void applyOnCardInPlay(Card cardInPlay, ElementSpaceLogic elementSpaceLogic, ElementBag elementBag,
+            HandlerMovementLogic handlerMovementLogic) {
         this.addElementsToCard(this.elementColor, cardInPlay, elementSpaceLogic, elementBag);
     }
 
