@@ -8,8 +8,8 @@ import java.util.List;
 
 import org.easymock.EasyMock;
 import org.junit.Test;
+
 import underlings.card.Card;
-import underlings.hatchingground.HatchingGround;
 
 public class AdjacentCardsTests {
 

@@ -10,6 +10,7 @@ import java.util.HashMap;
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.effect.Effect;
@@ -80,7 +81,7 @@ public class DragonPhaseTests extends MockTest {
     public void testTwoUnhatchedEgg() {
         EasyMock.expect(this.hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList());
         Card card2 = new Card();
-        card2.domesticEffects = new Effect[] {EasyMock.mock(Effect.class)};
+        card2.domesticEffects = new Effect[]{EasyMock.mock(Effect.class)};
         this.player.unhatchedCards.put(this.card, 1);
         this.player.unhatchedCards.put(card2, 1);
         this.eggHatchingLogic.hatchEgg(this.card, this.player);

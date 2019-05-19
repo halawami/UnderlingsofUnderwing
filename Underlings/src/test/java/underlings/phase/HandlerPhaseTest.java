@@ -9,6 +9,7 @@ import java.util.Collections;
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.MockTest;
 import underlings.TestUtils;
 import underlings.gui.Gui;

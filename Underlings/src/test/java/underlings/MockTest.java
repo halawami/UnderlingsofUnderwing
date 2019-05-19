@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.easymock.EasyMock;
 import org.junit.After;
+
 import underlings.card.Card;
 import underlings.card.effect.Effect;
 import underlings.element.ElementBag;

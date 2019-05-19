@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.easymock.EasyMock;
 import org.junit.Test;
+
 import underlings.card.Card;
 import underlings.game.Game;
 import underlings.handler.WildHandler;

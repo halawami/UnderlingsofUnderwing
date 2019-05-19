@@ -37,7 +37,8 @@ public class DrawingPhaseTests extends MockTest {
         EasyMock.expect(gui.promptChoice(LocaleUtilities.get("gui_element_giver"), player.getElementGivers(), 0))
                 .andReturn(player.getElementGivers().get(0));
         EasyMock.expect(
-                gui.promptChoice(LocaleUtilities.get("gui_draw_choice"), player.getElementGivers().get(0).drawChoices, 0))
+                gui.promptChoice(LocaleUtilities.get("gui_draw_choice"), player.getElementGivers().get(0).drawChoices,
+                        0))
                 .andReturn(DrawChoice.RANDOM);
         ElementBag elementBag = EasyMock.mock(ElementBag.class);
         EasyMock.expect(elementBag.drawElement(DrawChoice.RANDOM)).andReturn(element);
@@ -72,7 +73,8 @@ public class DrawingPhaseTests extends MockTest {
         EasyMock.expect(gui.promptChoice(LocaleUtilities.get("gui_element_giver"), player.getElementGivers(), 0))
                 .andReturn(player.getElementGivers().get(0));
         EasyMock.expect(
-                gui.promptChoice(LocaleUtilities.get("gui_draw_choice"), player.getElementGivers().get(0).drawChoices, 0))
+                gui.promptChoice(LocaleUtilities.get("gui_draw_choice"), player.getElementGivers().get(0).drawChoices,
+                        0))
                 .andReturn(DrawChoice.RANDOM);
         ElementBag elementBag = EasyMock.mock(ElementBag.class);
         EasyMock.expect(elementBag.drawElement(DrawChoice.RANDOM)).andReturn(NullElement.getInstance());
