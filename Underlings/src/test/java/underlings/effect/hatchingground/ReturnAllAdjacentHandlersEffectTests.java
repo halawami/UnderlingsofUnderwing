@@ -1,9 +1,7 @@
 package underlings.effect.hatchingground;
 
 import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
-
 import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.effect.Effect;
