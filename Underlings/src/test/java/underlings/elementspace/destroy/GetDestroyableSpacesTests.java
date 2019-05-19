@@ -14,6 +14,7 @@ import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.utilities.ElementSpaceUtilities;
+import underlings.utilities.LocaleUtilities;
 
 public class GetDestroyableSpacesTests {
 
@@ -21,7 +22,8 @@ public class GetDestroyableSpacesTests {
 
     @Before
     public void loadRecipes() throws Exception {
-        List<String> recipes = Resources.readLines(Resources.getResource("DefaultRecipeList.txt"), Charsets.UTF_8);
+        List<String> recipes =
+                Resources.readLines(Resources.getResource(LocaleUtilities.get("default_recipe_list")), Charsets.UTF_8);
         logic = new ElementSpaceUtilities(recipes);
     }
 

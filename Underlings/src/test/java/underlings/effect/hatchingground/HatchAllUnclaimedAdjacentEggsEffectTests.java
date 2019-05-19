@@ -10,6 +10,7 @@ import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.Family;
@@ -35,7 +36,8 @@ public class HatchAllUnclaimedAdjacentEggsEffectTests extends MockTest {
         this.eggHatchingLogic = this.mock(EggHatchingUtilities.class);
         this.hatchingGround = this.mock(HatchingGround.class);
         this.elementBag = this.mock(ElementBag.class);
-        List<String> recipes = Resources.readLines(Resources.getResource("DefaultRecipeList.txt"), Charsets.UTF_8);
+        List<String> recipes =
+                Resources.readLines(Resources.getResource(LocaleUtilities.get("default_recipe_list")), Charsets.UTF_8);
         FakePlayer.initPlayer(recipes);
         this.player = FakePlayer.getInstance();
         this.gui = this.mock(Gui.class);
@@ -49,7 +51,7 @@ public class HatchAllUnclaimedAdjacentEggsEffectTests extends MockTest {
 
         this.replayAll();
 
-        this.effect.dragonFamilies = new Family[]{Family.MONOCHROMATIC};
+        this.effect.dragonFamilies = new Family[] {Family.MONOCHROMATIC};
 
         this.effect.applyOnAdjacentEgg(this.cards.get(0), this.eggHatchingLogic);
     }
@@ -70,7 +72,7 @@ public class HatchAllUnclaimedAdjacentEggsEffectTests extends MockTest {
 
         this.replayAll();
 
-        this.effect.dragonFamilies = new Family[]{Family.MONOCHROMATIC};
+        this.effect.dragonFamilies = new Family[] {Family.MONOCHROMATIC};
         this.effect.applyOnAdjacentEgg(this.cards.get(0), this.eggHatchingLogic);
     }
 
@@ -78,7 +80,7 @@ public class HatchAllUnclaimedAdjacentEggsEffectTests extends MockTest {
     public void testToString() {
         this.replayAll();
         HatchAllUnclaimedEffect effect = new HatchAllUnclaimedEffect();
-        effect.dragonFamilies = new Family[]{Family.MONOCHROMATIC};
+        effect.dragonFamilies = new Family[] {Family.MONOCHROMATIC};
         StringBuilder families = new StringBuilder();
         for (Family family : effect.dragonFamilies) {
             families.append(family);

@@ -11,12 +11,14 @@ import java.util.List;
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.element.ElementBag;
 import underlings.game.Game;
 import underlings.gui.Gui;
 import underlings.handler.HandlerFactory;
 import underlings.hatchingground.HatchingGround;
 import underlings.player.PlayerFactory;
+import underlings.utilities.LocaleUtilities;
 
 public class GameTests {
 
@@ -24,7 +26,8 @@ public class GameTests {
 
     @Before
     public void init() throws IOException {
-        List<String> recipes = Resources.readLines(Resources.getResource("DefaultRecipeList.txt"), Charsets.UTF_8);
+        List<String> recipes =
+                Resources.readLines(Resources.getResource(LocaleUtilities.get("default_recipe_list")), Charsets.UTF_8);
         PlayerFactory factory = new PlayerFactory(new HandlerFactory(), recipes);
 
         this.game = new Game(EasyMock.mock(Gui.class), EasyMock.mock(HatchingGround.class), factory,

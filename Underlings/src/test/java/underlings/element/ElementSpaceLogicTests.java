@@ -13,7 +13,9 @@ import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.utilities.ElementSpaceUtilities;
+import underlings.utilities.LocaleUtilities;
 
 public class ElementSpaceLogicTests {
 
@@ -21,7 +23,8 @@ public class ElementSpaceLogicTests {
 
     @Before
     public void init() throws IOException {
-        List<String> recipes = Resources.readLines(Resources.getResource("DefaultRecipeList.txt"), Charsets.UTF_8);
+        List<String> recipes =
+                Resources.readLines(Resources.getResource(LocaleUtilities.get("default_recipe_list")), Charsets.UTF_8);
         logic = new ElementSpaceUtilities(recipes);
     }
 

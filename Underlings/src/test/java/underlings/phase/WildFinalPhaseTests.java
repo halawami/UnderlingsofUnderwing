@@ -28,7 +28,8 @@ public class WildFinalPhaseTests extends MockTest {
         this.gui.alert(LocaleUtilities.get("wild_game_over"), PromptType.ERROR);
 
         FinalPhase finalPhase = new WildFinalPhase(this.gui);
-        List<String> recipes = Resources.readLines(Resources.getResource("DefaultRecipeList.txt"), Charsets.UTF_8);
+        List<String> recipes =
+                Resources.readLines(Resources.getResource(LocaleUtilities.get("default_recipe_list")), Charsets.UTF_8);
         FakePlayer.initPlayer(recipes);
 
         this.replayAll();
