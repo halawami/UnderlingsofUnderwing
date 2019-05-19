@@ -8,15 +8,14 @@ import java.util.Stack;
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.card.Card;
 import underlings.element.ElementBag;
 import underlings.element.utilities.ElementSpaceLogic;
-import underlings.game.Deck;
 import underlings.game.Game;
-import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.handler.HandlerFactory;
+import underlings.hatchingground.Deck;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.PlayerFactory;
 
 public class HatchingGroundTests {

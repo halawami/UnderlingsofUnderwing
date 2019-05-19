@@ -10,16 +10,15 @@ import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.Family;
 import underlings.card.effect.Effect;
 import underlings.card.effect.wild.adjacenteggs.HatchAllUnclaimedEffect;
 import underlings.element.ElementBag;
-import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.handler.Handler;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.FakePlayer;
 import underlings.utilities.EggHatchingLogic;
 import underlings.utilities.LocaleWrap;

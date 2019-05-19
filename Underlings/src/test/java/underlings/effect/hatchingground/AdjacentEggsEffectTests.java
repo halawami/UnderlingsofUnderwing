@@ -4,14 +4,13 @@ import java.util.List;
 
 import org.easymock.EasyMock;
 import org.junit.Test;
-
 import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.effect.AdjacentEggsEffect;
 import underlings.element.ElementBag;
 import underlings.element.utilities.ElementSpaceLogic;
-import underlings.game.HatchingGround;
 import underlings.gui.Gui;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
 import underlings.utilities.EggHatchingLogic;
 

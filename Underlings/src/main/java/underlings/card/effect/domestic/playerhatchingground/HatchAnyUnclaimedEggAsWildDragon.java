@@ -1,11 +1,10 @@
 package underlings.card.effect.domestic.playerhatchingground;
 
 import java.util.List;
-
 import underlings.card.Card;
-import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.gui.YesNoChoice;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.FakePlayer;
 import underlings.player.Player;
 import underlings.utilities.EggHatchingLogic;

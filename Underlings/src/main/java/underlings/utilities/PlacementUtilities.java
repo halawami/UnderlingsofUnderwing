@@ -2,16 +2,15 @@ package underlings.utilities;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import underlings.card.Card;
 import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
-import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.gui.YesNoChoice;
 import underlings.handler.WildHandler;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
 
 public class PlacementUtilities {

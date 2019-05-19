@@ -28,15 +28,15 @@ import underlings.element.ElementSpace;
 import underlings.element.ElementSpacePosition;
 import underlings.element.NullElement;
 import underlings.element.utilities.ElementSpaceLogic;
-import underlings.game.Deck;
 import underlings.game.Game;
-import underlings.game.HatchingGround;
 import underlings.gui.Gui.PromptType;
 import underlings.handler.Handler;
 import underlings.handler.HandlerChoice;
 import underlings.handler.HandlerDecision;
 import underlings.handler.HandlerFactory;
 import underlings.handler.HandlerState;
+import underlings.hatchingground.Deck;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.PlayerFactory;
 import underlings.utilities.LocaleWrap;
 

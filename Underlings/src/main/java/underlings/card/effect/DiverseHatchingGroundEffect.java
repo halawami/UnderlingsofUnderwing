@@ -2,9 +2,9 @@ package underlings.card.effect;
 
 import underlings.card.Card;
 import underlings.element.ElementBag;
-import underlings.game.Deck;
-import underlings.game.HatchingGround;
 import underlings.handler.HandlerMovementLogic;
+import underlings.hatchingground.Deck;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
 import underlings.utilities.EggHatchingLogic;
 

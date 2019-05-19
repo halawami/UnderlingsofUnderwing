@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Locale;
 
 import javax.swing.JOptionPane;
-
 import underlings.card.Card;
 import underlings.card.EmptyCard;
 import underlings.element.Element;
@@ -17,10 +16,10 @@ import underlings.element.ElementSpace;
 import underlings.element.NullElement;
 import underlings.field.Field;
 import underlings.field.FieldSpace;
-import underlings.game.HatchingGround;
 import underlings.handler.Handler;
 import underlings.handler.HandlerChoice;
 import underlings.handler.HandlerDecision;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
 import underlings.utilities.LocaleWrap;
 

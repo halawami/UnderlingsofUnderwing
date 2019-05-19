@@ -3,8 +3,8 @@ package underlings.card.effect.wild.deck;
 import java.util.List;
 import underlings.card.Card;
 import underlings.card.effect.DeckEffects;
-import underlings.game.Deck;
 import underlings.gui.Gui;
+import underlings.hatchingground.Deck;
 import underlings.player.Player;
 import underlings.utilities.LocaleWrap;
 

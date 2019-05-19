@@ -4,11 +4,12 @@ import static org.junit.Assert.assertEquals;
 
 import org.easymock.EasyMock;
 import org.junit.Test;
-
 import underlings.card.Card;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.handler.Handler;
 import underlings.handler.HandlerState;
+import underlings.hatchingground.Deck;
+import underlings.hatchingground.HatchingGround;
 
 public class FindCardTests {
 

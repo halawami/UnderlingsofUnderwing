@@ -5,19 +5,18 @@ import java.util.List;
 
 import org.easymock.EasyMock;
 import org.junit.After;
-
 import underlings.card.Card;
 import underlings.card.effect.Effect;
 import underlings.element.ElementBag;
 import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
-import underlings.game.Deck;
-import underlings.game.HatchingGround;
 import underlings.gui.Display;
 import underlings.gui.Gui;
 import underlings.gui.PromptHandler;
 import underlings.handler.Handler;
 import underlings.handler.HandlerMovementLogic;
+import underlings.hatchingground.Deck;
+import underlings.hatchingground.HatchingGround;
 import underlings.phase.Phase;
 import underlings.player.Player;
 import underlings.scoring.ScoreUtils;

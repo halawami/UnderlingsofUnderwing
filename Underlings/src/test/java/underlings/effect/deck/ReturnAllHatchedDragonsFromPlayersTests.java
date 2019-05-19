@@ -12,7 +12,7 @@ import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.Temperature;
 import underlings.card.effect.wild.deck.ReturnAllHatchedDragonsFromPlayers;
-import underlings.game.Deck;
+import underlings.hatchingground.Deck;
 import underlings.player.Player;
 import underlings.utilities.LocaleWrap;
 

@@ -5,13 +5,12 @@ import static org.junit.Assert.assertTrue;
 
 import org.easymock.EasyMock;
 import org.junit.Test;
-
 import underlings.card.Card;
 import underlings.element.utilities.ElementSpaceLogic;
-import underlings.game.Deck;
 import underlings.game.Game;
-import underlings.game.HatchingGround;
 import underlings.handler.WildHandler;
+import underlings.hatchingground.Deck;
+import underlings.hatchingground.HatchingGround;
 import underlings.phase.Phase;
 
 public class GameTests {

@@ -15,7 +15,6 @@ import java.util.Random;
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.card.Card;
 import underlings.card.effect.Effect;
 import underlings.element.Element;
@@ -24,13 +23,13 @@ import underlings.element.ElementColor;
 import underlings.element.ElementFactory;
 import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
-import underlings.game.Deck;
-import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.handler.Handler;
 import underlings.handler.HandlerMovementLogic;
 import underlings.handler.HandlerState;
 import underlings.handler.WildHandler;
+import underlings.hatchingground.Deck;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.FakePlayer;
 import underlings.player.Player;
 

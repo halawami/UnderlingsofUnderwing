@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.easymock.EasyMock;
 import org.junit.Test;
-
 import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.effect.wild.alleggsinplay.AddElementToAllEggsInPlayEffect;
@@ -17,9 +16,9 @@ import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
-import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.handler.Handler;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
 import underlings.utilities.EggHatchingLogic;
 import underlings.utilities.LocaleWrap;

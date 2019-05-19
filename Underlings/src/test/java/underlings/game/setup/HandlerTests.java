@@ -10,14 +10,13 @@ import java.util.List;
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.element.ElementBag;
 import underlings.game.Game;
-import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.handler.Handler;
 import underlings.handler.HandlerFactory;
 import underlings.handler.HandlerState;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
 import underlings.player.PlayerFactory;
 

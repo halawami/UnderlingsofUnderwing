@@ -13,15 +13,14 @@ import java.util.Map;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
-
 import underlings.card.Card;
 import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
-import underlings.game.HatchingGround;
 import underlings.handler.Handler;
 import underlings.handler.WildHandler;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
 import underlings.utilities.LocaleWrap;
 

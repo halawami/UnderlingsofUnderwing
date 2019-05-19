@@ -3,18 +3,17 @@ package underlings.effect.hatchingground;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
-
 import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.effect.Effect;
 import underlings.card.effect.wild.adjacenteggs.ReturnAllAdjacentCardsToDeckEffect;
-import underlings.game.Deck;
-import underlings.game.HatchingGround;
 import underlings.handler.Handler;
 import underlings.handler.HandlerChoice;
 import underlings.handler.HandlerMovementLogic;
 import underlings.handler.HandlerState;
 import underlings.handler.WildHandler;
+import underlings.hatchingground.Deck;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.FakePlayer;
 import underlings.utilities.LocaleWrap;
 

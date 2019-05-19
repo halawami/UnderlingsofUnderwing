@@ -4,11 +4,9 @@ import static org.junit.Assert.assertEquals;
 
 import org.easymock.EasyMock;
 import org.junit.Test;
-
 import underlings.card.Card;
 import underlings.element.utilities.ElementSpaceLogic;
-import underlings.game.Deck;
-import underlings.game.HatchingGround;
+import underlings.hatchingground.HatchingGround;
 
 public class HatchingGroundTests {
 

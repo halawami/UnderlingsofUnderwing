@@ -3,13 +3,12 @@ package underlings.phase;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import underlings.card.Card;
 import underlings.element.ElementSpace;
-import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.gui.Gui.PromptType;
 import underlings.handler.WildHandler;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.FakePlayer;
 import underlings.player.Player;
 import underlings.utilities.EggHatchingLogic;

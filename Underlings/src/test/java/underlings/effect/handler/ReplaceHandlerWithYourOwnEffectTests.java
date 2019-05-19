@@ -6,16 +6,15 @@ import java.util.List;
 
 import org.easymock.EasyMock;
 import org.junit.Test;
-
 import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.effect.Effect;
 import underlings.card.effect.domestic.handler.ReplaceHandlerWithYourOwnEffect;
-import underlings.game.HatchingGround;
 import underlings.gui.Gui;
 import underlings.handler.Handler;
 import underlings.handler.HandlerChoice;
 import underlings.handler.HandlerMovementLogic;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
 import underlings.utilities.LocaleWrap;
 

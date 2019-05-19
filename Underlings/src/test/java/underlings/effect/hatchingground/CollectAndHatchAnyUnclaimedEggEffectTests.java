@@ -7,13 +7,12 @@ import java.util.List;
 
 import org.easymock.EasyMock;
 import org.junit.Test;
-
 import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.EmptyCard;
 import underlings.card.effect.domestic.playerhatchingground.CollectAndHatchAnyUnclaimedEggEffect;
-import underlings.game.HatchingGround;
 import underlings.gui.Gui;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
 import underlings.utilities.EggHatchingLogic;
 import underlings.utilities.LocaleWrap;

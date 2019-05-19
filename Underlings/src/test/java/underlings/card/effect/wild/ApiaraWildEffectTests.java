@@ -8,11 +8,10 @@ import java.util.List;
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.MockTest;
 import underlings.card.Card;
-import underlings.game.Deck;
-import underlings.game.HatchingGround;
+import underlings.hatchingground.Deck;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
 import underlings.utilities.EggHatchingLogic;
 import underlings.utilities.LocaleWrap;

@@ -4,12 +4,11 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
-
 import underlings.MockTest;
 import underlings.card.effect.Effect;
 import underlings.card.effect.wild.AllEggsHatchLateEffect;
-import underlings.game.HatchingGround;
 import underlings.gui.Gui;
+import underlings.hatchingground.HatchingGround;
 import underlings.utilities.LocaleWrap;
 
 public class AllEggsHatchLateEffectTests extends MockTest {

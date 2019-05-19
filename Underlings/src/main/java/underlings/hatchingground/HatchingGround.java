@@ -1,4 +1,4 @@
-package underlings.game;
+package underlings.hatchingground;
 
 import java.awt.Point;
 import java.util.ArrayList;

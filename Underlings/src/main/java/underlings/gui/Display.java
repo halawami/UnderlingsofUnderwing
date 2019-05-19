@@ -1,10 +1,9 @@
 package underlings.gui;
 
 import java.util.List;
-
 import underlings.element.ElementBag;
-import underlings.game.HatchingGround;
 import underlings.handler.Handler;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
 
 public interface Display {

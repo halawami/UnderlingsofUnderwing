@@ -3,15 +3,14 @@ package underlings.phase;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementGiver;
 import underlings.element.NullElement;
 import underlings.field.Field;
-import underlings.game.HatchingGround;
 import underlings.gui.DrawChoice;
 import underlings.gui.Gui;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
 import underlings.utilities.LocaleWrap;
 

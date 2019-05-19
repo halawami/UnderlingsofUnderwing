@@ -1,11 +1,10 @@
 package underlings.phase;
 
 import java.util.List;
-
 import underlings.element.ElementBag;
 import underlings.field.Field;
-import underlings.game.HatchingGround;
 import underlings.gui.Gui;
+import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
 
 public abstract class SequentialPhase extends Phase {
