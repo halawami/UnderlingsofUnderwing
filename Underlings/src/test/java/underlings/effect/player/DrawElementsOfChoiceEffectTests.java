@@ -67,20 +67,10 @@ public class DrawElementsOfChoiceEffectTests extends MockTest {
     public void testOnSecondPhaseOne() {
         this.effect = EasyMock.partialMockBuilder(DrawElementsOfChoiceEffect.class)
                 .addMockedMethod("getEffectElementGivers").createMock();
-        this.effect.bag = this.elementBag;
-        List<ElementGiver> elementGivers = this.mockListOf(ElementGiver.class).withLengthOf(2);
-        List<ElementGiver> effectElementGivers = this.mockListOf(ElementGiver.class).withLengthOf(2);
-
-        EasyMock.expect(this.player.getElementGivers()).andReturn(elementGivers).once();
-        EasyMock.expect(this.effect.getEffectElementGivers(elementGivers, this.elementBag))
-                .andReturn(effectElementGivers)
-                .once();
-        this.player.useEffectElementGivers(true);
-        EasyMock.expectLastCall().once();
+        this.effect.beenUsed = true;
 
         this.replayAll();
 
-        this.effect.onPhaseOne(this.player);
         this.effect.onPhaseOne(this.player);
     }
 
