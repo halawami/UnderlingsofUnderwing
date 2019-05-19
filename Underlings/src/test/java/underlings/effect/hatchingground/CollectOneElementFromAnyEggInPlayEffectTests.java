@@ -2,12 +2,12 @@ package underlings.effect.hatchingground;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.easymock.EasyMock;
 import org.junit.Test;
 
+import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.effect.domestic.CollectOneElementFromAnyEggInPlayEffect;
 import underlings.element.Element;
@@ -19,79 +19,62 @@ import underlings.gui.Gui;
 import underlings.player.Player;
 import underlings.utilities.LocaleWrap;
 
-public class CollectOneElementFromAnyEggInPlayEffectTests {
+public class CollectOneElementFromAnyEggInPlayEffectTests extends MockTest {
 
     @Test
     public void testNoSelectableElement() {
-        Player currentPlayer = EasyMock.mock(Player.class);
+        Player currentPlayer = this.mock(Player.class);
         EasyMock.expect(currentPlayer.getId()).andReturn(10).anyTimes();
-        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
-        List<Card> mockedCards = this.getMockedCards(6);
-        Gui gui = EasyMock.mock(Gui.class);
-        CollectOneElementFromAnyEggInPlayEffect testedEffect = new CollectOneElementFromAnyEggInPlayEffect();
-        testedEffect.elementChoices = new ElementColor[] {ElementColor.BLUE};
-        testedEffect.on(gui).on(currentPlayer).on(hatchingGround);
+        HatchingGround hatchingGround = this.mock(HatchingGround.class);
+        List<Card> mockedCards = this.mockListOf(Card.class).withLengthOf(6);
+        Gui gui = this.mock(Gui.class);
+        CollectOneElementFromAnyEggInPlayEffect effect = new CollectOneElementFromAnyEggInPlayEffect();
+        effect.elementChoices = new ElementColor[]{ElementColor.BLUE};
 
         EasyMock.expect(hatchingGround.getAllCards()).andReturn(mockedCards);
-        ElementSpace elementSpace = EasyMock.mock(ElementSpace.class);
-        EasyMock.expect(gui.getElementSpaceWithColors(mockedCards, testedEffect.elementChoices, 10))
+        ElementSpace elementSpace = this.mock(ElementSpace.class);
+        EasyMock.expect(gui.getElementSpaceWithColors(mockedCards, effect.elementChoices, 10))
                 .andReturn(elementSpace);
-        EasyMock.expect(gui.getElementOfColorsFromSpace(testedEffect.elementChoices, elementSpace, 10))
+        EasyMock.expect(gui.getElementOfColorsFromSpace(effect.elementChoices, elementSpace, 10))
                 .andReturn(NullElement.getInstance());
         elementSpace.destroyOneElementOfColor(ElementColor.NULL);
         currentPlayer.addElement(NullElement.getInstance());
 
-        EasyMock.replay(currentPlayer, hatchingGround, gui, elementSpace);
+        this.replayAll();
 
-        testedEffect.apply();
-
-        EasyMock.verify(currentPlayer, hatchingGround, gui, elementSpace);
-
+        effect.on(gui).on(currentPlayer).on(hatchingGround).apply();
     }
 
     @Test
     public void testASelectableElement() {
-        Player currentPlayer = EasyMock.mock(Player.class);
+        Player currentPlayer = this.mock(Player.class);
         EasyMock.expect(currentPlayer.getId()).andReturn(10).anyTimes();
-        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
-        List<Card> mockedCards = this.getMockedCards(6);
-        Gui gui = EasyMock.mock(Gui.class);
-        CollectOneElementFromAnyEggInPlayEffect testedEffect = new CollectOneElementFromAnyEggInPlayEffect();
-        testedEffect.elementChoices = new ElementColor[] {ElementColor.BLUE};
-        testedEffect.on(gui).on(currentPlayer).on(hatchingGround);
+        HatchingGround hatchingGround = this.mock(HatchingGround.class);
+        List<Card> mockedCards = this.mockListOf(Card.class).withLengthOf(6);
+        Gui gui = this.mock(Gui.class);
+        CollectOneElementFromAnyEggInPlayEffect effect = new CollectOneElementFromAnyEggInPlayEffect();
+        effect.elementChoices = new ElementColor[]{ElementColor.BLUE};
 
         EasyMock.expect(hatchingGround.getAllCards()).andReturn(mockedCards);
         ElementSpace elementSpace = EasyMock.mock(ElementSpace.class);
-        EasyMock.expect(gui.getElementSpaceWithColors(mockedCards, testedEffect.elementChoices, 10))
+        EasyMock.expect(gui.getElementSpaceWithColors(mockedCards, effect.elementChoices, 10))
                 .andReturn(elementSpace);
         Element element = EasyMock.mock(Element.class);
-        EasyMock.expect(gui.getElementOfColorsFromSpace(testedEffect.elementChoices, elementSpace, 10))
+        EasyMock.expect(gui.getElementOfColorsFromSpace(effect.elementChoices, elementSpace, 10))
                 .andReturn(element);
         EasyMock.expect(element.getColor()).andReturn(ElementColor.BLUE);
         elementSpace.destroyOneElementOfColor(ElementColor.BLUE);
         currentPlayer.addElement(element);
 
-        EasyMock.replay(currentPlayer, hatchingGround, gui, elementSpace, element);
+        this.replayAll();
 
-        testedEffect.apply();
-
-        EasyMock.verify(currentPlayer, hatchingGround, gui, elementSpace, element);
-
-    }
-
-
-    private List<Card> getMockedCards(int numberOfCards) {
-        List<Card> mockedCards = new ArrayList<>();
-        for (int i = 0; i < numberOfCards; i++) {
-            mockedCards.add(EasyMock.niceMock(Card.class));
-        }
-        return mockedCards;
+        effect.on(gui).on(currentPlayer).on(hatchingGround).apply();
     }
 
     @Test
     public void testToString() {
         CollectOneElementFromAnyEggInPlayEffect effect = new CollectOneElementFromAnyEggInPlayEffect();
-        effect.elementChoices = new ElementColor[] {ElementColor.BLACK};
+        effect.elementChoices = new ElementColor[]{ElementColor.BLACK};
         StringBuilder elements = new StringBuilder();
         for (ElementColor color : effect.elementChoices) {
             elements.append(color);
