@@ -1,4 +1,4 @@
-package underlings.card.effect.wild;
+package underlings.card.effect.wild.players;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import underlings.card.Card;
+import underlings.card.EmptyCard;
 import underlings.card.effect.PlayersEffect;
 import underlings.gui.Gui;
 import underlings.player.FakePlayer;
@@ -19,7 +20,6 @@ public class PlayersTradeDragon extends PlayersEffect {
         Player playerWithMinCards = players.get(0);
         Map<Integer, List<Player>> playersNumberOfCards = new HashMap<Integer, List<Player>>();
         int minNumberOfCards = findMin(playersNumberOfCards, players);
-
         if (playersNumberOfCards.get(minNumberOfCards).size() > 1) {
             gui.notifyAction(FakePlayer.getInstance().getId(), LocaleWrap.get("notify_no_player_least_dragons"));
         } else {
@@ -32,7 +32,7 @@ public class PlayersTradeDragon extends PlayersEffect {
         }
     }
 
-    private int findMin(Map<Integer, List<Player>> playersNumberOfCards, List<Player> players) {
+    protected int findMin(Map<Integer, List<Player>> playersNumberOfCards, List<Player> players) {
         int min = players.get(0).hatchedCards.size();
         for (Player player : players) {
             if (!playersNumberOfCards.containsKey(player.hatchedCards.size())) {
@@ -46,15 +46,18 @@ public class PlayersTradeDragon extends PlayersEffect {
         return min;
     }
 
-    private void tradeCards(Gui gui, Player playerWithMinCards, Player secondPlayer) {
+    protected void tradeCards(Gui gui, Player playerWithMinCards, Player secondPlayer) {
         Card cardToTrade =
                 gui.promptChoice(LocaleWrap.get("prompt_card_to_trade"), secondPlayer.hatchedCards, secondPlayer.id);
-        Card secondCardToTrade = gui.promptChoice(LocaleWrap.get("prompt_card_to_trade"),
-                playerWithMinCards.hatchedCards, playerWithMinCards.id);
+        Card secondCardToTrade = EmptyCard.getInstance();
+        if (!playerWithMinCards.hatchedCards.isEmpty()) {
+            secondCardToTrade = gui.promptChoice(LocaleWrap.get("prompt_card_to_trade"),
+                    playerWithMinCards.hatchedCards, playerWithMinCards.id);
+            secondPlayer.hatchedCards.add(secondCardToTrade);
+            playerWithMinCards.hatchedCards.remove(secondCardToTrade);
+        }
         secondPlayer.hatchedCards.remove(cardToTrade);
         playerWithMinCards.hatchedCards.add(cardToTrade);
-        secondPlayer.hatchedCards.add(secondCardToTrade);
-        playerWithMinCards.hatchedCards.remove(secondCardToTrade);
     }
 
     @Override

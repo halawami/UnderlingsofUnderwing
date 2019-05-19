@@ -1,4 +1,4 @@
-package underlings.effect.players;
+package underlings.card.effect.wild.players;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -12,9 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import underlings.card.Card;
-import underlings.card.EmptyCard;
 import underlings.card.effect.Effect;
-import underlings.card.effect.wild.PlayersTradeDragon;
 import underlings.gui.Gui;
 import underlings.player.Player;
 import underlings.utilities.LocaleWrap;
@@ -45,25 +43,6 @@ public class PlayersTradeDragonTests {
         this.player.hatchedCards = new ArrayList<>();
         this.player.hatchedCards.add(card);
         this.player2.hatchedCards = new ArrayList<>();
-    }
-
-    @Test
-    public void testApplyTwoPlayersOneCard() {
-        effect.on(Arrays.asList(player, player2)).on(gui);
-        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_card_to_trade"), player.hatchedCards, 0))
-                .andReturn(card);
-        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_card_to_trade"), player2.hatchedCards, 0))
-                .andReturn(EmptyCard.getInstance());
-
-        EasyMock.replay(player, player2, mockedEffect, gui);
-
-        effect.apply();
-        assertTrue(player2.hatchedCards.contains(card));
-        assertFalse(player.hatchedCards.contains(card));
-        assertTrue(player.hatchedCards.contains(EmptyCard.getInstance()));
-        assertEquals(1, player.hatchedCards.size());
-
-        EasyMock.verify(player, player2, mockedEffect, gui);
     }
 
     @Test
@@ -144,6 +123,19 @@ public class PlayersTradeDragonTests {
         EasyMock.replay(player, player2, mockedEffect, gui);
 
         effect.apply();
+
+        EasyMock.verify(player, player2, mockedEffect, gui);
+    }
+
+    @Test
+    public void testApplyNoHatchedCards() {
+        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_card_to_trade"), player.hatchedCards, 0))
+                .andReturn(card);
+
+        EasyMock.replay(player, player2, mockedEffect, gui);
+
+        PlayersTradeDragon effect = new PlayersTradeDragon();
+        effect.tradeCards(gui, player2, player);
 
         EasyMock.verify(player, player2, mockedEffect, gui);
     }
