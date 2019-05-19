@@ -96,13 +96,34 @@ The definition of done is created by examining and applying BVA on the rules.
   - ```underlings.handler.StateStringTests.testIncubation()```
   - ```underlings.handler.StateStringTests.testField()```
 
-#### Handlers ```underlings.handler.ElementGiverTests```
+#### Handler Element Givers ```underlings.handler.ElementGiverTests```
 
 - [x] Handlers in the field should give a random element or field space element
   - ```underlings.handler.ElementGiverTests.testFieldAll()```
 - [x] Handlers not in the field should give a random element
   - ```underlings.handler.ElementGiverTests.testNotField()```
-  
+
+#### Handler Movement Logic ```underlings.handler.MovementLogicTests```
+
+- [x] When a handler moves from a card, the card no longer contains the handler
+  - ```underlings.handler.MovementLogicTests.testCard()```
+  - ```underlings.handler.MovementLogicTests.testCardBreakRoom()```
+  - ```underlings.handler.MovementLogicTests.testNullHandler()```
+  - ```underlings.handler.MovementLogicTests.testWildHandler()```
+- [x] When a handler moves to the field they gain the element giver
+  - ```underlings.handler.MovementLogicTests.testField()```
+  - ```underlings.handler.MovementLogicTests.testFieldStay()```
+  - ```underlings.handler.MovementLogicTests.testFieldWhitespace()```
+- [x] When a handler leaves the field they lose the element giver
+  - ```underlings.handler.MovementLogicTests.testFieldToBreakRoom()```
+  - ```underlings.handler.MovementLogicTests.testFieldWhiteToBreakRoom()```
+- [x] The handler can stay in its current state
+  - ```underlings.handler.MovementLogicTests.testStay()```
+- [x] The handler can move to the break room
+  - ```underlings.handler.MovementLogicTests.testBreakRoom()```
+- [x] The handler can move to the ready room
+  - ```underlings.handler.MovementLogicTests.testReadyRoom()```
+
 ### Players ```underlings.player```
 
 #### Player ID ```underlings.player.IdTests```
