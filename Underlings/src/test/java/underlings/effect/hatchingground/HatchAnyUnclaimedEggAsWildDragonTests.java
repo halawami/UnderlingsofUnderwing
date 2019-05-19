@@ -16,7 +16,7 @@ import org.junit.Test;
 import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.effect.Effect;
-import underlings.card.effect.domestic.HatchAnyUnclaimedEggAsWildDragon;
+import underlings.card.effect.domestic.playerhatchingground.HatchAnyUnclaimedEggAsWildDragon;
 import underlings.element.ElementBag;
 import underlings.game.HatchingGround;
 import underlings.gui.Gui;

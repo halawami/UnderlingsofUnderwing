@@ -1,4 +1,4 @@
-package underlings.card.effect.domestic;
+package underlings.card.effect.domestic.playerhatchingground;
 
 import underlings.card.effect.Effect;
 import underlings.game.HatchingGround;
