@@ -30,12 +30,7 @@ public class Card {
 
     public List<ElementGiver> getElementGivers() {
         List<ElementGiver> elementGivers = new ArrayList<>();
-        System.out.println("domestic effect " + this.domesticEffects.length);
         for (Effect domesticEffect : this.domesticEffects) {
-            if (domesticEffect == null) {
-                System.out.println("herererere");
-            }
-            System.out.println("domestic effect " + domesticEffect);
             if (!(domesticEffect.drawChoices == null || domesticEffect.drawChoices.isEmpty())) {
                 elementGivers.add(domesticEffect);
             }
