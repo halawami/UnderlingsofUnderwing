@@ -3,25 +3,26 @@ package underlings.hatchingground;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Stack;
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
 import underlings.card.Card;
 import underlings.card.effect.Effect;
-import underlings.element.ElementBag;
 import underlings.element.ElementSpaceUtilities;
-import underlings.game.Game;
-import underlings.gui.Gui;
 import underlings.handler.Handler;
-import underlings.handler.HandlerFactory;
 import underlings.handler.HandlerState;
 import underlings.handler.WildHandler;
-import underlings.player.PlayerFactory;
 
 public class HatchingGroundTests {
+
+    private ElementSpaceUtilities niceLogic;
+
+    @Before
+    public void init() {
+        this.niceLogic = EasyMock.niceMock(ElementSpaceUtilities.class);
+        EasyMock.replay(this.niceLogic);
+    }
 
     @Test
     public void testReplaceCard() {
@@ -66,140 +67,6 @@ public class HatchingGroundTests {
         EasyMock.verify(deck, logic);
     }
 
-
-    private Game game;
-    private HatchingGround hatchingGround;
-    private Stack<Card> cards;
-
-    @Before
-    public void init() {
-        ElementSpaceUtilities logic = EasyMock.niceMock(ElementSpaceUtilities.class);
-        EasyMock.replay(logic);
-
-        this.cards = new Stack<Card>();
-        for (int i = 0; i < 50; i++) {
-            this.cards.push(new Card());
-        }
-
-        this.hatchingGround = new HatchingGround(new Deck(this.cards, null), logic);
-        this.game = new Game(EasyMock.mock(Gui.class), this.hatchingGround,
-                new PlayerFactory(new HandlerFactory(), Arrays.asList()), EasyMock.mock(ElementBag.class));
-
-    }
-
-    @Test
-    public void test2PlayerSize() {
-        this.game.setUp(2);
-        assertEquals(3, this.game.hatchingGround.getWidth());
-        assertEquals(2, this.game.hatchingGround.getHeight());
-    }
-
-    @Test
-    public void test3PlayerSize() {
-        this.game.setUp(3);
-        assertEquals(4, this.game.hatchingGround.getWidth());
-        assertEquals(3, this.game.hatchingGround.getHeight());
-    }
-
-    @Test
-    public void test4PlayerSize() {
-        this.game.setUp(4);
-        assertEquals(4, this.game.hatchingGround.getWidth());
-        assertEquals(4, this.game.hatchingGround.getHeight());
-    }
-
-    @Test
-    public void test6PlayerSize() {
-        this.game.setUp(6);
-        assertEquals(4, this.game.hatchingGround.getWidth());
-        assertEquals(4, this.game.hatchingGround.getHeight());
-    }
-
-
-    private ElementSpaceUtilities niceLogic;
-
-    @Before
-    public void loadRecipes() {
-        this.niceLogic = EasyMock.niceMock(ElementSpaceUtilities.class);
-        EasyMock.replay(this.niceLogic);
-    }
-
-    @Test
-    public void testInitUnclaimedEggs() {
-        Deck deck = EasyMock.strictMock(Deck.class);
-        EasyMock.expect(deck.draw()).andReturn(new Card()).times(6);
-
-        EasyMock.replay(deck);
-
-        HatchingGround hatchingGround = new HatchingGround(deck, this.niceLogic);
-        hatchingGround.setDimensions(3, 2);
-        hatchingGround.populate();
-
-        EasyMock.verify(deck);
-
-        assertEquals(6, hatchingGround.getUnclaimedEggs().size());
-    }
-
-    @Test
-    public void testNotAllUnclaimedEggs() {
-        Deck deck = EasyMock.strictMock(Deck.class);
-        Card card = new Card();
-        card.handler = new Handler(HandlerState.CARD);
-        EasyMock.expect(deck.draw()).andReturn(new Card()).times(5);
-        EasyMock.expect(deck.draw()).andReturn(card);
-
-        EasyMock.replay(deck);
-
-        HatchingGround hatchingGround = new HatchingGround(deck, this.niceLogic);
-        hatchingGround.setDimensions(3, 2);
-        hatchingGround.populate();
-
-        EasyMock.verify(deck);
-
-        assertEquals(5, hatchingGround.getUnclaimedEggs().size());
-    }
-
-    @Test
-    public void testDeal3By2() {
-        Deck deck = EasyMock.strictMock(Deck.class);
-        EasyMock.expect(deck.draw()).andReturn(new Card()).times(6);
-
-        EasyMock.replay(deck);
-
-        HatchingGround hatchingGround = new HatchingGround(deck, this.niceLogic);
-        hatchingGround.setDimensions(3, 2);
-        hatchingGround.populate();
-
-        EasyMock.verify(deck);
-    }
-
-    @Test
-    public void testDeal4By3() {
-        Deck deck = EasyMock.strictMock(Deck.class);
-        EasyMock.expect(deck.draw()).andReturn(new Card()).times(12);
-
-        EasyMock.replay(deck);
-
-        HatchingGround hatchingGround = new HatchingGround(deck, this.niceLogic);
-        hatchingGround.setDimensions(4, 3);
-        hatchingGround.populate();
-
-        EasyMock.verify(deck);
-    }
-
-    @Test
-    public void testDeal4By4() {
-        Deck deck = EasyMock.strictMock(Deck.class);
-        EasyMock.expect(deck.draw()).andReturn(new Card()).times(16);
-
-        EasyMock.replay(deck);
-
-        HatchingGround hatchingGround = new HatchingGround(deck, this.niceLogic);
-        hatchingGround.setDimensions(4, 4);
-        hatchingGround.populate();
-
-        EasyMock.verify(deck);
-    }
 
     @Test
     public void testPullAndReplace() {
@@ -360,6 +227,41 @@ public class HatchingGroundTests {
         List<Card> cards = hatchingGround.getDragons(3, true);
         assertEquals(1, cards.size());
         assertTrue(cards.contains(card3));
+    }
+
+    @Test
+    public void testInitUnclaimedEggs() {
+        Deck deck = EasyMock.strictMock(Deck.class);
+        EasyMock.expect(deck.draw()).andReturn(new Card()).times(6);
+
+        EasyMock.replay(deck);
+
+        HatchingGround hatchingGround = new HatchingGround(deck, this.niceLogic);
+        hatchingGround.setDimensions(3, 2);
+        hatchingGround.populate();
+
+        EasyMock.verify(deck);
+
+        assertEquals(6, hatchingGround.getUnclaimedEggs().size());
+    }
+
+    @Test
+    public void testNotAllUnclaimedEggs() {
+        Deck deck = EasyMock.strictMock(Deck.class);
+        Card card = new Card();
+        card.handler = new Handler(HandlerState.CARD);
+        EasyMock.expect(deck.draw()).andReturn(new Card()).times(5);
+        EasyMock.expect(deck.draw()).andReturn(card);
+
+        EasyMock.replay(deck);
+
+        HatchingGround hatchingGround = new HatchingGround(deck, this.niceLogic);
+        hatchingGround.setDimensions(3, 2);
+        hatchingGround.populate();
+
+        EasyMock.verify(deck);
+
+        assertEquals(5, hatchingGround.getUnclaimedEggs().size());
     }
 
     @Test

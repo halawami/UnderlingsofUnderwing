@@ -24,6 +24,33 @@ The definition of done is created by examining and applying BVA on the rules.
     - ```underlings.game.SetupTests.test4PlayerRounds()```
     - ```underlings.game.SetupTests.test6PlayerRounds()```
 
+### Hatching Ground Setup ```underlings.hatchingground.SetupTests```
+
+- [x] The hatching ground size should be set for [2, 6] players
+  - When there are 2 players, the hatching ground should be 3x2
+    - ```underlings.hatchingground.SetupTests.test2PlayerSize()```
+  - When there are 3 players, the hatching ground size should be 4x3
+    - ```underlings.hatchingground.SetupTests.test3PlayerSize()```
+  - When there are [4, 6] players, the hatching ground size should be 4x4
+    - ```underlings.hatchingground.SetupTests.test4PlayerSize()```
+    - ```underlings.hatchingground.SetupTests.test6PlayerSize()```
+- [x] The hatching ground dealt with cards for [2, 6] players
+  - ```underlings.hatchingground.SetupTests.testDeal3By2()```
+  - ```underlings.hatchingground.SetupTests.testDeal4By3()```
+  - ```underlings.hatchingground.SetupTests.testDeal4By4()```
+
+### Game ```underlings.game.GameTests```
+
+- [x] The game should be setup when the program is ran
+  - ```underlings.game.GameTests.testSetup()```
+- [x] The game should be displayed to the player
+  - ```underlings.game.GameTests.testDisplay()```
+- [x] The game should start and run until the game is over
+  - The game can run until the round count reaches zero
+    - ```underlings.game.GameTests.testGameLoopRoundsCompleted()```
+  - The game can run until all eggs have been hatched wild
+    - ```underlings.game.GameTests.testGameLoopWildHatched()```
+  
 ### Players ```underlings.player```
 
 #### Player ID ```underlings.player.IdTests```
@@ -102,6 +129,21 @@ The definition of done is created by examining and applying BVA on the rules.
   - When at 3 handlers, the handler count should remain at 3
     - ```underlings.player.HandlerDeficiencyTests.test25PointsTwice3Handlers()```
 
+### Deck ```underlings.hatchingground.DeckTests```
+
+- [x] The deck can be drawn from with [0, DECK_SIZE] cards
+  -  At [1, DECK_SIZE] cards, the deck return a card
+     - ```underlings.hatchingground.DeckTests.testDraw()```
+  - At 0 cards, the deck returns an empty card
+    - ```underlings.hatchingground.DeckTests.testDrawEmpty()```
+- [x] Cards can be added to the deck
+  - A card can be added to the deck without shuffling the deck
+    - ```underlings.hatchingground.DeckTests.testAddCardNoShuffle()```
+  - A card can be added to the deck and the deck can be shuffled
+    - ```underlings.hatchingground.DeckTests.testAddCardShuffle()```
+  - An empty card can not be added to the deck
+    - ```underlings.hatchingground.DeckTests.testAddEmptyCard()```
+  
 ### Scoring ```underlings.scoring```
 
 #### Temperature Tests ```underlings.scoring.TemperatureTests```
@@ -136,7 +178,6 @@ The definition of done is created by examining and applying BVA on the rules.
   - ```underlings.scoring.ScoreTests.testDisplayScores()```
 - [x] The winners should be displayed
   - ```underlings.scoring.ScoreTests.testDisplayWinners()```
-
 
 ### Domestic Card Effects ```underlings.card.effect```
 
