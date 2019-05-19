@@ -241,24 +241,19 @@ The definition of done is created by examining and applying BVA on the rules.
      - ```underlings.card.effect.domestic.deck.ReorderTopThreeCardsEffectTests.testOneCardLeft()```
   - Deck has 2 card
      - ```underlings.card.effect.domestic.deck.ReorderTopThreeCardsEffectTests.testTwoCardsLeft()```
-  - Deck has 3 card
+  - Deck has [3,DECK_SIZE] card
      - ```underlings.card.effect.domestic.deck.ReorderTopThreeCardsEffectTests.testThreeOrMoreCardsLeft()```
 - [x] The player should know that the effect has been run
   - ```underlings.card.effect.domestic.deck.ReorderTopThreeCardsEffectTests.testToString()```
 
-
-#### Examine the top 3 Dragons in the draw pile; reorder as desired ```underlings.card.effect.domestic.deck.ReorderTopThreeCardsEffectTests```
+#### Collect 1 element ```underlings.card.effect.domestic.element.CollectElementEffectTests```
 
 - Dragons
-  - Lasura
-- [x] This effect let the player look at the top three cards of deck and reorder them as desired
-  - Deck has 0 cards
-     - ```underlings.card.effect.domestic.deck.ReorderTopThreeCardsEffectTests.testNoCardsLeft()```
-  - Deck has 1 card
-     - ```underlings.card.effect.domestic.deck.ReorderTopThreeCardsEffectTests.testOneCardLeft()```
-  - Deck has 2 card
-     - ```underlings.card.effect.domestic.deck.ReorderTopThreeCardsEffectTests.testTwoCardsLeft()```
-  - Deck has 3 card
-     - ```underlings.card.effect.domestic.deck.ReorderTopThreeCardsEffectTests.testThreeOrMoreCardsLeft()```
-- [ ] The player should know that the effect has been run
-  - ```underlings.card.effect.domestic.deck.ReorderTopThreeCardsEffectTests.testToString()```
+  - SKY WHELP, WATER WHELP, ARBOR WHELP, BLOOD WHELP, BRIMSTONE WHELP, ELECTRIC WHELP, TWILIGHT WHELP, HARVEST WHELP, VOID WHELP, UNDINE WHELP, STORM WHELP, STEAM WHELP, NATURE WHELP, ETHEREAL WHELP, ETHEREAL DRAKE, BLOOD DRAKE, SKY DRAKE, WATER DRAKE, AEON WHELP, NEBULA WHELP, CHROMATIC WHELP, CHROMATIC DRAKE, OPALESCENT DRAKE, BLOOD WYVERN, SKY WYVERN, WATER WYVERN
+- [x] This effect let the player collect one element of a color from a list of colors, from the element bad
+  - Collect 1 element from a list of [1] color
+     - ```underlings.card.effect.domestic.element.CollectElementEffectTests.testOneColor()```
+  - Collect 1 element from a list of [2,MAX] colors
+     - ```underlings.card.effect.domestic.element.CollectElementEffectTests.testTwoColors()```
+- [x] The player should know that the effect has been run
+  - ```underlings.card.effect.domestic.element.CollectElementEffectTests.testToString()```
