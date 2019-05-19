@@ -1,12 +1,9 @@
 package underlings.card.effect.wild.alleggsinplay;
 
 import static org.junit.Assert.assertEquals;
-
 import java.util.List;
-
 import org.easymock.EasyMock;
 import org.junit.Test;
-
 import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.effect.AllEggsInPlayEffect;
@@ -40,6 +37,16 @@ public class AllEggsInPlayEffectTests extends MockTest {
         this.testApplyOnCardInPlay(2);
     }
 
+    @Test
+    public void testApplyUnclaimedCard() {
+        AllEggsInPlayEffect effect = new DestroyAllElementsOnAllEggsInPlayEffect();
+        Card card = this.mock(Card.class);
+        EasyMock.expect(card.isClaimed()).andReturn(false);
+        this.replayAll();
+
+        effect.applyOnCardInPlay(card);
+    }
+
     private void testApplyOnCardInPlay(int numberOfCards) {
         ElementBag elementBag = this.mock(ElementBag.class);
         ElementSpaceUtilities elementSpaceLogic = this.mock(ElementSpaceUtilities.class);
@@ -51,9 +58,8 @@ public class AllEggsInPlayEffectTests extends MockTest {
         List<Card> mockedCards = this.mockListOf(Card.class).withLengthOf(numberOfCards);
         EggHatchingUtilities eggHatchingLogic = this.mock(EggHatchingUtilities.class);
         AllEggsInPlayEffect effect = EasyMock.partialMockBuilder(AllEggsInPlayEffect.class)
-                .addMockedMethod("applyOnCardInPlay", Card.class)
-                .addMockedMethod("applyOnCardInPlay", Card.class, ElementSpaceUtilities.class, ElementBag.class,
-                        HandlerMovementLogic.class)
+                .addMockedMethod("applyOnCardInPlay", Card.class).addMockedMethod("applyOnCardInPlay", Card.class,
+                        ElementSpaceUtilities.class, ElementBag.class, HandlerMovementLogic.class)
                 .createMock();
         this.addMock(effect);
 
@@ -91,8 +97,8 @@ public class AllEggsInPlayEffectTests extends MockTest {
         ElementSpaceUtilities elementSpaceLogic = this.mock(ElementSpaceUtilities.class);
         ElementBag elementBag = this.mock(ElementBag.class);
         Element stubElement = this.mock(Element.class);
-        List<ElementSpace> mockedPlayableSpaces = this.mockListOf(ElementSpace.class)
-                .withLengthOf(numberOfPlayableSpaces);
+        List<ElementSpace> mockedPlayableSpaces =
+                this.mockListOf(ElementSpace.class).withLengthOf(numberOfPlayableSpaces);
 
         EasyMock.expect(elementSpaceLogic.getPlayableSpaces(mockedCard, blue)).andReturn(mockedPlayableSpaces);
 
