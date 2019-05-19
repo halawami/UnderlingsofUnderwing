@@ -2,6 +2,7 @@ package underlings.utilities;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import underlings.card.Card;
 import underlings.element.Element;
 import underlings.element.ElementColor;
@@ -32,7 +33,7 @@ public class PlacementUtilities {
 
     public ElementSpace selectElementSpace(Card card, Player player) {
         List<ElementSpace> spaces = player.elementSpaceLogic.getPlayableSpaces(card, player.getElements());
-        ElementSpace space = this.gui.promptChoice(LocaleWrap.get("prompt_element_space"), spaces, player.getId());
+        ElementSpace space = this.gui.getElementSpace(LocaleWrap.get("prompt_element_space"), spaces, player.getId());
         return space;
     }
 

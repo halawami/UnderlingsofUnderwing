@@ -16,6 +16,7 @@ import underlings.card.Card;
 import underlings.element.Element;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
+import underlings.element.ElementSpacePosition;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.Deck;
 import underlings.game.HatchingGround;
@@ -65,13 +66,15 @@ public class PlacementUtilitiesTests extends MockTest {
         Card card = new Card();
         card.elementSpaces = new ElementSpace[1];
         card.elementSpaces[0] = new ElementSpace(ElementColor.RED);
+        card.elementSpaces[0].position = ElementSpacePosition.L3_1;
 
         List<ElementSpace> spaces = Arrays.asList(card.elementSpaces[0]);
         EasyMock.expect(this.elementSpaceLogic.getPlayableSpaces(card, elements)).andReturn(spaces);
         this.player.elementSpaceLogic = this.elementSpaceLogic;
 
-        Gui gui = new Gui(this.promptHandler, null);
-        EasyMock.expect(gui.promptChoice("Pick an element space to place an element on", spaces, 10))
+        Gui gui = EasyMock.mock(Gui.class);
+        addMock(gui);
+        EasyMock.expect(gui.getElementSpace("Pick an element space to place an element on", spaces, 10))
                 .andReturn(card.elementSpaces[0]);
 
         this.replayAll();
