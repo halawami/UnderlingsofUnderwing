@@ -57,7 +57,7 @@ public class Main {
         FakePlayer.initPlayer(recipes);
         Gui gui = new Gui(new ConcretePrompt(), new ConcreteDisplay());
         CardFactory cardFactory = new CardFactory(CARDS_JSON_FILE_NAME);
-        Deck deck = new Deck(cardFactory.getCards(), Collections::sort);
+        Deck deck = new Deck(cardFactory.getCards(), Collections::shuffle);
         deck.shuffle();
         HatchingGround hatchingGround = new HatchingGround(deck, new ElementSpaceLogic(recipes));
         HandlerFactory handlerFactory = new HandlerFactory();
