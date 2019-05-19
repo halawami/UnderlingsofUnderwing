@@ -39,6 +39,27 @@ The definition of done is created by examining and applying BVA on the rules.
   - ```underlings.hatchingground.SetupTests.testDeal4By3()```
   - ```underlings.hatchingground.SetupTests.testDeal4By4()```
 
+#### Handler Setup ```underlings.handler.SetupTests```
+
+- [x] Players start off with 2 handlers for [2, 6] players
+  - When there are 2 players, each player has 2 handlers
+    - ```underlings.handler.SetupTests.test2PlayerHandlerCount()```
+  - When there are 6 players, each player has 2 handlers
+    - ```underlings.handler.SetupTests.test6PlayerHandlerCount()```
+- [x] Handlers should start in the ready room for [2, 6] players
+  - When there are 2 players, each handler for each player should start in the ready room
+    - ```underlings.handler.SetupTests.test2PlayerReadyRoom()```
+  - When there are 6 players, each handler for each player should start in the ready room
+    - ```underlings.handler.SetupTests.test6PlayerReadyRoom()```
+- [x] The maximum number of handlers should be set for [2, 6] players
+  - When there are 2 players, the maximum number of handlers is 4
+    - ```underlings.handler.SetupTests.test2PlayerMaxHandlers()```
+  - When there are 3 players, the maximum number of handlers is 5
+    - ```underlings.handler.SetupTests.test3PlayerMaxHandlers()```
+  - When there are [4, 6] players, the maximum number of handlers is 6
+    - ```underlings.handler.SetupTests.test4PlayerMaxHandlers()```
+    - ```underlings.handler.SetupTests.test6PlayerMaxHandlers()```
+
 ### Game ```underlings.game.GameTests```
 
 - [x] The game should be setup when the program is ran
@@ -75,6 +96,13 @@ The definition of done is created by examining and applying BVA on the rules.
   - ```underlings.handler.StateStringTests.testIncubation()```
   - ```underlings.handler.StateStringTests.testField()```
 
+#### Handlers ```underlings.handler.ElementGiverTests```
+
+- [x] Handlers in the field should give a random element or field space element
+  - ```underlings.handler.ElementGiverTests.testFieldAll()```
+- [x] Handlers not in the field should give a random element
+  - ```underlings.handler.ElementGiverTests.testNotField()```
+  
 ### Players ```underlings.player```
 
 #### Player ID ```underlings.player.IdTests```
@@ -208,6 +236,35 @@ The definition of done is created by examining and applying BVA on the rules.
   - The player has no handlers
     - ```underlings.phase.HandlerPhaseTests.testTurnNoHandlers```
 
+### Placement Phase
+
+- Phase
+  - [x] The player places one element for each of its handlers
+    - ```underlings.phase.PlacementPhaseTests.testCheckTurnTwoHandlers```
+	- ```underlings.phase.PlacementPhaseTests.testCheckTurnThreeHandlers```
+  - [x] The game ends during the PlacementPhase if all dragons are hatched wild
+    - ```underlings.phase.PlacementPhaseTests.testCheckGameover```
+	- ```underlings.phase.PlacementPhaseTests.testCheckGameoverNoCards```
+	- ```underlings.phase.PlacementPhaseTests.testCheckGameoverLost```
+  - [x] The player can only choose to place another element in the same turn if they can put it on the same element space
+    - ```underlings.phase.PlacementPhaseTests.testMoreMovesNoChoices```
+	- ```underlings.phase.PlacementPhaseTests.testMoreMovesTrue```
+  - [x] The player can only place an element if they have another turn and there are places to put it
+    - ```underlings.phase.PlacementPhaseTests.testTurnOver```
+    - ```underlings.phase.PlacementPhaseTests.testTurnNoPlayableCards```
+  - [x] If the player completes an unclaimed egg, it hatches in the wild
+    - ```underlings.phase.PlacementPhaseTests.testTurnCardNotComplete```
+	- ```underlings.phase.PlacementPhaseTests.testTurnCardCompleteDomestic```
+	- ```underlings.phase.PlacementPhaseTests.testTurnCardCompleteWild```
+- Utilities
+  - [x] The player selects a card and element space on the card to place an element on
+    - ```underlings.utilities.PlacementUtilitiesTests.testSelectCard```
+	- ```underlings.utilities.PlacementUtilitiesTests.testSelectElementSpace```
+  - [x] The player places elements until either they have no more elements to place or they decide to stop
+    - ```underlings.utilities.PlacementUtilitiesTests.testPlaceElements```
+  - [x] The player can only place elements on cards that need the elements they have
+    - ```underlings.utilities.PlacementUtilitiesTests.testGetPlayableCards```
+
 ### Scoring ```underlings.scoring```
 
 #### Temperature Tests ```underlings.scoring.TemperatureTests```
@@ -316,7 +373,7 @@ The definition of done is created by examining and applying BVA on the rules.
      - ```underlings.card.effect.domestic.element.DrawElementsOfChoiceNextPhaseEffectTests.testOnSecondPhaseOne()```
 - [x] The player should know that the effect has been run
   - ```underlings.card.effect.domestic.element.DrawElementsOfChoiceNextPhaseEffectTests.testToString()```
-  
+
 #### ALL Eggs claimed this round take +1 round to hatch  ```underlings.card.effect.wild.AllEggsHatchLateEffectTests```
 
 - Dragons
