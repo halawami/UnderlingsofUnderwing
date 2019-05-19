@@ -20,6 +20,6 @@ public class DestroyUpToElementsOnAnyEggInPlayEffect extends UptoElementsFromAny
             elements.append(color);
             elements.append(" ");
         }
-        return LocaleWrap.format("up_to_effect", LocaleWrap.get("destroy"), this.upTo, elements);
+        return LocaleWrap.format("destroy_up_to_effect", this.upTo, elements);
     }
 }

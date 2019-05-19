@@ -12,12 +12,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 import underlings.MockTest;
+import underlings.card.effect.Effect;
 import underlings.card.effect.domestic.element.DrawElementsOfChoiceEffect;
 import underlings.element.ElementBag;
 import underlings.element.ElementGiver;
 import underlings.element.ElementGiverFactory;
 import underlings.gui.DrawChoice;
 import underlings.player.Player;
+import underlings.utilities.LocaleWrap;
 
 public class DrawElementsOfChoiceEffectTests extends MockTest {
 
@@ -97,8 +99,8 @@ public class DrawElementsOfChoiceEffectTests extends MockTest {
         this.effect.bag = this.elementBag;
         List<DrawChoice> availableDrawChoices = Arrays.asList(DrawChoice.BLUE, DrawChoice.RED);
         List<ElementGiver> elementGivers = this.mockListOf(ElementGiver.class).withLengthOf(numberOfElementGivers);
-        List<ElementGiver> effectElementGivers = this.mockListOf(ElementGiver.class)
-                .withLengthOf(numberOfElementGivers);
+        List<ElementGiver> effectElementGivers =
+                this.mockListOf(ElementGiver.class).withLengthOf(numberOfElementGivers);
 
         EasyMock.expect(this.elementBag.getAvailableDrawChoices()).andReturn(availableDrawChoices);
         for (ElementGiver effectElementGiver : effectElementGivers) {
@@ -110,6 +112,13 @@ public class DrawElementsOfChoiceEffectTests extends MockTest {
         List<ElementGiver> actualEffectGivers = this.effect.getEffectElementGivers(elementGivers, this.elementBag);
 
         Assert.assertEquals(effectElementGivers, actualEffectGivers);
+    }
+
+    @Test
+    public void testToString() {
+        replayAll();
+        Effect effect = new DrawElementsOfChoiceEffect();
+        assertEquals(LocaleWrap.get("draw_elements_of_choice"), effect.toString());
     }
 
 }
