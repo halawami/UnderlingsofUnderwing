@@ -16,6 +16,7 @@ import underlings.card.Card;
 import underlings.card.Temperature;
 import underlings.card.effect.domestic.TakeHatchedDragonFromPlayer;
 import underlings.gui.Gui;
+import underlings.gui.Gui.PromptType;
 import underlings.player.Player;
 import underlings.utilities.LocaleWrap;
 
@@ -86,6 +87,26 @@ public class TakeHatchedDragonFromPlayerTests {
     }
 
     @Test
+    public void testApplyNoHatchedDragonAllPlayers() {
+        Player player = EasyMock.mock(Player.class);
+        Player player2 = EasyMock.mock(Player.class);
+        player.hatchedCards = new LinkedList<>();
+        player2.hatchedCards = new LinkedList<>();
+        Gui gui = EasyMock.mock(Gui.class);
+        TakeHatchedDragonFromPlayer effect = new TakeHatchedDragonFromPlayer();
+        effect.on(gui).on(Arrays.asList(player, player2)).on(player2);
+        gui.alert(LocaleWrap.get("no_player_has_hatched_cards"), PromptType.REGULAR);
+
+        EasyMock.replay(player, gui, player2);
+
+        effect.points = 9;
+        effect.temperatures = new Temperature[] {Temperature.NEUTRAL};
+        effect.apply();
+
+        EasyMock.verify(player, gui, player2);
+    }
+
+    @Test
     public void testApplyMultipleDragons() {
         Card card = new Card();
         card.temperature = Temperature.WARM;
@@ -129,7 +150,7 @@ public class TakeHatchedDragonFromPlayerTests {
         card.points = 10;
         Card card2 = new Card();
         card2.temperature = Temperature.NEUTRAL;
-        card2.points = 8;
+        card2.points = 15;
         Player player = EasyMock.mock(Player.class);
         player.hatchedCards = new LinkedList<>();
         player.hatchedCards.add(card);
@@ -148,7 +169,6 @@ public class TakeHatchedDragonFromPlayerTests {
 
         EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_player_to_steal"), new ArrayList<>(map.keySet()), 0))
                 .andReturn(player3);
-        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_card_to_steal"), map.get(player3), 1)).andReturn(card2);
 
         EasyMock.replay(player, gui, player2);
 
