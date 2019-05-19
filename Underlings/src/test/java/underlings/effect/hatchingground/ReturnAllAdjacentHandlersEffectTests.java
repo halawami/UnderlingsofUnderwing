@@ -40,7 +40,7 @@ public class ReturnAllAdjacentHandlersEffectTests extends MockTest {
         this.replayAll();
 
         ReturnAllAdjacentHandlersEffect testedEffect = new ReturnAllAdjacentHandlersEffect();
-        testedEffect.applyOnAdjacentEgg(adjacentCard, null, null, null, null, handlerMovementLogic, null);
+        testedEffect.applyOnAdjacentEgg(adjacentCard, handlerMovementLogic);
     }
 
 }

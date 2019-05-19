@@ -27,7 +27,8 @@ public class AdjacentEggsEffectTests extends MockTest {
         Gui gui = this.mock(Gui.class);
         EggHatchingLogic eggHatchingLogic = this.mock(EggHatchingLogic.class);
         AdjacentEggsEffect testedEffect = EasyMock.partialMockBuilder(AdjacentEggsEffect.class)
-                .addMockedMethod("applyOnAdjacentEgg").createMock();
+                .addMockedMethod("applyOnAdjacentEgg", Card.class, ElementSpaceLogic.class, ElementBag.class)
+                .createNiceMock();
         this.addMock(testedEffect);
 
         List<Card> mockedCards = this.mockListOf(Card.class).withLengthOf(2);

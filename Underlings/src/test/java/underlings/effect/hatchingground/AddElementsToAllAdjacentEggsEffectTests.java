@@ -12,7 +12,7 @@ import org.junit.Test;
 
 import underlings.MockTest;
 import underlings.card.Card;
-import underlings.card.effect.wild.adjacenteggs.AddElementsEffect;
+import underlings.card.effect.wild.adjacenteggs.elements.add.AddElementsEffect;
 import underlings.element.Element;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
@@ -65,8 +65,7 @@ public class AddElementsToAllAdjacentEggsEffectTests extends MockTest {
 
         this.replayAll();
 
-        effect.applyOnAdjacentEgg(this.card, this.elementBag, this.elementSpaceLogic, this.eggHatchingLogic, null,
-                null, null);
+        effect.applyOnAdjacentEgg(this.card, this.elementSpaceLogic, this.elementBag);
     }
 
     @Test

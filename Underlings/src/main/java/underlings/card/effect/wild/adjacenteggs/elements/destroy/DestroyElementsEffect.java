@@ -1,30 +1,24 @@
-package underlings.card.effect.wild.adjacenteggs.destroy;
+package underlings.card.effect.wild.adjacenteggs.elements.destroy;
 
 import java.util.List;
 
 import underlings.card.Card;
-import underlings.card.effect.AdjacentEggsEffect;
+import underlings.card.effect.wild.adjacenteggs.elements.ElementsEffect;
 import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.utilities.ElementSpaceLogic;
-import underlings.game.Deck;
-import underlings.game.HatchingGround;
-import underlings.handler.HandlerMovementLogic;
-import underlings.utilities.EggHatchingLogic;
 
-public abstract class ElementsEffect extends AdjacentEggsEffect {
+public abstract class DestroyElementsEffect extends ElementsEffect {
 
     public ElementColor[] elementColors;
 
     @Override
-    public void applyOnAdjacentEgg(Card adjacentEgg, ElementBag elementBag, ElementSpaceLogic elementSpaceLogic,
-            EggHatchingLogic eggHatchingLogic, Deck deck, HandlerMovementLogic handlerMovementLogic,
-            HatchingGround hatchingGround) {
+    public void applyOnAdjacentEgg(Card adjacentEgg, ElementSpaceLogic elementSpaceLogic, ElementBag elementBag) {
         this.destroyElementsOnAdjacentEgg(adjacentEgg, elementSpaceLogic);
     }
 
-    public void destroyElementsOnAdjacentEgg(Card adjacentEgg, ElementSpaceLogic elementSpaceLogic) {
+    private void destroyElementsOnAdjacentEgg(Card adjacentEgg, ElementSpaceLogic elementSpaceLogic) {
         for (ElementColor elementColorToDestroy : this.elementColors) {
             this.destroyElementsOfColorOnCard(elementColorToDestroy, adjacentEgg, elementSpaceLogic);
         }

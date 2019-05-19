@@ -19,7 +19,7 @@ import underlings.card.Temperature;
 import underlings.card.effect.Effect;
 import underlings.card.effect.domestic.element.CollectElementEffect;
 import underlings.card.effect.domestic.players.player.UseBlackOrWhiteInPlaceEffect;
-import underlings.card.effect.wild.adjacenteggs.AddElementsEffect;
+import underlings.card.effect.wild.adjacenteggs.elements.add.AddElementsEffect;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.ElementSpacePosition;
