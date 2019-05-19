@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import underlings.MockTest;
 import underlings.card.effect.Effect;
-import underlings.card.effect.wild.RemoveBlackRecipesEffect;
+import underlings.card.effect.wild.players.RemoveBlackRecipesEffect;
 import underlings.element.ElementColor;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.player.Player;

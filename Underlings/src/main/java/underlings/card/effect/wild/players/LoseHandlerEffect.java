@@ -1,4 +1,4 @@
-package underlings.card.effect.wild;
+package underlings.card.effect.wild.players;
 
 import java.util.List;
 
@@ -7,15 +7,15 @@ import underlings.gui.Gui;
 import underlings.player.Player;
 import underlings.utilities.LocaleWrap;
 
-public class DestroyAllPlayersStoredElements extends PlayersEffect {
+public class LoseHandlerEffect extends PlayersEffect {
 
     @Override
     protected void apply(Player currentPlayer, List<Player> players, Gui gui) {
-        players.forEach(Player::destroyAllElements);
+        players.forEach(Player::loseHandler);
     }
 
     @Override
     public String toString() {
-        return LocaleWrap.get("destroy_all_players_stored_elemetns");
+        return LocaleWrap.get("lose_handler_effect");
     }
 }

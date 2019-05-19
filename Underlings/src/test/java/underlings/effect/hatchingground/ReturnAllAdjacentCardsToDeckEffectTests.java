@@ -7,7 +7,7 @@ import org.junit.Test;
 import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.effect.Effect;
-import underlings.card.effect.wild.ReturnAllAdjacentCardsToDeckEffect;
+import underlings.card.effect.wild.adjacenteggs.ReturnAllAdjacentCardsToDeckEffect;
 import underlings.game.Deck;
 import underlings.game.HatchingGround;
 import underlings.handler.Handler;

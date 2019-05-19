@@ -1,4 +1,4 @@
-package underlings.card.effect.wild.adjacenteggs;
+package underlings.card.effect;
 
 import java.util.List;
 

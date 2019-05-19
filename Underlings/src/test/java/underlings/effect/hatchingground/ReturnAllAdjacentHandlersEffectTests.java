@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import underlings.MockTest;
 import underlings.card.Card;
-import underlings.card.effect.wild.ReturnAllAdjacentHandlersEffect;
+import underlings.card.effect.wild.adjacenteggs.ReturnAllAdjacentHandlersEffect;
 import underlings.handler.Handler;
 import underlings.handler.HandlerChoice;
 import underlings.handler.HandlerMovementLogic;

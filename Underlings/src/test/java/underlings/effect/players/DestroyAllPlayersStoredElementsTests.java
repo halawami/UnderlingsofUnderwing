@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import underlings.MockTest;
 import underlings.card.effect.Effect;
-import underlings.card.effect.wild.DestroyAllPlayersStoredElements;
+import underlings.card.effect.wild.players.DestroyAllPlayersStoredElements;
 import underlings.player.Player;
 import underlings.utilities.LocaleWrap;
 

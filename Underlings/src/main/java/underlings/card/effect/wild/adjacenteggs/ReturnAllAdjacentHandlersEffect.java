@@ -1,7 +1,7 @@
-package underlings.card.effect.wild;
+package underlings.card.effect.wild.adjacenteggs;
 
 import underlings.card.Card;
-import underlings.card.effect.wild.adjacenteggs.AdjacentEggsEffect;
+import underlings.card.effect.AdjacentEggsEffect;
 import underlings.element.ElementBag;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.Deck;

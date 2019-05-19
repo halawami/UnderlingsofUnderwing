@@ -1,4 +1,4 @@
-package underlings.card.effect.wild;
+package underlings.card.effect.wild.players;
 
 import java.util.List;
 
