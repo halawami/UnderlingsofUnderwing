@@ -1,4 +1,4 @@
-package underlings.effect.players;
+package underlings.card.effect.wild.players;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -14,7 +14,6 @@ import org.junit.Test;
 import underlings.card.Card;
 import underlings.card.EmptyCard;
 import underlings.card.effect.Effect;
-import underlings.card.effect.wild.PlayersTradeDragon;
 import underlings.gui.Gui;
 import underlings.player.Player;
 import underlings.utilities.LocaleWrap;
@@ -144,6 +143,19 @@ public class PlayersTradeDragonTests {
         EasyMock.replay(player, player2, mockedEffect, gui);
 
         effect.apply();
+
+        EasyMock.verify(player, player2, mockedEffect, gui);
+    }
+
+    @Test
+    public void testApplyNoHatchedCards() {
+        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_card_to_trade"), player.hatchedCards, 0))
+                .andReturn(card);
+
+        EasyMock.replay(player, player2, mockedEffect, gui);
+
+        PlayersTradeDragon effect = new PlayersTradeDragon();
+        effect.tradeCards(gui, player2, player);
 
         EasyMock.verify(player, player2, mockedEffect, gui);
     }

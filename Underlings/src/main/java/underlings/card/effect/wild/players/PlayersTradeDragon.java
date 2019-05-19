@@ -1,4 +1,4 @@
-package underlings.card.effect.wild;
+package underlings.card.effect.wild.players;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -32,7 +32,7 @@ public class PlayersTradeDragon extends PlayersEffect {
         }
     }
 
-    private int findMin(Map<Integer, List<Player>> playersNumberOfCards, List<Player> players) {
+    protected int findMin(Map<Integer, List<Player>> playersNumberOfCards, List<Player> players) {
         int min = players.get(0).hatchedCards.size();
         for (Player player : players) {
             if (!playersNumberOfCards.containsKey(player.hatchedCards.size())) {
@@ -46,7 +46,7 @@ public class PlayersTradeDragon extends PlayersEffect {
         return min;
     }
 
-    private void tradeCards(Gui gui, Player playerWithMinCards, Player secondPlayer) {
+    protected void tradeCards(Gui gui, Player playerWithMinCards, Player secondPlayer) {
         Card cardToTrade =
                 gui.promptChoice(LocaleWrap.get("prompt_card_to_trade"), secondPlayer.hatchedCards, secondPlayer.id);
         Card secondCardToTrade = gui.promptChoice(LocaleWrap.get("prompt_card_to_trade"),
