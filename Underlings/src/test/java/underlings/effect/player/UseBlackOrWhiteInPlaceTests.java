@@ -2,9 +2,9 @@ package underlings.effect.player;
 
 import static org.junit.Assert.assertEquals;
 
-import org.easymock.EasyMock;
 import org.junit.Test;
 
+import underlings.MockTest;
 import underlings.card.effect.Effect;
 import underlings.card.effect.PlayerEffect;
 import underlings.card.effect.domestic.UseBlackOrWhiteInPlaceEffect;
@@ -13,23 +13,21 @@ import underlings.element.utilities.ElementSpaceLogic;
 import underlings.player.Player;
 import underlings.utilities.LocaleWrap;
 
-public class UseBlackOrWhiteInPlaceTests {
+public class UseBlackOrWhiteInPlaceTests extends MockTest {
 
     @Test
     public void testEffect() {
-        Player player = EasyMock.mock(Player.class);
-        ElementSpaceLogic logic = EasyMock.mock(ElementSpaceLogic.class);
+        Player player = this.mock(Player.class);
+        ElementSpaceLogic logic = this.mock(ElementSpaceLogic.class);
 
         player.elementSpaceLogic = logic;
         logic.setOpenElement(ElementColor.BLACK);
         logic.setOpenElement(ElementColor.WHITE);
 
-        EasyMock.replay(player, logic);
+        this.replayAll();
 
         PlayerEffect effect = new UseBlackOrWhiteInPlaceEffect();
         effect.on(player).apply();
-
-        EasyMock.verify(player, logic);
     }
 
     @Test
