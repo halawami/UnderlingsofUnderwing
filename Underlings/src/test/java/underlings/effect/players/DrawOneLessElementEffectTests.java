@@ -1,5 +1,7 @@
 package underlings.effect.players;
 
+import static junit.framework.TestCase.assertEquals;
+
 import java.util.List;
 
 import org.easymock.EasyMock;
@@ -16,58 +18,49 @@ public class DrawOneLessElementEffectTests extends MockTest {
     @Test
     public void testApplyTwoPlayers() {
         List<Player> players = this.mockListOf(Player.class).withLengthOf(2);
-        DrawOneLessElementEffect testedEffect = new DrawOneLessElementEffect();
+        DrawOneLessElementEffect effect = new DrawOneLessElementEffect();
 
         for (Player player : players) {
-            player.addObserverEffect(testedEffect);
+            player.addObserverEffect(effect);
         }
 
-        players.forEach(EasyMock::replay);
+        this.replayAll();
 
-        testedEffect.on(players).apply();
-
-        players.forEach(EasyMock::verify);
+        effect.on(players).apply();
     }
 
     @Test
     public void testApplySixPlayers() {
         List<Player> players = this.mockListOf(Player.class).withLengthOf(2);
-        DrawOneLessElementEffect testedEffect = new DrawOneLessElementEffect();
+        DrawOneLessElementEffect effect = new DrawOneLessElementEffect();
 
         for (Player player : players) {
-            player.addObserverEffect(testedEffect);
+            player.addObserverEffect(effect);
         }
 
-        players.forEach(EasyMock::replay);
+        this.replayAll();
 
-        testedEffect.on(players).apply();
-
-        players.forEach(EasyMock::verify);
+        effect.on(players).apply();
     }
 
     @Test
     public void testOnPhaseOne() {
-        Player player = EasyMock.mock(Player.class);
-        DrawOneLessElementEffect testedEffect = EasyMock.partialMockBuilder(DrawOneLessElementEffect.class)
+        Player player = this.mock(Player.class);
+        DrawOneLessElementEffect effect = EasyMock.partialMockBuilder(DrawOneLessElementEffect.class)
                 .addMockedMethod("getEffectElementGivers").createMock();
+        this.addMock(effect);
         List<ElementGiver> elementGivers = this.mockListOf(ElementGiver.class).withLengthOf(2);
         List<ElementGiver> effectElementGivers = this.mockListOf(ElementGiver.class).withLengthOf(1);
 
         EasyMock.expect(player.getElementGivers()).andReturn(elementGivers);
-        EasyMock.expect(testedEffect.getEffectElementGivers(elementGivers)).andReturn(effectElementGivers);
+        EasyMock.expect(effect.getEffectElementGivers(elementGivers)).andReturn(effectElementGivers);
         player.useEffectElementGivers(true);
 
-        EasyMock.replay(player, testedEffect);
-        elementGivers.forEach(EasyMock::replay);
-        effectElementGivers.forEach(EasyMock::replay);
+        this.replayAll();
 
-        testedEffect.onPhaseOne(player);
+        effect.onPhaseOne(player);
 
         Assert.assertEquals(effectElementGivers, player.effectElementGivers);
-
-        EasyMock.verify(player, testedEffect);
-        elementGivers.forEach(EasyMock::verify);
-        effectElementGivers.forEach(EasyMock::verify);
     }
 
     @Test
@@ -85,19 +78,17 @@ public class DrawOneLessElementEffectTests extends MockTest {
         this.testGetEffectElementGivers(3);
     }
 
-    public void testGetEffectElementGivers(int numberOfGivers) {
+    private void testGetEffectElementGivers(int numberOfGivers) {
         List<ElementGiver> elementGivers = this.mockListOf(ElementGiver.class).withLengthOf(numberOfGivers);
 
-        elementGivers.forEach(EasyMock::replay);
+        this.replayAll();
 
-        DrawOneLessElementEffect testedEffect = new DrawOneLessElementEffect();
-        List<ElementGiver> effectElementGivers = testedEffect.getEffectElementGivers(elementGivers);
+        DrawOneLessElementEffect effect = new DrawOneLessElementEffect();
+        List<ElementGiver> effectElementGivers = effect.getEffectElementGivers(elementGivers);
 
         Assert.assertEquals(numberOfGivers - 1, effectElementGivers.size());
         for (int i = 0; i < effectElementGivers.size(); i++) {
-            Assert.assertEquals(elementGivers.get(i), effectElementGivers.get(i));
+            assertEquals(elementGivers.get(i), effectElementGivers.get(i));
         }
-
-        elementGivers.forEach(EasyMock::verify);
     }
 }
