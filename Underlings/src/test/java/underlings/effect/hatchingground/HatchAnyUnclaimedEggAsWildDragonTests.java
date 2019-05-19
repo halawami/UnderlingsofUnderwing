@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.easymock.EasyMock;
+import org.junit.Before;
 import org.junit.Test;
 
 import underlings.MockTest;
@@ -27,73 +28,67 @@ import underlings.utilities.LocaleWrap;
 
 public class HatchAnyUnclaimedEggAsWildDragonTests extends MockTest {
 
+    @Before
+    public void init() {
+        this.card = this.mock(Card.class);
+        this.hatchingGround = this.mock(HatchingGround.class);
+        this.elementBag = this.mock(ElementBag.class);
+        this.gui = this.mock(Gui.class);
+        this.player = this.mock(Player.class);
+        this.eggHatchingLogic = this.mock(EggHatchingLogic.class);
+        this.effect = new HatchAnyUnclaimedEggAsWildDragon();
+    }
+
     @Test
     public void testApplyEffect() throws IOException {
-        Card card = this.mock(Card.class);
-        HatchingGround hatchingGround = this.mock(HatchingGround.class);
-        ElementBag elementBag = this.mock(ElementBag.class);
-        Gui gui = this.mock(Gui.class);
-        Player player = this.mock(Player.class);
-        EggHatchingLogic eggHatchingLogic = this.mock(EggHatchingLogic.class);
-        Effect effect = new HatchAnyUnclaimedEggAsWildDragon();
-
-        EasyMock.expect(player.getId()).andReturn(-1);
-        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_choice_hatch_wildly"), YesNoChoice.getChoices(), -1))
+        EasyMock.expect(this.player.getId()).andReturn(-1);
+        EasyMock.expect(
+                this.gui.promptChoice(LocaleWrap.get("prompt_choice_hatch_wildly"), YesNoChoice.getChoices(), -1))
                 .andReturn(YesNoChoice.YES);
-        EasyMock.expect(hatchingGround.getUnclaimedEggs()).andReturn(Arrays.asList(card));
-        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_card_hatch_wildly"), Arrays.asList(card), 0))
-                .andReturn(card);
+        EasyMock.expect(this.hatchingGround.getUnclaimedEggs()).andReturn(Arrays.asList(this.card));
+        EasyMock.expect(this.gui.promptChoice(LocaleWrap.get("prompt_card_hatch_wildly"), Arrays.asList(this.card), 0))
+                .andReturn(this.card);
         List<String> recipes = Resources.readLines(Resources.getResource("DefaultRecipeList.txt"), Charsets.UTF_8);
         FakePlayer.initPlayer(recipes);
-        eggHatchingLogic.hatchEgg(card, FakePlayer.getInstance());
+        this.eggHatchingLogic.hatchEgg(this.card, FakePlayer.getInstance());
 
         this.replayAll();
 
-        effect.on(card).on(hatchingGround).on(elementBag).on(gui).on(player).on(eggHatchingLogic).apply();
+        this.effect.on(this.card).on(this.hatchingGround).on(this.elementBag).on(this.gui).on(this.player)
+                .on(this.eggHatchingLogic).apply();
     }
 
     @Test
     public void testNotWantingToHatch() {
-        Card card = this.mock(Card.class);
-        HatchingGround hatchingGround = this.mock(HatchingGround.class);
-        ElementBag elementBag = this.mock(ElementBag.class);
-        Gui gui = this.mock(Gui.class);
-        Player player = this.mock(Player.class);
-        EggHatchingLogic eggHatchingLogic = this.mock(EggHatchingLogic.class);
-        Effect effect = new HatchAnyUnclaimedEggAsWildDragon();
-
-        EasyMock.expect(player.getId()).andReturn(-1);
-        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_choice_hatch_wildly"), YesNoChoice.getChoices(), -1))
+        EasyMock.expect(this.player.getId()).andReturn(-1);
+        EasyMock.expect(
+                this.gui.promptChoice(LocaleWrap.get("prompt_choice_hatch_wildly"), YesNoChoice.getChoices(), -1))
                 .andReturn(YesNoChoice.NO);
 
         this.replayAll();
 
-        effect.on(card).on(hatchingGround).on(elementBag).on(gui).on(player).on(eggHatchingLogic).apply();
+        this.effect.on(this.card).on(this.hatchingGround).on(this.elementBag).on(this.gui).on(this.player)
+                .on(this.eggHatchingLogic).apply();
     }
 
     @Test
     public void testApplyNoUnclaimedEggs() {
-        Card card = this.mock(Card.class);
-        HatchingGround hatchingGround = this.mock(HatchingGround.class);
-        ElementBag elementBag = this.mock(ElementBag.class);
-        Gui gui = this.mock(Gui.class);
-        Player player = this.mock(Player.class);
-        EggHatchingLogic eggHatchingLogic = this.mock(EggHatchingLogic.class);
-        Effect effect = new HatchAnyUnclaimedEggAsWildDragon();
-
-        EasyMock.expect(player.getId()).andReturn(-1).times(2);
-        EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_choice_hatch_wildly"), YesNoChoice.getChoices(), -1))
+        EasyMock.expect(this.player.getId()).andReturn(-1).times(2);
+        EasyMock.expect(
+                this.gui.promptChoice(LocaleWrap.get("prompt_choice_hatch_wildly"), YesNoChoice.getChoices(), -1))
                 .andReturn(YesNoChoice.YES);
-        EasyMock.expect(hatchingGround.getUnclaimedEggs()).andReturn(Arrays.asList());
-        gui.notifyAction(-1, LocaleWrap.get("notify_no_unclaimed_eggs"));
+        EasyMock.expect(this.hatchingGround.getUnclaimedEggs()).andReturn(Arrays.asList());
+        this.gui.notifyAction(-1, LocaleWrap.get("notify_no_unclaimed_eggs"));
 
         this.replayAll();
 
-        effect.on(card).on(hatchingGround).on(elementBag).on(gui).on(player).on(eggHatchingLogic).apply();
+        this.effect.on(this.card).on(this.hatchingGround).on(this.elementBag).on(this.gui).on(this.player)
+                .on(this.eggHatchingLogic).apply();
     }
 
     @Test
     public void testToString() {
+        this.replayAll();
         Effect effect = new HatchAnyUnclaimedEggAsWildDragon();
         assertEquals(LocaleWrap.get("hatch_egg_as_wild_dragon_effect"), effect.toString());
     }
