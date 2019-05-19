@@ -2,7 +2,6 @@ package underlings.effect.hatchingground;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -73,13 +72,13 @@ public class AddElementsToAllAdjacentEggsEffectTests extends MockTest {
     public void testApplyToWildCard() {
         Card adjacentCard = this.mock(Card.class);
         adjacentCard.handler = WildHandler.getInstance();
-        AddElementsEffect testedEffect =
+        AddElementsEffect effect =
                 EasyMock.partialMockBuilder(AddElementsEffect.class).addMockedMethod("addElementToCard").createMock();
-        this.addMock(testedEffect);
+        this.addMock(effect);
 
         this.replayAll();
 
-        testedEffect.applyOnAdjacentEgg(adjacentCard, null, null, null, null, null, null);
+        effect.applyOnAdjacentEgg(adjacentCard, null, null, null, null, null, null);
     }
 
     @Test
@@ -115,7 +114,7 @@ public class AddElementsToAllAdjacentEggsEffectTests extends MockTest {
     public void testAddElementToCardEightPlayableSpaces() {
         ElementColor blue = ElementColor.BLUE;
         Element stubElement = EasyMock.niceMock(Element.class);
-        List<ElementSpace> mockedPlayableSpaces = this.getMockedPlayableSpaces(8);
+        List<ElementSpace> mockedPlayableSpaces = this.mockListOf(ElementSpace.class).withLengthOf(8);
 
         EasyMock.expect(this.elementSpaceLogic.getPlayableSpaces(this.card, blue)).andReturn(mockedPlayableSpaces);
         EasyMock.expect(this.elementBag.drawElementFromList(blue)).andReturn(stubElement);
@@ -130,7 +129,7 @@ public class AddElementsToAllAdjacentEggsEffectTests extends MockTest {
     @Test
     public void testAddElementWithNoElementsLeftInBag() {
         ElementColor blue = ElementColor.BLUE;
-        List<ElementSpace> mockedPlayableSpaces = this.getMockedPlayableSpaces(8);
+        List<ElementSpace> mockedPlayableSpaces = this.mockListOf(ElementSpace.class).withLengthOf(8);
 
         EasyMock.expect(this.elementSpaceLogic.getPlayableSpaces(this.card, blue)).andReturn(mockedPlayableSpaces);
         EasyMock.expect(this.elementBag.drawElementFromList(blue)).andReturn(NullElement.getInstance());
@@ -139,14 +138,6 @@ public class AddElementsToAllAdjacentEggsEffectTests extends MockTest {
 
         AddElementsEffect effect = new AddElementsEffect();
         effect.addElementToCard(blue, this.card, this.elementSpaceLogic, this.elementBag);
-    }
-
-    private List<ElementSpace> getMockedPlayableSpaces(int numberOfSpaces) {
-        List<ElementSpace> mockedPlayableSpaces = new ArrayList<>();
-        for (int i = 0; i < numberOfSpaces; i++) {
-            mockedPlayableSpaces.add(this.mock(ElementSpace.class));
-        }
-        return mockedPlayableSpaces;
     }
 
     @Test
