@@ -37,14 +37,15 @@ public class RemoveAllHandlersFromAllEggsInPlayEffectTests extends MockTest {
     public void testPlayerHandler() {
         HandlerMovementLogic handlerMovementLogic = this.mock(HandlerMovementLogic.class);
         Card card = new Card();
-        Handler handler = new Handler(HandlerState.CARD);
-        card.handler = handler;
+        card.handler = new Handler(HandlerState.CARD);
         RemoveAllHandlersFromAllEggsInPlay testedEffect = new RemoveAllHandlersFromAllEggsInPlay();
 
-        testedEffect.applyOnCardInPlay(card, null, null, handlerMovementLogic);
+        handlerMovementLogic.move(card.handler, HandlerChoice.BREAK_ROOM, FakePlayer.getInstance());
+        handlerMovementLogic.removeHandlerFromCard(card);
 
-        Assert.assertNull(card.handler);
-        Assert.assertEquals(HandlerState.BREAK_ROOM, handler.getState());
+        this.replayAll();
+
+        testedEffect.applyOnCardInPlay(card, null, null, handlerMovementLogic);
     }
 
     @Test
