@@ -1,4 +1,4 @@
-package underlings.card.effect.wild.alleggsinplay;
+package underlings.card.effect.wild;
 
 import underlings.card.effect.HatchingGroundEffect;
 import underlings.game.HatchingGround;
