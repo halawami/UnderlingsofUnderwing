@@ -10,22 +10,6 @@ The definition of done is created by examining and applying BVA on the rules.
 
 ### Game Setup ```tests.game.setup```
 
-#### Game Setup ```tests.game.setup.GameTests```
-
-- [x] The players should be created for [2, 6] players
-  - When there are 2 players, the game should have 2 players
-    - ```tests.game.setup.GameTests.test2PlayerCount()```
-  - When there are 6 players, the game should have 6 players
-    - ```tests.game.setup.GameTests.test6PlayerCount()```
-- [x] The number of rounds should be set for [2, 6] players
-  - When there are 2 players, there should be 15 rounds
-    - ```tests.game.setup.GameTests.test2PlayerRounds()```
-  - When there are 3 players, there should be 13 rounds
-    - ```tests.game.setup.GameTests.test3PlayerRounds()```
-  - When there are [4, 6] players, there should be 12 rounds
-    - ```tests.game.setup.GameTests.test4PlayerRounds()```
-    - ```tests.game.setup.GameTests.test6PlayerRounds()```
-
 #### Handler Setup ```tests.game.setup.HandlerTests```
 
 - [x] Players start off with 2 handlers for [2, 6] players
@@ -47,16 +31,6 @@ The definition of done is created by examining and applying BVA on the rules.
     - ```tests.game.setup.HandlerTests.test4PlayerMaxHandlers()```
     - ```tests.game.setup.HandlerTests.test6PlayerMaxHandlers()```
     
-#### Hatching Ground Setup ```tests.game.setup.HatchingGroundTests```
-
-- [x] The hatching ground size should be set for [2, 6] players
-  - When there are 2 players, the hatching ground should be 3x2
-    - ```tests.game.setup.HatchingGroundTests.test2PlayerSize()```
-  - When there are 3 players, the hatching ground size should be 4x3
-    - ```tests.game.setup.HatchingGroundTests.test3PlayerSize()```
-  - When there are [4, 6] players, the hatching ground size should be 4x4
-    - ```tests.game.setup.HatchingGroundTests.test4PlayerSize()```
-    - ```tests.game.setup.HatchingGroundTests.test6PlayerSize()```
 
 #### Element Bag Setup ```tests.game.setup.ElementBagTests```
 

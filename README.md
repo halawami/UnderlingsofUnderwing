@@ -24,6 +24,21 @@ The definition of done is created by examining and applying BVA on the rules.
     - ```underlings.game.SetupTests.test4PlayerRounds()```
     - ```underlings.game.SetupTests.test6PlayerRounds()```
 
+### Hatching Ground Setup ```underlings.hatchingground.SetupTests```
+
+- [x] The hatching ground size should be set for [2, 6] players
+  - When there are 2 players, the hatching ground should be 3x2
+    - ```underlings.hatchingground.SetupTests.test2PlayerSize()```
+  - When there are 3 players, the hatching ground size should be 4x3
+    - ```underlings.hatchingground.SetupTests.test3PlayerSize()```
+  - When there are [4, 6] players, the hatching ground size should be 4x4
+    - ```underlings.hatchingground.SetupTests.test4PlayerSize()```
+    - ```underlings.hatchingground.SetupTests.test6PlayerSize()```
+- [x] The hatching ground dealt with cards for [2, 6] players
+  - ```underlings.hatchingground.SetupTests.testDeal3By2()```
+  - ```underlings.hatchingground.SetupTests.testDeal4By3()```
+  - ```underlings.hatchingground.SetupTests.testDeal4By4()```
+
 ### Game ```underlings.game.GameTests```
 
 - [x] The game should be setup when the program is ran
