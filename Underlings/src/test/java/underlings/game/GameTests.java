@@ -1,18 +1,22 @@
 package underlings.game;
 
 import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.element.ElementBag;
 import underlings.gui.Gui;
 import underlings.phase.FinalPhase;
 import underlings.phase.FinalPhase.FinalPhaseType;
 import underlings.phase.Phase;
+import underlings.player.Player;
 import underlings.player.PlayerFactory;
 
 public class GameTests {
@@ -84,31 +88,37 @@ public class GameTests {
         phases.add(phaseOne);
         phases.add(phaseTwo);
 
-        Game mockedGame = EasyMock.createMockBuilder(Game.class).addMockedMethod("display")
-                .addMockedMethod("checkGameover").createMock();
+        Gui gui = EasyMock.mock(Gui.class);
+        Game mockedGame = EasyMock.createMockBuilder(Game.class).addMockedMethod("checkGameover")
+                .withConstructor(Gui.class, HatchingGround.class, PlayerFactory.class, ElementBag.class)
+                .withArgs(gui, null, null, null).createMock();
 
         mockedGame.numberOfPlayers = 2;
         mockedGame.roundsLeft = 2;
         mockedGame.phases = phases;
 
-        mockedGame.display();
+        List<Player> players = new ArrayList<>();
+        gui.display(2, 1, 0, null, players, null);
         phaseOne.execute(0);
         EasyMock.expect(mockedGame.checkGameover(phaseOne)).andReturn(false);
-        mockedGame.display();
+
+        gui.display(2, 2, 0, null, players, null);
         phaseTwo.execute(0);
         EasyMock.expect(mockedGame.checkGameover(phaseTwo)).andReturn(false);
-        mockedGame.display();
+
+        gui.display(1, 1, 1, null, players, null);
         phaseOne.execute(1);
         EasyMock.expect(mockedGame.checkGameover(phaseOne)).andReturn(false);
-        mockedGame.display();
+
+        gui.display(1, 2, 1, null, players, null);
         phaseTwo.execute(1);
         EasyMock.expect(mockedGame.checkGameover(phaseTwo)).andReturn(false);
 
-        EasyMock.replay(phaseOne, phaseTwo, mockedGame);
+        EasyMock.replay(phaseOne, phaseTwo, mockedGame, gui);
 
         mockedGame.gameLoop();
 
-        EasyMock.verify(phaseOne, phaseTwo, mockedGame);
+        EasyMock.verify(phaseOne, phaseTwo, mockedGame, gui);
 
     }
 
