@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import underlings.card.Card;
@@ -251,7 +250,8 @@ public class ConcreteDisplay implements Display {
         stats.append(LocaleUtilities.get("elements_remaining"));
         for (ElementColor color : new ElementColor[] {ElementColor.RED, ElementColor.BLUE, ElementColor.YELLOW,
                 ElementColor.GREEN, ElementColor.ORANGE, ElementColor.PURPLE, ElementColor.BLACK, ElementColor.WHITE}) {
-            stats.append(LocaleUtilities.format("color_remaining", color.toString(), elementBag.getNumberRemaining(color)));
+            stats.append(
+                    LocaleUtilities.format("color_remaining", color.toString(), elementBag.getNumberRemaining(color)));
         }
         stats.append(LocaleUtilities.format("rounds_left", roundsLeft));
         stats.append(LocaleUtilities.format("current_phase", currentPhase));
