@@ -2,9 +2,9 @@ package underlings.effect.hatchingground;
 
 import static org.junit.Assert.assertEquals;
 
-import org.easymock.EasyMock;
 import org.junit.Test;
 
+import underlings.MockTest;
 import underlings.card.Card;
 import underlings.card.effect.Effect;
 import underlings.card.effect.wild.ReturnAllAdjacentCardsToDeckEffect;
@@ -18,7 +18,7 @@ import underlings.handler.WildHandler;
 import underlings.player.FakePlayer;
 import underlings.utilities.LocaleWrap;
 
-public class ReturnAllAdjacentCardsToDeckEffectTests {
+public class ReturnAllAdjacentCardsToDeckEffectTests extends MockTest {
 
     @Test
     public void testApplyNoHandler() {
@@ -36,24 +36,22 @@ public class ReturnAllAdjacentCardsToDeckEffectTests {
     }
 
     private void testApplyWithHandler(Handler handler) {
-        Card adjacentCard = EasyMock.mock(Card.class);
+        Card adjacentCard = this.mock(Card.class);
         adjacentCard.handler = handler;
-        HandlerMovementLogic handlerMovementLogic = EasyMock.mock(HandlerMovementLogic.class);
-        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
+        HandlerMovementLogic handlerMovementLogic = this.mock(HandlerMovementLogic.class);
+        HatchingGround hatchingGround = this.mock(HatchingGround.class);
 
         handlerMovementLogic.move(adjacentCard.handler, HandlerChoice.BREAK_ROOM, FakePlayer.getInstance());
         handlerMovementLogic.removeHandlerFromCard(adjacentCard);
         hatchingGround.replaceCard(adjacentCard);
 
-        Deck deck = EasyMock.mock(Deck.class);
+        Deck deck = this.mock(Deck.class);
         deck.addCard(adjacentCard, true);
 
-        EasyMock.replay(adjacentCard, handlerMovementLogic, deck, hatchingGround);
+        this.replayAll();
 
-        ReturnAllAdjacentCardsToDeckEffect testedEffect = new ReturnAllAdjacentCardsToDeckEffect();
-        testedEffect.applyOnAdjacentEgg(adjacentCard, null, null, null, deck, handlerMovementLogic, hatchingGround);
-
-        EasyMock.verify(adjacentCard, handlerMovementLogic, deck, hatchingGround);
+        ReturnAllAdjacentCardsToDeckEffect effect = new ReturnAllAdjacentCardsToDeckEffect();
+        effect.applyOnAdjacentEgg(adjacentCard, null, null, null, deck, handlerMovementLogic, hatchingGround);
     }
 
     @Test
