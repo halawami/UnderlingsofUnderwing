@@ -72,7 +72,22 @@ The definition of done is created by examining and applying BVA on the rules.
     - ```underlings.game.GameTests.testGameLoopRoundsCompleted()```
   - The game can run until all eggs have been hatched wild
     - ```underlings.game.GameTests.testGameLoopWildHatched()```
-  
+
+### Handlers ```underlings.handler```
+
+#### Handler Choices ```underlings.handler.ChoiceTests```
+
+- [x] Handlers can move between states
+  - Handlers in the Ready Room can: Stay, Field Whitespace, Field, or Card
+  - Handlers in the Break Room can: Ready Room
+  - Handlers on the Field Whitespace can: Break Room
+  - Handlers in the Field can: Stay, Break Room
+  - Handlers in Incubation can: Stay
+  - Handlers on a Card can: Stay, Break Room
+  - ```underlings.handler.ChoiceTests.testPossibilities()```
+- [x] Handler choices should be displayed to the players
+  - ```underlings.handler.ChoiceTests.testToString()```
+
 ### Players ```underlings.player```
 
 #### Player ID ```underlings.player.IdTests```
