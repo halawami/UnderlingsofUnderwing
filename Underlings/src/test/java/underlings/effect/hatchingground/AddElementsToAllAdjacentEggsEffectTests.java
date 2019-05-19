@@ -40,69 +40,57 @@ public class AddElementsToAllAdjacentEggsEffectTests extends MockTest {
 
     @Test
     public void testApplyOneElementColor() {
-        AddElementsEffect testedEffect =
-                EasyMock.partialMockBuilder(AddElementsEffect.class).addMockedMethod("addElementToCard").createMock();
-        this.addMock(testedEffect);
-        testedEffect.elementColors = new ElementColor[] {ElementColor.BLUE};
-        testedEffect.addElementToCard(ElementColor.BLUE, card, elementSpaceLogic, elementBag);
-
-        this.replayAll();
-
-        testedEffect.applyOnAdjacentEgg(card, elementBag, elementSpaceLogic, eggHatchingLogic, null, null, null);
+        this.testApplyElementColors(ElementColor.BLUE);
     }
 
-    @Test
-    public void testApplyToWildCard() {
-        card.handler = WildHandler.getInstance();
-        AddElementsEffect testedEffect =
-                EasyMock.partialMockBuilder(AddElementsEffect.class).addMockedMethod("addElementToCard").createMock();
-        this.addMock(testedEffect);
-        testedEffect.elementColors = new ElementColor[] {ElementColor.BLUE};
-
-        this.replayAll();
-
-        testedEffect.applyOnAdjacentEgg(card, elementBag, elementSpaceLogic, eggHatchingLogic, null, null, null);
-    }
 
     @Test
     public void testApplyTwoDifferentElementColor() {
-        AddElementsEffect testedEffect =
-                EasyMock.partialMockBuilder(AddElementsEffect.class).addMockedMethod("addElementToCard").createMock();
-        this.addMock(testedEffect);
-        testedEffect.elementColors = new ElementColor[] {ElementColor.BLUE, ElementColor.RED};
-
-        testedEffect.addElementToCard(ElementColor.BLUE, card, elementSpaceLogic, elementBag);
-        testedEffect.addElementToCard(ElementColor.RED, card, elementSpaceLogic, elementBag);
-
-        this.replayAll();
-
-        testedEffect.applyOnAdjacentEgg(card, elementBag, elementSpaceLogic, eggHatchingLogic, null, null, null);
+        this.testApplyElementColors(ElementColor.BLUE, ElementColor.RED);
     }
 
     @Test
     public void testApplyTwoSameElementColor() {
-        AddElementsEffect testedEffect =
-                EasyMock.partialMockBuilder(AddElementsEffect.class).addMockedMethod("addElementToCard").createMock();
-        this.addMock(testedEffect);
-        testedEffect.elementColors = new ElementColor[] {ElementColor.BLUE, ElementColor.BLUE};
+        this.testApplyElementColors(ElementColor.BLUE, ElementColor.BLUE);
+    }
 
-        testedEffect.addElementToCard(ElementColor.BLUE, card, elementSpaceLogic, elementBag);
-        testedEffect.addElementToCard(ElementColor.BLUE, card, elementSpaceLogic, elementBag);
+    private void testApplyElementColors(ElementColor... elementColors) {
+        AddElementsEffect effect =
+                EasyMock.partialMockBuilder(AddElementsEffect.class).addMockedMethod("addElementToCard").createMock();
+        effect.elementColors = elementColors;
+
+        for (ElementColor elementColor : elementColors) {
+            effect.addElementToCard(elementColor, this.card, this.elementSpaceLogic, this.elementBag);
+        }
 
         this.replayAll();
 
-        testedEffect.applyOnAdjacentEgg(card, elementBag, elementSpaceLogic, eggHatchingLogic, null, null, null);
+        effect.applyOnAdjacentEgg(this.card, this.elementBag, this.elementSpaceLogic, this.eggHatchingLogic, null,
+                null, null);
+    }
+
+    @Test
+    public void testApplyToWildCard() {
+        Card adjacentCard = this.mock(Card.class);
+        adjacentCard.handler = WildHandler.getInstance();
+        AddElementsEffect testedEffect =
+                EasyMock.partialMockBuilder(AddElementsEffect.class).addMockedMethod("addElementToCard").createMock();
+        this.addMock(testedEffect);
+
+        this.replayAll();
+
+        testedEffect.applyOnAdjacentEgg(adjacentCard, null, null, null, null, null, null);
     }
 
     @Test
     public void testAddElementToCardNoPlayableSpace() {
         ElementColor blue = ElementColor.BLUE;
-        EasyMock.expect(elementSpaceLogic.getPlayableSpaces(card, blue)).andReturn(Collections.emptyList());
+        EasyMock.expect(this.elementSpaceLogic.getPlayableSpaces(this.card, blue)).andReturn(Collections.emptyList());
 
         this.replayAll();
 
-        AddElementsEffect testedEffect = new AddElementsEffect();
-        testedEffect.addElementToCard(blue, card, elementSpaceLogic, elementBag);
+        AddElementsEffect effect = new AddElementsEffect();
+        effect.addElementToCard(blue, this.card, this.elementSpaceLogic, this.elementBag);
     }
 
     @Test
@@ -111,46 +99,46 @@ public class AddElementsToAllAdjacentEggsEffectTests extends MockTest {
         Element stubElement = this.mock(Element.class);
         ElementSpace mockedPlayableSpace = this.mock(ElementSpace.class);
 
-        EasyMock.expect(elementSpaceLogic.getPlayableSpaces(card, blue)).andReturn(Arrays.asList(mockedPlayableSpace));
-        EasyMock.expect(elementBag.drawElementFromList(blue)).andReturn(stubElement);
+        EasyMock.expect(this.elementSpaceLogic.getPlayableSpaces(this.card, blue))
+                .andReturn(Arrays.asList(mockedPlayableSpace));
+        EasyMock.expect(this.elementBag.drawElementFromList(blue)).andReturn(stubElement);
 
         mockedPlayableSpace.addElements(stubElement);
 
         this.replayAll();
 
-        AddElementsEffect testedEffect = new AddElementsEffect();
-        testedEffect.addElementToCard(blue, card, elementSpaceLogic, elementBag);
+        AddElementsEffect effect = new AddElementsEffect();
+        effect.addElementToCard(blue, this.card, this.elementSpaceLogic, this.elementBag);
     }
 
     @Test
     public void testAddElementToCardEightPlayableSpaces() {
         ElementColor blue = ElementColor.BLUE;
         Element stubElement = EasyMock.niceMock(Element.class);
-        this.addMock(stubElement);
-        List<ElementSpace> mockedPlayableSpaces = getMockedPlayableSpaces(8);
+        List<ElementSpace> mockedPlayableSpaces = this.getMockedPlayableSpaces(8);
 
-        EasyMock.expect(elementSpaceLogic.getPlayableSpaces(card, blue)).andReturn(mockedPlayableSpaces);
-        EasyMock.expect(elementBag.drawElementFromList(blue)).andReturn(stubElement);
+        EasyMock.expect(this.elementSpaceLogic.getPlayableSpaces(this.card, blue)).andReturn(mockedPlayableSpaces);
+        EasyMock.expect(this.elementBag.drawElementFromList(blue)).andReturn(stubElement);
         mockedPlayableSpaces.get(0).addElements(stubElement);
 
         this.replayAll();
 
-        AddElementsEffect testedEffect = new AddElementsEffect();
-        testedEffect.addElementToCard(blue, card, elementSpaceLogic, elementBag);
+        AddElementsEffect effect = new AddElementsEffect();
+        effect.addElementToCard(blue, this.card, this.elementSpaceLogic, this.elementBag);
     }
 
     @Test
     public void testAddElementWithNoElementsLeftInBag() {
         ElementColor blue = ElementColor.BLUE;
-        List<ElementSpace> mockedPlayableSpaces = getMockedPlayableSpaces(8);
+        List<ElementSpace> mockedPlayableSpaces = this.getMockedPlayableSpaces(8);
 
-        EasyMock.expect(elementSpaceLogic.getPlayableSpaces(card, blue)).andReturn(mockedPlayableSpaces);
-        EasyMock.expect(elementBag.drawElementFromList(blue)).andReturn(NullElement.getInstance());
+        EasyMock.expect(this.elementSpaceLogic.getPlayableSpaces(this.card, blue)).andReturn(mockedPlayableSpaces);
+        EasyMock.expect(this.elementBag.drawElementFromList(blue)).andReturn(NullElement.getInstance());
 
         this.replayAll();
 
-        AddElementsEffect testedEffect = new AddElementsEffect();
-        testedEffect.addElementToCard(blue, card, elementSpaceLogic, elementBag);
+        AddElementsEffect effect = new AddElementsEffect();
+        effect.addElementToCard(blue, this.card, this.elementSpaceLogic, this.elementBag);
     }
 
     private List<ElementSpace> getMockedPlayableSpaces(int numberOfSpaces) {
@@ -165,7 +153,7 @@ public class AddElementsToAllAdjacentEggsEffectTests extends MockTest {
     public void testToString() {
         this.replayAll();
         AddElementsEffect effect = new AddElementsEffect();
-        effect.elementColors = new ElementColor[] {ElementColor.BLACK};
+        effect.elementColors = new ElementColor[]{ElementColor.BLACK};
         StringBuilder elements = new StringBuilder();
         for (ElementColor color : effect.elementColors) {
             elements.append(color);
