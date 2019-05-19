@@ -50,7 +50,31 @@ The definition of done is created by examining and applying BVA on the rules.
     - ```underlings.game.GameTests.testGameLoopRoundsCompleted()```
   - The game can run until all eggs have been hatched wild
     - ```underlings.game.GameTests.testGameLoopWildHatched()```
-  
+
+### Handlers ```underlings.handler```
+
+#### Handler Choices ```underlings.handler.ChoiceTests```
+
+- [x] Handlers can move between states
+  - Handlers in the Ready Room can: Stay, Field Whitespace, Field, or Card
+  - Handlers in the Break Room can: Ready Room
+  - Handlers on the Field Whitespace can: Break Room
+  - Handlers in the Field can: Stay, Break Room
+  - Handlers in Incubation can: Stay
+  - Handlers on a Card can: Stay, Break Room
+  - ```underlings.handler.ChoiceTests.testPossibilities()```
+- [x] Handler choices should be displayed to the players
+  - ```underlings.handler.ChoiceTests.testToString()```
+
+#### Handler State Display ```underlings.handler.StateStringTests```
+
+- [x] Handlers in should display their current location
+  - ```underlings.handler.StateStringTests.testReadyRoom()```
+  - ```underlings.handler.StateStringTests.testBreakRoom()```
+  - ```underlings.handler.StateStringTests.testCard()```
+  - ```underlings.handler.StateStringTests.testIncubation()```
+  - ```underlings.handler.StateStringTests.testField()```
+
 ### Players ```underlings.player```
 
 #### Player ID ```underlings.player.IdTests```
@@ -301,6 +325,19 @@ The definition of done is created by examining and applying BVA on the rules.
      - ```underlings.card.effect.domestic.element.CollectFiveElementsEffectTests.testEffect()```
 - [x] The player should know that the effect has been run
   - ```underlings.card.effect.domestic.element.CollectFiveElementsEffectTests.testToString()```
+
+#### Next Phase 1, draw Elements of your choice ```underlings.card.effect.domestic.element.DrawElementsOfChoiceNextPhaseEffectTests```
+
+- Dragons
+  - TYCHE
+- [x] Player will be able to choose their elements from the element bag next phase 1, and return to normal afterward
+  - On next phase 1
+     - ```underlings.card.effect.domestic.element.DrawElementsOfChoiceNextPhaseEffectTests.testOnFirstPhaseOne()```
+  - On second next phase 1
+     - ```underlings.card.effect.domestic.element.DrawElementsOfChoiceNextPhaseEffectTests.testOnSecondPhaseOne()```
+- [x] The player should know that the effect has been run
+  - ```underlings.card.effect.domestic.element.DrawElementsOfChoiceNextPhaseEffectTests.testToString()```
+  
 #### ALL Eggs claimed this round take +1 round to hatch  ```underlings.card.effect.wild.AllEggsHatchLateEffectTests```
 
 - Dragons
@@ -309,3 +346,19 @@ The definition of done is created by examining and applying BVA on the rules.
   - ```underlings.card.effect.wild.AllEggsHatchLateEffectTests.testApply()```
 - [x] The player should know the effect has been run
   - ```underlings.card.effect.wild.AllEggsHatchLateEffectTests.testToString()```
+  
+#### Reshuffle this card into the deck; when redrawn hatch ALL unclaimed Eggs in the Hatching grounds ```underlings.card.effect.wild.ApiaraWildEffectTests```
+
+- Dragons
+  - Apiara
+- [x] This effect should shuffle the card back into the deck, when redrawn, all unclaimed eggs in the hatching ground must hatch
+	- Run draw once
+		- ```underlings.card.effect.wild.ApiaraWildEffectTests.testEffect()```
+	- Run draw twice no cards
+		- ```underlings.card.effect.wild.ApiaraWildEffectTests.testEffectTwiceNoCards()```
+	- Run draw twice one card
+		- ```underlings.card.effect.wild.ApiaraWildEffectTests.testEffectTwiceOneCard()```
+	- Run draw twice two cards
+		- ```underlings.card.effect.wild.ApiaraWildEffectTests.testEffectTwiceTwoCards()```
+- [x] The player should know the effect has been run
+  - ```underlings.card.effect.wild.ApiaraWildEffectTests.testToString()```
