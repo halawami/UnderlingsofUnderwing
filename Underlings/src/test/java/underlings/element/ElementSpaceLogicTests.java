@@ -1,6 +1,7 @@
 package underlings.element;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import com.google.common.base.Charsets;
@@ -113,5 +114,21 @@ public class ElementSpaceLogicTests {
         List<Element> actual2 = logic.getPlayableElements(space, playerElements);
         assertEquals(1, actual2.size());
         assertTrue(actual2.contains(playerElements.get(0)));
+    }
+
+    @Test
+    public void testIsValidRecipe() {
+        ElementSpace space = new ElementSpace(ElementColor.ORANGE);
+        space.addElements(new Element(ElementColor.RED));
+
+        List<String> recipes = new ArrayList<>();
+        recipes.add("ORANGE:ORANGE RED,YELLOW");
+        ElementSpaceUtilities logic = new ElementSpaceUtilities(recipes);
+
+        List<ElementColor> recipe1 = Arrays.asList(ElementColor.ORANGE);
+        assertFalse(logic.isValidRecipe(recipe1, space));
+
+        List<ElementColor> recipe2 = Arrays.asList(ElementColor.RED, ElementColor.YELLOW);
+        assertTrue(logic.isValidRecipe(recipe2, space));
     }
 }
