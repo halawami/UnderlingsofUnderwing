@@ -1,4 +1,4 @@
-package underlings.card.effect.domestic;
+package underlings.card.effect.domestic.deck;
 
 import java.util.ArrayList;
 import java.util.List;
