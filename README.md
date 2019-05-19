@@ -192,7 +192,13 @@ The definition of done is created by examining and applying BVA on the rules.
   - ```underlings.hatchingground.FindCardTests.testFindCardSuccessful()```
   - ```underlings.hatchingground.FindCardTests.testFindCardUnsuccessful()```
 
-####
+### Drawing Phase ```underlings.phase.DrawingPhaseTests```
+
+- [x] The player draws elements based on their element givers
+  - If the bag is not empty, they get an element
+    - ```underlings.phase.DrawingPhaseTests.testTurn```
+  - If the bag is empty, they do not get an element
+    - ```underlings.phase.DrawingPhaseTests.testTurnNullElement```
 
 ### Scoring ```underlings.scoring```
 
