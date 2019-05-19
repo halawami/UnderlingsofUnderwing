@@ -2,10 +2,13 @@ package underlings.phase;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
+
 import java.io.IOException;
 import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.MockTest;
 import underlings.gui.Gui;
 import underlings.gui.Gui.PromptType;

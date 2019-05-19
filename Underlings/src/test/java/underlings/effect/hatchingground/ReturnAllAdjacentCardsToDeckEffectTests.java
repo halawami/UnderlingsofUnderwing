@@ -1,8 +1,10 @@
 package underlings.effect.hatchingground;
 
 import static org.junit.Assert.assertEquals;
+
 import org.easymock.EasyMock;
 import org.junit.Test;
+
 import underlings.card.Card;
 import underlings.card.effect.Effect;
 import underlings.card.effect.wild.ReturnAllAdjacentCardsToDeckEffect;
@@ -37,12 +39,13 @@ public class ReturnAllAdjacentCardsToDeckEffectTests {
         Card adjacentCard = EasyMock.mock(Card.class);
         adjacentCard.handler = handler;
         HandlerMovementLogic handlerMovementLogic = EasyMock.mock(HandlerMovementLogic.class);
-        Deck deck = EasyMock.mock(Deck.class);
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
 
         handlerMovementLogic.move(adjacentCard.handler, HandlerChoice.BREAK_ROOM, FakePlayer.getInstance());
         handlerMovementLogic.removeHandlerFromCard(adjacentCard);
         hatchingGround.replaceCard(adjacentCard);
+
+        Deck deck = EasyMock.mock(Deck.class);
         deck.addCard(adjacentCard, true);
 
         EasyMock.replay(adjacentCard, handlerMovementLogic, deck, hatchingGround);

@@ -1,8 +1,10 @@
 package underlings.phase;
 
 import java.util.ArrayList;
+
 import org.easymock.EasyMock;
 import org.junit.Test;
+
 import underlings.handler.HandlerFactory;
 import underlings.player.Player;
 

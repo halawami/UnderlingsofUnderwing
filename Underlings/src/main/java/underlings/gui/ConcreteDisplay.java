@@ -10,8 +10,10 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
+
 import underlings.card.Card;
 import underlings.element.Element;
 import underlings.element.ElementBag;
@@ -119,10 +121,9 @@ public class ConcreteDisplay implements Display {
                 (int) (ratio * (30 + offsetX + (width + gapX) * col)) - 5,
                 (int) (-25 + ratio * (height / 2 + offsetY + (height + gapY) * row) + 6));
 
-        int spaceNum = 0;
         for (ElementSpace space : card.elementSpaces) {
-            int x = (int) ((ratio * (40 + offsetX + (width + gapX) * col)) + 255 * ratio * (spaceNum % 2));
-            int y = (int) (spaceNum / 2 * 15 - 5 + ratio * (height / 2 + offsetY + (height + gapY) * row));
+            int x = (int) ((ratio * (40 + offsetX + (width + gapX) * col)) + 255 * ratio * space.position.posX);
+            int y = (int) (space.position.posY * 15 - 5 + ratio * (height / 2 + offsetY + (height + gapY) * row));
 
             this.gr.setColor(this.colorMap.get(space.color));
             this.gr.fillRect(x - 5, y - 5, 5, 5);
@@ -138,8 +139,6 @@ public class ConcreteDisplay implements Display {
             }
 
             this.gr.drawString(s, x, y);
-
-            spaceNum++;
         }
     }
 
@@ -227,7 +226,7 @@ public class ConcreteDisplay implements Display {
 
             this.gr.setColor(Color.BLACK);
             this.gr.drawString(handlers.get(i).toString(), (int) (ratio * (30 + offsetX + (width + gapX) * col)),
-                    (int) (i * 25 + ratio * (height / 2 + offsetY + (height + gapY) * row)));
+                    (int) (i * 17 + ratio * (height / 2 + offsetY + (height + gapY) * row)));
         }
     }
 

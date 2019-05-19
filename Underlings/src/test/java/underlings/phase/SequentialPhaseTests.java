@@ -13,10 +13,9 @@ public class SequentialPhaseTests {
 
     @Test
     public void testSequentialExecute() {
-        SequentialPhase sequential =
-                EasyMock.createMockBuilder(SequentialPhase.class).addMockedMethod("turn").addMockedMethod("setup")
-                        .addMockedMethod("setPhaseComplete").addMockedMethod("isPhaseComplete")
-                        .addMockedMethod("teardown").createMock();
+        SequentialPhase sequential = EasyMock.createMockBuilder(SequentialPhase.class).addMockedMethod("turn")
+                .addMockedMethod("setup").addMockedMethod("setPhaseComplete").addMockedMethod("isPhaseComplete")
+                .addMockedMethod("teardown").createMock();
 
         Runnable displayMethod = EasyMock.mock(Runnable.class);
         sequential.displayMethod = displayMethod;

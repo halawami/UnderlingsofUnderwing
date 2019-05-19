@@ -3,6 +3,7 @@ package underlings.game;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+
 import underlings.card.Card;
 import underlings.element.ElementBag;
 import underlings.gui.Gui;
@@ -46,7 +47,7 @@ public class Game {
         this.setUpPlayerList(numberOfPlayers);
     }
 
-    private void setUpProperties(int numberOfPlayers) {
+    public void setUpProperties(int numberOfPlayers) {
         GameProperties correspondingProps = GameProperties.getPropertiesOf(numberOfPlayers);
 
         this.roundsLeft = correspondingProps.numberOfRounds;

@@ -11,43 +11,43 @@ import underlings.scoring.ScoreUtils;
 
 public class TestUtils {
 
-    public static ScoreUtils ScoreUtils(Gui gui, Player... players) {
+    public static ScoreUtils makeScoreUtils(Gui gui, Player... players) {
         return new ScoreUtils(Arrays.asList(players), gui);
     }
 
-    public static ScoreUtils ScoreUtils(Player... players) {
+    public static ScoreUtils makeScoreUtils(Player... players) {
         return new ScoreUtils(Arrays.asList(players), null);
     }
 
-    public static ScoreUtils ScoreUtils() {
+    public static ScoreUtils makeScoreUtils() {
         return new ScoreUtils(null, null);
     }
 
-    public static Card Card(Temperature temperature) {
+    public static Card makeCard(Temperature temperature) {
         Card card = new Card();
         card.temperature = temperature;
         return card;
     }
 
-    public static Card Card(int points, Temperature temperature) {
+    public static Card makeCard(int points, Temperature temperature) {
         Card card = new Card();
         card.points = points;
         card.temperature = temperature;
         return card;
     }
 
-    public static Card Card(int points) {
+    public static Card makeCard(int points) {
         Card card = new Card();
         card.points = points;
         return card;
     }
 
-    public static Player Player(int id) {
+    public static Player makePlayer(int id) {
         return new Player(6, new HandlerFactory(), id);
     }
 
-    public static Player Player() {
-        return Player(0);
+    public static Player makePlayer() {
+        return makePlayer(0);
     }
 
 }

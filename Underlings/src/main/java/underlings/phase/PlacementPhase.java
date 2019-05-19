@@ -3,6 +3,7 @@ package underlings.phase;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import underlings.card.Card;
 import underlings.element.ElementSpace;
 import underlings.game.HatchingGround;
@@ -18,7 +19,7 @@ import underlings.utilities.PlacementUtilities;
 public class PlacementPhase extends RotationPhase {
 
     private Map<Player, Integer> turnCounts;
-    private EggHatchingLogic wildEggHatchingLogic;
+    protected EggHatchingLogic wildEggHatchingLogic;
     protected PlacementUtilities utils;
 
     public PlacementPhase(List<Player> players, Gui gui, HatchingGround hatchingGround, Runnable displayMethod,

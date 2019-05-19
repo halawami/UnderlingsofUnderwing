@@ -1,6 +1,7 @@
 package underlings.element;
 
 import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 public class ElementTests {

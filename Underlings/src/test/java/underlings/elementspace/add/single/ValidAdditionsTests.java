@@ -24,7 +24,7 @@ public class ValidAdditionsTests {
     @Before
     public void init() throws Exception {
         List<String> recipes = Resources.readLines(Resources.getResource("DefaultRecipeList.txt"), Charsets.UTF_8);
-        logic = new ElementSpaceLogic(recipes);
+        this.logic = new ElementSpaceLogic(recipes);
     }
 
     @Test
@@ -32,7 +32,7 @@ public class ValidAdditionsTests {
         ElementSpace elementSpace = new ElementSpace(ElementColor.RED);
         List<ElementColor> expected = Arrays.asList(ElementColor.RED);
 
-        assertEquals(expected, logic.getValidAdditions(elementSpace));
+        assertEquals(expected, this.logic.getValidAdditions(elementSpace));
     }
 
     @Test
@@ -40,54 +40,54 @@ public class ValidAdditionsTests {
         ElementSpace elementSpace = new ElementSpace(ElementColor.BLUE);
         List<ElementColor> expected = Arrays.asList(ElementColor.BLUE);
 
-        assertEquals(expected, logic.getValidAdditions(elementSpace));
+        assertEquals(expected, this.logic.getValidAdditions(elementSpace));
     }
 
     public void testColor(ElementColor color) {
         ElementSpace elementSpace = new ElementSpace(color);
         elementSpace.addElements(new Element(color));
 
-        assertTrue(logic.getValidAdditions(elementSpace).isEmpty());
+        assertTrue(this.logic.getValidAdditions(elementSpace).isEmpty());
     }
 
     @Test
     public void testRed() {
-        testColor(ElementColor.RED);
+        this.testColor(ElementColor.RED);
     }
 
     @Test
     public void testGreen() {
-        testColor(ElementColor.GREEN);
+        this.testColor(ElementColor.GREEN);
     }
 
     @Test
     public void testBlue() {
-        testColor(ElementColor.BLUE);
+        this.testColor(ElementColor.BLUE);
     }
 
     @Test
     public void testOrange() {
-        testColor(ElementColor.ORANGE);
+        this.testColor(ElementColor.ORANGE);
     }
 
     @Test
     public void testYellow() {
-        testColor(ElementColor.YELLOW);
+        this.testColor(ElementColor.YELLOW);
     }
 
     @Test
     public void testPurple() {
-        testColor(ElementColor.PURPLE);
+        this.testColor(ElementColor.PURPLE);
     }
 
     @Test
     public void testWhite() {
-        testColor(ElementColor.WHITE);
+        this.testColor(ElementColor.WHITE);
     }
 
     @Test
     public void testBlack() {
-        testColor(ElementColor.BLACK);
+        this.testColor(ElementColor.BLACK);
     }
 
 }

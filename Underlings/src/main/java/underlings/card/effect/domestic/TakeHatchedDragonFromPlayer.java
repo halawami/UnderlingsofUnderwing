@@ -24,7 +24,7 @@ public class TakeHatchedDragonFromPlayer extends PlayersEffect {
         List<Temperature> temperaturesList = Arrays.asList(this.temperatures);
         Map<Player, List<Card>> playerCards = new HashMap<>();
         for (Player player : players) {
-            if (player != currentPlayer) {
+            if (player != currentPlayer && !player.hatchedCards.isEmpty()) {
                 playerCards.put(player, new LinkedList<>());
                 for (Card dragon : player.hatchedCards) {
                     if (temperaturesList.contains(dragon.temperature) && dragon.points <= this.points) {

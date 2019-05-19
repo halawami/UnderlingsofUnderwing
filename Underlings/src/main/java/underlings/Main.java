@@ -2,6 +2,7 @@ package underlings;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
+
 import underlings.card.CardFactory;
 import underlings.element.ElementBag;
 import underlings.element.ElementFactory;
@@ -55,7 +57,8 @@ public class Main {
         FakePlayer.initPlayer(recipes);
         Gui gui = new Gui(new ConcretePrompt(), new ConcreteDisplay());
         CardFactory cardFactory = new CardFactory(CARDS_JSON_FILE_NAME);
-        Deck deck = new Deck(cardFactory.getCards(), Collections::sort);
+        Deck deck = new Deck(cardFactory.getCards(), Collections::shuffle);
+        deck.shuffle();
         HatchingGround hatchingGround = new HatchingGround(deck, new ElementSpaceLogic(recipes));
         HandlerFactory handlerFactory = new HandlerFactory();
         PlayerFactory playerFactory = new PlayerFactory(handlerFactory, recipes);

@@ -3,8 +3,10 @@ package underlings.gui;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
+
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,11 +14,15 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
+
 import javax.swing.JOptionPane;
+
+import org.easymock.Capture;
 import org.easymock.EasyMock;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.card.Card;
 import underlings.card.EmptyCard;
 import underlings.element.Element;
@@ -24,6 +30,7 @@ import underlings.element.ElementBag;
 import underlings.element.ElementColor;
 import underlings.element.ElementFactory;
 import underlings.element.ElementSpace;
+import underlings.element.ElementSpacePosition;
 import underlings.element.NullElement;
 import underlings.element.utilities.ElementSpaceLogic;
 import underlings.game.Deck;
@@ -77,7 +84,6 @@ public class GuiTests {
 
     @Test
     public void testGetHandlerDecisionWithCard() {
-        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         Handler handler = EasyMock.mock(Handler.class);
         List<Handler> handlers = new ArrayList<>();
         handlers.add(handler);
@@ -86,6 +92,7 @@ public class GuiTests {
         EasyMock.expect(this.promptHandler.promptChoice(LocaleWrap.get("gui_handler"), handlers, 0)).andReturn(handler);
         EasyMock.expect(handler.getPossibleChoices()).andReturn(handlerChoices);
 
+        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         EasyMock.expect(hatchingGround.getUnclaimedEggs()).andReturn(Arrays.asList(new Card()));
         EasyMock.expect(this.promptHandler
                 .promptChoice(MessageFormat.format(LocaleWrap.get("gui_handler_choice"), handler), handlerChoices, 0))
@@ -105,7 +112,6 @@ public class GuiTests {
 
     @Test
     public void testGetHandlerDecisioNoCards() {
-        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         Handler handler = EasyMock.mock(Handler.class);
         List<Handler> handlers = new ArrayList<>();
         handlers.add(handler);
@@ -116,6 +122,7 @@ public class GuiTests {
         EasyMock.expect(this.promptHandler.promptChoice(LocaleWrap.get("gui_handler"), handlers, 0)).andReturn(handler);
         EasyMock.expect(handler.getPossibleChoices()).andReturn(handlerChoices);
 
+        HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         EasyMock.expect(hatchingGround.getUnclaimedEggs()).andReturn(Collections.emptyList());
 
         EasyMock.expect(this.promptHandler.promptChoice(
@@ -167,7 +174,7 @@ public class GuiTests {
     }
 
     @Test
-    public void testAlertNoPlayerID() {
+    public void testAlertNoPlayerId() {
         this.promptHandler.displayMessage("test", JOptionPane.PLAIN_MESSAGE);
         this.replay();
 
@@ -264,15 +271,16 @@ public class GuiTests {
 
     @Test
     public void testDisplay() {
+        ElementBag elementBag = new ElementBag(new ElementFactory(), new Random());
         this.display.displayBackground();
         this.display.displayHatchingGround(this.hatchingGround);
         this.display.displayPlayers(EasyMock.anyObject());
-        this.display.displayStats(EasyMock.anyObject(), EasyMock.anyInt(), EasyMock.anyInt(), EasyMock.anyInt());
+        this.display.displayStats(elementBag, 0, 0, 1);
         this.display.update();
 
         this.replay();
 
-        this.gui.display(0, 0, 0, this.hatchingGround, Collections.emptyList(), EasyMock.mock(ElementBag.class));
+        this.gui.display(0, 0, 0, this.hatchingGround, Collections.emptyList(), elementBag);
     }
 
     @Test
@@ -293,9 +301,6 @@ public class GuiTests {
 
     @Test
     public void testGetElementOfColorsFromSpaceNoChoices() {
-        ElementColor[] choices = new ElementColor[0];
-        ElementSpace space = new ElementSpace(ElementColor.BLACK);
-
         List<Element> elements = new ArrayList<>();
         elements.add(NullElement.getInstance());
         EasyMock.expect(this.promptHandler.promptChoice(LocaleWrap.get("gui_element_collect"), elements, 0))
@@ -303,6 +308,8 @@ public class GuiTests {
 
         this.replay();
 
+        ElementColor[] choices = new ElementColor[0];
+        ElementSpace space = new ElementSpace(ElementColor.BLACK);
         Element element = this.gui.getElementOfColorsFromSpace(choices, space, 0);
 
         assertEquals(NullElement.getInstance(), element);
@@ -354,8 +361,10 @@ public class GuiTests {
         cards[0][1] = validCards.get(0);
         cards[1][0] = validCards.get(1);
 
-        EasyMock.expect(this.promptHandler.pickFromGrid(EasyMock.anyString(), EasyMock.anyObject(Card[][].class),
-                EasyMock.anyInt())).andReturn(validCards.get(0));
+        Capture<Card[][]> capture = EasyMock.newCapture();
+        EasyMock.expect(
+                this.promptHandler.pickFromGrid(EasyMock.anyString(), EasyMock.capture(capture), EasyMock.anyInt()))
+                .andReturn(validCards.get(0));
 
         EasyMock.replay(hatchingGround);
         this.replay();
@@ -363,7 +372,39 @@ public class GuiTests {
         Card card = this.gui.getCard(1, " ", hatchingGround, validCards);
         assertEquals(validCards.get(0), card);
 
+        assertEquals(cards[0][0], capture.getValue()[0][0]);
+        assertEquals(cards[0][1], capture.getValue()[0][1]);
+        assertEquals(cards[1][0], capture.getValue()[1][0]);
+        assertEquals(cards[1][1], capture.getValue()[1][1]);
+
         EasyMock.verify(hatchingGround);
+    }
+
+    @Test
+    public void testElementGridSix() {
+        List<ElementSpace> spaces = new ArrayList<>();
+        spaces.add(new ElementSpace(ElementColor.RED));
+        spaces.add(new ElementSpace(ElementColor.BLUE));
+        spaces.add(new ElementSpace(ElementColor.YELLOW));
+        spaces.add(new ElementSpace(ElementColor.ORANGE));
+        spaces.add(new ElementSpace(ElementColor.PURPLE));
+        spaces.add(new ElementSpace(ElementColor.GREEN));
+        spaces.get(0).position = ElementSpacePosition.L3_1;
+        spaces.get(1).position = ElementSpacePosition.L3_2;
+        spaces.get(2).position = ElementSpacePosition.L3_3;
+        spaces.get(3).position = ElementSpacePosition.R3_1;
+        spaces.get(4).position = ElementSpacePosition.R3_2;
+        spaces.get(5).position = ElementSpacePosition.R3_3;
+        ElementSpace[][] grid = this.gui.getElementSpaceGrid(spaces);
+
+        assertEquals(spaces.get(0), grid[0][0]);
+        assertEquals(spaces.get(1), grid[1][0]);
+        assertEquals(spaces.get(2), grid[2][0]);
+        assertEquals(spaces.get(3), grid[0][1]);
+        assertEquals(spaces.get(4), grid[1][1]);
+        assertEquals(spaces.get(5), grid[2][1]);
+
+        this.replay();
     }
 
 }

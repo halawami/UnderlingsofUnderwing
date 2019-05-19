@@ -103,7 +103,7 @@ public class GetElementGiverTests extends MockTest {
         testedCard.domesticEffects = new Effect[] {this.effect};
         this.effect.drawChoices = null;
 
-        replayAll();
+        this.replayAll();
 
         List<ElementGiver> elementGivers = testedCard.getElementGivers();
 
@@ -116,7 +116,7 @@ public class GetElementGiverTests extends MockTest {
         testedCard.domesticEffects = new Effect[] {this.effect};
         this.effect.drawChoices = new ArrayList<>();
 
-        replayAll();
+        this.replayAll();
 
         List<ElementGiver> elementGivers = testedCard.getElementGivers();
 

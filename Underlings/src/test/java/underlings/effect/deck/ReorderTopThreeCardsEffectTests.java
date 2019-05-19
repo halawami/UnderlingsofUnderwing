@@ -38,7 +38,6 @@ public class ReorderTopThreeCardsEffectTests extends MockTest {
 
     private void testCardsLeft(int cardsLeft) {
         Deck deck = this.mock(Deck.class);
-        Gui gui = this.mock(Gui.class);
 
         List<Card> topThreeCards = this.mockListOf(Card.class).withLengthOf(cardsLeft);
         this.addEmptyCards(topThreeCards, cardsLeft);
@@ -50,6 +49,7 @@ public class ReorderTopThreeCardsEffectTests extends MockTest {
         for (Card topCard : topThreeCards) {
             EasyMock.expect(deck.draw()).andReturn(topCard);
         }
+        Gui gui = this.mock(Gui.class);
         EasyMock.expect(gui.reorderCards(topThreeCards)).andReturn(reorderedCards);
         for (Card reorderedCard : reorderedCards) {
             deck.addCard(reorderedCard, false);

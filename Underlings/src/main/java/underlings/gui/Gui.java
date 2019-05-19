@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
+
 import javax.swing.JOptionPane;
+
 import underlings.card.Card;
 import underlings.card.EmptyCard;
 import underlings.element.Element;
@@ -147,9 +149,23 @@ public class Gui {
         }
 
         Card card = this.promptHandler.promptChoice(LocaleWrap.get("take_element_card"), cardOptions, playerId);
-        List<ElementSpace> spaces = this.getSpacesWithColors(card, colorChoices);
-        ElementSpace space = this.promptHandler.promptChoice(LocaleWrap.get("take_element_space"), spaces, playerId);
+
+        List<ElementSpace> validSpaces = this.getSpacesWithColors(card, colorChoices);
+        return getElementSpace(LocaleWrap.get("take_element_space"), validSpaces, playerId);
+    }
+
+    public ElementSpace getElementSpace(String prompt, List<ElementSpace> spaces, int playerId) {
+        ElementSpace[][] spaceGrid = getElementSpaceGrid(spaces);
+        ElementSpace space = this.promptHandler.pickFromGrid(prompt, spaceGrid, playerId);
         return space;
+    }
+
+    public ElementSpace[][] getElementSpaceGrid(List<ElementSpace> validSpaces) {
+        ElementSpace[][] spaceGrid = new ElementSpace[4][2];
+        for (ElementSpace space : validSpaces) {
+            spaceGrid[space.position.posY][space.position.posX] = space;
+        }
+        return spaceGrid;
     }
 
     private List<ElementSpace> getSpacesWithColors(Card card, ElementColor[] colorChoices) {

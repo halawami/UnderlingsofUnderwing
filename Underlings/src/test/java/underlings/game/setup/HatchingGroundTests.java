@@ -1,11 +1,14 @@
 package underlings.game.setup;
 
 import static org.junit.Assert.assertEquals;
+
 import java.util.Arrays;
 import java.util.Stack;
+
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.card.Card;
 import underlings.element.ElementBag;
 import underlings.element.utilities.ElementSpaceLogic;

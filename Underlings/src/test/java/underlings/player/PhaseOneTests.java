@@ -41,8 +41,8 @@ public class PhaseOneTests extends MockTest {
 
     @Test
     public void testEndPhaseOne() {
-        Player player = EasyMock.partialMockBuilder(Player.class)
-                .addMockedMethod("useEffectElementGivers").createMock();
+        Player player =
+                EasyMock.partialMockBuilder(Player.class).addMockedMethod("useEffectElementGivers").createMock();
 
         player.useEffectElementGivers(false);
 

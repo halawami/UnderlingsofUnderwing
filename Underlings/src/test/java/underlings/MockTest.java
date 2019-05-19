@@ -38,12 +38,15 @@ public abstract class MockTest {
     protected Display display;
     protected PromptHandler promptHandler;
     protected ElementBag elementBag;
-    protected Card card, card2;
+    protected Card card;
+    protected Card card2;
     protected ElementSpace[] elementSpaces;
     protected EggHatchingLogic eggHatchingLogic;
     protected Handler handler;
-    protected Effect effect, effect2;
-    protected ElementSpace elementSpace, elementSpace2;
+    protected Effect effect;
+    protected Effect effect2;
+    protected ElementSpace elementSpace;
+    protected ElementSpace elementSpace2;
 
     protected List<Object> mocks = new ArrayList<>();
 

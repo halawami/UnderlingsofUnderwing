@@ -42,6 +42,7 @@ public class AddElementsToAllAdjacentEggsEffectTests extends MockTest {
     public void testApplyOneElementColor() {
         AddElementsEffect testedEffect =
                 EasyMock.partialMockBuilder(AddElementsEffect.class).addMockedMethod("addElementToCard").createMock();
+        this.addMock(testedEffect);
         testedEffect.elementColors = new ElementColor[] {ElementColor.BLUE};
         testedEffect.addElementToCard(ElementColor.BLUE, card, elementSpaceLogic, elementBag);
 
@@ -55,6 +56,7 @@ public class AddElementsToAllAdjacentEggsEffectTests extends MockTest {
         card.handler = WildHandler.getInstance();
         AddElementsEffect testedEffect =
                 EasyMock.partialMockBuilder(AddElementsEffect.class).addMockedMethod("addElementToCard").createMock();
+        this.addMock(testedEffect);
         testedEffect.elementColors = new ElementColor[] {ElementColor.BLUE};
 
         this.replayAll();
@@ -66,6 +68,7 @@ public class AddElementsToAllAdjacentEggsEffectTests extends MockTest {
     public void testApplyTwoDifferentElementColor() {
         AddElementsEffect testedEffect =
                 EasyMock.partialMockBuilder(AddElementsEffect.class).addMockedMethod("addElementToCard").createMock();
+        this.addMock(testedEffect);
         testedEffect.elementColors = new ElementColor[] {ElementColor.BLUE, ElementColor.RED};
 
         testedEffect.addElementToCard(ElementColor.BLUE, card, elementSpaceLogic, elementBag);
@@ -80,6 +83,7 @@ public class AddElementsToAllAdjacentEggsEffectTests extends MockTest {
     public void testApplyTwoSameElementColor() {
         AddElementsEffect testedEffect =
                 EasyMock.partialMockBuilder(AddElementsEffect.class).addMockedMethod("addElementToCard").createMock();
+        this.addMock(testedEffect);
         testedEffect.elementColors = new ElementColor[] {ElementColor.BLUE, ElementColor.BLUE};
 
         testedEffect.addElementToCard(ElementColor.BLUE, card, elementSpaceLogic, elementBag);
@@ -122,6 +126,7 @@ public class AddElementsToAllAdjacentEggsEffectTests extends MockTest {
     public void testAddElementToCardEightPlayableSpaces() {
         ElementColor blue = ElementColor.BLUE;
         Element stubElement = EasyMock.niceMock(Element.class);
+        this.addMock(stubElement);
         List<ElementSpace> mockedPlayableSpaces = getMockedPlayableSpaces(8);
 
         EasyMock.expect(elementSpaceLogic.getPlayableSpaces(card, blue)).andReturn(mockedPlayableSpaces);

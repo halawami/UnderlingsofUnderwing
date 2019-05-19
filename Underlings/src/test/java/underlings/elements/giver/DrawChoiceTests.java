@@ -1,7 +1,9 @@
 package underlings.elements.giver;
 
 import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
+
 import underlings.gui.DrawChoice;
 
 public class DrawChoiceTests {

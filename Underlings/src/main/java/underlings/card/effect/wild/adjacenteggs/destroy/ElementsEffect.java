@@ -19,14 +19,14 @@ public abstract class ElementsEffect extends AdjacentEggsEffect {
 
     @Override
     public void applyOnAdjacentEgg(Card adjacentEgg, ElementBag elementBag, ElementSpaceLogic elementSpaceLogic,
-            EggHatchingLogic eggHatchingLogic, Deck deck,
-            HandlerMovementLogic handlerMovementLogic, HatchingGround hatchingGround) {
+            EggHatchingLogic eggHatchingLogic, Deck deck, HandlerMovementLogic handlerMovementLogic,
+            HatchingGround hatchingGround) {
         this.destroyElementsOnAdjacentEgg(adjacentEgg, elementSpaceLogic);
     }
 
     public void destroyElementsOnAdjacentEgg(Card adjacentEgg, ElementSpaceLogic elementSpaceLogic) {
         for (ElementColor elementColorToDestroy : this.elementColors) {
-            destroyElementsOfColorOnCard(elementColorToDestroy, adjacentEgg, elementSpaceLogic);
+            this.destroyElementsOfColorOnCard(elementColorToDestroy, adjacentEgg, elementSpaceLogic);
         }
     }
 
@@ -34,7 +34,7 @@ public abstract class ElementsEffect extends AdjacentEggsEffect {
             ElementSpaceLogic elementSpaceLogic) {
         List<ElementSpace> destroyableSpaces = elementSpaceLogic.getDestroyableSpaces(card, elementColorToDestroy);
         for (ElementSpace destroyableSpace : destroyableSpaces) {
-            destroyElementsOfColorOnSpace(destroyableSpace, elementColorToDestroy);
+            this.destroyElementsOfColorOnSpace(destroyableSpace, elementColorToDestroy);
         }
     }
 

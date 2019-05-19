@@ -17,7 +17,7 @@ public class HatchingGround implements Iterable<Card> {
     private int height;
     private int width;
     public Card[][] cards;
-    private Deck deck;
+    protected Deck deck;
     public ElementSpaceLogic logic;
     public boolean lateHatching;
 
@@ -44,38 +44,39 @@ public class HatchingGround implements Iterable<Card> {
         this.cards = new Card[this.height][this.width];
         for (int row = 0; row < this.height; row++) {
             for (int col = 0; col < this.width; col++) {
-                placeCard(row, col, this.deck.draw());
+                this.placeCard(row, col, this.deck.draw());
             }
         }
     }
 
     public List<Card> getUnclaimedEggs() {
-        return getDragons(Integer.MAX_VALUE, true);
+        return this.getDragons(Integer.MAX_VALUE, true);
     }
 
     public List<Card> getClaimedEggs() {
-        return getDragons(Integer.MAX_VALUE, false);
+        return this.getDragons(Integer.MAX_VALUE, false);
     }
 
     public List<Card> getAdjacentCards(Card centerCard) {
         Point cardCoordinates = this.getCardCoordinates(centerCard);
         List<Card> cardsToReturn = new LinkedList<>();
 
-        for (int diffY = -1; diffY <= 1; diffY++) {
-            for (int diffX = -1; diffX <= 1; diffX++) {
-                int distanceFromCard = Math.abs(diffX) + Math.abs(diffY);
-                int adjacentCardY = cardCoordinates.y + diffY;
-                int adjacentCardX = cardCoordinates.x + diffX;
-                if (distanceFromCard == 1 && this.coordinatesInBounds(adjacentCardY, adjacentCardX)) {
-                    cardsToReturn.add(this.cards[adjacentCardY][adjacentCardX]);
-                }
-            }
+        int y = cardCoordinates.y;
+        int x = cardCoordinates.x;
+        if (y > 0) {
+            cardsToReturn.add(this.cards[y - 1][x]);
         }
-        return cardsToReturn;
-    }
+        if (x > 0) {
+            cardsToReturn.add(this.cards[y][x - 1]);
+        }
+        if (y < this.height - 1) {
+            cardsToReturn.add(this.cards[y + 1][x]);
+        }
+        if (x < this.width - 1) {
+            cardsToReturn.add(this.cards[y][x + 1]);
+        }
 
-    private boolean coordinatesInBounds(int y, int x) {
-        return (y >= 0 && x >= 0 && y < this.height && x < this.width);
+        return cardsToReturn;
     }
 
     public Point getCardCoordinates(Card centerCard) {
@@ -121,9 +122,9 @@ public class HatchingGround implements Iterable<Card> {
         for (int row = 0; row < this.height; row++) {
             for (int col = 0; col < this.width; col++) {
                 Card currentCard = this.cards[row][col];
-                if (logic.isComplete(currentCard) && currentCard.handler != WildHandler.getInstance()) {
+                if (this.logic.isComplete(currentCard) && currentCard.handler != WildHandler.getInstance()) {
                     completeEggs.add(this.cards[row][col]);
-                    placeCard(row, col, this.deck.draw());
+                    this.placeCard(row, col, this.deck.draw());
                 }
             }
         }
@@ -134,7 +135,7 @@ public class HatchingGround implements Iterable<Card> {
         for (int row = 0; row < this.height; row++) {
             for (int col = 0; col < this.width; col++) {
                 if (this.cards[row][col] == card) {
-                    placeCard(row, col, this.deck.draw());
+                    this.placeCard(row, col, this.deck.draw());
                 }
             }
         }

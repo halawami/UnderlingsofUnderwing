@@ -26,13 +26,13 @@ public class CollectAndHatchAnyUnclaimedEggEffectTests {
         currentPlayer.hatchedCards = new ArrayList<>();
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         List<Card> mockedCards = this.getMockedCards(6);
-        Gui gui = EasyMock.mock(Gui.class);
-        EggHatchingLogic eggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
         mockedCards.get(0).points = 5;
         EasyMock.expect(hatchingGround.getDragons(5, true)).andReturn(mockedCards);
         EasyMock.expect(currentPlayer.getId()).andReturn(0);
+        Gui gui = EasyMock.mock(Gui.class);
         EasyMock.expect(gui.getCard(0, LocaleWrap.get("gui_card"), hatchingGround, mockedCards))
                 .andReturn(mockedCards.get(0));
+        EggHatchingLogic eggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
         eggHatchingLogic.hatchEgg(mockedCards.get(0), currentPlayer);
         CollectAndHatchAnyUnclaimedEggEffect collectAndHatchAnyUnclaimedEggEffect =
                 new CollectAndHatchAnyUnclaimedEggEffect();
@@ -53,15 +53,15 @@ public class CollectAndHatchAnyUnclaimedEggEffectTests {
         currentPlayer.hatchedCards = new ArrayList<>();
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         List<Card> mockedCards = this.getMockedCards(6);
-        Gui gui = EasyMock.mock(Gui.class);
-        EggHatchingLogic eggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
-        CollectAndHatchAnyUnclaimedEggEffect collectAndHatchAnyUnclaimedEggEffect =
-                new CollectAndHatchAnyUnclaimedEggEffect();
         mockedCards.get(0).points = 5;
         EasyMock.expect(hatchingGround.getDragons(5, true)).andReturn(mockedCards);
         EasyMock.expect(currentPlayer.getId()).andReturn(0);
+        Gui gui = EasyMock.mock(Gui.class);
         EasyMock.expect(gui.getCard(0, LocaleWrap.get("gui_card"), hatchingGround, mockedCards))
                 .andReturn(EmptyCard.getInstance());
+        EggHatchingLogic eggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
+        CollectAndHatchAnyUnclaimedEggEffect collectAndHatchAnyUnclaimedEggEffect =
+                new CollectAndHatchAnyUnclaimedEggEffect();
         collectAndHatchAnyUnclaimedEggEffect.on(gui).on(currentPlayer).on(hatchingGround).on(eggHatchingLogic);
         ElementSpace elementSpace = EasyMock.mock(ElementSpace.class);
 

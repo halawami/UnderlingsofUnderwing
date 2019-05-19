@@ -20,17 +20,17 @@ public class ElementSpaceLogic {
     private List<ElementColor> openElements;
 
     public ElementSpaceLogic(List<String> recipes) {
-        initMap(recipes);
-        openElements = new ArrayList<>();
+        this.initMap(recipes);
+        this.openElements = new ArrayList<>();
     }
 
     public boolean isComplete(ElementSpace elementSpace) {
-        return getValidAdditions(elementSpace).isEmpty();
+        return this.getValidAdditions(elementSpace).isEmpty();
     }
 
     public boolean isComplete(Card card) {
         for (ElementSpace elementSpace : card.elementSpaces) {
-            if (!isComplete(elementSpace)) {
+            if (!this.isComplete(elementSpace)) {
                 return false;
             }
         }
@@ -38,21 +38,21 @@ public class ElementSpaceLogic {
     }
 
     public void initMap(List<String> recipeLines) {
-        recipeMap = new HashMap<>();
+        this.recipeMap = new HashMap<>();
 
         for (String line : recipeLines) {
             ElementColor createdColor = ElementColor.valueOf(line.split(":")[0]);
-            recipeMap.put(createdColor, new ArrayList<List<ElementColor>>());
+            this.recipeMap.put(createdColor, new ArrayList<List<ElementColor>>());
 
             String[] recipes = line.split(":")[1].split(" ");
             for (String recipe : recipes) {
-                addRecipe(createdColor, recipe.split(","));
+                this.addRecipe(createdColor, recipe.split(","));
             }
         }
     }
 
     public void addRecipe(ElementColor createdColor, String... ingredients) {
-        List<List<ElementColor>> recipeList = recipeMap.get(createdColor);
+        List<List<ElementColor>> recipeList = this.recipeMap.get(createdColor);
         List<ElementColor> recipe = new ArrayList<ElementColor>();
         for (String ingredient : ingredients) {
             recipe.add(ElementColor.valueOf(ingredient));
@@ -61,7 +61,7 @@ public class ElementSpaceLogic {
     }
 
     public void resetRecipes(ElementColor color) {
-        List<List<ElementColor>> recipeList = recipeMap.get(color);
+        List<List<ElementColor>> recipeList = this.recipeMap.get(color);
         recipeList.clear();
         recipeList.add(Arrays.asList(color));
     }
@@ -81,8 +81,8 @@ public class ElementSpaceLogic {
     public List<ElementColor> getValidAdditions(ElementSpace elementSpace) {
         Set<ElementColor> validAdditions = new TreeSet<ElementColor>();
 
-        for (List<ElementColor> recipe : recipeMap.get(elementSpace.color)) {
-            if (!isValidRecipe(recipe, elementSpace)) {
+        for (List<ElementColor> recipe : this.recipeMap.get(elementSpace.color)) {
+            if (!this.isValidRecipe(recipe, elementSpace)) {
                 continue;
             }
 
@@ -103,7 +103,7 @@ public class ElementSpaceLogic {
     public List<ElementSpace> getPlayableSpaces(Card card, List<Element> elements) {
         Set<ElementSpace> spaces = new HashSet<>();
         for (Element element : elements) {
-            spaces.addAll(getPlayableSpaces(card, element.getColor()));
+            spaces.addAll(this.getPlayableSpaces(card, element.getColor()));
         }
         return new ArrayList<>(spaces);
     }
@@ -111,9 +111,9 @@ public class ElementSpaceLogic {
     public List<ElementSpace> getPlayableSpaces(Card card, ElementColor elementColor) {
         List<ElementSpace> spaces = new ArrayList<>();
         for (ElementSpace space : card.elementSpaces) {
-            if (getValidAdditions(space).contains(elementColor)) {
+            if (this.getValidAdditions(space).contains(elementColor)) {
                 spaces.add(space);
-            } else if (!getValidAdditions(space).isEmpty() && this.isOpenElement(elementColor)) {
+            } else if (!this.getValidAdditions(space).isEmpty() && this.isOpenElement(elementColor)) {
                 spaces.add(space);
             }
         }
@@ -134,7 +134,7 @@ public class ElementSpaceLogic {
     }
 
     public List<Element> getPlayableElements(ElementSpace space, List<Element> playerElements) {
-        List<ElementColor> validAdditions = getValidAdditions(space);
+        List<ElementColor> validAdditions = this.getValidAdditions(space);
         final List<Element> playableElements = new ArrayList<>();
 
         if (validAdditions.isEmpty()) {
@@ -143,7 +143,7 @@ public class ElementSpaceLogic {
 
         playerElements.forEach((Element element) -> {
             ElementColor color = element.getColor();
-            if (validAdditions.contains(color) || isOpenElement(color)) {
+            if (validAdditions.contains(color) || this.isOpenElement(color)) {
                 playableElements.add(element);
             }
         });

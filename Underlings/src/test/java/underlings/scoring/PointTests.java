@@ -1,8 +1,10 @@
 package underlings.scoring;
 
 import static org.junit.Assert.assertEquals;
+
 import java.util.Arrays;
 import java.util.Collections;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,7 +17,7 @@ public class PointTests {
 
     @Before
     public void init() {
-        this.scoreUtils = TestUtils.ScoreUtils();
+        this.scoreUtils = TestUtils.makeScoreUtils();
     }
 
     @Test
@@ -26,14 +28,14 @@ public class PointTests {
 
     @Test
     public void testOneCard() {
-        Card[] cards = {TestUtils.Card(10)};
+        Card[] cards = {TestUtils.makeCard(10)};
         int points = this.scoreUtils.calculatePoints(Arrays.asList(cards));
         assertEquals(10, points);
     }
 
     @Test
     public void testTwoCards() {
-        Card[] cards = {TestUtils.Card(13), TestUtils.Card(16)};
+        Card[] cards = {TestUtils.makeCard(13), TestUtils.makeCard(16)};
         int points = this.scoreUtils.calculatePoints(Arrays.asList(cards));
         assertEquals(29, points);
     }

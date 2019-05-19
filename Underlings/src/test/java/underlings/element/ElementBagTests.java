@@ -9,13 +9,16 @@ import static underlings.gui.DrawChoice.PURPLE;
 import static underlings.gui.DrawChoice.RED;
 import static underlings.gui.DrawChoice.WHITE;
 import static underlings.gui.DrawChoice.YELLOW;
+
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+
 import org.junit.Test;
+
 import underlings.gui.DrawChoice;
 
 public class ElementBagTests {

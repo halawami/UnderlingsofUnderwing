@@ -1,7 +1,9 @@
 package underlings.field;
 
 import static org.junit.Assert.assertTrue;
+
 import org.junit.Test;
+
 import underlings.gui.DrawChoice;
 
 public class AddTests extends FieldTests {

@@ -15,12 +15,13 @@ import underlings.element.Element;
 
 public class StealElementsTests extends MockTest {
 
-    private Player playerToStealFrom, stealer;
+    private Player playerToStealFrom;
+    private Player stealer;
 
     @Before
     public void init() {
-        this.playerToStealFrom = TestUtils.Player();
-        this.stealer = TestUtils.Player();
+        this.playerToStealFrom = TestUtils.makePlayer();
+        this.stealer = TestUtils.makePlayer();
     }
 
     @Test

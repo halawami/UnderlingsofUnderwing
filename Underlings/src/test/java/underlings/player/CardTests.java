@@ -2,10 +2,12 @@ package underlings.player;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,11 +19,12 @@ import underlings.handler.HandlerState;
 public class CardTests {
 
     private Player player;
-    private Card card, cardTwo;
+    private Card card;
+    private Card cardTwo;
 
     @Before
     public void init() {
-        this.player = TestUtils.Player();
+        this.player = TestUtils.makePlayer();
         this.card = new Card();
         this.card.handler = this.player.handlers.get(0);
         this.cardTwo = new Card();
@@ -59,7 +62,7 @@ public class CardTests {
     @Test
     public void testMostValuableOneDragon() {
         Player player = new Player(6, new HandlerFactory(), 0);
-        Card card = TestUtils.Card(1);
+        Card card = TestUtils.makeCard(1);
         player.hatchedCards = new LinkedList<>();
         player.hatchedCards.add(card);
         assertEquals(Arrays.asList(card), player.getMostValuableDragons());
@@ -67,8 +70,8 @@ public class CardTests {
 
     @Test
     public void testMostValuableMultipleDragonsOneHigher() {
-        Card card = TestUtils.Card(2);
-        Card card2 = TestUtils.Card(1);
+        Card card = TestUtils.makeCard(2);
+        Card card2 = TestUtils.makeCard(1);
         this.player.hatchedCards.add(card);
         this.player.hatchedCards.add(card2);
         List<Card> result = new ArrayList<>();
@@ -79,9 +82,9 @@ public class CardTests {
 
     @Test
     public void testMostValuableMultipleDragonsTie() {
-        Card card = TestUtils.Card(1);
-        Card card2 = TestUtils.Card(2);
-        Card card3 = TestUtils.Card(2);
+        Card card = TestUtils.makeCard(1);
+        Card card2 = TestUtils.makeCard(2);
+        Card card3 = TestUtils.makeCard(2);
 
         this.player.hatchedCards.add(card);
         this.player.hatchedCards.add(card2);

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import underlings.element.ElementBag;
 import underlings.field.Field;
 import underlings.game.HatchingGround;
@@ -24,7 +25,7 @@ public class HandlerPhase extends RotationPhase {
     }
 
     protected Map<Player, List<Handler>> unmovedHandlers;
-    private HandlerMovementLogic handlerMovementLogic;
+    protected HandlerMovementLogic handlerMovementLogic;
 
     @Override
     public void setup() {

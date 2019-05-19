@@ -28,7 +28,7 @@ public class CollectFiveElementsEffectTests extends MockTest {
         ElementBag elementBag = this.mock(ElementBag.class);
         Player player = this.mock(Player.class);
         CollectFiveElementsEffect effect = new CollectFiveElementsEffect();
-        ElementColor[] colors = new ElementColor[]{RED, BLUE, GREEN, BLACK, WHITE};
+        ElementColor[] colors = new ElementColor[] {RED, BLUE, GREEN, BLACK, WHITE};
         effect.elementColors = colors;
         List<Element> mockElements = this.mockListOf(Element.class).withLengthOf(5);
 
@@ -45,7 +45,7 @@ public class CollectFiveElementsEffectTests extends MockTest {
     @Test
     public void testToString() {
         CollectFiveElementsEffect effect = new CollectFiveElementsEffect();
-        effect.elementColors = new ElementColor[]{ElementColor.BLACK};
+        effect.elementColors = new ElementColor[] {ElementColor.BLACK};
         StringBuilder elements = new StringBuilder();
         for (ElementColor color : effect.elementColors) {
             elements.append(color);
