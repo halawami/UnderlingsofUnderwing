@@ -12,7 +12,7 @@ import org.junit.Test;
 
 import underlings.MockTest;
 import underlings.card.Card;
-import underlings.card.effect.wild.ReturnMostValuableDragonEffect;
+import underlings.card.effect.wild.deck.ReturnMostValuableDragonEffect;
 import underlings.game.Deck;
 import underlings.gui.Gui;
 import underlings.player.Player;

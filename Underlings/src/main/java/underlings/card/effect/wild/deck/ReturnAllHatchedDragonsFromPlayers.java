@@ -1,4 +1,4 @@
-package underlings.card.effect.wild;
+package underlings.card.effect.wild.deck;
 
 import java.util.Arrays;
 import java.util.List;
