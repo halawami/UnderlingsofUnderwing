@@ -20,7 +20,7 @@ public class RemoveAllHandlersFromAllEggsInPlayEffectTests extends MockTest {
 
     @Test
     public void testNoHandler() {
-        new Handler(null);
+        this.testWithHandler(null);
     }
 
     @Test
