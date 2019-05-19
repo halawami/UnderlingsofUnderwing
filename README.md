@@ -8,7 +8,7 @@ Hussein Alawami, Mohammad Baqer, George Main IV, Wesley Siebenthaler
 
 The definition of done is created by examining and applying BVA on the rules.
 
-### Game Setup ```underlings.game.SetupTests```
+#### Game Setup ```underlings.game.SetupTests```
 
 - [x] The players should be created for [2, 6] players
   - When there are 2 players, the game should have 2 players
@@ -223,3 +223,38 @@ The definition of done is created by examining and applying BVA on the rules.
   - Ignatius
 - [x] This effect let the player steal all of stored elements from another player
   - ```underlings.card.effect.domestic.players.StealAllStoredElementsEffectTests.testEffect()```
+- [x] The player should know that the effect has been run
+  - ```underlings.card.effect.domestic.players.StealAllStoredElementsEffectTests.testToString()```
+
+#### Examine the top 3 Dragons in the draw pile; reorder as desired ```underlings.card.effect.domestic.deck.ReorderTopThreeCardsEffectTests```
+
+- Dragons
+  - Lasura
+- [x] This effect let the player look at the top three cards of deck and reorder them as desired
+  - Deck has 0 cards
+     - ```underlings.card.effect.domestic.deck.ReorderTopThreeCardsEffectTests.testNoCardsLeft()```
+  - Deck has 1 card
+     - ```underlings.card.effect.domestic.deck.ReorderTopThreeCardsEffectTests.testOneCardLeft()```
+  - Deck has 2 card
+     - ```underlings.card.effect.domestic.deck.ReorderTopThreeCardsEffectTests.testTwoCardsLeft()```
+  - Deck has 3 card
+     - ```underlings.card.effect.domestic.deck.ReorderTopThreeCardsEffectTests.testThreeOrMoreCardsLeft()```
+- [x] The player should know that the effect has been run
+  - ```underlings.card.effect.domestic.deck.ReorderTopThreeCardsEffectTests.testToString()```
+
+
+#### Examine the top 3 Dragons in the draw pile; reorder as desired ```underlings.card.effect.domestic.deck.ReorderTopThreeCardsEffectTests```
+
+- Dragons
+  - Lasura
+- [x] This effect let the player look at the top three cards of deck and reorder them as desired
+  - Deck has 0 cards
+     - ```underlings.card.effect.domestic.deck.ReorderTopThreeCardsEffectTests.testNoCardsLeft()```
+  - Deck has 1 card
+     - ```underlings.card.effect.domestic.deck.ReorderTopThreeCardsEffectTests.testOneCardLeft()```
+  - Deck has 2 card
+     - ```underlings.card.effect.domestic.deck.ReorderTopThreeCardsEffectTests.testTwoCardsLeft()```
+  - Deck has 3 card
+     - ```underlings.card.effect.domestic.deck.ReorderTopThreeCardsEffectTests.testThreeOrMoreCardsLeft()```
+- [ ] The player should know that the effect has been run
+  - ```underlings.card.effect.domestic.deck.ReorderTopThreeCardsEffectTests.testToString()```
