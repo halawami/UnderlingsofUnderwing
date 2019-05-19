@@ -39,6 +39,28 @@ The definition of done is created by examining and applying BVA on the rules.
   - ```underlings.hatchingground.SetupTests.testDeal4By3()```
   - ```underlings.hatchingground.SetupTests.testDeal4By4()```
 
+
+#### Handler Setup ```underlings.handler.SetupTests```
+
+- [x] Players start off with 2 handlers for [2, 6] players
+  - When there are 2 players, each player has 2 handlers
+    - ```underlings.handler.SetupTests.test2PlayerHandlerCount()```
+  - When there are 6 players, each player has 2 handlers
+    - ```underlings.handler.SetupTests.test6PlayerHandlerCount()```
+- [x] Handlers should start in the ready room for [2, 6] players
+  - When there are 2 players, each handler for each player should start in the ready room
+    - ```underlings.handler.SetupTests.test2PlayerReadyRoom()```
+  - When there are 6 players, each handler for each player should start in the ready room
+    - ```underlings.handler.SetupTests.test6PlayerReadyRoom()```
+- [x] The maximum number of handlers should be set for [2, 6] players
+  - When there are 2 players, the maximum number of handlers is 4
+    - ```underlings.handler.SetupTests.test2PlayerMaxHandlers()```
+  - When there are 3 players, the maximum number of handlers is 5
+    - ```underlings.handler.SetupTests.test3PlayerMaxHandlers()```
+  - When there are [4, 6] players, the maximum number of handlers is 6
+    - ```underlings.handler.SetupTests.test4PlayerMaxHandlers()```
+    - ```underlings.handler.SetupTests.test6PlayerMaxHandlers()```
+
 ### Game ```underlings.game.GameTests```
 
 - [x] The game should be setup when the program is ran
