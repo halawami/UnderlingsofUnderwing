@@ -2,7 +2,6 @@ package underlings.effect.handler;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import underlings.MockTest;
@@ -50,15 +49,17 @@ public class RemoveAllHandlersFromAllEggsInPlayEffectTests extends MockTest {
 
     @Test
     public void testWildHandler() {
+        HandlerMovementLogic handlerMovementLogic = this.mock(HandlerMovementLogic.class);
         Card card = new Card();
-        Handler handler = WildHandler.getInstance();
-        card.handler = handler;
+        card.handler = WildHandler.getInstance();
         RemoveAllHandlersFromAllEggsInPlay testedEffect = new RemoveAllHandlersFromAllEggsInPlay();
 
-        testedEffect.applyOnCardInPlay(card, null, null, this.handlerMovementLogic);
+        handlerMovementLogic.move(card.handler, HandlerChoice.BREAK_ROOM, FakePlayer.getInstance());
+        handlerMovementLogic.removeHandlerFromCard(card);
 
-        Assert.assertEquals(WildHandler.getInstance(), card.handler);
-        Assert.assertEquals(HandlerState.CARD, handler.getState());
+        this.replayAll();
+
+        testedEffect.applyOnCardInPlay(card, null, null, handlerMovementLogic);
     }
 
     @Test
