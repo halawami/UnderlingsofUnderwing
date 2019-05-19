@@ -2,7 +2,6 @@ package underlings.scoring;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import underlings.card.Card;
 import underlings.card.Temperature;
 import underlings.gui.Gui;
@@ -28,8 +27,8 @@ public class ScoreUtils {
         for (Player player : this.players) {
             player.netTemperature = this.calculateTemperature(player.hatchedCards);
 
-            warmest = (player.netTemperature > warmest) ? player.netTemperature : warmest;
-            coolest = (player.netTemperature < coolest) ? player.netTemperature : coolest;
+            warmest = Math.max(player.netTemperature, warmest);
+            coolest = Math.min(player.netTemperature, coolest);
         }
 
         for (Player player : this.players) {
@@ -43,7 +42,7 @@ public class ScoreUtils {
 
             player.score += this.calculatePoints(player.hatchedCards);
 
-            this.winningScore = (player.score > this.winningScore) ? player.score : this.winningScore;
+            this.winningScore = Math.max(player.score, this.winningScore);
         }
     }
 
