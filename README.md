@@ -143,7 +143,31 @@ The definition of done is created by examining and applying BVA on the rules.
     - ```underlings.hatchingground.DeckTests.testAddCardShuffle()```
   - An empty card can not be added to the deck
     - ```underlings.hatchingground.DeckTests.testAddEmptyCard()```
-  
+
+### HatchingGround ```underlings.hatchingground```
+
+- [x] The hatching ground can return the adjacent cards of a card
+  - A card in the middle returns the card above, below, left, and right of it
+    - ```underlings.hatchingground.AdjacentCardsTests.testMiddleCard()```
+  - A card on the left edge returns the card above, below, and right of it
+    - ```underlings.hatchingground.AdjacentCardsTests.testLeftEdgeCard()```
+  - A card on the top edge returns the card below, left, and right of it
+    - ```underlings.hatchingground.AdjacentCardsTests.testTopEdgeCard()```
+  - A card on the bottom edge returns the card above, left, and right of it
+    - ```underlings.hatchingground.AdjacentCardsTests.testBottomEdgeCard()```
+  - A card on the right edge returns the card above, bottom, and left of it
+    - ```underlings.hatchingground.AdjacentCardsTests.testRightEdgeCard()```
+- [x] The hatching ground can return the coordinates of a card
+  - ```underlings.hatchingground.AdjacentCardsTests.testGetCardCoordinatesFirstCard()```
+  - ```underlings.hatchingground.AdjacentCardsTests.testGetCardCoordinatesLeftEdge()```
+  - ```underlings.hatchingground.AdjacentCardsTests.testGetCardCoordinatesTopEdge()```
+  - ```underlings.hatchingground.AdjacentCardsTests.testGetCardCoordinatesRightEdge()```
+  - ```underlings.hatchingground.AdjacentCardsTests.testGetCardCoordinatesBottomEdge()```
+  - ```underlings.hatchingground.AdjacentCardsTests.testGetCardCoordinatesMiddleEdge()```
+  - ```underlings.hatchingground.AdjacentCardsTests.testGetCardCoordinatesInvalidCard()```
+
+####
+
 ### Scoring ```underlings.scoring```
 
 #### Temperature Tests ```underlings.scoring.TemperatureTests```
@@ -213,28 +237,33 @@ The definition of done is created by examining and applying BVA on the rules.
      - ```underlings.card.effect.domestic.deck.ReorderTopThreeCardsEffectTests.testOneCardLeft()```
   - Deck has 2 card
      - ```underlings.card.effect.domestic.deck.ReorderTopThreeCardsEffectTests.testTwoCardsLeft()```
-  - Deck has 3 card
+  - Deck has [3,DECK_SIZE] card
      - ```underlings.card.effect.domestic.deck.ReorderTopThreeCardsEffectTests.testThreeOrMoreCardsLeft()```
 - [x] The player should know that the effect has been run
   - ```underlings.card.effect.domestic.deck.ReorderTopThreeCardsEffectTests.testToString()```
 
-
-#### Examine the top 3 Dragons in the draw pile; reorder as desired ```underlings.card.effect.domestic.deck.ReorderTopThreeCardsEffectTests```
+#### Collect 1 element ```underlings.card.effect.domestic.element.CollectElementEffectTests```
 
 - Dragons
-  - Lasura
-- [x] This effect let the player look at the top three cards of deck and reorder them as desired
-  - Deck has 0 cards
-     - ```underlings.card.effect.domestic.deck.ReorderTopThreeCardsEffectTests.testNoCardsLeft()```
-  - Deck has 1 card
-     - ```underlings.card.effect.domestic.deck.ReorderTopThreeCardsEffectTests.testOneCardLeft()```
-  - Deck has 2 card
-     - ```underlings.card.effect.domestic.deck.ReorderTopThreeCardsEffectTests.testTwoCardsLeft()```
-  - Deck has 3 card
-     - ```underlings.card.effect.domestic.deck.ReorderTopThreeCardsEffectTests.testThreeOrMoreCardsLeft()```
-- [ ] The player should know that the effect has been run
-  - ```underlings.card.effect.domestic.deck.ReorderTopThreeCardsEffectTests.testToString()```
+  - SKY WHELP, WATER WHELP, ARBOR WHELP, BLOOD WHELP, BRIMSTONE WHELP, ELECTRIC WHELP, TWILIGHT WHELP, HARVEST WHELP, VOID WHELP, UNDINE WHELP, STORM WHELP, STEAM WHELP, NATURE WHELP, ETHEREAL WHELP, ETHEREAL DRAKE, BLOOD DRAKE, SKY DRAKE, WATER DRAKE, AEON WHELP, NEBULA WHELP, CHROMATIC WHELP, CHROMATIC DRAKE, OPALESCENT DRAKE, BLOOD WYVERN, SKY WYVERN, WATER WYVERN
+- [x] This effect let the player collect one element of a color from a list of colors, from the element bag
+  - Collect 1 element from a list of [1] color
+     - ```underlings.card.effect.domestic.element.CollectElementEffectTests.testOneColor()```
+  - Collect 1 element from a list of [2,MAX] colors
+     - ```underlings.card.effect.domestic.element.CollectElementEffectTests.testTwoColors()```
+- [x] The player should know that the effect has been run
+  - ```underlings.card.effect.domestic.element.CollectElementEffectTests.testToString()```
+
   
+#### Collect 5 elements of each color ```underlings.card.effect.domestic.element.CollectFiveElementsEffectTests```
+
+- Dragons
+  - TIAMAT
+- [x] This effect let the player collect one element of each color from a list of 5 colors, from the element bag
+  - Collect 5 elements, 1 element for each color from list [RED, BLUE, GREEN, BLACK, WHITE]
+     - ```underlings.card.effect.domestic.element.CollectFiveElementsEffectTests.testEffect()```
+- [x] The player should know that the effect has been run
+  - ```underlings.card.effect.domestic.element.CollectFiveElementsEffectTests.testToString()```
 #### ALL Eggs claimed this round take +1 round to hatch  ```underlings.card.effect.wild.AllEggsHatchLateEffectTests```
 
 - Dragons
@@ -243,4 +272,3 @@ The definition of done is created by examining and applying BVA on the rules.
   - ```underlings.card.effect.wild.AllEggsHatchLateEffectTests.testApply()```
 - [x] The player should know the effect has been run
   - ```underlings.card.effect.wild.AllEggsHatchLateEffectTests.testToString()```
-   
