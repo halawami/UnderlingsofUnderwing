@@ -174,6 +174,16 @@ The definition of done is created by examining and applying BVA on the rules.
   - If the bag is empty, they do not get an element
     - ```underlings.phase.DrawingPhaseTests.testTurnNullElement```
 
+### HandlerPhase ```underlings.phase.HandlerPhaseTests```
+
+- [x] The player chooses a place to move a handler to
+  - The player has a handler outside the break room
+    - ```underlings.phase.HandlerPhaseTests.testTurn```
+  - The player has a handler in the break room
+    - ```underlings.phase.HandlerPhaseTests.testTurnHandlerInBreakRoom```
+  - The player has no handlers
+    - ```underlings.phase.HandlerPhaseTests.testTurnNoHandlers```
+
 ### Scoring ```underlings.scoring```
 
 #### Temperature Tests ```underlings.scoring.TemperatureTests```
