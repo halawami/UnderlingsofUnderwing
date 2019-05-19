@@ -50,6 +50,34 @@ public class AllEggsInPlayEffectTests extends MockTest {
         effect.applyOnCardInPlay(card);
     }
 
+    @Test
+    public void testApplyOnCardInPlayDoNothing() {
+        ElementBag elementBag = this.mock(ElementBag.class);
+        ElementSpaceUtilities elementSpaceLogic = this.mock(ElementSpaceUtilities.class);
+        Card centerCard = this.mock(Card.class);
+        HatchingGround hatchingGround = this.mock(HatchingGround.class);
+        Player player = new Player(0, null, 0);
+        player.elementSpaceLogic = elementSpaceLogic;
+        HandlerMovementLogic handlerMovementLogic = this.mock(HandlerMovementLogic.class);
+        List<Card> mockedCards = this.mockListOf(Card.class).withLengthOf(2);
+        EggHatchingUtilities eggHatchingLogic = this.mock(EggHatchingUtilities.class);
+        AllEggsInPlayEffect effect = EasyMock.partialMockBuilder(AllEggsInPlayEffect.class).createMock();
+        this.addMock(effect);
+
+        EasyMock.expect(hatchingGround.getAllCards()).andReturn(mockedCards);
+        for (Card mockedCard : mockedCards) {
+            effect.applyOnCardInPlay(mockedCard);
+            effect.applyOnCardInPlay(mockedCard, handlerMovementLogic);
+            effect.applyOnCardInPlay(mockedCard, elementSpaceLogic, elementBag, handlerMovementLogic);
+
+        }
+
+        this.replayAll();
+
+        effect.on(elementBag).on(centerCard).on(hatchingGround).on(eggHatchingLogic).on(player).on(handlerMovementLogic)
+                .apply();
+    }
+
     private void testApplyOnCardInPlay(int numberOfCards) {
         ElementBag elementBag = this.mock(ElementBag.class);
         ElementSpaceUtilities elementSpaceLogic = this.mock(ElementSpaceUtilities.class);
