@@ -18,7 +18,7 @@ import underlings.utilities.PlacementUtilities;
 public class PlacementPhase extends RotationPhase {
 
     private Map<Player, Integer> turnCounts;
-    private EggHatchingLogic wildEggHatchingLogic;
+    protected EggHatchingLogic wildEggHatchingLogic;
     protected PlacementUtilities utils;
 
     public PlacementPhase(List<Player> players, Gui gui, HatchingGround hatchingGround, Runnable displayMethod,

@@ -24,7 +24,9 @@ import underlings.gui.YesNoChoice;
 import underlings.handler.Handler;
 import underlings.handler.HandlerState;
 import underlings.handler.WildHandler;
+import underlings.player.FakePlayer;
 import underlings.player.Player;
+import underlings.utilities.EggHatchingLogic;
 import underlings.utilities.LocaleWrap;
 import underlings.utilities.PlacementUtilities;
 
@@ -205,8 +207,9 @@ public class PlacementPhaseTests extends MockTest {
 
     @Test
     public void testTurnOver() {
-        PlacementPhase placementPhase = EasyMock.partialMockBuilder(PlacementPhase.class)
-                .addMockedMethod("checkAndDecrementTurnCount").createMock();
+        PlacementPhase placementPhase =
+                EasyMock.partialMockBuilder(PlacementPhase.class).addMockedMethod("checkAndDecrementTurnCount")
+                        .addMockedMethod("checkGameover").addMockedMethod("setPhaseComplete").createMock();
         this.addMock(placementPhase);
 
         EasyMock.expect(placementPhase.checkAndDecrementTurnCount(this.player)).andReturn(false);
@@ -218,8 +221,9 @@ public class PlacementPhaseTests extends MockTest {
 
     @Test
     public void testTurnNoPlayableCards() {
-        PlacementPhase placementPhase = EasyMock.partialMockBuilder(PlacementPhase.class)
-                .addMockedMethod("checkAndDecrementTurnCount").addMockedMethod("setPhaseComplete").createMock();
+        PlacementPhase placementPhase =
+                EasyMock.partialMockBuilder(PlacementPhase.class).addMockedMethod("checkAndDecrementTurnCount")
+                        .addMockedMethod("checkGameover").addMockedMethod("setPhaseComplete").createMock();
         placementPhase.utils = this.placementUtilities;
         placementPhase.gui = this.gui;
         this.addMock(placementPhase);
@@ -236,8 +240,9 @@ public class PlacementPhaseTests extends MockTest {
 
     @Test
     public void testTurnCardNotComplete() {
-        PlacementPhase placementPhase = EasyMock.partialMockBuilder(PlacementPhase.class)
-                .addMockedMethod("checkAndDecrementTurnCount").createMock();
+        PlacementPhase placementPhase =
+                EasyMock.partialMockBuilder(PlacementPhase.class).addMockedMethod("checkAndDecrementTurnCount")
+                        .addMockedMethod("checkGameover").addMockedMethod("setPhaseComplete").createMock();
         placementPhase.utils = this.placementUtilities;
         placementPhase.gui = this.gui;
         placementPhase.hatchingGround = this.hatchingGround;
@@ -263,8 +268,9 @@ public class PlacementPhaseTests extends MockTest {
 
     @Test
     public void testTurnCardCompleteDomestic() {
-        PlacementPhase placementPhase = EasyMock.partialMockBuilder(PlacementPhase.class)
-                .addMockedMethod("checkAndDecrementTurnCount").createMock();
+        PlacementPhase placementPhase =
+                EasyMock.partialMockBuilder(PlacementPhase.class).addMockedMethod("checkAndDecrementTurnCount")
+                        .addMockedMethod("checkGameover").addMockedMethod("setPhaseComplete").createMock();
         placementPhase.utils = this.placementUtilities;
         placementPhase.gui = this.gui;
         placementPhase.hatchingGround = this.hatchingGround;
@@ -288,5 +294,40 @@ public class PlacementPhaseTests extends MockTest {
 
         placementPhase.turn(this.player);
     }
+
+    @Test
+    public void testTurnCardCompleteWild() {
+        PlacementPhase placementPhase =
+                EasyMock.partialMockBuilder(PlacementPhase.class).addMockedMethod("checkAndDecrementTurnCount")
+                        .addMockedMethod("checkGameover").addMockedMethod("setPhaseComplete").createMock();
+        EggHatchingLogic wildEggHatchingLogic = EasyMock.mock(EggHatchingLogic.class);
+        placementPhase.utils = this.placementUtilities;
+        placementPhase.gui = this.gui;
+        placementPhase.hatchingGround = this.hatchingGround;
+        placementPhase.wildEggHatchingLogic = wildEggHatchingLogic;
+        this.addMock(wildEggHatchingLogic);
+        this.addMock(placementPhase);
+
+        EasyMock.expect(placementPhase.checkAndDecrementTurnCount(this.player)).andReturn(true);
+        EasyMock.expect(this.placementUtilities.getPlayableCards(this.player.elementSpaceLogic, this.player.elements))
+                .andReturn(Arrays.asList(new Card()));
+        placementPhase.setPhaseComplete(false);
+
+        Card card = this.mock(Card.class);
+        ElementSpace elementSpace = this.mock(ElementSpace.class);
+
+        EasyMock.expect(this.placementUtilities.selectCard(EasyMock.anyObject(), EasyMock.anyObject())).andReturn(card);
+        EasyMock.expect(this.placementUtilities.selectElementSpace(card, this.player)).andReturn(elementSpace);
+        this.placementUtilities.placeElements(elementSpace, this.player);
+        EasyMock.expect(this.hatchingGround.logic.isComplete(card)).andReturn(true);
+
+        wildEggHatchingLogic.hatchEgg(card, FakePlayer.getInstance());
+        placementPhase.checkGameover();
+
+        this.replayAll();
+
+        placementPhase.turn(this.player);
+    }
+
 
 }
