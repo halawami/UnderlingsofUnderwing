@@ -21,14 +21,14 @@ public class StealAllStoredElementsTests extends MockTest {
         Player currentPlayer = this.mock(Player.class);
         List<Player> players = this.mockListOf(Player.class).withLengthOf(6);
         Gui gui = this.mock(Gui.class);
-        Effect testedEffect = new StealAllStoredElements();
+        Effect effect = new StealAllStoredElements();
 
         EasyMock.expect(gui.promptChoice(LocaleWrap.get("prompt_war_players"), players, 0)).andReturn(players.get(3));
         currentPlayer.stealAllElementsFromPlayer(players.get(3));
 
         this.replayAll();
 
-        testedEffect.on(currentPlayer).on(players).on(gui).apply();
+        effect.on(currentPlayer).on(players).on(gui).apply();
     }
 
     @Test
