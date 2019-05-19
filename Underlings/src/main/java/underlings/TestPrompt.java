@@ -2,8 +2,8 @@ package underlings;
 
 import java.util.List;
 import java.util.Random;
-
 import underlings.gui.ConcretePrompt;
+import underlings.handler.HandlerChoice;
 
 public class TestPrompt extends ConcretePrompt {
     Random rand;
@@ -26,8 +26,14 @@ public class TestPrompt extends ConcretePrompt {
         }
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public <T> T promptChoice(String prompt, List<T> choices, int playerId) {
+        if (choices.get(0) instanceof HandlerChoice && this.rand.nextInt(2) == 1) {
+            if (choices.contains(HandlerChoice.CARD)) {
+                return (T) HandlerChoice.CARD;
+            }
+        }
         this.delay();
         System.out.println(choices);
         T val = choices.get(this.rand.nextInt(choices.size()));
