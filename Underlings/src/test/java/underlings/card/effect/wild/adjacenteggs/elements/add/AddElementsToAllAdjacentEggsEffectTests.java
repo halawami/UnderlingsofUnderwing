@@ -1,11 +1,9 @@
 package underlings.card.effect.wild.adjacenteggs.elements.add;
 
 import static org.junit.Assert.assertEquals;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
@@ -77,7 +75,9 @@ public class AddElementsToAllAdjacentEggsEffectTests extends MockTest {
 
         this.replayAll();
 
-        effect.applyOnAdjacentEgg(adjacentCard, null, null, null);
+        System.out.println("Is it? - " + (adjacentCard.handler == WildHandler.getInstance()));
+
+        effect.applyOnAdjacentEgg(adjacentCard, null, null);
     }
 
     @Test
@@ -143,7 +143,7 @@ public class AddElementsToAllAdjacentEggsEffectTests extends MockTest {
     public void testToString() {
         this.replayAll();
         AddElementsEffect effect = new AddElementsEffect();
-        effect.elementColors = new ElementColor[]{ElementColor.BLACK};
+        effect.elementColors = new ElementColor[] {ElementColor.BLACK};
         StringBuilder elements = new StringBuilder();
         for (ElementColor color : effect.elementColors) {
             elements.append(color);
