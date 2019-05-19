@@ -18,78 +18,68 @@ import underlings.player.Player;
 
 public class DrawElementsOfChoiceEffectTests extends MockTest {
 
-    private Player player;
-    private ElementBag elementBag;
-    private DrawElementsOfChoiceEffect testedEffect;
+    private DrawElementsOfChoiceEffect effect;
 
     @Before
     public void init() {
         this.player = EasyMock.mock(Player.class);
         this.elementBag = EasyMock.mock(ElementBag.class);
-        this.testedEffect = new DrawElementsOfChoiceEffect();
     }
 
     @Test
     public void testApply() {
-        this.player.addObserverEffect(this.testedEffect);
+        this.effect = new DrawElementsOfChoiceEffect();
+        this.player.addObserverEffect(this.effect);
 
-        EasyMock.replay(this.player, this.elementBag);
+        this.replayAll();
 
-        this.testedEffect.on(this.player).on(this.elementBag).apply();
+        this.effect.on(this.player).on(this.elementBag).apply();
 
-        Assert.assertEquals(this.elementBag, this.testedEffect.bag);
-        EasyMock.verify(this.player, this.elementBag);
+        Assert.assertEquals(this.elementBag, this.effect.bag);
     }
 
     @Test
     public void testOnFirstPhaseOne() {
-        this.testedEffect = EasyMock.partialMockBuilder(DrawElementsOfChoiceEffect.class)
+        this.effect = EasyMock.partialMockBuilder(DrawElementsOfChoiceEffect.class)
                 .addMockedMethod("getEffectElementGivers").createMock();
-        this.testedEffect.bag = this.elementBag;
+        this.addMock(this.effect);
+        this.effect.bag = this.elementBag;
         List<ElementGiver> elementGivers = this.mockListOf(ElementGiver.class).withLengthOf(2);
         List<ElementGiver> effectElementGivers = this.mockListOf(ElementGiver.class).withLengthOf(2);
 
-        EasyMock.expect(player.getElementGivers()).andReturn(elementGivers);
-        EasyMock.expect(testedEffect.getEffectElementGivers(elementGivers, elementBag)).andReturn(effectElementGivers);
+        EasyMock.expect(this.player.getElementGivers()).andReturn(elementGivers);
+        EasyMock.expect(this.effect.getEffectElementGivers(elementGivers, this.elementBag))
+                .andReturn(effectElementGivers);
         this.player.useEffectElementGivers(true);
 
-        EasyMock.replay(this.player, this.testedEffect, this.elementBag);
-        elementGivers.forEach(EasyMock::replay);
-        effectElementGivers.forEach(EasyMock::replay);
+        this.replayAll();
 
-        this.testedEffect.onPhaseOne(this.player);
+        this.effect.onPhaseOne(this.player);
 
         Assert.assertEquals(effectElementGivers, this.player.effectElementGivers);
-        EasyMock.verify(this.player, this.testedEffect, this.elementBag);
-        elementGivers.forEach(EasyMock::verify);
-        effectElementGivers.forEach(EasyMock::verify);
     }
 
     @Test
     public void testOnSecondPhaseOne() {
-        this.testedEffect = EasyMock.partialMockBuilder(DrawElementsOfChoiceEffect.class)
+        this.effect = EasyMock.partialMockBuilder(DrawElementsOfChoiceEffect.class)
                 .addMockedMethod("getEffectElementGivers").createMock();
-        this.testedEffect.bag = this.elementBag;
+        this.effect.bag = this.elementBag;
         List<ElementGiver> elementGivers = this.mockListOf(ElementGiver.class).withLengthOf(2);
-        List<ElementGiver> effectedElementGivers = this.mockListOf(ElementGiver.class).withLengthOf(2);
+        List<ElementGiver> effectElementGivers = this.mockListOf(ElementGiver.class).withLengthOf(2);
 
-        EasyMock.expect(player.getElementGivers()).andReturn(elementGivers).once();
-        EasyMock.expect(testedEffect.getEffectElementGivers(elementGivers, elementBag)).andReturn(effectedElementGivers)
+        EasyMock.expect(this.player.getElementGivers()).andReturn(elementGivers).once();
+        EasyMock.expect(this.effect.getEffectElementGivers(elementGivers, this.elementBag))
+                .andReturn(effectElementGivers)
                 .once();
         this.player.useEffectElementGivers(true);
         EasyMock.expectLastCall().once();
 
-        EasyMock.replay(this.player, this.testedEffect, this.elementBag);
-        elementGivers.forEach(EasyMock::replay);
-        effectedElementGivers.forEach(EasyMock::replay);
+        this.replayAll();
 
-        this.testedEffect.onPhaseOne(this.player);
-        this.testedEffect.onPhaseOne(this.player);
-
-        EasyMock.verify(this.player, this.testedEffect, this.elementBag);
-        elementGivers.forEach(EasyMock::verify);
-        effectedElementGivers.forEach(EasyMock::verify);
+        this.effect.onPhaseOne(this.player);
+        this.effect.onPhaseOne(this.player);
     }
+
 
     @Test
     public void testGetEffectElementGiversOneElementGiver() {
@@ -108,30 +98,24 @@ public class DrawElementsOfChoiceEffectTests extends MockTest {
 
     private void testGetEffectElementGivers(int numberOfElementGivers) {
 
-        ElementGiverFactory elementGiverFactory = EasyMock.mock(ElementGiverFactory.class);
-        this.testedEffect.elementGiverFactory = elementGiverFactory;
-        this.testedEffect.bag = this.elementBag;
+        ElementGiverFactory elementGiverFactory = this.mock(ElementGiverFactory.class);
+        this.effect.elementGiverFactory = elementGiverFactory;
+        this.effect.bag = this.elementBag;
         List<DrawChoice> availableDrawChoices = Arrays.asList(DrawChoice.BLUE, DrawChoice.RED);
-        List<ElementGiver> mockEffectGivers = this.mockListOf(ElementGiver.class).withLengthOf(numberOfElementGivers);
+        List<ElementGiver> elementGivers = this.mockListOf(ElementGiver.class).withLengthOf(numberOfElementGivers);
+        List<ElementGiver> effectElementGivers = this.mockListOf(ElementGiver.class)
+                .withLengthOf(numberOfElementGivers);
 
         EasyMock.expect(this.elementBag.getAvailableDrawChoices()).andReturn(availableDrawChoices);
-        for (ElementGiver effectElementGiver : mockEffectGivers) {
+        for (ElementGiver effectElementGiver : effectElementGivers) {
             EasyMock.expect(elementGiverFactory.createElementGiver(availableDrawChoices)).andReturn(effectElementGiver);
         }
 
-        List<ElementGiver> elementGivers = this.mockListOf(ElementGiver.class).withLengthOf(numberOfElementGivers);
-        EasyMock.replay(this.elementBag, elementGiverFactory);
-        elementGivers.forEach(EasyMock::replay);
-        mockEffectGivers.forEach(EasyMock::replay);
+        this.replayAll();
 
-        List<ElementGiver> effectElementGivers =
-                this.testedEffect.getEffectElementGivers(elementGivers, this.elementBag);
+        List<ElementGiver> actualEffectGivers = this.effect.getEffectElementGivers(elementGivers, this.elementBag);
 
-        Assert.assertEquals(mockEffectGivers, effectElementGivers);
-
-        EasyMock.verify(this.elementBag, elementGiverFactory);
-        elementGivers.forEach(EasyMock::verify);
-        mockEffectGivers.forEach(EasyMock::verify);
+        Assert.assertEquals(effectElementGivers, actualEffectGivers);
     }
 
 }
