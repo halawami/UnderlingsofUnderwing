@@ -56,6 +56,7 @@ public class AddElementsToAllAdjacentEggsEffectTests extends MockTest {
     private void testApplyElementColors(ElementColor... elementColors) {
         AddElementsEffect effect =
                 EasyMock.partialMockBuilder(AddElementsEffect.class).addMockedMethod("addElementToCard").createMock();
+        this.addMock(effect);
         effect.elementColors = elementColors;
 
         for (ElementColor elementColor : elementColors) {
