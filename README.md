@@ -234,3 +234,13 @@ The definition of done is created by examining and applying BVA on the rules.
      - ```underlings.card.effect.domestic.deck.ReorderTopThreeCardsEffectTests.testThreeOrMoreCardsLeft()```
 - [ ] The player should know that the effect has been run
   - ```underlings.card.effect.domestic.deck.ReorderTopThreeCardsEffectTests.testToString()```
+  
+#### ALL Eggs claimed this round take +1 round to hatch  ```underlings.card.effect.wild.AllEggsHatchLateEffectTests```
+
+- Dragons
+  - Norruth
+- [x] This effect modifies the hatching ground to allow for late hatching for that round
+  - ```underlings.card.effect.wild.AllEggsHatchLateEffectTests.testApply()```
+- [x] The player should know the effect has been run
+  - ```underlings.card.effect.wild.AllEggsHatchLateEffectTests.testToString()```
+   
