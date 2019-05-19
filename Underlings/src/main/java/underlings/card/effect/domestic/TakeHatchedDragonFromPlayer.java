@@ -35,12 +35,16 @@ public class TakeHatchedDragonFromPlayer extends PlayersEffect {
                         playerCards.get(player).add(dragon);
                     }
                 }
+                if (playerCards.get(player).isEmpty()) {
+                    playerCards.remove(player);
+                }
             }
         }
         if (playerCards.isEmpty()) {
             gui.alert(LocaleWrap.get("no_player_has_hatched_cards"), PromptType.REGULAR);
             return;
         }
+
         Player playerToSteal = gui.promptChoice(LocaleWrap.get("prompt_player_to_steal"),
                 new ArrayList<>(playerCards.keySet()), currentPlayer.id);
         Card toSteal = gui.promptChoice(LocaleWrap.get("prompt_card_to_steal"), playerCards.get(playerToSteal),
