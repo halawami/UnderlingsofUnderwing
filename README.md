@@ -166,7 +166,23 @@ The definition of done is created by examining and applying BVA on the rules.
   - ```underlings.hatchingground.AdjacentCardsTests.testGetCardCoordinatesMiddleEdge()```
   - ```underlings.hatchingground.AdjacentCardsTests.testGetCardCoordinatesInvalidCard()```
 
-####
+### Drawing Phase ```underlings.phase.DrawingPhaseTests```
+
+- [x] The player draws elements based on their element givers
+  - If the bag is not empty, they get an element
+    - ```underlings.phase.DrawingPhaseTests.testTurn```
+  - If the bag is empty, they do not get an element
+    - ```underlings.phase.DrawingPhaseTests.testTurnNullElement```
+
+### HandlerPhase ```underlings.phase.HandlerPhaseTests```
+
+- [x] The player chooses a place to move a handler to
+  - The player has a handler outside the break room
+    - ```underlings.phase.HandlerPhaseTests.testTurn```
+  - The player has a handler in the break room
+    - ```underlings.phase.HandlerPhaseTests.testTurnHandlerInBreakRoom```
+  - The player has no handlers
+    - ```underlings.phase.HandlerPhaseTests.testTurnNoHandlers```
 
 ### Scoring ```underlings.scoring```
 
@@ -276,3 +292,12 @@ The definition of done is created by examining and applying BVA on the rules.
      - ```underlings.card.effect.domestic.element.DrawElementsOfChoiceNextPhaseEffectTests.testOnSecondPhaseOne()```
 - [x] The player should know that the effect has been run
   - ```underlings.card.effect.domestic.element.DrawElementsOfChoiceNextPhaseEffectTests.testToString()```
+  
+#### ALL Eggs claimed this round take +1 round to hatch  ```underlings.card.effect.wild.AllEggsHatchLateEffectTests```
+
+- Dragons
+  - Norruth
+- [x] This effect modifies the hatching ground to allow for late hatching for that round
+  - ```underlings.card.effect.wild.AllEggsHatchLateEffectTests.testApply()```
+- [x] The player should know the effect has been run
+  - ```underlings.card.effect.wild.AllEggsHatchLateEffectTests.testToString()```
