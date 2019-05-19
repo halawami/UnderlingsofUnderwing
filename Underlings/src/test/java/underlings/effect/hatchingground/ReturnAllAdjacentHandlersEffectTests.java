@@ -1,9 +1,12 @@
 package underlings.effect.hatchingground;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 import underlings.MockTest;
 import underlings.card.Card;
+import underlings.card.effect.Effect;
 import underlings.card.effect.wild.adjacenteggs.ReturnAllAdjacentHandlersEffect;
 import underlings.handler.Handler;
 import underlings.handler.HandlerChoice;
@@ -11,6 +14,7 @@ import underlings.handler.HandlerMovementLogic;
 import underlings.handler.HandlerState;
 import underlings.handler.WildHandler;
 import underlings.player.FakePlayer;
+import underlings.utilities.LocaleWrap;
 
 public class ReturnAllAdjacentHandlersEffectTests extends MockTest {
 
@@ -41,6 +45,12 @@ public class ReturnAllAdjacentHandlersEffectTests extends MockTest {
 
         ReturnAllAdjacentHandlersEffect testedEffect = new ReturnAllAdjacentHandlersEffect();
         testedEffect.applyOnAdjacentEgg(adjacentCard, handlerMovementLogic);
+    }
+
+    @Test
+    public void testToString() {
+        Effect effect = new ReturnAllAdjacentHandlersEffect();
+        assertEquals(LocaleWrap.get("return_adjacent_handlers"), effect.toString());
     }
 
 }
