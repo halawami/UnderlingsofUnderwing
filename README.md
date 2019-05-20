@@ -991,3 +991,35 @@ The definition of done is created by examining and applying BVA on the rules.
 		- ```underlings.card.effect.wild.ApiaraWildEffectTests.testEffectTwiceTwoCards()```
 - [x] The player should know the effect has been run
   - ```underlings.card.effect.wild.ApiaraWildEffectTests.testToString()```
+
+#### No players may create Black using Primary or Secondary Elements ```underlings.card.effect.wild.players.RemoveBlackTests```
+
+- Dragons
+  - Aerillia
+- [x] This effect should prevent players from creating black with primary or secondary elements
+  - ```underlings.card.effect.wild.players.RemoveBlalckTests.testEffect()```
+- [x] The player should know the effect has been run
+  - ```underlings.card.effect.wild.players.RemoveBlalckTests.testToString()```
+
+#### Each Player must trade 1 Dragon to whomever controls the fewest ```underlings.card.effect.wild.players.PlayersTradeDragonEffectTests```
+
+- Dragons
+  - Cordath
+- [x] This effect should cause all players to trade 1 dragon to whomever controls the fewest
+  - ```underlings.card.effect.wild.players.PlayersTradeDragonEffectTests.testApplyTwoPlayersThreeCards()```
+  - ```underlings.card.effect.wild.players.PlayersTradeDragonEffectTests.testApplyMultiplePlayers()```
+  - ```underlings.card.effect.wild.players.PlayersTradeDragonEffectTests.testApplySameNumberOfDragons()```
+  - ```underlings.card.effect.wild.players.PlayersTradeDragonEffectTests.testApplyNoHatchesCards()```
+  - ```underlings.card.effect.wild.players.PlayersTradeDragonEffectTests.testApplyMultipleSameNumberOfDragons()```
+- [x] The player should know the effect has been run
+  - ```underlings.card.effect.wild.players.PlayersTradeDragonEffectTests.testToString()```
+
+#### Each player must immediately sacrifice 1 Handler (to min. of 2) ```underlings.card.effect.wild.players.LoseHandlerEffectTests```
+
+- Dragons
+  - Kela'Droth
+- [x] This effect should have each player lose a handler
+  - ```underlings.card.effect.wild.players.LoseHandlerEffectTests.testLoseHandlerTwoPlayers()```
+  - ```underlings.card.effect.wild.players.LoseHandlerEffectTests.testLoseHandlerSixPlayers()```
+- [x] The player shouldd know the effect has been run
+  - ```underlings.card.effect.wild.players.LoseHandlerEffectTests.testToString()```
