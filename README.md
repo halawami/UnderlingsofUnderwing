@@ -523,6 +523,13 @@ The definition of done is created by examining and applying BVA on the rules.
   - ```underlings.gui.GetElementSpaceWithColorsTests.testSecondaryColors```
   - ```underlings.gui.GetElementSpaceWithColorsTests.testCardWithValidAndInvalidSpaces```
 
+### Choices ```underlings.gui.ChoiceTests```
+- [x] The player has the choice of any field space
+  - ```underlings.gui.testFieldSpace0```
+  - ```underlings.gui.testFieldSpace21```
+- [x] The player has the choice of yes or no
+  - ```underlings.gui.testYesNoChoice```
+
 ### Scoring ```underlings.scoring```
 
 #### Temperature Tests ```underlings.scoring.TemperatureTests```
