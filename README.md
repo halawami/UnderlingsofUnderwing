@@ -919,6 +919,16 @@ The definition of done is created by examining and applying BVA on the rules.
 - [x] The player should know the effect has been run
   - ```underlings.card.effect.domestic.playerhatchingground.HatchAnyUnclaimedEggAsWildDragonEffectTests.testToString()```
 
+#### Collect and Hatch any 5 point or fewer unclaimed Egg ```underlings.card.effect.domestic.playerhatchingground.CollectAndHatchAnyUnclaimedEggEffectTests```
+
+- Dragons
+  - Undine Wyrm, Steam Wyrm, Sunstone Wyrm, Twilight Wyrm, Electric Wyrm, Etheral Wyrm, Nature Wyrm, Brimstone Wyrm, Void Wyrm
+- [x] The effect should let the player hatch an unclaimed egg that is 5 points or fewer
+  - ```underlings.card.effect.domestic.playerhatchingground.CollectAndHatchAnyUnclaimedEggEffectTests.testOneEggToHatch()```
+  - ```underlings.card.effect.domestic.playerhatchingground.CollectAndHatchAnyUnclaimedEggEffectTests.testNoEggToHatch()```
+- [x] The player should know the effect has been run
+  - ```underlings.card.effect.domestic.playerhatchingground.CollectAndHatchAnyUnclaimedEggEffectTests.testToString()```
+
 ### Wild Card Effects ```underlings.card.effect.wild```
 
 #### ALL Eggs claimed this round take +1 round to hatch  ```underlings.card.effect.wild.AllEggsHatchLateEffectTests```
