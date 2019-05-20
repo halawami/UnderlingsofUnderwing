@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-public class CardTests {
+public class StringTests {
 
     @Test
     public void testToString() {
