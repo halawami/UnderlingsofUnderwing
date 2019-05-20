@@ -257,6 +257,13 @@ The definition of done is created by examining and applying BVA on the rules.
   - ```underlings.element.DestroyAllElementsOfColorTests.testOneDestroyableElementsLast()```
   - ```underlings.element.DestroyAllElementsOfColorTests.testMultipleDestroyableElements()```
 
+#### Destroy All Elements Tests ```underlings.element.DestroyAllElementsTests```
+
+- [x] Element Spaces should be able to remove all their elements
+  - ```underlings.element.DestroyAllElementsTests.testNoElements()```
+  - ```underlings.element.DestroyAllElementsTests.testOneElement()```
+  - ```underlings.element.DestroyAllElementsTests.testTwoElements()```
+
 ### Handlers ```underlings.handler```
 
 #### Handler Choices ```underlings.handler.ChoiceTests```
