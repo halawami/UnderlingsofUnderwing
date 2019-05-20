@@ -518,12 +518,28 @@ The definition of done is created by examining and applying BVA on the rules.
   - ```underlings.gui.GetElementSpaceWithColorsTests.testSecondaryColors```
   - ```underlings.gui.GetElementSpaceWithColorsTests.testCardWithValidAndInvalidSpaces```
 
-### Choices ```underlings.gui.ChoiceTests```
+#### Choices ```underlings.gui.ChoiceTests```
 - [x] The player has the choice of any field space
   - ```underlings.gui.testFieldSpace0```
   - ```underlings.gui.testFieldSpace21```
 - [x] The player has the choice of yes or no
   - ```underlings.gui.testYesNoChoice```
+
+### Cards
+
+#### String Display ```underlings.card.StringTests```
+- [x] The player can view the card's name
+  - ```underlings.card.StringTests.testToString```
+
+#### Element Givers ```underlings.card.GetElementGiverTests```
+- [x] The player can gain element givers from the dragons they hatched
+  - ```underlings.card.GetElementGiverTests.testNoEffects```
+  - ```underlings.card.GetElementGiverTests.testOneElementGiversFirst```
+  - ```underlings.card.GetElementGiverTests.testOneElementGiversMiddle```
+  - ```underlings.card.GetElementGiverTests.testOneElementGiversLast```
+  - ```underlings.card.GetElementGiverTests.testTwoElementGivers```
+  - ```underlings.card.GetElementGiverTests.testNullElementGivers```
+  - ```underlings.card.GetElementGiverTests.testNoElementGivers```
 
 ### Scoring ```underlings.scoring```
 
