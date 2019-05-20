@@ -193,6 +193,11 @@ The definition of done is created by examining and applying BVA on the rules.
   - When a red and blue and yellow is placed, the combo is complete
     - ```underlings.element.BlackTests.testRedBlueYellow()```
 
+#### Random Tests ```underlings.element.RandomTests```
+
+- [x] A player can draw a random element
+  - ```underlings.element.RandomTests.testAll()```
+
 ### Handlers ```underlings.handler```
 
 #### Handler Choices ```underlings.handler.ChoiceTests```
