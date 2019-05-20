@@ -7,7 +7,7 @@ import org.junit.Test;
 import underlings.gui.DrawChoice;
 import underlings.utilities.LocaleUtilities;
 
-public class FieldSpaceTests {
+public class StringTests {
 
     @Test
     public void testToString() {
