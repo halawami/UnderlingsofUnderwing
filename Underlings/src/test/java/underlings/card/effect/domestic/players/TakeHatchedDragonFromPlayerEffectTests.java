@@ -160,7 +160,6 @@ public class TakeHatchedDragonFromPlayerEffectTests {
         Gui gui = EasyMock.mock(Gui.class);
         TakeHatchedDragonFromPlayerEffect effect = new TakeHatchedDragonFromPlayerEffect();
         effect.on(gui).on(Arrays.asList(player, player2)).on(player2);
-        Map<Player, List<Card>> map = new HashMap<>();
 
         gui.alert(LocaleUtilities.get("no_player_has_hatched_cards"), PromptType.REGULAR);
 

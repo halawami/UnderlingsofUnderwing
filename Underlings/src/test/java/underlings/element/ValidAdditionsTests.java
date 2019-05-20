@@ -3,17 +3,13 @@ package underlings.element;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-
 import org.junit.Before;
 import org.junit.Test;
-
 import underlings.utilities.LocaleUtilities;
 
 public class ValidAdditionsTests {
@@ -32,7 +28,7 @@ public class ValidAdditionsTests {
         ElementSpace elementSpace = new ElementSpace(ElementColor.GREEN);
         List<ElementColor> expected = Arrays.asList(ElementColor.GREEN, ElementColor.YELLOW, ElementColor.BLUE);
 
-        List<ElementColor> actual = logic.getValidAdditions(elementSpace);
+        List<ElementColor> actual = this.logic.getValidAdditions(elementSpace);
         Collections.sort(expected);
         Collections.sort(actual);
 
@@ -44,7 +40,7 @@ public class ValidAdditionsTests {
         ElementSpace elementSpace = new ElementSpace(ElementColor.GREEN);
         elementSpace.addElements(new Element(ElementColor.GREEN));
 
-        assertTrue(logic.getValidAdditions(elementSpace).isEmpty());
+        assertTrue(this.logic.getValidAdditions(elementSpace).isEmpty());
     }
 
     @Test
@@ -52,7 +48,7 @@ public class ValidAdditionsTests {
         ElementSpace elementSpace = new ElementSpace(ElementColor.ORANGE);
         List<ElementColor> expected = Arrays.asList(ElementColor.ORANGE, ElementColor.RED, ElementColor.YELLOW);
 
-        List<ElementColor> actual = logic.getValidAdditions(elementSpace);
+        List<ElementColor> actual = this.logic.getValidAdditions(elementSpace);
         Collections.sort(expected);
         Collections.sort(actual);
 
@@ -64,19 +60,19 @@ public class ValidAdditionsTests {
         ElementSpace elementSpace = new ElementSpace(ElementColor.ORANGE);
         elementSpace.addElements(new Element(ElementColor.ORANGE));
 
-        assertTrue(logic.getValidAdditions(elementSpace).isEmpty());
+        assertTrue(this.logic.getValidAdditions(elementSpace).isEmpty());
     }
 
     @Test
     public void testOpenElements() {
-        assertFalse(logic.isOpenElement(ElementColor.WHITE));
-        logic.setOpenElement(ElementColor.WHITE);
-        assertTrue(logic.isOpenElement(ElementColor.WHITE));
+        assertFalse(this.logic.isOpenElement(ElementColor.WHITE));
+        this.logic.setOpenElement(ElementColor.WHITE);
+        assertTrue(this.logic.isOpenElement(ElementColor.WHITE));
 
         ElementSpace elementSpace = new ElementSpace(ElementColor.ORANGE);
         List<ElementColor> expected = Arrays.asList(ElementColor.ORANGE, ElementColor.RED, ElementColor.YELLOW);
 
-        List<ElementColor> actual = logic.getValidAdditions(elementSpace);
+        List<ElementColor> actual = this.logic.getValidAdditions(elementSpace);
         Collections.sort(expected);
         Collections.sort(actual);
 
@@ -85,14 +81,14 @@ public class ValidAdditionsTests {
 
     @Test
     public void testOpenElementsBlack() {
-        assertFalse(logic.isOpenElement(ElementColor.BLACK));
-        logic.setOpenElement(ElementColor.BLACK);
-        assertTrue(logic.isOpenElement(ElementColor.BLACK));
+        assertFalse(this.logic.isOpenElement(ElementColor.BLACK));
+        this.logic.setOpenElement(ElementColor.BLACK);
+        assertTrue(this.logic.isOpenElement(ElementColor.BLACK));
 
         ElementSpace elementSpace = new ElementSpace(ElementColor.ORANGE);
         List<ElementColor> expected = Arrays.asList(ElementColor.ORANGE, ElementColor.RED, ElementColor.YELLOW);
 
-        List<ElementColor> actual = logic.getValidAdditions(elementSpace);
+        List<ElementColor> actual = this.logic.getValidAdditions(elementSpace);
         Collections.sort(expected);
         Collections.sort(actual);
 
@@ -101,12 +97,12 @@ public class ValidAdditionsTests {
 
     @Test
     public void testOpenElementsComplete() {
-        logic.setOpenElement(ElementColor.WHITE);
+        this.logic.setOpenElement(ElementColor.WHITE);
 
         ElementSpace elementSpace = new ElementSpace(ElementColor.ORANGE);
         elementSpace.addElements(new Element(ElementColor.ORANGE));
 
-        List<ElementColor> actual = logic.getValidAdditions(elementSpace);
+        List<ElementColor> actual = this.logic.getValidAdditions(elementSpace);
         assertTrue(actual.isEmpty());
     }
 
@@ -135,13 +131,6 @@ public class ValidAdditionsTests {
         List<ElementColor> expected = Arrays.asList(ElementColor.BLUE);
 
         assertEquals(expected, this.logic.getValidAdditions(elementSpace));
-    }
-
-    public void testColor(ElementColor color) {
-        ElementSpace elementSpace = new ElementSpace(color);
-        elementSpace.addElements(new Element(color));
-
-        assertTrue(this.logic.getValidAdditions(elementSpace).isEmpty());
     }
 
     @Test
@@ -183,4 +172,12 @@ public class ValidAdditionsTests {
     public void testBlack() {
         this.testColor(ElementColor.BLACK);
     }
+
+    public void testColor(ElementColor color) {
+        ElementSpace elementSpace = new ElementSpace(color);
+        elementSpace.addElements(new Element(color));
+
+        assertTrue(this.logic.getValidAdditions(elementSpace).isEmpty());
+    }
+
 }

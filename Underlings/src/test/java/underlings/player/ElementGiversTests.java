@@ -18,7 +18,7 @@ import underlings.handler.HandlerState;
 public class ElementGiversTests extends MockTest {
 
     @Test
-    public void testTwoHandlersNoCardElementGivers() {
+    public void testTwoHandlersNoCards() {
         HandlerFactory mockHandlerFactory = EasyMock.mock(HandlerFactory.class);
         Handler handler = new Handler(HandlerState.BREAK_ROOM);
 
@@ -38,7 +38,7 @@ public class ElementGiversTests extends MockTest {
     }
 
     @Test
-    public void testTwoHandlersOneCardElementGivers() {
+    public void testTwoHandlersOneCard() {
         HandlerFactory mockHandlerFactory = EasyMock.mock(HandlerFactory.class);
         Handler handler = new Handler(HandlerState.BREAK_ROOM);
         ElementGiver mockCardElementGiver = EasyMock.mock(ElementGiver.class);

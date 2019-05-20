@@ -2,9 +2,7 @@ package underlings.handler;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
 import java.util.List;
-
 import org.junit.Test;
 
 public class ChoiceTests {
@@ -24,7 +22,7 @@ public class ChoiceTests {
     }
 
     @Test
-    public void tesPossibilities() {
+    public void testPossibilities() {
         this.comparePossibilities(HandlerState.READY_ROOM, HandlerChoice.STAY, HandlerChoice.FIELD_WHITESPACE,
                 HandlerChoice.FIELD, HandlerChoice.CARD);
         this.comparePossibilities(HandlerState.BREAK_ROOM, HandlerChoice.READY_ROOM);

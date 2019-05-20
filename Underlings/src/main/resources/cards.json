@@ -3344,12 +3344,12 @@
     ],
     "domesticEffects": [
       {
-        "effect": "HatchAnyUnclaimedEggAsWildDragon"
+        "effect": "HatchAnyUnclaimedEggAsWildDragonEffect"
       }
     ],
     "wildEffects": [
       {
-        "effect": "PlayersTradeDragon"
+        "effect": "PlayersTradeDragonEffect"
       }
     ]
   },
@@ -3410,7 +3410,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "DestroyAllElementsOnAllEggsInPlay"
+        "effect": "DestroyAllElementsOnAllEggsInPlayEffect"
       }
     ]
   },
@@ -3455,7 +3455,7 @@
     ],
     "domesticEffects": [
       {
-        "effect": "TakeHatchedDragonFromPlayer",
+        "effect": "TakeHatchedDragonFromPlayerEffect",
         "points": 9,
         "temperatures": [
           "NEUTRAL"
@@ -3464,7 +3464,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "ReturnAllHatchedDragonsFromPlayers",
+        "effect": "ReturnAllHatchedDragonsFromPlayersEffect",
         "temperatures": [
           "NEUTRAL"
         ]
@@ -3589,12 +3589,12 @@
     ],
     "domesticEffects": [
       {
-        "effect": "StealAllStoredElements"
+        "effect": "StealAllStoredElementsEffect"
       }
     ],
     "wildEffects": [
       {
-        "effect": "DestroyAllPlayersStoredElements"
+        "effect": "DestroyAllPlayersStoredElementsEffect"
       }
     ]
   },
@@ -3728,7 +3728,7 @@
     ],
     "wildEffects": [
       {
-        "effect": "RemoveAllHandlersFromAllEggsInPlay"
+        "effect": "RemoveAllHandlersFromAllEggsInPlayEffect"
       }
     ]
   },

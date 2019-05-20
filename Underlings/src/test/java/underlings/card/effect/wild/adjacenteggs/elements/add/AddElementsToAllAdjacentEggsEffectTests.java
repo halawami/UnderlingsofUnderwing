@@ -41,7 +41,6 @@ public class AddElementsToAllAdjacentEggsEffectTests extends MockTest {
         this.testApplyElementColors(ElementColor.BLUE);
     }
 
-
     @Test
     public void testApplyTwoDifferentElementColor() {
         this.testApplyElementColors(ElementColor.BLUE, ElementColor.RED);
@@ -76,8 +75,6 @@ public class AddElementsToAllAdjacentEggsEffectTests extends MockTest {
         this.addMock(effect);
 
         this.replayAll();
-
-        System.out.println("Is it? - " + (adjacentCard.handler == WildHandler.getInstance()));
 
         effect.applyOnAdjacentEgg(adjacentCard, null, null);
     }

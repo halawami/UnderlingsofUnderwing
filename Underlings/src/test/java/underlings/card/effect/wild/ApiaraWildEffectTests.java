@@ -99,7 +99,7 @@ public class ApiaraWildEffectTests extends MockTest {
     }
 
     @Test
-    public void testToStringDestroy() {
+    public void testToString() {
         this.replayAll();
         ApiaraWildEffect effect = new ApiaraWildEffect();
         assertEquals(LocaleUtilities.get("apiara_wild_effect"), effect.toString());

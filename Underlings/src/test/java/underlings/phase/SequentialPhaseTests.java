@@ -12,7 +12,7 @@ public class SequentialPhaseTests {
 
 
     @Test
-    public void testSequentialExecute() {
+    public void testExecute() {
         SequentialPhase sequential = EasyMock.createMockBuilder(SequentialPhase.class).addMockedMethod("turn")
                 .addMockedMethod("setup").addMockedMethod("setPhaseComplete").addMockedMethod("isPhaseComplete")
                 .addMockedMethod("teardown").createMock();
