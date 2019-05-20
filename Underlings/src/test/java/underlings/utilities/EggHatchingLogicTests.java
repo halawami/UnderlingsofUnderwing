@@ -98,24 +98,6 @@ public class EggHatchingLogicTests extends MockTest {
     }
 
     @Test
-    public void testOneWildEffectReturnsElementsToBag() {
-        this.expectToApply(this.wildEffect);
-
-        this.card.elementSpaces[0].elements = Arrays.asList(this.elementBag.drawElementFromList(ElementColor.BLUE),
-                this.elementBag.drawElementFromList(ElementColor.RED));
-        EasyMock.expect(this.hatchingGround.getUnclaimedEggs()).andReturn(new ArrayList<>());
-
-        this.replayAll();
-
-        assertEquals(19, this.elementBag.getNumberRemaining(ElementColor.BLUE));
-        assertEquals(19, this.elementBag.getNumberRemaining(ElementColor.RED));
-        this.eggHatchingLogic.hatchEgg(this.card, this.player);
-        assertEquals(20, this.elementBag.getNumberRemaining(ElementColor.BLUE));
-        assertEquals(20, this.elementBag.getNumberRemaining(ElementColor.RED));
-        assertEquals(WildHandler.getInstance(), this.card.handler);
-    }
-
-    @Test
     public void testTwoWildEffects() {
         this.card.wildEffects = new Effect[2];
         this.card.wildEffects[0] = this.wildEffect;
@@ -170,6 +152,24 @@ public class EggHatchingLogicTests extends MockTest {
         assertTrue(this.player.hatchedCards.contains(this.card));
 
         assertEquals(WildHandler.getInstance(), card2.handler);
+    }
+
+    @Test
+    public void testReturnsElementsToBag() {
+        this.expectToApply(this.wildEffect);
+
+        this.card.elementSpaces[0].elements = Arrays.asList(this.elementBag.drawElementFromList(ElementColor.BLUE),
+                this.elementBag.drawElementFromList(ElementColor.RED));
+        EasyMock.expect(this.hatchingGround.getUnclaimedEggs()).andReturn(new ArrayList<>());
+
+        this.replayAll();
+
+        assertEquals(19, this.elementBag.getNumberRemaining(ElementColor.BLUE));
+        assertEquals(19, this.elementBag.getNumberRemaining(ElementColor.RED));
+        this.eggHatchingLogic.hatchEgg(this.card, this.player);
+        assertEquals(20, this.elementBag.getNumberRemaining(ElementColor.BLUE));
+        assertEquals(20, this.elementBag.getNumberRemaining(ElementColor.RED));
+        assertEquals(WildHandler.getInstance(), this.card.handler);
     }
 
     @Test
