@@ -228,6 +228,15 @@ The definition of done is created by examining and applying BVA on the rules.
   - ```underlinge.element.CountTests.testPutTwoBlueElements()```
   - ```underlings.element.CountTests.testPutOneBlueOneRedElement()```
 
+#### Element Space Tests ```underlings.element.ElementSpaceTest```
+
+- [x] Element Spaces should return their elements
+  - ```underlings.element.ElementSpaceTest.testGetColorsEmpty()```
+  - ```underlings.element.ElementSpaceTest.testGetColorsNotEmpty()```
+  - ```underlings.element.ElementSpaceTest.testGetColorsNotEmptyAlias()```
+- [x] Element Spaces should display their color
+  - ```underlings.element.ElementSpaceTest.testToString()```
+
 ### Handlers ```underlings.handler```
 
 #### Handler Choices ```underlings.handler.ChoiceTests```
