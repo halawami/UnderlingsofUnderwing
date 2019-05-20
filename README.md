@@ -1001,3 +1001,15 @@ The definition of done is created by examining and applying BVA on the rules.
 - [x] The player should know the effect has been run
   - ```underlings.card.effect.wild.players.RemoveBlalckTests.testToString()```
 
+#### Each Player must trade 1 Dragon to whomever controls the fewest ```underlings.card.effect.wild.players.PlayersTradeDragonEffectTests```
+
+- Dragons
+  - Cordath
+- [x] This effect should cause all players to trade 1 dragon to whomever controls the fewest
+  - ```underlings.card.effect.wild.players.PlayersTradeDragonEffectTests.testApplyTwoPlayersThreeCards()```
+  - ```underlings.card.effect.wild.players.PlayersTradeDragonEffectTests.testApplyMultiplePlayers()```
+  - ```underlings.card.effect.wild.players.PlayersTradeDragonEffectTests.testApplySameNumberOfDragons()```
+  - ```underlings.card.effect.wild.players.PlayersTradeDragonEffectTests.testApplyNoHatchesCards()```
+  - ```underlings.card.effect.wild.players.PlayersTradeDragonEffectTests.testApplyMultipleSameNumberOfDragons()```
+- [x] The player should know the effect has been ruun
+  - ```underlings.card.effect.wild.players.PlayersTradeDragonEffectTests.testToString()```
