@@ -72,6 +72,13 @@ The definition of done is created by examining and applying BVA on the rules.
   - The game can run until all eggs have been hatched wild
     - ```underlings.game.GameTests.testGameLoopWildHatched()```
 
+### Field ```underlings.Field```
+
+#### Field String Tests ```underlings.field.StringTests```
+
+- [x] The field should display its color
+  - ```underlings.field.StringTests.testToString()```
+
 ### Handlers ```underlings.handler```
 
 #### Handler Choices ```underlings.handler.ChoiceTests```
