@@ -211,6 +211,11 @@ The definition of done is created by examining and applying BVA on the rules.
 - [x] A player can draw a specific element
   - ```underlings.element.SpecificTests.testAll()```
 
+#### String Tests ```underlings.element.StringTests```
+
+- [x] Elements should be displayed to the players
+  - ```underlings.element.StringTests.testToString()```
+
 ### Handlers ```underlings.handler```
 
 #### Handler Choices ```underlings.handler.ChoiceTests```

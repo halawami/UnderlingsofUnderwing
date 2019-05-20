@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import underlings.utilities.LocaleUtilities;
 
-public class ElementTests {
+public class StringTests {
 
     @Test
     public void testToString() {
