@@ -455,193 +455,193 @@ The definition of done is created by examining and applying BVA on the rules.
 
 - [x] The player draws elements based on their element givers
   - If the bag is not empty, they get an element
-    - ```underlings.phase.DrawingPhaseTests.testTurn```
+    - ```underlings.phase.DrawingPhaseTests.testTurn()```
   - If the bag is empty, they do not get an element
-    - ```underlings.phase.DrawingPhaseTests.testTurnNullElement```
+    - ```underlings.phase.DrawingPhaseTests.testTurnNullElement()```
 
 ### HandlerPhase ```underlings.phase.HandlerPhaseTests```
 
 - [x] The player chooses a place to move a handler to
   - The player has a handler outside the break room
-    - ```underlings.phase.HandlerPhaseTests.testTurn```
+    - ```underlings.phase.HandlerPhaseTests.testTurn()```
   - The player has a handler in the break room
-    - ```underlings.phase.HandlerPhaseTests.testTurnHandlerInBreakRoom```
+    - ```underlings.phase.HandlerPhaseTests.testTurnHandlerInBreakRoom()```
   - The player has no handlers
-    - ```underlings.phase.HandlerPhaseTests.testTurnNoHandlers```
+    - ```underlings.phase.HandlerPhaseTests.testTurnNoHandlers()```
 
 ### Placement Phase
 
 #### Phase ```underlings.phase.PlacementPhaseTests```
 - [x] The player places one element for each of its handlers
-  - ```underlings.phase.PlacementPhaseTests.testCheckTurnTwoHandlers```
-  - ```underlings.phase.PlacementPhaseTests.testCheckTurnThreeHandlers```
+  - ```underlings.phase.PlacementPhaseTests.testCheckTurnTwoHandlers()```
+  - ```underlings.phase.PlacementPhaseTests.testCheckTurnThreeHandlers()```
 - [x] The game ends during the PlacementPhase if all dragons are hatched wild
-  - ```underlings.phase.PlacementPhaseTests.testCheckGameover```
-  - ```underlings.phase.PlacementPhaseTests.testCheckGameoverNoCards```
-  - ```underlings.phase.PlacementPhaseTests.testCheckGameoverLost```
+  - ```underlings.phase.PlacementPhaseTests.testCheckGameover()```
+  - ```underlings.phase.PlacementPhaseTests.testCheckGameoverNoCards()```
+  - ```underlings.phase.PlacementPhaseTests.testCheckGameoverLost()```
 - [x] The player can only choose to place another element in the same turn if they can put it on the same element space
-  - ```underlings.phase.PlacementPhaseTests.testMoreMovesNoChoices```
-  - ```underlings.phase.PlacementPhaseTests.testMoreMovesTrue```
+  - ```underlings.phase.PlacementPhaseTests.testMoreMovesNoChoices()```
+  - ```underlings.phase.PlacementPhaseTests.testMoreMovesTrue()```
 - [x] The player can only place an element if they have another turn and there are places to put it
-  - ```underlings.phase.PlacementPhaseTests.testTurnOver```
-  - ```underlings.phase.PlacementPhaseTests.testTurnNoPlayableCards```
+  - ```underlings.phase.PlacementPhaseTests.testTurnOver()```
+  - ```underlings.phase.PlacementPhaseTests.testTurnNoPlayableCards()```
 - [x] If the player completes an unclaimed egg, it hatches in the wild
-  - ```underlings.phase.PlacementPhaseTests.testTurnCardNotComplete```
-  - ```underlings.phase.PlacementPhaseTests.testTurnCardCompleteDomestic```
-  - ```underlings.phase.PlacementPhaseTests.testTurnCardCompleteWild```
+  - ```underlings.phase.PlacementPhaseTests.testTurnCardNotComplete()```
+  - ```underlings.phase.PlacementPhaseTests.testTurnCardCompleteDomestic()```
+  - ```underlings.phase.PlacementPhaseTests.testTurnCardCompleteWild()```
 
 #### Utilities ```underlings.utilities.PlacementUtilitiesTests```
 - [x] The player selects a card and element space on the card to place an element on
-  - ```underlings.utilities.PlacementUtilitiesTests.testSelectCard```
-  - ```underlings.utilities.PlacementUtilitiesTests.testSelectElementSpace```
+  - ```underlings.utilities.PlacementUtilitiesTests.testSelectCard()```
+  - ```underlings.utilities.PlacementUtilitiesTests.testSelectElementSpace()```
 - [x] The player places elements until either they have no more elements to place or they decide to stop
-  - ```underlings.utilities.PlacementUtilitiesTests.testPlaceElements```
+  - ```underlings.utilities.PlacementUtilitiesTests.testPlaceElements()```
 - [x] The player can only place elements on cards that need the elements they have
-  - ```underlings.utilities.PlacementUtilitiesTests.testGetPlayableCards```
+  - ```underlings.utilities.PlacementUtilitiesTests.testGetPlayableCards()```
 
 ### Dragon Phase ```underlings.phase.DragonPhaseTests```
 
 - [x] The player hatches any unhatched eggs that have been in incubation
-  - ```underlings.phase.DragonPhaseTests.testNoIncubatedEggs```
-  - ```underlings.phase.DragonPhaseTests.testOneIncubatedEgg```
-  - ```underlings.phase.DragonPhaseTests.testTwoIncubatedEggs```
+  - ```underlings.phase.DragonPhaseTests.testNoIncubatedEggs()```
+  - ```underlings.phase.DragonPhaseTests.testOneIncubatedEgg()```
+  - ```underlings.phase.DragonPhaseTests.testTwoIncubatedEggs()```
 - [x] Eggs that have been completed should be moved to the incubator (with their handler) of the player who claimed them
-  - ```underlings.phase.DragonPhaseTests.testNoCompleteEggs```
-  - ```underlings.phase.DragonPhaseTests.testOneCompleteEgg```
-  - ```underlings.phase.DragonPhaseTests.testTwoCompleteEggs```
-  - ```underlings.phase.DragonPhaseTests.testOneCompleteEggNotThePlayers```
+  - ```underlings.phase.DragonPhaseTests.testNoCompleteEggs()```
+  - ```underlings.phase.DragonPhaseTests.testOneCompleteEgg()```
+  - ```underlings.phase.DragonPhaseTests.testTwoCompleteEggs()```
+  - ```underlings.phase.DragonPhaseTests.testOneCompleteEggNotThePlayers()```
 - [x] If the player has a hatching boost the eggs skip incubation and hatch immediately
-  - ```underlings.phase.DragonPhaseTests.testHatchingTimeZero```
-  - ```underlings.phase.DragonPhaseTests.testHatchingTimeZeroTwoEggs```
+  - ```underlings.phase.DragonPhaseTests.testHatchingTimeZero()```
+  - ```underlings.phase.DragonPhaseTests.testHatchingTimeZeroTwoEggs()```
 - [x] If the hatchingGround has a hatchingDelay the eggs take two turns to incubate
-  - ```underlings.phase.DragonPhaseTests.testHatchLateEgg```
-  - ```underlings.phase.DragonPhaseTests.testHatchLateEggExtended```
+  - ```underlings.phase.DragonPhaseTests.testHatchLateEgg()```
+  - ```underlings.phase.DragonPhaseTests.testHatchLateEggExtended()```
 
 ### Final Phase
 
 #### Regular Phase ```underlings.phase.RegularFinalPhaseTests```
 - [x] In the final phase the game will display the gameover screen and all players' scores
-  - ```underlings.phase.RegularFinalPhaseTests.testRunPhase```
+  - ```underlings.phase.RegularFinalPhaseTests.testRunPhase()```
   
 #### Wild Phase ```underlings.phase.WildFinalPhaseTests```
 - [x] In the final phase the game will display the gameover screen tell all players that they lost
-  - ```underlings.phase.WildFinalPhaseTests.testRunPhase```
+  - ```underlings.phase.WildFinalPhaseTests.testRunPhase()```
 
 ### Rotation Phase ```underlings.phase.RotationPhaseTests```
 
 - [x] In a rotation phase each player will finish their turn before moving to the next player
-  - ```underlings.phase.RotationPhaseTests.testExecute```
+  - ```underlings.phase.RotationPhaseTests.testExecute()```
 
 ### Sequential Phase ```underlings.phase.SequentialPhaseTests```
 
 - [x] In a sequential phase the players each complete part of their turn until everyone completes their turns
-  - ```underlings.phase.SequentialPhaseTests.testExecute```
+  - ```underlings.phase.SequentialPhaseTests.testExecute()```
 
 ### Egg Hatching ```underlings.utilities.EggHatchingLogicTests```
 
 - [x] If the card is unclaimed it hatches in the wild
   - ```underlings.utilities.EggHatchingLogicTests.testOneWildEffect```
-  - ```underlings.utilities.EggHatchingLogicTests.testTwoWildEffects```
-  - ```underlings.utilities.EggHatchingLogicTests.testOneWildEffectReturnsElementsToBag
+  - ```underlings.utilities.EggHatchingLogicTests.testTwoWildEffects()```
+  - ```underlings.utilities.EggHatchingLogicTests.testOneWildEffectReturnsElementsToBag()```
 - [x] If the card is claimed it will hatch domestically
-  - ```underlings.utilities.EggHatchingLogicTests.testOneDomesticEffect```
+  - ```underlings.utilities.EggHatchingLogicTests.testOneDomesticEffect()```
 - [x] When an effect runs it checks for other eggs that hatch due to the effect
-  - ```underlings.utilities.EggHatchingLogicTests.testEffectsRecursive```
+  - ```underlings.utilities.EggHatchingLogicTests.testEffectsRecursive()```
 - [x] When an egg hatches it returns its elements to the element bag
-  - ```underlings.utilities.EggHatchingLogicTests.testReturnsElementsToBag```
-  - ```underlings.utilities.EggHatchingLogicTests.testReturnNoElements```
-  - ```underlings.utilities.EggHatchingLogicTests.testReturnPurpleComboElements```
-  - ```underlings.utilities.EggHatchingLogicTests.testReturnOrangeComboElements```
-  - ```underlings.utilities.EggHatchingLogicTests.testMultiReturnComboElements```
+  - ```underlings.utilities.EggHatchingLogicTests.testReturnsElementsToBag()```
+  - ```underlings.utilities.EggHatchingLogicTests.testReturnNoElements()```
+  - ```underlings.utilities.EggHatchingLogicTests.testReturnPurpleComboElements()```
+  - ```underlings.utilities.EggHatchingLogicTests.testReturnOrangeComboElements()```
+  - ```underlings.utilities.EggHatchingLogicTests.testMultiReturnComboElements()```
 
 ### LocaleWrap ```underlings.utilities.LocaleWrapTests```
 
 - [x] When the players set the locale at the beginning of the game it changes the language of the game
-  - ```underlings.utilities.LocaleWrapTests.testSetLocale```
+  - ```underlings.utilities.LocaleWrapTests.testSetLocale()```
 
 ### Draw Choices ```underlings.gui.DrawChoiceTests```
 
 - [x] Draw choices are displayed to the player
-  - ```underlings.gui.DrawChoiceTests.testToString```
+  - ```underlings.gui.DrawChoiceTests.testToString()```
 
 ### GUI
 
 #### GUI Functions ```underlings.gui.GuiTests```
 - [x] The player is able to choose a state to move their handler to
-  - ```underlings.gui.GuiTests.testGetHandlerDecisionWithCard```
-  - ```underlings.gui.GuiTests.testGetHandlerDecisionNoCards```
+  - ```underlings.gui.GuiTests.testGetHandlerDecisionWithCard()```
+  - ```underlings.gui.GuiTests.testGetHandlerDecisionNoCards()```
 - [x] The user can enter the number of players
-  - ```underlings.gui.GuiTests.testGetPlayerCountTwoPlayers```
-  - ```underlings.gui.GuiTests.testGetPlayerCountSixPlayers```
+  - ```underlings.gui.GuiTests.testGetPlayerCountTwoPlayers()```
+  - ```underlings.gui.GuiTests.testGetPlayerCountSixPlayers()```
 - [x] The GUI can notify or alert players
-  - ```underlings.gui.GuiTests.testNotify```
-  - ```underlings.gui.GuiTests.testAlertNoPlayerId```
-  - ```underlings.gui.GuiTests.testAlertRegular```
-  - ```underlings.gui.GuiTests.testAlertWarning```
-  - ```underlings.gui.GuiTests.testAlertError```
+  - ```underlings.gui.GuiTests.testNotify()```
+  - ```underlings.gui.GuiTests.testAlertNoPlayerId()```
+  - ```underlings.gui.GuiTests.testAlertRegular()```
+  - ```underlings.gui.GuiTests.testAlertWarning()```
+  - ```underlings.gui.GuiTests.testAlertError()```
 - [x] The player can choose from a list of options
-  - ```underlings.gui.GuiTests.testPromptChoice```
+  - ```underlings.gui.GuiTests.testPromptChoice()```
 - [x] The player can choose yes or no
-  - ```underlings.gui.GuiTests.testChoiceYesToString```
-  - ```underlings.gui.GuiTests.testChoiceNoToString```
-  - ```underlings.gui.GuiTests.testChoiceYesBooleanValue```
-  - ```underlings.gui.GuiTests.testChoiceNoBooleanValue```
+  - ```underlings.gui.GuiTests.testChoiceYesToString()```
+  - ```underlings.gui.GuiTests.testChoiceNoToString()```
+  - ```underlings.gui.GuiTests.testChoiceYesBooleanValue()```
+  - ```underlings.gui.GuiTests.testChoiceNoBooleanValue()```
 - [x] The player can choose to reorder cards from the deck
-  - ```underlings.gui.GuiTests.testReorderCard```
+  - ```underlings.gui.GuiTests.testReorderCard()```
 - [x] The player can choose a locale
-  - ```underlings.gui.GuiTests.testPromptLocale```
+  - ```underlings.gui.GuiTests.testPromptLocale()```
 - [x] The player can choose an element from an element space
-  - ```underlings.gui.GuiTests.testGetElementsOfColorsFromSpaceNoChoices```
-  - ```underlings.gui.GuiTests.testGetElementsOfColorsFromSpace```
+  - ```underlings.gui.GuiTests.testGetElementsOfColorsFromSpaceNoChoices()```
+  - ```underlings.gui.GuiTests.testGetElementsOfColorsFromSpace()```
 - [x] The player can choose a card
-  - ```underlings.gui.GuiTests.testGetCard```
+  - ```underlings.gui.GuiTests.testGetCard()```
 - [x] The player can fetch a grid of element spaces
-  - ```underlings.gui.GuiTests.testElementGrid```
+  - ```underlings.gui.GuiTests.testElementGrid()```
 
 #### GetElementSpaceWithColors ```underlings.gui.GetElementSpaceWithColorsTests```
 - [x] The player can select a card and an element space on that card that contains an element out of a list
-  - ```underlings.gui.GetElementSpaceWithColorsTests.testNoSpaces```
-  - ```underlings.gui.GetElementSpaceWithColorsTests.testNoColors```
-  - ```underlings.gui.GetElementSpaceWithColorsTests.testOneSpaceOneColorInvalid```
-  - ```underlings.gui.GetElementSpaceWithColorsTests.testOneSpaceOneColorValid```
-  - ```underlings.gui.GetElementSpaceWithColorsTests.testTwoSpacesMultiColorsValid```
-  - ```underlings.gui.GetElementSpaceWithColorsTests.testChoseNo```
-  - ```underlings.gui.GetElementSpaceWithColorsTests.testSecondaryColors```
-  - ```underlings.gui.GetElementSpaceWithColorsTests.testCardWithValidAndInvalidSpaces```
+  - ```underlings.gui.GetElementSpaceWithColorsTests.testNoSpaces()```
+  - ```underlings.gui.GetElementSpaceWithColorsTests.testNoColors()```
+  - ```underlings.gui.GetElementSpaceWithColorsTests.testOneSpaceOneColorInvalid()```
+  - ```underlings.gui.GetElementSpaceWithColorsTests.testOneSpaceOneColorValid()```
+  - ```underlings.gui.GetElementSpaceWithColorsTests.testTwoSpacesMultiColorsValid()```
+  - ```underlings.gui.GetElementSpaceWithColorsTests.testChoseNo()```
+  - ```underlings.gui.GetElementSpaceWithColorsTests.testSecondaryColors()```
+  - ```underlings.gui.GetElementSpaceWithColorsTests.testCardWithValidAndInvalidSpaces()```
 
 #### Choices ```underlings.gui.ChoiceTests```
 - [x] The player has the choice of any field space
-  - ```underlings.gui.testFieldSpace0```
-  - ```underlings.gui.testFieldSpace21```
+  - ```underlings.gui.testFieldSpace0()```
+  - ```underlings.gui.testFieldSpace21()```
 - [x] The player has the choice of yes or no
-  - ```underlings.gui.testYesNoChoice```
+  - ```underlings.gui.testYesNoChoice()```
 
 ### Cards
 
 #### String Display ```underlings.card.StringTests```
 - [x] The player can view the card's name
-  - ```underlings.card.StringTests.testToString```
+  - ```underlings.card.StringTests.testToString()```
 
 #### Element Givers ```underlings.card.GetElementGiverTests```
 - [x] The player can gain element givers from the dragons they hatched
-  - ```underlings.card.GetElementGiverTests.testNoEffects```
-  - ```underlings.card.GetElementGiverTests.testOneElementGiversFirst```
-  - ```underlings.card.GetElementGiverTests.testOneElementGiversMiddle```
-  - ```underlings.card.GetElementGiverTests.testOneElementGiversLast```
-  - ```underlings.card.GetElementGiverTests.testTwoElementGivers```
-  - ```underlings.card.GetElementGiverTests.testNullElementGivers```
-  - ```underlings.card.GetElementGiverTests.testNoElementGivers```
+  - ```underlings.card.GetElementGiverTests.testNoEffects()```
+  - ```underlings.card.GetElementGiverTests.testOneElementGiversFirst()```
+  - ```underlings.card.GetElementGiverTests.testOneElementGiversMiddle()```
+  - ```underlings.card.GetElementGiverTests.testOneElementGiversLast()```
+  - ```underlings.card.GetElementGiverTests.testTwoElementGivers()```
+  - ```underlings.card.GetElementGiverTests.testNullElementGivers()```
+  - ```underlings.card.GetElementGiverTests.testNoElementGivers()```
 
 #### Completion ```underlings.card.element.placement.IsCompleteTests```
 - [x] A card is completed when all element spaces on it are complete
-  - ```underlings.card.element.placement.IsCompleteTests.testCompleteCardOneElementSpace```
-  - ```underlings.card.element.placement.IsCompleteTests.testIncompleteCardOneElementSpace```
-  - ```underlings.card.element.placement.IsCompleteTests.testCompleteCardTwoElementSpaces```
-  - ```underlings.card.element.placement.IsCompleteTests.testIncompleteCardTwoElementSpaces```
+  - ```underlings.card.element.placement.IsCompleteTests.testCompleteCardOneElementSpace()```
+  - ```underlings.card.element.placement.IsCompleteTests.testIncompleteCardOneElementSpace()```
+  - ```underlings.card.element.placement.IsCompleteTests.testCompleteCardTwoElementSpaces()```
+  - ```underlings.card.element.placement.IsCompleteTests.testIncompleteCardTwoElementSpaces()```
 
 #### Initialization ```underlings.card.factory.GetCardsTests```
 - [x] The game loads all cards at the beginning of the game
-  - ```underlings.card.factory.GetCardsTests.testGetOneCard```
+  - ```underlings.card.factory.GetCardsTests.testGetOneCard()```
 
 ### Scoring ```underlings.scoring```
 
