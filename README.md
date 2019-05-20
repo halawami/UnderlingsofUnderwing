@@ -346,6 +346,16 @@ The definition of done is created by examining and applying BVA on the rules.
   - When at 3 handlers, the handler count should remain at 3
     - ```underlings.player.HandlerDeficiencyTests.test25PointsTwice3Handlers()```
 
+#### Element Givers ```underlings.player.ElementGiversTests```
+
+- [x] A player can get element givers from cards they hatched and their handlers
+  - ```underlings.player.ElementGiversTests.testTwoHandlersNoCards```
+  - ```underlings.player.ElementGiversTests.testTwoHandlersOneCard```
+  - ```underlings.player.ElementGiversTests.testTwoHandlersTwoElementGiversOneCard```
+  - ```underlings.player.ElementGiversTests.testTwoHandlersTwoElementGiversTwoCards```
+  - ```underlings.player.ElementGiversTests.testEffectElementGiversTrue```
+  - ```underlings.player.ElementGiversTests.testEffectElementGiversTrueThenFalse```
+
 ### Deck ```underlings.hatchingground.DeckTests```
 
 - [x] The deck can be drawn from with [0, DECK_SIZE] cards
