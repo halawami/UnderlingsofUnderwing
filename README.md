@@ -100,6 +100,12 @@ The definition of done is created by examining and applying BVA on the rules.
   - ```underlings.field.RotateTests.testStart()```
   - ```underlings.field.RotateTests.testEnd()```
 
+#### Grid Tests ```underlings.field.GridTests```
+
+- [x] The field is displayed as a grid
+  - ```underlings.field.GridTests.testGetGrid()```
+  - ```underlings.field.GridTests.testGetValidFieldSpaces()```
+
 ### Handlers ```underlings.handler```
 
 #### Handler Choices ```underlings.handler.ChoiceTests```
