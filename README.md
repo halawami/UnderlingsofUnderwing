@@ -250,7 +250,7 @@ The definition of done is created by examining and applying BVA on the rules.
 
 #### Destroy All Elements Of Color Tests ```underlings.element.DestroyAllElementsOfColorTests```
 
-- [x] Element Spaces should be able to all elements of a certain color
+- [x] Element Spaces should be able to destroy all elements of a certain color
   - ```underlings.element.DestroyAllElementsOfColorTests.testNoDestoryableElements()```
   - ```underlings.element.DestroyAllElementsOfColorTests.testOneDestroyableElementsFirst()```
   - ```underlings.element.DestroyAllElementsOfColorTests.testOneDestoryableElementsMiddle()```
@@ -263,6 +263,15 @@ The definition of done is created by examining and applying BVA on the rules.
   - ```underlings.element.DestroyAllElementsTests.testNoElements()```
   - ```underlings.element.DestroyAllElementsTests.testOneElement()```
   - ```underlings.element.DestroyAllElementsTests.testTwoElements()```
+
+#### Destroy One Element Of Color Tests ```underlings.element.DestroyOneElementOfColorTests```
+
+- [x] Element Spaces should be able to destroy one element of a certain color
+  - ```underlings.element.DestroyOneElementOfColorTests.testNoDestroyableElement()```
+  - ```underlings.element.DestroyOneElementOfColorTests.testOneDestroyableElementsFirst()```
+  - ```underlings.element.DestroyOneElementOfColorTests.testOneDestroyableElementsMiddle()```
+  - ```underlings.element.DestroyOneElementOfColorTests.testOneDestroyableElementsLast()```
+  - ```underlings.element.DestroyOneElementOfColorTests.testMultipleDestroyableElements()```
 
 ### Handlers ```underlings.handler```
 
