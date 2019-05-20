@@ -69,8 +69,13 @@ The definition of done is created by examining and applying BVA on the rules.
 - [x] The game should start and run until the game is over
   - The game can run until the round count reaches zero
     - ```underlings.game.GameTests.testGameLoopRoundsCompleted()```
+    - ```underlings.game.GameTests.testGamoverPhaseEnd()```
   - The game can run until all eggs have been hatched wild
     - ```underlings.game.GameTests.testGameLoopWildHatched()```
+  - The game can run until all cards have been used
+    - ```underlings.game.GameTests.testCheckGameoverNoCards()```
+    - ```underlings.game.GameTests.testCheckGameoverWithCardsTrue()```
+    - ```underlings.game.GameTests.testCheckGameoverWithCardsFalse()```
 
 ### Field ```underlings.Field```
 
@@ -93,6 +98,57 @@ The definition of done is created by examining and applying BVA on the rules.
   - ```underlings.field.RemoveTests.testStart()```
   - ```underlings.field.RemoveTests.testEnd()```
   - ```underlings.field.RemoveTests.testWhite()```
+
+#### Rotate Tests ```underlings.field.RotateTests```
+
+- [x] Handlers can be rotated to the next field space
+  - ```underlings.field.RotateTests.testStart()```
+  - ```underlings.field.RotateTests.testEnd()```
+
+#### Grid Tests ```underlings.field.GridTests```
+
+- [x] The field is displayed as a grid
+  - ```underlings.field.GridTests.testGetGrid()```
+  - ```underlings.field.GridTests.testGetValidFieldSpaces()```
+
+### Elements ```underlings.elements```
+
+#### Done Tests ```underlings.elements.DoneTests```
+
+- [x] An empty element space should not be complete
+    - ```underlings.elements.DoneTests.testEmpty()```
+- [x] A single non-combo element is placed on an empty element space
+  - When a red element is placed on a red element space, the element space should be completed
+    - ```tests.elementspace.single.DoneTests.testRed()```
+  - When a green element is placed on a green element space, the element space should be completed
+    - ```underlings.elements.DoneTests.testGreen()```
+  - When a blue element is placed on a blue element space, the element space should be completed
+    - ```underlings.elements.DoneTests.testBlue()```
+  - When a orange element is placed on a orange element space, the element space should be completed
+    - ```underlings.elements.DoneTests.testOrange()```
+  - When a yellow element is placed on a yellow element space, the element space should be completed
+    - ```underlings.elements.DoneTests.testYellow()```
+  - When a purple element is placed on a purple element space, the element space should be completed
+    - ```underlings.elements.DoneTests.testPurple()```
+  - When a black element is placed on a black element space, the element space should be completed
+    - ```underlings.elements.DoneTests.testBlack()```
+  - When a white element is placed on a white element space, the element space should be completed
+    - ```underlings.elements.DoneTests.testWhite()```
+
+#### Orange Combo ```underlings.element.OrangeTests```
+
+- [x] An orange element can be made from yellow and red elements
+  - When only a red is placed on an orange space, the combo is not complete
+    - ```underlings.element.OrangeTests.testRed()```
+  - When only a yellow is placed on an orange space, the combo is not complete
+    - ```underlings.element.OrangeTests.testYellow()```
+  - When a red and then a yellow is placed on an orange space, the combo is complete
+    - ```underlings.element.OrangeTests.testRedThenYellow()```
+  - When a yellow and then red is played on an orange space, the combo is complete
+    - ```underlings.element.OrangeTests.testYellowThenRed()```
+  - When a yellow and red are played on an orange space, the combo is complete
+    - ```underlings.element.OrangeTests.testRedAndYellow()```
+
 
 ### Handlers ```underlings.handler```
 
@@ -338,12 +394,41 @@ The definition of done is created by examining and applying BVA on the rules.
   - ```underlings.phase.WildFinalPhaseTests.testRunPhase```
 
 ### Rotation Phase ```underlings.phase.RotationPhaseTests```
+
 - [x] In a rotation phase each player will finish their turn before moving to the next player
   - ```underlings.phase.RotationPhaseTests.testExecute```
 
 ### Sequential Phase ```underlings.phase.SequentialPhaseTests```
+
 - [x] In a sequential phase the players each complete part of their turn until everyone completes their turns
   - ```underlings.phase.SequentialPhaseTests.testExecute```
+
+### Egg Hatching ```underlings.utilities.EggHatchingLogicTests```
+
+- [x] If the card is unclaimed it hatches in the wild
+  - ```underlings.utilities.EggHatchingLogicTests.testOneWildEffect```
+  - ```underlings.utilities.EggHatchingLogicTests.testTwoWildEffects```
+  - ```underlings.utilities.EggHatchingLogicTests.testOneWildEffectReturnsElementsToBag
+- [x] If the card is claimed it will hatch domestically
+  - ```underlings.utilities.EggHatchingLogicTests.testOneDomesticEffect```
+- [x] When an effect runs it checks for other eggs that hatch due to the effect
+  - ```underlings.utilities.EggHatchingLogicTests.testEffectsRecursive```
+- [x] When an egg hatches it returns its elements to the element bag
+  - ```underlings.utilities.EggHatchingLogicTests.testReturnsElementsToBag```
+  - ```underlings.utilities.EggHatchingLogicTests.testReturnNoElements```
+  - ```underlings.utilities.EggHatchingLogicTests.testReturnPurpleComboElements```
+  - ```underlings.utilities.EggHatchingLogicTests.testReturnOrangeComboElements```
+  - ```underlings.utilities.EggHatchingLogicTests.testMultiReturnComboElements```
+
+### LocaleWrap ```underlings.utilities.LocaleWrapTests```
+
+- [x] When the players set the locale at the beginning of the game it changes the language of the game
+  - ```underlings.utilities.LocaleWrapTests.testSetLocale```
+
+### Draw Choices ```underlings.gui.DrawChoiceTests```
+
+- [x] Draw choices are displayed to the player
+  - ```underlings.gui.DrawChoiceTests.testToString```
 
 ### Scoring ```underlings.scoring```
 
@@ -478,3 +563,15 @@ The definition of done is created by examining and applying BVA on the rules.
 		- ```underlings.card.effect.wild.ApiaraWildEffectTests.testEffectTwiceTwoCards()```
 - [x] The player should know the effect has been run
   - ```underlings.card.effect.wild.ApiaraWildEffectTests.testToString()```
+  
+#### Replace a Handler on a claimed Egg with your own ```underlings.card.effect.domestic.handler.ReplaceHandlerWithYourOwnEffectTests```
+
+- Dragons
+  - VADRENOX
+- [x] This effect should let the player pick one claimed card and replace its handler with one of their handlers
+	- No claimed cards
+		- ```underlings.card.effect.domestic.handler.ReplaceHandlerWithYourOwnEffectTests.testApplyEffectNoSelectableHandler()```
+	- At least one claimed card
+		- ```underlings.card.effect.domestic.handler.ReplaceHandlerWithYourOwnEffectTests.testApplyEffectSelectableHandler()```
+- [x] The player should know the effect has been run
+  - ```underlings.card.effect.domestic.handler.ReplaceHandlerWithYourOwnEffectTests.testToString()```
