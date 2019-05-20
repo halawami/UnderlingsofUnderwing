@@ -266,32 +266,61 @@ The definition of done is created by examining and applying BVA on the rules.
 
 ### Placement Phase
 
-- Phase
-  - [x] The player places one element for each of its handlers
-    - ```underlings.phase.PlacementPhaseTests.testCheckTurnTwoHandlers```
-	- ```underlings.phase.PlacementPhaseTests.testCheckTurnThreeHandlers```
-  - [x] The game ends during the PlacementPhase if all dragons are hatched wild
-    - ```underlings.phase.PlacementPhaseTests.testCheckGameover```
-	- ```underlings.phase.PlacementPhaseTests.testCheckGameoverNoCards```
-	- ```underlings.phase.PlacementPhaseTests.testCheckGameoverLost```
-  - [x] The player can only choose to place another element in the same turn if they can put it on the same element space
-    - ```underlings.phase.PlacementPhaseTests.testMoreMovesNoChoices```
-	- ```underlings.phase.PlacementPhaseTests.testMoreMovesTrue```
-  - [x] The player can only place an element if they have another turn and there are places to put it
-    - ```underlings.phase.PlacementPhaseTests.testTurnOver```
-    - ```underlings.phase.PlacementPhaseTests.testTurnNoPlayableCards```
-  - [x] If the player completes an unclaimed egg, it hatches in the wild
-    - ```underlings.phase.PlacementPhaseTests.testTurnCardNotComplete```
-	- ```underlings.phase.PlacementPhaseTests.testTurnCardCompleteDomestic```
-	- ```underlings.phase.PlacementPhaseTests.testTurnCardCompleteWild```
-- Utilities
-  - [x] The player selects a card and element space on the card to place an element on
-    - ```underlings.utilities.PlacementUtilitiesTests.testSelectCard```
-	- ```underlings.utilities.PlacementUtilitiesTests.testSelectElementSpace```
-  - [x] The player places elements until either they have no more elements to place or they decide to stop
-    - ```underlings.utilities.PlacementUtilitiesTests.testPlaceElements```
-  - [x] The player can only place elements on cards that need the elements they have
-    - ```underlings.utilities.PlacementUtilitiesTests.testGetPlayableCards```
+#### Phase ```underlings.phase.PlacementPhaseTests```
+- [x] The player places one element for each of its handlers
+  - ```underlings.phase.PlacementPhaseTests.testCheckTurnTwoHandlers```
+  - ```underlings.phase.PlacementPhaseTests.testCheckTurnThreeHandlers```
+- [x] The game ends during the PlacementPhase if all dragons are hatched wild
+  - ```underlings.phase.PlacementPhaseTests.testCheckGameover```
+  - ```underlings.phase.PlacementPhaseTests.testCheckGameoverNoCards```
+  - ```underlings.phase.PlacementPhaseTests.testCheckGameoverLost```
+- [x] The player can only choose to place another element in the same turn if they can put it on the same element space
+  - ```underlings.phase.PlacementPhaseTests.testMoreMovesNoChoices```
+  - ```underlings.phase.PlacementPhaseTests.testMoreMovesTrue```
+- [x] The player can only place an element if they have another turn and there are places to put it
+  - ```underlings.phase.PlacementPhaseTests.testTurnOver```
+  - ```underlings.phase.PlacementPhaseTests.testTurnNoPlayableCards```
+- [x] If the player completes an unclaimed egg, it hatches in the wild
+  - ```underlings.phase.PlacementPhaseTests.testTurnCardNotComplete```
+  - ```underlings.phase.PlacementPhaseTests.testTurnCardCompleteDomestic```
+  - ```underlings.phase.PlacementPhaseTests.testTurnCardCompleteWild```
+
+#### Utilities ```underlings.utilities.PlacementUtilitiesTests```
+- [x] The player selects a card and element space on the card to place an element on
+  - ```underlings.utilities.PlacementUtilitiesTests.testSelectCard```
+  - ```underlings.utilities.PlacementUtilitiesTests.testSelectElementSpace```
+- [x] The player places elements until either they have no more elements to place or they decide to stop
+  - ```underlings.utilities.PlacementUtilitiesTests.testPlaceElements```
+- [x] The player can only place elements on cards that need the elements they have
+  - ```underlings.utilities.PlacementUtilitiesTests.testGetPlayableCards```
+
+### Dragon Phase ```underlings.phase.DragonPhaseTests```
+
+- [x] The player hatches any unhatched eggs that have been in incubation
+  - ```underlings.phase.DragonPhaseTests.testNoIncubatedEggs```
+  - ```underlings.phase.DragonPhaseTests.testOneIncubatedEgg```
+  - ```underlings.phase.DragonPhaseTests.testTwoIncubatedEggs```
+- [x] Eggs that have been completed should be moved to the incubator (with their handler) of the player who claimed them
+  - ```underlings.phase.DragonPhaseTests.testNoCompleteEggs```
+  - ```underlings.phase.DragonPhaseTests.testOneCompleteEgg```
+  - ```underlings.phase.DragonPhaseTests.testTwoCompleteEggs```
+  - ```underlings.phase.DragonPhaseTests.testOneCompleteEggNotThePlayers```
+- [x] If the player has a hatching boost the eggs skip incubation and hatch immediately
+  - ```underlings.phase.DragonPhaseTests.testHatchingTimeZero```
+  - ```underlings.phase.DragonPhaseTests.testHatchingTimeZeroTwoEggs```
+- [x] If the hatchingGround has a hatchingDelay the eggs take two turns to incubate
+  - ```underlings.phase.DragonPhaseTests.testHatchLateEgg```
+  - ```underlings.phase.DragonPhaseTests.testHatchLateEggExtended```
+
+### Final Phase
+
+#### Regular Phase ```underlings.phase.RegularFinalPhaseTests```
+- [x] In the final phase the game will display the gameover screen and all players' scores
+  - ```underlings.phase.RegularFinalPhaseTests.testRunPhase```
+  
+#### Wild Phase ```underlings.phase.WildFinalPhaseTests```
+- [x] In the final phase the game will display the gameover screen tell all players that they lost
+  - ```underlings.phase.WildFinalPhaseTests.testRunPhase```
 
 ### Scoring ```underlings.scoring```
 
