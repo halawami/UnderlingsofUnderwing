@@ -30,7 +30,7 @@
 
 - Dragons
   - TYCHE
-- [x] This effect returns all adjacent egg's handlers to the ready room ```underlings.card.effect.wild.adjacenteggs.ReturnAllAdjacentHandlersEffectTests```
+- [x] This effect returns all adjacent egg's handlers to the ready room
 	- Apply effect to no handler
 		- ```underlings.card.effect.wild.adjacenteggs.ReturnAllAdjacentHandlersEffectTests.testApplyNoHandler()```
 	- Apply effect to wild handler
@@ -39,3 +39,19 @@
 		- ```underlings.card.effect.wild.adjacenteggs.ReturnAllAdjacentHandlersEffectTests.testApplyNormalHandler()```
 - [x] The player should know the effect has been run
   - ```underlings.card.effect.wild.adjacenteggs.ReturnAllAdjacentHandlersEffectTests.testToString()```
+  
+#### Add 1 Element to ALL adjacent Eggs ```underlings.card.effect.wild.adjacenteggs.elements.add.AddElementsToAllAdjacentEggsEffectTests```
+
+- Dragons
+	- Ethereal Whelp, Sky Whelp, Water Whelp, Steam Whelp, Blood Whelp, Harvest Whelp, Arbor Whelp, Electric Whelp, Twilight Whelp, Brimstone Whelp, Undine Whelp, Sunstone Whelp, Storm Whelp, Void Whelp, Nature Whelp
+- [x] This effect adds one element (picked randomly)  to all adjacent eggs
+	- Apply effect from a list of one element color
+		- ```underlings.card.effect.wild.adjacenteggs.elements.add.AddElementsToAllAdjacentEggsEffectTests.testApplyOneElementColor()```
+	- Apply effect from a list of two different element colors
+		- ```underlings.card.effect.wild.adjacenteggs.elements.add.AddElementsToAllAdjacentEggsEffectTests.testApplyTwoDifferentElementColor()```
+	- Apply effect from a list of two same element colors
+		- ```underlings.card.effect.wild.adjacenteggs.elements.add.AddElementsToAllAdjacentEggsEffectTests.testApplyTwoSameElementColor()```
+	- Apply effect from a //TODO
+		- ```underlings.card.effect.wild.adjacenteggs.elements.add.AddElementsToAllAdjacentEggsEffectTests.testApplyTwoSameElementColor()```
+- [x] The player should know the effect has been run
+  - ```underlings.card.effect.wild.adjacenteggs.elements.add.AddElementsToAllAdjacentEggsEffectTests.testToString()```
