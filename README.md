@@ -908,6 +908,45 @@ The definition of done is created by examining and applying BVA on the rules.
 - [x] The player should know the effect has been run
   - ```underlings.card.effect.domestic.playerhatchingground.uptoelements.FromAnyEggInPlayEffectTests.testToStringCollect()```
 
+#### If desired, hatch any 1 unclaimed Egg in the Hatching Grounds as a Wild Dragon ```underlings.card.effect.domestic.playerhatchingground.HatchAnyUnclaimedEggAsWildDragonEffectTests```
+
+- Dragons
+  - Cordath
+- [x] The effect should let the player hatch an unclaimed egg in the hatching ground as a wild dragon
+  - ```underlings.card.effect.domestic.playerhatchingground.HatchAnyUnclaimedEggAsWildDragonEffectTests.testApplyEffect()```
+  - ```underlings.card.effect.domestic.playerhatchingground.HatchAnyUnclaimedEggAsWildDragonEffectTests.testNotWantingToHatch()```
+  - ```underlings.card.effect.domestic.playerhatchingground.HatchAnyUnclaimedEggAsWildDragonEffectTests.testApplyNoUnclaimedEggs()```
+- [x] The player should know the effect has been run
+  - ```underlings.card.effect.domestic.playerhatchingground.HatchAnyUnclaimedEggAsWildDragonEffectTests.testToString()```
+
+#### Collect and Hatch any 5 point or fewer unclaimed Egg ```underlings.card.effect.domestic.playerhatchingground.CollectAndHatchAnyUnclaimedEggEffectTests```
+
+- Dragons
+  - Undine Wyrm, Steam Wyrm, Sunstone Wyrm, Twilight Wyrm, Electric Wyrm, Etheral Wyrm, Nature Wyrm, Brimstone Wyrm, Void Wyrm
+- [x] The effect should let the player hatch an unclaimed egg that is 5 points or fewer
+  - ```underlings.card.effect.domestic.playerhatchingground.CollectAndHatchAnyUnclaimedEggEffectTests.testOneEggToHatch()```
+  - ```underlings.card.effect.domestic.playerhatchingground.CollectAndHatchAnyUnclaimedEggEffectTests.testNoEggToHatch()```
+- [x] The player should know the effect has been run
+  - ```underlings.card.effect.domestic.playerhatchingground.CollectAndHatchAnyUnclaimedEggEffectTests.testToString()```
+
+#### Up to 2 of your Handlers may now occupy the same space on the Field ```underlings.card.effect.domestic.TwoHandlersOnFieldSpaceEffectTests```
+
+- Dragons
+  - Apiara
+- [x] The effect should let the player put two handlers on the same field space
+  - ```underlings.card.effect.domestic.TwoHandlersOnFieldSpaceEffectTests.testEffect()```
+- [x] The player should know the effect has been run
+  - ```underlings.card.effect.domestic.TwoHandlersOnFieldSpaceEffectTests.testToString()```
+
+#### You may create White by combining ALL Primary and Secondary Elements ```underlings.card.effect.domestic.WhiteReceipeEffectTests```
+
+- Dragons
+  - Aerillia
+- [x] The effect should let the player make white by combining all primary and secondary elements
+  - ```underlings.card.effect.domestic.WhiteReceipeEffectTests.testEffect()```
+- [x] The player should know the effect has been run
+  - ```underlings.card.effect.domestic.WhiteReceipeEffectTests.testToString()```
+
 ### Wild Card Effects ```underlings.card.effect.wild```
 
 #### ALL Eggs claimed this round take +1 round to hatch  ```underlings.card.effect.wild.AllEggsHatchLateEffectTests```
