@@ -1,4 +1,4 @@
-package underlings.card.effect.wild.players.player;
+package underlings.card.effect.domestic.players.player;
 
 import static org.junit.Assert.assertEquals;
 
