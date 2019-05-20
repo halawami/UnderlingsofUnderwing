@@ -16,7 +16,7 @@ import underlings.card.Card;
 import underlings.handler.HandlerFactory;
 import underlings.handler.HandlerState;
 
-public class CardTests {
+public class HatchedCardTests {
 
     private Player player;
     private Card card;
@@ -39,7 +39,7 @@ public class CardTests {
     }
 
     @Test
-    public void testOneCompletedEggs() {
+    public void testOneCompletedEgg() {
         this.player.moveToIncubation(this.card, this.player.hatchingTime);
         assertEquals(this.card.handler.getState(), HandlerState.INCUBATION);
         assertEquals(1, this.player.unhatchedCards.size());

@@ -367,6 +367,42 @@ The definition of done is created by examining and applying BVA on the rules.
   - When at 3 handlers, the handler count should remain at 3
     - ```underlings.player.HandlerDeficiencyTests.test25PointsTwice3Handlers()```
 
+#### Element Givers ```underlings.player.ElementGiversTests```
+
+- [x] A player can get element givers from cards they hatched and their handlers
+  - ```underlings.player.ElementGiversTests.testTwoHandlersNoCards```
+  - ```underlings.player.ElementGiversTests.testTwoHandlersOneCard```
+  - ```underlings.player.ElementGiversTests.testTwoHandlersTwoElementGiversOneCard```
+  - ```underlings.player.ElementGiversTests.testTwoHandlersTwoElementGiversTwoCards```
+  - ```underlings.player.ElementGiversTests.testEffectElementGiversTrue```
+  - ```underlings.player.ElementGiversTests.testEffectElementGiversTrueThenFalse```
+
+#### Hatched Cards ```underlings.player.HatchedCardTests```
+
+- [x] A player can hatch cards and view their most valuable dragons
+  - ```underlings.player.HatchedCardTests.testNoCompletedEggs```
+  - ```underlings.player.HatchedCardTests.testOneCompletedEgg```
+  - ```underlings.player.HatchedCardTests.testTwoCompletedEggs```
+  - ```underlings.player.HatchedCardTests.testMostValuableOneDragon```
+  - ```underlings.player.HatchedCardTests.testMostValuableMultipleDragonsOneHigher```
+  - ```underlings.player.HatchedCardTests.testMostValuableMultipleDragonsTie```
+  - ```underlings.player.HatchedCardTests.testNoHatchedCards```
+
+#### Holding Elements ```underlings.player.ElementTests```
+
+- [x] A player can gain or lose elements
+  - ```underlings.player.ElementTests.testAddElement```
+  - ```underlings.player.ElementTests.testRemoveElement```
+  - ```underlings.player.ElementTests.testNullElement```
+
+#### Stealing Elements ```underlings.player.StealElementsTests```
+
+- [x] A player can steal elements from other players
+  - ```underlings.player.StealElementsTests.testStealNoElements```
+  - ```underlings.player.StealElementsTests.testStealOneElement```
+  - ```underlings.player.StealElementsTests.testStealTwoElements```
+  - ```underlings.player.StealElementsTests.testStealTwoElementsWhileHavingTwoElements```
+
 ### Deck ```underlings.hatchingground.DeckTests```
 
 - [x] The deck can be drawn from with [0, DECK_SIZE] cards
