@@ -6,7 +6,7 @@ import java.util.Locale;
 
 import org.junit.Test;
 
-public class LocalWrapTests {
+public class LocaleWrapTests {
 
     @Test
     public void testSetLocale() {

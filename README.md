@@ -376,6 +376,11 @@ The definition of done is created by examining and applying BVA on the rules.
   - ```underlings.utilities.EggHatchingLogicTests.testReturnOrangeComboElements```
   - ```underlings.utilities.EggHatchingLogicTests.testMultiReturnComboElements```
 
+### LocaleWrap ```underlings.utilities.LocaleWrapTests```
+
+- [x] When the players set the locale at the beginning of the game it changes the language of the game
+  - ```underlings.utilities.LocaleWrapTests.testSetLocale```
+
 ### Scoring ```underlings.scoring```
 
 #### Temperature Tests ```underlings.scoring.TemperatureTests```
