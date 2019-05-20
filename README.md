@@ -315,6 +315,14 @@ The definition of done is created by examining and applying BVA on the rules.
 - [x] In the final phase the game will display the gameover screen tell all players that they lost
   - ```underlings.phase.WildFinalPhaseTests.testRunPhase```
 
+### Rotation Phase ```underlings.phase.RotationPhaseTests```
+- [x] In a rotation phase each player will finish their turn before moving to the next player
+  - ```underlings.phase.RotationPhaseTests.testExecute```
+
+### Sequential Phase ```underlings.phase.SequentialPhaseTests```
+- [x] In a sequential phase the players each complete part of their turn until everyone completes their turns
+  - ```underlings.phase.SequentialPhaseTests.testExecute```
+
 ### Scoring ```underlings.scoring```
 
 #### Temperature Tests ```underlings.scoring.TemperatureTests```
