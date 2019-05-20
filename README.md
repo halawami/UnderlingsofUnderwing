@@ -248,6 +248,15 @@ The definition of done is created by examining and applying BVA on the rules.
   - ```underlings.element.ElementSpaceLogicTests.testIsValidRecipes()```
   - ```underlings.element.ElementSpaceLogicTests.testResetRecipes()```
 
+#### Destroy All Elements Of Color Tests ```underlings.element.DestroyAllElementsOfColorTests```
+
+- [x] Element Spaces should be able to all elements of a certain color
+  - ```underlings.element.DestroyAllElementsOfColorTests.testNoDestoryableElements()```
+  - ```underlings.element.DestroyAllElementsOfColorTests.testOneDestroyableElementsFirst()```
+  - ```underlings.element.DestroyAllElementsOfColorTests.testOneDestoryableElementsMiddle()```
+  - ```underlings.element.DestroyAllElementsOfColorTests.testOneDestroyableElementsLast()```
+  - ```underlings.element.DestroyAllElementsOfColorTests.testMultipleDestroyableElements()```
+
 ### Handlers ```underlings.handler```
 
 #### Handler Choices ```underlings.handler.ChoiceTests```
