@@ -803,7 +803,7 @@ The definition of done is created by examining and applying BVA on the rules.
 
 - Dragons
   - Draceutrum
-- [x] This effect lets the player steal a dragon from another playerj
+- [x] This effect lets the player steal a dragon from another player
   - ```underlings.card.effect.domestic.players.TakeHatchedDragonFromPlayerEffectTests.testApply()```
   - ```underlings.card.effect.domestic.players.TakeHatchedDragonFromPlayerEffectTests.testApplyNoHatchedDragon()```
   - ```underlings.card.effect.domestic.players.TakeHatchedDragonFromPlayerEffectTests.testApplyNoHatchedDragonAllPlayers()```
