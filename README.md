@@ -331,12 +331,31 @@ The definition of done is created by examining and applying BVA on the rules.
   - ```underlings.phase.WildFinalPhaseTests.testRunPhase```
 
 ### Rotation Phase ```underlings.phase.RotationPhaseTests```
+
 - [x] In a rotation phase each player will finish their turn before moving to the next player
   - ```underlings.phase.RotationPhaseTests.testExecute```
 
 ### Sequential Phase ```underlings.phase.SequentialPhaseTests```
+
 - [x] In a sequential phase the players each complete part of their turn until everyone completes their turns
   - ```underlings.phase.SequentialPhaseTests.testExecute```
+
+### Egg Hatching ```underlings.utilities.EggHatchingLogicTests```
+
+- [x] If the card is unclaimed it hatches in the wild
+  - ```underlings.utilities.EggHatchingLogicTests.testOneWildEffect```
+  - ```underlings.utilities.EggHatchingLogicTests.testTwoWildEffects```
+  - ```underlings.utilities.EggHatchingLogicTests.testOneWildEffectReturnsElementsToBag
+- [x] If the card is claimed it will hatch domestically
+  - ```underlings.utilities.EggHatchingLogicTests.testOneDomesticEffect```
+- [x] When an effect runs it checks for other eggs that hatch due to the effect
+  - ```underlings.utilities.EggHatchingLogicTests.testEffectsRecursive```
+- [x] When an egg hatches it returns its elements to the element bag
+  - ```underlings.utilities.EggHatchingLogicTests.testReturnsElementsToBag```
+  - ```underlings.utilities.EggHatchingLogicTests.testReturnNoElements```
+  - ```underlings.utilities.EggHatchingLogicTests.testReturnPurpleComboElements```
+  - ```underlings.utilities.EggHatchingLogicTests.testReturnOrangeComboElements```
+  - ```underlings.utilities.EggHatchingLogicTests.testMultiReturnComboElements```
 
 ### Scoring ```underlings.scoring```
 
