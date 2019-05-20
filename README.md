@@ -216,6 +216,18 @@ The definition of done is created by examining and applying BVA on the rules.
 - [x] Elements should be displayed to the players
   - ```underlings.element.StringTests.testToString()```
 
+#### Count Tests ```underlings.element.CountTests```
+
+- [x] The element bag should have the correct number of elements when the game starts
+  - ```underlings.element.CountTests.testElementBagInit()```
+- [x] The element bag should decrease the count after drawing
+  - ```underlings.element.CountTests.testDraw20Left()```
+  - ```underlings.element.CountTests.testDraw1Left()```
+- [x] Adding element should increase the count
+  - ```underlings.element.CountTests.testPutOneBlueElement()```
+  - ```underlinge.element.CountTests.testPutTwoBlueElements()```
+  - ```underlings.element.CountTests.testPutOneBlueOneRedElement()```
+
 ### Handlers ```underlings.handler```
 
 #### Handler Choices ```underlings.handler.ChoiceTests```
