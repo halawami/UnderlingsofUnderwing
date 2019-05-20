@@ -18,7 +18,7 @@ import underlings.hatchingground.HatchingGround;
 import underlings.player.Player;
 import underlings.utilities.LocaleUtilities;
 
-public class UptoElementsFromAnyEggInPlayEffectTests extends MockTest {
+public class FromAnyEggInPlayEffectTests extends MockTest {
 
     @Test
     public void testApplyOnOneSelectedElements() {
@@ -93,7 +93,6 @@ public class UptoElementsFromAnyEggInPlayEffectTests extends MockTest {
     public void testCollectNullElementPicked() {
         this.testCollectElement(NullElement.getInstance(), NullElement.getInstance().getColor());
     }
-
 
     @Test
     public void testCollectNormalElementPicked() {

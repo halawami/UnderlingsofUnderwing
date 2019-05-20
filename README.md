@@ -875,3 +875,38 @@ The definition of done is created by examining and applying BVA on the rules.
 		- ```underlings.card.effect.domestic.handler.ReplaceHandlerWithYourOwnEffectTests.testApplyEffectSelectableHandler()```
 - [x] The player should know the effect has been run
   - ```underlings.card.effect.domestic.handler.ReplaceHandlerWithYourOwnEffectTests.testToString()```
+
+#### Destroy up to 2 ~temperature~ Elements on any Egg in play ```underlings.card.effect.domestic.playerhatchingground.uptoelements.FromAnyEggInPlayEffectTests```
+
+- Dragons
+  - Flamewreathed Whelp
+  - Iceshard Whelp
+- [x] This effect should let the player pick a card and take two ~temperature~ elements from it
+  - ```underlings.card.effect.domestic.playerhatchingground.uptoelements.FromAnyEggInPlayEffectTests.testDestroyNullElementPicked()```
+  - ```underlings.card.effect.domestic.playerhatchingground.uptoelements.FromAnyEggInPlayEffectTests.testDestroyNormalElementPicked()```
+- [x] The player should know the effect has been run
+  - ```underlings.card.effect.domestic.playerhatchingground.uptoelements.FromAnyEggInPlayEffectTests.testToStringDestroy()```
+  
+#### Take up to 2 ~temperate~ Elements from any Egg in play ```underlings.card.effect.domestic.playerhatchingground.uptoelements.FromAnyEggInPlayEffectTests```
+
+- Dragons
+  - Flamewreathed Wyvern
+  - Iceshard Wyvern
+- [x] This effect should let the player pick a card and take two ~temperature~ elements from it
+  - ```underlings.card.effect.domestic.playerhatchingground.uptoelements.FromAnyEggInPlayEffectTests.testCollectNullElementPicked()```
+  - ```underlings.card.effect.domestic.playerhatchingground.uptoelements.FromAnyEggInPlayEffectTests.testCollectNormalElementPicked()```
+  - ```underlings.card.effect.domestic.playerhatchingground.uptoelements.FromAnyEggInPlayEffectTests.testCollectNonExistingElement()```
+- [x] The player should know the effect has been run
+  - ```underlings.card.effect.domestic.playerhatchingground.uptoelements.FromAnyEggInPlayEffectTests.testToStringCollect()```
+
+#### Player may steal up to 3 Orange Elements from any Eggs in play ```underlings.card.effect.domestic.playerhatchingground.uptoelements.FromAnyEggInPlayEffectTests```
+
+- Dragons
+  - Aerystrasza
+- [x] This effect should let the player pick a card and take up to three orange elements from it
+  - ```underlings.card.effect.domestic.playerhatchingground.uptoelements.FromAnyEggInPlayEffectTests.testCollectNullElementPicked()```
+  - ```underlings.card.effect.domestic.playerhatchingground.uptoelements.FromAnyEggInPlayEffectTests.testCollectNormalElementPicked()```
+  - ```underlings.card.effect.domestic.playerhatchingground.uptoelements.FromAnyEggInPlayEffectTests.testCollectNonExistingElement()```
+- [x] The player should know the effect has been run
+  - ```underlings.card.effect.domestic.playerhatchingground.uptoelements.FromAnyEggInPlayEffectTests.testToStringCollect()```
+  
