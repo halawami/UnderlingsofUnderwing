@@ -16,7 +16,7 @@ import underlings.card.Card;
 import underlings.handler.HandlerFactory;
 import underlings.handler.HandlerState;
 
-public class CardTests {
+public class HatchedCardTests {
 
     private Player player;
     private Card card;

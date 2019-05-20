@@ -356,6 +356,17 @@ The definition of done is created by examining and applying BVA on the rules.
   - ```underlings.player.ElementGiversTests.testEffectElementGiversTrue```
   - ```underlings.player.ElementGiversTests.testEffectElementGiversTrueThenFalse```
 
+#### Hatched Cards ```underlings.player.HatchedCardTests```
+
+- [x] A player can hatch cards and view their most valuable dragons
+  - ```underlings.player.HatchedCardTests.testNoCompletedEggs```
+  - ```underlings.player.HatchedCardTests.testOneCompletedEgg```
+  - ```underlings.player.HatchedCardTests.testTwoCompletedEggs```
+  - ```underlings.player.HatchedCardTests.testMostValuableOneDragon```
+  - ```underlings.player.HatchedCardTests.testMostValuableMultipleDragonsOneHigher```
+  - ```underlings.player.HatchedCardTests.testMostValuableMultipleDragonsTie```
+  - ```underlings.player.HatchedCardTests.testNoHatchedCards```
+
 ### Deck ```underlings.hatchingground.DeckTests```
 
 - [x] The deck can be drawn from with [0, DECK_SIZE] cards
