@@ -21,6 +21,11 @@ import underlings.utilities.LocaleUtilities;
 public class UptoElementsFromAnyEggInPlayEffectTests extends MockTest {
 
     @Test
+    public void testApplyOnOneSelectedElements() {
+        this.testApplyOnNumberOfSelectedElements(1);
+    }
+
+    @Test
     public void testApplyOnTwoSelectedElements() {
         this.testApplyOnNumberOfSelectedElements(2);
     }
