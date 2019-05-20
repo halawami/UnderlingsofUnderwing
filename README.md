@@ -79,6 +79,14 @@ The definition of done is created by examining and applying BVA on the rules.
 - [x] The field should display its color
   - ```underlings.field.StringTests.testToString()```
 
+#### Add Tests ```underlings.field.AddTests```
+
+- [x] Handlers can be added to the circular field
+  - ```underlings.field.AddTests.testStart()```
+  - ```underlings.field.AddTests.testEnd()```
+- [x] Handlers can be added to the white field space
+  - ```underlings.field.AddTests.testWhite()```
+
 ### Handlers ```underlings.handler```
 
 #### Handler Choices ```underlings.handler.ChoiceTests```
