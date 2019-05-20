@@ -564,6 +564,13 @@ The definition of done is created by examining and applying BVA on the rules.
   - ```underlings.card.GetElementGiverTests.testNullElementGivers```
   - ```underlings.card.GetElementGiverTests.testNoElementGivers```
 
+#### Completion ```underlings.card.element.placement.IsCompleteTests```
+- [x] A card is completed when all element spaces on it are complete
+  - ```underlings.card.element.placement.IsCompleteTests.testCompleteCardOneElementSpace```
+  - ```underlings.card.element.placement.IsCompleteTests.testIncompleteCardOneElementSpace```
+  - ```underlings.card.element.placement.IsCompleteTests.testCompleteCardTwoElementSpaces```
+  - ```underlings.card.element.placement.IsCompleteTests.testIncompleteCardTwoElementSpaces```
+
 ### Scoring ```underlings.scoring```
 
 #### Temperature Tests ```underlings.scoring.TemperatureTests```
