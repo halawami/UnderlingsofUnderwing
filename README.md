@@ -288,6 +288,29 @@ The definition of done is created by examining and applying BVA on the rules.
   - ```underlings.element.ElementAliasTests.testChangeBlueToRed()```
   - ```underlings.element.ElementAliasTests.testChangeRedToBlue()```
 
+#### Valid Additions Tests ```underlings.element.ValidAdditionsTests```
+
+- [x] Empty Element Spaces should have valid additions
+  - ```underlings.element.ValidAdditionsTests.testEmptyGreen()```
+  - ```underlings.element.ValidAdditionsTests.testEmptyOrange()```
+  - ```underlings.element.ValidAdditionsTests.testEmptyBlue()```
+  - ```underlings.element.ValidAdditionsTests.testEmptyRed()```
+  - ```underlings.element.ValidAdditionsTests.testOpenElements()```
+  - ```underlings.element.ValidAdditionsTests.testOpenElementsBlack()```
+- [x] Completed Element Spaces should have no valid additions
+  - ```underlings.element.ValidAdditionsTests.testCompleteGreen()```
+  - ```underlings.element.ValidAdditionsTests.testCompleteOrange()```
+  - ```underlings.element.ValidAdditionsTests.testOpenElementsComplete()```
+  - ```underlings.element.ValidAdditionsTests.testValidAdditionsDone()```
+  - ```underlings.element.ValidAdditionsTests.testRed()```
+  - ```underlings.element.ValidAdditionsTests.testGreen()```
+  - ```underlings.element.ValidAdditionsTests.testBlue()```
+  - ```underlings.element.ValidAdditionsTests.testOrange()```
+  - ```underlings.element.ValidAdditionsTests.testYellow()```
+  - ```underlings.element.ValidAdditionsTests.testPurple()```
+  - ```underlings.element.ValidAdditionsTests.testWhite()```
+  - ```underlings.element.ValidAdditionsTests.testBlack()```
+
 ### Handlers ```underlings.handler```
 
 #### Handler Choices ```underlings.handler.ChoiceTests```
