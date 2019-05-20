@@ -135,6 +135,21 @@ The definition of done is created by examining and applying BVA on the rules.
   - When a white element is placed on a white element space, the element space should be completed
     - ```underlings.elements.DoneTests.testWhite()```
 
+#### Orange Combo ```underlings.element.OrangeTests```
+
+- [x] An orange element can be made from yellow and red elements
+  - When only a red is placed on an orange space, the combo is not complete
+    - ```underlings.element.OrangeTests.testRed()```
+  - When only a yellow is placed on an orange space, the combo is not complete
+    - ```underlings.element.OrangeTests.testYellow()```
+  - When a red and then a yellow is placed on an orange space, the combo is complete
+    - ```underlings.element.OrangeTests.testRedThenYellow()```
+  - When a yellow and then red is played on an orange space, the combo is complete
+    - ```underlings.element.OrangeTests.testYellowThenRed()```
+  - When a yellow and red are played on an orange space, the combo is complete
+    - ```underlings.element.OrangeTests.testRedAndYellow()```
+
+
 ### Handlers ```underlings.handler```
 
 #### Handler Choices ```underlings.handler.ChoiceTests```
