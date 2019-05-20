@@ -51,7 +51,45 @@
 		- ```underlings.card.effect.wild.adjacenteggs.elements.add.AddElementsToAllAdjacentEggsEffectTests.testApplyTwoDifferentElementColor()```
 	- Apply effect from a list of two same element colors
 		- ```underlings.card.effect.wild.adjacenteggs.elements.add.AddElementsToAllAdjacentEggsEffectTests.testApplyTwoSameElementColor()```
-	- Apply effect from a //TODO
-		- ```underlings.card.effect.wild.adjacenteggs.elements.add.AddElementsToAllAdjacentEggsEffectTests.testApplyTwoSameElementColor()```
+	- Apply effect adding to a wild card
+		- ```underlings.card.effect.wild.adjacenteggs.elements.add.AddElementsToAllAdjacentEggsEffectTests.testApplyToWildCard()```
+	- Apply effect with playable spaces
+	    - ```underlings.card.effect.wild.adjacenteggs.elements.add.AddElementsToAllAdjacentEggsEffectTests.testAddElementToCardNoPlayableSpace()```
+		- ```underlings.card.effect.wild.adjacenteggs.elements.add.AddElementsToAllAdjacentEggsEffectTests.testAddElementToCardOnePlayableSpace()```
+		- ```underlings.card.effect.wild.adjacenteggs.elements.add.AddElementsToAllAdjacentEggsEffectTests.testAddElementToCardEightPlayableSpaces()```
+	- Apply effect with no elements left in bag
+	    - ```underlings.card.effect.wild.adjacenteggs.elements.add.AddElementsToAllAdjacentEggsEffectTests.testAddElementWithNoElementsLeftInBag()```
 - [x] The player should know the effect has been run
   - ```underlings.card.effect.wild.adjacenteggs.elements.add.AddElementsToAllAdjacentEggsEffectTests.testToString()```
+
+#### Destroying Elements On All Adjacent Eggs ```underlings.card.effect.wild.adjacenteggs.elements.destroy.DestroyElementsOnAllAdjacentEggsEffectTests```
+
+- Effects
+  - Destroy 1 ~color~ Element on ALL adjacent Eggs
+    - Dragons
+      - Electric Drake
+      - Steam Drake
+	  - Nature Drake
+  - Destroy 1 of each Secondary Element on ALL adjacent Eggs
+    - Dragons
+	  - Opalescent Drake
+  - Destroy ALL ~color~ and ~color~ Elements on ALL adjacent Eggs
+    - Dragons
+	  - Abyssal Whelp
+	  - Nebula Whelp
+	  - Aeon Whelp
+  - Destroy 1 of each Primary Element on ALL claimed adjacent Eggs
+    - Dragons
+	  - Chromatic Drake
+  - Destroy ALL ~temperature~ Elements on ALL adjacent Eggs
+    - Dragons
+	  - Flamewreathed Whelp
+	  - Iceshard Whelp
+- [x] This effect destroys elements on ALL Adjacent Eggs
+  - ```underlings.card.effect.wild.adjacenteggs.elements.destroy.DestroyElementsOnAllAdjacentEggsEffectTests.testDestroyElementOnCardNoDestroyableElements()```
+  - ```underlings.card.effect.wild.adjacenteggs.elements.destroy.DestroyElementsOnAllAdjacentEggsEffectTests.testDestroyElementOnCardOneDestroyableSpace()```
+  - ```underlings.card.effect.wild.adjacenteggs.elements.destroy.DestroyElementsOnAllAdjacentEggsEffectTests.testDestroyElementOnCardEightDestroyableSpace()```
+  - ```underlings.card.effect.wild.adjacenteggs.elements.destroy.DestroyElementsOnAllAdjacentEggsEffectTests.testDestroyAllElementsOnAllAdjacentEggsEffect()```
+  - ```underlings.card.effect.wild.adjacenteggs.elements.destroy.DestroyElementsOnAllAdjacentEggsEffectTests.testDestroyOneElementOnAllAdjacentEggsEffect()```
+- [x] The player should know the effect has been run
+  - ```underlings.card.effect.wild.adjacenteggs.elements.destroy.DestroyElementsOnAllAdjacentEggsEffectTests.testToStringPlace()```
