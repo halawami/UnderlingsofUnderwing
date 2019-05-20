@@ -311,6 +311,17 @@ The definition of done is created by examining and applying BVA on the rules.
   - ```underlings.element.ValidAdditionsTests.testWhite()```
   - ```underlings.element.ValidAdditionsTests.testBlack()```
 
+#### Get Valid Element Spaces Tests ```underlings.element.GetValidElementSpacesTest```
+
+- [x] The player can only play on element spaces they have elements for
+  - ```underlings.element.GetValidElementSpacesTest.testNoSpaces()```
+  - ```underlings.element.GetValidElementSpacesTest.testNoElements()```
+  - ```underlings.element.GetValidElementSpacesTest.testRedElement()```
+  - ```underlings.element.GetValidElementSpacesTest.testBlueElement()```
+  - ```underlings.element.GetValidElementSpacesTest.testBlueAndRedElements()```
+  - ```underlings.element.GetValidElementSpacesTest.testSecondaryElements()```
+  - ```underlings.element.GetValidElementSpacesTest.testOpenElements()```
+
 ### Handlers ```underlings.handler```
 
 #### Handler Choices ```underlings.handler.ChoiceTests```
