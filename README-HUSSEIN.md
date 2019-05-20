@@ -114,3 +114,31 @@
   - ```underlings.card.effect.wild.alleggsinplay.RemoveAllHandlersFromAllEggsInPlayEffectTests.testWildHandler()```
 - [x] The player should know the effect has been run
   - ```underlings.card.effect.wild.alleggsinplay.RemoveAllHandlersFromAllEggsInPlayEffectTests.testToString()```
+
+#### ALL players must return ALL hatched Neutral dragons to the draw pile ```underlings.card.effect.wild.deck.ReturnAllHatchedDragonsFromPlayersEffectTests```
+- Dragons
+  - Draceutrum
+
+- [x] This effect makes all players return all of their neutral dragons to the draw pile
+  - ```underlings.card.effect.wild.deck.ReturnAllHatchedDragonsFromPlayersEffectTests.testApplyOnTwoPlayers()```
+  - ```underlings.card.effect.wild.deck.ReturnAllHatchedDragonsFromPlayersEffectTests.testApplyOnSixPlayers()```
+  - ```underlings.card.effect.wild.deck.ReturnAllHatchedDragonsFromPlayersEffectTests.testRemoveFromNoHatchedCards()```
+  - ```underlings.card.effect.wild.deck.ReturnAllHatchedDragonsFromPlayersEffectTests.testRemoveFromOneHatchedCards()```
+  - ```underlings.card.effect.wild.deck.ReturnAllHatchedDragonsFromPlayersEffectTests.testRemoveOneCard()```
+  - ```underlings.card.effect.wild.deck.ReturnAllHatchedDragonsFromPlayersEffectTests.testRemoveAllButOneCard()```
+  - ```underlings.card.effect.wild.deck.ReturnAllHatchedDragonsFromPlayersEffectTests.testRemoveAllCards()```
+- [x] The player should know the effect has been run
+  - ```underlings.card.effect.wild.deck.ReturnAllHatchedDragonsFromPlayersEffectTests.testToString()```
+
+#### ALL players return their most valuable Dragon to the draw pile ```underlings.card.effect.wild.deck.ReturnMostValuableDragonEffectTests```
+- Dragons
+  - Aerystrasza
+
+- [x] This effect makes all players return their most valuable dragon to the draw pile and shuffles the draw pile
+  - ```underlings.card.effect.wild.deck.ReturnMostValuableDragonEffectTests.testApplyEffectOnTwoPlayers()```
+  - ```underlings.card.effect.wild.deck.ReturnMostValuableDragonEffectTests.testApplyEffectOnSixPlayers()```
+  - ```underlings.card.effect.wild.deck.ReturnMostValuableDragonEffectTests.testReturnMostValuableDragonNoDragons()```
+  - ```underlings.card.effect.wild.deck.ReturnMostValuableDragonEffectTests.testReturnMostValuableDragonOneDragon()```
+  - ```underlings.card.effect.wild.deck.ReturnMostValuableDragonEffectTests.testReturnMostValuableDragonTwoDragons()```
+- [x] The player should know the effect has been run
+  - ```underlings.card.effect.wild.deck.ReturnMostValuableDragonEffectTests.testToString()```

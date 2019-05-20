@@ -36,7 +36,6 @@ public class ReturnAllHatchedDragonsFromPlayersEffectTests extends MockTest {
         this.testApplyOnPlayers(6);
     }
 
-
     public void testApplyOnPlayers(int numberOfPlayers) {
         this.players = this.mockListOf(Player.class).withLengthOf(numberOfPlayers);
 
@@ -44,7 +43,7 @@ public class ReturnAllHatchedDragonsFromPlayersEffectTests extends MockTest {
                 EasyMock.partialMockBuilder(ReturnAllHatchedDragonsFromPlayersEffect.class)
                         .addMockedMethod("removeCardsOfTemperature").createMock();
         this.addMock(effect);
-        effect.temperatures = new Temperature[]{Temperature.NEUTRAL};
+        effect.temperatures = new Temperature[] {Temperature.NEUTRAL};
 
         for (Player player : this.players) {
             effect.removeCardsOfTemperature(this.deck, Arrays.asList(effect.temperatures), player);
@@ -143,7 +142,7 @@ public class ReturnAllHatchedDragonsFromPlayersEffectTests extends MockTest {
     public void testToString() {
         this.replayAll();
         ReturnAllHatchedDragonsFromPlayersEffect effect = new ReturnAllHatchedDragonsFromPlayersEffect();
-        effect.temperatures = new Temperature[]{Temperature.COOL};
+        effect.temperatures = new Temperature[] {Temperature.COOL};
         StringBuilder temperature = new StringBuilder();
         for (Temperature temp : effect.temperatures) {
             temperature.append(temp);
