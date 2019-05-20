@@ -69,8 +69,13 @@ The definition of done is created by examining and applying BVA on the rules.
 - [x] The game should start and run until the game is over
   - The game can run until the round count reaches zero
     - ```underlings.game.GameTests.testGameLoopRoundsCompleted()```
+    - ```underlings.game.GameTests.testGamoverPhaseEnd()```
   - The game can run until all eggs have been hatched wild
     - ```underlings.game.GameTests.testGameLoopWildHatched()```
+  - The game can run until all cards have been used
+    - ```underlings.game.GameTests.testCheckGameoverNoCards()```
+    - ```underlings.game.GameTests.testCheckGameoverWithCardsTrue()```
+    - ```underlings.game.GameTests.testCheckGameoverWithCardsFalse()```
 
 ### Field ```underlings.Field```
 
@@ -105,6 +110,30 @@ The definition of done is created by examining and applying BVA on the rules.
 - [x] The field is displayed as a grid
   - ```underlings.field.GridTests.testGetGrid()```
   - ```underlings.field.GridTests.testGetValidFieldSpaces()```
+
+### Elements ```underlings.elements```
+
+#### Done Tests ```underlings.elements.DoneTests```
+
+- [x] An empty element space should not be complete
+    - ```underlings.elements.DoneTests.testEmpty()```
+- [x] A single non-combo element is placed on an empty element space
+  - When a red element is placed on a red element space, the element space should be completed
+    - ```tests.elementspace.single.DoneTests.testRed()```
+  - When a green element is placed on a green element space, the element space should be completed
+    - ```underlings.elements.DoneTests.testGreen()```
+  - When a blue element is placed on a blue element space, the element space should be completed
+    - ```underlings.elements.DoneTests.testBlue()```
+  - When a orange element is placed on a orange element space, the element space should be completed
+    - ```underlings.elements.DoneTests.testOrange()```
+  - When a yellow element is placed on a yellow element space, the element space should be completed
+    - ```underlings.elements.DoneTests.testYellow()```
+  - When a purple element is placed on a purple element space, the element space should be completed
+    - ```underlings.elements.DoneTests.testPurple()```
+  - When a black element is placed on a black element space, the element space should be completed
+    - ```underlings.elements.DoneTests.testBlack()```
+  - When a white element is placed on a white element space, the element space should be completed
+    - ```underlings.elements.DoneTests.testWhite()```
 
 ### Handlers ```underlings.handler```
 
@@ -380,6 +409,11 @@ The definition of done is created by examining and applying BVA on the rules.
 
 - [x] When the players set the locale at the beginning of the game it changes the language of the game
   - ```underlings.utilities.LocaleWrapTests.testSetLocale```
+
+### Draw Choices ```underlings.gui.DrawChoiceTests```
+
+- [x] Draw choices are displayed to the player
+  - ```underlings.gui.DrawChoiceTests.testToString```
 
 ### Scoring ```underlings.scoring```
 
