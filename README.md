@@ -379,12 +379,20 @@ The definition of done is created by examining and applying BVA on the rules.
   - ```underlings.player.HatchedCardTests.testMostValuableMultipleDragonsTie```
   - ```underlings.player.HatchedCardTests.testNoHatchedCards```
 
-#### Elements ```underlings.player.ElementTests```
+#### Holding Elements ```underlings.player.ElementTests```
 
 - [x] A player can gain or lose elements
   - ```underlings.player.ElementTests.testAddElement```
   - ```underlings.player.ElementTests.testRemoveElement```
   - ```underlings.player.ElementTests.testNullElement```
+
+#### Stealing Elements ```underlings.player.StealElementsTests```
+
+- [x] A player can steal elements from other players
+  - ```underlings.player.StealElementsTests.testStealNoElements```
+  - ```underlings.player.StealElementsTests.testStealOneElement```
+  - ```underlings.player.StealElementsTests.testStealTwoElements```
+  - ```underlings.player.StealElementsTests.testStealTwoElementsWhileHavingTwoElements```
 
 ### Deck ```underlings.hatchingground.DeckTests```
 
