@@ -135,7 +135,7 @@ The definition of done is created by examining and applying BVA on the rules.
   - When a white element is placed on a white element space, the element space should be completed
     - ```underlings.elements.DoneTests.testWhite()```
 
-#### Orange Combo ```underlings.element.OrangeTests```
+#### Orange Tests ```underlings.element.OrangeTests```
 
 - [x] An orange element can be made from yellow and red elements
   - When only a red is placed on an orange space, the combo is not complete
@@ -149,6 +149,33 @@ The definition of done is created by examining and applying BVA on the rules.
   - When a yellow and red are played on an orange space, the combo is complete
     - ```underlings.element.OrangeTests.testRedAndYellow()```
 
+#### Green Tests ```underlings.element.GreenTests```
+
+- [x] An green element can be made from yellow and blue elements
+  - When only a blue is placed on a green space, the combo is not complete
+    - ```underlings.element.GreenTests.testBlue()```
+  - When only a yellow is placed on a green space, the combo is not complete
+    - ```underlings.element.GreenTests.testYellow()```
+  - When a blue and then a yellow is placed on a green space, the combo is complete
+    - ```underlings.element.GreenTests.testBlueThenYellow()```
+  - When a yellow and then blue is played on a green space, the combo is complete
+    - ```underlings.element.GreenTests.testYellowThenBlue()```
+  - When a yellow and blue are played on a green space, the combo is complete
+    - ```underlings.element.GreenTests.testBlueAndYellow()```
+
+#### Purple Tests ```underlings.element.PurpleTests```
+
+- [x] An purple element can be made from red and blue elements
+  - When only a blue is placed on a purple space, the combo is not complete
+    - ```underlings.element.PurpleTests.testBlue()```
+  - When only a red is placed on a purple space, the combo is not complete
+    - ```underlings.element.PurpleTests.testRed()```
+  - When a blue and then a red is placed on a purple space, the combo is complete
+    - ```underlings.element.PurpleTests.testBlueThenRed()```
+  - When a red and then blue is played on a purple space, the combo is complete
+    - ```underlings.element.PurpleTests.testRedThenBlue()```
+  - When a red and blue are played on a purple space, the combo is complete
+    - ```underlings.element.PurpleTests.testBlueAndRed()```
 
 ### Handlers ```underlings.handler```
 
