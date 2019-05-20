@@ -273,6 +273,11 @@ The definition of done is created by examining and applying BVA on the rules.
   - ```underlings.element.DestroyOneElementOfColorTests.testOneDestroyableElementsLast()```
   - ```underlings.element.DestroyOneElementOfColorTests.testMultipleDestroyableElements()```
 
+#### Draw Choice Tests ```underlings.element.DrawChoiceTests```
+
+- [x] Draw Choices should correspond to an element color
+  - ```underlings.element.DrawChoiceTests.testAll()```
+
 ### Handlers ```underlings.handler```
 
 #### Handler Choices ```underlings.handler.ChoiceTests```
