@@ -457,6 +457,40 @@ The definition of done is created by examining and applying BVA on the rules.
 - [x] Draw choices are displayed to the player
   - ```underlings.gui.DrawChoiceTests.testToString```
 
+### GUI
+
+#### GUI Functions ```underlings.gui.GuiTests```
+- [x] The player is able to choose a state to move their handler to
+  - ```underlings.gui.GuiTests.testGetHandlerDecisionWithCard```
+  - ```underlings.gui.GuiTests.testGetHandlerDecisionNoCards```
+- [x] The user can enter the number of players
+  - ```underlings.gui.GuiTests.testGetPlayerCountTwoPlayers```
+  - ```underlings.gui.GuiTests.testGetPlayerCountSixPlayers```
+- [x] The GUI can notify or alert players
+  - ```underlings.gui.GuiTests.testNotify```
+  - ```underlings.gui.GuiTests.testAlertNoPlayerId```
+  - ```underlings.gui.GuiTests.testAlertRegular```
+  - ```underlings.gui.GuiTests.testAlertWarning```
+  - ```underlings.gui.GuiTests.testAlertError```
+- [x] The player can choose from a list of options
+  - ```underlings.gui.GuiTests.testPromptChoice```
+- [x] The player can choose yes or no
+  - ```underlings.gui.GuiTests.testChoiceYesToString```
+  - ```underlings.gui.GuiTests.testChoiceNoToString```
+  - ```underlings.gui.GuiTests.testChoiceYesBooleanValue```
+  - ```underlings.gui.GuiTests.testChoiceNoBooleanValue```
+- [x] The player can choose to reorder cards from the deck
+  - ```underlings.gui.GuiTests.testReorderCard```
+- [x] The player can choose a locale
+  - ```underlings.gui.GuiTests.testPromptLocale```
+- [x] The player can choose an element from an element space
+  - ```underlings.gui.GuiTests.testGetElementsOfColorsFromSpaceNoChoices```
+  - ```underlings.gui.GuiTests.testGetElementsOfColorsFromSpace```
+- [x] The player can choose a card
+  - ```underlings.gui.GuiTests.testGetCard```
+- [x] The player can fetch a grid of element spaces
+  - ```underlings.gui.GuiTests.testElementGrid```
+
 ### Scoring ```underlings.scoring```
 
 #### Temperature Tests ```underlings.scoring.TemperatureTests```

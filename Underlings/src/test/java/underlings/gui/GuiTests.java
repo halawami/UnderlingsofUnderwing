@@ -96,9 +96,8 @@ public class GuiTests {
 
         HatchingGround hatchingGround = EasyMock.mock(HatchingGround.class);
         EasyMock.expect(hatchingGround.getUnclaimedEggs()).andReturn(Arrays.asList(new Card()));
-        EasyMock.expect(this.promptHandler
-                .promptChoice(MessageFormat.format(LocaleUtilities.get("gui_handler_choice"), handler), handlerChoices,
-                        0))
+        EasyMock.expect(this.promptHandler.promptChoice(
+                MessageFormat.format(LocaleUtilities.get("gui_handler_choice"), handler), handlerChoices, 0))
                 .andReturn(HandlerChoice.CARD);
 
         EasyMock.replay(hatchingGround, handler);
@@ -114,7 +113,7 @@ public class GuiTests {
     }
 
     @Test
-    public void testGetHandlerDecisioNoCards() {
+    public void testGetHandlerDecisionNoCards() {
         Handler handler = EasyMock.mock(Handler.class);
         List<Handler> handlers = new ArrayList<>();
         handlers.add(handler);
@@ -296,7 +295,7 @@ public class GuiTests {
 
         this.replay();
 
-        Locale locale = this.gui.promptLocale(new Locale[]{});
+        Locale locale = this.gui.promptLocale(new Locale[] {});
 
         assertEquals(Locale.CANADA, locale);
 
@@ -384,7 +383,7 @@ public class GuiTests {
     }
 
     @Test
-    public void testElementGridSix() {
+    public void testElementGrid() {
         List<ElementSpace> spaces = new ArrayList<>();
         spaces.add(new ElementSpace(ElementColor.RED));
         spaces.add(new ElementSpace(ElementColor.BLUE));
