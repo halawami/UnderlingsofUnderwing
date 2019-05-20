@@ -93,3 +93,13 @@
   - ```underlings.card.effect.wild.adjacenteggs.elements.destroy.DestroyElementsOnAllAdjacentEggsEffectTests.testDestroyOneElementOnAllAdjacentEggsEffect()```
 - [x] The player should know the effect has been run
   - ```underlings.card.effect.wild.adjacenteggs.elements.destroy.DestroyElementsOnAllAdjacentEggsEffectTests.testToStringPlace()```
+
+#### Destroy ALL Black and White Elements on Eggs in play ```underlings.card.effect.wild.alleggsinplay.DestroyBlackAndWhiteElementsTests```
+- Dragons
+  - Artifeles
+  
+- [x] This effect destroys all black and white elements on all eggs
+  - ```underlings.card.effect.wild.alleggsinplay.DestroyBlackAndWhiteElementsTests.effectTest()```
+  - ```underlings.card.effect.wild.alleggsinplay.DestroyBlackAndWhiteElementsTests.effectTestMultipleSpaces()```
+- [x] The player should know the effect has been run
+  - ```underlings.card.effect.wild.alleggsinplay.testToString()```
