@@ -103,3 +103,14 @@
   - ```underlings.card.effect.wild.alleggsinplay.DestroyBlackAndWhiteElementsTests.effectTestMultipleSpaces()```
 - [x] The player should know the effect has been run
   - ```underlings.card.effect.wild.alleggsinplay.testToString()```
+
+#### Remove ALL handlers from ALL Eggs in play ```underlings.card.effect.wild.alleggsinplay.RemoveAllHandlersFromAllEggsInPlayEffectTests```
+- Dragons
+  - Vadrenox
+  
+- [x] This effect removes all handlers from all eggs in play
+  - ```underlings.card.effect.wild.alleggsinplay.RemoveAllHandlersFromAllEggsInPlayEffectTests.testNoHandler()```
+  - ```underlings.card.effect.wild.alleggsinplay.RemoveAllHandlersFromAllEggsInPlayEffectTests.testPlayerHandler()```
+  - ```underlings.card.effect.wild.alleggsinplay.RemoveAllHandlersFromAllEggsInPlayEffectTests.testWildHandler()```
+- [x] The player should know the effect has been run
+  - ```underlings.card.effect.wild.alleggsinplay.RemoveAllHandlersFromAllEggsInPlayEffectTests.testToString()```
