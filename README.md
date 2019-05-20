@@ -794,6 +794,19 @@ The definition of done is created by examining and applying BVA on the rules.
 - [x] The player should know that the effect has been run
   - ```underlings.card.effect.domestic.players.StealAllStoredElementsEffectTests.testToString()```
 
+#### Select a Player; take 1 of their hatched Neutral dragons worth 9 points of fewer ```underlings.card.effect.domestic.players.TakeHatchedDragonFromPlayerEffectTests```
+
+- Dragons
+  - Draceutrum
+- [x] This effect lets the player steal a dragon from another playerj
+  - ```underlings.card.effect.domestic.players.TakeHatchedDragonFromPlayerEffectTests.testApply()```
+  - ```underlings.card.effect.domestic.players.TakeHatchedDragonFromPlayerEffectTests.testApplyNoHatchedDragon()```
+  - ```underlings.card.effect.domestic.players.TakeHatchedDragonFromPlayerEffectTests.testApplyNoHatchedDragonAllPlayers()```
+  - ```underlings.card.effect.domestic.players.TakeHatchedDragonFromPlayerEffectTests.testApplyMultipleDragons()```
+  - ```underlings.card.effect.domestic.players.TakeHatchedDragonFromPlayerEffectTests.testApplyMultipleDragonsHigherPoints()```
+- [x] The player should know that the effect has been run
+  - ```underlings.card.effect.domestic.players.TakeHatchedDragonFromPlayerEffectTests.testToString()```
+
 #### Examine the top 3 Dragons in the draw pile; reorder as desired ```underlings.card.effect.domestic.deck.ReorderTopThreeCardsEffectTests```
 
 - Dragons
