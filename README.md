@@ -1021,5 +1021,27 @@ The definition of done is created by examining and applying BVA on the rules.
 - [x] This effect should have each player lose a handler
   - ```underlings.card.effect.wild.players.LoseHandlerEffectTests.testLoseHandlerTwoPlayers()```
   - ```underlings.card.effect.wild.players.LoseHandlerEffectTests.testLoseHandlerSixPlayers()```
-- [x] The player shouldd know the effect has been run
+- [x] The player should know the effect has been run
   - ```underlings.card.effect.wild.players.LoseHandlerEffectTests.testToString()```
+
+#### All players draw 1 fewer Element during each Phase 1 ```underlings.card.effect.wild.players.DrawOneLessElementEffectTests```
+
+- Dragons
+  - Lusura
+- [x] This effect should have each player draw one fewer element during each phase one
+  - ```underlings.card.effect.wild.players.DrawOneLessElementEffectTests.testApplyTwoPlayers()```
+  - ```underlings.card.effect.wild.players.DrawOneLessElementEffectTests.testApplySixPlayers()```
+  - ```underlings.card.effect.wild.players.DrawOneLessElementEffectTests.testOnPhaseOne()```
+  - ```underlings.card.effect.wild.players.DrawOneLessElementEffectTests.testGetEffectElementGiversOneElementGiver()```
+  - ```underlings.card.effect.wild.players.DrawOneLessElementEffectTests.testGetEffectElementGiversTwoElementGiver()```
+  - ```underlings.card.effect.wild.players.DrawOneLessElementEffectTests.testGetEffectElementGiversThreeElementGiver()```
+
+#### Declare global war; destroy all players' stored Elements ```underlings.card.effect.wild.players.DestroyAllPlayersStoredElementsEffectTests```
+
+- Dragons
+  - Ignatius
+- [x] This effect should destroy all players' elements
+  - ```underlings.card.effect.wild.players.DestroyAllPlayersStoredElementsEffectTests.testApplyOnTwoPlayer()```
+  - ```underlings.card.effect.wild.players.DestroyAllPlayersStoredElementsEffectTests.testApplyOnSixPlayer()```
+- [x] The player should know the effect has been run
+  - ```underlings.card.effect.wild.players.DestroyAllPlayersStoredElementsEffectTests.testToString()```
