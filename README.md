@@ -278,6 +278,16 @@ The definition of done is created by examining and applying BVA on the rules.
 - [x] Draw Choices should correspond to an element color
   - ```underlings.element.DrawChoiceTests.testAll()```
 
+#### Element Alias Tests ```underlings.element.ElementAliasTests```
+
+- [x] An elements initial alias is its color
+  - ```underlings.element.ElementAliasTests.testInitial()```
+- [x] An element can change its alias
+  - ```underlings.element.ElementAliasTests.testNoChangeBlue()```
+  - ```underlings.element.ElementAliasTests.testNoChangeRed()```
+  - ```underlings.element.ElementAliasTests.testChangeBlueToRed()```
+  - ```underlings.element.ElementAliasTests.testChangeRedToBlue()```
+
 ### Handlers ```underlings.handler```
 
 #### Handler Choices ```underlings.handler.ChoiceTests```
