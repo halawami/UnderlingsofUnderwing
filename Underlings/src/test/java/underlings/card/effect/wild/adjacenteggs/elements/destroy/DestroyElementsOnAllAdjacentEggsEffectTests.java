@@ -12,7 +12,6 @@ import underlings.card.Card;
 import underlings.element.ElementColor;
 import underlings.element.ElementSpace;
 import underlings.element.ElementSpaceUtilities;
-import underlings.hatchingground.EggHatchingUtilities;
 import underlings.utilities.LocaleUtilities;
 
 public class DestroyElementsOnAllAdjacentEggsEffectTests extends MockTest {
@@ -34,7 +33,6 @@ public class DestroyElementsOnAllAdjacentEggsEffectTests extends MockTest {
                 .addMockedMethod("destroyElementsOfColorOnCard").createMock();
         this.addMock(effect);
         effect.elementColors = elementColors;
-        EggHatchingUtilities eggHatchingLogic = this.mock(EggHatchingUtilities.class);
 
         for (ElementColor elementColor : elementColors) {
             effect.destroyElementsOfColorOnCard(elementColor, adjacentCard, elementSpaceLogic);
@@ -64,8 +62,8 @@ public class DestroyElementsOnAllAdjacentEggsEffectTests extends MockTest {
         ElementColor blue = ElementColor.BLUE;
         Card mockedCard = this.mock(Card.class);
         ElementSpaceUtilities elementSpaceLogic = this.mock(ElementSpaceUtilities.class);
-        List<ElementSpace> mockedDestroyableSpaces = this.mockListOf(ElementSpace.class)
-                .withLengthOf(numberOfDestroyableSpaces);
+        List<ElementSpace> mockedDestroyableSpaces =
+                this.mockListOf(ElementSpace.class).withLengthOf(numberOfDestroyableSpaces);
 
         DestroyElementsEffect effect = EasyMock.partialMockBuilder(DestroyElementsEffect.class)
                 .addMockedMethod("destroyElementsOfColorOnSpace").createMock();
@@ -113,7 +111,7 @@ public class DestroyElementsOnAllAdjacentEggsEffectTests extends MockTest {
     @Test
     public void testToStringPlace() {
         AllElementsEffect effect = new AllElementsEffect();
-        effect.elementColors = new ElementColor[]{ElementColor.BLACK};
+        effect.elementColors = new ElementColor[] {ElementColor.BLACK};
         StringBuilder elements = new StringBuilder();
         for (ElementColor color : effect.elementColors) {
             elements.append(color);
