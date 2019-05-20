@@ -248,6 +248,46 @@ The definition of done is created by examining and applying BVA on the rules.
   - ```underlings.element.ElementSpaceLogicTests.testIsValidRecipes()```
   - ```underlings.element.ElementSpaceLogicTests.testResetRecipes()```
 
+#### Destroy All Elements Of Color Tests ```underlings.element.DestroyAllElementsOfColorTests```
+
+- [x] Element Spaces should be able to destroy all elements of a certain color
+  - ```underlings.element.DestroyAllElementsOfColorTests.testNoDestoryableElements()```
+  - ```underlings.element.DestroyAllElementsOfColorTests.testOneDestroyableElementsFirst()```
+  - ```underlings.element.DestroyAllElementsOfColorTests.testOneDestoryableElementsMiddle()```
+  - ```underlings.element.DestroyAllElementsOfColorTests.testOneDestroyableElementsLast()```
+  - ```underlings.element.DestroyAllElementsOfColorTests.testMultipleDestroyableElements()```
+
+#### Destroy All Elements Tests ```underlings.element.DestroyAllElementsTests```
+
+- [x] Element Spaces should be able to remove all their elements
+  - ```underlings.element.DestroyAllElementsTests.testNoElements()```
+  - ```underlings.element.DestroyAllElementsTests.testOneElement()```
+  - ```underlings.element.DestroyAllElementsTests.testTwoElements()```
+
+#### Destroy One Element Of Color Tests ```underlings.element.DestroyOneElementOfColorTests```
+
+- [x] Element Spaces should be able to destroy one element of a certain color
+  - ```underlings.element.DestroyOneElementOfColorTests.testNoDestroyableElement()```
+  - ```underlings.element.DestroyOneElementOfColorTests.testOneDestroyableElementsFirst()```
+  - ```underlings.element.DestroyOneElementOfColorTests.testOneDestroyableElementsMiddle()```
+  - ```underlings.element.DestroyOneElementOfColorTests.testOneDestroyableElementsLast()```
+  - ```underlings.element.DestroyOneElementOfColorTests.testMultipleDestroyableElements()```
+
+#### Draw Choice Tests ```underlings.element.DrawChoiceTests```
+
+- [x] Draw Choices should correspond to an element color
+  - ```underlings.element.DrawChoiceTests.testAll()```
+
+#### Element Alias Tests ```underlings.element.ElementAliasTests```
+
+- [x] An elements initial alias is its color
+  - ```underlings.element.ElementAliasTests.testInitial()```
+- [x] An element can change its alias
+  - ```underlings.element.ElementAliasTests.testNoChangeBlue()```
+  - ```underlings.element.ElementAliasTests.testNoChangeRed()```
+  - ```underlings.element.ElementAliasTests.testChangeBlueToRed()```
+  - ```underlings.element.ElementAliasTests.testChangeRedToBlue()```
+
 ### Handlers ```underlings.handler```
 
 #### Handler Choices ```underlings.handler.ChoiceTests```
