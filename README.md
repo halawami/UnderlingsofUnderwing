@@ -991,3 +991,13 @@ The definition of done is created by examining and applying BVA on the rules.
 		- ```underlings.card.effect.wild.ApiaraWildEffectTests.testEffectTwiceTwoCards()```
 - [x] The player should know the effect has been run
   - ```underlings.card.effect.wild.ApiaraWildEffectTests.testToString()```
+
+#### No players may create Black using Primary or Secondary Elements ```underlings.card.effect.wild.players.RemoveBlackTests```
+
+- Dragons
+  - Aerillia
+- [x] This effect should prevent players from creating black with primary or secondary elements
+  - ```underlings.card.effect.wild.players.RemoveBlalckTests.testEffect()```
+- [x] The player should know the effect has been run
+  - ```underlings.card.effect.wild.players.RemoveBlalckTests.testToString()```
+
