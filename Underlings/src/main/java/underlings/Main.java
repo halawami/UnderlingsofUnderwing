@@ -21,6 +21,7 @@ import underlings.field.Field;
 import underlings.field.FieldSpaceFactory;
 import underlings.game.Game;
 import underlings.gui.ConcreteDisplay;
+import underlings.gui.ConcretePrompt;
 import underlings.gui.Gui;
 import underlings.handler.HandlerFactory;
 import underlings.handler.HandlerMovementLogic;
@@ -55,7 +56,7 @@ public class Main {
             System.exit(1);
         }
         FakePlayer.initPlayer(recipes);
-        Gui gui = new Gui(new TestPrompt(), new ConcreteDisplay());
+        Gui gui = new Gui(new ConcretePrompt(), new ConcreteDisplay());
         CardFactory cardFactory = new CardFactory(CARDS_JSON_FILE_NAME);
         Deck deck = new Deck(cardFactory.getCards(), Collections::shuffle);
         deck.shuffle();
