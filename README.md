@@ -87,6 +87,25 @@ The definition of done is created by examining and applying BVA on the rules.
 - [x] Handlers can be added to the white field space
   - ```underlings.field.AddTests.testWhite()```
 
+#### Remove Tests ```underlings.field.RemoveTests```
+
+- [x] Handlers can be removed from the circular field
+  - ```underlings.field.RemoveTests.testStart()```
+  - ```underlings.field.RemoveTests.testEnd()```
+  - ```underlings.field.RemoveTests.testWhite()```
+
+#### Rotate Tests ```underlings.field.RotateTests```
+
+- [x] Handlers can be rotated to the next field space
+  - ```underlings.field.RotateTests.testStart()```
+  - ```underlings.field.RotateTests.testEnd()```
+
+#### Grid Tests ```underlings.field.GridTests```
+
+- [x] The field is displayed as a grid
+  - ```underlings.field.GridTests.testGetGrid()```
+  - ```underlings.field.GridTests.testGetValidFieldSpaces()```
+
 ### Handlers ```underlings.handler```
 
 #### Handler Choices ```underlings.handler.ChoiceTests```
