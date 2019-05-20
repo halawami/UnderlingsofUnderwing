@@ -341,6 +341,11 @@ The definition of done is created by examining and applying BVA on the rules.
   - ```underlings.element.ElementBagTests.testAllAvailableDrawChoices()```
   - ```underlings.element.ElementBagTests.testGetAvailableDrawChoicesDifferentCountValues()```
 
+#### Element Giver Factor Tests ```underlings.element.ElementGiverFactoryTests```
+
+- [x] An Element Giver Factory should return the requested element giver
+  - ```underlings.element.ElementGiverFactoryTests.testCreateElementGiver()```
+
 ### Handlers ```underlings.handler```
 
 #### Handler Choices ```underlings.handler.ChoiceTests```
