@@ -938,6 +938,15 @@ The definition of done is created by examining and applying BVA on the rules.
 - [x] The player should know the effect has been run
   - ```underlings.card.effect.domestic.TwoHandlersOnFieldSpaceEffectTests.testToString()```
 
+#### You may create White by combining ALL Primary and Secondary Elements ```underlings.card.effect.domestic.WhiteReceipeEffectTests```
+
+- Dragons
+  - Aerillia
+- [x] The effect should let the player make white by combining all primary and secondary elements
+  - ```underlings.card.effect.domestic.WhiteReceipeEffectTests.testEffect()```
+- [x] The player should know the effect has been run
+  - ```underlings.card.effect.domestic.WhiteReceipeEffectTests.testToString()```
+
 ### Wild Card Effects ```underlings.card.effect.wild```
 
 #### ALL Eggs claimed this round take +1 round to hatch  ```underlings.card.effect.wild.AllEggsHatchLateEffectTests```
