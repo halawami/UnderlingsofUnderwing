@@ -197,6 +197,14 @@ The definition of done is created by examining and applying BVA on the rules.
 
 - [x] A player can draw a random element
   - ```underlings.element.RandomTests.testAll()```
+- [x] A player can draw a random primary element
+  - ```underlings.element.RandomTests.testPrimary()```
+- [x] A player can draw a random secondary element
+  - ```underlings.element.RandomTests.testSecondary()```
+- [x] A player can draw a random cool element
+  - ```underlings.element.RandomTests.testCool()```
+- [x] A player can draw a random warm element
+  - ```underlings.element.RandomTests.testWarm()```
 
 ### Handlers ```underlings.handler```
 
