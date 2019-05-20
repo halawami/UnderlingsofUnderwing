@@ -39,7 +39,7 @@ public class HatchedCardTests {
     }
 
     @Test
-    public void testOneCompletedEggs() {
+    public void testOneCompletedEgg() {
         this.player.moveToIncubation(this.card, this.player.hatchingTime);
         assertEquals(this.card.handler.getState(), HandlerState.INCUBATION);
         assertEquals(1, this.player.unhatchedCards.size());

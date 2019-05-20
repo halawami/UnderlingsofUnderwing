@@ -367,6 +367,13 @@ The definition of done is created by examining and applying BVA on the rules.
   - ```underlings.player.HatchedCardTests.testMostValuableMultipleDragonsTie```
   - ```underlings.player.HatchedCardTests.testNoHatchedCards```
 
+#### Elements ```underlings.player.ElementTests```
+
+- [x] A player can gain or lose elements
+  - ```underlings.player.ElementTests.testAddElement```
+  - ```underlings.player.ElementTests.testRemoveElement```
+  - ```underlings.player.ElementTests.testNullElement```
+
 ### Deck ```underlings.hatchingground.DeckTests```
 
 - [x] The deck can be drawn from with [0, DECK_SIZE] cards
