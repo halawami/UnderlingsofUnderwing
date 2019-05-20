@@ -776,7 +776,7 @@ The definition of done is created by examining and applying BVA on the rules.
 - [x] The winners should be displayed
   - ```underlings.scoring.ScoreTests.testDisplayWinners()```
 
-### Domestic Card Effects ```underlings.card.effect```
+### Domestic Card Effects ```underlings.card.effect.domestic```
 
 #### Gain Handlers  ```underlings.card.effect.domestic.players.player.GainHandlersEffectTests```
 
@@ -839,7 +839,6 @@ The definition of done is created by examining and applying BVA on the rules.
      - ```underlings.card.effect.domestic.element.CollectElementEffectTests.testTwoColors()```
 - [x] The player should know that the effect has been run
   - ```underlings.card.effect.domestic.element.CollectElementEffectTests.testToString()```
-
   
 #### Collect 5 elements of each color ```underlings.card.effect.domestic.element.CollectFiveElementsEffectTests```
 
@@ -862,31 +861,6 @@ The definition of done is created by examining and applying BVA on the rules.
      - ```underlings.card.effect.domestic.element.DrawElementsOfChoiceNextPhaseEffectTests.testOnSecondPhaseOne()```
 - [x] The player should know that the effect has been run
   - ```underlings.card.effect.domestic.element.DrawElementsOfChoiceNextPhaseEffectTests.testToString()```
-
-#### ALL Eggs claimed this round take +1 round to hatch  ```underlings.card.effect.wild.AllEggsHatchLateEffectTests```
-
-- Dragons
-  - Norruth
-- [x] This effect modifies the hatching ground to allow for late hatching for that round
-  - ```underlings.card.effect.wild.AllEggsHatchLateEffectTests.testApply()```
-- [x] The player should know the effect has been run
-  - ```underlings.card.effect.wild.AllEggsHatchLateEffectTests.testToString()```
-  
-#### Reshuffle this card into the deck; when redrawn hatch ALL unclaimed Eggs in the Hatching grounds ```underlings.card.effect.wild.ApiaraWildEffectTests```
-
-- Dragons
-  - Apiara
-- [x] This effect should shuffle the card back into the deck, when redrawn, all unclaimed eggs in the hatching ground must hatch
-	- Run draw once
-		- ```underlings.card.effect.wild.ApiaraWildEffectTests.testEffect()```
-	- Run draw twice no cards
-		- ```underlings.card.effect.wild.ApiaraWildEffectTests.testEffectTwiceNoCards()```
-	- Run draw twice one card
-		- ```underlings.card.effect.wild.ApiaraWildEffectTests.testEffectTwiceOneCard()```
-	- Run draw twice two cards
-		- ```underlings.card.effect.wild.ApiaraWildEffectTests.testEffectTwiceTwoCards()```
-- [x] The player should know the effect has been run
-  - ```underlings.card.effect.wild.ApiaraWildEffectTests.testToString()```
   
 #### Replace a Handler on a claimed Egg with your own ```underlings.card.effect.domestic.handler.ReplaceHandlerWithYourOwnEffectTests```
 
@@ -933,4 +907,30 @@ The definition of done is created by examining and applying BVA on the rules.
   - ```underlings.card.effect.domestic.playerhatchingground.uptoelements.FromAnyEggInPlayEffectTests.testCollectNonExistingElement()```
 - [x] The player should know the effect has been run
   - ```underlings.card.effect.domestic.playerhatchingground.uptoelements.FromAnyEggInPlayEffectTests.testToStringCollect()```
+
+### Wild Card Effects ```underlings.card.effect.wild```
+
+#### ALL Eggs claimed this round take +1 round to hatch  ```underlings.card.effect.wild.AllEggsHatchLateEffectTests```
+
+- Dragons
+  - Norruth
+- [x] This effect modifies the hatching ground to allow for late hatching for that round
+  - ```underlings.card.effect.wild.AllEggsHatchLateEffectTests.testApply()```
+- [x] The player should know the effect has been run
+  - ```underlings.card.effect.wild.AllEggsHatchLateEffectTests.testToString()```
   
+#### Reshuffle this card into the deck; when redrawn hatch ALL unclaimed Eggs in the Hatching grounds ```underlings.card.effect.wild.ApiaraWildEffectTests```
+
+- Dragons
+  - Apiara
+- [x] This effect should shuffle the card back into the deck, when redrawn, all unclaimed eggs in the hatching ground must hatch
+	- Run draw once
+		- ```underlings.card.effect.wild.ApiaraWildEffectTests.testEffect()```
+	- Run draw twice no cards
+		- ```underlings.card.effect.wild.ApiaraWildEffectTests.testEffectTwiceNoCards()```
+	- Run draw twice one card
+		- ```underlings.card.effect.wild.ApiaraWildEffectTests.testEffectTwiceOneCard()```
+	- Run draw twice two cards
+		- ```underlings.card.effect.wild.ApiaraWildEffectTests.testEffectTwiceTwoCards()```
+- [x] The player should know the effect has been run
+  - ```underlings.card.effect.wild.ApiaraWildEffectTests.testToString()```
