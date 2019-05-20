@@ -563,3 +563,15 @@ The definition of done is created by examining and applying BVA on the rules.
 		- ```underlings.card.effect.wild.ApiaraWildEffectTests.testEffectTwiceTwoCards()```
 - [x] The player should know the effect has been run
   - ```underlings.card.effect.wild.ApiaraWildEffectTests.testToString()```
+  
+#### Replace a Handler on a claimed Egg with your own ```underlings.card.effect.domestic.handler.ReplaceHandlerWithYourOwnEffectTests```
+
+- Dragons
+  - VADRENOX
+- [x] This effect should let the player pick one claimed card and replace its handler with one of their handlers
+	- No claimed cards
+		- ```underlings.card.effect.domestic.handler.ReplaceHandlerWithYourOwnEffectTests.testApplyEffectNoSelectableHandler()```
+	- At least one claimed card
+		- ```underlings.card.effect.domestic.handler.ReplaceHandlerWithYourOwnEffectTests.testApplyEffectSelectableHandler()```
+- [x] The player should know the effect has been run
+  - ```underlings.card.effect.domestic.handler.ReplaceHandlerWithYourOwnEffectTests.testToString()```
