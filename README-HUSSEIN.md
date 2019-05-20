@@ -26,4 +26,16 @@
 - [x] The player should know the effect has been run
   - ```underlings.card.effect.wild.adjacenteggs.ReturnAllAdjacentCardsToDeckEffectTests.testToString()```
 
-  
+#### Return all adjacent egg's handlers to ready room ```underlings.card.effect.wild.adjacenteggs.ReturnAllAdjacentHandlersEffectTests```
+
+- Dragons
+  - TYCHE
+- [x] This effect returns all adjacent egg's handlers to the ready room ```underlings.card.effect.wild.adjacenteggs.ReturnAllAdjacentHandlersEffectTests```
+	- Apply effect to no handler
+		- ```underlings.card.effect.wild.adjacenteggs.ReturnAllAdjacentHandlersEffectTests.testApplyNoHandler()```
+	- Apply effect to wild handler
+		- ```underlings.card.effect.wild.adjacenteggs.ReturnAllAdjacentHandlersEffectTests.testApplyWildHandler()```
+	- Apply effect to normal handler
+		- ```underlings.card.effect.wild.adjacenteggs.ReturnAllAdjacentHandlersEffectTests.testApplyNormalHandler()```
+- [x] The player should know the effect has been run
+  - ```underlings.card.effect.wild.adjacenteggs.ReturnAllAdjacentHandlersEffectTests.testToString()```
