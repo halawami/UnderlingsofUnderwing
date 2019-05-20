@@ -322,6 +322,30 @@ The definition of done is created by examining and applying BVA on the rules.
   - ```underlings.element.GetValidElementSpacesTest.testSecondaryElements()```
   - ```underlings.element.GetValidElementSpacesTest.testOpenElements()```
 
+#### Get Destroyable Spaces Tests ```underlings.element.GetDestroyableSpacesTests```
+
+- [x] Element Space Logic should return destroyable spaces
+  - ```underlings.element.GetDestroyableSpacesTests.testNoDestroyableSpaces()```
+  - ```underlings.element.GetDestroyableSpacesTests.testOneDestroyableSpaces()```
+  - ```underlings.element.GetDestroyableSpacesTests.testOneDestroyableSpacesDifferentElements()```
+  - ```underlings.element.GetDestroyableSpacesTests.testSevenDestroyableSpaces()```
+
+#### Element Bag Tests ```underlings.element.ElementBagTests```
+
+- [x] An empty bag returns a NullElement
+  - ```underlings.element.ElementBagTests.testEmptyBag()```
+  - ```underlings.element.ElementBagTests.testNoAvailableDrawChoices()```
+- [x] Element Bag returns a draw choice's corresponding element
+  - ```underlings.element.ElementBagTests.testOneAvailableDrawChoices()```
+  - ```underlings.element.ElementBagTests.testAllButOneAvailableDrawChoices()```
+  - ```underlings.element.ElementBagTests.testAllAvailableDrawChoices()```
+  - ```underlings.element.ElementBagTests.testGetAvailableDrawChoicesDifferentCountValues()```
+
+#### Element Giver Factor Tests ```underlings.element.ElementGiverFactoryTests```
+
+- [x] An Element Giver Factory should return the requested element giver
+  - ```underlings.element.ElementGiverFactoryTests.testCreateElementGiver()```
+
 ### Handlers ```underlings.handler```
 
 #### Handler Choices ```underlings.handler.ChoiceTests```
