@@ -58,7 +58,20 @@ public class DragonPhaseTests extends MockTest {
     }
 
     @Test
-    public void testOneUnhatchedEgg() {
+    public void testNoIncubatedEggs() {
+        EasyMock.expect(this.hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList());
+
+        this.replayAll();
+
+        DragonPhase phase = new DragonPhase(this.players, null, this.elementBag, this.hatchingGround, null, null, null);
+        phase.setup();
+        phase.turn(this.player);
+        phase.teardown();
+        assertTrue(phase.isPhaseComplete());
+    }
+
+    @Test
+    public void testOneIncubatedEgg() {
         EasyMock.expect(this.hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList());
         this.player.unhatchedCards.put(this.card, 1);
         this.eggHatchingLogic.hatchEgg(this.card, this.player);
@@ -78,10 +91,10 @@ public class DragonPhaseTests extends MockTest {
     }
 
     @Test
-    public void testTwoUnhatchedEgg() {
+    public void testTwoIncubatedEggs() {
         EasyMock.expect(this.hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList());
         Card card2 = new Card();
-        card2.domesticEffects = new Effect[]{EasyMock.mock(Effect.class)};
+        card2.domesticEffects = new Effect[] {EasyMock.mock(Effect.class)};
         this.player.unhatchedCards.put(this.card, 1);
         this.player.unhatchedCards.put(card2, 1);
         this.eggHatchingLogic.hatchEgg(this.card, this.player);
@@ -101,7 +114,7 @@ public class DragonPhaseTests extends MockTest {
     }
 
     @Test
-    public void testNoUnhatchedEggs() {
+    public void testNoCompleteEggs() {
         EasyMock.expect(this.hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList());
 
         this.replayAll();
@@ -114,7 +127,7 @@ public class DragonPhaseTests extends MockTest {
     }
 
     @Test
-    public void testOneUncompletedEgg() {
+    public void testOneCompleteEgg() {
         this.player = new Player(2, new HandlerFactory(), 0);
         this.card.handler = this.player.handlers.get(0);
         this.card.name = "tempName";
@@ -135,7 +148,7 @@ public class DragonPhaseTests extends MockTest {
     }
 
     @Test
-    public void testTwoUncompletedEgg() {
+    public void testTwoCompleteEggs() {
         this.player = new Player(2, new HandlerFactory(), 0);
         this.card.handler = this.player.handlers.get(0);
         this.card.name = "tempName";
@@ -158,7 +171,7 @@ public class DragonPhaseTests extends MockTest {
     }
 
     @Test
-    public void testOneUncompletedEggNotThePlayerEgg() {
+    public void testOneCompleteEggNotThePlayers() {
         this.card.domesticEffects = new Effect[0];
         this.player = new Player(2, new HandlerFactory(), 0);
         EasyMock.expect(this.hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList(this.card));
@@ -168,19 +181,6 @@ public class DragonPhaseTests extends MockTest {
 
         DragonPhase phase = new DragonPhase(this.players, this.gui, this.elementBag, this.hatchingGround, null, null,
                 this.eggHatchingLogic);
-        phase.setup();
-        phase.turn(this.player);
-        phase.teardown();
-        assertTrue(phase.isPhaseComplete());
-    }
-
-    @Test
-    public void testNoUncompletedEgg() {
-        EasyMock.expect(this.hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList());
-
-        this.replayAll();
-
-        DragonPhase phase = new DragonPhase(this.players, null, this.elementBag, this.hatchingGround, null, null, null);
         phase.setup();
         phase.turn(this.player);
         phase.teardown();
@@ -259,7 +259,7 @@ public class DragonPhaseTests extends MockTest {
     }
 
     @Test
-    public void testThreeRoundsLateEgg() {
+    public void testHatchLateEggExtended() {
         Player player = new Player(6, new HandlerFactory(), 1);
         this.card.handler = player.handlers.get(0);
         this.card.name = "tempName";
@@ -284,29 +284,4 @@ public class DragonPhaseTests extends MockTest {
         phase.turn(player);
         phase.teardown();
     }
-
-    @Test
-    public void testTwoRoundsLateEgg() {
-        Player player = new Player(6, new HandlerFactory(), 1);
-        this.card.handler = player.handlers.get(0);
-        this.card.name = "tempName";
-        final String message = LocaleUtilities.format("incubation_state", this.card.name);
-        this.hatchingGround.lateHatching = true;
-        EasyMock.expect(this.hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList(this.card));
-        EasyMock.expect(this.hatchingGround.pullAndReplaceCompleteEggs()).andReturn(Arrays.asList());
-        this.eggHatchingLogic.returnElementsToBag(this.card);
-        this.gui.notifyAction(player.getId(), message);
-
-        this.replayAll();
-
-        DragonPhase phase = new DragonPhase(this.players, this.gui, this.elementBag, this.hatchingGround, null, null,
-                this.eggHatchingLogic);
-        phase.setup();
-        phase.turn(player);
-        phase.setup();
-        phase.turn(player);
-        phase.teardown();
-    }
-
-
 }
