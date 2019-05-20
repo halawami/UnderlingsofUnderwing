@@ -464,6 +464,17 @@ The definition of done is created by examining and applying BVA on the rules.
 - [x] The player can fetch a grid of element spaces
   - ```underlings.gui.GuiTests.testElementGrid```
 
+#### GetElementSpaceWithColors ```underlings.gui.GetElementSpaceWithColorsTests```
+- [x] The player can select a card and an element space on that card that contains an element out of a list
+  - ```underlings.gui.GetElementSpaceWithColorsTests.testNoSpaces```
+  - ```underlings.gui.GetElementSpaceWithColorsTests.testNoColors```
+  - ```underlings.gui.GetElementSpaceWithColorsTests.testOneSpaceOneColorInvalid```
+  - ```underlings.gui.GetElementSpaceWithColorsTests.testOneSpaceOneColorValid```
+  - ```underlings.gui.GetElementSpaceWithColorsTests.testTwoSpacesMultiColorsValid```
+  - ```underlings.gui.GetElementSpaceWithColorsTests.testChoseNo```
+  - ```underlings.gui.GetElementSpaceWithColorsTests.testSecondaryColors```
+  - ```underlings.gui.GetElementSpaceWithColorsTests.testCardWithValidAndInvalidSpaces```
+
 ### Scoring ```underlings.scoring```
 
 #### Temperature Tests ```underlings.scoring.TemperatureTests```
