@@ -14,7 +14,6 @@ import org.junit.Test;
 
 import underlings.card.Card;
 import underlings.card.EmptyCard;
-import underlings.hatchingground.Deck;
 
 public class DeckTests {
 

@@ -1,10 +1,13 @@
 package underlings.scoring;
 
 import static org.junit.Assert.assertEquals;
+
 import java.util.Arrays;
 import java.util.Collections;
+
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.TestUtils;
 import underlings.card.Card;
 import underlings.card.Temperature;

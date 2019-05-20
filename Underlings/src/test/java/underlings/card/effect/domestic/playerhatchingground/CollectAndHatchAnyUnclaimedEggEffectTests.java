@@ -59,8 +59,7 @@ public class CollectAndHatchAnyUnclaimedEggEffectTests extends MockTest {
         EasyMock.expect(gui.getCard(0, LocaleUtilities.get("gui_card"), hatchingGround, mockedCards))
                 .andReturn(EmptyCard.getInstance());
         EggHatchingUtilities eggHatchingLogic = this.mock(EggHatchingUtilities.class);
-        CollectAndHatchAnyUnclaimedEggEffect effect =
-                new CollectAndHatchAnyUnclaimedEggEffect();
+        CollectAndHatchAnyUnclaimedEggEffect effect = new CollectAndHatchAnyUnclaimedEggEffect();
 
         this.replayAll();
 

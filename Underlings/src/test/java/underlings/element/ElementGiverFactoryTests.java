@@ -2,8 +2,10 @@ package underlings.element;
 
 import java.util.Arrays;
 import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Test;
+
 import underlings.gui.DrawChoice;
 
 public class ElementGiverFactoryTests {

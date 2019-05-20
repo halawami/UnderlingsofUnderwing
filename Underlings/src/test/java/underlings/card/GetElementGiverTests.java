@@ -39,7 +39,7 @@ public class GetElementGiverTests extends MockTest {
     public void testOneElementGiversFirst() {
         ElementGiverEffect elementGiverEffect = new ElementGiverEffect(DrawChoice.RED);
         Card testedCard = new Card();
-        testedCard.domesticEffects = new Effect[]{elementGiverEffect};
+        testedCard.domesticEffects = new Effect[] {elementGiverEffect};
 
         this.replayAll();
 
@@ -54,7 +54,7 @@ public class GetElementGiverTests extends MockTest {
         ElementGiverEffect elementGiverEffect = new ElementGiverEffect(DrawChoice.RED);
 
         Card testedCard = new Card();
-        testedCard.domesticEffects = new Effect[]{this.effect, elementGiverEffect, this.effect2};
+        testedCard.domesticEffects = new Effect[] {this.effect, elementGiverEffect, this.effect2};
 
         this.replayAll();
 
@@ -69,7 +69,7 @@ public class GetElementGiverTests extends MockTest {
         ElementGiverEffect elementGiverEffect = new ElementGiverEffect(DrawChoice.RED);
 
         Card testedCard = new Card();
-        testedCard.domesticEffects = new Effect[]{this.effect, this.effect2, elementGiverEffect};
+        testedCard.domesticEffects = new Effect[] {this.effect, this.effect2, elementGiverEffect};
 
         this.replayAll();
 
@@ -86,7 +86,7 @@ public class GetElementGiverTests extends MockTest {
         ElementGiverEffect elementGiverEffect2 = new ElementGiverEffect(DrawChoice.BLUE);
 
         Card testedCard = new Card();
-        testedCard.domesticEffects = new Effect[]{this.effect, elementGiverEffect1, elementGiverEffect2};
+        testedCard.domesticEffects = new Effect[] {this.effect, elementGiverEffect1, elementGiverEffect2};
 
         this.replayAll();
 
@@ -100,7 +100,7 @@ public class GetElementGiverTests extends MockTest {
     @Test
     public void testNullElementGivers() {
         Card testedCard = new Card();
-        testedCard.domesticEffects = new Effect[]{this.effect};
+        testedCard.domesticEffects = new Effect[] {this.effect};
         this.effect.drawChoices = null;
 
         this.replayAll();
@@ -113,7 +113,7 @@ public class GetElementGiverTests extends MockTest {
     @Test
     public void testNoElementGivers() {
         Card testedCard = new Card();
-        testedCard.domesticEffects = new Effect[]{this.effect};
+        testedCard.domesticEffects = new Effect[] {this.effect};
         this.effect.drawChoices = new ArrayList<>();
 
         this.replayAll();

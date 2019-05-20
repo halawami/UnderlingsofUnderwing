@@ -9,8 +9,6 @@ import underlings.card.Card;
 import underlings.element.ElementSpaceUtilities;
 import underlings.handler.Handler;
 import underlings.handler.HandlerState;
-import underlings.hatchingground.Deck;
-import underlings.hatchingground.HatchingGround;
 
 public class FindCardTests {
 

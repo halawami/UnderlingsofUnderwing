@@ -25,12 +25,12 @@ public class CollectElementEffectTests extends MockTest {
 
     @Test
     public void testOneColor() {
-        this.testColors(new ElementColor[]{ElementColor.BLUE});
+        this.testColors(new ElementColor[] {ElementColor.BLUE});
     }
 
     @Test
     public void testTwoColors() {
-        this.testColors(new ElementColor[]{ElementColor.BLUE, ElementColor.RED});
+        this.testColors(new ElementColor[] {ElementColor.BLUE, ElementColor.RED});
     }
 
     private void testColors(ElementColor[] elementChoices) {
@@ -52,7 +52,7 @@ public class CollectElementEffectTests extends MockTest {
     public void testToString() {
         this.replayAll();
         CollectElementEffect effect = new CollectElementEffect();
-        effect.elementChoices = new ElementColor[]{ElementColor.BLACK};
+        effect.elementChoices = new ElementColor[] {ElementColor.BLACK};
         StringBuilder elements = new StringBuilder();
         for (ElementColor color : effect.elementChoices) {
             elements.append(color);

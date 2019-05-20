@@ -50,7 +50,7 @@ public class HatchAllUnclaimedAdjacentEggsEffectTests extends MockTest {
 
         this.replayAll();
 
-        this.effect.dragonFamilies = new Family[]{Family.MONOCHROMATIC};
+        this.effect.dragonFamilies = new Family[] {Family.MONOCHROMATIC};
 
         this.effect.applyOnAdjacentEgg(this.cards.get(0), this.eggHatchingLogic);
     }
@@ -71,7 +71,7 @@ public class HatchAllUnclaimedAdjacentEggsEffectTests extends MockTest {
 
         this.replayAll();
 
-        this.effect.dragonFamilies = new Family[]{Family.MONOCHROMATIC};
+        this.effect.dragonFamilies = new Family[] {Family.MONOCHROMATIC};
         this.effect.applyOnAdjacentEgg(this.cards.get(0), this.eggHatchingLogic);
     }
 
@@ -79,7 +79,7 @@ public class HatchAllUnclaimedAdjacentEggsEffectTests extends MockTest {
     public void testToString() {
         this.replayAll();
         HatchAllUnclaimedEffect effect = new HatchAllUnclaimedEffect();
-        effect.dragonFamilies = new Family[]{Family.MONOCHROMATIC};
+        effect.dragonFamilies = new Family[] {Family.MONOCHROMATIC};
         StringBuilder families = new StringBuilder();
         for (Family family : effect.dragonFamilies) {
             families.append(family);

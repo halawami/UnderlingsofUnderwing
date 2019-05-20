@@ -128,11 +128,9 @@ public class ScoreTests {
         this.players[1].score = 5;
 
         this.gui.alert(LocaleUtilities.format("player_score", this.players[0], this.players[0].score),
-                this.players[0].id,
-                PromptType.REGULAR);
+                this.players[0].id, PromptType.REGULAR);
         this.gui.alert(LocaleUtilities.format("player_score", this.players[1], this.players[1].score),
-                this.players[1].id,
-                PromptType.REGULAR);
+                this.players[1].id, PromptType.REGULAR);
 
         EasyMock.replay(this.gui);
 

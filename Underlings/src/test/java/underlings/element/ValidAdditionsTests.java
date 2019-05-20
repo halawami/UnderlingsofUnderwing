@@ -3,13 +3,17 @@ package underlings.element;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
+
 import underlings.utilities.LocaleUtilities;
 
 public class ValidAdditionsTests {
