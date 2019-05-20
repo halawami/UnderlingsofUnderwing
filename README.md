@@ -1023,3 +1023,15 @@ The definition of done is created by examining and applying BVA on the rules.
   - ```underlings.card.effect.wild.players.LoseHandlerEffectTests.testLoseHandlerSixPlayers()```
 - [x] The player shouldd know the effect has been run
   - ```underlings.card.effect.wild.players.LoseHandlerEffectTests.testToString()```
+
+#### All players draw 1 fewer Element during each Phase 1 ```underlings.card.effect.wild.players.DrawOneLessElementEffectTests```
+
+- Dragons
+  - Lusura
+- [x] This effect should have each player draw one fewer element during each phase one
+  - ```underlings.card.effect.wild.players.DrawOneLessElementEffectTests.testApplyTwoPlayers()```
+  - ```underlings.card.effect.wild.players.DrawOneLessElementEffectTests.testApplySixPlayers()```
+  - ```underlings.card.effect.wild.players.DrawOneLessElementEffectTests.testOnPhaseOne()```
+  - ```underlings.card.effect.wild.players.DrawOneLessElementEffectTests.testGetEffectElementGiversOneElementGiver()```
+  - ```underlings.card.effect.wild.players.DrawOneLessElementEffectTests.testGetEffectElementGiversTwoElementGiver()```
+  - ```underlings.card.effect.wild.players.DrawOneLessElementEffectTests.testGetEffectElementGiversThreeElementGiver()```
