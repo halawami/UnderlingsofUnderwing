@@ -69,8 +69,13 @@ The definition of done is created by examining and applying BVA on the rules.
 - [x] The game should start and run until the game is over
   - The game can run until the round count reaches zero
     - ```underlings.game.GameTests.testGameLoopRoundsCompleted()```
+    - ```underlings.game.GameTests.testGamoverPhaseEnd()```
   - The game can run until all eggs have been hatched wild
     - ```underlings.game.GameTests.testGameLoopWildHatched()```
+  - The game can run until all cards have been used
+    - ```underlings.game.GameTests.testCheckGameoverNoCards()```
+    - ```underlings.game.GameTests.testCheckGameoverWithCardsTrue()```
+    - ```underlings.game.GameTests.testCheckGameoverWithCardsFalse()```
 
 ### Field ```underlings.Field```
 
