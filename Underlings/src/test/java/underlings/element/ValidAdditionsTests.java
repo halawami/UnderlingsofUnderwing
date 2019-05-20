@@ -171,7 +171,7 @@ public class ValidAdditionsTests {
     @Test
     public void testBlack() {
         this.testColor(ElementColor.BLACK);
-    }gi
+    }
 
     public void testColor(ElementColor color) {
         ElementSpace elementSpace = new ElementSpace(color);

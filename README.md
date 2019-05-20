@@ -908,6 +908,17 @@ The definition of done is created by examining and applying BVA on the rules.
 - [x] The player should know the effect has been run
   - ```underlings.card.effect.domestic.playerhatchingground.uptoelements.FromAnyEggInPlayEffectTests.testToStringCollect()```
 
+#### If desired, hatch any 1 unclaimed Egg in the Hatching Grounds as a Wild Dragon ```underlings.card.effect.domestic.playerhatchingground.HatchAnyUnclaimedEggAsWildDragonEffectTests```
+
+- Dragons
+  - Cordath
+- [x] The effect should let the player hatch an unclaimed egg in the hatching ground as a wild dragon
+  - ```underlings.card.effect.domestic.playerhatchingground.HatchAnyUnclaimedEggAsWildDragonEffectTests.testApplyEffect()```
+  - ```underlings.card.effect.domestic.playerhatchingground.HatchAnyUnclaimedEggAsWildDragonEffectTests.testNotWantingToHatch()```
+  - ```underlings.card.effect.domestic.playerhatchingground.HatchAnyUnclaimedEggAsWildDragonEffectTests.testApplyNoUnclaimedEggs()```
+- [x] The player should know the effect has been run
+  - ```underlings.card.effect.domestic.playerhatchingground.HatchAnyUnclaimedEggAsWildDragonEffectTests.testToString()```
+
 ### Wild Card Effects ```underlings.card.effect.wild```
 
 #### ALL Eggs claimed this round take +1 round to hatch  ```underlings.card.effect.wild.AllEggsHatchLateEffectTests```
