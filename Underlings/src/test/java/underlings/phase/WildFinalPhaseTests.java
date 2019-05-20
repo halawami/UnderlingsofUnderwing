@@ -23,7 +23,7 @@ public class WildFinalPhaseTests extends MockTest {
     }
 
     @Test
-    public void testRunWildFinalPhase() throws IOException {
+    public void testRunPhase() throws IOException {
 
         this.gui.alert(LocaleUtilities.get("wild_game_over"), PromptType.ERROR);
 

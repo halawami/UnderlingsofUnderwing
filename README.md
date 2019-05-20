@@ -305,6 +305,12 @@ The definition of done is created by examining and applying BVA on the rules.
   - ```underlings.phase.DragonPhaseTests.testHatchLateEgg```
   - ```underlings.phase.DragonPhaseTests.testHatchLateEggExtended```
 
+### Final Phase
+
+#### Regular Phase ```underlings.phase.RegularFinalPhaseTests```
+- [x] In the final phase the game will display the gameover screen and all players' scores
+  - ```underlings.phase.RegularFinalPhaseTests.testRunPhase```
+
 ### Scoring ```underlings.scoring```
 
 #### Temperature Tests ```underlings.scoring.TemperatureTests```

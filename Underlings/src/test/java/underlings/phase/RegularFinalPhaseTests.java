@@ -23,7 +23,7 @@ public class RegularFinalPhaseTests extends MockTest {
     }
 
     @Test
-    public void testRunRegularFinalPhase() {
+    public void testRunPhase() {
         dragonPhase.setup();
         gui.alert("Game Over!", PromptType.WARNING);
         scoreUtils.calculateScores();
