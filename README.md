@@ -79,6 +79,21 @@ The definition of done is created by examining and applying BVA on the rules.
 - [x] The field should display its color
   - ```underlings.field.StringTests.testToString()```
 
+#### Add Tests ```underlings.field.AddTests```
+
+- [x] Handlers can be added to the circular field
+  - ```underlings.field.AddTests.testStart()```
+  - ```underlings.field.AddTests.testEnd()```
+- [x] Handlers can be added to the white field space
+  - ```underlings.field.AddTests.testWhite()```
+
+#### Remove Tests ```underlings.field.RemoveTests```
+
+- [x] Handlers can be removed from the circular field
+  - ```underlings.field.RemoveTests.testStart()```
+  - ```underlings.field.RemoveTests.testEnd()```
+  - ```underlings.field.RemoveTests.testWhite()```
+
 ### Handlers ```underlings.handler```
 
 #### Handler Choices ```underlings.handler.ChoiceTests```
@@ -321,6 +336,14 @@ The definition of done is created by examining and applying BVA on the rules.
 #### Wild Phase ```underlings.phase.WildFinalPhaseTests```
 - [x] In the final phase the game will display the gameover screen tell all players that they lost
   - ```underlings.phase.WildFinalPhaseTests.testRunPhase```
+
+### Rotation Phase ```underlings.phase.RotationPhaseTests```
+- [x] In a rotation phase each player will finish their turn before moving to the next player
+  - ```underlings.phase.RotationPhaseTests.testExecute```
+
+### Sequential Phase ```underlings.phase.SequentialPhaseTests```
+- [x] In a sequential phase the players each complete part of their turn until everyone completes their turns
+  - ```underlings.phase.SequentialPhaseTests.testExecute```
 
 ### Scoring ```underlings.scoring```
 

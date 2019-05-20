@@ -12,7 +12,7 @@ public class RotationPhaseTests {
 
 
     @Test
-    public void testRotationExecute() {
+    public void testExecute() {
         RotationPhase rotation =
                 EasyMock.createMockBuilder(RotationPhase.class).addMockedMethod("turn").addMockedMethod("setup")
                         .addMockedMethod("setPhaseComplete").addMockedMethod("isPhaseComplete").createMock();
