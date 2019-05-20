@@ -177,6 +177,22 @@ The definition of done is created by examining and applying BVA on the rules.
   - When a red and blue are played on a purple space, the combo is complete
     - ```underlings.element.PurpleTests.testBlueAndRed()```
 
+#### Black Tests ```underlings.element.BlackTests```
+
+- [x] A black element can be made from all primary elements
+  - When only a red is placed, the combo is not complete
+    - ```underlings.element.BlackTests.testRed()```
+  - When only a blue is placed, the combo is not complete
+    - ```underlings.element.BlackTests.testBlue()```
+  - When only a yellow is placed, the combo is not complete
+    - ```underlings.element.BlackTests.testYellow()```
+  - When a red and blue is placed, the combo is not complete
+    - ```underlings.element.BlackTests.testRedBlue()```
+  - When a blue and yellow is placed, the combo is not complete
+    - ```underlings.element.BlackTests.testBlueYellow()```
+  - When a red and blue and yellow is placed, the combo is complete
+    - ```underlings.element.BlackTests.testRedBlueYellow()```
+
 ### Handlers ```underlings.handler```
 
 #### Handler Choices ```underlings.handler.ChoiceTests```
